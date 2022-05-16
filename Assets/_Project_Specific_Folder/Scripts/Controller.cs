@@ -159,19 +159,19 @@ public class Controller : MonoBehaviour
         if (Input.GetAxis("Horizontal") > .1f)
         {
             direction = State.right;
-            transform.DOLocalRotate(new Vector3(6, -90, 20), .1f);
+            transform.DOLocalRotate(new Vector3(6, -90, 25), .1f);
         }
         if (Input.GetAxis("Horizontal") < -.1f)
         {
 
             direction = State.left;
-            transform.DOLocalRotate(new Vector3(-6, -90,20), .1f);
+            transform.DOLocalRotate(new Vector3(-6, -90,25), .1f);
         }
         if (Input.GetAxis("Horizontal") == 0)
         {
 
             direction = State.middle;
-            transform.DOLocalRotate(new Vector3(0, -90, 20), .2f);
+            transform.DOLocalRotate(new Vector3(0, -90, 25), .2f);
         }
 
     }

@@ -233,6 +233,7 @@ public class Collsion : MonoBehaviour
                 {
                     StiackerMat.DOFade(0, .3f).OnComplete(() =>
                     {
+                        Shine.Play();
                         StiackerMat.mainTexture = GoodYellow[0];
                         StiackerMat.DOFade(1, .5f);
                         IsYellow = true;
@@ -241,7 +242,7 @@ public class Collsion : MonoBehaviour
                 else if (GameManager.Instance.Level == 5)
                 {
                     StiackerMat.DOFade(0, .3f).OnComplete(() =>
-                    {
+                    { Shine.Play();
                         StiackerMat.mainTexture = GoodYellow[01];
                         StiackerMat.DOFade(1, .5f);
                       
@@ -254,6 +255,7 @@ public class Collsion : MonoBehaviour
                 {
                     StiackerMat.DOFade(0, .3f).OnComplete(() =>
                     {
+                        Shine.Play();
                         StiackerMat.mainTexture = BadYellow[0];
                         StiackerMat.DOFade(1, .5f);
                         IsYellow = true;
@@ -263,6 +265,7 @@ public class Collsion : MonoBehaviour
                 {
                     StiackerMat.DOFade(0, .3f).OnComplete(() =>
                     {
+                        Shine.Play();
                         StiackerMat.mainTexture = BadYellow[01];
                         StiackerMat.DOFade(1, .5f);
                     });
@@ -278,6 +281,7 @@ public class Collsion : MonoBehaviour
                 {
                     StiackerMat.DOFade(0, .3f).OnComplete(() =>
                     {
+                        Shine.Play();
                         StiackerMat.mainTexture = GoodBlue[0];
                         StiackerMat.DOFade(1, .5f);
                         IsBlue = true;
@@ -287,6 +291,7 @@ public class Collsion : MonoBehaviour
                 {
                     StiackerMat.DOFade(0, .3f).OnComplete(() =>
                     {
+                        Shine.Play();
                         StiackerMat.mainTexture = GoodBlue[01];
                         StiackerMat.DOFade(1, .5f);
                     });
@@ -298,6 +303,7 @@ public class Collsion : MonoBehaviour
                 {
                     StiackerMat.DOFade(0, .3f).OnComplete(() =>
                     {
+                        Shine.Play();
                         StiackerMat.mainTexture = BadBlue[0];
                         StiackerMat.DOFade(1, .5f);
                     });
