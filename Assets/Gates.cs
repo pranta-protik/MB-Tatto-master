@@ -14,6 +14,9 @@ public class Gates : MonoBehaviour
     public EType GateType;
     public float Cost;
     public TMP_Text CostText;
+
+    public int id;
+
     void Start()
     {
         CostText.text = Cost.ToString();

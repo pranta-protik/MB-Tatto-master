@@ -144,7 +144,12 @@ public class Collsion : MonoBehaviour
             }
             else
             {
+                if(!GameManager.Instance.IsVideo)
                 Invoke("UpdateTexture", .2f);
+                else
+                {
+                    StartCoroutine(UpdateTextureVideo(other.gameObject));
+                }
             }
 
         }
@@ -186,7 +191,10 @@ public class Collsion : MonoBehaviour
             }
             else
             {
-                Invoke("UpdateTextureCheap", .2f);
+                if (!GameManager.Instance.IsVideo)
+                    Invoke("UpdateTextureCheap", .2f);
+                else
+                    StartCoroutine(UpdateCheapTextureVideo(other.gameObject));
             }
         }
         if (other.gameObject.CompareTag("Enemy"))
@@ -396,6 +404,18 @@ public class Collsion : MonoBehaviour
             });
 
     }
+    public IEnumerator UpdateTextureVideo(GameObject g)
+    {
+        yield return new WaitForSeconds(.2f);
+
+        StiackerMat.DOFade(0, .3f).OnComplete(() =>
+        {
+            wow.Play("opps");
+            StiackerMat.mainTexture = Tattos[g.transform.GetComponentInParent<Gates>().id];
+            StiackerMat.DOFade(1, .5f);
+        });
+
+    }
     public void ApplyBurntTexture()
     {
 
@@ -424,5 +444,16 @@ public class Collsion : MonoBehaviour
             StiackerMat.mainTexture = CheapTttos[GameManager.Instance.Level - 1];
             StiackerMat.DOFade(1, .5f);
         });
+    }
+    public IEnumerator UpdateCheapTextureVideo(GameObject g)
+    {
+        yield return new WaitForSeconds(.2f);
+
+        StiackerMat.DOFade(0, .3f).OnComplete(() => {
+            Opps.Play("opps");
+            StiackerMat.mainTexture = CheapTttos[g.transform.GetComponentInParent<Gates>().id];
+            StiackerMat.DOFade(1, .5f);
+        });
+
     }
 }
