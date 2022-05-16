@@ -6,7 +6,7 @@ using DG.Tweening;
 using MoreMountains.NiceVibrations;
 public class Collsion : MonoBehaviour
 {
-    public ParticleSystem HeatEffect;
+    public ParticleSystem HeatEffect , Shine;
 
     public Text LevelText , ColorText;
     public Animator anim , anim1;
@@ -398,6 +398,7 @@ public class Collsion : MonoBehaviour
         
             StiackerMat.DOFade(0, .3f).OnComplete(() =>
             {
+                Shine.Play();
                 wow.Play("opps");
                 StiackerMat.mainTexture = Tattos[GameManager.Instance.Level - 1];
                 StiackerMat.DOFade(1, .5f);
@@ -410,6 +411,7 @@ public class Collsion : MonoBehaviour
 
         StiackerMat.DOFade(0, .3f).OnComplete(() =>
         {
+            Shine.Play();
             wow.Play("opps");
             StiackerMat.mainTexture = Tattos[g.transform.GetComponentInParent<Gates>().id];
             StiackerMat.DOFade(1, .5f);
@@ -441,6 +443,7 @@ public class Collsion : MonoBehaviour
     {
         StiackerMat.DOFade(0, .3f).OnComplete(() => {
             Opps.Play("opps");
+            Shine.Play();
             StiackerMat.mainTexture = CheapTttos[GameManager.Instance.Level - 1];
             StiackerMat.DOFade(1, .5f);
         });
@@ -450,7 +453,7 @@ public class Collsion : MonoBehaviour
         yield return new WaitForSeconds(.2f);
 
         StiackerMat.DOFade(0, .3f).OnComplete(() => {
-            Opps.Play("opps");
+            Opps.Play("opps"); Shine.Play();
             StiackerMat.mainTexture = CheapTttos[g.transform.GetComponentInParent<Gates>().id];
             StiackerMat.DOFade(1, .5f);
         });
