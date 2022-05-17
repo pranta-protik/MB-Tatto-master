@@ -138,7 +138,7 @@ public class Controller : MonoBehaviour
             {
                 float deltaX = initTouch.position.x - touch.position.x;
                 positionX -= (deltaX / (float)Screen.width) / Time.deltaTime * speed * dir;
-                positionX = Mathf.Clamp(positionX, -6, 6);      //to set the boundaries of the player's position
+                positionX = Mathf.Clamp(positionX, -4, 4);      //to set the boundaries of the player's position
                 transform.localPosition = new Vector3(-positionX, positionY, 3.1188f);
                 initTouch = touch;
             }
@@ -152,7 +152,7 @@ public class Controller : MonoBehaviour
         //if you play on computer---------------------------------
         float x = Input.GetAxis("Horizontal") * Time.deltaTime * computerSpeed;     //you can move by pressing 'a' - 'd' or the arrow keys
         Vector3 newPosition = rb.transform.localPosition + Vector3.right * x;
-        newPosition.x = Mathf.Clamp(newPosition.x, -2,2);
+        newPosition.x = Mathf.Clamp(newPosition.x, -4,4);
         transform.localPosition = newPosition;
         //--------------------------------------------------------
 
@@ -171,7 +171,7 @@ public class Controller : MonoBehaviour
         {
 
             direction = State.middle;
-            transform.DOLocalRotate(new Vector3(0, -90, 25), .2f);
+            transform.DOLocalRotate(new Vector3(0, -90, 25), .05f);
         }
 
     }
