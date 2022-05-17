@@ -7,7 +7,7 @@ using MoreMountains.NiceVibrations;
 public class Collsion : MonoBehaviour
 {
     public ParticleSystem HeatEffect , Shine;
-
+    public Camera cam;
     public Text LevelText , ColorText;
     public Animator anim , anim1;
 
@@ -321,6 +321,8 @@ public class Collsion : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Finish"))
         {
+            Camera.main.transform.gameObject.SetActive(false);
+            cam.gameObject.SetActive(true);
             StartCoroutine(StopRoutine(other.gameObject));
         }
     }
