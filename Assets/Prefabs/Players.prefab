@@ -15789,6 +15789,10 @@ PrefabInstance:
       value: player_Hand
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 19e2d1478ae4d784185a00f0ce8bbef7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 19e2d1478ae4d784185a00f0ce8bbef7, type: 3}
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
