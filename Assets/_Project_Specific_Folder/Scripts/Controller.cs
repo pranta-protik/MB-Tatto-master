@@ -159,13 +159,13 @@ public class Controller : MonoBehaviour
         if (Input.GetAxis("Horizontal") > .1f)
         {
             direction = State.right;
-            transform.DOLocalRotate(new Vector3(6, -90, 25), .1f);
+            transform.DOLocalRotate(new Vector3(6, -90, 25), .3f);
         }
         if (Input.GetAxis("Horizontal") < -.1f)
         {
 
             direction = State.left;
-            transform.DOLocalRotate(new Vector3(-6, -90,25), .1f);
+            transform.DOLocalRotate(new Vector3(-6, -90,25), .3f);
         }
         if (Input.GetAxis("Horizontal") == 0)
         {
