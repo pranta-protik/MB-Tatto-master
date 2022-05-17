@@ -6,31 +6,26 @@ namespace SharkAttack
 {
     public class CameraController : MonoBehaviour
     {
-        public GameObject player;
-        public float offsetZ = -9.18f;
-        public float offsetX = -0.47f;
-        public float offsetY = -1.08f, OffsetYIncrease = .1f;
-        Quaternion InitailRot;
-        public int SmoothSpeed;
-        // Use this for initialization
-        void Start()
+        [SerializeField] private GameObject player;
+        public float a;
+       
+        private void Start()
         {
-            offsetZ = -9.18f;
-
-            InitailRot = transform.rotation;
-            //offset = transform.position - player.transform.position;
+            // As fallback get it only ONCE
+            if (!player) player = GameObject.Find("Players").transform.GetChild(0).gameObject;
         }
-        // Update is called once per frame
-        void Update()
+        void LateUpdate()
         {
-            //  transform.position = new Vector3(this.transform.position.x, this.transform.position.y, player.transform.position.z +offset);
-          
-
-                transform.position = Vector3.Lerp(transform.position, new Vector3(4.96f + offsetX, 5.96f + offsetY, player.transform.position.z + offsetZ), Time.deltaTime * SmoothSpeed);
-            
-
-
+            var position = transform.position;
+            // overwrite only the X component
+            position.z = player.transform.position.z; position.x = player.transform.position.x + a;
+            // assign the new position back
+            transform.position = position;
         }
+
+
+
+    
         public void BlastShake()
         {
             transform.DOShakePosition(1f, new Vector3(100f, 50f, 0), 10, 8f, false, true);
