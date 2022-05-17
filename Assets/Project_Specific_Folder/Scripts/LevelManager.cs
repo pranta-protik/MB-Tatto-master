@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Singleton;
 using UnityEngine.SceneManagement;
+using GameAnalyticsSDK;
 
 public class LevelManager : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
-   
+        GameAnalytics.Initialize();
 
         if (PlayerPrefs.GetInt("Played", 0) == 0)
         {
