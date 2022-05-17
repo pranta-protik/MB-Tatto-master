@@ -171,7 +171,7 @@ public class Controller : MonoBehaviour
         {
 
             direction = State.middle;
-            transform.DOLocalRotate(new Vector3(0, -90, 25), .05f);
+            transform.DOLocalRotate(new Vector3(0, -90, 25), .1f);
         }
 
     }
