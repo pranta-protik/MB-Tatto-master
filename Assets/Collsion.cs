@@ -415,6 +415,7 @@ public class Collsion : MonoBehaviour
     }
     public IEnumerator UpdateTextureVideo(GameObject g)
     {
+        GameManager.Instance.Level = g.transform.GetComponentInParent<Gates>().id + 1;
         yield return new WaitForSeconds(.2f);
 
         StiackerMat.DOFade(0, .3f).OnComplete(() =>
@@ -458,7 +459,8 @@ public class Collsion : MonoBehaviour
     }
     public IEnumerator UpdateCheapTextureVideo(GameObject g)
     {
-        yield return new WaitForSeconds(.2f);
+        GameManager.Instance.Level = g.transform.GetComponentInParent<Gates>().id + 1;
+           yield return new WaitForSeconds(.2f);
 
         StiackerMat.DOFade(0, .3f).OnComplete(() => {
             Opps.Play("opps"); Shine.Play();
