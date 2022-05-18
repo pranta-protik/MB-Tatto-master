@@ -6,6 +6,7 @@ using DG.Tweening;
 using MoreMountains.NiceVibrations;
 public class Collsion : MonoBehaviour
 {
+    public Controller c, c1;
     public ParticleSystem HeatEffect , Shine;
     public Camera cam;
     public Text LevelText , ColorText;
@@ -363,13 +364,15 @@ public class Collsion : MonoBehaviour
     {
         //Camera.main.transform.parent = g.transform.root;
      
-        transform.GetComponent<Controller>().enabled = false; anim1.transform.GetComponent<Controller>().enabled = false;
-        anim.transform.DOLocalMoveX(-1.66f, .1f); anim1.transform.DOLocalMoveX(-1.66f, .1f);      
+
+        c.enabled = false;
+        c1.enabled = false;
+        c.transform.DOLocalMoveX(-1.66f, .1f); c1.transform.DOLocalMoveX(-1.66f, .1f);      
         transform.root.parent = g.transform.root;     
         Camera.main.transform.DOLocalMove(GameManager.Instance.FianlCamPos.transform.localPosition, .7f);
         Camera.main.transform.DOLocalRotate(GameManager.Instance.FianlCamPos.transform.localEulerAngles, .7f);
         yield return new WaitForSeconds(.8f);
-        transform.DOLocalRotate(new Vector3(0, -90, 9), .1f); anim1.transform.DOLocalRotate(new Vector3(0, -90, 9), .1f);
+        c.transform. DOLocalRotate(new Vector3(0, -90, 9), .1f); c1.transform.DOLocalRotate(new Vector3(0, -90, 9), .1f);
         Boss.transform.GetComponent<Animator>().enabled = true;
         GameManager.Instance.p.enabled = false;
         anim.Play("Wrestle"); anim1.Play("Wrestle");
