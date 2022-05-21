@@ -9761,8 +9761,8 @@ MonoBehaviour:
   Boss: {fileID: 0}
   Multiplier: 0.3
   StartTapRoutine: 0
-  Opps: {fileID: 9124384044290931973}
-  wow: {fileID: 6269986700782261163}
+  Opps: {fileID: 9124384044031012120}
+  wow: {fileID: 9124384043451851770}
   Ps: {fileID: 0}
   m_isTapping: 0
 --- !u!114 &9124384044031012199
@@ -10397,7 +10397,7 @@ RectTransform:
   m_GameObject: {fileID: 9124384043461111371}
   m_LocalRotation: {x: 0.67001593, y: 0.6700158, z: 0.22600605, w: 0.2260061}
   m_LocalPosition: {x: 0, y: 0, z: 1.13}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 9124384044290931970}
   - {fileID: 3821858285366555221}
