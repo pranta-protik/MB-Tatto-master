@@ -14,9 +14,8 @@ public class UiManager : Singleton<UiManager>
     public GameObject fillbarTimer;
     public Image Timer;
     public float timerInitvalue;
-    public TMP_Text TotalText, PointText , NormalCoin;
-
-
+    public TMP_Text TotalText, PointText , NormalCoin; 
+    
     public bool HapticsAllowed;
     public GameObject enable, disable;
     public override void Start()
@@ -32,12 +31,13 @@ public class UiManager : Singleton<UiManager>
         FadeIn.SetActive(false);
      
     }
+
     public void EnableHaptics()
     {
         enable.gameObject.SetActive(false);
         disable.gameObject.SetActive(true);
         HapticsAllowed = false;
-        MMVibrationManager.SetHapticsActive(HapticsAllowed); print("disabled");
+        MMVibrationManager.SetHapticsActive(HapticsAllowed);
     }
     public void DisableHaptics()
     {
@@ -45,7 +45,6 @@ public class UiManager : Singleton<UiManager>
         disable.gameObject.SetActive(false);
         HapticsAllowed = true;
         MMVibrationManager.SetHapticsActive(HapticsAllowed);
-        print("enabled");
     }
 
 }
