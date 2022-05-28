@@ -27,7 +27,6 @@ public class Collsion : MonoBehaviour
     
     [SerializeField] bool IsGoodGate;
     Vector3 Startpos;
-    public GameObject Boss;
     public float Multiplier;
     public bool StartTapRoutine;
 
@@ -39,7 +38,9 @@ public class Collsion : MonoBehaviour
     [SerializeField] bool m_isTapping;
 
 
-    public Color GoodGatePopUpColor; public Color BadGatePopUpColor;
+    public Color GoodGatePopUpColor; 
+    
+    public Color BadGatePopUpColor;
     private void Start()
     {
         StiackerMat.mainTexture = Default;
@@ -395,15 +396,16 @@ public class Collsion : MonoBehaviour
         Camera.main.transform.DOLocalRotate(GameManager.Instance.FianlCamPos.transform.localEulerAngles, .7f);
         yield return new WaitForSeconds(.8f);
         c.transform. DOLocalRotate(new Vector3(0, -90, 9), .1f); c1.transform.DOLocalRotate(new Vector3(0, -90, 9), .1f);
-        Boss.transform.GetComponent<Animator>().enabled = true;
+        GameManager.Instance. Boss.transform.GetComponent<Animator>().enabled = true;
         GameManager.Instance.p.enabled = false;
         anim.Play("Wrestle"); anim1.Play("Wrestle");
         MMVibrationManager.Haptic(HapticTypes.MediumImpact);
         Camera.main.transform.parent = g.transform.root;
-        transform.parent.parent = GameManager.Instance.PivotParent.transform; Boss.transform.parent = GameManager.Instance.PivotParent.transform;
+        transform.parent.parent = GameManager.Instance.PivotParent.transform;
+        GameManager.Instance.Boss.transform.parent = GameManager.Instance.PivotParent.transform;
        
-        this.transform.parent.DOLocalMove(new Vector3(0.296f, -0.038f, -0.038f), .3f).OnComplete(() => { Ps.Play(); }); 
-            Camera.main.transform.DOLocalMoveX(-2.2f, .3f);
+        this.transform.parent.DOLocalMove(new Vector3(0.296f, -0.038f, -0.038f), .3f).OnComplete(() => { FindObjectOfType<EndDetector>().EndParticle.Play(); }); 
+        Camera.main.transform.DOLocalMoveX(Camera.main.transform.position.x + .5f , .3f);
         yield return new WaitForSeconds(.2f);
         GameManager.Instance.PivotParent.transform.GetComponent<MySDK.Rotator>().enabled = true;
 
@@ -452,7 +454,7 @@ public class Collsion : MonoBehaviour
 
         PopUp.transform.GetChild(0).gameObject.SetActive(true);
         PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "-" +g.GetComponentInParent<DownGrade>().Cost.ToString();
-        PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = BadGatePopUpColor;
+        PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = Color.red;
         MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
         StiackerMat.DOFade(0, .3f).OnComplete(() =>
         {
@@ -474,7 +476,7 @@ public class Collsion : MonoBehaviour
    
             PopUp.transform.GetChild(0).gameObject.SetActive(true);
             PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "-" +g.GetComponentInParent<Gates>().Cost.ToString();
-            PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = Color.red;
+            PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = BadGatePopUpColor;
             StiackerMat.mainTexture = CheapTttos[GameManager.Instance.Level - 1];
             StiackerMat.DOFade(1, .5f);
         });

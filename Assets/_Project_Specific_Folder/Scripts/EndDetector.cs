@@ -5,6 +5,7 @@ using DG.Tweening;
 using MoreMountains.NiceVibrations;
 public class EndDetector : MonoBehaviour
 {
+    public ParticleSystem EndParticle;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("EndIt"))
@@ -18,7 +19,7 @@ public class EndDetector : MonoBehaviour
             FindObjectOfType<Collsion>().StartTapRoutine = false;
             FindObjectOfType<Collsion>().anim.Play("g 0 0"); 
             FindObjectOfType<Collsion>().anim1.Play("g 0 0");
-            FindObjectOfType<Collsion>().Ps.Play();
+            EndParticle.Play();
             UiManager.Instance.TapFastPanel.gameObject.SetActive(false);
             StartCoroutine(EnableEndUi());
             GameManager.Instance.IsGameOver = true;

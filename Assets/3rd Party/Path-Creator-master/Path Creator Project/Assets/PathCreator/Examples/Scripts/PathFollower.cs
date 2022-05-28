@@ -41,9 +41,7 @@ namespace PathCreation.Examples
         void Start()
         {
 
-            GameObject path = GameObject.Find("pathWAY");
-            pathCreator = path.GetComponent<PathCreator>();
-            //path.GetComponent<RoadMeshCreator>().refresh();
+          
   
             if (pathCreator != null)
             {
@@ -62,9 +60,9 @@ namespace PathCreation.Examples
     
         void FixedUpdate()
         {
-            
+                      pathCreator = GameManager.Instance.pathCreator;
 
-                        if (speed <= 0)
+                          if (speed <= 0)
                         {
                             speed = 0;
                            
