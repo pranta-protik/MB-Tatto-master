@@ -4,6 +4,7 @@ using UnityEngine;
 using Singleton;
 using TMPro;
 using UnityEngine.UI;
+using MoreMountains.NiceVibrations;
 public class UiManager : Singleton<UiManager>
 {
     public TMP_Text LevelText;
@@ -14,6 +15,10 @@ public class UiManager : Singleton<UiManager>
     public Image Timer;
     public float timerInitvalue;
     public TMP_Text TotalText, PointText , NormalCoin;
+
+
+    public bool HapticsAllowed;
+    public GameObject enable, disable;
     public override void Start()
     {
         base.Start();
@@ -27,6 +32,20 @@ public class UiManager : Singleton<UiManager>
         FadeIn.SetActive(false);
      
     }
-
+    public void EnableHaptics()
+    {
+        enable.gameObject.SetActive(false);
+        disable.gameObject.SetActive(true);
+        HapticsAllowed = false;
+        MMVibrationManager.SetHapticsActive(HapticsAllowed); print("disabled");
+    }
+    public void DisableHaptics()
+    {
+        enable.gameObject.SetActive(true);
+        disable.gameObject.SetActive(false);
+        HapticsAllowed = true;
+        MMVibrationManager.SetHapticsActive(HapticsAllowed);
+        print("enabled");
+    }
 
 }
