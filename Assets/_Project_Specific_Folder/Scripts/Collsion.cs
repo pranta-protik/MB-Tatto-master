@@ -39,7 +39,7 @@ public class Collsion : MonoBehaviour
     [SerializeField] bool m_isTapping;
 
 
-    public Color GoodGatePopUpColor;
+    public Color GoodGatePopUpColor; public Color BadGatePopUpColor;
     private void Start()
     {
         StiackerMat.mainTexture = Default;
@@ -452,7 +452,7 @@ public class Collsion : MonoBehaviour
 
         PopUp.transform.GetChild(0).gameObject.SetActive(true);
         PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "-" +g.GetComponentInParent<DownGrade>().Cost.ToString();
-        PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = Color.red;
+        PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = BadGatePopUpColor;
         MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
         StiackerMat.DOFade(0, .3f).OnComplete(() =>
         {
