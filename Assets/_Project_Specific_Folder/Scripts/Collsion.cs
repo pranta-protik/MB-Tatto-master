@@ -219,7 +219,7 @@ public class Collsion : MonoBehaviour
         {
 
             GameManager.Instance.Level = other.GetComponent<DownGrade>().DownGradeAmmount;
-            DownGradeTexture(GameManager.Instance.Level);
+            DownGradeTexture(GameManager.Instance.Level , other.gameObject);
             MMVibrationManager.Haptic(HapticTypes.MediumImpact);
             StartCoroutine(SpeedSlowDownRoutine());
             StartCoroutine(UiManager.Instance.FdeDelayRoutine()); 
@@ -229,7 +229,7 @@ public class Collsion : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Lava"))
         {
-            
+            DownGradeTexture(GameManager.Instance.Level, other.gameObject);
             MMVibrationManager.Haptic(HapticTypes.MediumImpact);
             StartCoroutine(SpeedSlowDownRoutine());
             StartCoroutine(UiManager.Instance.FdeDelayRoutine());
@@ -435,8 +435,14 @@ public class Collsion : MonoBehaviour
             });
 
     }
-    public void DownGradeTexture(int ammount)
+    public void DownGradeTexture(int ammount , GameObject g)
     {
+        StorageManager.Instance.IncreasePoints(-g.GetComponentInParent<DownGrade>().Cost);
+        PopUp.Play("opps");
+
+        PopUp.transform.GetChild(0).gameObject.SetActive(true);
+        PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "+" + g.GetComponentInParent<DownGrade>().Cost.ToString();
+        PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = Color.red;
         MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
         StiackerMat.DOFade(0, .3f).OnComplete(() =>
         {

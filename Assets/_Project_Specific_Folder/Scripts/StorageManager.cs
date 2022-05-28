@@ -31,10 +31,15 @@ public class StorageManager : Singleton<StorageManager>
         currentLevel = PlayerPrefs.GetInt("current_scene");
         currentLevelText = PlayerPrefs.GetInt("current_scene_text", 0);
         RewardValue += count;
+
+        if(RewardValue <= 0)
+        {
+            RewardValue = 500;
+        }
       //  UiManager.Instance.PointText.text = RewardValue.ToString();
 
-     //   UiManager.Instance.NormalCoin.text = RewardValue.ToString();
-       // RewardMultiplyValue = RewardValue * 2;
+        //   UiManager.Instance.NormalCoin.text = RewardValue.ToString();
+        // RewardMultiplyValue = RewardValue * 2;
         // Multiplied.text = i.ToString();
     }
 }
