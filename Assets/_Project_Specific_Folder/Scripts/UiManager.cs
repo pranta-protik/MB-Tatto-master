@@ -13,6 +13,7 @@ public class UiManager : Singleton<UiManager>
     public GameObject fillbarTimer;
     public Image Timer;
     public float timerInitvalue;
+    public TMP_Text TotalText, PointText , NormalCoin;
     public override void Start()
     {
         base.Start();

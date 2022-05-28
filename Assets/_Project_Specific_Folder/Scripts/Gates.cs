@@ -12,14 +12,20 @@ public enum EType
 public class Gates : MonoBehaviour
 {
     public EType GateType;
-    public float Cost;
+    public int Cost;
+    public string UICostText;
+
     public TMP_Text CostText;
+
 
     public int id;
 
     void Start()
     {
-        CostText.text = Cost.ToString();
+        if(GateType ==EType.Expensive)
+        CostText.text = "+ $" +UICostText;
+        else
+        CostText.text = "- $" + UICostText;
     }
 
     // Update is called once per frame
