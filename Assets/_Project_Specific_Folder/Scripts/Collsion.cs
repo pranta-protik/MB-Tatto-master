@@ -37,6 +37,9 @@ public class Collsion : MonoBehaviour
     [SerializeField] public ParticleSystem Ps;
     bool m_FirstClick;
     [SerializeField] bool m_isTapping;
+
+
+    public Color GoodGatePopUpColor;
     private void Start()
     {
         StiackerMat.mainTexture = Default;
@@ -436,7 +439,7 @@ public class Collsion : MonoBehaviour
            
                 PopUp.transform.GetChild(0).gameObject.SetActive(true);
                 PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "+" +g.GetComponentInParent<Gates>().Cost.ToString();
-                PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = Color.blue;
+                PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = GoodGatePopUpColor;
                 StiackerMat.mainTexture = Tattos[GameManager.Instance.Level - 1];
                 StiackerMat.DOFade(1, .5f);
             });

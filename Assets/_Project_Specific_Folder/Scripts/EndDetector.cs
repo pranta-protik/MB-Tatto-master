@@ -28,7 +28,7 @@ public class EndDetector : MonoBehaviour
     public IEnumerator EnableEndUi()
     {
         yield return new WaitForSeconds(.7f);
-        
+        StorageManager.Instance.SetTotalScore(); StorageManager.Instance.GetTotalScore();
         UiManager.Instance.CompleteUI.gameObject.SetActive(true);
     }
 }
