@@ -9,8 +9,8 @@ public class StorageManager : Singleton<StorageManager>
     public int TotalScore;
     public static int GetTotalCoin() => PlayerPrefs.GetInt("LifeTimeScore");
     public static void SaveTotalCoin(int amount) => PlayerPrefs.SetInt("LifeTimeScore", amount); 
-    int currentLevel;
-    int currentLevelText;
+    public int currentLevel;
+    public int currentLevelText;
     public void SetTotalScore()
     {
         int currentLifetimeScore = PlayerPrefs.GetInt("LifeTimeScore", 0);

@@ -18,7 +18,7 @@ public class GameManager : Singleton<GameManager>
     public GameObject PivotParent;
     public bool IsGameOver;
 
-    public bool IsVideo;
+    public bool IsVideo , IsLevelEnd;
     public override void Start()
     {
         p.enabled = false;

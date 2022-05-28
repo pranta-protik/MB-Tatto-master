@@ -334,6 +334,13 @@ public class Collsion : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Finish"))
         {
+            GameManager.Instance.IsLevelEnd = true;
+            if(StorageManager.Instance.RewardValue <=0)
+            {
+                StorageManager.Instance.currentLevel = PlayerPrefs.GetInt("current_scene");
+                StorageManager.Instance.currentLevelText = PlayerPrefs.GetInt("current_scene_text", 0);
+                StorageManager.Instance.RewardValue = 500;
+            }
             Camera.main.transform.gameObject.SetActive(false);
             cam.gameObject.SetActive(true);
             StartCoroutine(StopRoutine(other.gameObject));
