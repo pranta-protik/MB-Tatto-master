@@ -5810,24 +5810,25 @@ MonoBehaviour:
   m_IsSingletonLogsEnabled: 0
   LevelPrefabs:
   - {fileID: 6828944569146319530, guid: 53f762f87283a1249ad4ed190a4f36ff, type: 3}
-  - {fileID: 6828944569146319530, guid: 7d1b8cbe58718874eb5be4aae55b3900, type: 3}
+  - {fileID: 6828944569146319530, guid: 8714052e04a2d3d46841b5dcd4d6e7ec, type: 3}
+  - {fileID: 6828944569146319530, guid: b2da96e7ab864c04eb62f391d1dd32be, type: 3}
   levelNo: 0
   currentLvlPrefab: {fileID: 0}
-  pathCreator: {fileID: 0}
-  p: {fileID: 378904803}
-  Boss: {fileID: 0}
-  StartGame: 0
-  FianlCamPos: {fileID: 2040196988}
-  GameOver: 0
-  GameEnd: 0
-  TattoMachine: {fileID: 709119814}
-  CollsionScript: {fileID: 54971328}
-  FinalCamPos: {fileID: 2040196989}
   Level: 0
-  PivotParent: {fileID: 0}
   IsGameOver: 0
+  StartGame: 0
   IsVideo: 0
   IsLevelEnd: 0
+  GameOver: 0
+  GameEnd: 0
+  Boss: {fileID: 0}
+  TattoMachine: {fileID: 709119814}
+  pathCreator: {fileID: 0}
+  p: {fileID: 378904803}
+  CollsionScript: {fileID: 54971328}
+  FianlCamPos: {fileID: 2040196988}
+  FinalCamPos: {fileID: 2040196989}
+  PivotParent: {fileID: 0}
 --- !u!1001 &1429514595
 PrefabInstance:
   m_ObjectHideFlags: 0
