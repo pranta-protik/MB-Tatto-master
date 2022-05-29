@@ -961,6 +961,8 @@ MonoBehaviour:
   - {fileID: 6292097114636558127, guid: 51ecab63ea2cf4d4581d8843a323f8ca, type: 3}
   - {fileID: 6292097114636558127, guid: 52f0f3ef1bd355d4798bae5bc7c266a6, type: 3}
   scrollbar: {fileID: 318353621}
+  startButton: {fileID: 781515083}
+  actionButton: {fileID: 1347873932}
   currentSelection: 
 --- !u!1 &617989284
 GameObject:
@@ -2274,6 +2276,7 @@ MonoBehaviour:
   HapticsAllowed: 0
   enable: {fileID: 550057470}
   disable: {fileID: 378696793}
+  scoreText: {fileID: 176589649}
 --- !u!1 &1889713669
 GameObject:
   m_ObjectHideFlags: 0

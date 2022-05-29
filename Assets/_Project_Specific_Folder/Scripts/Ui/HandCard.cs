@@ -19,10 +19,11 @@ public class HandCard : MonoBehaviour
     public float requiredTime;
     public int requiredMatches;
     public int requiredLevelNo;
+    public int unlockStatus;
     
     public AnimatorOverrideController animatorOverrideController;
     public AnimationClip[] animationClips;
-    private bool isAnimationPlaying;
+    private bool _isAnimationPlaying;
     private Animator _animator;
     private static readonly int IsSelected = Animator.StringToHash("isSelected");
 
@@ -41,7 +42,7 @@ public class HandCard : MonoBehaviour
 
     public void PlayRandomAnimation()
     {
-        if (!isAnimationPlaying)
+        if (!_isAnimationPlaying)
         {
             int animationClipIndex = Random.Range(0, animationClips.Length);
             animatorOverrideController["gesture02"] = animationClips[animationClipIndex];
@@ -49,13 +50,13 @@ public class HandCard : MonoBehaviour
             _animator.runtimeAnimatorController = animatorOverrideController;
             _animator.SetBool(IsSelected, true);
             
-            isAnimationPlaying = true;
+            _isAnimationPlaying = true;
         }
     }
 
     public void PlayIdleAnimation()
     {
         _animator.SetBool(IsSelected, false);
-        isAnimationPlaying = false;
+        _isAnimationPlaying = false;
     }
 }

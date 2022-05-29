@@ -21,12 +21,18 @@ public class UiManager : Singleton<UiManager>
     public TMP_Text TotalText, PointText , NormalCoin ; 
     
     public bool HapticsAllowed;
-    public GameObject enable, disable; 
+    public GameObject enable, disable;
+    
+    public TextMeshProUGUI scoreText;
     
     int currentLevel;
     int currentLevelText;
     public override void Start()
     {
+        if (scoreText != null)
+        {
+            scoreText.SetText(StorageManager.GetTotalCoin().ToString());
+        }
         if (btnNext != null)
         {
             btnNext.onClick.AddListener(NextCallBack);   

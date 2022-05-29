@@ -8,9 +8,11 @@ public class SwipeMenu : MonoBehaviour
 {
     public List<GameObject> handCards = new List<GameObject>();
     public GameObject scrollbar;
+    public Button startButton;
+    public Button actionButton;
     private float _scrollPos = 0;
     private float[] _pos;
-    private HandCard selectedCard;
+    private HandCard _selectedCard;
     [SerializeField] private string currentSelection;
 
     private void Start()
@@ -29,8 +31,8 @@ public class SwipeMenu : MonoBehaviour
 
     public void SelectHand()
     {
-        Debug.Log(selectedCard.handId);
-        Debug.Log(selectedCard.requirementType);
+        Debug.Log(_selectedCard.handId);
+        Debug.Log(_selectedCard.requirementType);
     }
     
     private void ScrollCards()
@@ -62,8 +64,9 @@ public class SwipeMenu : MonoBehaviour
             if (_scrollPos < _pos[i] + (distance / 2) && _scrollPos > _pos[i] - (distance / 2))
             {
                 transform.GetChild(i).localScale = Vector3.Lerp(transform.GetChild(i).localScale, new Vector3(1f, 1f, 1f), 0.1f);
-                selectedCard = transform.GetChild(i).GetComponent<HandCard>();
-                selectedCard.PlayRandomAnimation();
+                _selectedCard = transform.GetChild(i).GetComponent<HandCard>();
+                _selectedCard.PlayRandomAnimation();
+                CheckCardRequirementStatus(_selectedCard);
                 
                 for (int j = 0; j < _pos.Length; j++)
                 {
@@ -77,11 +80,26 @@ public class SwipeMenu : MonoBehaviour
         }
     }
 
-    private void CheckCardRequirementStatus()
+    private void CheckCardRequirementStatus(HandCard handCard)
     {
-        if (selectedCard.requirementType == HandCard.ERequirementType.Cash)
+        if (_selectedCard.requirementType == HandCard.ERequirementType.Cash)
         {
-            
+            actionButton.gameObject.SetActive(true);
+            if (StorageManager.GetTotalCoin() >= handCard.requiredCash)
+            {
+                actionButton.interactable = true;
+                startButton.interactable = true;
+            }
+            else
+            {
+                actionButton.interactable = false;
+                startButton.interactable = false;
+            }
+        }
+        else
+        {
+            actionButton.gameObject.SetActive(false);
+            startButton.interactable = true;
         }
     }
 }
