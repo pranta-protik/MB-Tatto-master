@@ -33,8 +33,7 @@ public class SwipeMenu : MonoBehaviour
 
     public void SelectHand()
     {
-        Debug.Log(_selectedCard.handId);
-        Debug.Log(_selectedCard.requirementType);
+        GameManager.Instance.currentHandId = _selectedCard.handId;
     }
     
     private void ScrollCards()
@@ -67,7 +66,10 @@ public class SwipeMenu : MonoBehaviour
             {
                 transform.GetChild(i).localScale = Vector3.Lerp(transform.GetChild(i).localScale, new Vector3(1f, 1f, 1f), 0.1f);
                 _selectedCard = transform.GetChild(i).GetComponent<HandCard>();
-                _selectedCard.PlayRandomAnimation();
+                if (_selectedCard.cardType == HandCard.ECardType.Model)
+                {
+                    _selectedCard.PlayRandomAnimation();   
+                }
                 CheckCardRequirementStatus(_selectedCard);
                 
                 for (int j = 0; j < _pos.Length; j++)
@@ -75,7 +77,13 @@ public class SwipeMenu : MonoBehaviour
                     if (j != i)
                     {
                         transform.GetChild(j).localScale = Vector3.Lerp(transform.GetChild(j).localScale, new Vector3(0.6f, 0.6f, 0.6f), 0.1f);
-                        transform.GetChild(j).GetComponent<HandCard>().PlayIdleAnimation();
+                        
+                        HandCard unselectedCard = transform.GetChild(j).GetComponent<HandCard>();
+                        
+                        if (unselectedCard.cardType == HandCard.ECardType.Model)
+                        {
+                            unselectedCard.PlayIdleAnimation();   
+                        }
                     }
                 }
             }

@@ -38,7 +38,7 @@ public class GameManager : Singleton<GameManager>
     public Transform FinalCamPos;
     public GameObject PivotParent;
 
-
+    public int currentHandId;
 
     int SavedLevelNo;
     GameObject Path;

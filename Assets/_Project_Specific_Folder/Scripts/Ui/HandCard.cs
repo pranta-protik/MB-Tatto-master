@@ -6,6 +6,11 @@ using Random = UnityEngine.Random;
 
 public class HandCard : MonoBehaviour
 {
+    public enum ECardType
+    {
+        Model,
+        Image
+    }
     public enum ERequirementType
     {
         Cash,
@@ -13,8 +18,10 @@ public class HandCard : MonoBehaviour
         GamePlay,
         Level
     }
-    public int handId;
+
+    public ECardType cardType;
     public ERequirementType requirementType;
+    public int handId;
     public int requiredCash;
     public float requiredTime;
     public int requiredMatches;
@@ -35,16 +42,19 @@ public class HandCard : MonoBehaviour
         }
 
         cardStatus = PlayerPrefs.GetInt("HandCard" + handId);
-        
-        _animator = transform.GetChild(0).GetComponent<Animator>();
-        animatorOverrideController = new AnimatorOverrideController
-        {
-            runtimeAnimatorController = _animator.runtimeAnimatorController
-        };
-        int animationClipIndex = Random.Range(0, animationClips.Length);
-        animatorOverrideController["gesture02"] = animationClips[animationClipIndex];
 
-        _animator.runtimeAnimatorController = animatorOverrideController;
+        if (cardType == ECardType.Model)
+        {
+            _animator = transform.GetChild(0).GetComponent<Animator>();
+            animatorOverrideController = new AnimatorOverrideController
+            {
+                runtimeAnimatorController = _animator.runtimeAnimatorController
+            };
+            int animationClipIndex = Random.Range(0, animationClips.Length);
+            animatorOverrideController["gesture02"] = animationClips[animationClipIndex];
+
+            _animator.runtimeAnimatorController = animatorOverrideController;   
+        }
     }
 
     public void UpdateCardStatus()
