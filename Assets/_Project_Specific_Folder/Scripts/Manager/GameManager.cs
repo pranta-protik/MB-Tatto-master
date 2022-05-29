@@ -51,7 +51,7 @@ public class GameManager : Singleton<GameManager>
         LoadLvlPrefab();
         p.enabled = false;
         base.Start();
-        PlayerPrefs.SetInt("current_scene", SceneManager.GetActiveScene().buildIndex);
+
     }
     private void Update()
     {

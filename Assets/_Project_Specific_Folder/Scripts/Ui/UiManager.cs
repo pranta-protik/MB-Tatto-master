@@ -23,13 +23,15 @@ public class UiManager : Singleton<UiManager>
     public bool HapticsAllowed;
     public GameObject enable, disable; 
     
-    int currentLevel; int currentLevelText;
+    int currentLevel;
+    int currentLevelText;
     public override void Start()
     {
         btnNext.onClick.AddListener(NextCallBack);
         base.Start();
         currentLevel = PlayerPrefs.GetInt("current_scene");
-        LevelText.text = SceneLoadCounter.Instance.SceneLoadCount.ToString();
+        currentLevelText = PlayerPrefs.GetInt("current_scene_text", 0);
+        LevelText.text = (currentLevelText + 1).ToString();
     }
     public IEnumerator FdeDelayRoutine()
     {
@@ -55,28 +57,28 @@ public class UiManager : Singleton<UiManager>
     }
     private void NextCallBack()
     {
-        Reset1();
+        Next();
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-    public void Reset1()
+    public void Next()
     {
-
-
-        // PlayerPrefs.SetInt("SaveScene", SceneManager.GetActiveScene().buildIndex );
+        DOTween.KillAll();
+        StorageManager.Instance.SetTotalScore();
         if (currentLevel + 1 >= GameManager.Instance.LevelPrefabs.Count)
         {
-            PlayerPrefs.SetInt("current_scene", 2);
+            PlayerPrefs.SetInt("current_scene", 0); 
+            print("reload");
+
         }
         else
         {
+            print("next");
             PlayerPrefs.SetInt("current_scene", currentLevel + 1);
+
         }
-
-        PlayerPrefs.SetInt("current_scene_text", currentLevelText + 1);
-
-
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene("main");
     }
+
     private void NextCallBack(bool success = false)
     {
         PlayerPrefs.SetInt("current_scene_text", currentLevelText + 1);
