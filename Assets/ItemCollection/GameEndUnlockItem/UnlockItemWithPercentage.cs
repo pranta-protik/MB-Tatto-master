@@ -36,7 +36,7 @@ namespace ItemCollection.GameEndUnlockItem
         private int _unlockPercentage = 0;
         private int _nextPackIndex = 0;
         public  int _increaseAmount = 20;
-        private const float _duration = 2.0f;
+        public  float _duration = 2.0f;
 
         private void Awake()
         {

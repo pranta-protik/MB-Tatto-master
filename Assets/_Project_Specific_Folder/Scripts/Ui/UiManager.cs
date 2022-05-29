@@ -26,7 +26,7 @@ public class UiManager : Singleton<UiManager>
     public TextMeshProUGUI scoreText;
     
     int currentLevel;
-    int currentLevelText;
+    public int currentLevelText;
     public override void Start()
     {
         if (scoreText != null)
