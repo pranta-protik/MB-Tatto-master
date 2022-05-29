@@ -12,7 +12,7 @@ public class UiManager : Singleton<UiManager>
     public Button btnNext;
 
     public TMP_Text LevelText;
-    public GameObject StartUI, EndUi, CompleteUI , FadeIn;
+    public GameObject StartUI, EndUi, CompleteUI, FadeIn, UnlockPanel;
     public GameObject TapFastPanel;
 
     public GameObject fillbarTimer;
@@ -69,7 +69,19 @@ public class UiManager : Singleton<UiManager>
     }
     private void NextCallBack()
     {
-        Next();
+        if (GameManager.Instance.levelNo == 0)
+        {
+            UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>(). _increaseAmount = 50;
+        }
+        else if (GameManager.Instance.levelNo == 1)
+        {
+            UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>()._increaseAmount = 50;
+        }
+        else
+        {
+            UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>()._increaseAmount = 33;
+        }
+        UnlockPanel.gameObject.SetActive(true);
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void Next()

@@ -130,6 +130,8 @@ public class GameManager : Singleton<GameManager>
 
     public void TattooVsLevel()
     {
+
+
         if (levelNo == 0)
         {
             CollsionScript.Default = m_textureManager.DefaultFlower;
