@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Singleton;
 
-public class TextureManager : MonoBehaviour
+public class TextureManager : Singleton<TextureManager> 
 {
     public Texture[] FlowerExpensiveTattos, FlowerCheapTattos;
 
@@ -12,5 +13,11 @@ public class TextureManager : MonoBehaviour
 
     public Texture[] CelebExpensiveTattos, CelebCheapTattos;
 
-    public Texture[] BadBlue, GoodBlue, GoodYellow, BadYellow;
+    public Texture[] CartoonExpensiveTattos, CartoonCheapTattos; 
+    
+    public Texture[] MoneyExpensiveTattos, MoneyCheapTattos;
+
+
+
+
 }

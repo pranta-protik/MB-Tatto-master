@@ -31,7 +31,7 @@ public class GameManager : Singleton<GameManager>
     public PathCreation.PathCreator pathCreator;
     public PathCreation.Examples.PathFollower p;
     public Collsion CollsionScript;
-
+    public TextureManager m_textureManager;
 
     [Header("Transforms")]
     public GameObject FianlCamPos;
@@ -45,6 +45,31 @@ public class GameManager : Singleton<GameManager>
 
     public override void Start()
     {
+        if(levelNo == 0)
+        {
+            CollsionScript.Tattos = m_textureManager.FlowerExpensiveTattos;
+            CollsionScript.CheapTttos = m_textureManager.FlowerCheapTattos;
+        }
+        if (levelNo == 1)
+        {
+            CollsionScript.Tattos = m_textureManager.SkullExpensiveTattos;
+            CollsionScript.CheapTttos = m_textureManager.SkullCheapTattos;
+        }
+        if (levelNo == 2)
+        {
+            CollsionScript.Tattos = m_textureManager.PinnupGirlExpensiveTattos;
+            CollsionScript.CheapTttos = m_textureManager.PinnupGirlCheapTattos;
+        }
+        if (levelNo == 3)
+        {
+            CollsionScript.Tattos = m_textureManager.FlowerExpensiveTattos;
+            CollsionScript.CheapTttos = m_textureManager.FlowerCheapTattos;
+        }
+        if (levelNo == 4)
+        {
+            CollsionScript.Tattos = m_textureManager.PinnupGirlExpensiveTattos;
+            CollsionScript.CheapTttos = m_textureManager.PinnupGirlCheapTattos;
+        }
         SavedLevelNo = PlayerPrefs.GetInt("current_scene_text", 0);
         UiManager.Instance.LevelText.text = (SavedLevelNo + 1).ToString();
         int currentLevel = PlayerPrefs.GetInt("current_scene");
