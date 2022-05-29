@@ -19,7 +19,7 @@ public class HandCard : MonoBehaviour
     public float requiredTime;
     public int requiredMatches;
     public int requiredLevelNo;
-    public int unlockStatus;
+    public int cardStatus;
     
     public AnimatorOverrideController animatorOverrideController;
     public AnimationClip[] animationClips;
@@ -29,6 +29,13 @@ public class HandCard : MonoBehaviour
 
     private void Start()
     {
+        if (PlayerPrefs.GetInt("Played") == 0)
+        {
+            PlayerPrefs.SetInt("HandCard" + handId, 0);
+        }
+
+        cardStatus = PlayerPrefs.GetInt("HandCard" + handId);
+        
         _animator = transform.GetChild(0).GetComponent<Animator>();
         animatorOverrideController = new AnimatorOverrideController
         {
@@ -38,6 +45,12 @@ public class HandCard : MonoBehaviour
         animatorOverrideController["gesture02"] = animationClips[animationClipIndex];
 
         _animator.runtimeAnimatorController = animatorOverrideController;
+    }
+
+    public void UpdateCardStatus()
+    {
+        cardStatus = 1;
+        PlayerPrefs.SetInt("HandCard" + handId, cardStatus);
     }
 
     public void PlayRandomAnimation()

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,7 @@ public class SwipeMenu : MonoBehaviour
     public GameObject scrollbar;
     public Button startButton;
     public Button actionButton;
+    public TextMeshProUGUI unlockInfoText;
     private float _scrollPos = 0;
     private float[] _pos;
     private HandCard _selectedCard;
@@ -80,25 +82,67 @@ public class SwipeMenu : MonoBehaviour
         }
     }
 
+    public void BuyCard()
+    {
+        _selectedCard.UpdateCardStatus();
+    }
+    
     private void CheckCardRequirementStatus(HandCard handCard)
     {
         if (_selectedCard.requirementType == HandCard.ERequirementType.Cash)
         {
-            actionButton.gameObject.SetActive(true);
-            if (StorageManager.GetTotalCoin() >= handCard.requiredCash)
+            unlockInfoText.gameObject.SetActive(false);
+            
+            if (PlayerPrefs.GetInt("HandCard" + handCard.handId) == 0)
             {
-                actionButton.interactable = true;
-                startButton.interactable = true;
+                actionButton.gameObject.SetActive(true);
+                startButton.interactable = false;
+                if (StorageManager.GetTotalCoin() >= handCard.requiredCash)
+                {
+                    actionButton.interactable = true;   
+                }
+                else
+                {
+                    actionButton.interactable = false;
+                }
             }
             else
             {
-                actionButton.interactable = false;
-                startButton.interactable = false;
+                actionButton.gameObject.SetActive(false);
+                startButton.interactable = true;
             }
         }
         else
         {
             actionButton.gameObject.SetActive(false);
+        }
+
+        if (_selectedCard.requirementType == HandCard.ERequirementType.Time)
+        {
+            CheckUnlockTextRequirement(handCard, "Play game for " + handCard.requiredTime + "/" + handCard.requiredTime + " min Time");
+        }
+
+        if (_selectedCard.requirementType == HandCard.ERequirementType.GamePlay)
+        {
+            CheckUnlockTextRequirement(handCard, "Play the game " + handCard.requiredMatches + "/" + handCard.requiredMatches + " times");
+        }
+
+        if (_selectedCard.requirementType == HandCard.ERequirementType.Level)
+        {
+            CheckUnlockTextRequirement(handCard, "Unlock after reaching level " + handCard.requiredLevelNo);
+        }
+    }
+
+    private void CheckUnlockTextRequirement(HandCard handCard, string unlockText)
+    {
+        if (PlayerPrefs.GetInt("HandCard" + handCard.handId) == 0)
+        {
+            unlockInfoText.gameObject.SetActive(true);
+            unlockInfoText.SetText(unlockText);
+            startButton.interactable = false;
+        }
+        else
+        {
             startButton.interactable = true;
         }
     }
