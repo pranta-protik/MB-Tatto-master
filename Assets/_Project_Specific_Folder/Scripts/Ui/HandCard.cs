@@ -1,18 +1,61 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class HandCard : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public enum ERequirementType
     {
-        
+        Cash,
+        Time,
+        GamePlay,
+        Level
+    }
+    public int handId;
+    public ERequirementType requirementType;
+    public int requiredCash;
+    public float requiredTime;
+    public int requiredMatches;
+    public int requiredLevelNo;
+    
+    public AnimatorOverrideController animatorOverrideController;
+    public AnimationClip[] animationClips;
+    private bool isAnimationPlaying;
+    private Animator _animator;
+    private static readonly int IsSelected = Animator.StringToHash("isSelected");
+
+    private void Start()
+    {
+        _animator = transform.GetChild(0).GetComponent<Animator>();
+        animatorOverrideController = new AnimatorOverrideController
+        {
+            runtimeAnimatorController = _animator.runtimeAnimatorController
+        };
+        int animationClipIndex = Random.Range(0, animationClips.Length);
+        animatorOverrideController["gesture02"] = animationClips[animationClipIndex];
+
+        _animator.runtimeAnimatorController = animatorOverrideController;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PlayRandomAnimation()
     {
-        
+        if (!isAnimationPlaying)
+        {
+            int animationClipIndex = Random.Range(0, animationClips.Length);
+            animatorOverrideController["gesture02"] = animationClips[animationClipIndex];
+
+            _animator.runtimeAnimatorController = animatorOverrideController;
+            _animator.SetBool(IsSelected, true);
+            
+            isAnimationPlaying = true;
+        }
+    }
+
+    public void PlayIdleAnimation()
+    {
+        _animator.SetBool(IsSelected, false);
+        isAnimationPlaying = false;
     }
 }

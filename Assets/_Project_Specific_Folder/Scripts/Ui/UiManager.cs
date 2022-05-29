@@ -27,11 +27,17 @@ public class UiManager : Singleton<UiManager>
     int currentLevelText;
     public override void Start()
     {
-        btnNext.onClick.AddListener(NextCallBack);
+        if (btnNext != null)
+        {
+            btnNext.onClick.AddListener(NextCallBack);   
+        }
         base.Start();
         currentLevel = PlayerPrefs.GetInt("current_scene");
         currentLevelText = PlayerPrefs.GetInt("current_scene_text", 0);
-        LevelText.text = (currentLevelText + 1).ToString();
+        if (LevelText != null)
+        {
+            LevelText.text = (currentLevelText + 1).ToString();            
+        }
     }
     public IEnumerator FdeDelayRoutine()
     {
