@@ -40,6 +40,7 @@ namespace ItemCollection.GameEndUnlockItem
 
         private void Awake()
         {
+           
             _nextPackIndex = PlayerPrefs.GetInt(NextPackIndexKey, 0);
 
             if (_nextPackIndex > allItemPack.Count - 1)

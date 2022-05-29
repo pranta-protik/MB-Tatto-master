@@ -6,8 +6,20 @@ using UnityEngine.SceneManagement;
 using DG.Tweening;
 using SuperCop.Scripts;
 using PathCreation.Examples;
+using System;
+
+[Serializable]
+public class ItemPacks
+{
+    public GameObject MainHand;
+    public GameObject CopyHand;
+}
 public class GameManager : Singleton<GameManager>
 {
+    public int HandNumber;
+    public List<GameObject> MainHands = new List<GameObject>();
+    public List<GameObject> CopyHands = new List<GameObject>();
+
     [Header("Level prefabs List")]
     public List<GameObject> LevelPrefabs = new List<GameObject>();
     public int levelNo;
@@ -26,17 +38,19 @@ public class GameManager : Singleton<GameManager>
     [Header("GameObject Refs")]
     public GameObject Boss;
     public GameObject TattoMachine;
+    public Camera FakeCam;
 
     [Header("Scripts Refs")]
     public PathCreation.PathCreator pathCreator;
     public PathCreation.Examples.PathFollower p;
     public Collsion CollsionScript;
     public TextureManager m_textureManager;
-
+    public SharkAttack.CameraController cam;
     [Header("Transforms")]
     public GameObject FianlCamPos;
     public Transform FinalCamPos;
     public GameObject PivotParent;
+    public Transform SpwanPos;
 
     public int currentHandId;
 
@@ -45,6 +59,14 @@ public class GameManager : Singleton<GameManager>
 
     public override void Start()
     {
+        GameObject g = Instantiate(MainHands[HandNumber], transform.position, Quaternion.identity);
+        GameObject g1 = Instantiate(CopyHands[HandNumber], transform.position, Quaternion.identity);
+        g.transform.parent = p.transform; g1.transform.parent = p.transform;
+        g.transform.DOScale(SpwanPos.transform.localScale, 0); g1.transform.DOScale(SpwanPos.transform.localScale, 0);
+        g.transform.DOLocalMove(SpwanPos.transform.localPosition, 0); g1.transform.DOLocalMove(SpwanPos.transform.localPosition, 0);
+        g.transform.DOLocalRotate(SpwanPos.transform.localEulerAngles, 0); g1.transform.DOLocalRotate(SpwanPos.transform.localEulerAngles, 0);
+        CollsionScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Collsion>();
+        if (!cam.player) cam.player = GameObject.FindGameObjectWithTag("Player");
 
         SavedLevelNo = PlayerPrefs.GetInt("current_scene_text", 0);
         UiManager.Instance.LevelText.text = (SavedLevelNo + 1).ToString();
@@ -53,8 +75,8 @@ public class GameManager : Singleton<GameManager>
         p.enabled = false;
         base.Start();
         TattooVsLevel();
+  
 
-       
     }
     private void Update()
     {

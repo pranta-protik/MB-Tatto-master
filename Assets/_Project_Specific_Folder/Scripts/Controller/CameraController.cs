@@ -6,13 +6,13 @@ namespace SharkAttack
 {
     public class CameraController : MonoBehaviour
     {
-        [SerializeField] private GameObject player;
+        [SerializeField] public GameObject player;
         public float a;
        
         private void Start()
         {
             // As fallback get it only ONCE
-            if (!player) player = GameObject.Find("Players").transform.GetChild(0).gameObject;
+
         }
         void LateUpdate()
         {

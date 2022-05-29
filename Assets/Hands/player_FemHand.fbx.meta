@@ -6,7 +6,17 @@ ModelImporter:
   - first:
       74: 1827226128182048838
     second: Take 001
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hand
+    second: {fileID: 2100000, guid: 8946331086069a0408134778da165aae, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: player_FemHand_Hand_BaseColor
+    second: {fileID: 2800000, guid: 91b017411853cdd48a436dfa2a3a1cfb, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
