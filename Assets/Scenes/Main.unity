@@ -5459,6 +5459,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 824971578}
     - target: {fileID: 1537974756336503809, guid: 3346ac0d4432a8646b2781750bc1e10f, type: 3}
+      propertyPath: CompleteUI
+      value: 
+      objectReference: {fileID: 1853192189}
+    - target: {fileID: 1537974756336503809, guid: 3346ac0d4432a8646b2781750bc1e10f, type: 3}
       propertyPath: TapFastPanel
       value: 
       objectReference: {fileID: 1105238237}
@@ -5850,6 +5854,9 @@ MonoBehaviour:
   - {fileID: 6828944569146319530, guid: 53f762f87283a1249ad4ed190a4f36ff, type: 3}
   - {fileID: 6828944569146319530, guid: 8714052e04a2d3d46841b5dcd4d6e7ec, type: 3}
   - {fileID: 6828944569146319530, guid: b2da96e7ab864c04eb62f391d1dd32be, type: 3}
+  - {fileID: 6828944569146319530, guid: 400811af387ef3c46991337eade9ff0a, type: 3}
+  - {fileID: 6828944569146319530, guid: 59563e61de03ce24faedf7a694963c46, type: 3}
+  - {fileID: 6828944569146319530, guid: 2ee80a3f6a1ff5449b1feb76620d88a0, type: 3}
   levelNo: 0
   currentLvlPrefab: {fileID: 0}
   Level: 0
@@ -5864,6 +5871,7 @@ MonoBehaviour:
   pathCreator: {fileID: 0}
   p: {fileID: 378904803}
   CollsionScript: {fileID: 54971328}
+  m_textureManager: {fileID: 1859920059}
   FianlCamPos: {fileID: 2040196988}
   FinalCamPos: {fileID: 2040196989}
   PivotParent: {fileID: 0}
@@ -6486,6 +6494,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 374078253493443f0b6a43a0a78cef52, type: 3}
+--- !u!1 &1853192189 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8886289069598373379, guid: 374078253493443f0b6a43a0a78cef52, type: 3}
+  m_PrefabInstance: {fileID: 1853192188}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1854154873
 GameObject:
   m_ObjectHideFlags: 0
@@ -6595,6 +6608,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6f2c1b34b1559648b220784e625b683, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DontDestroyLoad: 0
+  m_IsSingletonLogsEnabled: 0
+  DefaultFlower: {fileID: 2800000, guid: d2336d6b9cbf3a846b98b0c603dd70f7, type: 3}
+  DefaultSkull: {fileID: 2800000, guid: f6d22af97632b2748a092ff9000d7452, type: 3}
+  DefaultPinup: {fileID: 2800000, guid: 523a688d763337d429425ccf2fecda06, type: 3}
   FlowerExpensiveTattos:
   - {fileID: 2800000, guid: 6431d598cc74b53478d762b81c776519, type: 3}
   - {fileID: 2800000, guid: 613c041499d84e545b5113d0a0ebb5a9, type: 3}
@@ -6643,10 +6661,6 @@ MonoBehaviour:
   CartoonCheapTattos: []
   MoneyExpensiveTattos: []
   MoneyCheapTattos: []
-  BadBlue: []
-  GoodBlue: []
-  GoodYellow: []
-  BadYellow: []
 --- !u!4 &1859920060
 Transform:
   m_ObjectHideFlags: 0
@@ -7008,6 +7022,10 @@ PrefabInstance:
       propertyPath: GoodGatePopUpColor.r
       value: 0.7254902
       objectReference: {fileID: 0}
+    - target: {fileID: 9124384044031012121, guid: dfabbbdcc1119454b92a25afac096b31, type: 3}
+      propertyPath: Tattos.Array.data[0]
+      value: 
+      objectReference: {fileID: 2800000, guid: 3cc5046375ad241459c04d6862da4fc1, type: 3}
     - target: {fileID: 9124384044031012121, guid: dfabbbdcc1119454b92a25afac096b31, type: 3}
       propertyPath: AnimationClips.Array.size
       value: 8

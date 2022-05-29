@@ -49,7 +49,7 @@ public class Collsion : MonoBehaviour
         };
 
 
-        StiackerMat.mainTexture = Default;
+      
         StiackerMat.DOFade(0, 0);
         Startpos = transform.localPosition;
 

@@ -45,38 +45,16 @@ public class GameManager : Singleton<GameManager>
 
     public override void Start()
     {
-        if(levelNo == 0)
-        {
-            CollsionScript.Tattos = m_textureManager.FlowerExpensiveTattos;
-            CollsionScript.CheapTttos = m_textureManager.FlowerCheapTattos;
-        }
-        if (levelNo == 1)
-        {
-            CollsionScript.Tattos = m_textureManager.SkullExpensiveTattos;
-            CollsionScript.CheapTttos = m_textureManager.SkullCheapTattos;
-        }
-        if (levelNo == 2)
-        {
-            CollsionScript.Tattos = m_textureManager.PinnupGirlExpensiveTattos;
-            CollsionScript.CheapTttos = m_textureManager.PinnupGirlCheapTattos;
-        }
-        if (levelNo == 3)
-        {
-            CollsionScript.Tattos = m_textureManager.FlowerExpensiveTattos;
-            CollsionScript.CheapTttos = m_textureManager.FlowerCheapTattos;
-        }
-        if (levelNo == 4)
-        {
-            CollsionScript.Tattos = m_textureManager.PinnupGirlExpensiveTattos;
-            CollsionScript.CheapTttos = m_textureManager.PinnupGirlCheapTattos;
-        }
+
         SavedLevelNo = PlayerPrefs.GetInt("current_scene_text", 0);
         UiManager.Instance.LevelText.text = (SavedLevelNo + 1).ToString();
         int currentLevel = PlayerPrefs.GetInt("current_scene");
         LoadLvlPrefab();
         p.enabled = false;
         base.Start();
+        TattooVsLevel();
 
+       
     }
     private void Update()
     {
@@ -111,7 +89,7 @@ public class GameManager : Singleton<GameManager>
     public void StartIt()
     {
 
-
+        CollsionScript.StiackerMat.mainTexture = CollsionScript.Default;
         UiManager.Instance.StartUI.SetActive(false);
         PivotParent = GameObject.FindGameObjectWithTag("PivotParent");
         Boss = GameObject.FindGameObjectWithTag("EndIt");
@@ -148,5 +126,39 @@ public class GameManager : Singleton<GameManager>
         Camera.main.DOFieldOfView(58, 1); 
         yield return new WaitForSeconds(1);
         Camera.main.DOFieldOfView(70, .5f);
+    }
+
+    public void TattooVsLevel()
+    {
+        if (levelNo == 0)
+        {
+            CollsionScript.Default = m_textureManager.DefaultFlower;
+            CollsionScript.Tattos = m_textureManager.FlowerExpensiveTattos;
+            CollsionScript.CheapTttos = m_textureManager.FlowerCheapTattos;
+        }
+        if (levelNo == 1)
+        {
+            CollsionScript.Default = m_textureManager.DefaultSkull;
+            CollsionScript.Tattos = m_textureManager.SkullExpensiveTattos;
+            CollsionScript.CheapTttos = m_textureManager.SkullCheapTattos;
+        }
+        if (levelNo == 2)
+        {
+            CollsionScript.Default = m_textureManager.DefaultPinup;
+            CollsionScript.Tattos = m_textureManager.PinnupGirlExpensiveTattos;
+            CollsionScript.CheapTttos = m_textureManager.PinnupGirlCheapTattos;
+        }
+        if (levelNo == 3)
+        {
+            CollsionScript.Default = m_textureManager.DefaultFlower;
+            CollsionScript.Tattos = m_textureManager.FlowerExpensiveTattos;
+            CollsionScript.CheapTttos = m_textureManager.FlowerCheapTattos;
+        }
+        if (levelNo == 4)
+        {
+            CollsionScript.Default = m_textureManager.DefaultPinup;
+            CollsionScript.Tattos = m_textureManager.PinnupGirlExpensiveTattos;
+            CollsionScript.CheapTttos = m_textureManager.PinnupGirlCheapTattos;
+        }
     }
 }
