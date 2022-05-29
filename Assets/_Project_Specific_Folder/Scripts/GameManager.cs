@@ -10,32 +10,39 @@ public class GameManager : Singleton<GameManager>
 {
     [Header("Level prefabs List")]
     public List<GameObject> LevelPrefabs = new List<GameObject>();
-
     public int levelNo;
     public GameObject currentLvlPrefab;
-
-    GameObject Path;
-    public PathCreation.PathCreator pathCreator;
-
-    public PathCreation.Examples.PathFollower p;
-    public GameObject Boss;
-    int SavedLevelNo;
+    public int Level;
 
 
-
+    [Header("Bools")]
+    public bool IsGameOver;
     public bool StartGame;
+    public bool IsVideo;
+    public bool IsLevelEnd;
+    public bool GameOver;
+    public bool GameEnd;
 
-    public GameObject FianlCamPos;
-    public bool GameOver , GameEnd;
+    [Header("GameObject Refs")]
+    public GameObject Boss;
     public GameObject TattoMachine;
+
+    [Header("Scripts Refs")]
+    public PathCreation.PathCreator pathCreator;
+    public PathCreation.Examples.PathFollower p;
     public Collsion CollsionScript;
 
-    public Transform FinalCamPos;
-    public int Level;
-    public GameObject PivotParent;
-    public bool IsGameOver;
 
-    public bool IsVideo , IsLevelEnd;
+    [Header("Transforms")]
+    public GameObject FianlCamPos;
+    public Transform FinalCamPos;
+    public GameObject PivotParent;
+
+
+
+    int SavedLevelNo;
+    GameObject Path;
+
     public override void Start()
     {
         SavedLevelNo = PlayerPrefs.GetInt("current_scene_text", 0);
