@@ -43,6 +43,12 @@ public class Collsion : MonoBehaviour
     public Color BadGatePopUpColor;
     private void Start()
     {
+        OverRideController = new AnimatorOverrideController
+        {
+            runtimeAnimatorController = anim.runtimeAnimatorController
+        };
+
+
         StiackerMat.mainTexture = Default;
         StiackerMat.DOFade(0, 0);
         Startpos = transform.localPosition;
@@ -362,25 +368,34 @@ public class Collsion : MonoBehaviour
         GameManager.Instance.p.MaxSpeed = 3;
     }
 
+
+    public AnimatorOverrideController OverRideController;
+    public AnimationClip[] AnimationClips;
     void RandomAnimationPlay() {
+        int index = Random.Range(0, AnimationClips.Length);
+        OverRideController["Take 001"] = AnimationClips[index];
         
-        if(GameManager.Instance.Level % 2 == 0)
-        {
-            anim.Play("g 0"); anim1.Play("g 0");
-        }
-     else
-        {
-            int i = Random.Range(0, 2);
-            if (i == 0)
-            {
-                anim.Play("g 1"); anim1.Play("g 1");
-            }
-            else
-            {
-                anim.Play("g"); anim1.Play("g");
-            }
-        }
-     
+        anim.runtimeAnimatorController = OverRideController;
+        anim1.runtimeAnimatorController = OverRideController;
+        anim.SetTrigger("Gesture");
+        anim1.SetTrigger("Gesture");
+        //   if(GameManager.Instance.Level % 2 == 0)
+        //   {
+        //       anim.Play("g 0"); anim1.Play("g 0");
+        //   }
+        //else
+        //   {
+        //       int i = Random.Range(0, 2);
+        //       if (i == 0)
+        //       {
+        //           anim.Play("g 1"); anim1.Play("g 1");
+        //       }
+        //       else
+        //       {
+        //           anim.Play("g"); anim1.Play("g");
+        //       }
+        //   }
+
     }
     public IEnumerator StopRoutine(GameObject g )
 
