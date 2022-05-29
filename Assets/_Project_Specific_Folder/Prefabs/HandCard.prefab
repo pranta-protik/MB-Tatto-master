@@ -919,8 +919,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad73cfb469fe716498b7659c412fe64b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handId: 1
+  cardType: 0
   requirementType: 0
+  handId: 1
   requiredCash: 3000
   requiredTime: 0
   requiredMatches: 0

@@ -77,7 +77,13 @@ public class SwipeMenu : MonoBehaviour
                     if (j != i)
                     {
                         transform.GetChild(j).localScale = Vector3.Lerp(transform.GetChild(j).localScale, new Vector3(0.6f, 0.6f, 0.6f), 0.1f);
-                        transform.GetChild(j).GetComponent<HandCard>().PlayIdleAnimation();
+                        
+                        HandCard unselectedCard = transform.GetChild(j).GetComponent<HandCard>();
+                        
+                        if (unselectedCard.cardType == HandCard.ECardType.Model)
+                        {
+                            unselectedCard.PlayIdleAnimation();   
+                        }
                     }
                 }
             }
