@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SwipeMenu : MonoBehaviour
@@ -22,7 +23,7 @@ public class SwipeMenu : MonoBehaviour
 
     private void Start()
     {
-        levelNoText.SetText("Level - " + (UiManager.Instance.currentLevelText + 1));
+        levelNoText.SetText("Level - " + (PlayerPrefs.GetInt("current_scene_text") + 1));
 
         for (int i = 0; i < handCards.Count; i++)
         {
@@ -87,7 +88,7 @@ public class SwipeMenu : MonoBehaviour
                 _selectedCard = transform.GetChild(i).GetComponent<HandCard>();
                 if (_selectedCard.cardType == HandCard.ECardType.Model)
                 {
-                    _selectedCard.PlayRandomAnimation();   
+                    _selectedCard.PlayRandomAnimation();
                 }
                 CheckCardRequirementStatus(_selectedCard);
                 
@@ -119,6 +120,7 @@ public class SwipeMenu : MonoBehaviour
     public void SelectHand()
     {
         PlayerPrefs.SetInt("SelectedHandId", _selectedCard.handId);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
     
     private void DisableButton(Button button)
