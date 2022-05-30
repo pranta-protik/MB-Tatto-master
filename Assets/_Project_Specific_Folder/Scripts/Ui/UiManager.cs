@@ -84,10 +84,10 @@ public class UiManager : Singleton<UiManager>
         UnlockPanel.gameObject.SetActive(true);
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-    public void Next()
+    public void LoadSelectionMenu()
     {
         DOTween.KillAll();
-     //   StorageManager.Instance.SetTotalScore();
+        
         if (currentLevel + 1 >= GameManager.Instance.LevelPrefabs.Count)
         {
             PlayerPrefs.SetInt("current_scene", 0); 
@@ -101,16 +101,13 @@ public class UiManager : Singleton<UiManager>
 
         }
         PlayerPrefs.SetInt("current_scene_text", currentLevelText + 1);
-        SceneManager.LoadScene("main");
+        
+        SceneManager.LoadScene("SelectionMenu");
+     //   StorageManager.Instance.SetTotalScore();
     }
 
-
-
-
-
-
-
-
-
-
+    public void Next()
+    {
+        SceneManager.LoadScene("main");   
+    }
 }
