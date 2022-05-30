@@ -1721,7 +1721,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5551814404551859958}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.292, z: 0}
+  m_LocalPosition: {x: 0, y: 2.13, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3752604690882998864}
@@ -1774,15 +1774,15 @@ MonoBehaviour:
   StartTime: 0
   UseDotweenID: 0
   Id: -9999
-  Duration: 1
-  Ease: 1
+  Duration: 0.7
+  Ease: 28
   IsRelative: 0
   UpdateType: 0
   UpdateFrameIndependant: 0
   LoopCount: 0
   LoopType: 0
   IsLocal: 1
-  m_InitialPosition: {x: 0, y: -0.292, z: 0}
+  m_InitialPosition: {x: 0, y: 2.13, z: 0}
   FinalPosition: {x: 0, y: 0.318, z: 0}
 --- !u!54 &6584894907041130931
 Rigidbody:
