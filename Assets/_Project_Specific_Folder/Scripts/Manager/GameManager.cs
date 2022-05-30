@@ -56,9 +56,11 @@ public class GameManager : Singleton<GameManager>
 
     int SavedLevelNo;
     GameObject Path;
+    public float timer = 0.0f;
 
     public override void Start()
     {
+
         HandNumber = PlayerPrefs.GetInt("SelectedHandId");
         SpawnHand(HandNumber);
         SavedLevelNo = PlayerPrefs.GetInt("current_scene_text", 0);
@@ -73,6 +75,14 @@ public class GameManager : Singleton<GameManager>
     }
     private void Update()
     {
+
+        if(StartGame && !GameEnd)
+        {
+            timer += Time.deltaTime;
+           
+        }
+
+
         if (Path == null)
         {
             Path = GameObject.Find("pathWAY");
@@ -80,6 +90,14 @@ public class GameManager : Singleton<GameManager>
             Path.GetComponent<RoadMeshCreator>().refresh();
         }
 
+    }
+    public void SetTotalTime()
+    {
+        float currentTime = PlayerPrefs.GetFloat("TotalTime", 0);
+        float Time= currentTime + timer;
+       
+        PlayerPrefs.SetFloat("TotalTime", Time);
+        print(PlayerPrefs.GetFloat("TotalTime",0));
     }
     public void LoadLvlPrefab()
     {
