@@ -195,6 +195,27 @@ public class GameManager : Singleton<GameManager>
             CollsionScript.Tattos = m_textureManager.PinnupGirlExpensiveTattos;
             CollsionScript.CheapTttos = m_textureManager.PinnupGirlCheapTattos;
         }
+        if (levelNo == 7)
+        {
+            CollsionScript.Default = m_textureManager.DefaultCeleb;
+            CollsionScript.Tattos = m_textureManager.CelebExpensiveTattos;
+            CollsionScript.CheapTttos = m_textureManager.CelebCheapTattos;
+        }
+        if (levelNo == 10)
+        {
+            CollsionScript.Default = m_textureManager.defaultCartoon;
+            CollsionScript.Tattos = m_textureManager.CartoonExpensiveTattos;
+            CollsionScript.CheapTttos = m_textureManager.CartoonCheapTattos;
+
+        }
+        if (levelNo == 13)
+        {
+            CollsionScript.Default = m_textureManager.DefaultMoney;
+            CollsionScript.Tattos = m_textureManager.MoneyExpensiveTattos;
+            CollsionScript.CheapTttos = m_textureManager.MoneyCheapTattos;
+        }
+
+
     }
 
    public void SpawnHand(int i)

@@ -13019,8 +13019,6 @@ MonoBehaviour:
     unLockSprite: {fileID: 21300000, guid: 91e1adfd63b2a734c8af1cb763777a36, type: 3}
   - lockSprite: {fileID: 21300000, guid: d8ad282fa72caa74995b0dcea75e86a4, type: 3}
     unLockSprite: {fileID: 21300000, guid: 009918254f4a51b45ae226e9a241363f, type: 3}
-  - lockSprite: {fileID: 21300000, guid: 58e6fe957f54cf24d9d42162d8e711cc, type: 3}
-    unLockSprite: {fileID: 21300000, guid: 151cf30a1d7d27a48a3d90d919bb106c, type: 3}
   _increaseAmount: 33
   _duration: 2
 --- !u!1 &1486192617
@@ -13961,6 +13959,9 @@ MonoBehaviour:
   DefaultFlower: {fileID: 2800000, guid: d2336d6b9cbf3a846b98b0c603dd70f7, type: 3}
   DefaultSkull: {fileID: 2800000, guid: f6d22af97632b2748a092ff9000d7452, type: 3}
   DefaultPinup: {fileID: 2800000, guid: 523a688d763337d429425ccf2fecda06, type: 3}
+  DefaultCeleb: {fileID: 2800000, guid: db0b54a59dd684e4ab7de8a8b62a7e7d, type: 3}
+  defaultCartoon: {fileID: 2800000, guid: be8f151cfe5dfc64d921ae3c19bea02f, type: 3}
+  DefaultMoney: {fileID: 2800000, guid: 9d6678c86fd994242a8be54d23d05b07, type: 3}
   FlowerExpensiveTattos:
   - {fileID: 2800000, guid: 6431d598cc74b53478d762b81c776519, type: 3}
   - {fileID: 2800000, guid: 613c041499d84e545b5113d0a0ebb5a9, type: 3}
@@ -14003,12 +14004,48 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 4261c807fcf7611418a0bd0dd4dbfff2, type: 3}
   - {fileID: 2800000, guid: 67c5226d7b4529c4b906bbb807b601e6, type: 3}
   - {fileID: 2800000, guid: f7450ce2cbf3381428f30855356c5d40, type: 3}
-  CelebExpensiveTattos: []
-  CelebCheapTattos: []
-  CartoonExpensiveTattos: []
-  CartoonCheapTattos: []
-  MoneyExpensiveTattos: []
-  MoneyCheapTattos: []
+  CelebExpensiveTattos:
+  - {fileID: 2800000, guid: c2d1c3d4cfb015143bc88f95c01a1fdb, type: 3}
+  - {fileID: 2800000, guid: 8d7e8311b29ccbf4f85a3975c3822d8c, type: 3}
+  - {fileID: 2800000, guid: d05d2ffe8977eef43bf013285d514799, type: 3}
+  - {fileID: 2800000, guid: 34d9e9bb6468e364c9b0f48146d5b084, type: 3}
+  - {fileID: 2800000, guid: 153eb81a2f3f15245a53b17a9d556b1c, type: 3}
+  - {fileID: 2800000, guid: 320a6ec1811fdee40b97afef61a679ca, type: 3}
+  CelebCheapTattos:
+  - {fileID: 2800000, guid: 34b76ca12eb9e7b4086937cc3780dd39, type: 3}
+  - {fileID: 2800000, guid: 518f7a5252d82ee45b1c49ad60048e8b, type: 3}
+  - {fileID: 2800000, guid: 980f0c84c0c23e044bf84982f5a56eb9, type: 3}
+  - {fileID: 2800000, guid: 34d9e9bb6468e364c9b0f48146d5b084, type: 3}
+  - {fileID: 2800000, guid: f4288e2d0b1fc714ca31c3a55385c7a0, type: 3}
+  - {fileID: 2800000, guid: ac3ae8782a10bba4baa165525f242505, type: 3}
+  CartoonExpensiveTattos:
+  - {fileID: 2800000, guid: d23d59d98541817468aa824d213444eb, type: 3}
+  - {fileID: 2800000, guid: 69a6127953132054685d939320c66cf7, type: 3}
+  - {fileID: 2800000, guid: 2f6531a4ac9402c48a34ec927b11d201, type: 3}
+  - {fileID: 2800000, guid: 90d564936cac436498ca73a7a5624321, type: 3}
+  - {fileID: 2800000, guid: 884a30cba220e834faa4fa4823b6655c, type: 3}
+  - {fileID: 2800000, guid: 1fc118db5df23c54e8dd8bf2bc344fcc, type: 3}
+  CartoonCheapTattos:
+  - {fileID: 2800000, guid: 35e8ab8f64cad0b4ba629202a64a29b8, type: 3}
+  - {fileID: 2800000, guid: 5639a2580bebb744088882fc2beb4b14, type: 3}
+  - {fileID: 2800000, guid: 204497f7ec483bb43b285bd93d4c29d8, type: 3}
+  - {fileID: 2800000, guid: 799cf60af0bf3524ca8ec704bfa567ae, type: 3}
+  - {fileID: 2800000, guid: c84de144fc94a1049a58c63fea3a8294, type: 3}
+  - {fileID: 2800000, guid: 8465c703c069b8548acaa041363e4574, type: 3}
+  MoneyExpensiveTattos:
+  - {fileID: 2800000, guid: 6c2a6293f7678d04db21901cea310809, type: 3}
+  - {fileID: 2800000, guid: 881d85ef87c886c4f89a4e0fef9dabda, type: 3}
+  - {fileID: 2800000, guid: 500487bb9ef6e294083625f8c60ba186, type: 3}
+  - {fileID: 2800000, guid: 707f2e68d24454d4b80fb8d39f6ed158, type: 3}
+  - {fileID: 2800000, guid: b416611f8400d2f4dbec272d1e492817, type: 3}
+  - {fileID: 2800000, guid: 5c7081d09eceb6d4c9f2cd20dc858348, type: 3}
+  MoneyCheapTattos:
+  - {fileID: 2800000, guid: 0b5f3b97c8e00dd4cb81fe740d0d44e8, type: 3}
+  - {fileID: 2800000, guid: d9b05c1f6ddf15848a7381aa5633cf7c, type: 3}
+  - {fileID: 2800000, guid: e2b5580c19208a448af459433a5ce0d5, type: 3}
+  - {fileID: 2800000, guid: 87dfae4e40877e34c9b10b49daa4d444, type: 3}
+  - {fileID: 2800000, guid: c86f9a62a6cb6e147a59ad18e6cd49c5, type: 3}
+  - {fileID: 2800000, guid: 3f4fd66803b81724b94f3699653aeb12, type: 3}
 --- !u!4 &1859920060
 Transform:
   m_ObjectHideFlags: 0
