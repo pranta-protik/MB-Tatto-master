@@ -22,6 +22,7 @@ public class SwipeMenu : MonoBehaviour
     private HandCard _selectedCard;
     private int _currentLevel;
     private float _distance;
+    private bool _shouldPlayAnimation;
     
     private void Start()
     {
@@ -104,7 +105,15 @@ public class SwipeMenu : MonoBehaviour
                 
                 if (_selectedCard.cardType == HandCard.ECardType.Model)
                 {
-                    _selectedCard.PlayRandomAnimation();
+                    if (_selectedCard.handId != PlayerPrefs.GetInt("SelectedHandId"))
+                    {
+                        _shouldPlayAnimation = true;
+                    }
+
+                    if (_shouldPlayAnimation)
+                    {
+                        _selectedCard.PlayRandomAnimation();   
+                    }
                 }
                 CheckCardRequirementStatus(_selectedCard);
                 
