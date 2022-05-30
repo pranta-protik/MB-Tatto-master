@@ -21,6 +21,7 @@ public class SwipeMenu : MonoBehaviour
     private float[] _pos;
     private HandCard _selectedCard;
     private int _currentLevel;
+    private float _distance;
     
     private void Start()
     {
@@ -33,7 +34,7 @@ public class SwipeMenu : MonoBehaviour
       
         if (levelNoText != null)
         {
-            levelNoText.SetText("Level - " + _currentLevel);   
+            levelNoText.SetText("LEVEL " + _currentLevel);   
         }
 
         for (int i = 0; i < handCards.Count; i++)
@@ -61,7 +62,15 @@ public class SwipeMenu : MonoBehaviour
 
         PlayerPrefs.SetInt("HandCardSetup", 1);
         
-        // scrollbar.GetComponent<Scrollbar>().value 
+        _pos = new float[transform.childCount];
+        _distance = 1f / (_pos.Length - 1f);
+        
+        for (int i = 0; i < _pos.Length; i++)
+        {
+            _pos[i] = _distance * i;
+        }
+        
+        _scrollPos = _distance * PlayerPrefs.GetInt("SelectedHandId");
     }
 
     private void Update()
@@ -71,13 +80,6 @@ public class SwipeMenu : MonoBehaviour
 
     private void ScrollCards()
     {
-        _pos = new float[transform.childCount];
-        float distance = 1f / (_pos.Length - 1f);
-        for (int i = 0; i < _pos.Length; i++)
-        {
-            _pos[i] = distance * i;
-        }
-
         if (Input.GetMouseButton(0))
         {
             _scrollPos = scrollbar.GetComponent<Scrollbar>().value;
@@ -86,7 +88,7 @@ public class SwipeMenu : MonoBehaviour
         {
             for (int i = 0; i < _pos.Length; i++)
             {
-                if (_scrollPos < _pos[i] + (distance / 2) && _scrollPos > _pos[i] - (distance / 2))
+                if (_scrollPos < _pos[i] + (_distance / 2) && _scrollPos > _pos[i] - (_distance / 2))
                 {
                     scrollbar.GetComponent<Scrollbar>().value = Mathf.Lerp(scrollbar.GetComponent<Scrollbar>().value, _pos[i], 0.1f);
                 }
@@ -95,7 +97,7 @@ public class SwipeMenu : MonoBehaviour
 
         for (int i = 0; i < _pos.Length; i++)
         {
-            if (_scrollPos < _pos[i] + (distance / 2) && _scrollPos > _pos[i] - (distance / 2))
+            if (_scrollPos < _pos[i] + (_distance / 2) && _scrollPos > _pos[i] - (_distance / 2))
             {
                 transform.GetChild(i).localScale = Vector3.Lerp(transform.GetChild(i).localScale, new Vector3(1f, 1f, 1f), 0.1f);
                 _selectedCard = transform.GetChild(i).GetComponent<HandCard>();
