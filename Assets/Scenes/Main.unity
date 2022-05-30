@@ -11416,7 +11416,7 @@ GameObject:
   - component: {fileID: 1172234472}
   - component: {fileID: 1172234471}
   m_Layer: 0
-  m_Name: Main Camera (1)
+  m_Name: 'Main Camera '
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11637,7 +11637,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DontDestroyLoad: 0
   m_IsSingletonLogsEnabled: 0
-  HandNumber: 5
+  HandNumber: 6
   Hands:
   - MainHand: {fileID: 8646175687244585552, guid: 0ee54f147c8b94640b2d295d748ff8d5, type: 3}
     CopyHand: {fileID: 7832248517353659010, guid: ef35299a3d9d67d4f8f1b8bad8160689, type: 3}
