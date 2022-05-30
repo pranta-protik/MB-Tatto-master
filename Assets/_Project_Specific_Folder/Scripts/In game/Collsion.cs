@@ -382,6 +382,7 @@ public class Collsion : MonoBehaviour
             c.enabled = false;
             c1.enabled = false;
             UiManager.Instance.decisionScreen.SetActive(true);
+            UiManager.Instance.cashCounter.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText("$" + StorageManager.GetTotalCoin());
             UiManager.Instance.cashCounter.SetActive(true);
         }
     }
