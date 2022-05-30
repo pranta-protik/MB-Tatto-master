@@ -20,10 +20,12 @@ public class SwipeMenu : MonoBehaviour
     private float _scrollPos = 0;
     private float[] _pos;
     private HandCard _selectedCard;
-
+    private int currentLevel;
+    
     private void Start()
     {
-        levelNoText.SetText("Level - " + (PlayerPrefs.GetInt("current_scene_text") + 1));
+        currentLevel = PlayerPrefs.GetInt("current_scene_text") + 1;
+        levelNoText.SetText("Level - " + currentLevel);
 
         for (int i = 0; i < handCards.Count; i++)
         {
@@ -114,7 +116,7 @@ public class SwipeMenu : MonoBehaviour
     {
         StorageManager.SaveTotalCoin(StorageManager.GetTotalCoin() - _selectedCard.requiredCash);
         scoreText.SetText(StorageManager.GetTotalCoin().ToString());
-        _selectedCard.UpdateCardStatus();
+        _selectedCard.EnableCard();
     }
     
     public void SelectHand()
@@ -138,32 +140,14 @@ public class SwipeMenu : MonoBehaviour
             button.interactable = true;
         });
     }
-    
+
+   
     private void CheckCardRequirementStatus(HandCard handCard)
     {
         if (_selectedCard.requirementType == HandCard.ERequirementType.Cash)
         {
             unlockInfoText.gameObject.SetActive(false);
-            
-            if (PlayerPrefs.GetInt("HandCard" + handCard.handId) == 0)
-            {
-                actionButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText("+" + handCard.requiredCash);
-                actionButton.gameObject.SetActive(true);
-                DisableButton(startButton);
-                if (StorageManager.GetTotalCoin() >= handCard.requiredCash)
-                {
-                    EnableButton(actionButton);
-                }
-                else
-                {
-                    DisableButton(actionButton);
-                }
-            }
-            else
-            {
-                actionButton.gameObject.SetActive(false);
-                EnableButton(startButton);
-            }
+            CheckActionButtonRequirement(handCard);
         }
         else
         {
@@ -182,7 +166,38 @@ public class SwipeMenu : MonoBehaviour
 
         if (_selectedCard.requirementType == HandCard.ERequirementType.Level)
         {
+            if (currentLevel >= handCard.requiredLevelNo)
+            {
+                handCard.EnableCard();
+            }
+            else
+            {
+                handCard.DisableCard();
+            }
             CheckUnlockTextRequirement(handCard, "Unlock after reaching level <color=red>" + handCard.requiredLevelNo + "</color>");
+        }
+    }
+    
+    private void CheckActionButtonRequirement(HandCard handCard)
+    {
+        if (PlayerPrefs.GetInt("HandCard" + handCard.handId) == 0)
+        {
+            actionButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText("+" + handCard.requiredCash);
+            actionButton.gameObject.SetActive(true);
+            DisableButton(startButton);
+            if (StorageManager.GetTotalCoin() >= handCard.requiredCash)
+            {
+                EnableButton(actionButton);
+            }
+            else
+            {
+                DisableButton(actionButton);
+            }
+        }
+        else
+        {
+            actionButton.gameObject.SetActive(false);
+            EnableButton(startButton);
         }
     }
 
@@ -196,6 +211,7 @@ public class SwipeMenu : MonoBehaviour
         }
         else
         {
+            unlockInfoText.gameObject.SetActive(false);
             EnableButton(startButton);
         }
     }

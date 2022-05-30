@@ -920,12 +920,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardType: 0
-  requirementType: 2
+  requirementType: 3
   handId: 3
   requiredCash: 0
   requiredTime: 10
   requiredMatches: 10
-  requiredLevelNo: 0
+  requiredLevelNo: 6
   cardStatus: 0
   animatorOverrideController: {fileID: 22100000, guid: 18928478db6c65047846211934856a95, type: 2}
   animationClips:

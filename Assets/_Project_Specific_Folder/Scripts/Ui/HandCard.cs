@@ -52,9 +52,15 @@ public class HandCard : MonoBehaviour
         }
     }
 
-    public void UpdateCardStatus()
+    public void EnableCard()
     {
         cardStatus = 1;
+        PlayerPrefs.SetInt("HandCard" + handId, cardStatus);
+    }
+
+    public void DisableCard()
+    {
+        cardStatus = 0;
         PlayerPrefs.SetInt("HandCard" + handId, cardStatus);
     }
 
