@@ -5,7 +5,7 @@ using Singleton;
 
 public class TextureManager : Singleton<TextureManager> 
 {
-    public Texture DefaultFlower, DefaultSkull, DefaultPinup;
+    public Texture DefaultFlower, DefaultSkull, DefaultPinup , DefaultCeleb , defaultCartoon , DefaultMoney;
 
     public Texture[] FlowerExpensiveTattos, FlowerCheapTattos;
     public Texture[] SkullExpensiveTattos, SkullCheapTattos;
