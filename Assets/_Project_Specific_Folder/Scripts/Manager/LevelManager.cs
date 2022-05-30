@@ -10,9 +10,7 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     public int GameOpenCount;
     private void Awake()
-    {
-        GameOpenCount++;
-        PlayerPrefs.SetInt("GameOpenCount", GameOpenCount);
+    { 
 
         GameAnalytics.Initialize();
 
@@ -26,7 +24,12 @@ public class LevelManager : MonoBehaviour
             LoadLastScene();
     }
 
+    private void Start()
+    {
+        GameOpenCount++;
+        PlayerPrefs.SetInt("GameOpenCount", GameOpenCount);
 
+    }
     public static void LoadLastScene()
     {
         SceneManager.LoadScene(PlayerPrefs.GetInt("current_scene"), 0);
