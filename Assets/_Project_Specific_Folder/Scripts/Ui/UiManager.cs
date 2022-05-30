@@ -14,7 +14,7 @@ public class UiManager : Singleton<UiManager>
     public TMP_Text LevelText;
     public GameObject StartUI, EndUi, CompleteUI, FadeIn, UnlockPanel;
     public GameObject TapFastPanel;
-    public GameObject decisionScreen, cashCounter, spinnerScreen;
+    public GameObject decisionScreen, cashCounter, spinnerScreen, cashPile;
 
     public GameObject fillbarTimer;
     public Image Timer;

@@ -81,5 +81,22 @@ public class Wheel : MonoBehaviour
                 Debug.Log("3");
                 break;
         }
+        
+        Invoke(nameof(DisableWheel), 0.5f);
+    }
+
+    private void DisableWheel()
+    {
+        UiManager.Instance.spinnerScreen.SetActive(false);
+        UiManager.Instance.cashPile.SetActive(true);
+
+        for (int i = 0; i < UiManager.Instance.cashPile.transform.childCount; i++)
+        {
+            UiManager.Instance.cashPile.transform.GetChild(i).DOScale(new Vector3(0f, 0f, 0f), 1f);
+            UiManager.Instance.cashPile.transform.GetChild(i).DOLocalMove(new Vector3(153f, 868f, 0f), 1f).OnComplete(() =>
+            {
+                
+            });
+        }
     }
 }

@@ -373,8 +373,8 @@ public class Collsion : MonoBehaviour
             
             GameManager.Instance.GameEnd = true;
             GameManager.Instance.SetTotalTime();
-            StorageManager.Instance.SetTotalScore(); 
-            StorageManager.Instance.GetTotalScore();
+            // StorageManager.Instance.SetTotalScore(); 
+            // StorageManager.Instance.GetTotalScore();
             
             GameManager.Instance.p.enabled = false;
             anim.Play("idle");
