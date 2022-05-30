@@ -63,7 +63,7 @@ public class TattoWall : MonoBehaviour
         yield return new WaitForSeconds(5f);
         
 
-         UiManager.Instance.CompleteUI.gameObject.SetActive(true);
+         UiManager.Instance.UnlockPanel.gameObject.SetActive(true);
 
     }
 }
