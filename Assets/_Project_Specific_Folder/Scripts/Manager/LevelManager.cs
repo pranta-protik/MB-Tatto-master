@@ -8,9 +8,12 @@ using GameAnalyticsSDK;
 public class LevelManager : MonoBehaviour
 {
     // Start is called before the first frame update
-
+    public int GameOpenCount;
     private void Awake()
     {
+        GameOpenCount++;
+        PlayerPrefs.SetInt("GameOpenCount", GameOpenCount);
+
         GameAnalytics.Initialize();
 
         if (PlayerPrefs.GetInt("Played", 0) == 0)
