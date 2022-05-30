@@ -5,7 +5,7 @@ using DG.Tweening;
 using MoreMountains.NiceVibrations;
 public class EndDetector : MonoBehaviour
 {
-    public ParticleSystem EndParticle;
+    public ParticleSystem EndParticle , Confetti;
     public GameObject Cam;
     public GameObject TattoWall;
     private void OnTriggerEnter(Collider other)
@@ -32,7 +32,7 @@ public class EndDetector : MonoBehaviour
             GameManager.Instance.SetTotalTime();
             StorageManager.Instance.SetTotalScore();
             StorageManager.Instance.GetTotalScore();
-
+            Confetti.gameObject.SetActive(true);
 
             // Tattoo wall mechanics
             StartCoroutine(EnableEndUi());
