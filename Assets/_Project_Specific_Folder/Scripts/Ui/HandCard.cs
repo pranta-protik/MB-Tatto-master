@@ -52,9 +52,15 @@ public class HandCard : MonoBehaviour
         }
     }
 
-    public void UpdateCardStatus()
+    public void EnableCard()
     {
         cardStatus = 1;
+        PlayerPrefs.SetInt("HandCard" + handId, cardStatus);
+    }
+
+    public void DisableCard()
+    {
+        cardStatus = 0;
         PlayerPrefs.SetInt("HandCard" + handId, cardStatus);
     }
 
@@ -63,10 +69,10 @@ public class HandCard : MonoBehaviour
         if (!_isAnimationPlaying)
         {
             int animationClipIndex = Random.Range(0, animationClips.Length);
-            animatorOverrideController["gesture02"] = animationClips[animationClipIndex];
+            animatorOverrideController["gesture01"] = animationClips[animationClipIndex];
 
             _animator.runtimeAnimatorController = animatorOverrideController;
-            _animator.SetBool(IsSelected, true);
+            _animator.SetTrigger(IsSelected);
             
             _isAnimationPlaying = true;
         }
@@ -74,7 +80,6 @@ public class HandCard : MonoBehaviour
 
     public void PlayIdleAnimation()
     {
-        _animator.SetBool(IsSelected, false);
         _isAnimationPlaying = false;
     }
 }

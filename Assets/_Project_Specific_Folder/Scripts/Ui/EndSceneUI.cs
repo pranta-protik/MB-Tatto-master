@@ -25,7 +25,6 @@ public class EndSceneUI : MonoBehaviour
         else
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-
         }
 
     }
