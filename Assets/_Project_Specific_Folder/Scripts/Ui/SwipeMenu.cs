@@ -15,10 +15,10 @@ public class SwipeMenu : MonoBehaviour
     public Button actionButton;
     public float buttonDisabledAlpha = 0.5f;
     public TextMeshProUGUI unlockInfoText;
+    public TextMeshProUGUI scoreText;
     private float _scrollPos = 0;
     private float[] _pos;
     private HandCard _selectedCard;
-    [SerializeField] private string currentSelection;
 
     private void Start()
     {
@@ -112,6 +112,7 @@ public class SwipeMenu : MonoBehaviour
     public void BuyCard()
     {
         StorageManager.SaveTotalCoin(StorageManager.GetTotalCoin() - _selectedCard.requiredCash);
+        scoreText.SetText(StorageManager.GetTotalCoin().ToString());
         _selectedCard.UpdateCardStatus();
     }
     
@@ -144,6 +145,7 @@ public class SwipeMenu : MonoBehaviour
             
             if (PlayerPrefs.GetInt("HandCard" + handCard.handId) == 0)
             {
+                actionButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText("+" + handCard.requiredCash);
                 actionButton.gameObject.SetActive(true);
                 DisableButton(startButton);
                 if (StorageManager.GetTotalCoin() >= handCard.requiredCash)

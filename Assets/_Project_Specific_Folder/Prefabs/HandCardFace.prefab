@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 6292097114636558126}
   - component: {fileID: 6292097114636558123}
   - component: {fileID: 6292097114636558124}
-  - component: {fileID: 4090523535199514811}
+  - component: {fileID: 6216310130570398834}
   m_Layer: 5
-  m_Name: HandCard 2
+  m_Name: HandCardFace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4090523535199514811
+--- !u!114 &6216310130570398834
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -89,14 +89,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardType: 1
-  requirementType: 0
-  handId: 3
-  requiredCash: 6000
-  requiredTime: 0
-  requiredMatches: 0
-  requiredLevelNo: 0
+  requirementType: 3
+  handId: 8
+  requiredCash: 0
+  requiredTime: 10
+  requiredMatches: 10
+  requiredLevelNo: 70
   cardStatus: 0
   animatorOverrideController: {fileID: 22100000, guid: 18928478db6c65047846211934856a95, type: 2}
   animationClips:
-  - {fileID: 7400000, guid: bd3df73f18fc7c14ab7309ab481ecd40, type: 2}
-  - {fileID: 7400000, guid: faec421642d209442a14d87bbb963259, type: 2}
+  - {fileID: 1827226128182048838, guid: dddf4608fdeb0a9469dacadc9e1d93d6, type: 3}
+  - {fileID: 1827226128182048838, guid: 3b41a50659da6ca469c5628775169a17, type: 3}
+  - {fileID: 1827226128182048838, guid: 61c19eadfd6a1ca408610d7dbba85310, type: 3}
+  - {fileID: 1827226128182048838, guid: 17ff81f8d85c9e54bbab33ddc730cad5, type: 3}

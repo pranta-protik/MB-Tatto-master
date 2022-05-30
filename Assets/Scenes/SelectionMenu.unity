@@ -958,18 +958,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   handCards:
+  - {fileID: 6292097114636558127, guid: 1f1fabb69d3633d42b7d86e75b9d31fc, type: 3}
   - {fileID: 6292097114636558127, guid: 51ecab63ea2cf4d4581d8843a323f8ca, type: 3}
-  - {fileID: 6292097114636558127, guid: 52f0f3ef1bd355d4798bae5bc7c266a6, type: 3}
-  - {fileID: 6292097114636558127, guid: be2a37a2396abf74098f6506b148c583, type: 3}
-  - {fileID: 6292097114636558127, guid: ca4222eafdede254dbbf466e5eba7f44, type: 3}
-  - {fileID: 6292097114636558127, guid: e5af3836ac5baee4487410d69ceecbdb, type: 3}
+  - {fileID: 6292097114636558127, guid: 376dc289d3f42cc459d042594a70aa1a, type: 3}
+  - {fileID: 6292097114636558127, guid: f5f2a758b257edb418d9c850779db4ca, type: 3}
+  - {fileID: 6292097114636558127, guid: fb94d5450f5cb394e892115fd156f840, type: 3}
+  - {fileID: 6292097114636558127, guid: 7b2a44296c1ee634784ea1574d95af7f, type: 3}
+  - {fileID: 6292097114636558127, guid: ae75a025d3c675a4b8952604a3a485bf, type: 3}
+  - {fileID: 6292097114636558127, guid: 781aa2a838645cc4f8ac4eceb9c7a497, type: 3}
+  - {fileID: 6292097114636558127, guid: a27374ee6ea26aa41b33d69778d4130d, type: 3}
   scrollbar: {fileID: 318353621}
   levelNoText: {fileID: 929912165}
   startButton: {fileID: 781515083}
   actionButton: {fileID: 1347873932}
   buttonDisabledAlpha: 0.5
   unlockInfoText: {fileID: 1910736290}
-  currentSelection: 
+  scoreText: {fileID: 176589649}
 --- !u!1 &617989284
 GameObject:
   m_ObjectHideFlags: 0
@@ -2075,6 +2079,7 @@ MonoBehaviour:
   EndUi: {fileID: 0}
   CompleteUI: {fileID: 0}
   FadeIn: {fileID: 0}
+  UnlockPanel: {fileID: 0}
   TapFastPanel: {fileID: 0}
   fillbarTimer: {fileID: 0}
   Timer: {fileID: 0}

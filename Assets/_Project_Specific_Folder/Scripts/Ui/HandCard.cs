@@ -19,6 +19,7 @@ public class HandCard : MonoBehaviour
         Level
     }
 
+    [Header("Requirement Section")]
     public ECardType cardType;
     public ERequirementType requirementType;
     public int handId;
@@ -28,6 +29,7 @@ public class HandCard : MonoBehaviour
     public int requiredLevelNo;
     public int cardStatus;
     
+    [Header("Animation Section")]
     public AnimatorOverrideController animatorOverrideController;
     public AnimationClip[] animationClips;
     private bool _isAnimationPlaying;

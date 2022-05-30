@@ -2,13 +2,34 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0bbd3f85-ed93-443c-811c-694e308cff41" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/HandCardBuffHand1.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/HandCardBuffHand1.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/Editor.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/Editor/HandCardEditor.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/Editor/HandCardEditor.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Tatto-master/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Tatto-master/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SelectionMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SelectionMenu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Animation/HandAnimatorOverrideController.overrideController" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Animation/HandAnimatorOverrideController.overrideController" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Materials/Tattoos/Expensive/Materials/player_Hand_Hand_BaseColor_Exp01 1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Materials/Tattoos/Expensive/Materials/player_Hand_Hand_BaseColor_Exp01 1.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/Manager/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/Manager/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Animation/Hand.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Animation/Hand.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Materials/Hands/Hand 2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Materials/Hands/Hand 2.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Models/Hands/gesture02.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Models/Hands/gesture02.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Models/Hands/gesture03.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Models/Hands/gesture03.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Models/Hands/player_BuffHand02.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Models/Hands/player_BuffHand02.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Models/Hands/player_Hulk.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Models/Hands/player_Hulk.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/HandCard 1.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/HandCard 1.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/HandCard 2.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/HandCard 2.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/HandCard 3.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/HandCard 3.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/HandCard 4.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/HandCard 4.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/HandCard.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/HandCard.prefab.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/Ui/HandCard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/Ui/HandCard.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/Ui/SwipeMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/Ui/SwipeMenu.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/player_Hand_Hand_BaseColor_Exp01 1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/player_Hand_Hand_BaseColor_Exp01 1.mat" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +93,7 @@
       <option name="presentableId" value="Default" />
       <updated>1653814379236</updated>
       <workItem from="1653814387040" duration="18161000" />
-      <workItem from="1653885868682" duration="4107000" />
+      <workItem from="1653885868682" duration="8268000" />
     </task>
     <servers />
   </component>
