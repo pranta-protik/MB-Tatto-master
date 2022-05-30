@@ -166,11 +166,51 @@ public class UiManager : Singleton<UiManager>
 
     public void SellTattoo()
     {
+        if (StorageManager.Instance.RewardValue <= 0)
+        {
+            StorageManager.Instance.currentLevel = PlayerPrefs.GetInt("current_scene");
+            StorageManager.Instance.currentLevelText = PlayerPrefs.GetInt("current_scene_text", 0);
+            StorageManager.Instance.RewardValue = 500;
+        }
+
+
+        GameManager.Instance.SetTotalTime();
+
+
+        if (GameManager.Instance.levelNo == 0)
+        {
+            UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>()._increaseAmount = 50;
+        }
+        else if (GameManager.Instance.levelNo == 1)
+        {
+            UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>()._increaseAmount = 50;
+        }
+        else
+        {
+            UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>()._increaseAmount = 33;
+        }
+
+
+
         decisionScreen.SetActive(false);
         spinnerScreen.SetActive(true);
         spinnerScreen.transform.GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>().SetText("$" + StorageManager.Instance.RewardValue);
     }
+    public void KeepTattooCallBack()
+    {
 
+
+        // StorageManager.Instance.SetTotalScore(); 
+        // StorageManager.Instance.GetTotalScore();
+
+        GameManager.Instance.p.enabled = true;
+
+        GameManager.Instance.CollsionScript. c.enabled = false;
+        GameManager.Instance.CollsionScript.c.enabled  = false;
+        UiManager.Instance.decisionScreen.SetActive(false);
+       // UiManager.Instance.cashCounter.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText("$" + StorageManager.GetTotalCoin());
+        UiManager.Instance.cashCounter.SetActive(false);
+    }
     public void SpinWheel()
     {
         spinnerScreen.transform.GetChild(3).GetComponent<Wheel>().startSpinning = true;

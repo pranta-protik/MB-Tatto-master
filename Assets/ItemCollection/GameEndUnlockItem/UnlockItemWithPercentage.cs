@@ -38,6 +38,7 @@ namespace ItemCollection.GameEndUnlockItem
         public  int _increaseAmount = 20;
         public  float _duration = 2.0f;
 
+
         private void Awake()
         {
            
