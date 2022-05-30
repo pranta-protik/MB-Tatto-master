@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,8 +10,10 @@ public class SwipeMenu : MonoBehaviour
 {
     public List<GameObject> handCards = new List<GameObject>();
     public GameObject scrollbar;
+    public TextMeshProUGUI levelNoText;
     public Button startButton;
     public Button actionButton;
+    public float buttonDisabledAlpha = 0.5f;
     public TextMeshProUGUI unlockInfoText;
     private float _scrollPos = 0;
     private float[] _pos;
@@ -19,11 +22,32 @@ public class SwipeMenu : MonoBehaviour
 
     private void Start()
     {
-        foreach (GameObject handCard in handCards)
+        levelNoText.SetText("Level - " + (UiManager.Instance.currentLevelText + 1));
+
+        for (int i = 0; i < handCards.Count; i++)
         {
             Transform scrollViewTransform = transform;
-            Instantiate(handCard, scrollViewTransform.position, Quaternion.identity, scrollViewTransform);
+            GameObject handCardObj = Instantiate(handCards[i], scrollViewTransform.position, Quaternion.identity, scrollViewTransform);
+            HandCard handCard = handCardObj.GetComponent<HandCard>();
+            
+            if (PlayerPrefs.GetInt("HandCardSetup", 0) == 0)
+            {
+                Debug.Log("First Time");
+             
+                if (i == 0)
+                {
+                    PlayerPrefs.SetInt("HandCard" + handCard.handId, 1);    
+                }
+                else
+                {
+                    PlayerPrefs.SetInt("HandCard" + handCard.handId, 0);
+                }
+                
+            }
+            handCard.cardStatus = PlayerPrefs.GetInt("HandCard" + handCard.handId);
         }
+
+        PlayerPrefs.SetInt("HandCardSetup", 1);
     }
 
     private void Update()
@@ -31,11 +55,6 @@ public class SwipeMenu : MonoBehaviour
         ScrollCards();
     }
 
-    public void SelectHand()
-    {
-        GameManager.Instance.currentHandId = _selectedCard.handId;
-    }
-    
     private void ScrollCards()
     {
         _pos = new float[transform.childCount];
@@ -92,7 +111,29 @@ public class SwipeMenu : MonoBehaviour
 
     public void BuyCard()
     {
+        StorageManager.SaveTotalCoin(StorageManager.GetTotalCoin() - _selectedCard.requiredCash);
         _selectedCard.UpdateCardStatus();
+    }
+    
+    public void SelectHand()
+    {
+        GameManager.Instance.currentHandId = _selectedCard.handId;
+    }
+    
+    private void DisableButton(Button button)
+    {
+        button.interactable = false;
+        button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().DOFade(buttonDisabledAlpha, 0.01f);
+        button.transform.GetComponent<Image>().DOFade(buttonDisabledAlpha, 0.01f);
+    }
+
+    private void EnableButton(Button button)
+    {
+        button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().DOFade(1f, 0.01f);
+        button.transform.GetComponent<Image>().DOFade(1f, 0.01f).OnComplete(() =>
+        {
+            button.interactable = true;
+        });
     }
     
     private void CheckCardRequirementStatus(HandCard handCard)
@@ -104,20 +145,20 @@ public class SwipeMenu : MonoBehaviour
             if (PlayerPrefs.GetInt("HandCard" + handCard.handId) == 0)
             {
                 actionButton.gameObject.SetActive(true);
-                startButton.interactable = false;
+                DisableButton(startButton);
                 if (StorageManager.GetTotalCoin() >= handCard.requiredCash)
                 {
-                    actionButton.interactable = true;   
+                    EnableButton(actionButton);
                 }
                 else
                 {
-                    actionButton.interactable = false;
+                    DisableButton(actionButton);
                 }
             }
             else
             {
                 actionButton.gameObject.SetActive(false);
-                startButton.interactable = true;
+                EnableButton(startButton);
             }
         }
         else
@@ -127,17 +168,17 @@ public class SwipeMenu : MonoBehaviour
 
         if (_selectedCard.requirementType == HandCard.ERequirementType.Time)
         {
-            CheckUnlockTextRequirement(handCard, "Play game for " + handCard.requiredTime + "/" + handCard.requiredTime + " min Time");
+            CheckUnlockTextRequirement(handCard, "Play game for <color=red>" + handCard.requiredTime + "/" + handCard.requiredTime + "</color> min Time");
         }
 
         if (_selectedCard.requirementType == HandCard.ERequirementType.GamePlay)
         {
-            CheckUnlockTextRequirement(handCard, "Play the game " + handCard.requiredMatches + "/" + handCard.requiredMatches + " times");
+            CheckUnlockTextRequirement(handCard, "Play the game <color=red>" + handCard.requiredMatches + "/" + handCard.requiredMatches + "</color> times");
         }
 
         if (_selectedCard.requirementType == HandCard.ERequirementType.Level)
         {
-            CheckUnlockTextRequirement(handCard, "Unlock after reaching level " + handCard.requiredLevelNo);
+            CheckUnlockTextRequirement(handCard, "Unlock after reaching level <color=red>" + handCard.requiredLevelNo + "</color>");
         }
     }
 
@@ -147,11 +188,11 @@ public class SwipeMenu : MonoBehaviour
         {
             unlockInfoText.gameObject.SetActive(true);
             unlockInfoText.SetText(unlockText);
-            startButton.interactable = false;
+            DisableButton(startButton);
         }
         else
         {
-            startButton.interactable = true;
+            EnableButton(startButton);
         }
     }
 }

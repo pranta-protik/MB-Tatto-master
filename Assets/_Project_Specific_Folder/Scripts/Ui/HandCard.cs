@@ -36,13 +36,6 @@ public class HandCard : MonoBehaviour
 
     private void Start()
     {
-        if (PlayerPrefs.GetInt("Played") == 0)
-        {
-            PlayerPrefs.SetInt("HandCard" + handId, 0);
-        }
-
-        cardStatus = PlayerPrefs.GetInt("HandCard" + handId);
-
         if (cardType == ECardType.Model)
         {
             _animator = transform.GetChild(0).GetComponent<Animator>();
