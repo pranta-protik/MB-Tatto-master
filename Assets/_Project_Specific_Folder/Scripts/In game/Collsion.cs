@@ -350,7 +350,7 @@ public class Collsion : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Finish"))
         {
-            GameManager.Instance.IsLevelEnd = true;
+            // GameManager.Instance.IsLevelEnd = true;
             if(StorageManager.Instance.RewardValue <=0)
             {
                 StorageManager.Instance.currentLevel = PlayerPrefs.GetInt("current_scene");
@@ -360,6 +360,28 @@ public class Collsion : MonoBehaviour
             Camera.main.transform.gameObject.SetActive(false);
             cam.gameObject.SetActive(true);
             StartCoroutine(StopRoutine(other.gameObject));
+        }
+
+        if (other.gameObject.CompareTag("DecisionTrigger"))
+        {
+            if(StorageManager.Instance.RewardValue <=0)
+            {
+                StorageManager.Instance.currentLevel = PlayerPrefs.GetInt("current_scene");
+                StorageManager.Instance.currentLevelText = PlayerPrefs.GetInt("current_scene_text", 0);
+                StorageManager.Instance.RewardValue = 500;
+            }
+            
+            GameManager.Instance.GameEnd = true;
+            GameManager.Instance.SetTotalTime();
+            StorageManager.Instance.SetTotalScore(); 
+            StorageManager.Instance.GetTotalScore();
+            
+            GameManager.Instance.p.enabled = false;
+            anim.Play("idle");
+            anim1.Play("idle");
+            c.enabled = false;
+            c1.enabled = false;
+            UiManager.Instance.decisionScreen.SetActive(true);
         }
     }
     public IEnumerator AnimationDelayRoutine()

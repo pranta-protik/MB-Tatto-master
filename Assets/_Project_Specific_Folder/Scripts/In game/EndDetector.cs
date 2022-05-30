@@ -30,7 +30,8 @@ public class EndDetector : MonoBehaviour
         GameManager.Instance.GameEnd = true;
         GameManager.Instance.SetTotalTime();
         yield return new WaitForSeconds(.7f);
-        StorageManager.Instance.SetTotalScore(); StorageManager.Instance.GetTotalScore();
+        StorageManager.Instance.SetTotalScore(); 
+        StorageManager.Instance.GetTotalScore();
         UiManager.Instance.CompleteUI.gameObject.SetActive(true);
     }
 }
