@@ -14,7 +14,7 @@ public class UiManager : Singleton<UiManager>
     public TMP_Text LevelText;
     public GameObject StartUI, EndUi, CompleteUI, FadeIn, UnlockPanel;
     public GameObject TapFastPanel;
-    public GameObject decisionScreen, cashCounter;
+    public GameObject decisionScreen, cashCounter, spinnerScreen;
 
     public GameObject fillbarTimer;
     public Image Timer;
@@ -129,6 +129,13 @@ public class UiManager : Singleton<UiManager>
     public void SellTattoo()
     {
         decisionScreen.SetActive(false);
-        
+        spinnerScreen.SetActive(true);
+        spinnerScreen.transform.GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>().SetText("$" + StorageManager.Instance.RewardValue);
+    }
+
+    public void SpinWheel()
+    {
+        spinnerScreen.transform.GetChild(3).GetComponent<Wheel>().startSpinning = true;
+        spinnerScreen.transform.GetChild(5).GetComponent<Button>().interactable = false;
     }
 }

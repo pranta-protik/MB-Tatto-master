@@ -9,22 +9,15 @@ public class Wheel : MonoBehaviour
 {
     private int _randomValue;
     private float _timeInterval;
-    private bool _startSpinning;
+    public bool startSpinning;
     private int _finalAngle;
-
-
-    private void Start()
-    {
-        _startSpinning = true;
-    }
 
     private void Update()
     {
-        if (_startSpinning)
+        if (startSpinning)
         {
-            Debug.Log("Here");
             StartCoroutine(Spin());
-            _startSpinning = false;
+            startSpinning = false;
         }
     }
 
@@ -39,7 +32,7 @@ public class Wheel : MonoBehaviour
         {
             transform.DORotate(new Vector3(0f, 0f, 22.5f), _timeInterval, RotateMode.WorldAxisAdd).SetEase(Ease.Linear).OnComplete(() =>
             {
-                _timeInterval += Time.unscaledDeltaTime * 0.1f;
+                _timeInterval += Time.unscaledDeltaTime * ((float) i / 100);
                 i++;
 
             });
@@ -64,28 +57,28 @@ public class Wheel : MonoBehaviour
         switch (_finalAngle)
         {
             case 0:
-                Debug.Log("1");
+                Debug.Log("5");
                 break;
             case 45:
                 Debug.Log("2");
                 break;
             case 90:
-                Debug.Log("3");
-                break;
-            case 135:
-                Debug.Log("4");
-                break;
-            case 180:
                 Debug.Log("5");
                 break;
+            case 135:
+                Debug.Log("3");
+                break;
+            case 180:
+                Debug.Log("2");
+                break;
             case 225:
-                Debug.Log("6");
+                Debug.Log("4");
                 break;
             case 270:
-                Debug.Log("7");
+                Debug.Log("2");
                 break;
             case 315:
-                Debug.Log("8");
+                Debug.Log("3");
                 break;
         }
     }
