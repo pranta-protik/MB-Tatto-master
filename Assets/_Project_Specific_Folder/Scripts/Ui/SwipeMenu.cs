@@ -157,7 +157,7 @@ public class SwipeMenu : MonoBehaviour
 
         if (_selectedCard.requirementType == HandCard.ERequirementType.Time)
         {
-            if (PlayerPrefs.GetFloat("TotalTime") >= handCard.requiredTime)
+            if (PlayerPrefs.GetInt("TotalTime") >= handCard.requiredTime)
             {
                 handCard.EnableCard();
             }
@@ -165,7 +165,9 @@ public class SwipeMenu : MonoBehaviour
             {
                 handCard.DisableCard();
             }
-            CheckUnlockTextRequirement(handCard, "Play game for <color=red>" + handCard.requiredTime + "/" + handCard.requiredTime + "</color> min Time");
+
+            CheckUnlockTextRequirement(handCard,
+                "Play game for <color=red>" + (handCard.requiredTime - PlayerPrefs.GetInt("TotalTime")) + "/" + handCard.requiredTime + "</color> min Time");
         }
 
         if (_selectedCard.requirementType == HandCard.ERequirementType.GamePlay)

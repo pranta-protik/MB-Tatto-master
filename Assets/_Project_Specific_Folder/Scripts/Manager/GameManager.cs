@@ -94,11 +94,11 @@ public class GameManager : Singleton<GameManager>
     }
     public void SetTotalTime()
     {
-        float currentTime = PlayerPrefs.GetFloat("TotalTime", 0);
-        float Time= currentTime + timer;
+        int currentTime = PlayerPrefs.GetInt("TotalTime", 0);
+        int Time= currentTime + Mathf.RoundToInt(timer);
        
-        PlayerPrefs.SetFloat("TotalTime", Time);
-        print(PlayerPrefs.GetFloat("TotalTime",0));
+        PlayerPrefs.SetInt("TotalTime", Time);
+        print(PlayerPrefs.GetInt("TotalTime",0));
     }
     public void LoadLvlPrefab()
     {
