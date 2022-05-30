@@ -6,8 +6,20 @@ using UnityEngine.SceneManagement;
 using DG.Tweening;
 using SuperCop.Scripts;
 using PathCreation.Examples;
+using System;
+
+[Serializable]
+public class ItemPacks
+{
+    public GameObject MainHand;
+    public GameObject CopyHand;
+}
 public class GameManager : Singleton<GameManager>
 {
+    public int HandNumber;
+    public List<GameObject> MainHands = new List<GameObject>();
+    public List<GameObject> CopyHands = new List<GameObject>();
+
     [Header("Level prefabs List")]
     public List<GameObject> LevelPrefabs = new List<GameObject>();
     public int levelNo;
@@ -26,17 +38,19 @@ public class GameManager : Singleton<GameManager>
     [Header("GameObject Refs")]
     public GameObject Boss;
     public GameObject TattoMachine;
+    public Camera FakeCam;
 
     [Header("Scripts Refs")]
     public PathCreation.PathCreator pathCreator;
     public PathCreation.Examples.PathFollower p;
     public Collsion CollsionScript;
-
-
+    public TextureManager m_textureManager;
+    public SharkAttack.CameraController cam;
     [Header("Transforms")]
     public GameObject FianlCamPos;
     public Transform FinalCamPos;
     public GameObject PivotParent;
+    public Transform SpwanPos;
 
     public int currentHandId;
 
@@ -45,12 +59,23 @@ public class GameManager : Singleton<GameManager>
 
     public override void Start()
     {
+        GameObject g = Instantiate(MainHands[HandNumber], transform.position, Quaternion.identity);
+        GameObject g1 = Instantiate(CopyHands[HandNumber], transform.position, Quaternion.identity);
+        g.transform.parent = p.transform; g1.transform.parent = p.transform;
+        g.transform.DOScale(SpwanPos.transform.localScale, 0); g1.transform.DOScale(SpwanPos.transform.localScale, 0);
+        g.transform.DOLocalMove(SpwanPos.transform.localPosition, 0); g1.transform.DOLocalMove(SpwanPos.transform.localPosition, 0);
+        g.transform.DOLocalRotate(SpwanPos.transform.localEulerAngles, 0); g1.transform.DOLocalRotate(SpwanPos.transform.localEulerAngles, 0);
+        CollsionScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Collsion>();
+        if (!cam.player) cam.player = GameObject.FindGameObjectWithTag("Player");
+
         SavedLevelNo = PlayerPrefs.GetInt("current_scene_text", 0);
         UiManager.Instance.LevelText.text = (SavedLevelNo + 1).ToString();
         int currentLevel = PlayerPrefs.GetInt("current_scene");
         LoadLvlPrefab();
         p.enabled = false;
         base.Start();
+        TattooVsLevel();
+  
 
     }
     private void Update()
@@ -86,7 +111,7 @@ public class GameManager : Singleton<GameManager>
     public void StartIt()
     {
 
-
+        CollsionScript.StiackerMat.mainTexture = CollsionScript.Default;
         UiManager.Instance.StartUI.SetActive(false);
         PivotParent = GameObject.FindGameObjectWithTag("PivotParent");
         Boss = GameObject.FindGameObjectWithTag("EndIt");
@@ -123,5 +148,41 @@ public class GameManager : Singleton<GameManager>
         Camera.main.DOFieldOfView(58, 1); 
         yield return new WaitForSeconds(1);
         Camera.main.DOFieldOfView(70, .5f);
+    }
+
+    public void TattooVsLevel()
+    {
+
+
+        if (levelNo == 0)
+        {
+            CollsionScript.Default = m_textureManager.DefaultFlower;
+            CollsionScript.Tattos = m_textureManager.FlowerExpensiveTattos;
+            CollsionScript.CheapTttos = m_textureManager.FlowerCheapTattos;
+        }
+        if (levelNo == 1)
+        {
+            CollsionScript.Default = m_textureManager.DefaultSkull;
+            CollsionScript.Tattos = m_textureManager.SkullExpensiveTattos;
+            CollsionScript.CheapTttos = m_textureManager.SkullCheapTattos;
+        }
+        if (levelNo == 2)
+        {
+            CollsionScript.Default = m_textureManager.DefaultPinup;
+            CollsionScript.Tattos = m_textureManager.PinnupGirlExpensiveTattos;
+            CollsionScript.CheapTttos = m_textureManager.PinnupGirlCheapTattos;
+        }
+        if (levelNo == 3)
+        {
+            CollsionScript.Default = m_textureManager.DefaultFlower;
+            CollsionScript.Tattos = m_textureManager.FlowerExpensiveTattos;
+            CollsionScript.CheapTttos = m_textureManager.FlowerCheapTattos;
+        }
+        if (levelNo == 4)
+        {
+            CollsionScript.Default = m_textureManager.DefaultPinup;
+            CollsionScript.Tattos = m_textureManager.PinnupGirlExpensiveTattos;
+            CollsionScript.CheapTttos = m_textureManager.PinnupGirlCheapTattos;
+        }
     }
 }

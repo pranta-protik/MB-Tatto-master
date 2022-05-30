@@ -43,13 +43,19 @@ public class Collsion : MonoBehaviour
     public Color BadGatePopUpColor;
     private void Start()
     {
+        cam = GameManager.Instance.FakeCam;
+        anim = GetComponent<Animator>();
+        anim1 = GameObject.FindGameObjectWithTag("Copy").GetComponent<Animator>();
+        c = GetComponent<Controller>();
+        c1 = GameObject.FindGameObjectWithTag("Copy").GetComponent<Controller>();
+
         OverRideController = new AnimatorOverrideController
         {
             runtimeAnimatorController = anim.runtimeAnimatorController
         };
 
 
-        StiackerMat.mainTexture = Default;
+      
         StiackerMat.DOFade(0, 0);
         Startpos = transform.localPosition;
 
