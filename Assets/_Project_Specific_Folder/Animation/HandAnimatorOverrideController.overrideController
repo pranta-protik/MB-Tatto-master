@@ -9,9 +9,7 @@ AnimatorOverrideController:
   m_Name: HandAnimatorOverrideController
   m_Controller: {fileID: 9100000, guid: b3315f21337e4bd49afa58b857c642b9, type: 2}
   m_Clips:
-  - m_OriginalClip: {fileID: 7400000, guid: faec421642d209442a14d87bbb963259, type: 2}
-    m_OverrideClip: {fileID: 0}
-  - m_OriginalClip: {fileID: 0}
-    m_OverrideClip: {fileID: 0}
   - m_OriginalClip: {fileID: 1827226128182048838, guid: dddf4608fdeb0a9469dacadc9e1d93d6, type: 3}
-    m_OverrideClip: {fileID: 1827226128182048838, guid: 3b41a50659da6ca469c5628775169a17, type: 3}
+    m_OverrideClip: {fileID: 1827226128182048838, guid: 61c19eadfd6a1ca408610d7dbba85310, type: 3}
+  - m_OriginalClip: {fileID: 1827226128182048838, guid: 49f29cdc687d6df46b85d1df5d33dd5e, type: 3}
+    m_OverrideClip: {fileID: 1827226128182048838, guid: 49f29cdc687d6df46b85d1df5d33dd5e, type: 3}
