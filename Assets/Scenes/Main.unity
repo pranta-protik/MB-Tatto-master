@@ -11637,23 +11637,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DontDestroyLoad: 0
   m_IsSingletonLogsEnabled: 0
-  HandNumber: 0
-  MainHands:
-  - {fileID: 8646175687244585552, guid: 0ee54f147c8b94640b2d295d748ff8d5, type: 3}
-  - {fileID: 8734206296889652342, guid: 09b96d6da0680244eb39260b77d0cfdc, type: 3}
-  - {fileID: 3358553028193708659, guid: 887ebc2afac49184793737bed293dd33, type: 3}
-  - {fileID: 6323815545351263265, guid: 770a23465bb6e364788df1ee6b861bb1, type: 3}
-  - {fileID: 8879839752688848452, guid: 7dd4730ff4313d94e85d619b7e45d404, type: 3}
-  - {fileID: 3183749003688621427, guid: 13dd3ac243f8f244b9843df3b87ca582, type: 3}
-  - {fileID: 8168564558253846153, guid: 712931f53612ea945949c73803cf68a9, type: 3}
-  CopyHands:
-  - {fileID: 7832248517353659010, guid: ef35299a3d9d67d4f8f1b8bad8160689, type: 3}
-  - {fileID: 3315578334293931431, guid: e4441a83bfaee664b989166b1538b3f7, type: 3}
-  - {fileID: 5288263670749313606, guid: 589d83ddd9d695443937a57cbf13bec9, type: 3}
-  - {fileID: 8811184687545118970, guid: 83daaa092408a94489c14e0b8c9cb76a, type: 3}
-  - {fileID: 3659479601355783230, guid: 5df2367edeecd1343afb724adeb07a71, type: 3}
-  - {fileID: 7515832935367560734, guid: 2711f0381d69fc64a9f7d094d9ddd43e, type: 3}
-  - {fileID: 3079122292801841587, guid: 2fe6a5243c45ad444a73b2fc08110ae2, type: 3}
+  HandNumber: 5
+  Hands:
+  - MainHand: {fileID: 8646175687244585552, guid: 0ee54f147c8b94640b2d295d748ff8d5, type: 3}
+    CopyHand: {fileID: 7832248517353659010, guid: ef35299a3d9d67d4f8f1b8bad8160689, type: 3}
+  - MainHand: {fileID: 3183749003688621427, guid: 13dd3ac243f8f244b9843df3b87ca582, type: 3}
+    CopyHand: {fileID: 7515832935367560734, guid: 2711f0381d69fc64a9f7d094d9ddd43e, type: 3}
+  - MainHand: {fileID: 6323815545351263265, guid: 770a23465bb6e364788df1ee6b861bb1, type: 3}
+    CopyHand: {fileID: 8811184687545118970, guid: 83daaa092408a94489c14e0b8c9cb76a, type: 3}
+  - MainHand: {fileID: 8879839752688848452, guid: 7dd4730ff4313d94e85d619b7e45d404, type: 3}
+    CopyHand: {fileID: 3659479601355783230, guid: 5df2367edeecd1343afb724adeb07a71, type: 3}
+  - MainHand: {fileID: 8168564558253846153, guid: 712931f53612ea945949c73803cf68a9, type: 3}
+    CopyHand: {fileID: 3079122292801841587, guid: 2fe6a5243c45ad444a73b2fc08110ae2, type: 3}
+  - MainHand: {fileID: 8734206296889652342, guid: 09b96d6da0680244eb39260b77d0cfdc, type: 3}
+    CopyHand: {fileID: 3315578334293931431, guid: e4441a83bfaee664b989166b1538b3f7, type: 3}
+  - MainHand: {fileID: 3358553028193708659, guid: 887ebc2afac49184793737bed293dd33, type: 3}
+    CopyHand: {fileID: 5288263670749313606, guid: 589d83ddd9d695443937a57cbf13bec9, type: 3}
   LevelPrefabs:
   - {fileID: 6828944569146319530, guid: 53f762f87283a1249ad4ed190a4f36ff, type: 3}
   - {fileID: 6828944569146319530, guid: 8714052e04a2d3d46841b5dcd4d6e7ec, type: 3}
