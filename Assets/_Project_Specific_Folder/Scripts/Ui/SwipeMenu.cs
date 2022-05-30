@@ -24,8 +24,17 @@ public class SwipeMenu : MonoBehaviour
     
     private void Start()
     {
+        if (scoreText != null)
+        {
+            scoreText.SetText(StorageManager.GetTotalCoin().ToString());
+        }
+        
         _currentLevel = PlayerPrefs.GetInt("current_scene_text") + 1;
-        levelNoText.SetText("Level - " + _currentLevel);
+      
+        if (levelNoText != null)
+        {
+            levelNoText.SetText("Level - " + _currentLevel);   
+        }
 
         for (int i = 0; i < handCards.Count; i++)
         {

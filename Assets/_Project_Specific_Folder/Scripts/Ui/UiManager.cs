@@ -22,17 +22,13 @@ public class UiManager : Singleton<UiManager>
     
     public bool HapticsAllowed;
     public GameObject enable, disable;
-    
-    public TextMeshProUGUI scoreText;
+
+    public GameObject shop;
     
     int currentLevel;
     public int currentLevelText;
     public override void Start()
     {
-        if (scoreText != null)
-        {
-            scoreText.SetText(StorageManager.GetTotalCoin().ToString());
-        }
         if (btnNext != null)
         {
             btnNext.onClick.AddListener(NextCallBack);   
@@ -53,6 +49,22 @@ public class UiManager : Singleton<UiManager>
      
     }
 
+    public void ShopPopUp()
+    {
+        shop.transform.GetChild(1).gameObject.SetActive(true);
+        shop.transform.GetChild(2).gameObject.SetActive(true);
+        shop.transform.GetChild(2).DOScale(new Vector3(5f, 5f, 5f), 0.3f);
+    }
+
+    public void ClosePopUp()
+    {
+        shop.transform.GetChild(2).DOScale(new Vector3(0f, 0f, 0f), 0.3f).OnComplete(() =>
+        {
+            shop.transform.GetChild(1).gameObject.SetActive(false);
+            shop.transform.GetChild(2).gameObject.SetActive(false); 
+        });
+    }
+    
     public void EnableHaptics()
     {
         enable.gameObject.SetActive(false);
