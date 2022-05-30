@@ -60,6 +60,8 @@ public class SwipeMenu : MonoBehaviour
         }
 
         PlayerPrefs.SetInt("HandCardSetup", 1);
+        
+        // scrollbar.GetComponent<Scrollbar>().value 
     }
 
     private void Update()
