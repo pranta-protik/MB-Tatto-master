@@ -67,6 +67,7 @@ public class Collsion : MonoBehaviour
 
         if(Input.GetMouseButton(0))
         {
+            if(GameManager.Instance.PivotParent != null)
             DOTween.Kill(GameManager.Instance.PivotParent.transform);
             m_isTapping = true;
         }
@@ -364,7 +365,8 @@ public class Collsion : MonoBehaviour
 
         if (other.gameObject.CompareTag("DecisionTrigger"))
         {
-            if(StorageManager.Instance.RewardValue <=0)
+            UiManager.Instance.PointText.transform.parent.gameObject.SetActive(false);
+            if (StorageManager.Instance.RewardValue <=0)
             {
                 StorageManager.Instance.currentLevel = PlayerPrefs.GetInt("current_scene");
                 StorageManager.Instance.currentLevelText = PlayerPrefs.GetInt("current_scene_text", 0);

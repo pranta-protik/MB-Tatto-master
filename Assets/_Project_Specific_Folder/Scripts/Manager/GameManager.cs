@@ -121,7 +121,7 @@ public class GameManager : Singleton<GameManager>
 
     public void StartIt()
     {
-
+        UiManager.Instance.LevelText.transform.parent.gameObject.SetActive(false);
         CollsionScript.StiackerMat.mainTexture = CollsionScript.Default;
         UiManager.Instance.StartUI.SetActive(false);
         PivotParent = GameObject.FindGameObjectWithTag("PivotParent");

@@ -25,7 +25,7 @@ public class UiManager : Singleton<UiManager>
     public bool HapticsAllowed;
     public GameObject enable, disable;
 
-    public GameObject shop;
+    public GameObject shop , PopUp;
     public float popUpScale = 4.5f;
     public float popUpDuration = 0.3f;
     
@@ -77,7 +77,19 @@ public class UiManager : Singleton<UiManager>
         FadeIn.SetActive(false);
      
     }
-
+    public void PopUps()
+    {
+          PopUp.SetActive(true);
+           PopUp.transform. DOScale(new Vector3(popUpScale, popUpScale, popUpScale), popUpDuration);
+    }
+    public void ClosePopUps()
+    {
+        PopUp.transform.DOScale(new Vector3(0f, 0f, 0f), popUpDuration).OnComplete(() =>
+        {
+            PopUp.transform.gameObject.SetActive(false);
+       
+        });
+    }
     public void ShopPopUp()
     {
         shop.transform.GetChild(1).gameObject.SetActive(true);

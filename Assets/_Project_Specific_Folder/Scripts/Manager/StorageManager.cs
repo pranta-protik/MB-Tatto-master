@@ -31,7 +31,7 @@ public class StorageManager : Singleton<StorageManager>
         currentLevel = PlayerPrefs.GetInt("current_scene");
         currentLevelText = PlayerPrefs.GetInt("current_scene_text", 0);
         RewardValue += count;
-
+        UiManager.Instance.PointText.text = RewardValue.ToString();
   
       //  UiManager.Instance.PointText.text = RewardValue.ToString();
 
