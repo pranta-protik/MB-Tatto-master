@@ -172,7 +172,18 @@ public class SwipeMenu : MonoBehaviour
 
         if (_selectedCard.requirementType == HandCard.ERequirementType.GamePlay)
         {
-            CheckUnlockTextRequirement(handCard, "Play the game <color=red>" + handCard.requiredMatches + "/" + handCard.requiredMatches + "</color> times");
+            if (PlayerPrefs.GetInt("GameOpenCount") >= handCard.requiredMatches)
+            {
+                handCard.EnableCard();
+            }
+            else
+            {
+                handCard.DisableCard();
+            }
+
+            CheckUnlockTextRequirement(handCard,
+                "Play the game <color=red>" + (handCard.requiredMatches - PlayerPrefs.GetInt("GameOpenCount")) + "/" + handCard.requiredMatches +
+                "</color> times");
         }
 
         if (_selectedCard.requirementType == HandCard.ERequirementType.Level)
