@@ -438,7 +438,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 5000
+  m_text: $5000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 262f9ecc1553a7549b7400406a90240e, type: 2}
   m_sharedMaterial: {fileID: -3230880913183261791, guid: 262f9ecc1553a7549b7400406a90240e, type: 2}
@@ -465,8 +465,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2421,6 +2421,10 @@ MonoBehaviour:
   FadeIn: {fileID: 0}
   UnlockPanel: {fileID: 0}
   TapFastPanel: {fileID: 0}
+  decisionScreen: {fileID: 0}
+  cashCounter: {fileID: 0}
+  spinnerScreen: {fileID: 0}
+  cashPile: {fileID: 0}
   fillbarTimer: {fileID: 0}
   Timer: {fileID: 0}
   timerInitvalue: 0
@@ -2434,6 +2438,9 @@ MonoBehaviour:
   popUpScale: 4.5
   popUpDuration: 0.3
   currentLevelText: 0
+  shouldUpdateTotalCash: 0
+  targetCashAmount: 0
+  currentCashAmount: 0
 --- !u!1 &1889713669
 GameObject:
   m_ObjectHideFlags: 0
@@ -2981,7 +2988,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -85, y: -40}
-  m_SizeDelta: {x: 130, y: 40}
+  m_SizeDelta: {x: 150, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2054229189
 MonoBehaviour:

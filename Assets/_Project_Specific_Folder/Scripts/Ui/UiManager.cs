@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,6 +31,11 @@ public class UiManager : Singleton<UiManager>
     
     int currentLevel;
     public int currentLevelText;
+
+    public bool shouldUpdateTotalCash;
+    public int targetCashAmount;
+    public float currentCashAmount;
+    
     public override void Start()
     {
         if (btnNext != null)
@@ -44,6 +50,26 @@ public class UiManager : Singleton<UiManager>
             LevelText.text = (currentLevelText + 1).ToString();            
         }
     }
+
+    private void Update()
+    {
+        if (shouldUpdateTotalCash)
+        {
+            if (currentCashAmount < targetCashAmount)
+            {
+                currentCashAmount += Time.unscaledDeltaTime * (targetCashAmount / 3f);
+                currentCashAmount = Mathf.Clamp(currentCashAmount, 0, targetCashAmount);
+                cashCounter.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText("$" + Mathf.RoundToInt(currentCashAmount));
+            }
+            else
+            {
+                cashPile.SetActive(false);
+                UnlockPanel.SetActive(true);
+                shouldUpdateTotalCash = false;
+            }
+        }    
+    }
+
     public IEnumerator FdeDelayRoutine()
     {
         FadeIn.SetActive(true);

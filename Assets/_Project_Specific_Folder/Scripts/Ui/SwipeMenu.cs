@@ -28,7 +28,7 @@ public class SwipeMenu : MonoBehaviour
     {
         if (scoreText != null)
         {
-            scoreText.SetText(StorageManager.GetTotalCoin().ToString());
+            scoreText.SetText("$" + StorageManager.GetTotalCoin());
         }
         
         _currentLevel = PlayerPrefs.GetInt("current_scene_text") + 1;

@@ -11,6 +11,7 @@ public class Wheel : MonoBehaviour
     private float _timeInterval;
     public bool startSpinning;
     private int _finalAngle;
+    private int _multiplier;
 
     private void Update()
     {
@@ -57,28 +58,28 @@ public class Wheel : MonoBehaviour
         switch (_finalAngle)
         {
             case 0:
-                Debug.Log("5");
+                _multiplier = 5;
                 break;
             case 45:
-                Debug.Log("2");
+                _multiplier = 2;
                 break;
             case 90:
-                Debug.Log("5");
+                _multiplier = 5;
                 break;
             case 135:
-                Debug.Log("3");
+                _multiplier = 3;
                 break;
             case 180:
-                Debug.Log("2");
+                _multiplier = 2;
                 break;
             case 225:
-                Debug.Log("4");
+                _multiplier = 4;
                 break;
             case 270:
-                Debug.Log("2");
+                _multiplier = 2;
                 break;
             case 315:
-                Debug.Log("3");
+                _multiplier = 3;
                 break;
         }
         
@@ -93,10 +94,16 @@ public class Wheel : MonoBehaviour
         for (int i = 0; i < UiManager.Instance.cashPile.transform.childCount; i++)
         {
             UiManager.Instance.cashPile.transform.GetChild(i).DOScale(new Vector3(0f, 0f, 0f), 1f);
-            UiManager.Instance.cashPile.transform.GetChild(i).DOLocalMove(new Vector3(153f, 868f, 0f), 1f).OnComplete(() =>
-            {
-                
-            });
+            UiManager.Instance.cashPile.transform.GetChild(i).DOLocalMove(new Vector3(153f, 868f, 0f), 1f);
         }
+        Invoke(nameof(UpdateTotalCash), 1f);
+    }
+
+    private void UpdateTotalCash()
+    {
+        UiManager.Instance.shouldUpdateTotalCash = true;
+        UiManager.Instance.currentCashAmount = StorageManager.GetTotalCoin();
+        UiManager.Instance.targetCashAmount = StorageManager.GetTotalCoin() + StorageManager.Instance.RewardValue * _multiplier;
+        StorageManager.SaveTotalCoin(UiManager.Instance.targetCashAmount);
     }
 }
