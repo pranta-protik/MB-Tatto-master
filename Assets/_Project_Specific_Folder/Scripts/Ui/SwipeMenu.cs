@@ -88,6 +88,7 @@ public class SwipeMenu : MonoBehaviour
             {
                 transform.GetChild(i).localScale = Vector3.Lerp(transform.GetChild(i).localScale, new Vector3(1f, 1f, 1f), 0.1f);
                 _selectedCard = transform.GetChild(i).GetComponent<HandCard>();
+                
                 if (_selectedCard.cardType == HandCard.ECardType.Model)
                 {
                     _selectedCard.PlayRandomAnimation();
@@ -156,6 +157,14 @@ public class SwipeMenu : MonoBehaviour
 
         if (_selectedCard.requirementType == HandCard.ERequirementType.Time)
         {
+            if (PlayerPrefs.GetFloat("TotalTime") >= handCard.requiredTime)
+            {
+                handCard.EnableCard();
+            }
+            else
+            {
+                handCard.DisableCard();
+            }
             CheckUnlockTextRequirement(handCard, "Play game for <color=red>" + handCard.requiredTime + "/" + handCard.requiredTime + "</color> min Time");
         }
 
