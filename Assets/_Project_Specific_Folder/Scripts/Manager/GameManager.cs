@@ -59,7 +59,7 @@ public class GameManager : Singleton<GameManager>
 
     public override void Start()
     {
-
+        HandNumber = PlayerPrefs.GetInt("SelectedHandId");
         SpawnHand(HandNumber);
         SavedLevelNo = PlayerPrefs.GetInt("current_scene_text", 0);
         UiManager.Instance.LevelText.text = (SavedLevelNo + 1).ToString();
