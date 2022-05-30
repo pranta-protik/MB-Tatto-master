@@ -213,7 +213,7 @@ public class SwipeMenu : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("HandCard" + handCard.handId) == 0)
         {
-            actionButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText("+" + handCard.requiredCash);
+            actionButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText("$" + handCard.requiredCash);
             actionButton.gameObject.SetActive(true);
             DisableButton(startButton);
             if (StorageManager.GetTotalCoin() >= handCard.requiredCash)

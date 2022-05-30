@@ -24,6 +24,8 @@ public class UiManager : Singleton<UiManager>
     public GameObject enable, disable;
 
     public GameObject shop;
+    public float popUpScale = 4.5f;
+    public float popUpDuration = 0.3f;
     
     int currentLevel;
     public int currentLevelText;
@@ -53,12 +55,12 @@ public class UiManager : Singleton<UiManager>
     {
         shop.transform.GetChild(1).gameObject.SetActive(true);
         shop.transform.GetChild(2).gameObject.SetActive(true);
-        shop.transform.GetChild(2).DOScale(new Vector3(5f, 5f, 5f), 0.3f);
+        shop.transform.GetChild(2).DOScale(new Vector3(popUpScale, popUpScale, popUpScale), popUpDuration);
     }
 
     public void ClosePopUp()
     {
-        shop.transform.GetChild(2).DOScale(new Vector3(0f, 0f, 0f), 0.3f).OnComplete(() =>
+        shop.transform.GetChild(2).DOScale(new Vector3(0f, 0f, 0f), popUpDuration).OnComplete(() =>
         {
             shop.transform.GetChild(1).gameObject.SetActive(false);
             shop.transform.GetChild(2).gameObject.SetActive(false); 
