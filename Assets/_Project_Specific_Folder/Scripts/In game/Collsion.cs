@@ -81,7 +81,7 @@ public class Collsion : MonoBehaviour
             if (StartTapRoutine)
         {
 
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) || (Input.GetKeyDown("space")))
             {
                 
                 timeLeft = .4f;
