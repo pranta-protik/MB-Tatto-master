@@ -44,13 +44,9 @@ public class EndDetector : MonoBehaviour
 
 
         yield return new WaitForSeconds(3f);
-        GameManager.Instance.FakeCam.gameObject.SetActive(false);
-        GameManager.Instance.cam.gameObject.SetActive(true); GameManager.Instance.cam.transform.DOLocalMoveY(1, 0f);
-        //GameManager.Instance.ca cam.gameObject.SetActive(false);
-        yield return new WaitForSeconds(1f);
-        GameManager.Instance.cam.GetComponent<SharkAttack.CameraController>().enabled = false;
-        GameManager.Instance.cam.transform.DOLocalMoveX(18, 1.2f);
-        GameManager.Instance.cam.transform.DOLocalRotate(new Vector3(0, 90, 0), .8f);
+       
+        GameManager.Instance.FakeCam.gameObject.transform.DOLocalMove(new Vector3(16.03f, 1.31f, 0), .8f);
+        GameManager.Instance.FakeCam.gameObject.transform.DOLocalRotate(new Vector3(0, 90, 0), .8f);       
         GameManager.Instance.LastTattoTexture = GameManager.Instance.CollsionScript.StiackerMat.mainTexture;
         TattoWall.SetActive(true);
 
