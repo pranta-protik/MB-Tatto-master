@@ -16,9 +16,7 @@ namespace SuperCop.Scripts
         private string GetCurrentLevelId()
         {
             int levelNo = PlayerPrefs.GetInt("current_scene", 0);
-            Debug.Log("AAAAAAAAA");
-            Debug.Log(levelNo);
-            
+
             return levelNo > levelIdList.Count - 1
                 ? levelIdList[Random.Range(0, levelIdList.Count)]
                 : levelIdList[levelNo];

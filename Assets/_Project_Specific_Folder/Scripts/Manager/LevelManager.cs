@@ -14,16 +14,21 @@ public class LevelManager : MonoBehaviour
     { 
 
         GameAnalytics.Initialize();
-        gameOpenCount++;
-        PlayerPrefs.SetInt("GameOpenCount", gameOpenCount);
         
         if (PlayerPrefs.GetInt("Played", 0) == 0)
         {
+            gameOpenCount = 0;
             SceneManager.LoadScene("Main");
             PlayerPrefs.SetInt("Played", 1);
         }
         else
+        {
+            gameOpenCount = PlayerPrefs.GetInt("GameOpenCount");
             LoadLastScene();
+        }
+
+        gameOpenCount += 1;
+        PlayerPrefs.SetInt("GameOpenCount", gameOpenCount);
     }
     
     public static void LoadLastScene()
