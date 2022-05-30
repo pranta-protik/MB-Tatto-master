@@ -14,7 +14,7 @@ public class UiManager : Singleton<UiManager>
     public TMP_Text LevelText;
     public GameObject StartUI, EndUi, CompleteUI, FadeIn, UnlockPanel;
     public GameObject TapFastPanel;
-    public GameObject decisionScreen;
+    public GameObject decisionScreen, cashCounter;
 
     public GameObject fillbarTimer;
     public Image Timer;
@@ -124,5 +124,11 @@ public class UiManager : Singleton<UiManager>
     public void Next()
     {
         SceneManager.LoadScene("main");   
+    }
+
+    public void SellTattoo()
+    {
+        decisionScreen.SetActive(false);
+        
     }
 }

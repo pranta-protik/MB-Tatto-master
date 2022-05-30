@@ -382,6 +382,7 @@ public class Collsion : MonoBehaviour
             c.enabled = false;
             c1.enabled = false;
             UiManager.Instance.decisionScreen.SetActive(true);
+            UiManager.Instance.cashCounter.SetActive(true);
         }
     }
     public IEnumerator AnimationDelayRoutine()
