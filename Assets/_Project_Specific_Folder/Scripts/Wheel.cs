@@ -7,68 +7,61 @@ using Random = UnityEngine.Random;
 
 public class Wheel : MonoBehaviour
 {
-    private int randomValue;
-    private float timeInterval;
-    private bool coroutineAllowed;
-    private int finalAngle;
+    private int _randomValue;
+    private float _timeInterval;
+    private bool _startSpinning;
+    private int _finalAngle;
+
+
     private void Start()
     {
-        coroutineAllowed = true;
+        _startSpinning = true;
     }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (_startSpinning)
         {
+            Debug.Log("Here");
             StartCoroutine(Spin());
+            _startSpinning = false;
         }
     }
-    
+
     private IEnumerator Spin()
     {
-        coroutineAllowed = false;
-        randomValue = Random.Range(20, 30);
-        timeInterval = 0.1f;
-        
+        _randomValue = Random.Range(30, 40);
+        Debug.Log(_randomValue);
+        _timeInterval = 0.05f;
+
         int i = 0;
-        Debug.Log(randomValue);
-        Debug.Log(transform.eulerAngles.z);
-        while (i<randomValue)
+        while (i < _randomValue)
         {
-            // transform.DORotate(new Vector3(0, 0, 22.5f), timeInterval, RotateMode.WorldAxisAdd).SetEase(Ease.Linear);
-            transform.DORotate(new Vector3(0f, 0f, 22.5f), timeInterval, RotateMode.WorldAxisAdd).SetEase(Ease.Linear).OnComplete(() =>
+            transform.DORotate(new Vector3(0f, 0f, 22.5f), _timeInterval, RotateMode.WorldAxisAdd).SetEase(Ease.Linear).OnComplete(() =>
             {
-                if (i>Mathf.RoundToInt(randomValue * 0.5f))
-                {
-                    if (timeInterval < 0.1f)
-                    {
-                        timeInterval += Time.deltaTime;   
-                    }
-                }
-                
-                if (i > Mathf.RoundToInt(randomValue * 0.85f))
-                {
-                    if (timeInterval < 0.2f)
-                    {
-                        timeInterval += Time.deltaTime;   
-                    }
-                }
+                _timeInterval += Time.unscaledDeltaTime * 0.1f;
                 i++;
-                
+
             });
-            
-            yield return new WaitForSeconds(timeInterval);
+
+            yield return new WaitForSeconds(_timeInterval);
         }
 
         if (Mathf.RoundToInt(transform.eulerAngles.z) % 45 != 0)
         {
-            transform.Rotate(0f, 0f, 22.5f);
-            // transform.DORotate(new Vector3(0f, 0f, 22.5f), timeInterval, RotateMode.WorldAxisAdd).SetEase(Ease.Linear);
+            transform.DORotate(new Vector3(0f, 0f, 22.5f), _timeInterval, RotateMode.WorldAxisAdd).SetEase(Ease.Linear).OnComplete(GetResultValue);
         }
+        else
+        {
+            GetResultValue();
+        }
+    }
 
-        finalAngle = Mathf.RoundToInt(transform.eulerAngles.z);
-        Debug.Log(finalAngle);
-        switch (finalAngle)
+    private void GetResultValue()
+    {
+        _finalAngle = Mathf.RoundToInt(transform.eulerAngles.z);
+
+        switch (_finalAngle)
         {
             case 0:
                 Debug.Log("1");
@@ -95,7 +88,5 @@ public class Wheel : MonoBehaviour
                 Debug.Log("8");
                 break;
         }
-
-        coroutineAllowed = true;
     }
 }
