@@ -20,12 +20,12 @@ public class SwipeMenu : MonoBehaviour
     private float _scrollPos = 0;
     private float[] _pos;
     private HandCard _selectedCard;
-    private int currentLevel;
+    private int _currentLevel;
     
     private void Start()
     {
-        currentLevel = PlayerPrefs.GetInt("current_scene_text") + 1;
-        levelNoText.SetText("Level - " + currentLevel);
+        _currentLevel = PlayerPrefs.GetInt("current_scene_text") + 1;
+        levelNoText.SetText("Level - " + _currentLevel);
 
         for (int i = 0; i < handCards.Count; i++)
         {
@@ -122,7 +122,7 @@ public class SwipeMenu : MonoBehaviour
     public void SelectHand()
     {
         PlayerPrefs.SetInt("SelectedHandId", _selectedCard.handId);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        UiManager.Instance.Next();
     }
     
     private void DisableButton(Button button)
@@ -166,7 +166,7 @@ public class SwipeMenu : MonoBehaviour
 
         if (_selectedCard.requirementType == HandCard.ERequirementType.Level)
         {
-            if (currentLevel >= handCard.requiredLevelNo)
+            if (_currentLevel >= handCard.requiredLevelNo)
             {
                 handCard.EnableCard();
             }

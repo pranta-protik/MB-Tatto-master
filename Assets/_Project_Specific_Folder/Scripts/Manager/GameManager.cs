@@ -67,6 +67,7 @@ public class GameManager : Singleton<GameManager>
         UiManager.Instance.LevelText.text = (SavedLevelNo + 1).ToString();
         int currentLevel = PlayerPrefs.GetInt("current_scene");
         LoadLvlPrefab();
+        Debug.Log(levelNo);
         p.enabled = false;
         base.Start();
         TattooVsLevel();
