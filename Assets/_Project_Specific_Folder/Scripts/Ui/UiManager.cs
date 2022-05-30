@@ -87,7 +87,7 @@ public class UiManager : Singleton<UiManager>
     public void Next()
     {
         DOTween.KillAll();
-        StorageManager.Instance.SetTotalScore();
+     //   StorageManager.Instance.SetTotalScore();
         if (currentLevel + 1 >= GameManager.Instance.LevelPrefabs.Count)
         {
             PlayerPrefs.SetInt("current_scene", 0); 
