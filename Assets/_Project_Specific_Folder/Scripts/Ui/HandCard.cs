@@ -37,11 +37,14 @@ public class HandCard : MonoBehaviour
     private Animator _animator;
     private static readonly int IsSelected = Animator.StringToHash("isSelected");
 
-    private void Start()
+    private void Awake()
     {
         shineEffect = transform.GetChild(0).gameObject;
-        shineEffect.SetActive(false);
-        
+        shineEffect.SetActive(false);   
+    }
+
+    private void Start()
+    {
         if (cardType == ECardType.Model)
         {
             _animator = transform.GetChild(1).GetComponent<Animator>();
