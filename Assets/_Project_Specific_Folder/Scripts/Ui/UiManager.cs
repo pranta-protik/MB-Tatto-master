@@ -80,14 +80,13 @@ public class UiManager : Singleton<UiManager>
     public void PopUps()
     {
           PopUp.SetActive(true);
-           PopUp.transform. DOScale(new Vector3(popUpScale, popUpScale, popUpScale), popUpDuration);
+          PopUp.transform.GetChild(0).DOScale(new Vector3(popUpScale, popUpScale, popUpScale), popUpDuration);
     }
     public void ClosePopUps()
     {
-        PopUp.transform.DOScale(new Vector3(0f, 0f, 0f), popUpDuration).OnComplete(() =>
+        PopUp.transform.GetChild(0).DOScale(new Vector3(0f, 0f, 0f), popUpDuration).OnComplete(() =>
         {
-            PopUp.transform.gameObject.SetActive(false);
-       
+            PopUp.SetActive(false);
         });
     }
     public void ShopPopUp()
