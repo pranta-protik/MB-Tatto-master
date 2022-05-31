@@ -13057,6 +13057,7 @@ MonoBehaviour:
   DontDestroyLoad: 0
   m_IsSingletonLogsEnabled: 0
   LastTattoTexture: {fileID: 0}
+  TextureName: 
   HandNumber: 4
   Hands:
   - MainHand: {fileID: 8646175687244585552, guid: 0ee54f147c8b94640b2d295d748ff8d5, type: 3}
@@ -13553,10 +13554,14 @@ MonoBehaviour:
     unLockSprite: {fileID: 21300000, guid: 17a426e64f50f414c8c835c781eba624, type: 3}
   - lockSprite: {fileID: 21300000, guid: dbd639cd26d6d7845adfed8cc48c06a9, type: 3}
     unLockSprite: {fileID: 21300000, guid: dc1f748e678f65b4e9848397106263be, type: 3}
-  - lockSprite: {fileID: 21300000, guid: bd8df5c952817404bac7d4b5606aebad, type: 3}
-    unLockSprite: {fileID: 21300000, guid: 91e1adfd63b2a734c8af1cb763777a36, type: 3}
   - lockSprite: {fileID: 21300000, guid: d8ad282fa72caa74995b0dcea75e86a4, type: 3}
     unLockSprite: {fileID: 21300000, guid: 009918254f4a51b45ae226e9a241363f, type: 3}
+  - lockSprite: {fileID: 21300000, guid: 9dd4e4788129e914faaf43f9b83f54c0, type: 3}
+    unLockSprite: {fileID: 21300000, guid: e658e91d335181a468aabcf410038a48, type: 3}
+  - lockSprite: {fileID: 21300000, guid: bd8df5c952817404bac7d4b5606aebad, type: 3}
+    unLockSprite: {fileID: 21300000, guid: 91e1adfd63b2a734c8af1cb763777a36, type: 3}
+  - lockSprite: {fileID: 21300000, guid: 58e6fe957f54cf24d9d42162d8e711cc, type: 3}
+    unLockSprite: {fileID: 21300000, guid: 151cf30a1d7d27a48a3d90d919bb106c, type: 3}
   _increaseAmount: 33
   _duration: 2
 --- !u!1 &1486192617
