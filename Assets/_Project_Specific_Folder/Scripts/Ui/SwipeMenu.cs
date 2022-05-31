@@ -138,7 +138,7 @@ public class SwipeMenu : MonoBehaviour
     public void BuyCard()
     {
         StorageManager.SaveTotalCoin(StorageManager.GetTotalCoin() - _selectedCard.requiredCash);
-        scoreText.SetText(StorageManager.GetTotalCoin().ToString());
+        scoreText.SetText("$" + StorageManager.GetTotalCoin());
         _selectedCard.EnableCard();
     }
     
