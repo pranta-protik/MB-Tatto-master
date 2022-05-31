@@ -106,6 +106,7 @@ GameObject:
   - component: {fileID: 4849105759451903176}
   - component: {fileID: 4849105759451903177}
   - component: {fileID: 4849105759451903178}
+  - component: {fileID: 5836886127701414705}
   m_Layer: 0
   m_Name: Moving Good gate
   m_TagString: Untagged
@@ -156,7 +157,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4849105759451903179}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e623d42ec51bd04d8d2cfa8575190cf, type: 3}
   m_Name: 
@@ -177,6 +178,21 @@ MonoBehaviour:
   IsLocal: 1
   m_InitialPosition: {x: 12.61, y: 0.1674088, z: 0.24}
   FinalPosition: {x: 12.61, y: 0.1674088, z: -0.21}
+--- !u!114 &5836886127701414705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4849105759451903179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 380e12cd5ae3aa947b17e7d8a92f296e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDirection: 0
+  moveAmount: 0.45
+  duration: 1
 --- !u!1 &4849105760009126715
 GameObject:
   m_ObjectHideFlags: 0
