@@ -1051,10 +1051,11 @@ MonoBehaviour:
   requirementType: 1
   handId: 1
   requiredCash: 10000
-  requiredTime: 30
+  requiredTime: 20
   requiredMatches: 0
   requiredLevelNo: 0
   cardStatus: 0
+  shineEffect: {fileID: 0}
   animatorOverrideController: {fileID: 22100000, guid: 18928478db6c65047846211934856a95, type: 2}
   animationClips:
   - {fileID: 1827226128182048838, guid: 91ca61afb489c3443a7b929b16d71a38, type: 3}
