@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +15,11 @@ public class TattoWall : MonoBehaviour
     public TextMeshProUGUI valueText;
 
     [SerializeField] int i;
-
+    private int _targetTattooValue;
+    private float _currentTattooValue;
+    private bool _shouldUpdateCash;
+    private bool _isUnlockScreenEnabled;
+    
     private void Awake()
     {
         count += 1;
@@ -23,22 +28,50 @@ public class TattoWall : MonoBehaviour
         int No = totalEntered +count;
 
         PlayerPrefs.SetInt("totalEntered", No);
-        valueText.SetText("$" + StorageManager.GetTattooValue());
     }
    
     private void Start()
     {
-        StartCoroutine(EnableEndUi());
-
+        _currentTattooValue = StorageManager.GetTattooValue();
+        valueText.SetText("$" + _currentTattooValue);
+        _targetTattooValue = StorageManager.GetTattooValue();
+        _targetTattooValue += StorageManager.Instance.RewardValue;
+        StorageManager.SaveTattooValue(_targetTattooValue);
+        
+        EnableEndUi();
 
         StartCoroutine(Delay());
     }
 
-    public IEnumerator Delay()
+    private void UpdateCash()
     {
+        _shouldUpdateCash = true;
+    }
+    
+    private void Update()
+    {
+        if (_shouldUpdateCash)
+        {
+            if (_currentTattooValue < _targetTattooValue)
+            {
+                _currentTattooValue += Time.unscaledDeltaTime;
+                _currentTattooValue = Mathf.Clamp(_currentTattooValue, 0, _targetTattooValue);
+                valueText.SetText("$" + Mathf.RoundToInt(_currentTattooValue));
+            }
+            else
+            {
+                if (!_isUnlockScreenEnabled)
+                {
+                    Invoke(nameof(EnableUnlockScreen), 0.5f);
+                    _isUnlockScreenEnabled = false;
+                }
+            }
+        }
+    }
 
+    private IEnumerator Delay()
+    {
         i = PlayerPrefs.GetInt("totalEntered", 0);
-
 
         for (int j = 0; j < i; j++)
         {
@@ -50,9 +83,6 @@ public class TattoWall : MonoBehaviour
                 g.transform.GetChild(0).GetComponent<Renderer>().material.mainTexture = m_TattoTex;
                 g.transform.DOLocalRotate(new Vector3(0, -90, 0), 0);
             }
-    
-
-
         }
 
 
@@ -67,13 +97,12 @@ public class TattoWall : MonoBehaviour
                 g.transform.GetChild(0).GetComponent<Renderer>().material.mainTexture = GameManager.Instance.LastTattoTexture;
                 g.transform.DOLocalRotate(new Vector3(0, -90, 0), 0);
             }
-
-
-
         }
-
+        
+        Invoke(nameof(UpdateCash), 1.5f);
     }
-    public IEnumerator EnableEndUi()
+    
+    private void EnableEndUi()
     {
         if (GameManager.Instance.levelNo == 0)
         {
@@ -87,10 +116,10 @@ public class TattoWall : MonoBehaviour
         {
             UiManager.Instance.UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>()._increaseAmount = 33;
         }
-        yield return new WaitForSeconds(5f);
-        
+    }
 
-         UiManager.Instance.UnlockPanel.gameObject.SetActive(true);
-
+    private void EnableUnlockScreen()
+    {
+        UiManager.Instance.UnlockPanel.gameObject.SetActive(true);
     }
 }

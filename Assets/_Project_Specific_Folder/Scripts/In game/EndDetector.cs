@@ -57,10 +57,6 @@ public class EndDetector : MonoBehaviour
         PlayerPrefs.SetString("TattooFrame" + SavedTattooNo, GameManager.Instance.TextureName);
         SavedTattooNo++;
         PlayerPrefs.SetInt("SavedTattooNo" , SavedTattooNo);
-
-        int tattooValue = StorageManager.GetTattooValue();
-        tattooValue += StorageManager.Instance.RewardValue;
-        StorageManager.SaveTattooValue(tattooValue);
         TattoWall.SetActive(true);
         
 
