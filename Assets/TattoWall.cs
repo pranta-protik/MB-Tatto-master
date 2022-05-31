@@ -29,16 +29,22 @@ public class TattoWall : MonoBehaviour
     private void Start()
     {
         StartCoroutine(EnableEndUi());
+        StartCoroutine(Delay());
+    }
+
+    public IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(1f);
 
         i = PlayerPrefs.GetInt("totalEntered", 0);
 
 
         for (int j = 0; j < i; j++)
         {
-            if(j == i - 1)
+            if (j == i - 1)
             {
                 GameObject g = Instantiate(FramePrefab, StartPos.transform.position, Quaternion.identity);
-                g.transform.DOLocalMove(FramePos[j].transform.position, 1.5f); 
+                g.transform.DOLocalMove(FramePos[j].transform.position, 1.5f);
                 g.transform.GetChild(0).GetComponent<Renderer>().material.mainTexture = GameManager.Instance.LastTattoTexture;
                 g.transform.DOLocalRotate(new Vector3(0, -90, 0), 0);
             }
@@ -48,15 +54,9 @@ public class TattoWall : MonoBehaviour
                 g.transform.GetChild(0).GetComponent<Renderer>().material.mainTexture = GameManager.Instance.LastTattoTexture;
                 g.transform.DOLocalRotate(new Vector3(0, -90, 0), 0);
             }
-           
-          
+
+
         }
-
-
-
-
-
-
     }
     public IEnumerator EnableEndUi()
     {
