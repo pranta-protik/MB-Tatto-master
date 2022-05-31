@@ -1,12 +1,22 @@
 fileFormatVersion: 2
-guid: f4a13f8cf7c735e40a618a3e7a8a9c2a
+guid: fb1f66393b9496442892f72d5b35216a
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
     second: Take 001
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hand
+    second: {fileID: 2100000, guid: 35cddd3f4eb3e894d92bdecd65adcf3a, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: player_BuffHand02_Hand_BaseColor
+    second: {fileID: 2800000, guid: 51d207921af8e76488802e70c7152d66, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

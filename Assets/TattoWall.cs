@@ -19,6 +19,7 @@ public class TattoWall : MonoBehaviour
     private float _currentTattooValue;
     private bool _shouldUpdateCash;
     private bool _isUnlockScreenEnabled;
+    private float _incrementAmount;
     
     private void Awake()
     {
@@ -34,8 +35,12 @@ public class TattoWall : MonoBehaviour
     {
         _currentTattooValue = StorageManager.GetTattooValue();
         valueText.SetText("$" + _currentTattooValue);
+        
         _targetTattooValue = StorageManager.GetTattooValue();
         _targetTattooValue += StorageManager.Instance.RewardValue;
+        
+        _incrementAmount = (_targetTattooValue - _currentTattooValue) / 1.5f;
+        
         StorageManager.SaveTattooValue(_targetTattooValue);
         
         EnableEndUi();
@@ -54,7 +59,7 @@ public class TattoWall : MonoBehaviour
         {
             if (_currentTattooValue < _targetTattooValue)
             {
-                _currentTattooValue += Time.unscaledDeltaTime;
+                _currentTattooValue += Time.unscaledDeltaTime * _incrementAmount;
                 _currentTattooValue = Mathf.Clamp(_currentTattooValue, 0, _targetTattooValue);
                 valueText.SetText("$" + Mathf.RoundToInt(_currentTattooValue));
             }
