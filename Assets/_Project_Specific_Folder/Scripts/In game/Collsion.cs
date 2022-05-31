@@ -576,12 +576,19 @@ public class Collsion : MonoBehaviour
 
     public IEnumerator UpdateCheapTextureVideo(GameObject g)
     {
+        MMVibrationManager.Haptic(HapticTypes.MediumImpact);
+        StorageManager.Instance.IncreasePoints(-g.GetComponentInParent<Gates>().Cost);
         GameManager.Instance.Level = g.transform.GetComponentInParent<Gates>().id + 1;
         yield return new WaitForSeconds(.2f);
 
         StiackerMat.DOFade(0, .3f).OnComplete(() =>
         {
             Shine.Play();
+            PopUp.Play("opps");
+
+            PopUp.transform.GetChild(0).gameObject.SetActive(true);
+            PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "-" + g.GetComponentInParent<Gates>().Cost.ToString();
+            PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = BadGatePopUpColor;                
             StiackerMat.mainTexture = CheapTttos[g.transform.GetComponentInParent<Gates>().id];
             StiackerMat.DOFade(1, .5f);
         });
@@ -590,16 +597,24 @@ public class Collsion : MonoBehaviour
 
     public IEnumerator UpdateTextureVideo(GameObject g)
     {
+        MMVibrationManager.Haptic(HapticTypes.MediumImpact);
+        StorageManager.Instance.IncreasePoints(g.GetComponentInParent<Gates>().Cost);
         GameManager.Instance.Level = g.transform.GetComponentInParent<Gates>().id + 1;
         yield return new WaitForSeconds(.2f);
 
         StiackerMat.DOFade(0, .3f).OnComplete(() =>
         {
             Shine.Play();
+            PopUp.Play("opps");
 
+            PopUp.transform.GetChild(0).gameObject.SetActive(true);
+            PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "+" + g.GetComponentInParent<Gates>().Cost.ToString();
+            PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = GoodGatePopUpColor;
+            StiackerMat.mainTexture = Tattos[GameManager.Instance.Level - 1];
             StiackerMat.mainTexture = Tattos[g.transform.GetComponentInParent<Gates>().id];
             StiackerMat.DOFade(1, .5f);
         });
 
     }
+
 }
