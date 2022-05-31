@@ -1748,7 +1748,7 @@ RectTransform:
   m_Children:
   - {fileID: 1097909018}
   m_Father: {fileID: 1624831047}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -13110,6 +13110,7 @@ MonoBehaviour:
   FinalCamPos: {fileID: 2040196989}
   PivotParent: {fileID: 0}
   SpwanPos: {fileID: 2599326341938995233}
+  bossWall: {fileID: 0}
   currentHandId: 0
   timer: 0
 --- !u!114 &1309727764
@@ -14087,7 +14088,7 @@ RectTransform:
   - {fileID: 2025470937}
   - {fileID: 1132225172}
   m_Father: {fileID: 1624831047}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}

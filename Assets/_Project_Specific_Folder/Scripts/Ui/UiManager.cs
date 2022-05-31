@@ -194,12 +194,11 @@ public class UiManager : Singleton<UiManager>
         {
             UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>()._increaseAmount = 33;
         }
-
-
-
+        
         decisionScreen.SetActive(false);
         spinnerScreen.SetActive(true);
         spinnerScreen.transform.GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>().SetText("$" + StorageManager.Instance.RewardValue);
+        spinnerScreen.transform.GetChild(5).DOScale(new Vector3(0.8f, 0.8f, 0.8f), 0.5f).SetLoops(-1, LoopType.Yoyo);
     }
     public void KeepTattooCallBack()
     {
@@ -218,7 +217,11 @@ public class UiManager : Singleton<UiManager>
 
     public void SpinWheel()
     {
-        spinnerScreen.transform.GetChild(3).GetComponent<Wheel>().startSpinning = true;
-        spinnerScreen.transform.GetChild(5).GetComponent<Button>().interactable = false;
+        spinnerScreen.transform.GetChild(5).DOScale(new Vector3(0.7f, 0.7f, 0.7f), 0.1f).OnComplete(() =>
+        {
+            DOTween.KillAll();
+            spinnerScreen.transform.GetChild(3).GetComponent<Wheel>().startSpinning = true;
+            spinnerScreen.transform.GetChild(5).GetComponent<Button>().interactable = false;
+        });
     }
 }
