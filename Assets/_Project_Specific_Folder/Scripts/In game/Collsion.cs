@@ -369,7 +369,7 @@ public class Collsion : MonoBehaviour
 
             // StorageManager.Instance.SetTotalScore(); 
             // StorageManager.Instance.GetTotalScore();
-            
+            GameManager.Instance.bossWall = other.transform.GetChild(0);
             GameManager.Instance.p.enabled = false;
             anim.Play("idle");
             anim1.Play("idle");

@@ -203,19 +203,19 @@ public class UiManager : Singleton<UiManager>
     }
     public void KeepTattooCallBack()
     {
+        GameManager.Instance.bossWall.DOMoveY(-1.5f, 1f).OnComplete(() =>
+        {
+            GameManager.Instance.p.enabled = true;
 
+            GameManager.Instance.CollsionScript.c.enabled = false;
+            GameManager.Instance.CollsionScript.c1.enabled  = false;
+            UiManager.Instance.decisionScreen.SetActive(false);
+            UiManager.Instance.cashCounter.SetActive(false);
+        });
 
-        // StorageManager.Instance.SetTotalScore(); 
-        // StorageManager.Instance.GetTotalScore();
-
-        GameManager.Instance.p.enabled = true;
-
-        GameManager.Instance.CollsionScript. c.enabled = false;
-        GameManager.Instance.CollsionScript.c.enabled  = false;
-        UiManager.Instance.decisionScreen.SetActive(false);
-       // UiManager.Instance.cashCounter.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText("$" + StorageManager.GetTotalCoin());
-        UiManager.Instance.cashCounter.SetActive(false);
+        
     }
+
     public void SpinWheel()
     {
         spinnerScreen.transform.GetChild(3).GetComponent<Wheel>().startSpinning = true;

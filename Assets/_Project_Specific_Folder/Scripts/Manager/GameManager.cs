@@ -54,7 +54,7 @@ public class GameManager : Singleton<GameManager>
     public Transform FinalCamPos;
     public GameObject PivotParent;
     public Transform SpwanPos;
-
+    public Transform bossWall;
     public int currentHandId;
 
     int SavedLevelNo;
