@@ -1034,14 +1034,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   handCards:
   - {fileID: 6292097114636558127, guid: 1f1fabb69d3633d42b7d86e75b9d31fc, type: 3}
-  - {fileID: 6292097114636558127, guid: 51ecab63ea2cf4d4581d8843a323f8ca, type: 3}
   - {fileID: 6292097114636558127, guid: 376dc289d3f42cc459d042594a70aa1a, type: 3}
-  - {fileID: 6292097114636558127, guid: f5f2a758b257edb418d9c850779db4ca, type: 3}
-  - {fileID: 6292097114636558127, guid: fb94d5450f5cb394e892115fd156f840, type: 3}
-  - {fileID: 6292097114636558127, guid: 7b2a44296c1ee634784ea1574d95af7f, type: 3}
-  - {fileID: 6292097114636558127, guid: ae75a025d3c675a4b8952604a3a485bf, type: 3}
   - {fileID: 6292097114636558127, guid: 781aa2a838645cc4f8ac4eceb9c7a497, type: 3}
+  - {fileID: 6292097114636558127, guid: fb94d5450f5cb394e892115fd156f840, type: 3}
+  - {fileID: 6292097114636558127, guid: ae75a025d3c675a4b8952604a3a485bf, type: 3}
   - {fileID: 6292097114636558127, guid: a27374ee6ea26aa41b33d69778d4130d, type: 3}
+  - {fileID: 6292097114636558127, guid: 51ecab63ea2cf4d4581d8843a323f8ca, type: 3}
+  - {fileID: 6292097114636558127, guid: f5f2a758b257edb418d9c850779db4ca, type: 3}
+  - {fileID: 6292097114636558127, guid: 7b2a44296c1ee634784ea1574d95af7f, type: 3}
   scrollbar: {fileID: 318353621}
   levelNoText: {fileID: 929912165}
   startButton: {fileID: 781515083}
@@ -2435,6 +2435,7 @@ MonoBehaviour:
   enable: {fileID: 550057470}
   disable: {fileID: 378696793}
   shop: {fileID: 2135204101}
+  PopUp: {fileID: 0}
   popUpScale: 4.5
   popUpDuration: 0.3
   currentLevelText: 0
