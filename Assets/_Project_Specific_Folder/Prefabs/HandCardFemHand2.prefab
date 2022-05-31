@@ -780,6 +780,7 @@ MonoBehaviour:
   requiredMatches: 2
   requiredLevelNo: 0
   cardStatus: 0
+  shineEffect: {fileID: 0}
   animatorOverrideController: {fileID: 22100000, guid: 18928478db6c65047846211934856a95, type: 2}
   animationClips:
   - {fileID: 1827226128182048838, guid: 91ca61afb489c3443a7b929b16d71a38, type: 3}
@@ -1060,7 +1061,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8499701361930146817, guid: 1271187a0ad14c748a5998b500df6da9, type: 3}
+  - {fileID: 2100000, guid: 5b3b64a028ddbac42b962da0db01e718, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
