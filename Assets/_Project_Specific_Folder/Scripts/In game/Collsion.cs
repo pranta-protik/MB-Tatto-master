@@ -10,21 +10,21 @@ using MoreMountains.NiceVibrations;
 
 public class Collsion : MonoBehaviour
 {
-    
+
     public Controller c, c1;
-    public ParticleSystem HeatEffect , Shine;
+    public ParticleSystem HeatEffect, Shine;
     public Camera cam;
-    public Text LevelText , ColorText;
-    public Animator anim , anim1;
+    public Text LevelText, ColorText;
+    public Animator anim, anim1;
 
     public GameObject SecondHand;
     public Texture Burnt;
-    public Texture[] Tattos , CheapTttos;
+    public Texture[] Tattos, CheapTttos;
     public Texture[] BadBlue, GoodBlue, GoodYellow, BadYellow;
     public Material StiackerMat;
     public int min = 0, max = 255;
     public Texture Default;
-    
+
     [SerializeField] bool IsGoodGate;
     Vector3 Startpos;
     public float Multiplier;
@@ -38,9 +38,10 @@ public class Collsion : MonoBehaviour
     [SerializeField] bool m_isTapping;
 
 
-    public Color GoodGatePopUpColor; 
-    
+    public Color GoodGatePopUpColor;
+
     public Color BadGatePopUpColor;
+
     private void Start()
     {
         cam = GameManager.Instance.FakeCam;
@@ -55,35 +56,37 @@ public class Collsion : MonoBehaviour
         };
 
 
-      
+
         StiackerMat.DOFade(0, 0);
         Startpos = transform.localPosition;
 
     }
+
     private void Update()
     {
         if (GameManager.Instance.IsGameOver)
             return;
 
-        if(Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0))
         {
-            if(GameManager.Instance.PivotParent != null)
-            DOTween.Kill(GameManager.Instance.PivotParent.transform);
+            if (GameManager.Instance.PivotParent != null)
+                DOTween.Kill(GameManager.Instance.PivotParent.transform);
             m_isTapping = true;
         }
+
         if (Input.GetMouseButtonUp(0))
         {
             m_isTapping = false;
         }
 
-   
 
-            if (StartTapRoutine)
+
+        if (StartTapRoutine)
         {
 
             if (Input.GetMouseButtonDown(0) || (Input.GetKeyDown("space")))
             {
-                
+
                 timeLeft = .4f;
                 if (UiManager.Instance.timerInitvalue < 1f)
                 {
@@ -93,8 +96,9 @@ public class Collsion : MonoBehaviour
 
                     UiManager.Instance.Timer.fillAmount = UiManager.Instance.timerInitvalue;
                     GameManager.Instance.PivotParent.GetComponent<MySDK.Rotator>().enabled = false;
-                    GameManager.Instance.PivotParent.transform.DOLocalRotate(new Vector3((GameManager.Instance.PivotParent.transform.eulerAngles.x + UiManager.Instance.timerInitvalue + 8f), 0, 0), .1f);
-                    
+                    GameManager.Instance.PivotParent.transform.DOLocalRotate(
+                        new Vector3((GameManager.Instance.PivotParent.transform.eulerAngles.x + UiManager.Instance.timerInitvalue + 8f), 0, 0), .1f);
+
                     Camera.main.transform.DOShakePosition(1.5f, .01f);
                     Camera.main.DOFieldOfView(50, 2);
                     m_FirstClick = true;
@@ -106,7 +110,7 @@ public class Collsion : MonoBehaviour
             }
             else
             {
-               
+
                 if (m_FirstClick)
                 {
                     timeLeft -= Time.deltaTime;
@@ -114,14 +118,14 @@ public class Collsion : MonoBehaviour
                     if (timeLeft < 0)
                     {
                         timeLeft = .4f;
-                   
+
                         GameManager.Instance.PivotParent.transform.DOLocalRotate(new Vector3(-22, 0, 0), 1.5f).SetEase(Ease.InSine);
-                        
-                        
+
+
                     }
                 }
             }
-           
+
 
             if (UiManager.Instance.timerInitvalue > 0f)
             {
@@ -130,14 +134,16 @@ public class Collsion : MonoBehaviour
             }
         }
     }
+
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("GoodGate"))
-        {;
-          
+        if (other.gameObject.CompareTag("GoodGate"))
+        {
+            ;
+
             StartCoroutine(AnimationDelayRoutine());
             GameManager.Instance.Level++;
-          
+
             IsGoodGate = true;
             other.GetComponent<BoxCollider>().enabled = false;
             if (IsYellow)
@@ -154,7 +160,7 @@ public class Collsion : MonoBehaviour
                 else
                     StartCoroutine(UpdateTexture(other.gameObject));
             }
-            else if(IsBlue)
+            else if (IsBlue)
             {
                 if (GameManager.Instance.Level == 5)
                 {
@@ -169,7 +175,7 @@ public class Collsion : MonoBehaviour
             }
             else
             {
-                if(!GameManager.Instance.IsVideo)
+                if (!GameManager.Instance.IsVideo)
                     StartCoroutine(UpdateTexture(other.gameObject));
                 else
                 {
@@ -178,14 +184,15 @@ public class Collsion : MonoBehaviour
             }
 
         }
+
         if (other.gameObject.CompareTag("BadGate"))
         {
-         
+
 
 
             StartCoroutine(AnimationDelayRoutine());
             GameManager.Instance.Level++;
-          
+
             IsGoodGate = false;
             if (IsYellow)
             {
@@ -200,7 +207,7 @@ public class Collsion : MonoBehaviour
                 }
                 else
                     StartCoroutine(UpdateTextureCheap(other.gameObject));
-           
+
             }
             else if (IsBlue)
             {
@@ -223,34 +230,40 @@ public class Collsion : MonoBehaviour
                     StartCoroutine(UpdateCheapTextureVideo(other.gameObject));
             }
         }
+
         if (other.gameObject.CompareTag("Enemy"))
         {
             HeatEffect.Play();
             MMVibrationManager.Haptic(HapticTypes.MediumImpact);
             StartCoroutine(SpeedSlowDownRoutine());
-            StartCoroutine(UiManager.Instance.FdeDelayRoutine()); Invoke("RemoveMat" , .2f);
-            anim1.Play("Hurt"); anim.Play("Hurt");
-            other.GetComponent<BoxCollider>().enabled = false;
-        }
-        if (other.gameObject.CompareTag("Spike"))
-        {
-
-            GameManager.Instance.Level = other.GetComponent<DownGrade>().DownGradeAmmount;
-            DownGradeTexture(GameManager.Instance.Level , other.gameObject);
-            MMVibrationManager.Haptic(HapticTypes.MediumImpact);
-            StartCoroutine(SpeedSlowDownRoutine());
-            StartCoroutine(UiManager.Instance.FdeDelayRoutine()); 
+            StartCoroutine(UiManager.Instance.FdeDelayRoutine());
+            Invoke("RemoveMat", .2f);
             anim1.Play("Hurt");
             anim.Play("Hurt");
             other.GetComponent<BoxCollider>().enabled = false;
         }
-        if (other.gameObject.CompareTag("Lava"))
+
+        if (other.gameObject.CompareTag("Spike"))
         {
-                  DownGradeTexture(GameManager.Instance.Level , other.gameObject);
+
+            GameManager.Instance.Level = other.GetComponent<DownGrade>().DownGradeAmmount;
+            DownGradeTexture(GameManager.Instance.Level, other.gameObject);
             MMVibrationManager.Haptic(HapticTypes.MediumImpact);
             StartCoroutine(SpeedSlowDownRoutine());
             StartCoroutine(UiManager.Instance.FdeDelayRoutine());
-            anim1.Play("Hurt"); anim.Play("Hurt");
+            anim1.Play("Hurt");
+            anim.Play("Hurt");
+            other.GetComponent<BoxCollider>().enabled = false;
+        }
+
+        if (other.gameObject.CompareTag("Lava"))
+        {
+            DownGradeTexture(GameManager.Instance.Level, other.gameObject);
+            MMVibrationManager.Haptic(HapticTypes.MediumImpact);
+            StartCoroutine(SpeedSlowDownRoutine());
+            StartCoroutine(UiManager.Instance.FdeDelayRoutine());
+            anim1.Play("Hurt");
+            anim.Play("Hurt");
             other.GetComponent<BoxCollider>().enabled = false;
         }
 
@@ -259,7 +272,7 @@ public class Collsion : MonoBehaviour
             StartCoroutine(AnimationDelayRoutine());
             if (IsGoodGate)
             {
-                if(GameManager.Instance.Level == 4)
+                if (GameManager.Instance.Level == 4)
                 {
                     StiackerMat.DOFade(0, .3f).OnComplete(() =>
                     {
@@ -272,10 +285,11 @@ public class Collsion : MonoBehaviour
                 else if (GameManager.Instance.Level == 5)
                 {
                     StiackerMat.DOFade(0, .3f).OnComplete(() =>
-                    { Shine.Play();
+                    {
+                        Shine.Play();
                         StiackerMat.mainTexture = GoodYellow[01];
                         StiackerMat.DOFade(1, .5f);
-                      
+
                     });
                 }
             }
@@ -291,7 +305,7 @@ public class Collsion : MonoBehaviour
                         IsYellow = true;
                     });
                 }
-                else  if (GameManager.Instance.Level == 5)
+                else if (GameManager.Instance.Level == 5)
                 {
                     StiackerMat.DOFade(0, .3f).OnComplete(() =>
                     {
@@ -302,6 +316,7 @@ public class Collsion : MonoBehaviour
                 }
             }
         }
+
         if (other.gameObject.CompareTag("Blue"))
         {
             StartCoroutine(AnimationDelayRoutine());
@@ -317,7 +332,7 @@ public class Collsion : MonoBehaviour
                         IsBlue = true;
                     });
                 }
-             else   if (GameManager.Instance.Level == 5)
+                else if (GameManager.Instance.Level == 5)
                 {
                     StiackerMat.DOFade(0, .3f).OnComplete(() =>
                     {
@@ -339,7 +354,7 @@ public class Collsion : MonoBehaviour
                     });
                     IsBlue = true;
                 }
-               else if (GameManager.Instance.Level == 5)
+                else if (GameManager.Instance.Level == 5)
                 {
                     StiackerMat.DOFade(0, .3f).OnComplete(() =>
                     {
@@ -349,15 +364,17 @@ public class Collsion : MonoBehaviour
                 }
             }
         }
+
         if (other.gameObject.CompareTag("Finish"))
         {
             // GameManager.Instance.IsLevelEnd = true;
-            if(StorageManager.Instance.RewardValue <=0)
+            if (StorageManager.Instance.RewardValue <= 0)
             {
                 StorageManager.Instance.currentLevel = PlayerPrefs.GetInt("current_scene");
                 StorageManager.Instance.currentLevelText = PlayerPrefs.GetInt("current_scene_text", 0);
                 StorageManager.Instance.RewardValue = 500;
             }
+
             Camera.main.transform.gameObject.SetActive(false);
             cam.gameObject.SetActive(true);
             StartCoroutine(StopRoutine(other.gameObject));
@@ -380,11 +397,13 @@ public class Collsion : MonoBehaviour
             UiManager.Instance.cashCounter.SetActive(true);
         }
     }
+
     public IEnumerator AnimationDelayRoutine()
     {
         yield return new WaitForSeconds(.55f);
         RandomAnimationPlay();
     }
+
     public IEnumerator SpeedSlowDownRoutine()
     {
         GameManager.Instance.p.speed = GameManager.Instance.p.MaxSpeed = .8f;
@@ -395,10 +414,12 @@ public class Collsion : MonoBehaviour
 
     public AnimatorOverrideController OverRideController;
     public AnimationClip[] AnimationClips;
-    void RandomAnimationPlay() {
+
+    void RandomAnimationPlay()
+    {
         int index = Random.Range(0, AnimationClips.Length);
         OverRideController["Take 001"] = AnimationClips[index];
-        
+
         anim.runtimeAnimatorController = OverRideController;
         anim1.runtimeAnimatorController = OverRideController;
         anim.SetTrigger("Gesture");
@@ -421,35 +442,39 @@ public class Collsion : MonoBehaviour
         //   }
 
     }
-    public IEnumerator StopRoutine(GameObject g )
+
+    public IEnumerator StopRoutine(GameObject g)
 
     {
         //Camera.main.transform.parent = g.transform.root;
-     
+
 
         c.enabled = false;
         c1.enabled = false;
-        c.transform.DOLocalMoveX(-1.66f, .1f); c1.transform.DOLocalMoveX(-1.66f, .1f);      
-        transform.root.parent = g.transform.root;     
+        c.transform.DOLocalMoveX(-1.66f, .1f);
+        c1.transform.DOLocalMoveX(-1.66f, .1f);
+        transform.root.parent = g.transform.root;
         Camera.main.transform.DOLocalMove(GameManager.Instance.FianlCamPos.transform.localPosition, .7f);
         Camera.main.transform.DOLocalRotate(GameManager.Instance.FianlCamPos.transform.localEulerAngles, .7f);
         yield return new WaitForSeconds(.8f);
-        c.transform. DOLocalRotate(new Vector3(0, -90, 9), .1f); c1.transform.DOLocalRotate(new Vector3(0, -90, 9), .1f);
-        GameManager.Instance. Boss.transform.GetComponent<Animator>().enabled = true;
+        c.transform.DOLocalRotate(new Vector3(0, -90, 9), .1f);
+        c1.transform.DOLocalRotate(new Vector3(0, -90, 9), .1f);
+        GameManager.Instance.Boss.transform.GetComponent<Animator>().enabled = true;
         GameManager.Instance.p.enabled = false;
-        anim.Play("Wrestle"); anim1.Play("Wrestle");
+        anim.Play("Wrestle");
+        anim1.Play("Wrestle");
         MMVibrationManager.Haptic(HapticTypes.MediumImpact);
         Camera.main.transform.parent = g.transform.root;
         transform.parent.parent = GameManager.Instance.PivotParent.transform;
         GameManager.Instance.Boss.transform.parent = GameManager.Instance.PivotParent.transform;
-       
-        this.transform.parent.DOLocalMove(new Vector3(0.296f, -0.038f, -0.038f), .3f).OnComplete(() => { FindObjectOfType<EndDetector>().EndParticle.Play(); }); 
-        Camera.main.transform.DOLocalMoveX(Camera.main.transform.position.x + .5f , .3f);
+
+        this.transform.parent.DOLocalMove(new Vector3(0.296f, -0.038f, -0.038f), .3f).OnComplete(() => { FindObjectOfType<EndDetector>().EndParticle.Play(); });
+        Camera.main.transform.DOLocalMoveX(Camera.main.transform.position.x + .5f, .3f);
         yield return new WaitForSeconds(.2f);
         GameManager.Instance.PivotParent.transform.GetComponent<MySDK.Rotator>().enabled = true;
 
-       
-       
+
+
         StartTapRoutine = true;
         UiManager.Instance.TapFastPanel.SetActive(true);
 
@@ -459,6 +484,7 @@ public class Collsion : MonoBehaviour
     {
         StiackerMat.DOFade(1, 1.8f);
     }
+
     public void RemoveMat()
     {
         StiackerMat.DOFade(0, .3f).OnComplete(() =>
@@ -467,32 +493,34 @@ public class Collsion : MonoBehaviour
             StiackerMat.DOFade(1, .5f);
         });
     }
+
     public IEnumerator UpdateTexture(GameObject g)
     {
         MMVibrationManager.Haptic(HapticTypes.MediumImpact);
         StorageManager.Instance.IncreasePoints(g.GetComponentInParent<Gates>().Cost);
         yield return new WaitForSeconds(.2f);
         StiackerMat.DOFade(0, .3f).OnComplete(() =>
-            {
-                Shine.Play();
+        {
+            Shine.Play();
 
-                PopUp.Play("opps");
-           
-                PopUp.transform.GetChild(0).gameObject.SetActive(true);
-                PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "+" +g.GetComponentInParent<Gates>().Cost.ToString();
-                PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = GoodGatePopUpColor;
-                StiackerMat.mainTexture = Tattos[GameManager.Instance.Level - 1];
-                StiackerMat.DOFade(1, .5f);
-            });
+            PopUp.Play("opps");
+
+            PopUp.transform.GetChild(0).gameObject.SetActive(true);
+            PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "+" + g.GetComponentInParent<Gates>().Cost.ToString();
+            PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = GoodGatePopUpColor;
+            StiackerMat.mainTexture = Tattos[GameManager.Instance.Level - 1];
+            StiackerMat.DOFade(1, .5f);
+        });
 
     }
-    public void DownGradeTexture(int ammount , GameObject g)
+
+    public void DownGradeTexture(int ammount, GameObject g)
     {
         StorageManager.Instance.IncreasePoints(-g.GetComponentInParent<DownGrade>().Cost);
         PopUp.Play("opps");
 
         PopUp.transform.GetChild(0).gameObject.SetActive(true);
-        PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "-" +g.GetComponentInParent<DownGrade>().Cost.ToString();
+        PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "-" + g.GetComponentInParent<DownGrade>().Cost.ToString();
         PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = Color.red;
         MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
         StiackerMat.DOFade(0, .3f).OnComplete(() =>
@@ -509,12 +537,13 @@ public class Collsion : MonoBehaviour
         MMVibrationManager.Haptic(HapticTypes.MediumImpact);
         StorageManager.Instance.IncreasePoints(-g.GetComponentInParent<Gates>().Cost);
         yield return new WaitForSeconds(.2f);
-        StiackerMat.DOFade(0, .3f).OnComplete(() => {
+        StiackerMat.DOFade(0, .3f).OnComplete(() =>
+        {
             Shine.Play();
             PopUp.Play("opps");
-   
+
             PopUp.transform.GetChild(0).gameObject.SetActive(true);
-            PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "-" +g.GetComponentInParent<Gates>().Cost.ToString();
+            PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "-" + g.GetComponentInParent<Gates>().Cost.ToString();
             PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = BadGatePopUpColor;
             StiackerMat.mainTexture = CheapTttos[GameManager.Instance.Level - 1];
             StiackerMat.DOFade(1, .5f);
@@ -526,18 +555,20 @@ public class Collsion : MonoBehaviour
 
         StiackerMat.DOFade(0, .3f).OnComplete(() =>
         {
-            
+
             StiackerMat.mainTexture = Tattos[GameManager.Instance.Level - 1];
             StiackerMat.DOFade(1, .5f);
         });
 
     }
+
     public IEnumerator GoodGateRot()
     {
-       // GetComponent<Controller>().enabled = false;
-        transform.DOLocalMove(new Vector3(-1.35f, 3.15f, -2.67f), .1f); anim1.transform.DOLocalMove(new Vector3(-1.35f, 3.15f, -2.67f), .1f);
+        // GetComponent<Controller>().enabled = false;
+        transform.DOLocalMove(new Vector3(-1.35f, 3.15f, -2.67f), .1f);
+        anim1.transform.DOLocalMove(new Vector3(-1.35f, 3.15f, -2.67f), .1f);
         yield return new WaitForSeconds(1f);
-      //  GetComponent<Controller>().enabled = true;
+        //  GetComponent<Controller>().enabled = true;
         transform.DOLocalMove(Startpos, .1f);
         anim1.transform.DOLocalMove(Startpos, .1f);
 
@@ -546,15 +577,17 @@ public class Collsion : MonoBehaviour
     public IEnumerator UpdateCheapTextureVideo(GameObject g)
     {
         GameManager.Instance.Level = g.transform.GetComponentInParent<Gates>().id + 1;
-           yield return new WaitForSeconds(.2f);
+        yield return new WaitForSeconds(.2f);
 
-        StiackerMat.DOFade(0, .3f).OnComplete(() => {
+        StiackerMat.DOFade(0, .3f).OnComplete(() =>
+        {
             Shine.Play();
             StiackerMat.mainTexture = CheapTttos[g.transform.GetComponentInParent<Gates>().id];
             StiackerMat.DOFade(1, .5f);
         });
 
     }
+
     public IEnumerator UpdateTextureVideo(GameObject g)
     {
         GameManager.Instance.Level = g.transform.GetComponentInParent<Gates>().id + 1;

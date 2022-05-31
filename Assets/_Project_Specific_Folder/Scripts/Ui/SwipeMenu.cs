@@ -114,6 +114,8 @@ public class SwipeMenu : MonoBehaviour
                 transform.GetChild(i).localScale = Vector3.Lerp(transform.GetChild(i).localScale, new Vector3(1f, 1f, 1f), 0.1f);
                 _selectedCard = transform.GetChild(i).GetComponent<HandCard>();
                 
+                _selectedCard.shineEffect.SetActive(true);
+                
                 if (_selectedCard.cardType == HandCard.ECardType.Model)
                 {
                     if (_selectedCard.handId != PlayerPrefs.GetInt("SelectedHandId"))
@@ -135,6 +137,8 @@ public class SwipeMenu : MonoBehaviour
                         transform.GetChild(j).localScale = Vector3.Lerp(transform.GetChild(j).localScale, new Vector3(0.6f, 0.6f, 0.6f), 0.1f);
                         
                         HandCard unselectedCard = transform.GetChild(j).GetComponent<HandCard>();
+                        
+                        unselectedCard.shineEffect.SetActive(false);
                         
                         if (unselectedCard.cardType == HandCard.ECardType.Model)
                         {

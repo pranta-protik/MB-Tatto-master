@@ -28,6 +28,7 @@ public class HandCard : MonoBehaviour
     public int requiredMatches;
     public int requiredLevelNo;
     public int cardStatus;
+    [HideInInspector] public GameObject shineEffect;
     
     [Header("Animation Section")]
     public AnimatorOverrideController animatorOverrideController;
@@ -38,9 +39,12 @@ public class HandCard : MonoBehaviour
 
     private void Start()
     {
+        shineEffect = transform.GetChild(0).gameObject;
+        shineEffect.SetActive(false);
+        
         if (cardType == ECardType.Model)
         {
-            _animator = transform.GetChild(0).GetComponent<Animator>();
+            _animator = transform.GetChild(1).GetComponent<Animator>();
             animatorOverrideController = new AnimatorOverrideController
             {
                 runtimeAnimatorController = _animator.runtimeAnimatorController
