@@ -36,6 +36,7 @@ public class UiManager : Singleton<UiManager>
     public bool shouldUpdateTotalCash;
     public int targetCashAmount;
     public float currentCashAmount;
+    public float incrementAmount;
     
     public override void Start()
     {
@@ -58,7 +59,7 @@ public class UiManager : Singleton<UiManager>
         {
             if (currentCashAmount < targetCashAmount)
             {
-                currentCashAmount += Time.unscaledDeltaTime * (targetCashAmount / 3f);
+                currentCashAmount += Time.unscaledDeltaTime * incrementAmount;
                 currentCashAmount = Mathf.Clamp(currentCashAmount, 0, targetCashAmount);
                 cashCounter.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText("$" + Mathf.RoundToInt(currentCashAmount));
             }

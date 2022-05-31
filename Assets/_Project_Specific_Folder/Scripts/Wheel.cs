@@ -91,12 +91,23 @@ public class Wheel : MonoBehaviour
         UiManager.Instance.spinnerScreen.SetActive(false);
         UiManager.Instance.cashPile.SetActive(true);
 
+        Vector3[] splitPositions = {new Vector3(0f, 0f, 0f), new Vector3(170f, 170f, 0f), new Vector3(-170f, 170f, 0f), new Vector3(170f, -170f, 0f), new Vector3(-170f, -170f, 0f)};
+        
+        float delay = 0f;
+        
         for (int i = 0; i < UiManager.Instance.cashPile.transform.childCount; i++)
         {
-            UiManager.Instance.cashPile.transform.GetChild(i).DOScale(new Vector3(0f, 0f, 0f), 1f);
-            UiManager.Instance.cashPile.transform.GetChild(i).DOLocalMove(new Vector3(153f, 868f, 0f), 1f);
+            Transform cashTransform = UiManager.Instance.cashPile.transform.GetChild(i);
+            float animationDelay = delay;
+            
+            cashTransform.DOLocalMove(splitPositions[i], 0.5f).OnComplete(() =>
+            {
+                cashTransform.DOLocalMove(new Vector3(153f, 868f, 0f), 0.5f).SetEase(Ease.OutSine).SetDelay(animationDelay);
+                cashTransform.DOScale(new Vector3(0f, 0f, 0f), 0.5f).SetEase(Ease.Linear).SetDelay(animationDelay);
+            });
+            delay += 0.2f;
         }
-        Invoke(nameof(UpdateTotalCash), 1f);
+        Invoke(nameof(UpdateTotalCash), 2f);
     }
 
     private void UpdateTotalCash()
@@ -104,6 +115,7 @@ public class Wheel : MonoBehaviour
         UiManager.Instance.shouldUpdateTotalCash = true;
         UiManager.Instance.currentCashAmount = StorageManager.GetTotalCoin();
         UiManager.Instance.targetCashAmount = StorageManager.GetTotalCoin() + StorageManager.Instance.RewardValue * _multiplier;
+        UiManager.Instance.incrementAmount = (UiManager.Instance.targetCashAmount - UiManager.Instance.currentCashAmount) / 1.5f;
         StorageManager.SaveTotalCoin(UiManager.Instance.targetCashAmount);
     }
 }
