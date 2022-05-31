@@ -67,7 +67,7 @@ public class TattoWall : MonoBehaviour
             {
                 if (!_isUnlockScreenEnabled)
                 {
-                    Invoke(nameof(EnableUnlockScreen), 0.5f);
+                    Invoke(nameof(EnableUnlockScreen), 2f);
                     _isUnlockScreenEnabled = false;
                 }
             }
