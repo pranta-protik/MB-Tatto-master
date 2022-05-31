@@ -972,10 +972,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardType: 0
-  requirementType: 0
+  requirementType: 1
   handId: 1
-  requiredCash: 3000
-  requiredTime: 0
+  requiredCash: 10000
+  requiredTime: 30
   requiredMatches: 0
   requiredLevelNo: 0
   cardStatus: 0

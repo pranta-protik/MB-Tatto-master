@@ -89,11 +89,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardType: 1
-  requirementType: 1
+  requirementType: 2
   handId: 7
   requiredCash: 0
   requiredTime: 500
-  requiredMatches: 10
+  requiredMatches: 50
   requiredLevelNo: 6
   cardStatus: 0
   animatorOverrideController: {fileID: 22100000, guid: 18928478db6c65047846211934856a95, type: 2}
