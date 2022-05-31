@@ -332,7 +332,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6584894908158495147, guid: 06ac051a0139a3f4189d92268b84c51e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 67.78
+      value: 19.1
       objectReference: {fileID: 0}
     - target: {fileID: 6584894908158495147, guid: 06ac051a0139a3f4189d92268b84c51e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -839,6 +839,10 @@ PrefabInstance:
     - target: {fileID: 2543004168936607042, guid: 6d3a94def6e979f48a4bae4cff026767, type: 3}
       propertyPath: m_Name
       value: Gate Normal (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2543004168936607042, guid: 6d3a94def6e979f48a4bae4cff026767, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2543004168936607045, guid: 6d3a94def6e979f48a4bae4cff026767, type: 3}
       propertyPath: m_RootOrder
