@@ -70,8 +70,19 @@ public class SwipeMenu : MonoBehaviour
         {
             _pos[i] = _distance * i;
         }
+
+        int selectedHandId = 0;
+
+        for (int i = 0; i < handCards.Count; i++)
+        {
+            if (handCards[i].GetComponent<HandCard>().handId == PlayerPrefs.GetInt("SelectedHandId"))
+            {
+                selectedHandId = i;
+                break;
+            }
+        }
         
-        _scrollPos = _distance * PlayerPrefs.GetInt("SelectedHandId");
+        _scrollPos = _distance * selectedHandId;
     }
 
     private void Update()
