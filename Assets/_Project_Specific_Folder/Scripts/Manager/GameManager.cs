@@ -180,32 +180,74 @@ public class GameManager : Singleton<GameManager>
                    CollsionScript.Default = m_textureManager.DefaultFlower;
                    CollsionScript.Tattos = m_textureManager.FlowerExpensiveTattos;
                    CollsionScript.CheapTttos = m_textureManager.FlowerCheapTattos;
+
+                CollsionScript.GoodBlue = m_textureManager.FlowerGoodBlue;
+                CollsionScript.BadBlue = m_textureManager.FlowerBadBlue;
+
+                CollsionScript.GoodYellow = m_textureManager.FlowerGoodYellow;
+                CollsionScript.BadYellow = m_textureManager.FlowerBadYellow;
                 break;
             case 2:
                    CollsionScript.Default = m_textureManager.DefaultSkull;
                    CollsionScript.Tattos = m_textureManager.SkullExpensiveTattos;
                    CollsionScript.CheapTttos = m_textureManager.SkullCheapTattos;
+
+                CollsionScript.GoodBlue = m_textureManager.SkullGoodBlue;
+                CollsionScript.BadBlue = m_textureManager.SkullBadBlue;
+
+                CollsionScript.GoodYellow = m_textureManager.SkullGoodYellow;
+                CollsionScript.BadYellow = m_textureManager.SkullBadYellow;
+
                 break;
             case 3:
                     CollsionScript.Default = m_textureManager.DefaultPinup;
                     CollsionScript.Tattos = m_textureManager.PinnupGirlExpensiveTattos;
                     CollsionScript.CheapTttos = m_textureManager.PinnupGirlCheapTattos;
+
+
+                CollsionScript.GoodBlue = m_textureManager.PinnupGirlGoodBlue;
+                CollsionScript.BadBlue = m_textureManager.PinnupGirlBadBlue;
+
+                CollsionScript.GoodYellow = m_textureManager.PinnupGirlGoodYellow;
+                CollsionScript.BadYellow = m_textureManager.PinnupGirlBadYellow;
                 break;
             case 4:
                    CollsionScript.Default = m_textureManager.DefaultCeleb;
                     CollsionScript.Tattos = m_textureManager.CelebExpensiveTattos;
                    CollsionScript.CheapTttos = m_textureManager.CelebCheapTattos;
+
+                CollsionScript.GoodBlue = m_textureManager.CelebGoodBlue;
+                CollsionScript.BadBlue = m_textureManager.CelebBadBlue;
+
+                CollsionScript.GoodYellow = m_textureManager.CelebGoodYellow;
+                CollsionScript.BadYellow = m_textureManager.CelebBadYellow;
+
                 break;
             case 5:
                 CollsionScript.Default = m_textureManager.DefaultSkull;
                 CollsionScript.Tattos = m_textureManager.SkullExpensiveTattos;
                 CollsionScript.CheapTttos = m_textureManager.SkullCheapTattos;
 
+                CollsionScript.GoodBlue = m_textureManager.SkullGoodBlue;
+                CollsionScript.BadBlue = m_textureManager.SkullBadBlue;
+
+                CollsionScript.GoodYellow = m_textureManager.SkullGoodYellow;
+                CollsionScript.BadYellow = m_textureManager.SkullBadYellow;
+
                 break;
             case 6:
                 CollsionScript.Default = m_textureManager.defaultCartoon;
                 CollsionScript.Tattos = m_textureManager.CartoonExpensiveTattos;
                 CollsionScript.CheapTttos = m_textureManager.CartoonCheapTattos;
+
+
+
+                CollsionScript.GoodBlue = m_textureManager.CartoonGoodBlue;
+                CollsionScript.BadBlue = m_textureManager.CartoonBadBlue;
+
+                CollsionScript.GoodYellow = m_textureManager.CartoonGoodYellow;
+                CollsionScript.BadYellow = m_textureManager.CartoonBadYellow;
+
                 break;
             case 7:
                 
