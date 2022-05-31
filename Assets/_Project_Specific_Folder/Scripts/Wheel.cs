@@ -105,9 +105,9 @@ public class Wheel : MonoBehaviour
                 cashTransform.DOLocalMove(new Vector3(153f, 868f, 0f), 0.5f).SetEase(Ease.OutSine).SetDelay(animationDelay);
                 cashTransform.DOScale(new Vector3(0f, 0f, 0f), 0.5f).SetEase(Ease.Linear).SetDelay(animationDelay);
             });
-            delay += 0.2f;
+            delay += 0.1f;
         }
-        Invoke(nameof(UpdateTotalCash), 2f);
+        Invoke(nameof(UpdateTotalCash), 1f);
     }
 
     private void UpdateTotalCash()
