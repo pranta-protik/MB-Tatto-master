@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using TMPro;
+
 public class TattoWall : MonoBehaviour
 {
     public List<Transform> FramePos = new List<Transform>();
@@ -9,6 +11,7 @@ public class TattoWall : MonoBehaviour
     public GameObject FramePrefab;
     public Texture[] SavedTattos;
     public int count;
+    public TextMeshProUGUI valueText;
 
     [SerializeField] int i;
 
@@ -20,10 +23,7 @@ public class TattoWall : MonoBehaviour
         int No = totalEntered +count;
 
         PlayerPrefs.SetInt("totalEntered", No);
-
-
-
-
+        valueText.SetText("$" + StorageManager.GetTattooValue());
     }
    
     private void Start()

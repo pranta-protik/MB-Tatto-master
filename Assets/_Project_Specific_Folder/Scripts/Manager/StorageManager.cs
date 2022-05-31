@@ -7,16 +7,18 @@ public class StorageManager : Singleton<StorageManager>
     [SerializeField] int TotalCoinsCount;
     public int RewardValue;
     public int TotalScore;
-    public static int GetTotalCoin() => PlayerPrefs.GetInt("LifeTimeScore");
-    public static void SaveTotalCoin(int amount) => PlayerPrefs.SetInt("LifeTimeScore", amount); 
+    public static int GetTotalCoin() => PlayerPrefs.GetInt("LifeTimeScore", 0);
+    public static int GetTattooValue() => PlayerPrefs.GetInt("CollectedTattooValue", 0);
+    public static void SaveTotalCoin(int amount) => PlayerPrefs.SetInt("LifeTimeScore", amount);
+    public static void SaveTattooValue(int amount) => PlayerPrefs.SetInt("CollectedTattooValue", amount);
     public int currentLevel;
     public int currentLevelText;
     public void SetTotalScore()
     {
-        int currentLifetimeScore = PlayerPrefs.GetInt("LifeTimeScore", 0);
-        int newLifeTimeScore = currentLifetimeScore + RewardValue;
-        PlayerPrefs.SetInt("TotalCoinsCount", newLifeTimeScore + TotalCoinsCount);
-        PlayerPrefs.SetInt("LifeTimeScore", newLifeTimeScore);
+        // int currentLifetimeScore = PlayerPrefs.GetInt("LifeTimeScore", 0);
+        // int newLifeTimeScore = currentLifetimeScore + RewardValue;
+        // PlayerPrefs.SetInt("TotalCoinsCount", newLifeTimeScore + TotalCoinsCount);
+        // PlayerPrefs.SetInt("LifeTimeScore", newLifeTimeScore);
     }
 
 
