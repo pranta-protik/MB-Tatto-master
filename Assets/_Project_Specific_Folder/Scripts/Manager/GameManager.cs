@@ -17,7 +17,7 @@ public class ItemPacks
 public class GameManager : Singleton<GameManager>
 {
     public Texture LastTattoTexture;
-
+    public string TextureName;
 
     public int HandNumber;
     public List<ItemPacks> Hands = new List<ItemPacks>();

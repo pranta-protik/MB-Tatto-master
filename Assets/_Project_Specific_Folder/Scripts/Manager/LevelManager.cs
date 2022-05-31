@@ -17,6 +17,7 @@ public class LevelManager : MonoBehaviour
         
         if (PlayerPrefs.GetInt("Played", 0) == 0)
         {
+            PlayerPrefs.SetInt("SavedTattooNo", 0);
             gameOpenCount = 0;
             SceneManager.LoadScene("Main");
             PlayerPrefs.SetInt("Played", 1);

@@ -8,6 +8,7 @@ public class EndDetector : MonoBehaviour
     public ParticleSystem EndParticle , Confetti;
     public GameObject Cam;
     public GameObject TattoWall;
+    public int SavedTattooNo;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("EndIt"))
@@ -46,8 +47,17 @@ public class EndDetector : MonoBehaviour
         yield return new WaitForSeconds(3f);
        
         GameManager.Instance.FakeCam.gameObject.transform.DOLocalMove(new Vector3(16.03f, 1.31f, 0), .8f);
-        GameManager.Instance.FakeCam.gameObject.transform.DOLocalRotate(new Vector3(0, 90, 0), .8f);       
+        GameManager.Instance.FakeCam.gameObject.transform.DOLocalRotate(new Vector3(0, 90, 0), .8f);
+
+     
+        SavedTattooNo = PlayerPrefs.GetInt("SavedTattooNo");
+
+        GameManager.Instance.TextureName = GameManager.Instance.CollsionScript.StiackerMat.mainTexture.name;
         GameManager.Instance.LastTattoTexture = GameManager.Instance.CollsionScript.StiackerMat.mainTexture;
+        PlayerPrefs.SetString("TattooFrame" + SavedTattooNo, GameManager.Instance.TextureName);
+        SavedTattooNo++;
+        PlayerPrefs.SetInt("SavedTattooNo" , SavedTattooNo);
+ 
         TattoWall.SetActive(true);
 
         // UiManager.Instance.CompleteUI.gameObject.SetActive(true);

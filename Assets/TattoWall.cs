@@ -45,7 +45,9 @@ public class TattoWall : MonoBehaviour
             if (j != i - 1)
             {
                 GameObject g = Instantiate(FramePrefab, FramePos[j].transform.position, Quaternion.identity);
-                g.transform.GetChild(0).GetComponent<Renderer>().material.mainTexture = GameManager.Instance.LastTattoTexture;
+
+                Texture2D m_TattoTex =(Texture2D)Resources.Load(PlayerPrefs.GetString("TattooFrame" + j));
+                g.transform.GetChild(0).GetComponent<Renderer>().material.mainTexture = m_TattoTex;
                 g.transform.DOLocalRotate(new Vector3(0, -90, 0), 0);
             }
     
