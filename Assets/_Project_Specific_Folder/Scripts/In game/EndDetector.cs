@@ -9,6 +9,7 @@ public class EndDetector : MonoBehaviour
     public GameObject Cam;
     public GameObject TattoWall;
     public int SavedTattooNo;
+    public GameObject End;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("EndIt"))
@@ -45,8 +46,8 @@ public class EndDetector : MonoBehaviour
 
 
         yield return new WaitForSeconds(3f);
-       
-        GameManager.Instance.FakeCam.gameObject.transform.DOLocalMove(new Vector3(16.03f, 1.31f, 0), .8f);
+        GameManager.Instance.FakeCam.transform.parent = End.transform;
+        GameManager.Instance.FakeCam.gameObject.transform.DOLocalMove(new Vector3(0.32f, 1.06f, 0.08f), .8f);
         GameManager.Instance.FakeCam.gameObject.transform.DOLocalRotate(new Vector3(0, 90, 0), .8f);
 
      

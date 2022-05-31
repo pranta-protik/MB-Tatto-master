@@ -218,7 +218,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1640809947}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.7749982, y: 1.2807, z: 0.15974125}
+  m_LocalPosition: {x: 6.9889994, y: 1.0389974, z: 0.11274132}
   m_LocalScale: {x: 1, y: 2.5662048, z: 2.6573212}
   m_Children:
   - {fileID: 428820966}
@@ -2033,6 +2033,7 @@ MonoBehaviour:
   Cam: {fileID: 5551814404551859958}
   TattoWall: {fileID: 1640809947}
   SavedTattooNo: 0
+  End: {fileID: 6584894908158495146}
 --- !u!1 &6584894907833973776
 GameObject:
   m_ObjectHideFlags: 0
