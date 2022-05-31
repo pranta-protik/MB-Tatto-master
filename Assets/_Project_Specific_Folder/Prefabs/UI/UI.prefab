@@ -1064,7 +1064,7 @@ RectTransform:
   m_Children:
   - {fileID: 1686840804650939514}
   m_Father: {fileID: 5443246867893128099}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1483,7 +1483,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5443246867893128099}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2246,6 +2246,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 6668516392565879468}
   - {fileID: 1686618581597055888}
   - {fileID: 7530967019587297791}
   - {fileID: 5129942752141524513}
@@ -2481,8 +2482,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2853696328570388636}
-  m_Father: {fileID: 8238653688456475413}
-  m_RootOrder: 2
+  m_Father: {fileID: 5443246867893128099}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -3015,6 +3016,7 @@ MonoBehaviour:
   cashCounter: {fileID: 0}
   spinnerScreen: {fileID: 0}
   cashPile: {fileID: 0}
+  priceTag: {fileID: 0}
   fillbarTimer: {fileID: 0}
   Timer: {fileID: 0}
   timerInitvalue: 0
@@ -3332,7 +3334,6 @@ RectTransform:
   m_Children:
   - {fileID: 6709366680503280307}
   - {fileID: 4145477022531028341}
-  - {fileID: 6668516392565879468}
   m_Father: {fileID: 5766613430466159297}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3824,7 +3825,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7311598934765457123, guid: 6ddc56942a7c684478eed24d8bb9ab2d, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7311598934765457123, guid: 6ddc56942a7c684478eed24d8bb9ab2d, type: 3}
       propertyPath: m_AnchorMax.x
@@ -4003,7 +4004,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4247241677269230919, guid: 1e941ff56bd9b154aa3f6da1a95d8a92, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4247241677269230919, guid: 1e941ff56bd9b154aa3f6da1a95d8a92, type: 3}
       propertyPath: m_AnchorMax.x

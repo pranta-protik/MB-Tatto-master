@@ -140,6 +140,7 @@ public class GameManager : Singleton<GameManager>
         TattoMachine.transform.GetChild(1).gameObject.SetActive(true);
         CollsionScript.ChangeMaterials();
         yield return new WaitForSeconds(.5f);
+        UiManager.Instance.ShowPriceTag();
         TattoMachine.transform.DOMoveZ(-0.98f, .3f);
     
         StartGame = true;

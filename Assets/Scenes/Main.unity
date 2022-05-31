@@ -460,7 +460,7 @@ RectTransform:
   - {fileID: 738469326}
   - {fileID: 629985233}
   m_Father: {fileID: 1624831047}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -506,6 +506,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &361763560 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6668516392565879469, guid: 3346ac0d4432a8646b2781750bc1e10f, type: 3}
+  m_PrefabInstance: {fileID: 897167758}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &378904801
 GameObject:
   m_ObjectHideFlags: 0
@@ -1003,7 +1008,7 @@ RectTransform:
   m_Children:
   - {fileID: 1330534163}
   m_Father: {fileID: 1624831047}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1743,7 +1748,7 @@ RectTransform:
   m_Children:
   - {fileID: 1097909018}
   m_Father: {fileID: 1624831047}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -6826,6 +6831,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1722289122}
     - target: {fileID: 1537974756336503809, guid: 3346ac0d4432a8646b2781750bc1e10f, type: 3}
+      propertyPath: priceTag
+      value: 
+      objectReference: {fileID: 361763560}
+    - target: {fileID: 1537974756336503809, guid: 3346ac0d4432a8646b2781750bc1e10f, type: 3}
       propertyPath: PointText
       value: 
       objectReference: {fileID: 751171942}
@@ -6951,7 +6960,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2853696328570388636, guid: 3346ac0d4432a8646b2781750bc1e10f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 3.7
+      value: 3.7000008
       objectReference: {fileID: 0}
     - target: {fileID: 2853696328570388636, guid: 3346ac0d4432a8646b2781750bc1e10f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -7107,7 +7116,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6668516392565879468, guid: 3346ac0d4432a8646b2781750bc1e10f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -123.3
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 6668516392565879468, guid: 3346ac0d4432a8646b2781750bc1e10f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 6668516392565879469, guid: 3346ac0d4432a8646b2781750bc1e10f, type: 3}
       propertyPath: m_IsActive
@@ -13076,20 +13089,6 @@ MonoBehaviour:
     CopyHand: {fileID: 7515832935367560734, guid: 2711f0381d69fc64a9f7d094d9ddd43e, type: 3}
   LevelPrefabs:
   - {fileID: 6828944569146319530, guid: 53f762f87283a1249ad4ed190a4f36ff, type: 3}
-  - {fileID: 6828944569146319530, guid: 7ec8b25dd32869e43b5d91cce3238c17, type: 3}
-  - {fileID: 6828944569146319530, guid: fc96349c11501eb46a75ab70499848c0, type: 3}
-  - {fileID: 6828944569146319530, guid: 8c92e3ad3e3a9614c8944433f867692f, type: 3}
-  - {fileID: 6828944569146319530, guid: 243ae8db93ce1c74995205e4bd300b12, type: 3}
-  - {fileID: 6828944569146319530, guid: 4b11673b2f2fb6a44b96aae69b551e84, type: 3}
-  - {fileID: 6828944569146319530, guid: 728aa01eba205914abab4c7327b4c9d8, type: 3}
-  - {fileID: 6828944569146319530, guid: 0e332ba5afe6e4b47bed41bd414a8e1e, type: 3}
-  - {fileID: 6828944569146319530, guid: d930e37418952d241b3753496c231a99, type: 3}
-  - {fileID: 6828944569146319530, guid: ab1a87c68d259fd42baadc70d49d929e, type: 3}
-  - {fileID: 6828944569146319530, guid: 07cbbbdbbbfa7144191ad54fac3fa592, type: 3}
-  - {fileID: 6828944569146319530, guid: 411c99335236701498323e6dbd8eea65, type: 3}
-  - {fileID: 6828944569146319530, guid: c5a796f5cc974594b8497cb1a17f6fe2, type: 3}
-  - {fileID: 6828944569146319530, guid: 82a12ca98b20320428f35bb9f5b6ad86, type: 3}
-  - {fileID: 6828944569146319530, guid: 78ee5e44de0ee4f4383de3d09468371e, type: 3}
   levelNo: 0
   currentLvlPrefab: {fileID: 0}
   Level: 0
@@ -14088,7 +14087,7 @@ RectTransform:
   - {fileID: 2025470937}
   - {fileID: 1132225172}
   m_Father: {fileID: 1624831047}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -15393,7 +15392,7 @@ RectTransform:
   - {fileID: 1783072347}
   - {fileID: 567233051}
   m_Father: {fileID: 1624831047}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -15962,7 +15961,7 @@ RectTransform:
   - {fileID: 13908002}
   - {fileID: 4872373297058472258}
   m_Father: {fileID: 1624831047}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}

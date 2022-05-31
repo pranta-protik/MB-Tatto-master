@@ -16,7 +16,8 @@ public class UiManager : Singleton<UiManager>
     public GameObject StartUI, EndUi, CompleteUI, FadeIn, UnlockPanel;
     public GameObject TapFastPanel;
     public GameObject decisionScreen, cashCounter, spinnerScreen, cashPile;
-
+    public GameObject priceTag;
+    
     public GameObject fillbarTimer;
     public Image Timer;
     public float timerInitvalue;
@@ -68,6 +69,11 @@ public class UiManager : Singleton<UiManager>
                 shouldUpdateTotalCash = false;
             }
         }    
+    }
+
+    public void ShowPriceTag()
+    {
+        priceTag.GetComponent<RectTransform>().DOAnchorPos(new Vector2(-123f, -65f), 0.5f);
     }
 
     public IEnumerator FdeDelayRoutine()
