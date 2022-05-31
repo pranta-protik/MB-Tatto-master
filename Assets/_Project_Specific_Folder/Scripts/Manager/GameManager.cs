@@ -115,7 +115,7 @@ public class GameManager : Singleton<GameManager>
 
         currentLvlPrefab = Instantiate(LevelPrefabManager.Instance.GetCurrentLevelPrefab());
 
-
+        SetLevelDetails(currentLvlPrefab);
     }
     public void Reset()
     {
@@ -164,60 +164,129 @@ public class GameManager : Singleton<GameManager>
         yield return new WaitForSeconds(1);
         Camera.main.DOFieldOfView(70, .5f);
     }
+    private void SetLevelDetails(GameObject levelPrefab)
+    {
+        Leveldetails levelDetails = levelPrefab.GetComponent<Leveldetails>();
+        SetTttos(levelDetails);
+    }
+    private void SetTttos(Leveldetails levelDetails)
+    {
+        int TattoSet;
+        TattoSet = levelDetails.Id;
+        switch (TattoSet)
+        {
+            //vehicle set
+            case 1:
+                   CollsionScript.Default = m_textureManager.DefaultFlower;
+                   CollsionScript.Tattos = m_textureManager.FlowerExpensiveTattos;
+                   CollsionScript.CheapTttos = m_textureManager.FlowerCheapTattos;
+                break;
+            case 2:
+                   CollsionScript.Default = m_textureManager.DefaultSkull;
+                   CollsionScript.Tattos = m_textureManager.SkullExpensiveTattos;
+                   CollsionScript.CheapTttos = m_textureManager.SkullCheapTattos;
+                break;
+            case 3:
+                    CollsionScript.Default = m_textureManager.DefaultPinup;
+                    CollsionScript.Tattos = m_textureManager.PinnupGirlExpensiveTattos;
+                    CollsionScript.CheapTttos = m_textureManager.PinnupGirlCheapTattos;
+                break;
+            case 4:
+                   CollsionScript.Default = m_textureManager.DefaultCeleb;
+                    CollsionScript.Tattos = m_textureManager.CelebExpensiveTattos;
+                   CollsionScript.CheapTttos = m_textureManager.CelebCheapTattos;
+                break;
+            case 5:
+                CollsionScript.Default = m_textureManager.DefaultSkull;
+                CollsionScript.Tattos = m_textureManager.SkullExpensiveTattos;
+                CollsionScript.CheapTttos = m_textureManager.SkullCheapTattos;
 
+                break;
+            case 6:
+                CollsionScript.Default = m_textureManager.defaultCartoon;
+                CollsionScript.Tattos = m_textureManager.CartoonExpensiveTattos;
+                CollsionScript.CheapTttos = m_textureManager.CartoonCheapTattos;
+                break;
+            case 7:
+                
+                break;
+        }
+
+
+    }
     public void TattooVsLevel()
     {
 
 
-        if (levelNo == 0)
-        {
-            CollsionScript.Default = m_textureManager.DefaultFlower;
-            CollsionScript.Tattos = m_textureManager.FlowerExpensiveTattos;
-            CollsionScript.CheapTttos = m_textureManager.FlowerCheapTattos;
-        }
-        if (levelNo == 1)
-        {
-            CollsionScript.Default = m_textureManager.DefaultSkull;
-            CollsionScript.Tattos = m_textureManager.SkullExpensiveTattos;
-            CollsionScript.CheapTttos = m_textureManager.SkullCheapTattos;
-        }
-        if (levelNo == 2)
-        {
-            CollsionScript.Default = m_textureManager.DefaultPinup;
-            CollsionScript.Tattos = m_textureManager.PinnupGirlExpensiveTattos;
-            CollsionScript.CheapTttos = m_textureManager.PinnupGirlCheapTattos;
-        }
-        if (levelNo == 3)
-        {
-            CollsionScript.Default = m_textureManager.DefaultFlower;
-            CollsionScript.Tattos = m_textureManager.FlowerExpensiveTattos;
-            CollsionScript.CheapTttos = m_textureManager.FlowerCheapTattos;
-        }
-        if (levelNo == 4)
-        {
-            CollsionScript.Default = m_textureManager.DefaultPinup;
-            CollsionScript.Tattos = m_textureManager.PinnupGirlExpensiveTattos;
-            CollsionScript.CheapTttos = m_textureManager.PinnupGirlCheapTattos;
-        }
-        if (levelNo == 7)
-        {
-            CollsionScript.Default = m_textureManager.DefaultCeleb;
-            CollsionScript.Tattos = m_textureManager.CelebExpensiveTattos;
-            CollsionScript.CheapTttos = m_textureManager.CelebCheapTattos;
-        }
-        if (levelNo == 10)
-        {
-            CollsionScript.Default = m_textureManager.defaultCartoon;
-            CollsionScript.Tattos = m_textureManager.CartoonExpensiveTattos;
-            CollsionScript.CheapTttos = m_textureManager.CartoonCheapTattos;
+        //if (levelNo == 0)
+        //{
+        //    CollsionScript.Default = m_textureManager.DefaultFlower;
+        //    CollsionScript.Tattos = m_textureManager.FlowerExpensiveTattos;
+        //    CollsionScript.CheapTttos = m_textureManager.FlowerCheapTattos;
+        //}
+        //if (levelNo == 1)
+        //{
+        //    CollsionScript.Default = m_textureManager.DefaultSkull;
+        //    CollsionScript.Tattos = m_textureManager.SkullExpensiveTattos;
+        //    CollsionScript.CheapTttos = m_textureManager.SkullCheapTattos;
+        //}
+        //if (levelNo == 2)
+        //{
+        //    CollsionScript.Default = m_textureManager.DefaultPinup;
+        //    CollsionScript.Tattos = m_textureManager.PinnupGirlExpensiveTattos;
+        //    CollsionScript.CheapTttos = m_textureManager.PinnupGirlCheapTattos;
+        //}
+        //if (levelNo == 3)
+        //{
+        //    CollsionScript.Default = m_textureManager.DefaultFlower;
+        //    CollsionScript.Tattos = m_textureManager.FlowerExpensiveTattos;
+        //    CollsionScript.CheapTttos = m_textureManager.FlowerCheapTattos;
+        //}
+        //if (levelNo == 4)
+        //{
+        //    CollsionScript.Default = m_textureManager.DefaultPinup;
+        //    CollsionScript.Tattos = m_textureManager.PinnupGirlExpensiveTattos;
+        //    CollsionScript.CheapTttos = m_textureManager.PinnupGirlCheapTattos;
+        //}
+        //if (levelNo == 5)
+        //{
+        //    CollsionScript.Default = m_textureManager.DefaultCeleb;
+        //    CollsionScript.Tattos = m_textureManager.CelebExpensiveTattos;
+        //    CollsionScript.CheapTttos = m_textureManager.CelebCheapTattos;
+        //}
+        //if (levelNo ==6)
+        //{
+        //    CollsionScript.Default = m_textureManager.DefaultFlower;
+        //    CollsionScript.Tattos = m_textureManager.FlowerExpensiveTattos;
+        //    CollsionScript.CheapTttos = m_textureManager.FlowerCheapTattos;
+        //}
+        //if (levelNo == 7)
+        //{
+        //    CollsionScript.Default = m_textureManager.DefaultSkull;
+        //    CollsionScript.Tattos = m_textureManager.SkullExpensiveTattos;
+        //    CollsionScript.CheapTttos = m_textureManager.SkullCheapTattos;
+        //}
+        //if (levelNo == 8)
+        //{
+        //    CollsionScript.Default = m_textureManager.DefaultSkull;
+        //    CollsionScript.Tattos = m_textureManager.SkullExpensiveTattos;
+        //    CollsionScript.CheapTttos = m_textureManager.SkullCheapTattos;
+        //}
 
-        }
-        if (levelNo == 13)
-        {
-            CollsionScript.Default = m_textureManager.DefaultMoney;
-            CollsionScript.Tattos = m_textureManager.MoneyExpensiveTattos;
-            CollsionScript.CheapTttos = m_textureManager.MoneyCheapTattos;
-        }
+
+        //if (levelNo == 10)
+        //{
+        //    CollsionScript.Default = m_textureManager.defaultCartoon;
+        //    CollsionScript.Tattos = m_textureManager.CartoonExpensiveTattos;
+        //    CollsionScript.CheapTttos = m_textureManager.CartoonCheapTattos;
+
+        //}
+        //if (levelNo == 13)
+        //{
+        //    CollsionScript.Default = m_textureManager.DefaultMoney;
+        //    CollsionScript.Tattos = m_textureManager.MoneyExpensiveTattos;
+        //    CollsionScript.CheapTttos = m_textureManager.MoneyCheapTattos;
+        //}
 
 
     }
