@@ -19,7 +19,7 @@ public class LevelManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("SavedTattooNo", 0);
             gameOpenCount = 0;
-            SceneManager.LoadScene("Main");
+            SceneManager.LoadScene("Splash");
             PlayerPrefs.SetInt("Played", 1);
         }
         else
