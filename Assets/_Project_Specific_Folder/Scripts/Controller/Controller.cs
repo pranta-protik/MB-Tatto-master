@@ -60,11 +60,11 @@ public class Controller : MonoBehaviour
         m_Cam = Camera.main;
         rb = GetComponent<Rigidbody>();
         positionX = 0f;
-        positionY = transform.localPosition.y;
-        originPos = transform.localPosition;
-      
+        positionY = 3.1549f;
+        originPos = new Vector3(0, 3.1549f, 3.118799f);
 
-       
+
+
 
         cam = Camera.main;
         direction = State.middle;

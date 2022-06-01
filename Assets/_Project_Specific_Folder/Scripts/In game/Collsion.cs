@@ -516,6 +516,7 @@ public class Collsion : MonoBehaviour
 
     public void DownGradeTexture(int ammount, GameObject g)
     {
+        
         StorageManager.Instance.IncreasePoints(-g.GetComponentInParent<DownGrade>().Cost);
         PopUp.Play("opps");
 
@@ -526,7 +527,7 @@ public class Collsion : MonoBehaviour
         StiackerMat.DOFade(0, .3f).OnComplete(() =>
         {
             Shine.Play();
-            StiackerMat.mainTexture = Tattos[GameManager.Instance.Level];
+            StiackerMat.mainTexture = CheapTttos[GameManager.Instance.Level];
             StiackerMat.DOFade(1, .5f);
         });
     }
@@ -610,7 +611,7 @@ public class Collsion : MonoBehaviour
             PopUp.transform.GetChild(0).gameObject.SetActive(true);
             PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "+" + g.GetComponentInParent<Gates>().Cost.ToString();
             PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = GoodGatePopUpColor;
-            StiackerMat.mainTexture = Tattos[GameManager.Instance.Level - 1];
+
             StiackerMat.mainTexture = Tattos[g.transform.GetComponentInParent<Gates>().id];
             StiackerMat.DOFade(1, .5f);
         });
