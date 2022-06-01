@@ -85,6 +85,15 @@ public class GameManager : Singleton<GameManager>
            
         }
 
+        if (Boss == null)
+        {
+            Boss = GameObject.Find("npc_Boss");
+        }
+
+        if (PivotParent == null)
+        {
+            PivotParent = GameObject.Find("Parent");
+        }
 
         if (Path == null)
         {
@@ -129,12 +138,13 @@ public class GameManager : Singleton<GameManager>
         UiManager.Instance.StartUI.SetActive(false);
         PivotParent = GameObject.FindGameObjectWithTag("PivotParent");
         Boss = GameObject.FindGameObjectWithTag("EndIt");
-        p.gameObject.transform.DOMoveX(.1f, .5f).OnComplete(() => { 
+        p.gameObject.transform.DOMoveX(.1f, .5f).OnComplete(() =>
+        {
             TattoMachine.transform.GetComponentInChildren<Animator>().enabled = true;
             StartCoroutine(DelayStart());
         });
-                                                                                               
-        }
+    }
+
     IEnumerator DelayStart()
     {
         TattoMachine.transform.GetChild(1).gameObject.SetActive(true);
@@ -169,6 +179,7 @@ public class GameManager : Singleton<GameManager>
         Leveldetails levelDetails = levelPrefab.GetComponent<Leveldetails>();
         SetTttos(levelDetails);
     }
+
     private void SetTttos(Leveldetails levelDetails)
     {
         int TattoSet;
@@ -177,9 +188,9 @@ public class GameManager : Singleton<GameManager>
         {
             //vehicle set
             case 1:
-                   CollsionScript.Default = m_textureManager.DefaultFlower;
-                   CollsionScript.Tattos = m_textureManager.FlowerExpensiveTattos;
-                   CollsionScript.CheapTttos = m_textureManager.FlowerCheapTattos;
+                CollsionScript.Default = m_textureManager.DefaultFlower;
+                CollsionScript.Tattos = m_textureManager.FlowerExpensiveTattos;
+                CollsionScript.CheapTttos = m_textureManager.FlowerCheapTattos;
 
                 CollsionScript.GoodBlue = m_textureManager.FlowerGoodBlue;
                 CollsionScript.BadBlue = m_textureManager.FlowerBadBlue;
@@ -188,9 +199,9 @@ public class GameManager : Singleton<GameManager>
                 CollsionScript.BadYellow = m_textureManager.FlowerBadYellow;
                 break;
             case 2:
-                   CollsionScript.Default = m_textureManager.DefaultSkull;
-                   CollsionScript.Tattos = m_textureManager.SkullExpensiveTattos;
-                   CollsionScript.CheapTttos = m_textureManager.SkullCheapTattos;
+                CollsionScript.Default = m_textureManager.DefaultSkull;
+                CollsionScript.Tattos = m_textureManager.SkullExpensiveTattos;
+                CollsionScript.CheapTttos = m_textureManager.SkullCheapTattos;
 
                 CollsionScript.GoodBlue = m_textureManager.SkullGoodBlue;
                 CollsionScript.BadBlue = m_textureManager.SkullBadBlue;
@@ -200,9 +211,9 @@ public class GameManager : Singleton<GameManager>
 
                 break;
             case 3:
-                    CollsionScript.Default = m_textureManager.DefaultPinup;
-                    CollsionScript.Tattos = m_textureManager.PinnupGirlExpensiveTattos;
-                    CollsionScript.CheapTttos = m_textureManager.PinnupGirlCheapTattos;
+                CollsionScript.Default = m_textureManager.DefaultPinup;
+                CollsionScript.Tattos = m_textureManager.PinnupGirlExpensiveTattos;
+                CollsionScript.CheapTttos = m_textureManager.PinnupGirlCheapTattos;
 
 
                 CollsionScript.GoodBlue = m_textureManager.PinnupGirlGoodBlue;
@@ -212,9 +223,9 @@ public class GameManager : Singleton<GameManager>
                 CollsionScript.BadYellow = m_textureManager.PinnupGirlBadYellow;
                 break;
             case 4:
-                   CollsionScript.Default = m_textureManager.DefaultCeleb;
-                    CollsionScript.Tattos = m_textureManager.CelebExpensiveTattos;
-                   CollsionScript.CheapTttos = m_textureManager.CelebCheapTattos;
+                CollsionScript.Default = m_textureManager.DefaultCeleb;
+                CollsionScript.Tattos = m_textureManager.CelebExpensiveTattos;
+                CollsionScript.CheapTttos = m_textureManager.CelebCheapTattos;
 
                 CollsionScript.GoodBlue = m_textureManager.CelebGoodBlue;
                 CollsionScript.BadBlue = m_textureManager.CelebBadBlue;
@@ -250,12 +261,11 @@ public class GameManager : Singleton<GameManager>
 
                 break;
             case 7:
-                
+
                 break;
         }
-
-
     }
+
     public void TattooVsLevel()
     {
 

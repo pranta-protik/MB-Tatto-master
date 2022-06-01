@@ -70,7 +70,9 @@ public class Collsion : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             if (GameManager.Instance.PivotParent != null)
-                DOTween.Kill(GameManager.Instance.PivotParent.transform);
+            {
+                DOTween.Kill(GameManager.Instance.PivotParent.transform);   
+            }
             m_isTapping = true;
         }
 
@@ -86,7 +88,6 @@ public class Collsion : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0) || (Input.GetKeyDown("space")))
             {
-
                 timeLeft = .4f;
                 if (UiManager.Instance.timerInitvalue < 1f)
                 {
@@ -103,10 +104,6 @@ public class Collsion : MonoBehaviour
                     Camera.main.DOFieldOfView(50, 2);
                     m_FirstClick = true;
                 }
-
-
-
-
             }
             else
             {
@@ -120,8 +117,6 @@ public class Collsion : MonoBehaviour
                         timeLeft = .4f;
 
                         GameManager.Instance.PivotParent.transform.DOLocalRotate(new Vector3(-22, 0, 0), 1.5f).SetEase(Ease.InSine);
-
-
                     }
                 }
             }
@@ -139,8 +134,6 @@ public class Collsion : MonoBehaviour
     {
         if (other.gameObject.CompareTag("GoodGate"))
         {
-            ;
-
             StartCoroutine(AnimationDelayRoutine());
             GameManager.Instance.Level++;
 
@@ -377,39 +370,69 @@ public class Collsion : MonoBehaviour
             }
 
             Camera.main.transform.gameObject.SetActive(false);
-            cam.gameObject.SetActive(true); GameManager.Instance.p.enabled = false;
+            cam.gameObject.SetActive(true);
+            
+            // StartCoroutine(StopRoutine(other.gameObject));
+            
             c.enabled = false;
             c1.enabled = false;
+            GameManager.Instance.p.enabled = false;
+            
             c.transform.DOLocalMoveX(-1.66f, .1f);
             c1.transform.DOLocalMoveX(-1.66f, .1f);
             transform.root.parent = other.transform.root;
-            Camera.main.transform.DOLocalMove(GameManager.Instance.FianlCamPos.transform.localPosition, .7f);
-            Camera.main.transform.DOLocalRotate(GameManager.Instance.FianlCamPos.transform.localEulerAngles, .7f).OnComplete(() => {
-
-                c.transform.DOLocalRotate(new Vector3(0, -90, 9), .1f);
-                c1.transform.DOLocalRotate(new Vector3(0, -90, 9), .1f);
-                GameManager.Instance.Boss.transform.GetComponent<Animator>().enabled = true;
-               
+            cam.transform.DOLocalMove(GameManager.Instance.FinalCamPos.transform.localPosition, 0.7f);
+            cam.transform.DOLocalRotate(GameManager.Instance.FinalCamPos.transform.localEulerAngles, 0.7f).OnComplete(() =>
+            {
+                c.transform.DOLocalRotate(new Vector3(0f, -90f, 9f), 0.1f);
+                c1.transform.DOLocalRotate(new Vector3(0f, -90f, 9f), 0.1f);
                 anim.Play("Wrestle");
                 anim1.Play("Wrestle");
                 MMVibrationManager.Haptic(HapticTypes.MediumImpact);
-                Camera.main.transform.parent = other.transform.root;
+                cam.transform.parent = other.transform.root;
                 transform.parent.parent = GameManager.Instance.PivotParent.transform;
                 GameManager.Instance.Boss.transform.parent = GameManager.Instance.PivotParent.transform;
-
-                this.transform.parent.DOLocalMove(new Vector3(0.296f, -0.038f, -0.038f), .3f).OnComplete(() => { FindObjectOfType<EndDetector>().EndParticle.Play(); });
-                Camera.main.transform.DOLocalMoveX(Camera.main.transform.position.x + 2.5f, .3f).OnComplete(() => {
-
+                GameManager.Instance.Boss.transform.GetComponent<Animator>().enabled = true;
+                
+                transform.parent.DOLocalMove(new Vector3(0.296f, -0.038f, -0.038f), 0.3f).OnComplete(() =>
+                {
+                    FindObjectOfType<EndDetector>().EndParticle.Play();
+                });
+                
+                cam.transform.DOLocalMoveX(cam.transform.position.x + 2.5f, 0.3f).OnComplete(() =>
+                {
                     GameManager.Instance.PivotParent.transform.GetComponent<MySDK.Rotator>().enabled = true;
                     StartTapRoutine = true;
                     UiManager.Instance.TapFastPanel.SetActive(true);
-
                 });
-
-
-
             });
 
+            // Camera.main.transform.DOLocalMove(GameManager.Instance.FianlCamPos.transform.localPosition, .7f);
+            // Camera.main.transform.DOLocalRotate(GameManager.Instance.FianlCamPos.transform.localEulerAngles, .7f).OnComplete(() => {
+            //
+            //     c.transform.DOLocalRotate(new Vector3(0, -90, 9), .1f);
+            //     c1.transform.DOLocalRotate(new Vector3(0, -90, 9), .1f);
+            //     GameManager.Instance.Boss.transform.GetComponent<Animator>().enabled = true;
+            //    
+            //     anim.Play("Wrestle");
+            //     anim1.Play("Wrestle");
+            //     MMVibrationManager.Haptic(HapticTypes.MediumImpact);
+            //     Camera.main.transform.parent = other.transform.root;
+            //     transform.parent.parent = GameManager.Instance.PivotParent.transform;
+            //     GameManager.Instance.Boss.transform.parent = GameManager.Instance.PivotParent.transform;
+            //
+            //     this.transform.parent.DOLocalMove(new Vector3(0.296f, -0.038f, -0.038f), .3f).OnComplete(() => { FindObjectOfType<EndDetector>().EndParticle.Play(); });
+            //     Camera.main.transform.DOLocalMoveX(Camera.main.transform.position.x + 2.5f, .3f).OnComplete(() => {
+            //
+            //         GameManager.Instance.PivotParent.transform.GetComponent<MySDK.Rotator>().enabled = true;
+            //         StartTapRoutine = true;
+            //         UiManager.Instance.TapFastPanel.SetActive(true);
+            //
+            //     });
+            //
+            //
+            //
+            // });
         }
 
         if (other.gameObject.CompareTag("DecisionTrigger"))
@@ -446,6 +469,7 @@ public class Collsion : MonoBehaviour
 
     public AnimatorOverrideController OverRideController;
     public AnimationClip[] AnimationClips;
+    private static readonly int IsWrestling = Animator.StringToHash("isWrestling");
 
     void RandomAnimationPlay()
     {
@@ -486,39 +510,39 @@ public class Collsion : MonoBehaviour
 
 
 
-    //public IEnumerator StopRoutine(GameObject g)
-
-    //{
-    //    //Camera.main.transform.parent = g.transform.root;
-
-
-    //    c.enabled = false;
-    //    c1.enabled = false;
-    //    c.transform.DOLocalMoveX(-1.66f, .1f);
-    //    c1.transform.DOLocalMoveX(-1.66f, .1f);
-    //    transform.root.parent = g.transform.root;
-    //    Camera.main.transform.DOLocalMove(GameManager.Instance.FianlCamPos.transform.localPosition, .7f);
-    //    Camera.main.transform.DOLocalRotate(GameManager.Instance.FianlCamPos.transform.localEulerAngles, .7f);
-    //    yield return new WaitForSeconds(.8f);
-    //    c.transform.DOLocalRotate(new Vector3(0, -90, 9), .1f);
-    //    c1.transform.DOLocalRotate(new Vector3(0, -90, 9), .1f);
-    //    GameManager.Instance.Boss.transform.GetComponent<Animator>().enabled = true;
-    //    GameManager.Instance.p.enabled = false;
-    //    anim.Play("Wrestle");
-    //    anim1.Play("Wrestle");
-    //    MMVibrationManager.Haptic(HapticTypes.MediumImpact);
-    //    Camera.main.transform.parent = g.transform.root;
-    //    transform.parent.parent = GameManager.Instance.PivotParent.transform;
-    //    GameManager.Instance.Boss.transform.parent = GameManager.Instance.PivotParent.transform;
-
-    //    this.transform.parent.DOLocalMove(new Vector3(0.296f, -0.038f, -0.038f), .3f).OnComplete(() => { FindObjectOfType<EndDetector>().EndParticle.Play(); });
-    //    Camera.main.transform.DOLocalMoveX(Camera.main.transform.position.x + .5f, .3f);
-    //    yield return new WaitForSeconds(.2f);
-    //    GameManager.Instance.PivotParent.transform.GetComponent<MySDK.Rotator>().enabled = true;
-    //    StartTapRoutine = true;
-    //    UiManager.Instance.TapFastPanel.SetActive(true);
-
-    //}
+    // public IEnumerator StopRoutine(GameObject g)
+    //
+    // {
+    //     //Camera.main.transform.parent = g.transform.root;
+    //
+    //
+    //     c.enabled = false;
+    //     c1.enabled = false;
+    //     c.transform.DOLocalMoveX(-1.66f, .1f);
+    //     c1.transform.DOLocalMoveX(-1.66f, .1f);
+    //     transform.root.parent = g.transform.root;
+    //     Camera.main.transform.DOLocalMove(GameManager.Instance.FianlCamPos.transform.localPosition, .7f);
+    //     Camera.main.transform.DOLocalRotate(GameManager.Instance.FianlCamPos.transform.localEulerAngles, .7f);
+    //     yield return new WaitForSeconds(.8f);
+    //     c.transform.DOLocalRotate(new Vector3(0, -90, 9), .1f);
+    //     c1.transform.DOLocalRotate(new Vector3(0, -90, 9), .1f);
+    //     GameManager.Instance.Boss.transform.GetComponent<Animator>().enabled = true;
+    //     GameManager.Instance.p.enabled = false;
+    //     anim.Play("Wrestle");
+    //     anim1.Play("Wrestle");
+    //     MMVibrationManager.Haptic(HapticTypes.MediumImpact);
+    //     Camera.main.transform.parent = g.transform.root;
+    //     transform.parent.parent = GameManager.Instance.PivotParent.transform;
+    //     GameManager.Instance.Boss.transform.parent = GameManager.Instance.PivotParent.transform;
+    //
+    //     this.transform.parent.DOLocalMove(new Vector3(0.296f, -0.038f, -0.038f), .3f).OnComplete(() => { FindObjectOfType<EndDetector>().EndParticle.Play(); });
+    //     Camera.main.transform.DOLocalMoveX(Camera.main.transform.position.x + .5f, .3f);
+    //     yield return new WaitForSeconds(.2f);
+    //     GameManager.Instance.PivotParent.transform.GetComponent<MySDK.Rotator>().enabled = true;
+    //     StartTapRoutine = true;
+    //     UiManager.Instance.TapFastPanel.SetActive(true);
+    //
+    // }
 
     public void ChangeMaterials()
     {
