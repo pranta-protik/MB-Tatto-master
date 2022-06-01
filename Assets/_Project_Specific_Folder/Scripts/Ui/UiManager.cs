@@ -205,16 +205,13 @@ public class UiManager : Singleton<UiManager>
     {
         decisionScreen.SetActive(false);
         cashCounter.SetActive(false);
-        
-        GameManager.Instance.bossWall.DOMoveY(-1.5f, 1f).OnComplete(() =>
-        {
-            GameManager.Instance.p.enabled = true;
 
-            GameManager.Instance.CollsionScript.c.enabled = false;
-            GameManager.Instance.CollsionScript.c1.enabled  = false;
-        });
+        GameManager.Instance.bossWall.DOMoveY(-1.5f, 1f);
+        GameManager.Instance.p.enabled = true;
 
-        
+        GameManager.Instance.CollsionScript.c.enabled = true;
+        GameManager.Instance.CollsionScript.c1.enabled = true;
+
     }
 
     public void SpinWheel()
