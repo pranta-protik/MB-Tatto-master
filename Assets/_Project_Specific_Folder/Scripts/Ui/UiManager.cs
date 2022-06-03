@@ -11,9 +11,10 @@ using UnityEngine.SceneManagement;
 public class UiManager : Singleton<UiManager>
 {
     public Button btnNext;
+     public Button Shop; 
 
     public TMP_Text LevelText;
-    public GameObject StartUI, EndUi, CompleteUI, FadeIn, UnlockPanel;
+    public GameObject StartUI, EndUi, CompleteUI, FadeIn, UnlockPanel, ShopPnael;
     public GameObject TapFastPanel;
     public GameObject decisionScreen, cashCounter, spinnerScreen, cashPile;
     public GameObject priceTag;
@@ -42,8 +43,13 @@ public class UiManager : Singleton<UiManager>
     {
         if (btnNext != null)
         {
-            btnNext.onClick.AddListener(NextCallBack);   
+            btnNext.onClick.AddListener(NextCallBack);
         }
+        if (Shop != null)
+        {
+            Shop.onClick.AddListener(EnableShopCallBack);
+        }
+  
         base.Start();
         currentLevel = PlayerPrefs.GetInt("current_scene");
         currentLevelText = PlayerPrefs.GetInt("current_scene_text", 0);
@@ -51,6 +57,11 @@ public class UiManager : Singleton<UiManager>
         {
             LevelText.text = (currentLevelText + 1).ToString();            
         }
+    }
+    public void EnableShopCallBack()
+    {
+        Shop.gameObject.SetActive(false);
+        Camera.main.transform.DOLocalRotate(new Vector3(42,90,0) , .3f).OnComplete(() => { ShopPnael.SetActive(true); });
     }
 
     private void Update()

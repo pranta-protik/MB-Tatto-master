@@ -63,9 +63,19 @@ public class GameManager : Singleton<GameManager>
 
     public override void Start()
     {
+        // First time hand enable
 
-        HandNumber = PlayerPrefs.GetInt("SelectedHandId");
-        SpawnHand(HandNumber);
+         HandNumber = PlayerPrefs.GetInt("SelectedHandId");
+       
+
+        Hands[HandNumber].MainHand.gameObject.SetActive(true);
+        Hands[HandNumber].CopyHand.gameObject.SetActive(true);
+        CollsionScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Collsion>();
+        if (!cam.player) cam.player = GameObject.FindGameObjectWithTag("Player");
+
+
+        //   HandNumber = PlayerPrefs.GetInt("SelectedHandId");
+        // SpawnHand(HandNumber);
         SavedLevelNo = PlayerPrefs.GetInt("current_scene_text", 0);
         UiManager.Instance.LevelText.text = (SavedLevelNo + 1).ToString();
         int currentLevel = PlayerPrefs.GetInt("current_scene");
@@ -133,6 +143,7 @@ public class GameManager : Singleton<GameManager>
 
     public void StartIt()
     {
+        UiManager.Instance.Shop.gameObject.SetActive(false);
         UiManager.Instance.LevelText.transform.parent.gameObject.SetActive(false);
         CollsionScript.StiackerMat.mainTexture = CollsionScript.Default;
         UiManager.Instance.StartUI.SetActive(false);
@@ -343,15 +354,35 @@ public class GameManager : Singleton<GameManager>
 
     }
 
-   public void SpawnHand(int i)
+   public void SpawnHand(int j)
     {
-        GameObject g = Instantiate(Hands[i].MainHand, transform.position, Quaternion.identity);
-        GameObject g1 = Instantiate(Hands[i].CopyHand, transform.position, Quaternion.identity);
-        g.transform.parent = p.transform; g1.transform.parent = p.transform;
-        g.transform.DOScale(SpwanPos.transform.localScale, 0); g1.transform.DOScale(SpwanPos.transform.localScale, 0);
-        g.transform.DOLocalMove(SpwanPos.transform.localPosition, 0); g1.transform.DOLocalMove(SpwanPos.transform.localPosition, 0);
-        g.transform.DOLocalRotate(SpwanPos.transform.localEulerAngles, 0); g1.transform.DOLocalRotate(SpwanPos.transform.localEulerAngles, 0);
-        CollsionScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Collsion>();
-        if (!cam.player) cam.player = GameObject.FindGameObjectWithTag("Player");
+        for (int i = 0; i <6; i++)
+        {
+            // Activate the selected weapon 
+
+            if (i == j)
+            {
+                Hands[i].MainHand.gameObject.SetActive(true);
+                Hands[i].CopyHand.gameObject.SetActive(true);
+                CollsionScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Collsion>();
+                cam.player = Hands[i].MainHand.gameObject;
+                SetLevelDetails(currentLvlPrefab);
+
+            }
+            else
+            {
+                Hands[i].MainHand.gameObject.SetActive(false);
+                Hands[i].CopyHand.gameObject.SetActive(false);
+            }
+        }
+
+        //GameObject g = Instantiate(Hands[i].MainHand, transform.position, Quaternion.identity);
+       // GameObject g1 = Instantiate(Hands[i].CopyHand, transform.position, Quaternion.identity);
+        //g.transform.parent = p.transform; g1.transform.parent = p.transform;
+        //g.transform.DOScale(SpwanPos.transform.localScale, 0); g1.transform.DOScale(SpwanPos.transform.localScale, 0);
+        //g.transform.DOLocalMove(SpwanPos.transform.localPosition, 0); g1.transform.DOLocalMove(SpwanPos.transform.localPosition, 0);
+        //g.transform.DOLocalRotate(SpwanPos.transform.localEulerAngles, 0); g1.transform.DOLocalRotate(SpwanPos.transform.localEulerAngles, 0);
+        //CollsionScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Collsion>();
+        //if (!cam.player) cam.player = GameObject.FindGameObjectWithTag("Player");
     }
 }

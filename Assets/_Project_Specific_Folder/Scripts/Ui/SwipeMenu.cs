@@ -180,7 +180,7 @@ public class SwipeMenu : MonoBehaviour
     }
 
    
-    private void CheckCardRequirementStatus(HandCard handCard)
+    public void CheckCardRequirementStatus(HandCard handCard)
     {
         if (_selectedCard.requirementType == HandCard.ERequirementType.Cash)
         {
