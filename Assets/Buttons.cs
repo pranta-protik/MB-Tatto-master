@@ -32,6 +32,7 @@ public class Buttons : MonoBehaviour
 
     private void Start()
     {
+        PlayerPrefs.SetInt("SelectedHandId", 0);
         actionButton.gameObject.SetActive(false);
 
         if (CloseShop != null)
@@ -60,7 +61,7 @@ public class Buttons : MonoBehaviour
             if (PlayerPrefs.GetInt("HandCardSetup", 0) == 0)
             {
                 Debug.Log("First Time");
-
+                SpawnedButtons[0].transform.GetChild(0).gameObject.SetActive(true);
                 if (i == 0)
                 {
                     PlayerPrefs.SetInt("HandCard" + handCard.handId, 1);
@@ -70,6 +71,27 @@ public class Buttons : MonoBehaviour
                     PlayerPrefs.SetInt("HandCard" + handCard.handId, 0);
                 }
 
+            }
+            else
+            {
+
+                int k = PlayerPrefs.GetInt("SelectedHandId");
+
+                if (k == 0)
+                {
+                    PlayerPrefs.SetInt("SelectedHandId" ,0);
+                    SpawnedButtons[PlayerPrefs.GetInt("SelectedHandId")].transform.GetChild(0).gameObject.SetActive(true);
+                }
+                else
+                {
+                    for (int j = 0; j < SpawnedButtons.Count; j++)
+
+                    {
+
+                        SpawnedButtons[PlayerPrefs.GetInt("SelectedHandId")].transform.GetChild(0).gameObject.SetActive(true);
+
+                    }
+                }
             }
             handCard.cardStatus = PlayerPrefs.GetInt("HandCard" + handCard.handId);
        
@@ -81,15 +103,22 @@ public class Buttons : MonoBehaviour
     }
 
 
-
+    private void Update()
+    {
+       
+    
+    }
 
     public void BuyCard()
     {
       
         StorageManager.SaveTotalCoin(StorageManager.GetTotalCoin() - Buttonss[SelectedId].GetComponent<ButtonCard>().requiredCash);
-       // scoreText.SetText("$" + StorageManager.GetTotalCoin());
-        Buttonss[SelectedId].GetComponent<ButtonCard>().EnableCard();
+        // scoreText.SetText("$" + StorageManager.GetTotalCoin());
+        SpawnedButtons[SelectedId].GetComponent<ButtonCard>().EnableCard();
+      
+        PlayerPrefs.SetInt("SelectedHandId", Buttonss[SelectedId].GetComponent<ButtonCard>().handId);
         EventSystem.current.currentSelectedGameObject.SetActive(false); // onclick button false
+
     }
 
     public void SelectHand()
@@ -117,13 +146,10 @@ public class Buttons : MonoBehaviour
 
     public void ShopClose()
     {
-       
-     
-        
-   
+        GameManager.Instance.SpawnHand(PlayerPrefs.GetInt("SelectedHandId"));
         UiManager.Instance.Shop.gameObject.SetActive(true);
-
-        Camera.main.transform.DOLocalRotate(new Vector3(27.761f, 90, 0), .1f).OnComplete(() => { UiManager.Instance.ShopPnael.SetActive(false); });
+        UiManager.Instance.ShopPnael.SetActive(false);
+        Camera.main.transform.DOLocalRotate(new Vector3(27.761f, 90, 0), .3f).OnComplete(() => { });
 
     }
     public void CheckCardRequirementStatus(ButtonCard btnCard)

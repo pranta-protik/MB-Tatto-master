@@ -40,7 +40,7 @@ public class ButtonCard : MonoBehaviour
     {
         b = GetComponent<ButtonCard>();
         m_Buttons = GetComponentInParent<Buttons>();
-       transform.GetChild(0).gameObject.SetActive(false);
+      
 
     }
    public int index;
@@ -70,6 +70,10 @@ public class ButtonCard : MonoBehaviour
         }
          
 
+        if(cardStatus == 1)
+        {
+            PlayerPrefs.SetInt("SelectedHandId", m_Buttons.SelectedId);
+        }
         
        
 
