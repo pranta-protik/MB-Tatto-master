@@ -115,7 +115,7 @@ public class Buttons : MonoBehaviour
     {
       
         StorageManager.SaveTotalCoin(StorageManager.GetTotalCoin() - Buttonss[SelectedId].GetComponent<ButtonCard>().requiredCash);
-        // scoreText.SetText("$" + StorageManager.GetTotalCoin());
+        scoreText.SetText("$" + StorageManager.GetTotalCoin());
         SpawnedButtons[SelectedId].GetComponent<ButtonCard>().EnableCard();
       
         PlayerPrefs.SetInt("SelectedHandId", Buttonss[SelectedId].GetComponent<ButtonCard>().handId);
