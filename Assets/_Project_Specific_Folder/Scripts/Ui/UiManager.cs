@@ -156,7 +156,7 @@ public class UiManager : Singleton<UiManager>
     }
     public void LoadSelectionMenu()
     {
-        DOTween.KillAll();
+       // DOTween.KillAll();
         
         if (currentLevel + 1 >= GameManager.Instance.LevelPrefabs.Count)
         {

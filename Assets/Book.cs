@@ -19,7 +19,7 @@ public class Book : MonoBehaviour
     private bool _shouldUpdateCash;
     private bool _isUnlockScreenEnabled;
     private float _incrementAmount;
-
+    public List<GameObject> NewTexture = new List<GameObject>();
     public GameObject PageToFlip;
     public float waitTime = 1.5f;
     private void Awake()
@@ -55,17 +55,18 @@ public class Book : MonoBehaviour
 
     private void UpdateCash()
     {
-        _shouldUpdateCash = true;
+        valueText.SetText(StorageManager.Instance.RewardValue.ToString()); Invoke(nameof(EnableUnlockScreen), 2f);
+        //   _shouldUpdateCash = true;
     }
 
     private void Update()
     {
         if (_shouldUpdateCash)
         {
-            if (_currentTattooValue < StorageManager.Instance.RewardValue)
+            if (0 < StorageManager.Instance.RewardValue)
             {
                 _currentTattooValue += Time.unscaledDeltaTime * _incrementAmount;
-                _currentTattooValue = Mathf.Clamp(_currentTattooValue, 0, StorageManager.Instance.RewardValue);
+                _currentTattooValue = Mathf.Clamp(0, 0, StorageManager.Instance.RewardValue);
                 valueText.SetText("$" + Mathf.RoundToInt(_currentTattooValue));
             }
             else
@@ -83,13 +84,21 @@ public class Book : MonoBehaviour
     {
        
        i = PlayerPrefs.GetInt("totalEntered", 0);
- 
+   
         for ( j = 0; j < i; j++)
         {
             if (j != i - 1)
             {
           
                 GameObject g = Instantiate(FramePrefab, FramePos[0].transform.position, Quaternion.identity);
+                NewTexture.Add(g);
+                for (int i = 0; i < NewTexture.Count; i++)
+                {
+                    if (i == NewTexture.Count-1)
+                        NewTexture[i].SetActive(true);
+                    else
+                        NewTexture[i].SetActive(false);
+                }
                 g.transform.parent = PageToFlip.transform;
                 g.transform.DOLocalRotate(new Vector3(0, 0, 0), 0);
                 g.transform.DOLocalMove(new Vector3(-0.267f, 0, 0), 0);
