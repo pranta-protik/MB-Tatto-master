@@ -171,9 +171,9 @@ public class UiManager : Singleton<UiManager>
 
         }
         PlayerPrefs.SetInt("current_scene_text", currentLevelText + 1);
-        
-        SceneManager.LoadScene("SelectionMenu");
-     //   StorageManager.Instance.SetTotalScore();
+
+        SceneManager.LoadScene("main");
+        //   StorageManager.Instance.SetTotalScore();
     }
 
     public void Next()
