@@ -468,8 +468,21 @@ public class Collsion : MonoBehaviour
         yield return new WaitForSeconds(2);
         e.Book.gameObject.SetActive(true);
         yield return new WaitForSeconds(1.5f);
+        e.Book.transform.DOLocalRotate(new Vector3(45.5f, -90.19f, 13.45f), .2f);
         e.Book.GetComponent<Animator>().Play("open");
-        yield return new WaitForSeconds(.1f);
+        yield return new WaitForSeconds(.2f);
+
+
+        if (PlayerPrefs.GetInt("FirstTime", 0) == 0)
+        {
+            PlayerPrefs.SetInt("FirstTime", 1);
+
+
+        }
+        else if (PlayerPrefs.GetInt("FirstTime") == 1)
+            e.PageToFlipRef.SetActive(true);
+
+        yield return new WaitForSeconds(.3f);
         e.Book.transform.GetChild(2).gameObject.SetActive(true);
         SavedTattooNo = PlayerPrefs.GetInt("SavedTattooNo");
 

@@ -20,7 +20,7 @@ public class Book : MonoBehaviour
     private bool _isUnlockScreenEnabled;
     private float _incrementAmount;
 
-
+    public GameObject PageToFlip;
     public float waitTime = 1.5f;
     private void Awake()
     {
@@ -34,10 +34,10 @@ public class Book : MonoBehaviour
     public IEnumerator Wait()
     {
         yield return new WaitForSeconds(waitTime);
-        _currentTattooValue = StorageManager.GetTattooValue();
+        _currentTattooValue = StorageManager.Instance.RewardValue;
         valueText.SetText("$" + _currentTattooValue);
 
-        _targetTattooValue = StorageManager.GetTattooValue();
+        _targetTattooValue = StorageManager.Instance.RewardValue;
         _targetTattooValue += StorageManager.Instance.RewardValue;
 
         _incrementAmount = (_targetTattooValue - _currentTattooValue) / 1.5f;
@@ -78,25 +78,33 @@ public class Book : MonoBehaviour
             }
         }
     }
-
+    int j;
     private IEnumerator Delay()
     {
-        i = PlayerPrefs.GetInt("totalEntered", 0);
-
-        for (int j = 0; j < i; j++)
+       
+           i = PlayerPrefs.GetInt("totalEntered", 0);
+ 
+        for ( j = 0; j < i; j++)
         {
             if (j != i - 1)
             {
+          
                 GameObject g = Instantiate(FramePrefab, FramePos[j].transform.position, Quaternion.identity);
-
+                g.transform.parent = PageToFlip.transform;
+                g.transform.DOLocalRotate(new Vector3(0, 0, 0), 0);
+                g.transform.DOLocalMove(new Vector3(0, 0, 0), 0);
+               
                 Texture2D m_TattoTex = (Texture2D)Resources.Load(PlayerPrefs.GetString("TattooFrame" + j));
                 g.transform.GetChild(0).GetComponent<Renderer>().material.mainTexture = m_TattoTex;
-                g.transform.DOLocalRotate(new Vector3(0, -90, 0), 0);
+                
             }
         }
 
 
         yield return new WaitForSeconds(1f);
+        PageToFlip.transform.DOLocalRotate(new Vector3(90f, 90f, -90f), 1.3f);
+
+        yield return new WaitForSeconds(2f);
 
         for (int j = 0; j < i; j++)
         {
@@ -105,7 +113,7 @@ public class Book : MonoBehaviour
                 GameObject g = Instantiate(FramePrefab, StartPos.transform.position, Quaternion.identity);
                 g.transform.DOLocalMove(FramePos[j].transform.position, 1.5f);
                 g.transform.GetChild(0).GetComponent<Renderer>().material.mainTexture = GameManager.Instance.LastTattoTexture;
-                g.transform.DOLocalRotate(new Vector3(-48.344f, -70.603f, -14.333f), 0);
+                g.transform.DOLocalRotate(new Vector3(-50f, -90f, -0.791f), 0);
             }
         }
 

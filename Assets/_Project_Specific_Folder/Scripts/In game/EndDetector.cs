@@ -11,6 +11,11 @@ public class EndDetector : MonoBehaviour
     public int SavedTattooNo;
     public GameObject End;
     public GameObject Book;
+    public GameObject PageToFlipRef;
+    private void Start()
+    {
+        PageToFlipRef = Book.GetComponent<Book>().PageToFlip;
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("EndIt"))
