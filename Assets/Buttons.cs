@@ -32,8 +32,8 @@ public class Buttons : MonoBehaviour
 
     private void Start()
     {
-        PlayerPrefs.SetInt("SelectedHandId", 0);
-        actionButton.gameObject.SetActive(false);
+       
+      actionButton.gameObject.SetActive(false);
 
         if (CloseShop != null)
         {
@@ -60,6 +60,8 @@ public class Buttons : MonoBehaviour
 
             if (PlayerPrefs.GetInt("HandCardSetup", 0) == 0)
             {
+                PlayerPrefs.SetInt("SelectedHandId", 0);
+
                 Debug.Log("First Time");
                 SpawnedButtons[0].transform.GetChild(0).gameObject.SetActive(true);
                 if (i == 0)
@@ -72,9 +74,9 @@ public class Buttons : MonoBehaviour
                 }
 
             }
-            else
+           else if(PlayerPrefs.GetInt("HandCardSetup", 0) == 01)
             {
-
+                print("ddfssdf");
                 int k = PlayerPrefs.GetInt("SelectedHandId");
 
                 if (k == 0)
@@ -150,6 +152,9 @@ public class Buttons : MonoBehaviour
         UiManager.Instance.Shop.gameObject.SetActive(true);
         UiManager.Instance.ShopPnael.SetActive(false);
         Camera.main.transform.DOLocalRotate(new Vector3(27.761f, 90, 0), .3f).OnComplete(() => { });
+
+
+
 
     }
     public void CheckCardRequirementStatus(ButtonCard btnCard)
