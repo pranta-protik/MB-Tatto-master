@@ -42,6 +42,12 @@ public class Collsion : MonoBehaviour
 
     public Color BadGatePopUpColor;
 
+    [SerializeField] int i; public int SavedTattooNo;
+    private int _targetTattooValue;
+    private float _currentTattooValue;
+    private bool _shouldUpdateCash;
+    private bool _isUnlockScreenEnabled;
+    private float _incrementAmount;
     private void Start()
     {
         cam = GameManager.Instance.FakeCam;
@@ -369,43 +375,43 @@ public class Collsion : MonoBehaviour
                 StorageManager.Instance.RewardValue = 500;
             }
 
-            Camera.main.transform.gameObject.SetActive(false);
-            cam.gameObject.SetActive(true);
+           // Camera.main.transform.gameObject.SetActive(false);
+           // cam.gameObject.SetActive(true);
             
             // StartCoroutine(StopRoutine(other.gameObject));
             
-            c.enabled = false;
-            c1.enabled = false;
-            GameManager.Instance.p.enabled = false;
+            //c.enabled = false;
+            //c1.enabled = false;
+            //GameManager.Instance.p.enabled = false;
             
-            c.transform.DOLocalMoveX(-1.66f, .1f);
-            c1.transform.DOLocalMoveX(-1.66f, .1f);
-            transform.root.parent = other.transform.root;
-            cam.transform.DOLocalMove(GameManager.Instance.FinalCamPos.transform.localPosition, 0.7f);
-            cam.transform.DOLocalRotate(GameManager.Instance.FinalCamPos.transform.localEulerAngles, 0.7f).OnComplete(() =>
-            {
-                c.transform.DOLocalRotate(new Vector3(0f, -90f, 9f), 0.1f);
-                c1.transform.DOLocalRotate(new Vector3(0f, -90f, 9f), 0.1f);
-                anim.Play("Wrestle");
-                anim1.Play("Wrestle");
-                MMVibrationManager.Haptic(HapticTypes.MediumImpact);
-                cam.transform.parent = other.transform.root;
-                transform.parent.parent = GameManager.Instance.PivotParent.transform;
-                GameManager.Instance.Boss.transform.parent = GameManager.Instance.PivotParent.transform;
-                GameManager.Instance.Boss.transform.GetComponent<Animator>().enabled = true;
+            //c.transform.DOLocalMoveX(-1.66f, .1f);
+            //c1.transform.DOLocalMoveX(-1.66f, .1f);
+            //transform.root.parent = other.transform.root;
+            //cam.transform.DOLocalMove(GameManager.Instance.FinalCamPos.transform.localPosition, 0.7f);
+            //cam.transform.DOLocalRotate(GameManager.Instance.FinalCamPos.transform.localEulerAngles, 0.7f).OnComplete(() =>
+            //{
+            //    c.transform.DOLocalRotate(new Vector3(0f, -90f, 9f), 0.1f);
+            //    c1.transform.DOLocalRotate(new Vector3(0f, -90f, 9f), 0.1f);
+            //    anim.Play("Wrestle");
+            //    anim1.Play("Wrestle");
+            //    MMVibrationManager.Haptic(HapticTypes.MediumImpact);
+            //    cam.transform.parent = other.transform.root;
+            //    transform.parent.parent = GameManager.Instance.PivotParent.transform;
+            //    GameManager.Instance.Boss.transform.parent = GameManager.Instance.PivotParent.transform;
+            //    GameManager.Instance.Boss.transform.GetComponent<Animator>().enabled = true;
                 
-                transform.parent.DOLocalMove(new Vector3(0.296f, -0.038f, -0.038f), 0.3f).OnComplete(() =>
-                {
-                    FindObjectOfType<EndDetector>().EndParticle.Play();
-                });
+            //    transform.parent.DOLocalMove(new Vector3(0.296f, -0.038f, -0.038f), 0.3f).OnComplete(() =>
+            //    {
+            //        FindObjectOfType<EndDetector>().EndParticle.Play();
+            //    });
                 
-                cam.transform.DOLocalMoveX(cam.transform.position.x + 2.5f, 0.3f).OnComplete(() =>
-                {
-                    GameManager.Instance.PivotParent.transform.GetComponent<MySDK.Rotator>().enabled = true;
-                    StartTapRoutine = true;
-                    UiManager.Instance.TapFastPanel.SetActive(true);
-                });
-            });
+            //    cam.transform.DOLocalMoveX(cam.transform.position.x + 2.5f, 0.3f).OnComplete(() =>
+            //    {
+            //        GameManager.Instance.PivotParent.transform.GetComponent<MySDK.Rotator>().enabled = true;
+            //        StartTapRoutine = true;
+            //        UiManager.Instance.TapFastPanel.SetActive(true);
+            //    });
+            //});
 
             // Camera.main.transform.DOLocalMove(GameManager.Instance.FianlCamPos.transform.localPosition, .7f);
             // Camera.main.transform.DOLocalRotate(GameManager.Instance.FianlCamPos.transform.localEulerAngles, .7f).OnComplete(() => {
@@ -449,9 +455,31 @@ public class Collsion : MonoBehaviour
             c1.enabled = false;
             UiManager.Instance.decisionScreen.SetActive(true);
             UiManager.Instance.cashCounter.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText("$" + StorageManager.GetTotalCoin());
-            UiManager.Instance.cashCounter.SetActive(true);
+            UiManager.Instance.cashCounter.SetActive(false);
         }
     }
+    public IEnumerator BookRoutine()
+    {
+       EndDetector e =  FindObjectOfType<EndDetector>();
+        e.Cam.gameObject.SetActive(true);
+        e.Confetti.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(1);
+        e.Book.gameObject.SetActive(true);
+        yield return new WaitForSeconds(.9f);
+        e.Book.GetComponent<Animator>().Play("open");
+        yield return new WaitForSeconds(.1f);
+        e.Book.transform.GetChild(2).gameObject.SetActive(true);
+        SavedTattooNo = PlayerPrefs.GetInt("SavedTattooNo");
+
+        GameManager.Instance.TextureName = GameManager.Instance.CollsionScript.StiackerMat.mainTexture.name;
+        GameManager.Instance.LastTattoTexture = GameManager.Instance.CollsionScript.StiackerMat.mainTexture;
+        PlayerPrefs.SetString("TattooFrame" + SavedTattooNo, GameManager.Instance.TextureName);
+        SavedTattooNo++;
+        PlayerPrefs.SetInt("SavedTattooNo", SavedTattooNo);
+ 
+    }
+
 
     public IEnumerator AnimationDelayRoutine()
     {

@@ -216,14 +216,14 @@ public class UiManager : Singleton<UiManager>
     {
         decisionScreen.SetActive(false);
         cashCounter.SetActive(false);
+        StartCoroutine(GameManager.Instance.CollsionScript.BookRoutine()); 
+        //GameManager.Instance.bossWall.DOMoveY(-1.5f, 1f).OnComplete(() =>
+        //{
+        //    GameManager.Instance.p.enabled = true;
 
-        GameManager.Instance.bossWall.DOMoveY(-1.5f, 1f).OnComplete(() =>
-        {
-            GameManager.Instance.p.enabled = true;
-
-            GameManager.Instance.CollsionScript.c.enabled = true;
-            GameManager.Instance.CollsionScript.c1.enabled = true; 
-        });
+        //    GameManager.Instance.CollsionScript.c.enabled = true;
+        //    GameManager.Instance.CollsionScript.c1.enabled = true; 
+        //});
 
     }
 

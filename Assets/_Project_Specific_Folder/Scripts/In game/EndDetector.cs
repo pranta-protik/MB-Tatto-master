@@ -10,6 +10,7 @@ public class EndDetector : MonoBehaviour
     public GameObject TattoWall;
     public int SavedTattooNo;
     public GameObject End;
+    public GameObject Book;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("EndIt"))
