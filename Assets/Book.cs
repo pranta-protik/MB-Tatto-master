@@ -11,7 +11,7 @@ public class Book : MonoBehaviour
     public GameObject FramePrefab;
     public Texture[] SavedTattos;
     public int count;
-    public TextMeshProUGUI valueText;
+    public TextMeshProUGUI valueText , OldText;
 
     [SerializeField] int i;
     private int _targetTattooValue;
@@ -35,7 +35,7 @@ public class Book : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         _currentTattooValue = StorageManager.GetTattooValue();
-        valueText.SetText("$" + _currentTattooValue);
+        valueText.SetText("$" + "0");
 
         _targetTattooValue = StorageManager.GetTattooValue();
         _targetTattooValue += StorageManager.Instance.RewardValue;
@@ -62,10 +62,10 @@ public class Book : MonoBehaviour
     {
         if (_shouldUpdateCash)
         {
-            if (_currentTattooValue < _targetTattooValue)
+            if (_currentTattooValue < StorageManager.Instance.RewardValue)
             {
                 _currentTattooValue += Time.unscaledDeltaTime * _incrementAmount;
-                _currentTattooValue = Mathf.Clamp(_currentTattooValue, 0, _targetTattooValue);
+                _currentTattooValue = Mathf.Clamp(_currentTattooValue, 0, StorageManager.Instance.RewardValue);
                 valueText.SetText("$" + Mathf.RoundToInt(_currentTattooValue));
             }
             else
@@ -92,9 +92,11 @@ public class Book : MonoBehaviour
                 GameObject g = Instantiate(FramePrefab, FramePos[j].transform.position, Quaternion.identity);
                 g.transform.parent = PageToFlip.transform;
                 g.transform.DOLocalRotate(new Vector3(0, 0, 0), 0);
-                g.transform.DOLocalMove(new Vector3(0, 0, 0), 0);
-               
+                g.transform.DOLocalMove(new Vector3(-0.267f, 0, 0), 0);
+       
                 Texture2D m_TattoTex = (Texture2D)Resources.Load(PlayerPrefs.GetString("TattooFrame" + j));
+                int k = PlayerPrefs.GetInt("TattoCost" + j);
+                OldText.text = k.ToString();
                 g.transform.GetChild(0).GetComponent<Renderer>().material.mainTexture = m_TattoTex;
                 
             }
@@ -104,7 +106,7 @@ public class Book : MonoBehaviour
         yield return new WaitForSeconds(1f);
         PageToFlip.transform.DOLocalRotate(new Vector3(90f, 90f, -90f), 1.3f);
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
 
         for (int j = 0; j < i; j++)
         {

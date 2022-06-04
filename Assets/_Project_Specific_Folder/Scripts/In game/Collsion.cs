@@ -451,7 +451,7 @@ public class Collsion : MonoBehaviour
             GameManager.Instance.p.enabled = false;
             anim.Play("idle");
             anim1.Play("idle");
-            anim.transform.DOLocalMoveX(0, 0f); anim1.transform.DOLocalMoveX(0, 0f);
+            anim.transform.DOLocalMoveX(0, .2f); anim1.transform.DOLocalMoveX(0, .2f);
             c.enabled = false;
             c1.enabled = false;
             UiManager.Instance.decisionScreen.SetActive(true);
@@ -489,8 +489,10 @@ public class Collsion : MonoBehaviour
         GameManager.Instance.TextureName = GameManager.Instance.CollsionScript.StiackerMat.mainTexture.name;
         GameManager.Instance.LastTattoTexture = GameManager.Instance.CollsionScript.StiackerMat.mainTexture;
         PlayerPrefs.SetString("TattooFrame" + SavedTattooNo, GameManager.Instance.TextureName);
+        PlayerPrefs.SetInt("TattoCost" + SavedTattooNo, StorageManager.Instance.RewardValue);
         SavedTattooNo++;
         PlayerPrefs.SetInt("SavedTattooNo", SavedTattooNo);
+      
  
     }
 

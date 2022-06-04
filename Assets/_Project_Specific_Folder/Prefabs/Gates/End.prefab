@@ -1446,6 +1446,7 @@ MonoBehaviour:
   SavedTattos: []
   count: 0
   valueText: {fileID: 1703765153014188411}
+  OldText: {fileID: 2219095867667780627}
   i: 0
   PageToFlip: {fileID: 7133999495384032670}
   waitTime: 1
@@ -2677,6 +2678,7 @@ MonoBehaviour:
   SavedTattooNo: 0
   End: {fileID: 6584894908158495146}
   Book: {fileID: 3787622171575995213}
+  PageToFlipRef: {fileID: 0}
 --- !u!1 &6584894907833973776
 GameObject:
   m_ObjectHideFlags: 0
@@ -4334,6 +4336,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 19877600, guid: 36bdc02b23d9ca94d93bd715c0cca5c0, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36bdc02b23d9ca94d93bd715c0cca5c0, type: 3}
 --- !u!1001 &3273942903309979435
@@ -5242,15 +5248,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cc9b570c68698874e88cfa487e4ced7c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.025
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cc9b570c68698874e88cfa487e4ced7c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.17
+      value: 0.163
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cc9b570c68698874e88cfa487e4ced7c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cc9b570c68698874e88cfa487e4ced7c, type: 3}
       propertyPath: m_LocalRotation.w
