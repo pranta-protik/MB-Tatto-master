@@ -606,7 +606,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 762012990102793009}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.8, y: 0.47, z: 1.29}
+  m_LocalPosition: {x: -0.351, y: 0.47, z: -0.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4601419744050811383}
@@ -1230,7 +1230,7 @@ MonoBehaviour:
   FramePos:
   - {fileID: 2050886641226803781}
   StartPos: {fileID: 5678968363962205269}
-  FramePrefab: {fileID: 2873436441242695195, guid: d16a2aba126dfca44bcd22b6f8473dd0, type: 3}
+  FramePrefab: {fileID: 6466219344362435825, guid: 9cf21e64d03d8fb4e8017c7846a1734b, type: 3}
   SavedTattos: []
   count: 0
   valueText: {fileID: 1703765153014188411}
@@ -3165,7 +3165,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6632890031416687418}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0.014}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6626959233070742423}
@@ -3382,7 +3382,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6968482175518143027}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -4769,13 +4769,17 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: cc9b570c68698874e88cfa487e4ced7c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fe74acf3bc4b5d74fb6549cd449a403e, type: 2}
     - target: {fileID: 919132149155446097, guid: cc9b570c68698874e88cfa487e4ced7c, type: 3}
       propertyPath: m_Name
       value: Book_Page
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: cc9b570c68698874e88cfa487e4ced7c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc9b570c68698874e88cfa487e4ced7c, type: 3}

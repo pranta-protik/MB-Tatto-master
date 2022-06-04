@@ -104,7 +104,7 @@ public class Book : MonoBehaviour
             {
                 GameObject g = Instantiate(FramePrefab, StartPos.transform.position, Quaternion.identity);
                 g.transform.DOLocalMove(FramePos[j].transform.position, 1.5f);
-                g.transform.GetComponent<Renderer>().material.mainTexture = GameManager.Instance.LastTattoTexture;
+                g.transform.GetChild(0).GetComponent<Renderer>().material.mainTexture = GameManager.Instance.LastTattoTexture;
                 g.transform.DOLocalRotate(new Vector3(-48.344f, -70.603f, -14.333f), 0);
             }
         }
