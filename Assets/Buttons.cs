@@ -11,7 +11,7 @@ public class Buttons : MonoBehaviour
 {
     public int SelectedId;
     public Button CloseShop;
-    public List<GameObject> Buttonss;
+    public List<GameObject> Buttonss; public List<GameObject> SpawnedButtons;
     public List<RectTransform> Positions;
     public GameObject Parent;
 
@@ -55,6 +55,7 @@ public class Buttons : MonoBehaviour
              //Transform scrollViewTransform = transform;
             GameObject handCardObj = Instantiate(Buttonss[i], Positions[i].transform.position , Quaternion.identity , Parent.transform);
             ButtonCard handCard = handCardObj.GetComponent<ButtonCard>();
+            SpawnedButtons.Add(handCard.gameObject);
 
             if (PlayerPrefs.GetInt("HandCardSetup", 0) == 0)
             {
