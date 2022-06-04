@@ -88,6 +88,12 @@ public class GameManager : Singleton<GameManager>
     }
     private void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            PlayerPrefs.DeleteAll();
+        }
+
+
 
         if(StartGame && !GameEnd)
         {
