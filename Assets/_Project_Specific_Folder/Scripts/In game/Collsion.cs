@@ -451,6 +451,7 @@ public class Collsion : MonoBehaviour
             GameManager.Instance.p.enabled = false;
             anim.Play("idle");
             anim1.Play("idle");
+            anim.transform.DOLocalMoveX(0, 0f); anim1.transform.DOLocalMoveX(0, 0f);
             c.enabled = false;
             c1.enabled = false;
             UiManager.Instance.decisionScreen.SetActive(true);
@@ -464,9 +465,9 @@ public class Collsion : MonoBehaviour
         e.Cam.gameObject.SetActive(true);
         e.Confetti.gameObject.SetActive(true);
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
         e.Book.gameObject.SetActive(true);
-        yield return new WaitForSeconds(.9f);
+        yield return new WaitForSeconds(1.5f);
         e.Book.GetComponent<Animator>().Play("open");
         yield return new WaitForSeconds(.1f);
         e.Book.transform.GetChild(2).gameObject.SetActive(true);
