@@ -82,14 +82,14 @@ public class Book : MonoBehaviour
     private IEnumerator Delay()
     {
        
-           i = PlayerPrefs.GetInt("totalEntered", 0);
+       i = PlayerPrefs.GetInt("totalEntered", 0);
  
         for ( j = 0; j < i; j++)
         {
             if (j != i - 1)
             {
           
-                GameObject g = Instantiate(FramePrefab, FramePos[j].transform.position, Quaternion.identity);
+                GameObject g = Instantiate(FramePrefab, FramePos[0].transform.position, Quaternion.identity);
                 g.transform.parent = PageToFlip.transform;
                 g.transform.DOLocalRotate(new Vector3(0, 0, 0), 0);
                 g.transform.DOLocalMove(new Vector3(-0.267f, 0, 0), 0);
@@ -106,20 +106,20 @@ public class Book : MonoBehaviour
         yield return new WaitForSeconds(1f);
         PageToFlip.transform.DOLocalRotate(new Vector3(90f, 90f, -90f), 1.3f);
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.3f);
 
         for (int j = 0; j < i; j++)
         {
             if (j == i - 1)
             {
                 GameObject g = Instantiate(FramePrefab, StartPos.transform.position, Quaternion.identity);
-                g.transform.DOLocalMove(FramePos[j].transform.position, 1.5f);
+                g.transform.DOLocalMove(FramePos[0].transform.position, .5f);
                 g.transform.GetChild(0).GetComponent<Renderer>().material.mainTexture = GameManager.Instance.LastTattoTexture;
                 g.transform.DOLocalRotate(new Vector3(-50f, -90f, -0.791f), 0);
             }
         }
 
-        Invoke(nameof(UpdateCash), 1.5f);
+        Invoke(nameof(UpdateCash), .5f);
     }
 
     private void EnableEndUi()
