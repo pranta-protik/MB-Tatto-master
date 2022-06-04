@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 public class Buttons : MonoBehaviour
 {
     public int SelectedId;
@@ -31,6 +32,7 @@ public class Buttons : MonoBehaviour
 
     private void Start()
     {
+        actionButton.gameObject.SetActive(false);
 
         if (CloseShop != null)
         {
@@ -54,10 +56,27 @@ public class Buttons : MonoBehaviour
             GameObject handCardObj = Instantiate(Buttonss[i], Positions[i].transform.position , Quaternion.identity , Parent.transform);
             ButtonCard handCard = handCardObj.GetComponent<ButtonCard>();
 
+            if (PlayerPrefs.GetInt("HandCardSetup", 0) == 0)
+            {
+                Debug.Log("First Time");
+
+                if (i == 0)
+                {
+                    PlayerPrefs.SetInt("HandCard" + handCard.handId, 1);
+                }
+                else
+                {
+                    PlayerPrefs.SetInt("HandCard" + handCard.handId, 0);
+                }
+
+            }
+            handCard.cardStatus = PlayerPrefs.GetInt("HandCard" + handCard.handId);
+       
+        
         
         }
 
-
+        PlayerPrefs.SetInt("HandCardSetup", 1);
     }
 
 
@@ -65,9 +84,11 @@ public class Buttons : MonoBehaviour
 
     public void BuyCard()
     {
+      
         StorageManager.SaveTotalCoin(StorageManager.GetTotalCoin() - Buttonss[SelectedId].GetComponent<ButtonCard>().requiredCash);
        // scoreText.SetText("$" + StorageManager.GetTotalCoin());
         Buttonss[SelectedId].GetComponent<ButtonCard>().EnableCard();
+        EventSystem.current.currentSelectedGameObject.SetActive(false); // onclick button false
     }
 
     public void SelectHand()
@@ -78,6 +99,7 @@ public class Buttons : MonoBehaviour
 
     private void DisableButton(Button button)
     {
+
         button.interactable = false;
         button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().DOFade(buttonDisabledAlpha, 0.01f);
         button.transform.GetComponent<Image>().DOFade(buttonDisabledAlpha, 0.01f);

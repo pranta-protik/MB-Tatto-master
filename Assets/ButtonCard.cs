@@ -40,22 +40,22 @@ public class ButtonCard : MonoBehaviour
     {
         b = GetComponent<ButtonCard>();
         m_Buttons = GetComponentInParent<Buttons>();
+       transform.GetChild(0).gameObject.SetActive(false);
+
     }
     public void GetSelectedId()
     {
+
+
+
         m_Buttons.SelectedId = handId;
-      
-
-
-
         GameManager.Instance.SpawnHand(handId);
         m_Buttons.CheckCardRequirementStatus(b);
 
-        if(handId == 0)
-        {
-           
-            m_Buttons.actionButton.gameObject.SetActive(false);
-        }
+
+        transform.GetChild(0).gameObject.SetActive(true);
+
+
 
     }
 
