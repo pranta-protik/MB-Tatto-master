@@ -34,10 +34,10 @@ public class Book : MonoBehaviour
     public IEnumerator Wait()
     {
         yield return new WaitForSeconds(waitTime);
-        _currentTattooValue = StorageManager.Instance.RewardValue;
+        _currentTattooValue = StorageManager.GetTattooValue();
         valueText.SetText("$" + _currentTattooValue);
 
-        _targetTattooValue = StorageManager.Instance.RewardValue;
+        _targetTattooValue = StorageManager.GetTattooValue();
         _targetTattooValue += StorageManager.Instance.RewardValue;
 
         _incrementAmount = (_targetTattooValue - _currentTattooValue) / 1.5f;
