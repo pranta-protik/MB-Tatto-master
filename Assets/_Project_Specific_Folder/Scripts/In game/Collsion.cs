@@ -706,12 +706,7 @@ public class Collsion : MonoBehaviour
         PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "-" + g.GetComponentInParent<DownGrade>().Cost.ToString();
         PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = Color.red;
         MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
-        StiackerMat.DOFade(0, .3f).OnComplete(() =>
-        {
-            Shine.Play();
-         //   StiackerMat.mainTexture = CheapTttos[GameManager.Instance.Level];
-         //   StiackerMat.DOFade(1, .5f);
-        });
+  
     }
 
 

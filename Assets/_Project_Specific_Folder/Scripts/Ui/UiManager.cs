@@ -143,7 +143,7 @@ public class UiManager : Singleton<UiManager>
     }
     private void NextCallBack()
     {
-        if (GameManager.Instance.levelNo <5)
+        if (GameManager.Instance.levelNo <= 4)
         {
             UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>(). _increaseAmount = 25;
         }
@@ -196,7 +196,7 @@ public class UiManager : Singleton<UiManager>
         GameManager.Instance.SetTotalTime();
 
 
-        if (GameManager.Instance.levelNo < 5)
+        if (GameManager.Instance.levelNo <= 4)
         {
             UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>()._increaseAmount = 25;
         }

@@ -133,7 +133,7 @@ public class Book : MonoBehaviour
 
     private void EnableEndUi()
     {
-        if (GameManager.Instance.levelNo < 5)
+        if (GameManager.Instance.levelNo <= 4)
         {
             UiManager.Instance.UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>()._increaseAmount = 25;
         }
