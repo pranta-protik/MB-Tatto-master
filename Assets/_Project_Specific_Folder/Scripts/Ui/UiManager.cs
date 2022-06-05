@@ -41,6 +41,10 @@ public class UiManager : Singleton<UiManager>
     
     public override void Start()
     {
+        if (TotalText != null)
+        {
+            TotalText.SetText("$" + StorageManager.GetTotalCoin());
+        }
         if (btnNext != null)
         {
             btnNext.onClick.AddListener(NextCallBack);

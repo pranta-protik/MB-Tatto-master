@@ -34,11 +34,11 @@ public class Book : MonoBehaviour
     public IEnumerator Wait()
     {
         yield return new WaitForSeconds(waitTime);
-        _currentTattooValue = StorageManager.GetTattooValue();
+        _currentTattooValue = 0;
         valueText.SetText("$" + "0");
 
-        _targetTattooValue = StorageManager.GetTattooValue();
-        _targetTattooValue += StorageManager.Instance.RewardValue;
+        _targetTattooValue = StorageManager.Instance.RewardValue;
+        // _targetTattooValue += StorageManager.Instance.RewardValue;
 
         _incrementAmount = (_targetTattooValue - _currentTattooValue) / 1.5f;
 
@@ -55,18 +55,18 @@ public class Book : MonoBehaviour
 
     private void UpdateCash()
     {
-        valueText.SetText(StorageManager.Instance.RewardValue.ToString()); Invoke(nameof(EnableUnlockScreen), 2f);
-        //   _shouldUpdateCash = true;
+    //    valueText.SetText(StorageManager.Instance.RewardValue.ToString()); Invoke(nameof(EnableUnlockScreen), 2f);
+           _shouldUpdateCash = true;
     }
 
     private void Update()
     {
         if (_shouldUpdateCash)
         {
-            if (0 < StorageManager.Instance.RewardValue)
+            if (_currentTattooValue < _targetTattooValue)
             {
                 _currentTattooValue += Time.unscaledDeltaTime * _incrementAmount;
-                _currentTattooValue = Mathf.Clamp(0, 0, StorageManager.Instance.RewardValue);
+                _currentTattooValue = Mathf.Clamp(_currentTattooValue, 0, _targetTattooValue);
                 valueText.SetText("$" + Mathf.RoundToInt(_currentTattooValue));
             }
             else
