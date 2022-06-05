@@ -40,7 +40,14 @@ public class ButtonCard : MonoBehaviour
     {
         b = GetComponent<ButtonCard>();
         m_Buttons = GetComponentInParent<Buttons>();
-      
+      if(handId == PlayerPrefs.GetInt("SelectedHandId"))
+        {
+            transform.GetChild(0).gameObject.SetActive(true);
+        }
+      else
+        {
+            transform.GetChild(0).gameObject.SetActive(false);
+        }
 
     }
    public int index;

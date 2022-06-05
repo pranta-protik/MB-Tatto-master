@@ -56,8 +56,9 @@ public class Buttons : MonoBehaviour
              //Transform scrollViewTransform = transform;
             GameObject handCardObj = Instantiate(Buttonss[i], Positions[i].transform.position , Quaternion.identity , Parent.transform);
             ButtonCard handCard = handCardObj.GetComponent<ButtonCard>();
-            SpawnedButtons.Add(handCard.gameObject);
-
+            SpawnedButtons.Add(handCardObj);
+          
+            //SpawnedButtons[PlayerPrefs.GetInt("SelectedHandId")].transform.GetChild(0).gameObject.SetActive(true);
             if (PlayerPrefs.GetInt("HandCardSetup", 0) == 0)
             {
                 PlayerPrefs.SetInt("SelectedHandId", 0);
@@ -74,27 +75,21 @@ public class Buttons : MonoBehaviour
                 }
 
             }
-           else if(PlayerPrefs.GetInt("HandCardSetup", 0) == 01)
-            {
-                print("ddfssdf");
-                int k = PlayerPrefs.GetInt("SelectedHandId");
+           //else if(PlayerPrefs.GetInt("HandCardSetup", 0) == 01)
+           // {
+           //     print("ddfssdf");
+           //     int k = PlayerPrefs.GetInt("SelectedHandId");
 
-                if (k == 0)
-                {
-                    PlayerPrefs.SetInt("SelectedHandId" ,0);
-                    SpawnedButtons[PlayerPrefs.GetInt("SelectedHandId")].transform.GetChild(0).gameObject.SetActive(true);
-                }
-                else
-                {
-                    for (int j = 0; j < SpawnedButtons.Count; j++)
-
-                    {
-
-                        SpawnedButtons[PlayerPrefs.GetInt("SelectedHandId")].transform.GetChild(0).gameObject.SetActive(true);
-
-                    }
-                }
-            }
+           //     if (k == 0)
+           //     {
+           //         PlayerPrefs.SetInt("SelectedHandId" ,0);
+           //         SpawnedButtons[PlayerPrefs.GetInt("SelectedHandId")].transform.GetChild(0).gameObject.SetActive(true);
+           //     }
+           //     else if (k > 0)
+           //     {
+           //         SpawnedButtons[PlayerPrefs.GetInt("SelectedHandId")].transform.GetChild(0).gameObject.SetActive(true);
+           //     }
+           // }
             handCard.cardStatus = PlayerPrefs.GetInt("HandCard" + handCard.handId);
        
         
