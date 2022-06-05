@@ -11,6 +11,7 @@ public enum EType
 }
 public class Gates : MonoBehaviour
 {
+    public bool IsSpecial;
     public EType GateType;
     public int Cost;
     public string UICostText;

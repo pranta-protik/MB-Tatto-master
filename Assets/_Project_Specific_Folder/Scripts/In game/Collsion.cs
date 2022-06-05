@@ -10,7 +10,8 @@ using MoreMountains.NiceVibrations;
 
 public class Collsion : MonoBehaviour
 {
-
+    public List<GameObject> Rings = new List<GameObject>();
+    public List<GameObject> Brecelets = new List<GameObject>();
     public Controller c, c1;
     public ParticleSystem HeatEffect, Shine;
     public Camera cam;
@@ -144,53 +145,78 @@ public class Collsion : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if(other.gameObject.CompareTag("Ring"))
+        {
+            Rings[other.gameObject.GetComponent<Ring>().Id].gameObject.SetActive(true); StartCoroutine(AnimationDelayRoutine()); other.GetComponent<BoxCollider>().enabled = false;
+        }
+        if (other.gameObject.CompareTag("Bre"))
+        {
+           Brecelets[other.gameObject.GetComponent<Bracelet>().Id].gameObject.SetActive(true); StartCoroutine(AnimationDelayRoutine()); other.GetComponent<BoxCollider>().enabled = false;
+        }
         if (other.gameObject.CompareTag("GoodGate"))
         {
-
-            IsGood = true;
-            StartCoroutine(AnimationDelayRoutine());
-            GameManager.Instance.Level++;
-
-            IsGoodGate = true;
-            other.GetComponent<BoxCollider>().enabled = false;
-            if (IsYellow)
+            if (other.GetComponentInParent<Gates>().IsSpecial)
             {
-                if (GameManager.Instance.Level == 5)
-                {
-                    StiackerMat.DOFade(0, .3f).OnComplete(() =>
-                    {
-                        StiackerMat.mainTexture = GoodYellow[01];
-                        StiackerMat.DOFade(1, .5f);
+                StartCoroutine(AnimationDelayRoutine());
+                MMVibrationManager.Haptic(HapticTypes.MediumImpact);
+                StorageManager.Instance.IncreasePoints(other.GetComponentInParent<Gates>().Cost);
 
-                    });
-                }
-                else
-                    StartCoroutine(UpdateTexture(other.gameObject));
-            }
-            else if (IsBlue)
-            {
-                if (GameManager.Instance.Level == 5)
-                {
-                    StiackerMat.DOFade(0, .3f).OnComplete(() =>
-                    {
-                        StiackerMat.mainTexture = GoodBlue[01];
-                        StiackerMat.DOFade(1, .5f);
-                    });
-                }
-                else
-                    StartCoroutine(UpdateTexture(other.gameObject));
+                    Shine.Play();
+                    PopUp.Play("opps");
+
+                    PopUp.transform.GetChild(0).gameObject.SetActive(true);
+                    PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "+" + other.GetComponentInParent<Gates>().Cost.ToString();
+                    PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = GoodGatePopUpColor;
+                other.GetComponent<BoxCollider>().enabled = false;
             }
             else
             {
-                if (!GameManager.Instance.IsVideo)
-                    StartCoroutine(UpdateTexture(other.gameObject));
+
+
+                IsGood = true;
+                StartCoroutine(AnimationDelayRoutine());
+                GameManager.Instance.Level++;
+
+                IsGoodGate = true;
+                other.GetComponent<BoxCollider>().enabled = false;
+                if (IsYellow)
+                {
+                    if (GameManager.Instance.Level == 5)
+                    {
+                        StiackerMat.DOFade(0, .3f).OnComplete(() =>
+                        {
+                            StiackerMat.mainTexture = GoodYellow[01];
+                            StiackerMat.DOFade(1, .5f);
+
+                        });
+                    }
+                    else
+                        StartCoroutine(UpdateTexture(other.gameObject));
+                }
+                else if (IsBlue)
+                {
+                    if (GameManager.Instance.Level == 5)
+                    {
+                        StiackerMat.DOFade(0, .3f).OnComplete(() =>
+                        {
+                            StiackerMat.mainTexture = GoodBlue[01];
+                            StiackerMat.DOFade(1, .5f);
+                        });
+                    }
+                    else
+                        StartCoroutine(UpdateTexture(other.gameObject));
+                }
                 else
                 {
-                    StartCoroutine(UpdateTextureVideo(other.gameObject));
-                    LastLevel = GameManager.Instance.Level;
+                    if (!GameManager.Instance.IsVideo)
+                        StartCoroutine(UpdateTexture(other.gameObject));
+                    else
+                    {
+                        StartCoroutine(UpdateTextureVideo(other.gameObject));
+                        LastLevel = GameManager.Instance.Level;
+                    }
                 }
             }
-
         }
 
         if (other.gameObject.CompareTag("BadGate"))
@@ -683,8 +709,8 @@ public class Collsion : MonoBehaviour
         StiackerMat.DOFade(0, .3f).OnComplete(() =>
         {
             Shine.Play();
-            StiackerMat.mainTexture = CheapTttos[GameManager.Instance.Level];
-            StiackerMat.DOFade(1, .5f);
+         //   StiackerMat.mainTexture = CheapTttos[GameManager.Instance.Level];
+         //   StiackerMat.DOFade(1, .5f);
         });
     }
 

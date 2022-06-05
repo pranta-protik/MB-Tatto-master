@@ -54,9 +54,9 @@ namespace ItemCollection.GameEndUnlockItem
             AssignNextItem();
 
             _unlockPercentage = GetUnlockPercentage();
-            imgUnLocked.fillAmount = _unlockPercentage / 99f;
+            imgUnLocked.fillAmount = _unlockPercentage /102f;
 
-            if (_unlockPercentage < 99)
+            if (_unlockPercentage < 100)
                 _unlockPercentage += _increaseAmount;
 
             StartCoroutine(DisplayItemPack());
