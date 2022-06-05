@@ -51,7 +51,8 @@ public class Collsion : MonoBehaviour
     [SerializeField]int LastLevel;
     [SerializeField] bool IsGood;
 
-
+    [SerializeField] int j = 2;
+    [SerializeField] int m_i;
     public List<Texture> Dummy = new List<Texture>();
     private void Start()
     {
@@ -198,9 +199,11 @@ public class Collsion : MonoBehaviour
             if (IsGood)
             {
                 GameManager.Instance.Level--;
-                int i = Dummy.Count; print(i);
+               m_i = Dummy.Count;
+         
+              
                 MMVibrationManager.Haptic(HapticTypes.MediumImpact);
-                StorageManager.Instance.IncreasePoints(other.GetComponentInParent<Gates>().Cost);
+                StorageManager.Instance.IncreasePoints(-other.GetComponentInParent<Gates>().Cost);
                 //GameManager.Instance.Level = g.transform.GetComponentInParent<Gates>().id + 1;
             
 
@@ -211,9 +214,13 @@ public class Collsion : MonoBehaviour
 
                     PopUp.transform.GetChild(0).gameObject.SetActive(true);
                     PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "-" + other.GetComponentInParent<Gates>().Cost.ToString();
-                    PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = GoodGatePopUpColor;
-                    if(i > 1)
-                    StiackerMat.mainTexture = Dummy[i - 2];
+                    PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = BadGatePopUpColor;
+                    if (j < Dummy.Count+1)
+                    {
+                        
+                        StiackerMat.mainTexture = Dummy[m_i - j];
+                        j++;
+                    }
                     else
                     {
                         StiackerMat.mainTexture = Default;
@@ -221,7 +228,7 @@ public class Collsion : MonoBehaviour
                    
                     StiackerMat.DOFade(1, .5f);
                 });
-                IsGood = false;
+              
             }
             else
             {
