@@ -48,8 +48,11 @@ public class Collsion : MonoBehaviour
     private bool _shouldUpdateCash;
     private bool _isUnlockScreenEnabled;
     private float _incrementAmount;
+    [SerializeField]int LastLevel;
+    [SerializeField] bool IsGood;
 
-    bool IsGood;
+
+    public List<Texture> Dummy = new List<Texture>();
     private void Start()
     {
         cam = GameManager.Instance.FakeCam;
@@ -143,7 +146,7 @@ public class Collsion : MonoBehaviour
         if (other.gameObject.CompareTag("GoodGate"))
         {
 
-           
+            IsGood = true;
             StartCoroutine(AnimationDelayRoutine());
             GameManager.Instance.Level++;
 
@@ -183,6 +186,7 @@ public class Collsion : MonoBehaviour
                 else
                 {
                     StartCoroutine(UpdateTextureVideo(other.gameObject));
+                    LastLevel = GameManager.Instance.Level;
                 }
             }
 
@@ -190,47 +194,80 @@ public class Collsion : MonoBehaviour
 
         if (other.gameObject.CompareTag("BadGate"))
         {
-
-   
-
             StartCoroutine(AnimationDelayRoutine());
-           
-
-            IsGoodGate = false;
-            if (IsYellow)
+            if (IsGood)
             {
-                if (GameManager.Instance.Level == 5)
-                {
-                    StiackerMat.DOFade(0, .3f).OnComplete(() =>
-                    {
-                        StiackerMat.mainTexture = BadYellow[01];
-                        StiackerMat.DOFade(1, .5f);
+                GameManager.Instance.Level--;
+                int i = Dummy.Count; print(i);
+                MMVibrationManager.Haptic(HapticTypes.MediumImpact);
+                StorageManager.Instance.IncreasePoints(other.GetComponentInParent<Gates>().Cost);
+                //GameManager.Instance.Level = g.transform.GetComponentInParent<Gates>().id + 1;
+            
 
-                    });
-                }
-                else
-                    StartCoroutine(UpdateTextureCheap(other.gameObject));
-
-            }
-            else if (IsBlue)
-            {
-                if (GameManager.Instance.Level == 5)
+                StiackerMat.DOFade(0, .3f).OnComplete(() =>
                 {
-                    StiackerMat.DOFade(0, .3f).OnComplete(() =>
+                    Shine.Play();
+                    PopUp.Play("opps");
+
+                    PopUp.transform.GetChild(0).gameObject.SetActive(true);
+                    PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "-" + other.GetComponentInParent<Gates>().Cost.ToString();
+                    PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = GoodGatePopUpColor;
+                    if(i > 1)
+                    StiackerMat.mainTexture = Dummy[i - 2];
+                    else
                     {
-                        StiackerMat.mainTexture = BadBlue[01];
-                        StiackerMat.DOFade(1, .5f);
-                    });
-                }
-                else
-                    StartCoroutine(UpdateTextureCheap(other.gameObject));
+                        StiackerMat.mainTexture = Default;
+                    }
+                   
+                    StiackerMat.DOFade(1, .5f);
+                });
+                IsGood = false;
             }
             else
             {
-               // if (!GameManager.Instance.IsVideo)
+                GameManager.Instance.Level++;
+
+
+
+
+
+                IsGoodGate = false;
+                if (IsYellow)
+                {
+                    if (GameManager.Instance.Level == 5)
+                    {
+                        StiackerMat.DOFade(0, .3f).OnComplete(() =>
+                        {
+                            StiackerMat.mainTexture = BadYellow[01];
+                            StiackerMat.DOFade(1, .5f);
+
+                        });
+                    }
+                    else
+                        StartCoroutine(UpdateTextureCheap(other.gameObject));
+
+                }
+                else if (IsBlue)
+                {
+                    if (GameManager.Instance.Level == 5)
+                    {
+                        StiackerMat.DOFade(0, .3f).OnComplete(() =>
+                        {
+                            StiackerMat.mainTexture = BadBlue[01];
+                            StiackerMat.DOFade(1, .5f);
+                        });
+                    }
+                    else
+                        StartCoroutine(UpdateTextureCheap(other.gameObject));
+                }
+                else
+                {
+                    // if (!GameManager.Instance.IsVideo)
                     StartCoroutine(UpdateTextureCheap(other.gameObject));
-              //  else
-                 //   StartCoroutine(UpdateCheapTextureVideo(other.gameObject));
+                    //  else
+                    //   StartCoroutine(UpdateCheapTextureVideo(other.gameObject));
+                }
+
             }
         }
 
@@ -712,7 +749,7 @@ public class Collsion : MonoBehaviour
     {
         MMVibrationManager.Haptic(HapticTypes.MediumImpact);
         StorageManager.Instance.IncreasePoints(g.GetComponentInParent<Gates>().Cost);
-        GameManager.Instance.Level = g.transform.GetComponentInParent<Gates>().id + 1;
+        //GameManager.Instance.Level = g.transform.GetComponentInParent<Gates>().id + 1;
         yield return new WaitForSeconds(.2f);
 
         StiackerMat.DOFade(0, .3f).OnComplete(() =>
@@ -725,6 +762,7 @@ public class Collsion : MonoBehaviour
             PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = GoodGatePopUpColor;
 
             StiackerMat.mainTexture = Tattos[g.transform.GetComponentInParent<Gates>().id];
+            Dummy.Add(StiackerMat.mainTexture);
             StiackerMat.DOFade(1, .5f);
         });
 
