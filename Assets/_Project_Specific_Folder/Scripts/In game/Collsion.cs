@@ -48,6 +48,8 @@ public class Collsion : MonoBehaviour
     private bool _shouldUpdateCash;
     private bool _isUnlockScreenEnabled;
     private float _incrementAmount;
+
+    bool IsGood;
     private void Start()
     {
         cam = GameManager.Instance.FakeCam;
@@ -140,6 +142,8 @@ public class Collsion : MonoBehaviour
     {
         if (other.gameObject.CompareTag("GoodGate"))
         {
+
+           
             StartCoroutine(AnimationDelayRoutine());
             GameManager.Instance.Level++;
 
@@ -187,10 +191,10 @@ public class Collsion : MonoBehaviour
         if (other.gameObject.CompareTag("BadGate"))
         {
 
-
+   
 
             StartCoroutine(AnimationDelayRoutine());
-            GameManager.Instance.Level++;
+           
 
             IsGoodGate = false;
             if (IsYellow)
@@ -223,10 +227,10 @@ public class Collsion : MonoBehaviour
             }
             else
             {
-                if (!GameManager.Instance.IsVideo)
+               // if (!GameManager.Instance.IsVideo)
                     StartCoroutine(UpdateTextureCheap(other.gameObject));
-                else
-                    StartCoroutine(UpdateCheapTextureVideo(other.gameObject));
+              //  else
+                 //   StartCoroutine(UpdateCheapTextureVideo(other.gameObject));
             }
         }
 

@@ -187,6 +187,7 @@ public class UiManager : Singleton<UiManager>
 
     public void SellTattoo()
     {
+        cashCounter.SetActive(true);
         if (StorageManager.Instance.RewardValue <= 0)
         {
             StorageManager.Instance.currentLevel = PlayerPrefs.GetInt("current_scene");

@@ -10,7 +10,7 @@ namespace PathCreation.Examples {
         public float thickness = .15f;
         public bool flattenSurface;
 
-        [Header ("Material settings")]
+        [Header ("Material settings")] public Texture[] Floors;
         public Material roadMaterial;
         public Material undersideMaterial;
         public float textureTiling = 1;
@@ -150,6 +150,8 @@ namespace PathCreation.Examples {
 
         void AssignMaterials () {
             if (roadMaterial != null && undersideMaterial != null) {
+                int i = Random.Range(0, Floors.Length);
+                roadMaterial.mainTexture = Floors[i];
                 meshRenderer.sharedMaterials = new Material[] { roadMaterial, undersideMaterial, undersideMaterial };
                 meshRenderer.sharedMaterials[0].mainTextureScale = new Vector3 (1, textureTiling);
             }

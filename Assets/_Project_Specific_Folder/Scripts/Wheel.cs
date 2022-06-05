@@ -102,12 +102,12 @@ public class Wheel : MonoBehaviour
             
             cashTransform.DOLocalMove(splitPositions[i], 0.5f).OnComplete(() =>
             {
-                cashTransform.DOLocalMove(new Vector3(153f, 868f, 0f), 0.5f).SetEase(Ease.OutSine).SetDelay(animationDelay);
+                cashTransform.DOLocalMove(new Vector3(153f, 868f, 0f), 0.3f).SetEase(Ease.OutSine).SetDelay(animationDelay);
                 cashTransform.DOScale(new Vector3(0f, 0f, 0f), 0.5f).SetEase(Ease.Linear).SetDelay(animationDelay);
             });
             delay += 0.1f;
         }
-        Invoke(nameof(UpdateTotalCash), 1f);
+        Invoke(nameof(UpdateTotalCash), .5f);
     }
 
     private void UpdateTotalCash()
