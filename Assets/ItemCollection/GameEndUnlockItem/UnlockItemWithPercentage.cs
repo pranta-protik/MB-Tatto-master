@@ -118,7 +118,7 @@ namespace ItemCollection.GameEndUnlockItem
             float targetFillAmount = _unlockPercentage / 102f;
 
             //Debug.Log("FillAmount " + imgUnLocked.fillAmount + "  targetFillAmount " + targetFillAmount);
-            DOTween.To(() => imgUnLocked.fillAmount, x => imgUnLocked.fillAmount = x, targetFillAmount-2, _duration);
+            DOTween.To(() => imgUnLocked.fillAmount, x => imgUnLocked.fillAmount = x, targetFillAmount, _duration);
             int previousPercentage = _unlockPercentage - _increaseAmount;
             DOTween.To(() => previousPercentage, x => previousPercentage = x, _unlockPercentage, _duration).OnUpdate(
                 delegate { txtUnlockPercentage.text = previousPercentage + "%"; });
