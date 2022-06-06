@@ -11,7 +11,7 @@ using UnityEngine.SceneManagement;
 public class UiManager : Singleton<UiManager>
 {
     public Button btnNext;
-     public Button Shop; 
+    public Button hand; 
 
     public TMP_Text LevelText;
     public GameObject StartUI, EndUi, CompleteUI, FadeIn, UnlockPanel, ShopPnael;
@@ -31,13 +31,15 @@ public class UiManager : Singleton<UiManager>
     public float popUpScale = 4.5f;
     public float popUpDuration = 0.3f;
     
-    int currentLevel;
+    int _currentLevel;
+    private new Camera _camera;
     public int currentLevelText;
 
     public bool shouldUpdateTotalCash;
     public int targetCashAmount;
     public float currentCashAmount;
     public float incrementAmount;
+    private bool _isHandAnimating;
     
     public override void Start()
     {
@@ -49,23 +51,50 @@ public class UiManager : Singleton<UiManager>
         {
             btnNext.onClick.AddListener(NextCallBack);
         }
-        if (Shop != null)
+        if (hand != null)
         {
-            Shop.onClick.AddListener(EnableShopCallBack);
+            hand.onClick.AddListener(EnableShopCallBack);
         }
   
         base.Start();
-        currentLevel = PlayerPrefs.GetInt("current_scene");
+        _currentLevel = PlayerPrefs.GetInt("current_scene");
         currentLevelText = PlayerPrefs.GetInt("current_scene_text", 0);
+
         if (LevelText != null)
         {
             LevelText.text = (currentLevelText + 1).ToString();            
         }
+        
+        _camera = Camera.main;
+        
+        // Enable hand shop icon after 2nd level
+        if (_currentLevel > 1)
+        {
+            hand.gameObject.SetActive(true);
+
+            if (_currentLevel == 2)
+            {
+                _isHandAnimating = true;
+                hand.transform.DOScale(new Vector3(0.8f, 0.8f, 0.8f), 0.5f).SetLoops(-1, LoopType.Yoyo);
+            }
+        }
+        else
+        {
+            hand.gameObject.SetActive(false);
+        }
     }
-    public void EnableShopCallBack()
+
+    private void EnableShopCallBack()
     {
-        Shop.gameObject.SetActive(false);
-        Camera.main.transform.DOLocalRotate(new Vector3(42,90,0) , .3f).OnComplete(() => { ShopPnael.SetActive(true); });
+        hand.gameObject.SetActive(false);
+
+        if (_isHandAnimating)
+        {
+            DOTween.Kill(hand.transform);
+            hand.transform.localScale = new Vector3(1f, 1f, 1f);
+            _isHandAnimating = false;
+        }
+        _camera.transform.DOLocalRotate(new Vector3(42, 90, 0), .3f).OnComplete(() => { ShopPnael.SetActive(true); });
     }
 
     private void Update()
@@ -159,7 +188,7 @@ public class UiManager : Singleton<UiManager>
     {
          DOTween.KillAll();
         
-        if (currentLevel + 1 >= GameManager.Instance.LevelPrefabs.Count)
+        if (_currentLevel + 1 >= GameManager.Instance.LevelPrefabs.Count)
         {
             PlayerPrefs.SetInt("current_scene", 0); 
             print("reload");
@@ -168,7 +197,7 @@ public class UiManager : Singleton<UiManager>
         else
         {
             print("next");
-            PlayerPrefs.SetInt("current_scene", currentLevel + 1);
+            PlayerPrefs.SetInt("current_scene", _currentLevel + 1);
 
         }
         PlayerPrefs.SetInt("current_scene_text", currentLevelText + 1);

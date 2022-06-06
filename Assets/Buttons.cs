@@ -144,7 +144,7 @@ public class Buttons : MonoBehaviour
     public void ShopClose()
     {
         GameManager.Instance.SpawnHand(PlayerPrefs.GetInt("SelectedHandId"));
-        UiManager.Instance.Shop.gameObject.SetActive(true);
+        UiManager.Instance.hand.gameObject.SetActive(true);
         UiManager.Instance.ShopPnael.SetActive(false);
         Camera.main.transform.DOLocalRotate(new Vector3(27.761f, 90, 0), .3f).OnComplete(() => { });
 

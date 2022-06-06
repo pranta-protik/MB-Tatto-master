@@ -8,14 +8,5 @@ public class Leveldetails : MonoBehaviour
 
     [Header("Ref : Flower == 1 Skull == 2 PinUp == 3 Celebs == 4 Money==5  Caligraphy==6")]
     public int Id;
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
