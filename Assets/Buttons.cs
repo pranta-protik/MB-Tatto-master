@@ -135,6 +135,18 @@ public class Buttons : MonoBehaviour
 
     private void ShopClose()
     {
+        foreach (GameObject handButton in SpawnedButtons)
+        {
+            ButtonCard handCard = handButton.GetComponent<ButtonCard>();
+            if (handCard.handId == PlayerPrefs.GetInt("SelectedHandId"))
+            {
+                handButton.transform.GetChild(0).gameObject.SetActive(true);
+            }
+            else
+            {
+                handButton.transform.GetChild(0).gameObject.SetActive(false);
+            }
+        }
         GameManager.Instance.SpawnHand(PlayerPrefs.GetInt("SelectedHandId"));
         UiManager.Instance.hand.gameObject.SetActive(true);
         UiManager.Instance.shop.SetActive(true);

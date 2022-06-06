@@ -617,11 +617,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 492481580}
   m_CullTransparentMesh: 1
---- !u!1 &546581618 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8811184687545118970, guid: 83daaa092408a94489c14e0b8c9cb76a, type: 3}
-  m_PrefabInstance: {fileID: 549407813}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &546581619 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8145970929672694336, guid: 83daaa092408a94489c14e0b8c9cb76a, type: 3}
@@ -677,6 +672,10 @@ PrefabInstance:
     - target: {fileID: 8145970929672694336, guid: 83daaa092408a94489c14e0b8c9cb76a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540782143435034033, guid: 83daaa092408a94489c14e0b8c9cb76a, type: 3}
+      propertyPath: handId
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8811184687545118970, guid: 83daaa092408a94489c14e0b8c9cb76a, type: 3}
       propertyPath: m_Name
@@ -6146,11 +6145,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2724724520286695625, guid: 887ebc2afac49184793737bed293dd33, type: 3}
   m_PrefabInstance: {fileID: 1337760788}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &886445225 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6323815545351263265, guid: 770a23465bb6e364788df1ee6b861bb1, type: 3}
-  m_PrefabInstance: {fileID: 887773510}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &886445226 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6667970774847000219, guid: 770a23465bb6e364788df1ee6b861bb1, type: 3}
@@ -6203,6 +6197,10 @@ PrefabInstance:
       propertyPath: AnimationClips.Array.data[6]
       value: 
       objectReference: {fileID: 1827226128182048838, guid: 99393eb8e65b1f44ea6fe8fde70a91bd, type: 3}
+    - target: {fileID: 6558328930284890443, guid: 770a23465bb6e364788df1ee6b861bb1, type: 3}
+      propertyPath: handId
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 6667970774847000219, guid: 770a23465bb6e364788df1ee6b861bb1, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -11730,8 +11728,6 @@ MonoBehaviour:
     CopyHand: {fileID: 1687936780}
   - MainHand: {fileID: 867627803}
     CopyHand: {fileID: 146056923}
-  - MainHand: {fileID: 886445225}
-    CopyHand: {fileID: 546581618}
   - MainHand: {fileID: 1276087168}
     CopyHand: {fileID: 1620791579}
   - MainHand: {fileID: 2023314334}

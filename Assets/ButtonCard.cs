@@ -11,6 +11,7 @@ public class ButtonCard : MonoBehaviour
         Model,
         Image
     }
+
     public enum BRequirementType
     {
         Cash,
@@ -19,8 +20,7 @@ public class ButtonCard : MonoBehaviour
         Level
     }
 
-    [Header("Requirement Section")]
-    public BCardType cardType;
+    [Header("Requirement Section")] public BCardType cardType;
     public BRequirementType requirementType;
     public int handId;
     public int requiredCash;
@@ -28,7 +28,7 @@ public class ButtonCard : MonoBehaviour
     public int requiredMatches;
     public int requiredLevelNo;
     public int cardStatus;
-    ButtonCard b;
+    // ButtonCard b;
     [HideInInspector] public GameObject shineEffect;
     public bool Unlocked;
 
@@ -38,56 +38,49 @@ public class ButtonCard : MonoBehaviour
 
     private void Start()
     {
-        b = GetComponent<ButtonCard>();
+        // b = GetComponent<ButtonCard>();
         m_Buttons = GetComponentInParent<Buttons>();
-      if(handId == PlayerPrefs.GetInt("SelectedHandId"))
+        if (handId == PlayerPrefs.GetInt("SelectedHandId"))
         {
             transform.GetChild(0).gameObject.SetActive(true);
         }
-      else
+        else
         {
             transform.GetChild(0).gameObject.SetActive(false);
         }
 
     }
-   public int index;
+
+    public int index;
+
     public void GetSelectedId()
     {
-
-
-
         m_Buttons.SelectedId = handId;
         GameManager.Instance.SpawnHand(handId);
-        m_Buttons.CheckCardRequirementStatus(b);
+        m_Buttons.CheckCardRequirementStatus(this);
         index = m_Buttons.SelectedId;
         for (int i = 0; i < m_Buttons.SpawnedButtons.Count; i++)
-
         {
-           
-            if(i== index)
+            if (i == index)
             {
 
                 m_Buttons.SpawnedButtons[i].transform.GetChild(0).gameObject.SetActive(true);
-              
+
             }
             else
             {
-               m_Buttons.SpawnedButtons[i].transform.GetChild(0).gameObject.SetActive(false);
+                m_Buttons.SpawnedButtons[i].transform.GetChild(0).gameObject.SetActive(false);
             }
         }
-         
-
-        if(cardStatus == 1)
+        
+        if (cardStatus == 1)
         {
             PlayerPrefs.SetInt("SelectedHandId", m_Buttons.SelectedId);
         }
-        
-       
-
-
-
     }
 
+    
+    
     public void EnableCard()
     {
         cardStatus = 1;
@@ -100,5 +93,4 @@ public class ButtonCard : MonoBehaviour
         cardStatus = 0;
         PlayerPrefs.SetInt("HandCard" + handId, cardStatus);
     }
-
 }
