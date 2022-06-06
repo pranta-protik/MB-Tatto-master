@@ -17,9 +17,7 @@ public class Controller : MonoBehaviour
 
 
     [Header("Control & Movement")]
-
-   
- 
+    
     private Rigidbody playerRigidbody;
     private Vector3 deviation;
     public float maxDragDistance = 40f;
@@ -51,8 +49,8 @@ public class Controller : MonoBehaviour
     BoxCollider m_BoxCollider;
     bool playedd;
     Camera m_Cam;
+    public int handId;
 
-  
 
     void Start()
     {
@@ -62,9 +60,6 @@ public class Controller : MonoBehaviour
         positionX = 0f;
         positionY = 3.1549f;
         originPos = new Vector3(0, 3.1549f, 3.118799f);
-
-
-
 
         cam = Camera.main;
         direction = State.middle;
@@ -77,17 +72,8 @@ public class Controller : MonoBehaviour
     private Transform lastChild;
 
 
-
-
-
-
-
-
-
     private void Update()
     {
-
-
 
         #region Controls
         speeds = (transform.position - lastPosition).magnitude;
@@ -98,8 +84,6 @@ public class Controller : MonoBehaviour
             HandlePlayerMovement();
         
         #endregion Controls
-
-
 
     }
     public void HandlePlayerMovement()

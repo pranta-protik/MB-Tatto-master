@@ -87,6 +87,7 @@ public class UiManager : Singleton<UiManager>
     private void EnableShopCallBack()
     {
         hand.gameObject.SetActive(false);
+        shop.SetActive(false);
 
         if (_isHandAnimating)
         {

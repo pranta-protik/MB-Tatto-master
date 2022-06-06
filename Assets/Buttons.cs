@@ -7,11 +7,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+
 public class Buttons : MonoBehaviour
 {
     public int SelectedId;
     public Button CloseShop;
-    public List<GameObject> Buttonss; public List<GameObject> SpawnedButtons;
+    public List<GameObject> Buttonss;
+    public List<GameObject> SpawnedButtons;
     public List<RectTransform> Positions;
     public GameObject Parent;
 
@@ -29,16 +31,19 @@ public class Buttons : MonoBehaviour
     private int _currentLevel;
     private float _distance;
     private bool _shouldPlayAnimation;
+    private new Camera _camera;
 
     private void Start()
     {
-       
-      actionButton.gameObject.SetActive(false);
+        _camera = Camera.main;
+
+        actionButton.gameObject.SetActive(false);
 
         if (CloseShop != null)
         {
             CloseShop.onClick.AddListener(ShopClose);
         }
+
         if (scoreText != null)
         {
             scoreText.SetText("$" + StorageManager.GetTotalCoin());
@@ -53,11 +58,11 @@ public class Buttons : MonoBehaviour
 
         for (int i = 0; i < Buttonss.Count; i++)
         {
-             //Transform scrollViewTransform = transform;
-            GameObject handCardObj = Instantiate(Buttonss[i], Positions[i].transform.position , Quaternion.identity , Parent.transform);
+            //Transform scrollViewTransform = transform;
+            GameObject handCardObj = Instantiate(Buttonss[i], Positions[i].transform.position, Quaternion.identity, Parent.transform);
             ButtonCard handCard = handCardObj.GetComponent<ButtonCard>();
             SpawnedButtons.Add(handCardObj);
-          
+
             //SpawnedButtons[PlayerPrefs.GetInt("SelectedHandId")].transform.GetChild(0).gameObject.SetActive(true);
             if (PlayerPrefs.GetInt("HandCardSetup", 0) == 0)
             {
@@ -75,44 +80,34 @@ public class Buttons : MonoBehaviour
                 }
 
             }
-           //else if(PlayerPrefs.GetInt("HandCardSetup", 0) == 01)
-           // {
-           //     print("ddfssdf");
-           //     int k = PlayerPrefs.GetInt("SelectedHandId");
+            //else if(PlayerPrefs.GetInt("HandCardSetup", 0) == 01)
+            // {
+            //     print("ddfssdf");
+            //     int k = PlayerPrefs.GetInt("SelectedHandId");
 
-           //     if (k == 0)
-           //     {
-           //         PlayerPrefs.SetInt("SelectedHandId" ,0);
-           //         SpawnedButtons[PlayerPrefs.GetInt("SelectedHandId")].transform.GetChild(0).gameObject.SetActive(true);
-           //     }
-           //     else if (k > 0)
-           //     {
-           //         SpawnedButtons[PlayerPrefs.GetInt("SelectedHandId")].transform.GetChild(0).gameObject.SetActive(true);
-           //     }
-           // }
+            //     if (k == 0)
+            //     {
+            //         PlayerPrefs.SetInt("SelectedHandId" ,0);
+            //         SpawnedButtons[PlayerPrefs.GetInt("SelectedHandId")].transform.GetChild(0).gameObject.SetActive(true);
+            //     }
+            //     else if (k > 0)
+            //     {
+            //         SpawnedButtons[PlayerPrefs.GetInt("SelectedHandId")].transform.GetChild(0).gameObject.SetActive(true);
+            //     }
+            // }
             handCard.cardStatus = PlayerPrefs.GetInt("HandCard" + handCard.handId);
-       
-        
-        
         }
 
         PlayerPrefs.SetInt("HandCardSetup", 1);
     }
 
-
-    private void Update()
-    {
-       
-    
-    }
-
     public void BuyCard()
     {
-      
+
         StorageManager.SaveTotalCoin(StorageManager.GetTotalCoin() - Buttonss[SelectedId].GetComponent<ButtonCard>().requiredCash);
         scoreText.SetText("$" + StorageManager.GetTotalCoin());
         SpawnedButtons[SelectedId].GetComponent<ButtonCard>().EnableCard();
-      
+
         PlayerPrefs.SetInt("SelectedHandId", Buttonss[SelectedId].GetComponent<ButtonCard>().handId);
         EventSystem.current.currentSelectedGameObject.SetActive(false); // onclick button false
 
@@ -135,23 +130,18 @@ public class Buttons : MonoBehaviour
     private void EnableButton(Button button)
     {
         button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().DOFade(1f, 0.01f);
-        button.transform.GetComponent<Image>().DOFade(1f, 0.01f).OnComplete(() =>
-        {
-            button.interactable = true;
-        });
+        button.transform.GetComponent<Image>().DOFade(1f, 0.01f).OnComplete(() => { button.interactable = true; });
     }
 
-    public void ShopClose()
+    private void ShopClose()
     {
         GameManager.Instance.SpawnHand(PlayerPrefs.GetInt("SelectedHandId"));
         UiManager.Instance.hand.gameObject.SetActive(true);
+        UiManager.Instance.shop.SetActive(true);
         UiManager.Instance.ShopPnael.SetActive(false);
-        Camera.main.transform.DOLocalRotate(new Vector3(27.761f, 90, 0), .3f).OnComplete(() => { });
-
-
-
-
+        _camera.transform.DOLocalRotate(new Vector3(27.761f, 90, 0), .3f).OnComplete(() => { });
     }
+
     public void CheckCardRequirementStatus(ButtonCard btnCard)
     {
         if (btnCard.requirementType == ButtonCard.BRequirementType.Cash)
@@ -206,6 +196,7 @@ public class Buttons : MonoBehaviour
             {
                 btnCard.DisableCard();
             }
+
             CheckUnlockTextRequirement(btnCard, "Unlock after reaching level <color=red>" + btnCard.requiredLevelNo + "</color>");
         }
     }
@@ -248,5 +239,3 @@ public class Buttons : MonoBehaviour
         }
     }
 }
-
-

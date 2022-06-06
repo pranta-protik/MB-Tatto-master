@@ -282,6 +282,10 @@ PrefabInstance:
       propertyPath: AnimationClips.Array.data[6]
       value: 
       objectReference: {fileID: 1827226128182048838, guid: 99393eb8e65b1f44ea6fe8fde70a91bd, type: 3}
+    - target: {fileID: 8645485101156954890, guid: 7dd4730ff4313d94e85d619b7e45d404, type: 3}
+      propertyPath: handId
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8879839752688848452, guid: 7dd4730ff4313d94e85d619b7e45d404, type: 3}
       propertyPath: m_Name
       value: player_FemHand01
@@ -348,6 +352,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 2772621672912360679, guid: 2fe6a5243c45ad444a73b2fc08110ae2, type: 3}
+      propertyPath: handId
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3079122292801841587, guid: 2fe6a5243c45ad444a73b2fc08110ae2, type: 3}
       propertyPath: m_Name
       value: player_Dog (1)
@@ -365,6 +373,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 378904802}
     m_Modifications:
+    - target: {fileID: 2373285987960752168, guid: 13dd3ac243f8f244b9843df3b87ca582, type: 3}
+      propertyPath: handId
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2373285987960752171, guid: 13dd3ac243f8f244b9843df3b87ca582, type: 3}
       propertyPath: AnimationClips.Array.size
       value: 6
@@ -848,6 +860,10 @@ PrefabInstance:
     - target: {fileID: 7135472673986155684, guid: 2711f0381d69fc64a9f7d094d9ddd43e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7245434087078294345, guid: 2711f0381d69fc64a9f7d094d9ddd43e, type: 3}
+      propertyPath: handId
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7515832935367560734, guid: 2711f0381d69fc64a9f7d094d9ddd43e, type: 3}
       propertyPath: m_Name
@@ -6106,6 +6122,10 @@ PrefabInstance:
       propertyPath: AnimationClips.Array.data[6]
       value: 
       objectReference: {fileID: 1827226128182048838, guid: 99393eb8e65b1f44ea6fe8fde70a91bd, type: 3}
+    - target: {fileID: 8734206296889652341, guid: 09b96d6da0680244eb39260b77d0cfdc, type: 3}
+      propertyPath: handId
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8734206296889652342, guid: 09b96d6da0680244eb39260b77d0cfdc, type: 3}
       propertyPath: m_Name
       value: player_BuffHand
@@ -6297,6 +6317,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1987333807, guid: 3346ac0d4432a8646b2781750bc1e10f, type: 3}
+      propertyPath: m_Name
+      value: Shop Panel
+      objectReference: {fileID: 0}
+    - target: {fileID: 1987333807, guid: 3346ac0d4432a8646b2781750bc1e10f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4505296936931272617, guid: 3346ac0d4432a8646b2781750bc1e10f, type: 3}
+      propertyPath: Buttonss.Array.data[3]
+      value: 
+      objectReference: {fileID: 3316587106392230110, guid: 8d7286f6d25df3442aae3f318fd07cb3, type: 3}
+    - target: {fileID: 4505296936931272617, guid: 3346ac0d4432a8646b2781750bc1e10f, type: 3}
+      propertyPath: Buttonss.Array.data[4]
+      value: 
+      objectReference: {fileID: 3316587106392230110, guid: fa90de5adc613c94d942afffdb03beca, type: 3}
+    - target: {fileID: 4505296936931272622, guid: 3346ac0d4432a8646b2781750bc1e10f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 43f727a87939c9e4bb441390550df44f, type: 3}
+    - target: {fileID: 4505296937612184731, guid: 3346ac0d4432a8646b2781750bc1e10f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7262328440990731824, guid: 3346ac0d4432a8646b2781750bc1e10f, type: 3}
       propertyPath: m_Name
       value: UI
@@ -11174,6 +11218,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 378904802}
     m_Modifications:
+    - target: {fileID: 3315578334293931427, guid: e4441a83bfaee664b989166b1538b3f7, type: 3}
+      propertyPath: handId
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3315578334293931430, guid: e4441a83bfaee664b989166b1538b3f7, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -11370,6 +11418,10 @@ PrefabInstance:
     - target: {fileID: 4144092188552799876, guid: 5df2367edeecd1343afb724adeb07a71, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4469959651996483948, guid: 5df2367edeecd1343afb724adeb07a71, type: 3}
+      propertyPath: handId
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5df2367edeecd1343afb724adeb07a71, type: 3}
@@ -11837,6 +11889,10 @@ PrefabInstance:
       propertyPath: AnimationClips.Array.data[6]
       value: 
       objectReference: {fileID: 1827226128182048838, guid: 99393eb8e65b1f44ea6fe8fde70a91bd, type: 3}
+    - target: {fileID: 2475453667155728165, guid: 887ebc2afac49184793737bed293dd33, type: 3}
+      propertyPath: handId
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2724724520286695625, guid: 887ebc2afac49184793737bed293dd33, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -12416,6 +12472,10 @@ PrefabInstance:
       propertyPath: AnimationClips.Array.data[6]
       value: 
       objectReference: {fileID: 1827226128182048838, guid: 99393eb8e65b1f44ea6fe8fde70a91bd, type: 3}
+    - target: {fileID: 9051667895357920231, guid: 712931f53612ea945949c73803cf68a9, type: 3}
+      propertyPath: handId
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 712931f53612ea945949c73803cf68a9, type: 3}
 --- !u!1 &1854154873
@@ -12736,6 +12796,10 @@ PrefabInstance:
     - target: {fileID: 4767200285379387644, guid: 589d83ddd9d695443937a57cbf13bec9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5017790756821174045, guid: 589d83ddd9d695443937a57cbf13bec9, type: 3}
+      propertyPath: handId
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5288263670749313606, guid: 589d83ddd9d695443937a57cbf13bec9, type: 3}
       propertyPath: m_Name

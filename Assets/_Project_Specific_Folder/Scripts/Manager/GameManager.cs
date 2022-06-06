@@ -361,27 +361,43 @@ public class GameManager : Singleton<GameManager>
 
     }
 
-   public void SpawnHand(int j)
+   public void SpawnHand(int handId)
     {
-        for (int i = 0; i <6; i++)
+        foreach (ItemPacks hand in Hands)
         {
-            // Activate the selected weapon 
-
-            if (i == j)
+            if (hand.MainHand.GetComponent<Controller>().handId == handId)
             {
-                Hands[i].MainHand.gameObject.SetActive(true);
-                Hands[i].CopyHand.gameObject.SetActive(true);
+                hand.MainHand.gameObject.SetActive(true);
+                hand.CopyHand.gameObject.SetActive(true);
                 CollsionScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Collsion>();
-                cam.player = Hands[i].MainHand.gameObject;
+                cam.player = hand.MainHand.gameObject;
                 SetLevelDetails(currentLvlPrefab);
-
             }
             else
             {
-                Hands[i].MainHand.gameObject.SetActive(false);
-                Hands[i].CopyHand.gameObject.SetActive(false);
+                hand.MainHand.gameObject.SetActive(false);
+                hand.CopyHand.gameObject.SetActive(false);
             }
         }
+        // for (int i = 0; i <Hands.Count; i++)
+        // {
+        //     // Activate the selected weapon 
+        //     
+        //     if (i == handId)
+        //     {
+        //         Hands[i].MainHand.gameObject.SetActive(true);
+        //         Hands[i].CopyHand.gameObject.SetActive(true);
+        //         CollsionScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Collsion>();
+        //         cam.player = Hands[i].MainHand.gameObject;
+        //         SetLevelDetails(currentLvlPrefab);
+        //
+        //     }
+        //     else
+        //     {
+        //         Hands[i].MainHand.gameObject.SetActive(false);
+        //         Hands[i].CopyHand.gameObject.SetActive(false);
+        //     }
+        // }
 
         //GameObject g = Instantiate(Hands[i].MainHand, transform.position, Quaternion.identity);
        // GameObject g1 = Instantiate(Hands[i].CopyHand, transform.position, Quaternion.identity);
