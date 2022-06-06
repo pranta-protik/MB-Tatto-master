@@ -204,8 +204,10 @@ public class GameManager : Singleton<GameManager>
         TattoSet = levelDetails.Id;
         switch (TattoSet)
         {
+            // [Header("Ref : Flower == 1 Skull == 2 PinUp == 3 Celebs == 4 Money==5  Caligraphy==6")]
             //vehicle set
             case 1:
+                // CollsionScript.Tattos = new Texture[15];
                 CollsionScript.Default = m_textureManager.DefaultFlower;
                 CollsionScript.Tattos = m_textureManager.FlowerExpensiveTattos;
                 CollsionScript.CheapTttos = m_textureManager.FlowerCheapTattos;
@@ -217,6 +219,7 @@ public class GameManager : Singleton<GameManager>
                 CollsionScript.BadYellow = m_textureManager.FlowerBadYellow;
                 break;
             case 2:
+                // CollsionScript.Tattos = new Texture[15];
                 CollsionScript.Default = m_textureManager.DefaultSkull;
                 CollsionScript.Tattos = m_textureManager.SkullExpensiveTattos;
                 CollsionScript.CheapTttos = m_textureManager.SkullCheapTattos;
@@ -229,6 +232,7 @@ public class GameManager : Singleton<GameManager>
 
                 break;
             case 3:
+                // CollsionScript.Tattos = new Texture[6];
                 CollsionScript.Default = m_textureManager.DefaultPinup;
                 CollsionScript.Tattos = m_textureManager.PinnupGirlExpensiveTattos;
                 CollsionScript.CheapTttos = m_textureManager.PinnupGirlCheapTattos;
@@ -241,6 +245,7 @@ public class GameManager : Singleton<GameManager>
                 CollsionScript.BadYellow = m_textureManager.PinnupGirlBadYellow;
                 break;
             case 4:
+                // CollsionScript.Tattos = new Texture[6];
                 CollsionScript.Default = m_textureManager.DefaultCeleb;
                 CollsionScript.Tattos = m_textureManager.CelebExpensiveTattos;
                 CollsionScript.CheapTttos = m_textureManager.CelebCheapTattos;
@@ -253,6 +258,7 @@ public class GameManager : Singleton<GameManager>
 
                 break;
             case 5:
+                // CollsionScript.Tattos = new Texture[6];
                 CollsionScript.Default = m_textureManager.DefaultSkull;
                 CollsionScript.Tattos = m_textureManager.SkullExpensiveTattos;
                 CollsionScript.CheapTttos = m_textureManager.SkullCheapTattos;
@@ -265,6 +271,7 @@ public class GameManager : Singleton<GameManager>
 
                 break;
             case 6:
+                // CollsionScript.Tattos = new Texture[6];
                 CollsionScript.Default = m_textureManager.defaultCartoon;
                 CollsionScript.Tattos = m_textureManager.CartoonExpensiveTattos;
                 CollsionScript.CheapTttos = m_textureManager.CartoonCheapTattos;

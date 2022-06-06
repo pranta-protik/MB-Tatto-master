@@ -471,7 +471,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b957ab7e20b73478d88d578db92b9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Id: 3
+  Id: 1
 --- !u!1 &6828944569422768712
 GameObject:
   m_ObjectHideFlags: 0
@@ -847,6 +847,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff667c52414dae740bb8ad5f36310c63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsSpecial: 0
   GateType: 1
   Cost: 1000
   UICostText: 1K

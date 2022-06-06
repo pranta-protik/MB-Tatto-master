@@ -67,9 +67,8 @@ public class Collsion : MonoBehaviour
         {
             runtimeAnimatorController = anim.runtimeAnimatorController
         };
-
-
-
+        
+        
         StiackerMat.DOFade(0, 0);
         Startpos = transform.localPosition;
 
@@ -161,18 +160,16 @@ public class Collsion : MonoBehaviour
                 MMVibrationManager.Haptic(HapticTypes.MediumImpact);
                 StorageManager.Instance.IncreasePoints(other.GetComponentInParent<Gates>().Cost);
 
-                    Shine.Play();
-                    PopUp.Play("opps");
+                Shine.Play();
+                PopUp.Play("opps");
 
-                    PopUp.transform.GetChild(0).gameObject.SetActive(true);
-                    PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "+" + other.GetComponentInParent<Gates>().Cost.ToString();
-                    PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = GoodGatePopUpColor;
+                PopUp.transform.GetChild(0).gameObject.SetActive(true);
+                PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "+" + other.GetComponentInParent<Gates>().Cost.ToString();
+                PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = GoodGatePopUpColor;
                 other.GetComponent<BoxCollider>().enabled = false;
             }
             else
             {
-
-
                 IsGood = true;
                 StartCoroutine(AnimationDelayRoutine());
                 GameManager.Instance.Level++;
@@ -259,10 +256,6 @@ public class Collsion : MonoBehaviour
             else
             {
                 GameManager.Instance.Level++;
-
-
-
-
 
                 IsGoodGate = false;
                 if (IsYellow)
