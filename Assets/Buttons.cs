@@ -154,6 +154,57 @@ public class Buttons : MonoBehaviour
         _camera.transform.DOLocalRotate(new Vector3(27.761f, 90, 0), .3f).OnComplete(() => { });
     }
 
+    public void CheckCardStatus(ButtonCard btnCard)
+    {
+        if (btnCard.requirementType == ButtonCard.BRequirementType.Cash)
+        {
+            if (StorageManager.GetTotalCoin() >= btnCard.requiredCash)
+            {
+                PlayerPrefs.SetInt("IsUnlockable"+btnCard.handId, 1);
+            }
+            else
+            {
+                PlayerPrefs.SetInt("IsUnlockable"+btnCard.handId, 0);
+            }
+        }
+
+        if (btnCard.requirementType == ButtonCard.BRequirementType.Time)
+        {
+            if (PlayerPrefs.GetInt("TotalTime") / 60f >= btnCard.requiredTime)
+            {
+                PlayerPrefs.SetInt("IsUnlockable"+btnCard.handId, 1);
+            }
+            else
+            {
+                PlayerPrefs.SetInt("IsUnlockable"+btnCard.handId, 0);
+            }
+        }
+
+        if (btnCard.requirementType == ButtonCard.BRequirementType.GamePlay)
+        {
+            if (PlayerPrefs.GetInt("GameOpenCount") >= btnCard.requiredMatches)
+            {
+                PlayerPrefs.SetInt("IsUnlockable"+btnCard.handId, 1);
+            }
+            else
+            {
+                PlayerPrefs.SetInt("IsUnlockable"+btnCard.handId, 0);
+            }
+        }
+
+        if (btnCard.requirementType == ButtonCard.BRequirementType.Level)
+        {
+            if (_currentLevel >= btnCard.requiredLevelNo)
+            {
+                PlayerPrefs.SetInt("IsUnlockable"+btnCard.handId, 1);
+            }
+            else
+            {
+                PlayerPrefs.SetInt("IsUnlockable"+btnCard.handId, 0);
+            }
+        }
+    }
+    
     public void CheckCardRequirementStatus(ButtonCard btnCard)
     {
         if (btnCard.requirementType == ButtonCard.BRequirementType.Cash)
@@ -178,7 +229,7 @@ public class Buttons : MonoBehaviour
             }
 
             CheckUnlockTextRequirement(btnCard,
-                "Play game for <color=red>" + Mathf.RoundToInt(btnCard.requiredTime - PlayerPrefs.GetInt("TotalTime") / 60f) + "/" + btnCard.requiredTime +
+                "Play game for <color=red>" + Mathf.Ceil(btnCard.requiredTime - PlayerPrefs.GetInt("TotalTime") / 60f) + "/" + btnCard.requiredTime +
                 "</color> min Time");
         }
 

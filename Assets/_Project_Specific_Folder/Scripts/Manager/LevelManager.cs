@@ -32,9 +32,9 @@ public class LevelManager : MonoBehaviour
         PlayerPrefs.SetInt("GameOpenCount", gameOpenCount);
     }
     
-    public static void LoadLastScene()
+    private static void LoadLastScene()
     {
-        SceneManager.LoadScene("SelectionMenu");
+        SceneManager.LoadScene("Main");
 
     }
 

@@ -68,11 +68,11 @@ public class UiManager : Singleton<UiManager>
         _camera = Camera.main;
         
         // Enable hand shop icon after 2nd level
-        if (_currentLevel > 1)
+        if (currentLevelText > 1)
         {
             hand.gameObject.SetActive(true);
 
-            if (_currentLevel == 2)
+            if (currentLevelText == 2)
             {
                 _isHandAnimating = true;
                 hand.transform.DOScale(new Vector3(0.8f, 0.8f, 0.8f), 0.5f).SetLoops(-1, LoopType.Yoyo);
@@ -81,6 +81,17 @@ public class UiManager : Singleton<UiManager>
         else
         {
             hand.gameObject.SetActive(false);
+        }
+
+        Buttons handButton = ShopPnael.transform.GetChild(0).GetComponent<Buttons>();
+
+        foreach (GameObject button in handButton.Buttonss)
+        {
+            if (PlayerPrefs.GetInt("IsUnlockable" + button.GetComponent<ButtonCard>().handId) == 1 &&
+                PlayerPrefs.GetInt("IsNotified" + button.GetComponent<ButtonCard>().handId) == 0)
+            {
+                
+            }
         }
     }
 
@@ -243,6 +254,9 @@ public class UiManager : Singleton<UiManager>
     {
         decisionScreen.SetActive(false);
         cashCounter.SetActive(false);
+        
+        GameManager.Instance.SetTotalTime();
+        
         StartCoroutine(GameManager.Instance.CollsionScript.BookRoutine()); 
         //GameManager.Instance.bossWall.DOMoveY(-1.5f, 1f).OnComplete(() =>
         //{

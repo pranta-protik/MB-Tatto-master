@@ -12,24 +12,23 @@ public class AvailabilityRate : MonoBehaviour
         int i = Random.Range(0, 5);
         if(i==0)
         {
-            Parcentage.text = "40%";
+            Parcentage.text = "40";
         }
         if (i == 01)
         {
-            Parcentage.text = "45%";
+            Parcentage.text = "45";
         }
         if (i == 02)
         {
-            Parcentage.text = "50%";
+            Parcentage.text = "50";
         }
         if (i == 03)
         {
-            Parcentage.text = "55%";
+            Parcentage.text = "55";
         }
         if (i == 04)
         {
-            Parcentage.text = "60%";
+            Parcentage.text = "60";
         }
-      
     }
 }

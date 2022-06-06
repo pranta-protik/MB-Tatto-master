@@ -27,7 +27,11 @@ public class ButtonCard : MonoBehaviour
     public float requiredTime;
     public int requiredMatches;
     public int requiredLevelNo;
-    public int cardStatus;
+    [HideInInspector] public int cardStatus;
+
+    public int isUnlockable;
+
+    public bool isNotified;
     // ButtonCard b;
     [HideInInspector] public GameObject shineEffect;
     public bool Unlocked;
@@ -48,7 +52,22 @@ public class ButtonCard : MonoBehaviour
         {
             transform.GetChild(0).gameObject.SetActive(false);
         }
-
+        
+        m_Buttons.CheckCardStatus(this);
+        
+        isUnlockable = PlayerPrefs.GetInt("IsUnlockable" + handId, 0);
+        
+        if (isUnlockable == 1)
+        {
+            if (PlayerPrefs.GetInt("IsNotified" + handId, 0) == 0)
+            {
+                if (handId != 0)
+                {
+                    transform.GetChild(1).gameObject.SetActive(true);   
+                }
+                PlayerPrefs.SetInt("IsNotified" + handId, 1);
+            }
+        }
     }
 
     public int index;
@@ -56,6 +75,7 @@ public class ButtonCard : MonoBehaviour
     public void GetSelectedId()
     {
         m_Buttons.SelectedId = handId;
+        transform.GetChild(1).gameObject.SetActive(false);
         GameManager.Instance.SpawnHand(handId);
         m_Buttons.CheckCardRequirementStatus(this);
         index = m_Buttons.SelectedId;
@@ -79,8 +99,6 @@ public class ButtonCard : MonoBehaviour
         }
     }
 
-    
-    
     public void EnableCard()
     {
         cardStatus = 1;
