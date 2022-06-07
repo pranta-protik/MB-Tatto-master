@@ -171,7 +171,7 @@ public class Collsion : MonoBehaviour
                 PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = GoodGatePopUpColor;
                 other.GetComponent<BoxCollider>().enabled = false;
 
-                lastGateId = other.gameObject.transform.GetComponentInParent<Gates>().id;
+                // lastGateId = other.gameObject.transform.GetComponentInParent<Gates>().id;
             }
             else
             {
