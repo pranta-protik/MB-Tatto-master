@@ -2,17 +2,190 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0bbd3f85-ed93-443c-811c-694e308cff41" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Book/Book_Page_2.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Book/Book_Page_2.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Book/Materials/Arrow.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Book/Materials/Arrow.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_00.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_00.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_01.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_02.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_02.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_03.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_03.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_04.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_04.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_05.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_05.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_06.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_06.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_07.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_07.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_08.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_08.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_08_col1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_08_col1.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_08_col2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_08_col2.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_09.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_09.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_09_col1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_09_col1.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_09_col2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_09_col2.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_10.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_10.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_10_col1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_10_col1.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_10_col2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_10_col2.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_11.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_11.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_11_col1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_11_col1.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_11_col2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_11_col2.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_12.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_12.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_12_col1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_12_col1.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_12_col2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_12_col2.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_13.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_13.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_14.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_14.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_15.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_15.png.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Tatto-master/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Tatto-master/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AvailabilityRate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AvailabilityRate.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Book.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Book.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Book/Book_Page.fbx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Book/Book_Page.fbx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Book/Book_Page.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Book/Book_Page.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Book_Page.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Book_Page.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_Exp00.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_Exp00.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_Exp01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_Exp01.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_Exp02.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_Exp02.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_Exp03.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_Exp03.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_Exp04.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_Exp04.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_Exp04_Yellow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_Exp04_Yellow.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_Exp04_blue.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_Exp04_blue.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_Exp05.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_Exp05.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_Exp05_blue.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_Exp05_blue.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_Exp05_yellow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_Exp05_yellow.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_Exp06.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/flowr_playerHand_Basecol_Exp06.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/skull_playerHand_Basecol_Exp00.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/skull_playerHand_Basecol_Exp00.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/skull_playerHand_Basecol_Exp01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/skull_playerHand_Basecol_Exp01.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/skull_playerHand_Basecol_Exp02.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/skull_playerHand_Basecol_Exp02.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/skull_playerHand_Basecol_Exp03.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/skull_playerHand_Basecol_Exp03.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/skull_playerHand_Basecol_Exp04.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/skull_playerHand_Basecol_Exp04.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/skull_playerHand_Basecol_Exp04_blue.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/skull_playerHand_Basecol_Exp04_blue.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/skull_playerHand_Basecol_Exp04_yellow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/skull_playerHand_Basecol_Exp04_yellow.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/skull_playerHand_Basecol_Exp05.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/skull_playerHand_Basecol_Exp05.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/skull_playerHand_Basecol_Exp05_blue.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/skull_playerHand_Basecol_Exp05_blue.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/skull_playerHand_Basecol_Exp05_yellow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/skull_playerHand_Basecol_Exp05_yellow.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/skull_playerHand_Basecol_Exp06.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/skull_playerHand_Basecol_Exp06.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/skull_playerHand_Basecol_cheap00.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/skull_playerHand_Basecol_cheap00.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/skull_playerHand_Basecol_cheap01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/skull_playerHand_Basecol_cheap01.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/skull_playerHand_Basecol_cheap02.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/skull_playerHand_Basecol_cheap02.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/skull_playerHand_Basecol_cheap03.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/skull_playerHand_Basecol_cheap03.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/skull_playerHand_Basecol_cheap04.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/skull_playerHand_Basecol_cheap04.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/skull_playerHand_Basecol_cheap04_blue.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/skull_playerHand_Basecol_cheap04_blue.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/skull_playerHand_Basecol_cheap04_yellow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/skull_playerHand_Basecol_cheap04_yellow.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/skull_playerHand_Basecol_cheap05.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/skull_playerHand_Basecol_cheap05.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/skull_playerHand_Basecol_cheap05_blue.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/skull_playerHand_Basecol_cheap05_blue.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/skull_playerHand_Basecol_cheap05_yellow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/skull_playerHand_Basecol_cheap05_yellow.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/skull_playerHand_Basecol_cheap06.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/skull_playerHand_Basecol_cheap06.png.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Materials/Ground.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Materials/Ground.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Flower.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Flower.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Flower/Cheap.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Flower/Expensive.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/Cheap.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/Expensive.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/skull_playerHand_Basecol_01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/skull_playerHand_Basecol_01.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/skull_playerHand_Basecol_02.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/skull_playerHand_Basecol_02.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/skull_playerHand_Basecol_03.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/skull_playerHand_Basecol_03.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/skull_playerHand_Basecol_04.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/skull_playerHand_Basecol_04.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/skull_playerHand_Basecol_05.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/skull_playerHand_Basecol_05.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/skull_playerHand_Basecol_06.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/skull_playerHand_Basecol_06.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/skull_playerHand_Basecol_07.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/skull_playerHand_Basecol_07.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/skull_playerHand_Basecol_08.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/skull_playerHand_Basecol_08.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/skull_playerHand_Basecol_08_col1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/skull_playerHand_Basecol_08_col1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/skull_playerHand_Basecol_08_col2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/skull_playerHand_Basecol_08_col2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/skull_playerHand_Basecol_09.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/skull_playerHand_Basecol_09.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/skull_playerHand_Basecol_09_col1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/skull_playerHand_Basecol_09_col1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/skull_playerHand_Basecol_09_col2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/skull_playerHand_Basecol_09_col2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/skull_playerHand_Basecol_10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/skull_playerHand_Basecol_10.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/skull_playerHand_Basecol_10_col1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/skull_playerHand_Basecol_10_col1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/skull_playerHand_Basecol_10_col2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/skull_playerHand_Basecol_10_col2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/skull_playerHand_Basecol_11.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/skull_playerHand_Basecol_11.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/skull_playerHand_Basecol_11_col1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/skull_playerHand_Basecol_11_col1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/skull_playerHand_Basecol_11_col2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/skull_playerHand_Basecol_11_col2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/skull_playerHand_Basecol_12.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/skull_playerHand_Basecol_12.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/skull_playerHand_Basecol_13.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/skull_playerHand_Basecol_13.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/skull_playerHand_Basecol_13_col1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/skull_playerHand_Basecol_13_col1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/skull_playerHand_Basecol_13_col2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/skull_playerHand_Basecol_13_col2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/skull_playerHand_Basecol_14.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/skull_playerHand_Basecol_14.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/skull_playerHand_Basecol_15.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Skull/skull_playerHand_Basecol_15.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Gates/End.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Gates/End.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Levels/100.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Levels/100.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Levels/101.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Levels/101.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/In game/Collsion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/In game/Collsion.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/Manager/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/Manager/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/Ui/UiManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/Ui/UiManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/player_Hand_Hand_BaseColor_Exp01 1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/player_Hand_Hand_BaseColor_Exp01 1.mat" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -99,6 +272,7 @@
       <workItem from="1653991670754" duration="11827000" />
       <workItem from="1654012022033" duration="5559000" />
       <workItem from="1654514363398" duration="15914000" />
+      <workItem from="1654571903790" duration="3454000" />
     </task>
     <servers />
   </component>

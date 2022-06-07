@@ -543,8 +543,6 @@ public class Collsion : MonoBehaviour
         if (PlayerPrefs.GetInt("FirstTime", 0) == 0)
         {
             PlayerPrefs.SetInt("FirstTime", 1);
-
-
         }
         else if (PlayerPrefs.GetInt("FirstTime") == 1)
             e.PageToFlipRef.SetActive(true);
@@ -559,8 +557,6 @@ public class Collsion : MonoBehaviour
         PlayerPrefs.SetInt("TattoCost" + SavedTattooNo, StorageManager.Instance.RewardValue);
         SavedTattooNo++;
         PlayerPrefs.SetInt("SavedTattooNo", SavedTattooNo);
-      
- 
     }
 
 
@@ -574,7 +570,7 @@ public class Collsion : MonoBehaviour
     {
         GameManager.Instance.p.speed = GameManager.Instance.p.MaxSpeed = .8f;
         yield return new WaitForSeconds(.6f);
-        GameManager.Instance.p.MaxSpeed = 3;
+        GameManager.Instance.p.MaxSpeed = 2.5f;
     }
 
 

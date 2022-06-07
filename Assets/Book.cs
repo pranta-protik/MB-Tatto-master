@@ -101,7 +101,7 @@ public class Book : MonoBehaviour
                 }
                 g.transform.parent = PageToFlip.transform;
                 g.transform.DOLocalRotate(new Vector3(0, 0, 0), 0);
-                g.transform.DOLocalMove(new Vector3(-0.267f, 0, 0), 0);
+                g.transform.DOLocalMove(new Vector3(-0.177f, 0, 0), 0);
        
                 Texture2D m_TattoTex = (Texture2D)Resources.Load(PlayerPrefs.GetString("TattooFrame" + j));
                 int k = PlayerPrefs.GetInt("TattoCost" + j);
@@ -123,8 +123,9 @@ public class Book : MonoBehaviour
             {
                 GameObject g = Instantiate(FramePrefab, StartPos.transform.position, Quaternion.identity);
                 g.transform.DOLocalMove(FramePos[0].transform.position, .5f);
-                g.transform.GetChild(0).GetComponent<Renderer>().material.mainTexture = GameManager.Instance.LastTattoTexture;
-                g.transform.DOLocalRotate(new Vector3(-50f, -90f, -0.791f), 0);
+                Texture2D lastTattooTexture = (Texture2D) Resources.Load(GameManager.Instance.TextureName);
+                g.transform.GetChild(0).GetComponent<Renderer>().material.mainTexture = lastTattooTexture;
+                g.transform.DOLocalRotate(new Vector3(-45f, -90f, -0.791f), 0);
             }
         }
 

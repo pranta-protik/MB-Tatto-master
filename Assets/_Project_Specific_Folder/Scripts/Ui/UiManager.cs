@@ -68,11 +68,11 @@ public class UiManager : Singleton<UiManager>
         _camera = Camera.main;
         
         // Enable hand shop icon after 2nd level
-        if (currentLevelText > 1)
+        if (currentLevelText > 0)
         {
             hand.gameObject.SetActive(true);
 
-            if (currentLevelText == 2)
+            if (currentLevelText == 1)
             {
                 _isHandAnimating = true;
                 hand.transform.DOScale(new Vector3(0.8f, 0.8f, 0.8f), 0.5f).SetLoops(-1, LoopType.Yoyo);
