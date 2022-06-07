@@ -51,11 +51,7 @@ public class UiManager : Singleton<UiManager>
         {
             btnNext.onClick.AddListener(NextCallBack);
         }
-        if (hand != null)
-        {
-            hand.onClick.AddListener(EnableShopCallBack);
-        }
-  
+
         base.Start();
         _currentLevel = PlayerPrefs.GetInt("current_scene");
         currentLevelText = PlayerPrefs.GetInt("current_scene_text", 0);
@@ -66,23 +62,28 @@ public class UiManager : Singleton<UiManager>
         }
         
         _camera = Camera.main;
-        
-        // Enable hand shop icon after 2nd level
-        if (currentLevelText > 0)
-        {
-            hand.gameObject.SetActive(true);
 
-            if (currentLevelText == 1)
+        if (hand != null)
+        {
+            hand.onClick.AddListener(EnableShopCallBack);
+
+            // Enable hand shop icon after 2nd level
+            if (currentLevelText > 0)
             {
-                _isHandAnimating = true;
-                hand.transform.DOScale(new Vector3(0.8f, 0.8f, 0.8f), 0.5f).SetLoops(-1, LoopType.Yoyo);
+                hand.gameObject.SetActive(true);
+
+                if (currentLevelText == 1)
+                {
+                    _isHandAnimating = true;
+                    hand.transform.DOScale(new Vector3(0.8f, 0.8f, 0.8f), 0.5f).SetLoops(-1, LoopType.Yoyo);
+                }
+            }
+            else
+            {
+                hand.gameObject.SetActive(false);
             }
         }
-        else
-        {
-            hand.gameObject.SetActive(false);
-        }
-        
+
         // Buttons handButton = ShopPnael.transform.GetChild(0).GetComponent<Buttons>();
         //
         // foreach (GameObject button in handButton.Buttonss)
