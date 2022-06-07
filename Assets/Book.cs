@@ -101,7 +101,7 @@ public class Book : MonoBehaviour
                 }
                 g.transform.parent = PageToFlip.transform;
                 g.transform.DOLocalRotate(new Vector3(0, 0, 0), 0);
-                g.transform.DOLocalMove(new Vector3(-0.177f, 0, 0), 0);
+                g.transform.DOLocalMove(new Vector3(-0.1f, 0, 0.01f), 0);
        
                 Texture2D m_TattoTex = (Texture2D)Resources.Load(PlayerPrefs.GetString("TattooFrame" + j));
                 int k = PlayerPrefs.GetInt("TattoCost" + j);
