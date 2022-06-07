@@ -82,20 +82,20 @@ public class UiManager : Singleton<UiManager>
         {
             hand.gameObject.SetActive(false);
         }
-
-        Buttons handButton = ShopPnael.transform.GetChild(0).GetComponent<Buttons>();
-
-        foreach (GameObject button in handButton.Buttonss)
-        {
-            if (PlayerPrefs.GetInt("IsUnlockable" + button.GetComponent<ButtonCard>().handId) == 1 &&
-                PlayerPrefs.GetInt("IsNotified" + button.GetComponent<ButtonCard>().handId) == 0)
-            {
-                Debug.Log("Hee");
-                _isHandAnimating = true;
-                hand.transform.DOScale(new Vector3(0.8f, 0.8f, 0.8f), 0.5f).SetLoops(-1, LoopType.Yoyo);
-                break;
-            }
-        }
+        
+        // Buttons handButton = ShopPnael.transform.GetChild(0).GetComponent<Buttons>();
+        //
+        // foreach (GameObject button in handButton.Buttonss)
+        // {
+        //     if (PlayerPrefs.GetInt("IsUnlockable" + button.GetComponent<ButtonCard>().handId) == 1 &&
+        //         PlayerPrefs.GetInt("IsNotified" + button.GetComponent<ButtonCard>().handId) == 0)
+        //     {
+        //         Debug.Log("Hee");
+        //         _isHandAnimating = true;
+        //         hand.transform.DOScale(new Vector3(0.8f, 0.8f, 0.8f), 0.5f).SetLoops(-1, LoopType.Yoyo);
+        //         break;
+        //     }
+        // }
     }
 
     private void EnableShopCallBack()

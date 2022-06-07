@@ -54,16 +54,20 @@ public class ButtonCard : MonoBehaviour
         }
         
         m_Buttons.CheckCardStatus(this);
-        
-        isUnlockable = PlayerPrefs.GetInt("IsUnlockable" + handId, 0);
-        
-        if (isUnlockable == 1)
+
+        if (handId == 0)
         {
-            if (PlayerPrefs.GetInt("IsNotified" + handId, 0) == 0)
+            PlayerPrefs.SetInt("IsUnlockable" + handId, 1);
+            PlayerPrefs.SetInt("IsNotified" + handId, 1);
+        }
+        else
+        {
+            isUnlockable = PlayerPrefs.GetInt("IsUnlockable" + handId, 0);
+            if (isUnlockable == 1)
             {
-                if (handId != 0)
+                if (PlayerPrefs.GetInt("IsNotified" + handId, 0) == 0)
                 {
-                    transform.GetChild(1).gameObject.SetActive(true);   
+                    transform.GetChild(1).gameObject.SetActive(true);
                 }
             }
         }
@@ -73,7 +77,10 @@ public class ButtonCard : MonoBehaviour
 
     public void GetSelectedId()
     {
-        PlayerPrefs.SetInt("IsNotified" + handId, 1);
+        if (isUnlockable == 1)
+        {
+            PlayerPrefs.SetInt("IsNotified" + handId, 1);   
+        }
         m_Buttons.SelectedId = handId;
         transform.GetChild(1).gameObject.SetActive(false);
         GameManager.Instance.SpawnHand(handId);
