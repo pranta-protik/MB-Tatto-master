@@ -55,6 +55,9 @@ public class Collsion : MonoBehaviour
     [SerializeField] int j = 2;
     [SerializeField] int m_i;
     public List<Texture> Dummy = new List<Texture>();
+
+    public int lastGateId;
+    
     private void Start()
     {
         cam = GameManager.Instance.FakeCam;
@@ -167,6 +170,8 @@ public class Collsion : MonoBehaviour
                 PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "+" + other.GetComponentInParent<Gates>().Cost.ToString();
                 PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = GoodGatePopUpColor;
                 other.GetComponent<BoxCollider>().enabled = false;
+
+                lastGateId = other.gameObject.transform.GetComponentInParent<Gates>().id;
             }
             else
             {
@@ -214,6 +219,8 @@ public class Collsion : MonoBehaviour
                 //     }
                 // }
 
+                lastGateId = other.gameObject.transform.GetComponentInParent<Gates>().id;
+                
                 if (!GameManager.Instance.IsVideo)
                 {
                     StartCoroutine(UpdateTexture(other.gameObject));   
@@ -222,7 +229,6 @@ public class Collsion : MonoBehaviour
                 {
                     StartCoroutine(UpdateTextureVideo(other.gameObject));
                     LastLevel = GameManager.Instance.Level;
-                    Debug.Log(LastLevel);
                 }
             }
         }
