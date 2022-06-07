@@ -176,42 +176,53 @@ public class Collsion : MonoBehaviour
 
                 IsGoodGate = true;
                 other.GetComponent<BoxCollider>().enabled = false;
-                if (IsYellow)
-                {
-                    if (GameManager.Instance.Level == 5)
-                    {
-                        StiackerMat.DOFade(0, .3f).OnComplete(() =>
-                        {
-                            StiackerMat.mainTexture = GoodYellow[01];
-                            StiackerMat.DOFade(1, .5f);
+                // if (IsYellow)
+                // {
+                //     if (GameManager.Instance.Level == 5)
+                //     {
+                //         StiackerMat.DOFade(0, .3f).OnComplete(() =>
+                //         {
+                //             StiackerMat.mainTexture = GoodYellow[01];
+                //             StiackerMat.DOFade(1, .5f);
+                //
+                //         });
+                //     }
+                //     else
+                //         StartCoroutine(UpdateTexture(other.gameObject));
+                // }
+                // else if (IsBlue)
+                // {
+                //     if (GameManager.Instance.Level == 5)
+                //     {
+                //         StiackerMat.DOFade(0, .3f).OnComplete(() =>
+                //         {
+                //             StiackerMat.mainTexture = GoodBlue[01];
+                //             StiackerMat.DOFade(1, .5f);
+                //         });
+                //     }
+                //     else
+                //         StartCoroutine(UpdateTexture(other.gameObject));
+                // }
+                // else
+                // {
+                //     if (!GameManager.Instance.IsVideo)
+                //         StartCoroutine(UpdateTexture(other.gameObject));
+                //     else
+                //     {
+                //         StartCoroutine(UpdateTextureVideo(other.gameObject));
+                //         LastLevel = GameManager.Instance.Level;
+                //     }
+                // }
 
-                        });
-                    }
-                    else
-                        StartCoroutine(UpdateTexture(other.gameObject));
-                }
-                else if (IsBlue)
+                if (!GameManager.Instance.IsVideo)
                 {
-                    if (GameManager.Instance.Level == 5)
-                    {
-                        StiackerMat.DOFade(0, .3f).OnComplete(() =>
-                        {
-                            StiackerMat.mainTexture = GoodBlue[01];
-                            StiackerMat.DOFade(1, .5f);
-                        });
-                    }
-                    else
-                        StartCoroutine(UpdateTexture(other.gameObject));
+                    StartCoroutine(UpdateTexture(other.gameObject));   
                 }
                 else
                 {
-                    if (!GameManager.Instance.IsVideo)
-                        StartCoroutine(UpdateTexture(other.gameObject));
-                    else
-                    {
-                        StartCoroutine(UpdateTextureVideo(other.gameObject));
-                        LastLevel = GameManager.Instance.Level;
-                    }
+                    StartCoroutine(UpdateTextureVideo(other.gameObject));
+                    LastLevel = GameManager.Instance.Level;
+                    Debug.Log(LastLevel);
                 }
             }
         }
@@ -222,9 +233,8 @@ public class Collsion : MonoBehaviour
             if (IsGood)
             {
                 GameManager.Instance.Level--;
-               m_i = Dummy.Count;
-         
-              
+                m_i = Dummy.Count;
+
                 MMVibrationManager.Haptic(HapticTypes.MediumImpact);
                 StorageManager.Instance.IncreasePoints(-other.GetComponentInParent<Gates>().Cost);
                 //GameManager.Instance.Level = g.transform.GetComponentInParent<Gates>().id + 1;
@@ -258,42 +268,43 @@ public class Collsion : MonoBehaviour
                 GameManager.Instance.Level++;
 
                 IsGoodGate = false;
-                if (IsYellow)
-                {
-                    if (GameManager.Instance.Level == 5)
-                    {
-                        StiackerMat.DOFade(0, .3f).OnComplete(() =>
-                        {
-                            StiackerMat.mainTexture = BadYellow[01];
-                            StiackerMat.DOFade(1, .5f);
-
-                        });
-                    }
-                    else
-                        StartCoroutine(UpdateTextureCheap(other.gameObject));
-
-                }
-                else if (IsBlue)
-                {
-                    if (GameManager.Instance.Level == 5)
-                    {
-                        StiackerMat.DOFade(0, .3f).OnComplete(() =>
-                        {
-                            StiackerMat.mainTexture = BadBlue[01];
-                            StiackerMat.DOFade(1, .5f);
-                        });
-                    }
-                    else
-                        StartCoroutine(UpdateTextureCheap(other.gameObject));
-                }
-                else
-                {
-                    // if (!GameManager.Instance.IsVideo)
-                    StartCoroutine(UpdateTextureCheap(other.gameObject));
-                    //  else
-                    //   StartCoroutine(UpdateCheapTextureVideo(other.gameObject));
-                }
-
+                // if (IsYellow)
+                // {
+                //     if (GameManager.Instance.Level == 5)
+                //     {
+                //         StiackerMat.DOFade(0, .3f).OnComplete(() =>
+                //         {
+                //             StiackerMat.mainTexture = BadYellow[01];
+                //             StiackerMat.DOFade(1, .5f);
+                //
+                //         });
+                //     }
+                //     else
+                //         StartCoroutine(UpdateTextureCheap(other.gameObject));
+                //
+                // }
+                // else if (IsBlue)
+                // {
+                //     if (GameManager.Instance.Level == 5)
+                //     {
+                //         StiackerMat.DOFade(0, .3f).OnComplete(() =>
+                //         {
+                //             StiackerMat.mainTexture = BadBlue[01];
+                //             StiackerMat.DOFade(1, .5f);
+                //         });
+                //     }
+                //     else
+                //         StartCoroutine(UpdateTextureCheap(other.gameObject));
+                // }
+                // else
+                // {
+                //     // if (!GameManager.Instance.IsVideo)
+                //     StartCoroutine(UpdateTextureCheap(other.gameObject));
+                //     //  else
+                //     //   StartCoroutine(UpdateCheapTextureVideo(other.gameObject));
+                // }
+                
+                StartCoroutine(UpdateTextureCheap(other.gameObject));
             }
         }
 
@@ -336,99 +347,124 @@ public class Collsion : MonoBehaviour
         if (other.gameObject.CompareTag("Yellow"))
         {
             StartCoroutine(AnimationDelayRoutine());
-            if (IsGoodGate)
-            {
-                if (GameManager.Instance.Level == 4)
-                {
-                    StiackerMat.DOFade(0, .3f).OnComplete(() =>
-                    {
-                        Shine.Play();
-                        StiackerMat.mainTexture = GoodYellow[0];
-                        StiackerMat.DOFade(1, .5f);
-                        IsYellow = true;
-                    });
-                }
-                else if (GameManager.Instance.Level == 5)
-                {
-                    StiackerMat.DOFade(0, .3f).OnComplete(() =>
-                    {
-                        Shine.Play();
-                        StiackerMat.mainTexture = GoodYellow[01];
-                        StiackerMat.DOFade(1, .5f);
 
-                    });
-                }
-            }
-            else
+            if (GameManager.Instance.Level == 10)
             {
-                if (GameManager.Instance.Level == 4)
+                StiackerMat.DOFade(0, 0.3f).OnComplete(() =>
                 {
-                    StiackerMat.DOFade(0, .3f).OnComplete(() =>
-                    {
-                        Shine.Play();
-                        StiackerMat.mainTexture = BadYellow[0];
-                        StiackerMat.DOFade(1, .5f);
-                        IsYellow = true;
-                    });
-                }
-                else if (GameManager.Instance.Level == 5)
-                {
-                    StiackerMat.DOFade(0, .3f).OnComplete(() =>
-                    {
-                        Shine.Play();
-                        StiackerMat.mainTexture = BadYellow[01];
-                        StiackerMat.DOFade(1, .5f);
-                    });
-                }
+                    Shine.Play();
+                    StiackerMat.mainTexture = GoodYellow[0];
+                    StiackerMat.DOFade(1, 0.5f);
+                    IsYellow = true;
+                });
             }
+            // if (IsGoodGate)
+            // {
+            //     if (GameManager.Instance.Level == 4)
+            //     {
+            //         StiackerMat.DOFade(0, .3f).OnComplete(() =>
+            //         {
+            //             Shine.Play();
+            //             StiackerMat.mainTexture = GoodYellow[0];
+            //             StiackerMat.DOFade(1, .5f);
+            //             IsYellow = true;
+            //         });
+            //     }
+            //     else if (GameManager.Instance.Level == 5)
+            //     {
+            //         StiackerMat.DOFade(0, .3f).OnComplete(() =>
+            //         {
+            //             Shine.Play();
+            //             StiackerMat.mainTexture = GoodYellow[01];
+            //             StiackerMat.DOFade(1, .5f);
+            //
+            //         });
+            //     }
+            // }
+            // else
+            // {
+            //     if (GameManager.Instance.Level == 4)
+            //     {
+            //         StiackerMat.DOFade(0, .3f).OnComplete(() =>
+            //         {
+            //             Shine.Play();
+            //             StiackerMat.mainTexture = BadYellow[0];
+            //             StiackerMat.DOFade(1, .5f);
+            //             IsYellow = true;
+            //         });
+            //     }
+            //     else if (GameManager.Instance.Level == 5)
+            //     {
+            //         StiackerMat.DOFade(0, .3f).OnComplete(() =>
+            //         {
+            //             Shine.Play();
+            //             StiackerMat.mainTexture = BadYellow[01];
+            //             StiackerMat.DOFade(1, .5f);
+            //         });
+            //     }
+            // }
         }
 
         if (other.gameObject.CompareTag("Blue"))
         {
             StartCoroutine(AnimationDelayRoutine());
-            if (IsGoodGate)
+
+            Debug.Log("Herrrrrrrrrrrrr");
+            Debug.Log(GameManager.Instance.Level);
+            if (GameManager.Instance.Level == 10)
             {
-                if (GameManager.Instance.Level == 4)
+                StiackerMat.DOFade(0, 0.3f).OnComplete(() =>
                 {
-                    StiackerMat.DOFade(0, .3f).OnComplete(() =>
-                    {
-                        Shine.Play();
-                        StiackerMat.mainTexture = GoodBlue[0];
-                        StiackerMat.DOFade(1, .5f);
-                        IsBlue = true;
-                    });
-                }
-                else if (GameManager.Instance.Level == 5)
-                {
-                    StiackerMat.DOFade(0, .3f).OnComplete(() =>
-                    {
-                        Shine.Play();
-                        StiackerMat.mainTexture = GoodBlue[01];
-                        StiackerMat.DOFade(1, .5f);
-                    });
-                }
-            }
-            else
-            {
-                if (GameManager.Instance.Level == 4)
-                {
-                    StiackerMat.DOFade(0, .3f).OnComplete(() =>
-                    {
-                        Shine.Play();
-                        StiackerMat.mainTexture = BadBlue[0];
-                        StiackerMat.DOFade(1, .5f);
-                    });
+                    Shine.Play();
+                    StiackerMat.mainTexture = GoodBlue[0];
+                    StiackerMat.DOFade(1, 0.5f);
                     IsBlue = true;
-                }
-                else if (GameManager.Instance.Level == 5)
-                {
-                    StiackerMat.DOFade(0, .3f).OnComplete(() =>
-                    {
-                        StiackerMat.mainTexture = BadBlue[01];
-                        StiackerMat.DOFade(1, .5f);
-                    });
-                }
+                });
             }
+            
+            // if (IsGoodGate)
+            // {
+            //     if (GameManager.Instance.Level == 4)
+            //     {
+            //         StiackerMat.DOFade(0, .3f).OnComplete(() =>
+            //         {
+            //             Shine.Play();
+            //             StiackerMat.mainTexture = GoodBlue[0];
+            //             StiackerMat.DOFade(1, .5f);
+            //             IsBlue = true;
+            //         });
+            //     }
+            //     else if (GameManager.Instance.Level == 5)
+            //     {
+            //         StiackerMat.DOFade(0, .3f).OnComplete(() =>
+            //         {
+            //             Shine.Play();
+            //             StiackerMat.mainTexture = GoodBlue[01];
+            //             StiackerMat.DOFade(1, .5f);
+            //         });
+            //     }
+            // }
+            // else
+            // {
+            //     if (GameManager.Instance.Level == 4)
+            //     {
+            //         StiackerMat.DOFade(0, .3f).OnComplete(() =>
+            //         {
+            //             Shine.Play();
+            //             StiackerMat.mainTexture = BadBlue[0];
+            //             StiackerMat.DOFade(1, .5f);
+            //         });
+            //         IsBlue = true;
+            //     }
+            //     else if (GameManager.Instance.Level == 5)
+            //     {
+            //         StiackerMat.DOFade(0, .3f).OnComplete(() =>
+            //         {
+            //             StiackerMat.mainTexture = BadBlue[01];
+            //             StiackerMat.DOFade(1, .5f);
+            //         });
+            //     }
+            // }
         }
 
         if (other.gameObject.CompareTag("Finish"))
@@ -605,16 +641,6 @@ public class Collsion : MonoBehaviour
         //   }
 
     }
-
-
-
-    void Test(GameObject g)
-    {
-      
-      
-    }
-
-
 
 
     // public IEnumerator StopRoutine(GameObject g)

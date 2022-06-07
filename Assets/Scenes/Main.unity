@@ -824,6 +824,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8645485101156954889, guid: 7dd4730ff4313d94e85d619b7e45d404, type: 3}
+      propertyPath: BadBlue.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8645485101156954889, guid: 7dd4730ff4313d94e85d619b7e45d404, type: 3}
+      propertyPath: GoodBlue.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8645485101156954889, guid: 7dd4730ff4313d94e85d619b7e45d404, type: 3}
+      propertyPath: BadYellow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8645485101156954889, guid: 7dd4730ff4313d94e85d619b7e45d404, type: 3}
       propertyPath: Tattos.Array.data[0]
       value: 
       objectReference: {fileID: 0}
@@ -848,9 +860,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8645485101156954889, guid: 7dd4730ff4313d94e85d619b7e45d404, type: 3}
+      propertyPath: BadBlue.Array.data[0]
+      value: 
+      objectReference: {fileID: 2800000, guid: 0e1d14854f42eef458c7f6f1966d163e, type: 3}
+    - target: {fileID: 8645485101156954889, guid: 7dd4730ff4313d94e85d619b7e45d404, type: 3}
       propertyPath: CheapTttos.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8645485101156954889, guid: 7dd4730ff4313d94e85d619b7e45d404, type: 3}
+      propertyPath: GoodYellow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8645485101156954889, guid: 7dd4730ff4313d94e85d619b7e45d404, type: 3}
+      propertyPath: GoodBlue.Array.data[0]
+      value: 
+      objectReference: {fileID: 2800000, guid: d980a4147a60fa34c8d72ea4cd7994e0, type: 3}
+    - target: {fileID: 8645485101156954889, guid: 7dd4730ff4313d94e85d619b7e45d404, type: 3}
+      propertyPath: BadYellow.Array.data[0]
+      value: 
+      objectReference: {fileID: 2800000, guid: 3cc5046375ad241459c04d6862da4fc1, type: 3}
     - target: {fileID: 8645485101156954889, guid: 7dd4730ff4313d94e85d619b7e45d404, type: 3}
       propertyPath: CheapTttos.Array.data[0]
       value: 
@@ -871,6 +899,10 @@ PrefabInstance:
       propertyPath: CheapTttos.Array.data[4]
       value: 
       objectReference: {fileID: 2800000, guid: 1cefa87054dfb0447b25ccf22dd7f7cc, type: 3}
+    - target: {fileID: 8645485101156954889, guid: 7dd4730ff4313d94e85d619b7e45d404, type: 3}
+      propertyPath: GoodYellow.Array.data[0]
+      value: 
+      objectReference: {fileID: 2800000, guid: dd83e47987af1f544b2491cc138bc253, type: 3}
     - target: {fileID: 8645485101156954889, guid: 7dd4730ff4313d94e85d619b7e45d404, type: 3}
       propertyPath: AnimationClips.Array.size
       value: 6
@@ -1808,6 +1840,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2373285987960752171, guid: 13dd3ac243f8f244b9843df3b87ca582, type: 3}
+      propertyPath: BadBlue.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2373285987960752171, guid: 13dd3ac243f8f244b9843df3b87ca582, type: 3}
+      propertyPath: GoodBlue.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2373285987960752171, guid: 13dd3ac243f8f244b9843df3b87ca582, type: 3}
+      propertyPath: BadYellow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2373285987960752171, guid: 13dd3ac243f8f244b9843df3b87ca582, type: 3}
       propertyPath: Tattos.Array.data[0]
       value: 
       objectReference: {fileID: 0}
@@ -1832,9 +1876,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2373285987960752171, guid: 13dd3ac243f8f244b9843df3b87ca582, type: 3}
+      propertyPath: BadBlue.Array.data[0]
+      value: 
+      objectReference: {fileID: 2800000, guid: 0e1d14854f42eef458c7f6f1966d163e, type: 3}
+    - target: {fileID: 2373285987960752171, guid: 13dd3ac243f8f244b9843df3b87ca582, type: 3}
       propertyPath: CheapTttos.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2373285987960752171, guid: 13dd3ac243f8f244b9843df3b87ca582, type: 3}
+      propertyPath: GoodYellow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2373285987960752171, guid: 13dd3ac243f8f244b9843df3b87ca582, type: 3}
+      propertyPath: GoodBlue.Array.data[0]
+      value: 
+      objectReference: {fileID: 2800000, guid: d980a4147a60fa34c8d72ea4cd7994e0, type: 3}
+    - target: {fileID: 2373285987960752171, guid: 13dd3ac243f8f244b9843df3b87ca582, type: 3}
+      propertyPath: BadYellow.Array.data[0]
+      value: 
+      objectReference: {fileID: 2800000, guid: 3cc5046375ad241459c04d6862da4fc1, type: 3}
     - target: {fileID: 2373285987960752171, guid: 13dd3ac243f8f244b9843df3b87ca582, type: 3}
       propertyPath: CheapTttos.Array.data[0]
       value: 
@@ -1855,6 +1915,10 @@ PrefabInstance:
       propertyPath: CheapTttos.Array.data[4]
       value: 
       objectReference: {fileID: 2800000, guid: 1cefa87054dfb0447b25ccf22dd7f7cc, type: 3}
+    - target: {fileID: 2373285987960752171, guid: 13dd3ac243f8f244b9843df3b87ca582, type: 3}
+      propertyPath: GoodYellow.Array.data[0]
+      value: 
+      objectReference: {fileID: 2800000, guid: dd83e47987af1f544b2491cc138bc253, type: 3}
     - target: {fileID: 2373285987960752171, guid: 13dd3ac243f8f244b9843df3b87ca582, type: 3}
       propertyPath: AnimationClips.Array.size
       value: 6
@@ -9098,6 +9162,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8734206296889652338, guid: 09b96d6da0680244eb39260b77d0cfdc, type: 3}
+      propertyPath: BadBlue.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8734206296889652338, guid: 09b96d6da0680244eb39260b77d0cfdc, type: 3}
+      propertyPath: GoodBlue.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8734206296889652338, guid: 09b96d6da0680244eb39260b77d0cfdc, type: 3}
+      propertyPath: BadYellow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8734206296889652338, guid: 09b96d6da0680244eb39260b77d0cfdc, type: 3}
       propertyPath: Tattos.Array.data[0]
       value: 
       objectReference: {fileID: 0}
@@ -9122,9 +9198,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8734206296889652338, guid: 09b96d6da0680244eb39260b77d0cfdc, type: 3}
+      propertyPath: BadBlue.Array.data[0]
+      value: 
+      objectReference: {fileID: 2800000, guid: 0e1d14854f42eef458c7f6f1966d163e, type: 3}
+    - target: {fileID: 8734206296889652338, guid: 09b96d6da0680244eb39260b77d0cfdc, type: 3}
       propertyPath: CheapTttos.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8734206296889652338, guid: 09b96d6da0680244eb39260b77d0cfdc, type: 3}
+      propertyPath: GoodYellow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8734206296889652338, guid: 09b96d6da0680244eb39260b77d0cfdc, type: 3}
+      propertyPath: GoodBlue.Array.data[0]
+      value: 
+      objectReference: {fileID: 2800000, guid: d980a4147a60fa34c8d72ea4cd7994e0, type: 3}
+    - target: {fileID: 8734206296889652338, guid: 09b96d6da0680244eb39260b77d0cfdc, type: 3}
+      propertyPath: BadYellow.Array.data[0]
+      value: 
+      objectReference: {fileID: 2800000, guid: 3cc5046375ad241459c04d6862da4fc1, type: 3}
     - target: {fileID: 8734206296889652338, guid: 09b96d6da0680244eb39260b77d0cfdc, type: 3}
       propertyPath: CheapTttos.Array.data[0]
       value: 
@@ -9145,6 +9237,10 @@ PrefabInstance:
       propertyPath: CheapTttos.Array.data[4]
       value: 
       objectReference: {fileID: 2800000, guid: 1cefa87054dfb0447b25ccf22dd7f7cc, type: 3}
+    - target: {fileID: 8734206296889652338, guid: 09b96d6da0680244eb39260b77d0cfdc, type: 3}
+      propertyPath: GoodYellow.Array.data[0]
+      value: 
+      objectReference: {fileID: 2800000, guid: dd83e47987af1f544b2491cc138bc253, type: 3}
     - target: {fileID: 8734206296889652338, guid: 09b96d6da0680244eb39260b77d0cfdc, type: 3}
       propertyPath: AnimationClips.Array.size
       value: 6
@@ -9261,6 +9357,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6558328930284890442, guid: 770a23465bb6e364788df1ee6b861bb1, type: 3}
+      propertyPath: BadBlue.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6558328930284890442, guid: 770a23465bb6e364788df1ee6b861bb1, type: 3}
+      propertyPath: GoodBlue.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6558328930284890442, guid: 770a23465bb6e364788df1ee6b861bb1, type: 3}
+      propertyPath: BadYellow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6558328930284890442, guid: 770a23465bb6e364788df1ee6b861bb1, type: 3}
       propertyPath: Tattos.Array.data[0]
       value: 
       objectReference: {fileID: 0}
@@ -9285,9 +9393,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6558328930284890442, guid: 770a23465bb6e364788df1ee6b861bb1, type: 3}
+      propertyPath: BadBlue.Array.data[0]
+      value: 
+      objectReference: {fileID: 2800000, guid: 0e1d14854f42eef458c7f6f1966d163e, type: 3}
+    - target: {fileID: 6558328930284890442, guid: 770a23465bb6e364788df1ee6b861bb1, type: 3}
       propertyPath: CheapTttos.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6558328930284890442, guid: 770a23465bb6e364788df1ee6b861bb1, type: 3}
+      propertyPath: GoodYellow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6558328930284890442, guid: 770a23465bb6e364788df1ee6b861bb1, type: 3}
+      propertyPath: GoodBlue.Array.data[0]
+      value: 
+      objectReference: {fileID: 2800000, guid: d980a4147a60fa34c8d72ea4cd7994e0, type: 3}
+    - target: {fileID: 6558328930284890442, guid: 770a23465bb6e364788df1ee6b861bb1, type: 3}
+      propertyPath: BadYellow.Array.data[0]
+      value: 
+      objectReference: {fileID: 2800000, guid: 3cc5046375ad241459c04d6862da4fc1, type: 3}
     - target: {fileID: 6558328930284890442, guid: 770a23465bb6e364788df1ee6b861bb1, type: 3}
       propertyPath: CheapTttos.Array.data[0]
       value: 
@@ -9308,6 +9432,10 @@ PrefabInstance:
       propertyPath: CheapTttos.Array.data[4]
       value: 
       objectReference: {fileID: 2800000, guid: 1cefa87054dfb0447b25ccf22dd7f7cc, type: 3}
+    - target: {fileID: 6558328930284890442, guid: 770a23465bb6e364788df1ee6b861bb1, type: 3}
+      propertyPath: GoodYellow.Array.data[0]
+      value: 
+      objectReference: {fileID: 2800000, guid: dd83e47987af1f544b2491cc138bc253, type: 3}
     - target: {fileID: 6558328930284890442, guid: 770a23465bb6e364788df1ee6b861bb1, type: 3}
       propertyPath: AnimationClips.Array.size
       value: 6
@@ -15951,6 +16079,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2475453667155728164, guid: 887ebc2afac49184793737bed293dd33, type: 3}
+      propertyPath: BadBlue.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2475453667155728164, guid: 887ebc2afac49184793737bed293dd33, type: 3}
+      propertyPath: GoodBlue.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2475453667155728164, guid: 887ebc2afac49184793737bed293dd33, type: 3}
+      propertyPath: BadYellow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2475453667155728164, guid: 887ebc2afac49184793737bed293dd33, type: 3}
       propertyPath: Tattos.Array.data[0]
       value: 
       objectReference: {fileID: 0}
@@ -15975,9 +16115,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2475453667155728164, guid: 887ebc2afac49184793737bed293dd33, type: 3}
+      propertyPath: BadBlue.Array.data[0]
+      value: 
+      objectReference: {fileID: 2800000, guid: 0e1d14854f42eef458c7f6f1966d163e, type: 3}
+    - target: {fileID: 2475453667155728164, guid: 887ebc2afac49184793737bed293dd33, type: 3}
       propertyPath: CheapTttos.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2475453667155728164, guid: 887ebc2afac49184793737bed293dd33, type: 3}
+      propertyPath: GoodYellow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2475453667155728164, guid: 887ebc2afac49184793737bed293dd33, type: 3}
+      propertyPath: GoodBlue.Array.data[0]
+      value: 
+      objectReference: {fileID: 2800000, guid: d980a4147a60fa34c8d72ea4cd7994e0, type: 3}
+    - target: {fileID: 2475453667155728164, guid: 887ebc2afac49184793737bed293dd33, type: 3}
+      propertyPath: BadYellow.Array.data[0]
+      value: 
+      objectReference: {fileID: 2800000, guid: 3cc5046375ad241459c04d6862da4fc1, type: 3}
     - target: {fileID: 2475453667155728164, guid: 887ebc2afac49184793737bed293dd33, type: 3}
       propertyPath: CheapTttos.Array.data[0]
       value: 
@@ -15998,6 +16154,10 @@ PrefabInstance:
       propertyPath: CheapTttos.Array.data[4]
       value: 
       objectReference: {fileID: 2800000, guid: 1cefa87054dfb0447b25ccf22dd7f7cc, type: 3}
+    - target: {fileID: 2475453667155728164, guid: 887ebc2afac49184793737bed293dd33, type: 3}
+      propertyPath: GoodYellow.Array.data[0]
+      value: 
+      objectReference: {fileID: 2800000, guid: dd83e47987af1f544b2491cc138bc253, type: 3}
     - target: {fileID: 2475453667155728164, guid: 887ebc2afac49184793737bed293dd33, type: 3}
       propertyPath: AnimationClips.Array.size
       value: 6
@@ -16116,6 +16276,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8879984846791255931, guid: 0ee54f147c8b94640b2d295d748ff8d5, type: 3}
+      propertyPath: BadBlue.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8879984846791255931, guid: 0ee54f147c8b94640b2d295d748ff8d5, type: 3}
+      propertyPath: GoodBlue.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8879984846791255931, guid: 0ee54f147c8b94640b2d295d748ff8d5, type: 3}
       propertyPath: Rings.Array.data[0]
       value: 
       objectReference: {fileID: 2008468239}
@@ -16131,6 +16299,10 @@ PrefabInstance:
       propertyPath: Rings.Array.data[3]
       value: 
       objectReference: {fileID: 1283795602}
+    - target: {fileID: 8879984846791255931, guid: 0ee54f147c8b94640b2d295d748ff8d5, type: 3}
+      propertyPath: BadYellow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8879984846791255931, guid: 0ee54f147c8b94640b2d295d748ff8d5, type: 3}
       propertyPath: Brecelets.Array.size
       value: 4
@@ -16160,9 +16332,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8879984846791255931, guid: 0ee54f147c8b94640b2d295d748ff8d5, type: 3}
+      propertyPath: BadBlue.Array.data[0]
+      value: 
+      objectReference: {fileID: 2800000, guid: 0e1d14854f42eef458c7f6f1966d163e, type: 3}
+    - target: {fileID: 8879984846791255931, guid: 0ee54f147c8b94640b2d295d748ff8d5, type: 3}
       propertyPath: CheapTttos.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8879984846791255931, guid: 0ee54f147c8b94640b2d295d748ff8d5, type: 3}
+      propertyPath: GoodYellow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8879984846791255931, guid: 0ee54f147c8b94640b2d295d748ff8d5, type: 3}
+      propertyPath: GoodBlue.Array.data[0]
+      value: 
+      objectReference: {fileID: 2800000, guid: d980a4147a60fa34c8d72ea4cd7994e0, type: 3}
+    - target: {fileID: 8879984846791255931, guid: 0ee54f147c8b94640b2d295d748ff8d5, type: 3}
+      propertyPath: BadYellow.Array.data[0]
+      value: 
+      objectReference: {fileID: 2800000, guid: 3cc5046375ad241459c04d6862da4fc1, type: 3}
     - target: {fileID: 8879984846791255931, guid: 0ee54f147c8b94640b2d295d748ff8d5, type: 3}
       propertyPath: Brecelets.Array.data[0]
       value: 
@@ -16199,6 +16387,10 @@ PrefabInstance:
       propertyPath: CheapTttos.Array.data[4]
       value: 
       objectReference: {fileID: 2800000, guid: 1cefa87054dfb0447b25ccf22dd7f7cc, type: 3}
+    - target: {fileID: 8879984846791255931, guid: 0ee54f147c8b94640b2d295d748ff8d5, type: 3}
+      propertyPath: GoodYellow.Array.data[0]
+      value: 
+      objectReference: {fileID: 2800000, guid: dd83e47987af1f544b2491cc138bc253, type: 3}
     - target: {fileID: 8879984846791255931, guid: 0ee54f147c8b94640b2d295d748ff8d5, type: 3}
       propertyPath: AnimationClips.Array.size
       value: 6
@@ -18110,6 +18302,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9051667895357920225, guid: 712931f53612ea945949c73803cf68a9, type: 3}
+      propertyPath: BadBlue.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051667895357920225, guid: 712931f53612ea945949c73803cf68a9, type: 3}
+      propertyPath: GoodBlue.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051667895357920225, guid: 712931f53612ea945949c73803cf68a9, type: 3}
+      propertyPath: BadYellow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051667895357920225, guid: 712931f53612ea945949c73803cf68a9, type: 3}
       propertyPath: Tattos.Array.data[0]
       value: 
       objectReference: {fileID: 0}
@@ -18134,9 +18338,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 9051667895357920225, guid: 712931f53612ea945949c73803cf68a9, type: 3}
+      propertyPath: BadBlue.Array.data[0]
+      value: 
+      objectReference: {fileID: 2800000, guid: 0e1d14854f42eef458c7f6f1966d163e, type: 3}
+    - target: {fileID: 9051667895357920225, guid: 712931f53612ea945949c73803cf68a9, type: 3}
       propertyPath: CheapTttos.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9051667895357920225, guid: 712931f53612ea945949c73803cf68a9, type: 3}
+      propertyPath: GoodYellow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051667895357920225, guid: 712931f53612ea945949c73803cf68a9, type: 3}
+      propertyPath: GoodBlue.Array.data[0]
+      value: 
+      objectReference: {fileID: 2800000, guid: d980a4147a60fa34c8d72ea4cd7994e0, type: 3}
+    - target: {fileID: 9051667895357920225, guid: 712931f53612ea945949c73803cf68a9, type: 3}
+      propertyPath: BadYellow.Array.data[0]
+      value: 
+      objectReference: {fileID: 2800000, guid: 3cc5046375ad241459c04d6862da4fc1, type: 3}
     - target: {fileID: 9051667895357920225, guid: 712931f53612ea945949c73803cf68a9, type: 3}
       propertyPath: CheapTttos.Array.data[0]
       value: 
@@ -18157,6 +18377,10 @@ PrefabInstance:
       propertyPath: CheapTttos.Array.data[4]
       value: 
       objectReference: {fileID: 2800000, guid: 1cefa87054dfb0447b25ccf22dd7f7cc, type: 3}
+    - target: {fileID: 9051667895357920225, guid: 712931f53612ea945949c73803cf68a9, type: 3}
+      propertyPath: GoodYellow.Array.data[0]
+      value: 
+      objectReference: {fileID: 2800000, guid: dd83e47987af1f544b2491cc138bc253, type: 3}
     - target: {fileID: 9051667895357920225, guid: 712931f53612ea945949c73803cf68a9, type: 3}
       propertyPath: AnimationClips.Array.size
       value: 6
@@ -18502,18 +18726,12 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 9751431d4c8cc6944959e4b1b29a0e41, type: 3}
   - {fileID: 2800000, guid: 0be8c64315cbbeb4ea20e6f8165e9920, type: 3}
   - {fileID: 2800000, guid: fae516a1c7083524f9b4f04d83e8fb7d, type: 3}
-  FlowerBadBlue:
-  - {fileID: 2800000, guid: 6e324afabd3f96946bc94428b866136c, type: 3}
-  - {fileID: 2800000, guid: 593458492cf489b47b8900514c44ffd4, type: 3}
+  FlowerBadBlue: []
   FlowerGoodBlue:
-  - {fileID: 2800000, guid: 2aec6b4bc85110048b88ee211ad9e4f6, type: 3}
-  - {fileID: 2800000, guid: 189875b719262ed44ac019942546ddf8, type: 3}
+  - {fileID: 2800000, guid: 09cc29a1182692e47a2bacb94531723f, type: 3}
   FlowerGoodYellow:
-  - {fileID: 2800000, guid: 8ae1a0e2f14ebc84586cd9e71e1939c7, type: 3}
-  - {fileID: 2800000, guid: 55c8f67163bf41740bbdb3c2f689b7bc, type: 3}
-  FlowerBadYellow:
-  - {fileID: 2800000, guid: 1b3bdf2f3fde448478ed7069e085cfcf, type: 3}
-  - {fileID: 2800000, guid: e5509550a5296784b91dee79378b7269, type: 3}
+  - {fileID: 2800000, guid: 731709182f869d44cbe1045606adaf38, type: 3}
+  FlowerBadYellow: []
   SkullExpensiveTattos:
   - {fileID: 2800000, guid: fe5f278dc00ff154a88bef10ac7b31e6, type: 3}
   - {fileID: 2800000, guid: 59c5f6181c7ddad40be096efe8c999fb, type: 3}
@@ -18537,18 +18755,12 @@ MonoBehaviour:
   - {fileID: 2800000, guid: c06e8edd2ada7f647bac21274052160f, type: 3}
   - {fileID: 2800000, guid: 4916f226ccdedc444bc6df26e5bc8d98, type: 3}
   - {fileID: 2800000, guid: 2470a6b67ecfc4f42b4397e558073aeb, type: 3}
-  SkullBadBlue:
-  - {fileID: 2800000, guid: 083b869bb2aeec34e8bd4652d5a0e4dc, type: 3}
-  - {fileID: 2800000, guid: 84779e7b70b16df4299c9455d7c20482, type: 3}
+  SkullBadBlue: []
   SkullGoodBlue:
-  - {fileID: 2800000, guid: 1893225e18f2e7e40b79ad7237ffbfb7, type: 3}
-  - {fileID: 2800000, guid: 05946db4812ab0742a2c8fdd009e26e2, type: 3}
+  - {fileID: 2800000, guid: eb824163bedd3a2479bf0b1e969a90e7, type: 3}
   SkullGoodYellow:
-  - {fileID: 2800000, guid: b5d10d0720893d64b9d68eaf31312db2, type: 3}
-  - {fileID: 2800000, guid: e5fadaae02f60284b940487b0ce24d63, type: 3}
-  SkullBadYellow:
-  - {fileID: 2800000, guid: 2a7d65e0f425b7344bc92d9855e37054, type: 3}
-  - {fileID: 2800000, guid: 4d39e238620f54c47b2919c40c5f3d32, type: 3}
+  - {fileID: 2800000, guid: 922059f04371125438b91f0e4ee7f1de, type: 3}
+  SkullBadYellow: []
   PinnupGirlExpensiveTattos:
   - {fileID: 2800000, guid: 8b5391d9c35d6e249853010920d4c764, type: 3}
   - {fileID: 2800000, guid: 7ad8f32930728b448932610b5888c8ec, type: 3}
