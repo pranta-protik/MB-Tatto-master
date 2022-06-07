@@ -150,11 +150,13 @@ MonoBehaviour:
   cardType: 1
   requirementType: 0
   handId: 5
-  requiredCash: 20000
+  requiredCash: 0
   requiredTime: 0
   requiredMatches: 0
   requiredLevelNo: 0
   cardStatus: 0
+  isUnlockable: 0
+  isNotified: 0
   shineEffect: {fileID: 0}
   Unlocked: 0
   index: 0
