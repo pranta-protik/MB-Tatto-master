@@ -213,9 +213,9 @@ MonoBehaviour:
     _bezierPath:
       points:
       - {x: -3.5556579, y: 0, z: 0}
-      - {x: 18.833195, y: -0.0019540787, z: 0.002757609}
-      - {x: 63.6109, y: -0.005862236, z: 0.008272827}
-      - {x: 85.999756, y: -0.007816315, z: 0.011030436}
+      - {x: 5.353047, y: -0.0019540787, z: 0.002757609}
+      - {x: 23.170458, y: -0.005862236, z: 0.008272827}
+      - {x: 32.079163, y: -0.007816315, z: 0.011030436}
       isClosed: 0
       space: 0
       controlMode: 3
@@ -1278,7 +1278,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ad79f1545cb91134791e84b379360b92, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 22.5245
+      value: 0.13
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ad79f1545cb91134791e84b379360b92, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1750,7 +1750,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ad79f1545cb91134791e84b379360b92, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 22.5245
+      value: 0.13000011
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ad79f1545cb91134791e84b379360b92, type: 3}
       propertyPath: m_LocalPosition.y
