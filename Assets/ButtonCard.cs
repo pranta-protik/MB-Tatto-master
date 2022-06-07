@@ -65,7 +65,6 @@ public class ButtonCard : MonoBehaviour
                 {
                     transform.GetChild(1).gameObject.SetActive(true);   
                 }
-                PlayerPrefs.SetInt("IsNotified" + handId, 1);
             }
         }
     }
@@ -74,6 +73,7 @@ public class ButtonCard : MonoBehaviour
 
     public void GetSelectedId()
     {
+        PlayerPrefs.SetInt("IsNotified" + handId, 1);
         m_Buttons.SelectedId = handId;
         transform.GetChild(1).gameObject.SetActive(false);
         GameManager.Instance.SpawnHand(handId);

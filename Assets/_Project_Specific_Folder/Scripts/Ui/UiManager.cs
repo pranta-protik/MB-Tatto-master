@@ -90,7 +90,10 @@ public class UiManager : Singleton<UiManager>
             if (PlayerPrefs.GetInt("IsUnlockable" + button.GetComponent<ButtonCard>().handId) == 1 &&
                 PlayerPrefs.GetInt("IsNotified" + button.GetComponent<ButtonCard>().handId) == 0)
             {
-                
+                Debug.Log("Hee");
+                _isHandAnimating = true;
+                hand.transform.DOScale(new Vector3(0.8f, 0.8f, 0.8f), 0.5f).SetLoops(-1, LoopType.Yoyo);
+                break;
             }
         }
     }
