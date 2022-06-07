@@ -236,6 +236,9 @@ public class Collsion : MonoBehaviour
         if (other.gameObject.CompareTag("BadGate"))
         {
             StartCoroutine(AnimationDelayRoutine());
+            
+            lastGateId = 0;
+            
             if (IsGood)
             {
                 GameManager.Instance.Level--;
@@ -354,7 +357,7 @@ public class Collsion : MonoBehaviour
         {
             StartCoroutine(AnimationDelayRoutine());
 
-            if (GameManager.Instance.Level == 10)
+            if (lastGateId == 10)
             {
                 StiackerMat.DOFade(0, 0.3f).OnComplete(() =>
                 {
@@ -414,10 +417,8 @@ public class Collsion : MonoBehaviour
         if (other.gameObject.CompareTag("Blue"))
         {
             StartCoroutine(AnimationDelayRoutine());
-
-            Debug.Log("Herrrrrrrrrrrrr");
-            Debug.Log(GameManager.Instance.Level);
-            if (GameManager.Instance.Level == 10)
+            
+            if (lastGateId == 10)
             {
                 StiackerMat.DOFade(0, 0.3f).OnComplete(() =>
                 {
