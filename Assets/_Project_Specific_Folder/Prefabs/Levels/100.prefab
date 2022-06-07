@@ -786,6 +786,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6828944569146319531}
     m_Modifications:
+    - target: {fileID: 3819676341684958706, guid: 15e6b70ef60562941a5a91f4d29521c8, type: 3}
+      propertyPath: Id
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7198075378150382944, guid: 15e6b70ef60562941a5a91f4d29521c8, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -848,6 +852,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6828944569146319531}
     m_Modifications:
+    - target: {fileID: 1143885996031602143, guid: d5484f8b7c194f54fa518be97e0192c7, type: 3}
+      propertyPath: Id
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1302991998960984479, guid: d5484f8b7c194f54fa518be97e0192c7, type: 3}
       propertyPath: m_Name
       value: Lasergate Bracele
