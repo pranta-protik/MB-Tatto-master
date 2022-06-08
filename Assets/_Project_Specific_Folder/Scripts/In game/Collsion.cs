@@ -179,6 +179,7 @@ public class Collsion : MonoBehaviour
                 PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = GoodGatePopUpColor;
                 other.GetComponent<BoxCollider>().enabled = false;
 
+                UiManager.Instance.priceTag.transform.DOScale(new Vector3(1.5f, 1.5f, 1.5f), 0.3f).SetLoops(4, LoopType.Yoyo);
                 // lastGateId = other.gameObject.transform.GetComponentInParent<Gates>().id;
             }
             else
@@ -243,6 +244,8 @@ public class Collsion : MonoBehaviour
 
         if (other.gameObject.CompareTag("BadGate"))
         {
+            UiManager.Instance.priceTag.GetComponent<Image>().DOColor(Color.red, 0.5f).SetLoops(2, LoopType.Yoyo);
+         
             StartCoroutine(AnimationDelayRoutine());
             
             lastGateId = 0;
