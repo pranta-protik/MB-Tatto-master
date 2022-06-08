@@ -815,7 +815,5 @@ public class Collsion : MonoBehaviour
             Dummy.Add(StiackerMat.mainTexture);
             StiackerMat.DOFade(1, .5f);
         });
-
     }
-
 }

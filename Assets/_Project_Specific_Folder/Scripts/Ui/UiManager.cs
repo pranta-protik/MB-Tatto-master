@@ -156,6 +156,12 @@ public class UiManager : Singleton<UiManager>
             PopUp.SetActive(false);
         });
     }
+
+    public void UpdateShopTimer(string timeLeftText)
+    {
+        shop.transform.GetChild(2).GetChild(1).GetComponent<TextMeshProUGUI>().SetText(timeLeftText);
+    }
+    
     public void ShopPopUp()
     {
         shop.transform.GetChild(1).gameObject.SetActive(true);

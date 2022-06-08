@@ -60,9 +60,11 @@ public class GameManager : Singleton<GameManager>
     int SavedLevelNo;
     GameObject Path;
     public float timer = 0.0f;
+    public float timeLeft;
 
     public override void Start()
     {
+        
         // First time hand enable
 
          HandNumber = PlayerPrefs.GetInt("SelectedHandId");
@@ -83,11 +85,31 @@ public class GameManager : Singleton<GameManager>
         p.enabled = false;
         base.Start();
         TattooVsLevel();
-  
-
     }
+
+    private void UpdateTimer(float currentTime)
+    {
+        currentTime += 1;
+        float minutes = Mathf.FloorToInt(currentTime / 60);
+        float seconds = Mathf.FloorToInt(currentTime % 60);
+        float hours = Mathf.FloorToInt(minutes / 60);
+        minutes = Mathf.FloorToInt(minutes % 60);
+
+        UiManager.Instance.UpdateShopTimer($"{hours:00} : {minutes:00} : {seconds:00}");
+    }
+    
     private void Update()
     {
+        if (timeLeft > 0)
+        {
+            timeLeft -= Time.deltaTime;
+            UpdateTimer(timeLeft);
+        }
+        else
+        {
+            timeLeft = 24 * 60 * 60;
+        }
+        
         if(Input.GetKeyDown(KeyCode.Space))
         {
             PlayerPrefs.DeleteAll();
