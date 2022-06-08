@@ -19,7 +19,7 @@ public class SwipeMenu : MonoBehaviour
     public TextMeshProUGUI scoreText;
     private float _scrollPos = 0;
     private float[] _pos;
-    private HandCard _selectedCard;
+    private HandCardOld _selectedCardOld;
     private int _currentLevel;
     private float _distance;
     private bool _shouldPlayAnimation;
@@ -42,7 +42,7 @@ public class SwipeMenu : MonoBehaviour
         {
             Transform scrollViewTransform = transform;
             GameObject handCardObj = Instantiate(handCards[i], scrollViewTransform.position, Quaternion.identity, scrollViewTransform);
-            HandCard handCard = handCardObj.GetComponent<HandCard>();
+            HandCardOld handCardOld = handCardObj.GetComponent<HandCardOld>();
             
             if (PlayerPrefs.GetInt("HandCardSetup", 0) == 0)
             {
@@ -50,15 +50,15 @@ public class SwipeMenu : MonoBehaviour
              
                 if (i == 0)
                 {
-                    PlayerPrefs.SetInt("HandCard" + handCard.handId, 1);    
+                    PlayerPrefs.SetInt("HandCard" + handCardOld.handId, 1);    
                 }
                 else
                 {
-                    PlayerPrefs.SetInt("HandCard" + handCard.handId, 0);
+                    PlayerPrefs.SetInt("HandCard" + handCardOld.handId, 0);
                 }
                 
             }
-            handCard.cardStatus = PlayerPrefs.GetInt("HandCard" + handCard.handId);
+            handCardOld.cardStatus = PlayerPrefs.GetInt("HandCard" + handCardOld.handId);
         }
 
         PlayerPrefs.SetInt("HandCardSetup", 1);
@@ -75,7 +75,7 @@ public class SwipeMenu : MonoBehaviour
 
         for (int i = 0; i < handCards.Count; i++)
         {
-            if (handCards[i].GetComponent<HandCard>().handId == PlayerPrefs.GetInt("SelectedHandId"))
+            if (handCards[i].GetComponent<HandCardOld>().handId == PlayerPrefs.GetInt("SelectedHandId"))
             {
                 selectedHandId = i;
                 break;
@@ -112,23 +112,23 @@ public class SwipeMenu : MonoBehaviour
             if (_scrollPos < _pos[i] + (_distance / 2) && _scrollPos > _pos[i] - (_distance / 2))
             {
                 transform.GetChild(i).localScale = Vector3.Lerp(transform.GetChild(i).localScale, new Vector3(1f, 1f, 1f), 0.1f);
-                _selectedCard = transform.GetChild(i).GetComponent<HandCard>();
+                _selectedCardOld = transform.GetChild(i).GetComponent<HandCardOld>();
                 
-                _selectedCard.shineEffect.SetActive(true);
+                _selectedCardOld.shineEffect.SetActive(true);
                 
-                if (_selectedCard.cardType == HandCard.ECardType.Model)
+                if (_selectedCardOld.cardType == HandCardOld.ECardType.Model)
                 {
-                    if (_selectedCard.handId != PlayerPrefs.GetInt("SelectedHandId"))
+                    if (_selectedCardOld.handId != PlayerPrefs.GetInt("SelectedHandId"))
                     {
                         _shouldPlayAnimation = true;
                     }
 
                     if (_shouldPlayAnimation)
                     {
-                        _selectedCard.PlayRandomAnimation();   
+                        _selectedCardOld.PlayRandomAnimation();   
                     }
                 }
-                CheckCardRequirementStatus(_selectedCard);
+                CheckCardRequirementStatus(_selectedCardOld);
                 
                 for (int j = 0; j < _pos.Length; j++)
                 {
@@ -136,13 +136,13 @@ public class SwipeMenu : MonoBehaviour
                     {
                         transform.GetChild(j).localScale = Vector3.Lerp(transform.GetChild(j).localScale, new Vector3(0.6f, 0.6f, 0.6f), 0.1f);
                         
-                        HandCard unselectedCard = transform.GetChild(j).GetComponent<HandCard>();
+                        HandCardOld unselectedCardOld = transform.GetChild(j).GetComponent<HandCardOld>();
                         
-                        unselectedCard.shineEffect.SetActive(false);
+                        unselectedCardOld.shineEffect.SetActive(false);
                         
-                        if (unselectedCard.cardType == HandCard.ECardType.Model)
+                        if (unselectedCardOld.cardType == HandCardOld.ECardType.Model)
                         {
-                            unselectedCard.PlayIdleAnimation();   
+                            unselectedCardOld.PlayIdleAnimation();   
                         }
                     }
                 }
@@ -152,14 +152,14 @@ public class SwipeMenu : MonoBehaviour
 
     public void BuyCard()
     {
-        StorageManager.SaveTotalCoin(StorageManager.GetTotalCoin() - _selectedCard.requiredCash);
+        StorageManager.SaveTotalCoin(StorageManager.GetTotalCoin() - _selectedCardOld.requiredCash);
         scoreText.SetText("$" + StorageManager.GetTotalCoin());
-        _selectedCard.EnableCard();
+        _selectedCardOld.EnableCard();
     }
     
     public void SelectHand()
     {
-        PlayerPrefs.SetInt("SelectedHandId", _selectedCard.handId);
+        PlayerPrefs.SetInt("SelectedHandId", _selectedCardOld.handId);
         UiManager.Instance.Next();
     }
     
@@ -180,72 +180,72 @@ public class SwipeMenu : MonoBehaviour
     }
 
    
-    public void CheckCardRequirementStatus(HandCard handCard)
+    public void CheckCardRequirementStatus(HandCardOld handCardOld)
     {
-        if (_selectedCard.requirementType == HandCard.ERequirementType.Cash)
+        if (_selectedCardOld.requirementType == HandCardOld.ERequirementType.Cash)
         {
             unlockInfoText.gameObject.SetActive(false);
-            CheckActionButtonRequirement(handCard);
+            CheckActionButtonRequirement(handCardOld);
         }
         else
         {
             actionButton.gameObject.SetActive(false);
         }
 
-        if (_selectedCard.requirementType == HandCard.ERequirementType.Time)
+        if (_selectedCardOld.requirementType == HandCardOld.ERequirementType.Time)
         {
-            if (PlayerPrefs.GetInt("TotalTime") / 60f >= handCard.requiredTime)
+            if (PlayerPrefs.GetInt("TotalTime") / 60f >= handCardOld.requiredTime)
             {
-                handCard.EnableCard();
+                handCardOld.EnableCard();
             }
             else
             {
-                handCard.DisableCard();
+                handCardOld.DisableCard();
             }
 
-            CheckUnlockTextRequirement(handCard,
-                "Play game for <color=red>" + Mathf.RoundToInt(handCard.requiredTime - PlayerPrefs.GetInt("TotalTime") / 60f) + "/" + handCard.requiredTime +
+            CheckUnlockTextRequirement(handCardOld,
+                "Play game for <color=red>" + Mathf.RoundToInt(handCardOld.requiredTime - PlayerPrefs.GetInt("TotalTime") / 60f) + "/" + handCardOld.requiredTime +
                 "</color> min Time");
         }
 
-        if (_selectedCard.requirementType == HandCard.ERequirementType.GamePlay)
+        if (_selectedCardOld.requirementType == HandCardOld.ERequirementType.GamePlay)
         {
-            if (PlayerPrefs.GetInt("GameOpenCount") >= handCard.requiredMatches)
+            if (PlayerPrefs.GetInt("GameOpenCount") >= handCardOld.requiredMatches)
             {
-                handCard.EnableCard();
+                handCardOld.EnableCard();
             }
             else
             {
-                handCard.DisableCard();
+                handCardOld.DisableCard();
             }
 
-            CheckUnlockTextRequirement(handCard,
-                "Play the game <color=red>" + (handCard.requiredMatches - PlayerPrefs.GetInt("GameOpenCount")) + "/" + handCard.requiredMatches +
+            CheckUnlockTextRequirement(handCardOld,
+                "Play the game <color=red>" + (handCardOld.requiredMatches - PlayerPrefs.GetInt("GameOpenCount")) + "/" + handCardOld.requiredMatches +
                 "</color> times");
         }
 
-        if (_selectedCard.requirementType == HandCard.ERequirementType.Level)
+        if (_selectedCardOld.requirementType == HandCardOld.ERequirementType.Level)
         {
-            if (_currentLevel >= handCard.requiredLevelNo)
+            if (_currentLevel >= handCardOld.requiredLevelNo)
             {
-                handCard.EnableCard();
+                handCardOld.EnableCard();
             }
             else
             {
-                handCard.DisableCard();
+                handCardOld.DisableCard();
             }
-            CheckUnlockTextRequirement(handCard, "Unlock after reaching level <color=red>" + handCard.requiredLevelNo + "</color>");
+            CheckUnlockTextRequirement(handCardOld, "Unlock after reaching level <color=red>" + handCardOld.requiredLevelNo + "</color>");
         }
     }
     
-    private void CheckActionButtonRequirement(HandCard handCard)
+    private void CheckActionButtonRequirement(HandCardOld handCardOld)
     {
-        if (PlayerPrefs.GetInt("HandCard" + handCard.handId) == 0)
+        if (PlayerPrefs.GetInt("HandCard" + handCardOld.handId) == 0)
         {
-            actionButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText("$" + handCard.requiredCash);
+            actionButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText("$" + handCardOld.requiredCash);
             actionButton.gameObject.SetActive(true);
             DisableButton(startButton);
-            if (StorageManager.GetTotalCoin() >= handCard.requiredCash)
+            if (StorageManager.GetTotalCoin() >= handCardOld.requiredCash)
             {
                 EnableButton(actionButton);
             }
@@ -261,9 +261,9 @@ public class SwipeMenu : MonoBehaviour
         }
     }
 
-    private void CheckUnlockTextRequirement(HandCard handCard, string unlockText)
+    private void CheckUnlockTextRequirement(HandCardOld handCardOld, string unlockText)
     {
-        if (PlayerPrefs.GetInt("HandCard" + handCard.handId) == 0)
+        if (PlayerPrefs.GetInt("HandCard" + handCardOld.handId) == 0)
         {
             unlockInfoText.gameObject.SetActive(true);
             unlockInfoText.SetText(unlockText);

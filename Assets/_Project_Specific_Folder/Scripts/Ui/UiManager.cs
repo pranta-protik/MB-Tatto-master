@@ -11,7 +11,7 @@ using UnityEngine.SceneManagement;
 public class UiManager : Singleton<UiManager>
 {
     public Button btnNext;
-    public Button hand; 
+    // public Button hand; 
 
     public TMP_Text LevelText;
     public GameObject StartUI, EndUi, CompleteUI, FadeIn, UnlockPanel, ShopPnael;
@@ -40,6 +40,23 @@ public class UiManager : Singleton<UiManager>
     public float currentCashAmount;
     public float incrementAmount;
     private bool _isHandAnimating;
+
+    public GameObject selectionMenu;
+    public Button selectionMenuButton;
+
+    public void OnSelectionMenuButtonClick()
+    {
+        _camera.transform.DOLocalRotate(new Vector3(42, 90, 0), .3f).OnComplete(() =>
+        {
+            selectionMenu.SetActive(true);
+        });
+    }
+
+    public void OnCloseSelectionMenuButtonClick()
+    {
+        selectionMenu.SetActive(false);
+        _camera.transform.DOLocalRotate(new Vector3(27.761f, 90, 0), .3f);
+    }
     
     public override void Start()
     {
@@ -63,26 +80,26 @@ public class UiManager : Singleton<UiManager>
         
         _camera = Camera.main;
 
-        if (hand != null)
-        {
-            hand.onClick.AddListener(EnableShopCallBack);
-
-            // Enable hand shop icon after 2nd level
-            if (currentLevelText > 0)
-            {
-                hand.gameObject.SetActive(true);
-
-                if (currentLevelText == 1)
-                {
-                    _isHandAnimating = true;
-                    hand.transform.DOScale(new Vector3(0.8f, 0.8f, 0.8f), 0.5f).SetLoops(-1, LoopType.Yoyo);
-                }
-            }
-            else
-            {
-                hand.gameObject.SetActive(false);
-            }
-        }
+        // if (hand != null)
+        // {
+        //     hand.onClick.AddListener(EnableShopCallBack);
+        //
+        //     // Enable hand shop icon after 2nd level
+        //     if (currentLevelText > 0)
+        //     {
+        //         hand.gameObject.SetActive(true);
+        //
+        //         if (currentLevelText == 1)
+        //         {
+        //             _isHandAnimating = true;
+        //             hand.transform.DOScale(new Vector3(0.8f, 0.8f, 0.8f), 0.5f).SetLoops(-1, LoopType.Yoyo);
+        //         }
+        //     }
+        //     else
+        //     {
+        //         hand.gameObject.SetActive(false);
+        //     }
+        // }
 
         // Buttons handButton = ShopPnael.transform.GetChild(0).GetComponent<Buttons>();
         //
@@ -99,19 +116,19 @@ public class UiManager : Singleton<UiManager>
         // }
     }
 
-    private void EnableShopCallBack()
-    {
-        hand.gameObject.SetActive(false);
-        shop.SetActive(false);
-
-        if (_isHandAnimating)
-        {
-            DOTween.Kill(hand.transform);
-            hand.transform.localScale = new Vector3(1f, 1f, 1f);
-            _isHandAnimating = false;
-        }
-        _camera.transform.DOLocalRotate(new Vector3(42, 90, 0), .3f).OnComplete(() => { ShopPnael.SetActive(true); });
-    }
+    // private void EnableShopCallBack()
+    // {
+    //     hand.gameObject.SetActive(false);
+    //     shop.SetActive(false);
+    //
+    //     if (_isHandAnimating)
+    //     {
+    //         DOTween.Kill(hand.transform);
+    //         hand.transform.localScale = new Vector3(1f, 1f, 1f);
+    //         _isHandAnimating = false;
+    //     }
+    //     _camera.transform.DOLocalRotate(new Vector3(42, 90, 0), .3f).OnComplete(() => { ShopPnael.SetActive(true); });
+    // }
 
     private void Update()
     {

@@ -4,37 +4,37 @@ using UnityEditor;
 using UnityEngine;
 
 [CanEditMultipleObjects]
-[CustomEditor(typeof(HandCard))]
+[CustomEditor(typeof(HandCardOld))]
 public class HandCardEditor : Editor
 {
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
 
-        HandCard handCard = (HandCard) target;
+        HandCardOld handCardOld = (HandCardOld) target;
 
         EditorGUILayout.PropertyField(serializedObject.FindProperty("cardType"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("requirementType"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("handId"));
 
-        if (handCard.requirementType == HandCard.ERequirementType.Cash)
+        if (handCardOld.requirementType == HandCardOld.ERequirementType.Cash)
         {
             EditorGUILayout.PropertyField(serializedObject.FindProperty("requiredCash"));
         }
-        else if (handCard.requirementType == HandCard.ERequirementType.Time)
+        else if (handCardOld.requirementType == HandCardOld.ERequirementType.Time)
         {
             EditorGUILayout.PropertyField(serializedObject.FindProperty("requiredTime"));
         }
-        else if (handCard.requirementType == HandCard.ERequirementType.GamePlay)
+        else if (handCardOld.requirementType == HandCardOld.ERequirementType.GamePlay)
         {
             EditorGUILayout.PropertyField(serializedObject.FindProperty("requiredMatches"));
         }
-        else if (handCard.requirementType == HandCard.ERequirementType.Level)
+        else if (handCardOld.requirementType == HandCardOld.ERequirementType.Level)
         {
             EditorGUILayout.PropertyField(serializedObject.FindProperty("requiredLevelNo"));
         }
 
-        if (handCard.cardType == HandCard.ECardType.Model)
+        if (handCardOld.cardType == HandCardOld.ECardType.Model)
         {
             EditorGUILayout.PropertyField(serializedObject.FindProperty("animatorOverrideController"));
             EditorGUILayout.PropertyField(serializedObject.FindProperty("animationClips"));   

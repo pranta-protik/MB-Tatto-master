@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class HandCard : MonoBehaviour
+public class HandCardOld : MonoBehaviour
 {
     public enum ECardType
     {

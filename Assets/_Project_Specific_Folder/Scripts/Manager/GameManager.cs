@@ -171,7 +171,8 @@ public class GameManager : Singleton<GameManager>
 
     public void StartIt()
     {
-        UiManager.Instance.hand.gameObject.SetActive(false);
+        UiManager.Instance.selectionMenuButton.gameObject.SetActive(false);
+        // UiManager.Instance.hand.gameObject.SetActive(false);
         UiManager.Instance.shop.SetActive(false);
         UiManager.Instance.LevelText.transform.parent.gameObject.SetActive(false);
         CollsionScript.StiackerMat.mainTexture = CollsionScript.Default;
