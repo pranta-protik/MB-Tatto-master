@@ -1,22 +1,25 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class SelectionMenu : MonoBehaviour
 {
-    public event EventHandler OnCardUnlock;
     public GameObject handCardPrefab;
     public List<Sprite> handCardTextures = new List<Sprite>();
-    private List<GameObject> _handCards = new List<GameObject>();
-    private GameObject unlockButton;
+    public List<GameObject> handCards = new List<GameObject>();
+    public int baseUnlockCost;
+    private int _multiplier;
+    private GameObject _unlockButton;
     private int _totalCards;
     private void Awake()
     {
-        unlockButton = transform.GetChild(3).gameObject;
-        
+        _unlockButton = transform.GetChild(3).gameObject;
+
         Vector3 spawnPosition = transform.GetChild(2).GetChild(0).position;
         Vector2 anchoredSpawnPosition = transform.GetChild(2).GetChild(0).GetComponent<RectTransform>().anchoredPosition;
 
@@ -27,38 +30,98 @@ public class SelectionMenu : MonoBehaviour
 
             handCard.GetComponent<RectTransform>().anchoredPosition =
                 new Vector2(anchoredSpawnPosition.x + ((i % 3) * 270), anchoredSpawnPosition.y - ((i / 3) * 230));
-
+            
             handCard.transform.GetChild(1).GetComponent<Image>().sprite = handCardTextures[i];
             handCard.GetComponent<HandCard>().handId = i;
             
-            _handCards.Add(handCard);
+            handCards.Add(handCard);
         }
+    }
+
+    public void CheckUnlockButtonAvailability()
+    {
+        _multiplier = PlayerPrefs.GetInt("LastMultiplier", 1);
+        
+        _unlockButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText("$" + baseUnlockCost * _multiplier);
+        
+        if (StorageManager.GetTotalCoin() >= baseUnlockCost * _multiplier)
+        {
+            EnableButton(_unlockButton.GetComponent<Button>());
+        }
+        else
+        {
+            DisableButton(_unlockButton.GetComponent<Button>());
+        }
+    }
+
+    private void DisableButton(Button button)
+    {
+        button.interactable = false;
+        button.image.DOFade(0.5f, 0.1f);
+        _unlockButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().DOFade(0.3f, 0.1f);
+    }
+
+    private void EnableButton(Button button)
+    {
+        button.interactable = true;
+        button.image.DOFade(1f, 0.1f);
+        _unlockButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().DOFade(1f, 0.1f);
     }
 
     public void OnUnlockButtonClick()
     {
+        StorageManager.SaveTotalCoin(StorageManager.GetTotalCoin() - (baseUnlockCost * _multiplier));
+        UiManager.Instance.TotalText.SetText("$" + StorageManager.GetTotalCoin());
+
+        PlayerPrefs.SetInt("LastMultiplier", _multiplier + 1);
+
         List<int> randomHandIds = new List<int>();
 
-        foreach (GameObject card in _handCards)
+        foreach (GameObject card in handCards)
         {
             if (card.GetComponent<HandCard>().unlockStatus == 0)
             {
                 randomHandIds.Add(card.GetComponent<HandCard>().handId);
             }
+
+            card.GetComponent<HandCard>().selectionImage.SetActive(false);
+        }
+        
+        DisableButton(_unlockButton.GetComponent<Button>());
+        StartCoroutine(RandomizeVisualEffect(randomHandIds));
+    }
+
+    IEnumerator RandomizeVisualEffect(List<int> randomHandIds)
+    {
+        HandCard handCard = null;
+
+        int i = 0;
+
+        while (i < 10)
+        {
+            int randomId = Random.Range(0, randomHandIds.Count);
+
+            int randomUnlockId = randomHandIds[randomId];
+
+            handCard = handCards[randomUnlockId].GetComponent<HandCard>();
+            handCard.selectionImage.SetActive(true);
+
+            yield return new WaitForSeconds(0.2f);
+
+            handCard.selectionImage.SetActive(false);
+            i++;
         }
 
-        int randomUnlockId = Random.Range(0, randomHandIds.Count);
-        randomUnlockId = randomHandIds[randomUnlockId];
-
-        HandCard handCard = _handCards[randomUnlockId].GetComponent<HandCard>();
-
-        handCard.unlockStatus = 1;
-        handCard.lockImage.SetActive(false);
-        handCard.handImage.SetActive(true);
+        if (handCard != null)
+        {
+            handCard.UnlockHandCard(handCard.handId);
+        }
 
         if (randomHandIds.Count <= 1)
         {
-            unlockButton.SetActive(false);
+            _unlockButton.SetActive(false);
         }
+
+        CheckUnlockButtonAvailability();
     }
 }

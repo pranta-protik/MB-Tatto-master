@@ -67,9 +67,8 @@ public class GameManager : Singleton<GameManager>
         
         // First time hand enable
 
-         HandNumber = PlayerPrefs.GetInt("SelectedHandId");
-       
-
+        HandNumber = PlayerPrefs.GetInt("SelectedHandCardId");
+        
         Hands[HandNumber].MainHand.gameObject.SetActive(true);
         Hands[HandNumber].CopyHand.gameObject.SetActive(true);
         CollsionScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Collsion>();

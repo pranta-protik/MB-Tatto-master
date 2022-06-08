@@ -49,6 +49,7 @@ public class UiManager : Singleton<UiManager>
         _camera.transform.DOLocalRotate(new Vector3(42, 90, 0), .3f).OnComplete(() =>
         {
             selectionMenu.SetActive(true);
+            selectionMenu.GetComponent<SelectionMenu>().CheckUnlockButtonAvailability();
         });
     }
 
