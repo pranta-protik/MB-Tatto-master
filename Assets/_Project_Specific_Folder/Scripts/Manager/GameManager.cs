@@ -7,6 +7,8 @@ using DG.Tweening;
 using SuperCop.Scripts;
 using PathCreation.Examples;
 using System;
+using System.Globalization;
+using Facebook.Unity;
 
 [Serializable]
 public class ItemPacks
@@ -56,15 +58,13 @@ public class GameManager : Singleton<GameManager>
     public Transform SpwanPos;
     public Transform bossWall;
     public int currentHandId;
-
+    
     int SavedLevelNo;
     GameObject Path;
     public float timer = 0.0f;
-    public float timeLeft;
 
     public override void Start()
     {
-        
         // First time hand enable
 
         HandNumber = PlayerPrefs.GetInt("SelectedHandCardId");
@@ -86,40 +86,16 @@ public class GameManager : Singleton<GameManager>
         TattooVsLevel();
     }
 
-    private void UpdateTimer(float currentTime)
-    {
-        currentTime += 1;
-        float minutes = Mathf.FloorToInt(currentTime / 60);
-        float seconds = Mathf.FloorToInt(currentTime % 60);
-        float hours = Mathf.FloorToInt(minutes / 60);
-        minutes = Mathf.FloorToInt(minutes % 60);
-
-        UiManager.Instance.UpdateShopTimer($"{hours:00} : {minutes:00} : {seconds:00}");
-    }
-    
     private void Update()
     {
-        if (timeLeft > 0)
-        {
-            timeLeft -= Time.deltaTime;
-            UpdateTimer(timeLeft);
-        }
-        else
-        {
-            timeLeft = 24 * 60 * 60;
-        }
+        // if(Input.GetKeyDown(KeyCode.Space))
+        // {
+        //     PlayerPrefs.DeleteAll();
+        // }
         
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            PlayerPrefs.DeleteAll();
-        }
-
-
-
         if(StartGame && !GameEnd)
         {
             timer += Time.deltaTime;
-           
         }
 
         if (Boss == null)

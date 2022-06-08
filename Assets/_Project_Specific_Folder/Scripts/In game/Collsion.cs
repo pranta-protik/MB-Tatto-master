@@ -145,22 +145,30 @@ public class Collsion : MonoBehaviour
         }
     }
 
+    private bool _shouldChange = false;
+    
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Ring"))
         {
-            Rings[other.gameObject.GetComponent<Ring>().Id].gameObject.SetActive(true); StartCoroutine(AnimationDelayRoutine()); other.GetComponent<BoxCollider>().enabled = false;
+            MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+            Rings[other.gameObject.GetComponent<Ring>().Id].gameObject.SetActive(true); 
+            StartCoroutine(AnimationDelayRoutine());
+            other.GetComponent<BoxCollider>().enabled = false;
         }
         if (other.gameObject.CompareTag("Bre"))
         {
-           Brecelets[other.gameObject.GetComponent<Bracelet>().Id].gameObject.SetActive(true); StartCoroutine(AnimationDelayRoutine()); other.GetComponent<BoxCollider>().enabled = false;
+            MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+            Brecelets[other.gameObject.GetComponent<Bracelet>().Id].gameObject.SetActive(true);
+            StartCoroutine(AnimationDelayRoutine());
+            other.GetComponent<BoxCollider>().enabled = false;
         }
         if (other.gameObject.CompareTag("GoodGate"))
         {
             if (other.GetComponentInParent<Gates>().IsSpecial)
             {
                 StartCoroutine(AnimationDelayRoutine());
-                MMVibrationManager.Haptic(HapticTypes.MediumImpact);
+                MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
                 StorageManager.Instance.IncreasePoints(other.GetComponentInParent<Gates>().Cost);
 
                 Shine.Play();
@@ -238,43 +246,50 @@ public class Collsion : MonoBehaviour
             StartCoroutine(AnimationDelayRoutine());
             
             lastGateId = 0;
+            _shouldChange = !_shouldChange;
             
             if (IsGood)
             {
-                GameManager.Instance.Level--;
                 m_i = Dummy.Count;
 
-                MMVibrationManager.Haptic(HapticTypes.MediumImpact);
+                MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
                 StorageManager.Instance.IncreasePoints(-other.GetComponentInParent<Gates>().Cost);
                 //GameManager.Instance.Level = g.transform.GetComponentInParent<Gates>().id + 1;
-            
+                
+                Shine.Play();
+                PopUp.Play("opps");
 
-                StiackerMat.DOFade(0, .3f).OnComplete(() =>
+                PopUp.transform.GetChild(0).gameObject.SetActive(true);
+                PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "-" + other.GetComponentInParent<Gates>().Cost.ToString();
+                PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = BadGatePopUpColor;
+                
+                if (_shouldChange)
                 {
-                    Shine.Play();
-                    PopUp.Play("opps");
-
-                    PopUp.transform.GetChild(0).gameObject.SetActive(true);
-                    PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "-" + other.GetComponentInParent<Gates>().Cost.ToString();
-                    PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = BadGatePopUpColor;
-                    if (j < Dummy.Count+1)
+                    GameManager.Instance.Level--;
+                    
+                    StiackerMat.DOFade(0, .3f).OnComplete(() =>
                     {
+                        if (j < Dummy.Count+1)
+                        {
+                            StiackerMat.mainTexture = Dummy[m_i - j];
+                            j++;
+                        }
+                        else
+                        {
+                            StiackerMat.mainTexture = Default;
+                        }
                         
-                        StiackerMat.mainTexture = Dummy[m_i - j];
-                        j++;
-                    }
-                    else
-                    {
-                        StiackerMat.mainTexture = Default;
-                    }
-                   
-                    StiackerMat.DOFade(1, .5f);
-                });
-              
+                        StiackerMat.DOFade(1, .5f);
+                    });       
+                }
+
             }
             else
             {
-                GameManager.Instance.Level++;
+                if (_shouldChange)
+                {
+                    GameManager.Instance.Level++;   
+                }
 
                 IsGoodGate = false;
                 // if (IsYellow)
@@ -320,7 +335,7 @@ public class Collsion : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             HeatEffect.Play();
-            MMVibrationManager.Haptic(HapticTypes.MediumImpact);
+            MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
             StartCoroutine(SpeedSlowDownRoutine());
             StartCoroutine(UiManager.Instance.FdeDelayRoutine());
             Invoke("RemoveMat", .2f);
@@ -331,30 +346,104 @@ public class Collsion : MonoBehaviour
 
         if (other.gameObject.CompareTag("Spike"))
         {
-
-            GameManager.Instance.Level = other.GetComponent<DownGrade>().DownGradeAmmount;
+            // GameManager.Instance.Level = other.GetComponent<DownGrade>().DownGradeAmmount;
             DownGradeTexture(GameManager.Instance.Level, other.gameObject);
-            MMVibrationManager.Haptic(HapticTypes.MediumImpact);
+            MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
             StartCoroutine(SpeedSlowDownRoutine());
             StartCoroutine(UiManager.Instance.FdeDelayRoutine());
             anim1.Play("Hurt");
             anim.Play("Hurt");
             other.GetComponent<BoxCollider>().enabled = false;
+            
+            GameManager.Instance.Level--;
+            
+            if (IsGood)
+            {
+                m_i = Dummy.Count;
+                
+                StiackerMat.DOFade(0, .3f).OnComplete(() =>
+                {
+                    if (j < Dummy.Count+1)
+                    {
+                        StiackerMat.mainTexture = Dummy[m_i - j];
+                        j++;
+                    }
+                    else
+                    {
+                        StiackerMat.mainTexture = Default;
+                    }
+                        
+                    StiackerMat.DOFade(1, .5f);
+                });       
+            }
+            else
+            {
+                StiackerMat.DOFade(0, .3f).OnComplete(() =>
+                {
+                    if (GameManager.Instance.Level == 0)
+                    {
+                        StiackerMat.mainTexture = CheapTttos[GameManager.Instance.Level];
+                    }
+                    else
+                    {
+                        StiackerMat.mainTexture = CheapTttos[GameManager.Instance.Level - 1];   
+                    }
+                    StiackerMat.DOFade(1, .5f);
+                });
+            }
         }
 
         if (other.gameObject.CompareTag("Lava"))
         {
             DownGradeTexture(GameManager.Instance.Level, other.gameObject);
-            MMVibrationManager.Haptic(HapticTypes.MediumImpact);
+            MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
             StartCoroutine(SpeedSlowDownRoutine());
             StartCoroutine(UiManager.Instance.FdeDelayRoutine());
             anim1.Play("Hurt");
             anim.Play("Hurt");
             other.GetComponent<BoxCollider>().enabled = false;
+            
+            GameManager.Instance.Level--;
+            
+            if (IsGood)
+            {
+                m_i = Dummy.Count;
+                
+                StiackerMat.DOFade(0, .3f).OnComplete(() =>
+                {
+                    if (j < Dummy.Count+1)
+                    {
+                        StiackerMat.mainTexture = Dummy[m_i - j];
+                        j++;
+                    }
+                    else
+                    {
+                        StiackerMat.mainTexture = Default;
+                    }
+                        
+                    StiackerMat.DOFade(1, .5f);
+                });       
+            }
+            else
+            {
+                StiackerMat.DOFade(0, .3f).OnComplete(() =>
+                {
+                    if (GameManager.Instance.Level == 0)
+                    {
+                        StiackerMat.mainTexture = CheapTttos[GameManager.Instance.Level];
+                    }
+                    else
+                    {
+                        StiackerMat.mainTexture = CheapTttos[GameManager.Instance.Level - 1];   
+                    }
+                    StiackerMat.DOFade(1, .5f);
+                });
+            }
         }
 
         if (other.gameObject.CompareTag("Yellow"))
         {
+            MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
             StartCoroutine(AnimationDelayRoutine());
 
             if (lastGateId == 10)
@@ -416,6 +505,7 @@ public class Collsion : MonoBehaviour
 
         if (other.gameObject.CompareTag("Blue"))
         {
+            MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
             StartCoroutine(AnimationDelayRoutine());
             
             if (lastGateId == 10)
@@ -737,17 +827,22 @@ public class Collsion : MonoBehaviour
         MMVibrationManager.Haptic(HapticTypes.MediumImpact);
         StorageManager.Instance.IncreasePoints(-g.GetComponentInParent<Gates>().Cost);
         yield return new WaitForSeconds(.2f);
-        StiackerMat.DOFade(0, .3f).OnComplete(() =>
-        {
-            Shine.Play();
-            PopUp.Play("opps");
 
-            PopUp.transform.GetChild(0).gameObject.SetActive(true);
-            PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "-" + g.GetComponentInParent<Gates>().Cost.ToString();
-            PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = BadGatePopUpColor;
-            StiackerMat.mainTexture = CheapTttos[GameManager.Instance.Level - 1];
-            StiackerMat.DOFade(1, .5f);
-        });
+        Shine.Play();
+        PopUp.Play("opps");
+
+        PopUp.transform.GetChild(0).gameObject.SetActive(true);
+        PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "-" + g.GetComponentInParent<Gates>().Cost.ToString();
+        PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = BadGatePopUpColor;
+        
+        if (_shouldChange)
+        {
+            StiackerMat.DOFade(0, .3f).OnComplete(() =>
+            {
+                StiackerMat.mainTexture = CheapTttos[GameManager.Instance.Level - 1];
+                StiackerMat.DOFade(1, .5f);
+            });
+        }
     }
 
     public void ApplyBurntTexture()

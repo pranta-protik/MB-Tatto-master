@@ -31,7 +31,7 @@ public class Wheel : MonoBehaviour
         int i = 0;
         while (i < _randomValue)
         {
-            transform.DORotate(new Vector3(0f, 0f, 22.5f), _timeInterval, RotateMode.WorldAxisAdd).SetEase(Ease.Linear).OnComplete(() =>
+            transform.DORotate(new Vector3(0f, 0f, -22.5f), _timeInterval, RotateMode.WorldAxisAdd).SetEase(Ease.Linear).OnComplete(() =>
             {
                 _timeInterval += Time.unscaledDeltaTime * ((float) i / 100);
                 i++;
@@ -43,7 +43,7 @@ public class Wheel : MonoBehaviour
 
         if (Mathf.RoundToInt(transform.eulerAngles.z) % 45 != 0)
         {
-            transform.DORotate(new Vector3(0f, 0f, 22.5f), _timeInterval, RotateMode.WorldAxisAdd).SetEase(Ease.Linear).OnComplete(GetResultValue);
+            transform.DORotate(new Vector3(0f, 0f, -22.5f), _timeInterval, RotateMode.WorldAxisAdd).SetEase(Ease.Linear).OnComplete(GetResultValue);
         }
         else
         {
@@ -53,7 +53,7 @@ public class Wheel : MonoBehaviour
 
     private void GetResultValue()
     {
-        _finalAngle = Mathf.RoundToInt(transform.eulerAngles.z);
+        _finalAngle = Mathf.RoundToInt(Mathf.Abs(transform.eulerAngles.z));
 
         switch (_finalAngle)
         {

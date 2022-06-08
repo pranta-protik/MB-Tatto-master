@@ -212,14 +212,16 @@ public class UiManager : Singleton<UiManager>
     }
     private void NextCallBack()
     {
-        if (GameManager.Instance.levelNo <= 3)
-        {
-            UiManager.Instance.UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>()._increaseAmount = 25;
-        }
-        else if (GameManager.Instance.levelNo > 3)
-        {
-            UiManager.Instance.UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>()._increaseAmount = 17;
-        }
+        UiManager.Instance.UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>()._increaseAmount = 25;
+        
+        // if (GameManager.Instance.levelNo <= 3)
+        // {
+        //     UiManager.Instance.UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>()._increaseAmount = 25;
+        // }
+        // else if (GameManager.Instance.levelNo > 3)
+        // {
+        //     UiManager.Instance.UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>()._increaseAmount = 17;
+        // }
 
         UnlockPanel.gameObject.SetActive(true);
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -265,14 +267,17 @@ public class UiManager : Singleton<UiManager>
         GameManager.Instance.SetTotalTime();
 
 
-        if (GameManager.Instance.levelNo <= 3)
-        {
-            UiManager.Instance.UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>()._increaseAmount = 25;
-        }
-        else if (GameManager.Instance.levelNo > 3)
-        {
-            UiManager.Instance.UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>()._increaseAmount = 17;
-        }
+        // if (GameManager.Instance.levelNo <= 3)
+        // {
+        //     UiManager.Instance.UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>()._increaseAmount = 25;
+        // }
+        // else if (GameManager.Instance.levelNo > 3)
+        // {
+        //     UiManager.Instance.UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>()._increaseAmount = 17;
+        // }
+        
+        UiManager.Instance.UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>()._increaseAmount = 25;
+        
         decisionScreen.SetActive(false);
         spinnerScreen.SetActive(true);
         spinnerScreen.transform.GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>().SetText("$" + StorageManager.Instance.RewardValue);

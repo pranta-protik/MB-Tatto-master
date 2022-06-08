@@ -109,14 +109,16 @@ public class TattoWall : MonoBehaviour
     
     private void EnableEndUi()
     {
-        if (GameManager.Instance.levelNo <= 3)
-        {
-            UiManager.Instance.UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>()._increaseAmount = 25;
-        }
-        else if (GameManager.Instance.levelNo > 3)
-        {
-            UiManager.Instance.UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>()._increaseAmount = 17;
-        }
+        UiManager.Instance.UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>()._increaseAmount = 25;
+        
+        // if (GameManager.Instance.levelNo <= 3)
+        // {
+        //     UiManager.Instance.UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>()._increaseAmount = 25;
+        // }
+        // else if (GameManager.Instance.levelNo > 3)
+        // {
+        //     UiManager.Instance.UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>()._increaseAmount = 17;
+        // }
     }
 
     private void EnableUnlockScreen()
