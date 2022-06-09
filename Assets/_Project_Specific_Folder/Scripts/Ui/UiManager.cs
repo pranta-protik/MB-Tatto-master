@@ -190,6 +190,7 @@ public class UiManager : Singleton<UiManager>
 
     private bool _shouldUpdateLikeText;
     private float _currentLike;
+    private float _startLike;
     private int _targetLike;
     
     IEnumerator CameraFlashEffect()
@@ -202,6 +203,7 @@ public class UiManager : Singleton<UiManager>
         instaPostPage.SetActive(true);
         _targetLike = PlayerPrefs.GetInt("TargetLike", GameManager.Instance.baseLikes);
         _currentLike = PlayerPrefs.GetInt("LastLike", 0);
+        _startLike = _currentLike;
         _shouldUpdateLikeText = true;
     }
     
@@ -209,7 +211,7 @@ public class UiManager : Singleton<UiManager>
     {
         if (_currentLike < _targetLike)
         {
-            _currentLike += (_targetLike / 2f) * Time.deltaTime;
+            _currentLike += ((_targetLike - _startLike) / 2f) * Time.deltaTime;
             _currentLike = Mathf.Clamp(_currentLike, 0, _targetLike);
         }
         else
