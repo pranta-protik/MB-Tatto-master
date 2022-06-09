@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScreenshotHandler : MonoBehaviour
 {
@@ -29,10 +30,15 @@ public class ScreenshotHandler : MonoBehaviour
 
             byte[] byteArray = renderResult.EncodeToPNG();
             string snapshotName =
-                $"{Application.dataPath}/Resources/Snapshot_{renderTexture.width}x{renderTexture.height}_{System.DateTime.Now:yyyy-MM-dd_HH-mm-ss}.png";
+                $"{Application.dataPath}/Snapshots/Snapshot_{renderTexture.width}x{renderTexture.height}_{System.DateTime.Now:yyyy-MM-dd_HH-mm-ss}.png";
             
             System.IO.File.WriteAllBytes(snapshotName, byteArray);
+
+            byte[] savedSnapshot = System.IO.File.ReadAllBytes(snapshotName);
+            Texture2D loadedTexture = new Texture2D(renderTexture.width, renderTexture.height, TextureFormat.ARGB32, false);
+            loadedTexture.LoadImage(savedSnapshot);
             
+            UiManager.Instance.instaPostPage.transform.GetChild(1).GetChild(0).GetComponent<RawImage>().texture = loadedTexture;
             RenderTexture.ReleaseTemporary(renderTexture);
             _camera.targetTexture = null;
         }

@@ -58,6 +58,8 @@ public class GameManager : Singleton<GameManager>
     public Transform SpwanPos;
     public Transform bossWall;
     public int currentHandId;
+    public int baseLikes;
+    public int baseFollowers;
     
     int SavedLevelNo;
     GameObject Path;

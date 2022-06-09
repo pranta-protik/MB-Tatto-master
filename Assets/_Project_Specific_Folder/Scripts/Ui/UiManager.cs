@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
 using Singleton;
 using TMPro;
@@ -45,15 +46,15 @@ public class UiManager : Singleton<UiManager>
     public Button selectionMenuButton;
 
     public GameObject mobileScreen;
-    private Slider _mobileScreenSlider;
+    public Slider mobileScreenSlider;
     public bool isMobileActive;
+    public GameObject instaPostPage;
 
-   
     public override void Start()
     {
         base.Start();
 
-        _mobileScreenSlider = mobileScreen.transform.GetChild(4).GetComponent<Slider>();
+        mobileScreenSlider = mobileScreen.transform.GetChild(4).GetComponent<Slider>();
         
         if (TotalText != null)
         {
@@ -134,6 +135,14 @@ public class UiManager : Singleton<UiManager>
         });
     }
 
+    public void OnSliderClick()
+    {
+        mobileScreenSlider.transform.GetChild(2).GetChild(0).DOScale(new Vector3(1f, 1f, 1f), 0.5f).OnComplete(() =>
+        {
+            DOTween.Kill(mobileScreenSlider.transform.GetChild(2).GetChild(0));
+        });
+    }
+    
     public void OnCloseSelectionMenuButtonClick()
     {
         selectionMenu.SetActive(false);
@@ -165,7 +174,12 @@ public class UiManager : Singleton<UiManager>
 
         if (isMobileActive)
         {
-            _camera.fieldOfView = _mobileScreenSlider.minValue + (_mobileScreenSlider.maxValue - _mobileScreenSlider.value);   
+            _camera.fieldOfView = mobileScreenSlider.minValue + (mobileScreenSlider.maxValue - mobileScreenSlider.value);   
+        }
+
+        if (_shouldUpdateLikeText)
+        {
+            UpdateLikeText();
         }
     }
 
@@ -174,12 +188,40 @@ public class UiManager : Singleton<UiManager>
         StartCoroutine(CameraFlashEffect());
     }
 
+    private bool _shouldUpdateLikeText;
+    private float _currentLike;
+    private int _targetLike;
+    
     IEnumerator CameraFlashEffect()
     {
         _camera.transform.GetChild(1).gameObject.SetActive(true);
         yield return new WaitForSeconds(0.1f);
         _camera.transform.GetChild(1).gameObject.SetActive(false);
         ScreenshotHandler.TakeScreenshot_Static(1024, 1024);
+        mobileScreen.SetActive(false);
+        instaPostPage.SetActive(true);
+        _targetLike = PlayerPrefs.GetInt("TargetLike", GameManager.Instance.baseLikes);
+        _currentLike = PlayerPrefs.GetInt("LastLike", 0);
+        _shouldUpdateLikeText = true;
+    }
+    
+    private void UpdateLikeText()
+    {
+        if (_currentLike < _targetLike)
+        {
+            _currentLike += (_targetLike / 2f) * Time.deltaTime;
+            _currentLike = Mathf.Clamp(_currentLike, 0, _targetLike);
+        }
+        else
+        {
+            _shouldUpdateLikeText = false;
+            instaPostPage.transform.GetChild(1).GetChild(2).GetChild(0).gameObject.SetActive(true);
+            instaPostPage.transform.GetChild(1).GetChild(2).GetChild(1).gameObject.SetActive(true);
+            PlayerPrefs.SetInt("LastLike", _targetLike);
+            PlayerPrefs.SetInt("TargetLike", _targetLike * 2);
+        }
+
+        instaPostPage.transform.GetChild(1).GetChild(1).GetComponent<TextMeshProUGUI>().SetText(Mathf.RoundToInt(_currentLike).ToString());
     }
     
     public void ShowPriceTag()
