@@ -44,23 +44,17 @@ public class UiManager : Singleton<UiManager>
     public GameObject selectionMenu;
     public Button selectionMenuButton;
 
-    public void OnSelectionMenuButtonClick()
-    {
-        _camera.transform.DOLocalRotate(new Vector3(42, 90, 0), .3f).OnComplete(() =>
-        {
-            selectionMenu.SetActive(true);
-            selectionMenu.GetComponent<SelectionMenu>().CheckUnlockButtonAvailability();
-        });
-    }
+    public GameObject mobileScreen;
+    private Slider _mobileScreenSlider;
+    public bool isMobileActive;
 
-    public void OnCloseSelectionMenuButtonClick()
-    {
-        selectionMenu.SetActive(false);
-        _camera.transform.DOLocalRotate(new Vector3(27.761f, 90, 0), .3f);
-    }
-    
+   
     public override void Start()
     {
+        base.Start();
+
+        _mobileScreenSlider = mobileScreen.transform.GetChild(4).GetComponent<Slider>();
+        
         if (TotalText != null)
         {
             TotalText.SetText("$" + StorageManager.GetTotalCoin());
@@ -69,8 +63,6 @@ public class UiManager : Singleton<UiManager>
         {
             btnNext.onClick.AddListener(NextCallBack);
         }
-
-        base.Start();
         _currentLevel = PlayerPrefs.GetInt("current_scene");
         currentLevelText = PlayerPrefs.GetInt("current_scene_text", 0);
 
@@ -131,6 +123,28 @@ public class UiManager : Singleton<UiManager>
     //     _camera.transform.DOLocalRotate(new Vector3(42, 90, 0), .3f).OnComplete(() => { ShopPnael.SetActive(true); });
     // }
 
+    public void OnSelectionMenuButtonClick()
+    {
+        shop.SetActive(false);
+        selectionMenuButton.gameObject.SetActive(false);
+        _camera.transform.DOLocalRotate(new Vector3(42, 90, 0), .3f).OnComplete(() =>
+        {
+            selectionMenu.SetActive(true);
+            selectionMenu.GetComponent<SelectionMenu>().CheckUnlockButtonAvailability();
+        });
+    }
+
+    public void OnCloseSelectionMenuButtonClick()
+    {
+        selectionMenu.SetActive(false);
+        _camera.transform.DOLocalRotate(new Vector3(27.761f, 90, 0), .3f).OnComplete(() =>
+        {
+            shop.SetActive(true);
+            selectionMenuButton.gameObject.SetActive(true);
+        });
+    }
+
+    
     private void Update()
     {
         if (shouldUpdateTotalCash)
@@ -147,7 +161,12 @@ public class UiManager : Singleton<UiManager>
                 UnlockPanel.SetActive(true);
                 shouldUpdateTotalCash = false;
             }
-        }    
+        }
+
+        if (isMobileActive)
+        {
+            _camera.fieldOfView = _mobileScreenSlider.minValue + (_mobileScreenSlider.maxValue - _mobileScreenSlider.value);   
+        }
     }
 
     public void ShowPriceTag()

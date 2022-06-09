@@ -57,9 +57,11 @@ public class Collsion : MonoBehaviour
     public List<Texture> Dummy = new List<Texture>();
 
     public int lastGateId;
+    private new Camera _camera;
     
     private void Start()
     {
+        _camera = Camera.main;
         cam = GameManager.Instance.FakeCam;
         anim = GetComponent<Animator>();
         anim1 = GameObject.FindGameObjectWithTag("Copy").GetComponent<Animator>();
@@ -647,19 +649,33 @@ public class Collsion : MonoBehaviour
         if (other.gameObject.CompareTag("DecisionTrigger"))
         {
             UiManager.Instance.PointText.transform.parent.gameObject.SetActive(false);
-
-            // StorageManager.Instance.SetTotalScore(); 
-            // StorageManager.Instance.GetTotalScore();
-            GameManager.Instance.bossWall = other.transform.GetChild(0);
             GameManager.Instance.p.enabled = false;
             anim.Play("idle");
             anim1.Play("idle");
-            anim.transform.DOLocalMoveX(0, .2f); anim1.transform.DOLocalMoveX(0, .2f);
+            anim.transform.DOLocalMoveX(0, .2f); 
+            anim1.transform.DOLocalMoveX(0, .2f);
             c.enabled = false;
             c1.enabled = false;
-            UiManager.Instance.decisionScreen.SetActive(true);
-            UiManager.Instance.cashCounter.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText("$" + StorageManager.GetTotalCoin());
-            UiManager.Instance.cashCounter.SetActive(false);
+
+            GameObject mobile = other.transform.GetChild(2).gameObject;
+            mobile.transform.DOLocalMoveY(0.8f, 0.5f).OnComplete(() =>
+            {
+                mobile.transform.DOLocalRotate(new Vector3(0f, 180f, 50f), 0.5f).OnComplete(() =>
+                {
+                    mobile.transform.DOLocalMoveX(-.65f, 1f).OnComplete(() =>
+                    {
+                        _camera.transform.DORotate(new Vector3(46f, 90f, 0f), 0.01f).OnComplete(() =>
+                        {
+                            UiManager.Instance.mobileScreen.SetActive(true);
+                            mobile.SetActive(false);
+                            UiManager.Instance.isMobileActive = true;
+                        });
+                    });
+                });
+            });
+            // UiManager.Instance.decisionScreen.SetActive(true);
+            // UiManager.Instance.cashCounter.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText("$" + StorageManager.GetTotalCoin());
+            // UiManager.Instance.cashCounter.SetActive(false);
         }
     }
     public IEnumerator BookRoutine()
