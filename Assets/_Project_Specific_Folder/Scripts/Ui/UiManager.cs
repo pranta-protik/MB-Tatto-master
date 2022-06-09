@@ -169,6 +169,19 @@ public class UiManager : Singleton<UiManager>
         }
     }
 
+    public void TakePicture()
+    {
+        StartCoroutine(CameraFlashEffect());
+    }
+
+    IEnumerator CameraFlashEffect()
+    {
+        _camera.transform.GetChild(1).gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        _camera.transform.GetChild(1).gameObject.SetActive(false);
+        ScreenshotHandler.TakeScreenshot_Static(1024, 1024);
+    }
+    
     public void ShowPriceTag()
     {
         priceTag.GetComponent<RectTransform>().DOAnchorPos(new Vector2(-123f, -65f), 0.5f);

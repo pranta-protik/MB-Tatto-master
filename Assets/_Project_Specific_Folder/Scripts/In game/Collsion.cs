@@ -658,9 +658,9 @@ public class Collsion : MonoBehaviour
             c1.enabled = false;
 
             GameObject mobile = other.transform.GetChild(2).gameObject;
-            mobile.transform.DOLocalMoveY(0.8f, 0.5f).OnComplete(() =>
+            mobile.transform.DOLocalMoveY(1f, 0.5f).OnComplete(() =>
             {
-                mobile.transform.DOLocalRotate(new Vector3(0f, 180f, 50f), 0.5f).OnComplete(() =>
+                mobile.transform.DOLocalRotate(new Vector3(-50f, 270f, 90f), 0.5f).OnComplete(() =>
                 {
                     mobile.transform.DOLocalMoveX(-.65f, 1f).OnComplete(() =>
                     {
