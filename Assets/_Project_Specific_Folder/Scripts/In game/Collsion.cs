@@ -181,7 +181,7 @@ public class Collsion : MonoBehaviour
                 PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = GoodGatePopUpColor;
                 other.GetComponent<BoxCollider>().enabled = false;
 
-                UiManager.Instance.priceTag.transform.DOScale(new Vector3(1.5f, 1.5f, 1.5f), 0.3f).SetLoops(4, LoopType.Yoyo);
+                UiManager.Instance.priceTag.transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.3f).SetLoops(4, LoopType.Yoyo);
                 // lastGateId = other.gameObject.transform.GetComponentInParent<Gates>().id;
             }
             else
