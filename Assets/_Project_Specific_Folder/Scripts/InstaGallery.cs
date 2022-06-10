@@ -16,6 +16,7 @@ public class InstaGallery : MonoBehaviour
     private GameObject _lastPictureFrame;
     private bool _isScrollbarSet;
 
+    
     private IEnumerator Start()
     {
         _contentTransform = transform.GetChild(1).GetChild(0).GetChild(0).GetChild(0).GetChild(0);
@@ -23,17 +24,48 @@ public class InstaGallery : MonoBehaviour
 
         int totalPhotos = PlayerPrefs.GetInt("SnapshotsTaken", 0);
         transform.GetChild(1).GetChild(1).GetComponent<TextMeshProUGUI>().SetText(totalPhotos.ToString());
-        
+
         string[] files = Directory.GetFiles($"{Application.persistentDataPath}/Snapshots/", "*.png");
+
+        if (totalPhotos <= 9)
+        {
+            SpawnPictureFrames(0, totalPhotos, files);
+        }
+        else
+        {
+            if (totalPhotos % 9 == 1)
+            {
+                SpawnPictureFrames((totalPhotos - ((totalPhotos - 2) % 9)) - 2, totalPhotos, files);
+            }
+            else
+            {
+                SpawnPictureFrames((totalPhotos - ((totalPhotos - 1) % 9)) - 1, totalPhotos, files);
+            }
+        }
+
+        int blankPhotos = 9 * (((totalPhotos - 1) / 9) + 1) - totalPhotos;
         
-        for (int i = 0; i < totalPhotos; i++)
+        SpawnBlankPictureFrames(blankPhotos);
+
+        yield return null;
+        
+        if (_scrollbar.gameObject.activeSelf)
+        {
+            _scrollbar.value = 1;   
+        }
+        _isScrollbarSet = true;
+    }
+
+    private void SpawnPictureFrames(int startIndex, int totalPhotos, string[] files)
+    {
+        for (int i = startIndex; i < totalPhotos; i++)
         {
             GameObject pictureFrameObj = Instantiate(pictureFramePrefab, _contentTransform.position, Quaternion.identity, _contentTransform);
 
             byte[] savedSnapshot = File.ReadAllBytes(files[i]);
             Texture2D loadedTexture = new Texture2D(720, 720, TextureFormat.ARGB32, false);
             loadedTexture.LoadImage(savedSnapshot);
-            
+
             pictureFrameObj.transform.GetChild(0).gameObject.SetActive(false);
             pictureFrameObj.transform.GetChild(1).GetComponent<RawImage>().texture = loadedTexture;
             pictureFrameObj.transform.GetChild(1).gameObject.SetActive(true);
@@ -44,31 +76,8 @@ public class InstaGallery : MonoBehaviour
                 _lastPictureFrame.transform.localScale = new Vector3(0f, 0f, 0f);
             }
         }
-
-        if (totalPhotos <= 9)
-        {
-            int blankPhotos = 9 - totalPhotos;
-            SpawnBlankPictureFrames(blankPhotos);
-        }
-        else
-        {
-            if (totalPhotos % 3 != 0)
-            {
-                int blankPhotos = 3 - (totalPhotos % 3);
-                SpawnBlankPictureFrames(blankPhotos);
-            }
-        }
-        
-        yield return null;
-
-        if (_scrollbar.gameObject.activeSelf)
-        {
-            Debug.Log("Here");
-            _scrollbar.value = 1;
-        }
-        _isScrollbarSet = true;
     }
-
+    
     private void SpawnBlankPictureFrames(int frameNo)
     {
         for (int j = 0; j < frameNo; j++)
@@ -83,7 +92,7 @@ public class InstaGallery : MonoBehaviour
         {
             if (_scrollbar.value > 0)
             {
-                _scrollbar.value -= Time.deltaTime;   
+                _scrollbar.value -= Time.deltaTime;
             }
             else
             {

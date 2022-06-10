@@ -151,10 +151,12 @@ public class UiManager : Singleton<UiManager>
 
     public void OnSliderClick()
     {
-        mobileScreenSlider.transform.GetChild(2).GetChild(0).DOScale(new Vector3(1f, 1f, 1f), 0.5f).OnComplete(() =>
-        {
-            DOTween.Kill(mobileScreenSlider.transform.GetChild(2).GetChild(0));
-        });
+        Debug.Log("Here");
+        mobileScreen.transform.GetChild(7).gameObject.SetActive(false);
+        // mobileScreenSlider.transform.GetChild(2).GetChild(0).DOScale(new Vector3(1f, 1f, 1f), 0.5f).OnComplete(() =>
+        // {
+        //     DOTween.Kill(mobileScreenSlider.transform.GetChild(2).GetChild(0));
+        // });
     }
     
     public void OnCloseSelectionMenuButtonClick()
@@ -223,8 +225,8 @@ public class UiManager : Singleton<UiManager>
         ScreenshotHandler.TakeScreenshot_Static(720, 720);
         PlayerPrefs.SetInt("SnapshotsTaken", PlayerPrefs.GetInt("SnapshotsTaken", 0) + 1);
        
-        mobileScreen.transform.GetChild(7).gameObject.SetActive(true);
-        mobileScreen.transform.GetChild(7).GetComponent<Image>().DOColor(Color.white, 0.5f).OnComplete(() =>
+        mobileScreen.transform.GetChild(8).gameObject.SetActive(true);
+        mobileScreen.transform.GetChild(8).GetComponent<Image>().DOColor(Color.white, 0.5f).OnComplete(() =>
         {
             mobileScreen.SetActive(false);
             instaPostPage.SetActive(true);

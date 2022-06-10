@@ -669,13 +669,15 @@ public class Collsion : MonoBehaviour
                             UiManager.Instance.mobileScreen.SetActive(true);
                             UiManager.Instance.mobileScreenSlider.transform.GetChild(2).GetChild(0).DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.5f)
                                 .SetLoops(-1, LoopType.Yoyo);
+                            UiManager.Instance.mobileScreen.transform.GetChild(7).GetComponent<RectTransform>().DOAnchorPosY(200, 1f)
+                                .SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
                             
                             mobile.SetActive(false);
-                            UiManager.Instance.mobileScreen.transform.GetChild(7).GetComponent<Image>().color = Color.black;
-                            UiManager.Instance.mobileScreen.transform.GetChild(7).GetComponent<Image>().DOFade(0f, 1f).OnComplete(() =>
+                            UiManager.Instance.mobileScreen.transform.GetChild(8).GetComponent<Image>().color = Color.black;
+                            UiManager.Instance.mobileScreen.transform.GetChild(8).GetComponent<Image>().DOFade(0f, 1f).OnComplete(() =>
                             {
                                 UiManager.Instance.isMobileActive = true;
-                                UiManager.Instance.mobileScreen.transform.GetChild(7).gameObject.SetActive(false);
+                                UiManager.Instance.mobileScreen.transform.GetChild(8).gameObject.SetActive(false);
                             });
                         });
                     });
