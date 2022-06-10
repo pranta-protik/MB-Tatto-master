@@ -1,29 +1,73 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InstaGallery : MonoBehaviour
 {
     public GameObject pictureFramePrefab;
-    
-    private void Start()
+    private Scrollbar _scrollbar;
+    private Transform _contentTransform;
+    private bool _isDisplayed;
+    private GameObject _lastPictureFrame;
+    private bool _isScrollbarSet;
+
+    private IEnumerator Start()
     {
-        Transform spawnTransform = transform.GetChild(1).GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetChild(0);
-        Vector2 anchoredSpawnPosition = transform.GetChild(1).GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetComponent<RectTransform>()
-            .anchoredPosition;
-        
+        _contentTransform = transform.GetChild(1).GetChild(0).GetChild(0).GetChild(0).GetChild(0);
+        _scrollbar = transform.GetChild(1).GetChild(0).GetChild(0).GetChild(1).GetComponent<Scrollbar>();
+
         int totalPhotos = PlayerPrefs.GetInt("SnapshotsTaken", 0);
         transform.GetChild(1).GetChild(1).GetComponent<TextMeshProUGUI>().SetText(totalPhotos.ToString());
-
+        
+        string[] files = Directory.GetFiles($"{Application.persistentDataPath}/Snapshots/", "*.png");
+        
         for (int i = 0; i < totalPhotos; i++)
         {
-            GameObject pictureFrameObj = Instantiate(pictureFramePrefab, spawnTransform.position, Quaternion.identity, spawnTransform.parent);
+            GameObject pictureFrameObj = Instantiate(pictureFramePrefab, _contentTransform.position, Quaternion.identity, _contentTransform);
 
-            pictureFrameObj.GetComponent<RectTransform>().anchoredPosition =
-                new Vector2(anchoredSpawnPosition.x + ((i % 3) * 216), anchoredSpawnPosition.y - ((i / 3) * 217));
+            byte[] savedSnapshot = File.ReadAllBytes(files[i]);
+            Texture2D loadedTexture = new Texture2D(720, 720, TextureFormat.ARGB32, false);
+            loadedTexture.LoadImage(savedSnapshot);
+            
+            pictureFrameObj.transform.GetChild(0).gameObject.SetActive(false);
+            pictureFrameObj.transform.GetChild(1).GetComponent<RawImage>().texture = loadedTexture;
+            pictureFrameObj.transform.GetChild(1).gameObject.SetActive(true);
+
+            if (i == totalPhotos - 1)
+            {
+                _lastPictureFrame = pictureFrameObj;
+                _lastPictureFrame.transform.localScale = new Vector3(0f, 0f, 0f);
+            }
+        }
+
+        yield return null;
+
+        _scrollbar.value = 1;
+        _isScrollbarSet = true;
+    }
+
+    private void Update()
+    {
+        if (_isScrollbarSet)
+        {
+            if (_scrollbar.value > 0)
+            {
+                _scrollbar.value -= Time.deltaTime;   
+            }
+            else
+            {
+                if (!_isDisplayed)
+                {
+                    _scrollbar.value = 0;
+                    _lastPictureFrame.transform.DOScale(new Vector3(1f, 1f, 1f), 0.5f);
+                    _isDisplayed = true;
+                }
+            }   
         }
     }
-    
 }
