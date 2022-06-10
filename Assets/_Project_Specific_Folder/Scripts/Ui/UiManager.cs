@@ -238,7 +238,7 @@ public class UiManager : Singleton<UiManager>
     {
         if (_currentLike < _targetLike)
         {
-            _currentLike += ((_targetLike - _startLike) / 2f) * Time.deltaTime;
+            _currentLike += ((_targetLike - _startLike) / 1.5f) * Time.deltaTime;
             _currentLike = Mathf.Clamp(_currentLike, 0, _targetLike);
         }
         else
@@ -258,7 +258,7 @@ public class UiManager : Singleton<UiManager>
     {
         if (_currentFollowers < _targetFollowers)
         {
-            _currentFollowers += ((_targetFollowers - _startFollowers) / 2f) * Time.deltaTime;
+            _currentFollowers += ((_targetFollowers - _startFollowers) / 1.5f) * Time.deltaTime;
             _currentFollowers = Mathf.Clamp(_currentFollowers, 0, _targetFollowers);
         }
         else

@@ -100,7 +100,7 @@ public class InfluenceMeter : MonoBehaviour
     {
         if (_currentCash < _targetCash)
         {
-            _currentCash += ((_targetCash - _startCash) / 2f) * Time.deltaTime;
+            _currentCash += ((_targetCash - _startCash) / 1.5f) * Time.deltaTime;
             _currentCash = Mathf.Clamp(_currentCash, 0, _targetCash);
         }
         else
