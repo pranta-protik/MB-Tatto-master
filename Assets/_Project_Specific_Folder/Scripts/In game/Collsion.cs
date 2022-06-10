@@ -730,9 +730,10 @@ public class Collsion : MonoBehaviour
 
     public IEnumerator SpeedSlowDownRoutine()
     {
-        GameManager.Instance.p.speed = GameManager.Instance.p.MaxSpeed = .8f;
+        float lastSpeed = GameManager.Instance.p.MaxSpeed;
+        GameManager.Instance.p.speed = GameManager.Instance.p.MaxSpeed = lastSpeed / 3f;
         yield return new WaitForSeconds(.6f);
-        GameManager.Instance.p.MaxSpeed = 2.5f;
+        GameManager.Instance.p.MaxSpeed = lastSpeed;
     }
 
 

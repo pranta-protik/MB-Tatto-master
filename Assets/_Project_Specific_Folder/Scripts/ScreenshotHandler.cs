@@ -52,17 +52,6 @@ public class ScreenshotHandler : MonoBehaviour
                 File.WriteAllBytes(snapshotName, byteArray);
             }).Start();
 
-            // byte[] savedSnapshot = null;
-            
-            // new System.Threading.Thread(() =>
-            // {
-            //     System.Threading.Thread.Sleep(100);
-            //     savedSnapshot = File.ReadAllBytes(snapshotName);
-            // }).Start();
-            
-            // Texture2D loadedTexture = new Texture2D(renderTexture.width, renderTexture.height, TextureFormat.ARGB32, false);
-            // loadedTexture.LoadImage(savedSnapshot);
-            
             UiManager.Instance.instaPostPage.transform.GetChild(1).GetChild(0).GetComponent<RawImage>().texture = renderResult;
             
             RenderTexture.ReleaseTemporary(renderTexture);

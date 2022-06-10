@@ -50,6 +50,7 @@ public class UiManager : Singleton<UiManager>
     public bool isMobileActive;
     public GameObject instaPostPage;
     public GameObject instaGalleryPage;
+    public GameObject influenceMeterPage;
 
     private bool _shouldUpdateLikeText;
     private float _currentLike;
@@ -151,12 +152,7 @@ public class UiManager : Singleton<UiManager>
 
     public void OnSliderClick()
     {
-        Debug.Log("Here");
         mobileScreen.transform.GetChild(7).gameObject.SetActive(false);
-        // mobileScreenSlider.transform.GetChild(2).GetChild(0).DOScale(new Vector3(1f, 1f, 1f), 0.5f).OnComplete(() =>
-        // {
-        //     DOTween.Kill(mobileScreenSlider.transform.GetChild(2).GetChild(0));
-        // });
     }
     
     public void OnCloseSelectionMenuButtonClick()
@@ -205,7 +201,7 @@ public class UiManager : Singleton<UiManager>
 
         if (isInstaGalleryPhotoUpdated && _isFollowersUpdated)
         {
-            Invoke(nameof(EnableUnlockTattooScreen), 1.5f);
+            Invoke(nameof(EnableInfluenceMeterScreen), 1f);
             isInstaGalleryPhotoUpdated = false;
             _isFollowersUpdated = false;
         }
@@ -276,9 +272,9 @@ public class UiManager : Singleton<UiManager>
         instaGalleryPage.transform.GetChild(1).GetChild(2).GetComponent<TextMeshProUGUI>().SetText(Mathf.RoundToInt(_currentFollowers).ToString());
     }
     
-    private void EnableUnlockTattooScreen()
+    private void EnableInfluenceMeterScreen()
     {
-        UnlockPanel.SetActive(true);
+        influenceMeterPage.SetActive(true);
         instaGalleryPage.SetActive(false);
     }
     
