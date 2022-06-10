@@ -49,6 +49,7 @@ public class UiManager : Singleton<UiManager>
     public Slider mobileScreenSlider;
     public bool isMobileActive;
     public GameObject instaPostPage;
+    public GameObject instaGalleryPage;
 
     private bool _shouldUpdateLikeText;
     private float _currentLike;
@@ -193,8 +194,6 @@ public class UiManager : Singleton<UiManager>
         mobileScreen.transform.GetChild(3).GetComponent<Button>().interactable = false;
         StartCoroutine(CameraFlashEffect());
     }
-
-    
     
     IEnumerator CameraFlashEffect()
     {
@@ -202,6 +201,7 @@ public class UiManager : Singleton<UiManager>
         yield return new WaitForSeconds(0.1f);
         _camera.transform.GetChild(1).gameObject.SetActive(false);
         ScreenshotHandler.TakeScreenshot_Static(720, 720);
+        PlayerPrefs.SetInt("SnapshotsTaken", PlayerPrefs.GetInt("SnapshotsTaken", 0) + 1);
        
         mobileScreen.transform.GetChild(7).gameObject.SetActive(true);
         mobileScreen.transform.GetChild(7).GetComponent<Image>().DOColor(Color.white, 0.5f).OnComplete(() =>
@@ -229,9 +229,16 @@ public class UiManager : Singleton<UiManager>
             instaPostPage.transform.GetChild(1).GetChild(2).GetChild(1).gameObject.SetActive(true);
             PlayerPrefs.SetInt("LastLike", _targetLike);
             PlayerPrefs.SetInt("TargetLike", _targetLike * 2);
+            Invoke(nameof(EnableInstaGalleryPage), 1.5f);
         }
 
         instaPostPage.transform.GetChild(1).GetChild(1).GetComponent<TextMeshProUGUI>().SetText(Mathf.RoundToInt(_currentLike).ToString());
+    }
+
+    private void EnableInstaGalleryPage()
+    {
+        instaPostPage.SetActive(false);
+        instaGalleryPage.SetActive(true);
     }
     
     public void ShowPriceTag()
