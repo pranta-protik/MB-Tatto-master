@@ -41,6 +41,10 @@ namespace ItemCollection.GameEndUnlockItem
 
         private void Awake()
         {
+            transform.GetChild(8).GetComponent<Image>().DOFade(0f, 0.5f).OnComplete(() =>
+            {
+                transform.GetChild(8).gameObject.SetActive(false);
+            });
            
             _nextPackIndex = PlayerPrefs.GetInt(NextPackIndexKey, 0);
 

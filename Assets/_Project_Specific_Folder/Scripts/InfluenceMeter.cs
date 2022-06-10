@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InfluenceMeter : MonoBehaviour
 {
@@ -30,7 +31,7 @@ public class InfluenceMeter : MonoBehaviour
     
     private void Start()
     {
-        _cashText = transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+        _cashText = transform.GetChild(3).GetComponent<TextMeshProUGUI>();
         _cashText.SetText("$0");
         
         _followersText = transform.GetChild(1).GetChild(0).GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>();
@@ -86,14 +87,17 @@ public class InfluenceMeter : MonoBehaviour
         _playerIcon.DOAnchorPosY(_playerIcon.anchoredPosition.y + playerIconMoveDistance, playerIconMoveDuration).OnComplete(() =>
         {
             PlayerPrefs.SetFloat("PlayerIconYValue", _playerIcon.anchoredPosition.y);
-            Invoke(nameof(EnableUnlockScreen), 0.5f);
+            Invoke(nameof(EnableUnlockScreen), 2f);
         });   
     }
 
     private void EnableUnlockScreen()
     {
-        UiManager.Instance.UnlockPanel.SetActive(true);
-        gameObject.SetActive(false);
+        transform.GetChild(4).GetComponent<Image>().DOFade(1f, 0.5f).OnComplete(() =>
+        {
+            UiManager.Instance.UnlockPanel.SetActive(true);
+            gameObject.SetActive(false); 
+        });
     }
     
     private void UpdateCashText()
