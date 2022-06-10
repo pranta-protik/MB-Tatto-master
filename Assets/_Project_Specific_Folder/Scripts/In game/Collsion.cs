@@ -671,6 +671,7 @@ public class Collsion : MonoBehaviour
                                 .SetLoops(-1, LoopType.Yoyo);
                             
                             mobile.SetActive(false);
+                            UiManager.Instance.mobileScreen.transform.GetChild(7).GetComponent<Image>().color = Color.black;
                             UiManager.Instance.mobileScreen.transform.GetChild(7).GetComponent<Image>().DOFade(0f, 1f).OnComplete(() =>
                             {
                                 UiManager.Instance.isMobileActive = true;

@@ -50,6 +50,11 @@ public class UiManager : Singleton<UiManager>
     public bool isMobileActive;
     public GameObject instaPostPage;
 
+    private bool _shouldUpdateLikeText;
+    private float _currentLike;
+    private float _startLike;
+    private int _targetLike;
+    
     public override void Start()
     {
         base.Start();
@@ -185,26 +190,29 @@ public class UiManager : Singleton<UiManager>
 
     public void TakePicture()
     {
+        mobileScreen.transform.GetChild(3).GetComponent<Button>().interactable = false;
         StartCoroutine(CameraFlashEffect());
     }
 
-    private bool _shouldUpdateLikeText;
-    private float _currentLike;
-    private float _startLike;
-    private int _targetLike;
+    
     
     IEnumerator CameraFlashEffect()
     {
         _camera.transform.GetChild(1).gameObject.SetActive(true);
         yield return new WaitForSeconds(0.1f);
         _camera.transform.GetChild(1).gameObject.SetActive(false);
-        ScreenshotHandler.TakeScreenshot_Static(1024, 1024);
-        mobileScreen.SetActive(false);
-        instaPostPage.SetActive(true);
-        _targetLike = PlayerPrefs.GetInt("TargetLike", GameManager.Instance.baseLikes);
-        _currentLike = PlayerPrefs.GetInt("LastLike", 0);
-        _startLike = _currentLike;
-        _shouldUpdateLikeText = true;
+        ScreenshotHandler.TakeScreenshot_Static(720, 720);
+       
+        mobileScreen.transform.GetChild(7).gameObject.SetActive(true);
+        mobileScreen.transform.GetChild(7).GetComponent<Image>().DOColor(Color.white, 0.5f).OnComplete(() =>
+        {
+            mobileScreen.SetActive(false);
+            instaPostPage.SetActive(true);
+            _targetLike = PlayerPrefs.GetInt("TargetLike", GameManager.Instance.baseLikes);
+            _currentLike = PlayerPrefs.GetInt("LastLike", 0);
+            _startLike = _currentLike;
+            _shouldUpdateLikeText = true;
+        });
     }
     
     private void UpdateLikeText()
