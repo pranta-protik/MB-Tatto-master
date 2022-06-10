@@ -36,6 +36,14 @@ public class InfluenceMeter : MonoBehaviour
         _followersText = transform.GetChild(1).GetChild(0).GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>();
         _followersText.SetText(PlayerPrefs.GetInt("LastFollowers", 0).ToString());
 
+        _scrollDownThreshold = PlayerPrefs.GetFloat("ScrollDownThreshold", meterScrollDownThreshold);
+        
+        _playerIcon = transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<RectTransform>();
+        _playerIcon.anchoredPosition = new Vector2(110f, PlayerPrefs.GetFloat("PlayerIconYValue", playerIconBaseYValue));
+        
+        _meterIcon = transform.GetChild(1).GetChild(0).GetComponent<RectTransform>();
+        _meterIcon.anchoredPosition = new Vector2(0f, PlayerPrefs.GetFloat("MeterIconYValue", meterIconBaseYValue));
+        
         _targetCash = StorageManager.Instance.RewardValue < 0 ? 500 : StorageManager.Instance.RewardValue;
         _currentCash = 0;
         _startCash = _currentCash;
@@ -52,14 +60,6 @@ public class InfluenceMeter : MonoBehaviour
 
     private void UpdateInfluenceMeter()
     {
-        _scrollDownThreshold = PlayerPrefs.GetFloat("ScrollDownThreshold", meterScrollDownThreshold);
-        
-        _playerIcon = transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<RectTransform>();
-        _playerIcon.anchoredPosition = new Vector2(110f, PlayerPrefs.GetFloat("PlayerIconYValue", playerIconBaseYValue));
-        
-        _meterIcon = transform.GetChild(1).GetChild(0).GetComponent<RectTransform>();
-        _meterIcon.anchoredPosition = new Vector2(0f, PlayerPrefs.GetFloat("MeterIconYValue", meterIconBaseYValue));
-
         if (_playerIcon.anchoredPosition.y < playerIconMaxYValue)
         {
             if (_playerIcon.anchoredPosition.y >= _scrollDownThreshold)
