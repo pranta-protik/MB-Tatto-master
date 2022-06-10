@@ -228,6 +228,7 @@ public class UiManager : Singleton<UiManager>
         {
             mobileScreen.SetActive(false);
             instaPostPage.SetActive(true);
+            instaPostPage.transform.GetChild(2).GetComponent<Image>().DOFade(0, 0.5f);
             _targetLike = PlayerPrefs.GetInt("TargetLike", GameManager.Instance.baseLikes);
             _currentLike = PlayerPrefs.GetInt("LastLike", 0);
             _startLike = _currentLike;
