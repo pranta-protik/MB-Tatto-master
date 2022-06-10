@@ -39,7 +39,7 @@ public class InfluenceMeter : MonoBehaviour
         _scrollDownThreshold = PlayerPrefs.GetFloat("ScrollDownThreshold", meterScrollDownThreshold);
         
         _playerIcon = transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<RectTransform>();
-        _playerIcon.anchoredPosition = new Vector2(110f, PlayerPrefs.GetFloat("PlayerIconYValue", playerIconBaseYValue));
+        _playerIcon.anchoredPosition = new Vector2(230f, PlayerPrefs.GetFloat("PlayerIconYValue", playerIconBaseYValue));
         
         _meterIcon = transform.GetChild(1).GetChild(0).GetComponent<RectTransform>();
         _meterIcon.anchoredPosition = new Vector2(0f, PlayerPrefs.GetFloat("MeterIconYValue", meterIconBaseYValue));
