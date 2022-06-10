@@ -17880,7 +17880,7 @@ MonoBehaviour:
   bossWall: {fileID: 0}
   currentHandId: 0
   baseLikes: 100
-  baseFollowers: 0
+  baseFollowers: 200
   timer: 0
 --- !u!1001 &1287034089
 PrefabInstance:
@@ -24751,6 +24751,7 @@ MonoBehaviour:
   isMobileActive: 0
   instaPostPage: {fileID: 845298533}
   instaGalleryPage: {fileID: 1990013023}
+  isInstaGalleryPhotoUpdated: 0
 --- !u!114 &1577174983304727460
 MonoBehaviour:
   m_ObjectHideFlags: 0

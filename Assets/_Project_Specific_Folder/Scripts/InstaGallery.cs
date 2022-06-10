@@ -45,12 +45,38 @@ public class InstaGallery : MonoBehaviour
             }
         }
 
+        if (totalPhotos <= 9)
+        {
+            int blankPhotos = 9 - totalPhotos;
+            SpawnBlankPictureFrames(blankPhotos);
+        }
+        else
+        {
+            if (totalPhotos % 3 != 0)
+            {
+                int blankPhotos = 3 - (totalPhotos % 3);
+                SpawnBlankPictureFrames(blankPhotos);
+            }
+        }
+        
         yield return null;
 
-        _scrollbar.value = 1;
+        if (_scrollbar.gameObject.activeSelf)
+        {
+            Debug.Log("Here");
+            _scrollbar.value = 1;
+        }
         _isScrollbarSet = true;
     }
 
+    private void SpawnBlankPictureFrames(int frameNo)
+    {
+        for (int j = 0; j < frameNo; j++)
+        {
+            Instantiate(pictureFramePrefab, _contentTransform.position, Quaternion.identity, _contentTransform);
+        }
+    }
+    
     private void Update()
     {
         if (_isScrollbarSet)
@@ -64,7 +90,10 @@ public class InstaGallery : MonoBehaviour
                 if (!_isDisplayed)
                 {
                     _scrollbar.value = 0;
-                    _lastPictureFrame.transform.DOScale(new Vector3(1f, 1f, 1f), 0.5f);
+                    _lastPictureFrame.transform.DOScale(new Vector3(1f, 1f, 1f), 0.5f).OnComplete(() =>
+                    {
+                        UiManager.Instance.isInstaGalleryPhotoUpdated = true;
+                    });
                     _isDisplayed = true;
                 }
             }   

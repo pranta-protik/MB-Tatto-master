@@ -55,7 +55,15 @@ public class UiManager : Singleton<UiManager>
     private float _currentLike;
     private float _startLike;
     private int _targetLike;
-    
+
+    private bool _shouldUpdateFollowersText;
+    private float _currentFollowers;
+    private float _startFollowers;
+    private int _targetFollowers;
+
+    public bool isInstaGalleryPhotoUpdated;
+    private bool _isFollowersUpdated;
+
     public override void Start()
     {
         base.Start();
@@ -187,6 +195,18 @@ public class UiManager : Singleton<UiManager>
         {
             UpdateLikeText();
         }
+
+        if (_shouldUpdateFollowersText)
+        {
+            UpdateFollowersText();
+        }
+
+        if (isInstaGalleryPhotoUpdated && _isFollowersUpdated)
+        {
+            Invoke(nameof(EnableUnlockTattooScreen), 1.5f);
+            isInstaGalleryPhotoUpdated = false;
+            _isFollowersUpdated = false;
+        }
     }
 
     public void TakePicture()
@@ -235,10 +255,39 @@ public class UiManager : Singleton<UiManager>
         instaPostPage.transform.GetChild(1).GetChild(1).GetComponent<TextMeshProUGUI>().SetText(Mathf.RoundToInt(_currentLike).ToString());
     }
 
+    private void UpdateFollowersText()
+    {
+        if (_currentFollowers < _targetFollowers)
+        {
+            _currentFollowers += ((_targetFollowers - _startFollowers) / 2f) * Time.deltaTime;
+            _currentFollowers = Mathf.Clamp(_currentFollowers, 0, _targetFollowers);
+        }
+        else
+        {
+            _shouldUpdateFollowersText = false;
+            PlayerPrefs.SetInt("LastFollowers", _targetFollowers);
+            PlayerPrefs.SetInt("TargetFollowers", _targetFollowers * 2);
+            _isFollowersUpdated = true;
+        }
+        
+        instaGalleryPage.transform.GetChild(1).GetChild(2).GetComponent<TextMeshProUGUI>().SetText(Mathf.RoundToInt(_currentFollowers).ToString());
+    }
+    
+    private void EnableUnlockTattooScreen()
+    {
+        UnlockPanel.SetActive(true);
+        instaGalleryPage.SetActive(false);
+    }
+    
     private void EnableInstaGalleryPage()
     {
         instaPostPage.SetActive(false);
         instaGalleryPage.SetActive(true);
+
+        _targetFollowers = PlayerPrefs.GetInt("TargetFollowers", GameManager.Instance.baseFollowers);
+        _currentFollowers = PlayerPrefs.GetInt("LastFollowers", 0);
+        _startFollowers = _currentFollowers;
+        _shouldUpdateFollowersText = true;
     }
     
     public void ShowPriceTag()
