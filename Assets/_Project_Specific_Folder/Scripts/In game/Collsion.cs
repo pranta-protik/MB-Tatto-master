@@ -59,6 +59,12 @@ public class Collsion : MonoBehaviour
     public int lastGateId;
     private new Camera _camera;
     
+    public AnimatorOverrideController OverRideController;
+    public AnimationClip[] AnimationClips;
+    private static readonly int IsWrestling = Animator.StringToHash("isWrestling");
+
+    [SerializeField] private List<int> _animationIndexes = new List<int>();
+    
     private void Start()
     {
         _camera = Camera.main;
@@ -72,7 +78,11 @@ public class Collsion : MonoBehaviour
         {
             runtimeAnimatorController = anim.runtimeAnimatorController
         };
-        
+
+        for (int k = 0; k < AnimationClips.Length; k++)
+        {
+            _animationIndexes.Add(k);
+        }
         
         StiackerMat.DOFade(0, 0);
         Startpos = transform.localPosition;
@@ -734,15 +744,25 @@ public class Collsion : MonoBehaviour
         yield return new WaitForSeconds(.6f);
         GameManager.Instance.p.MaxSpeed = lastSpeed;
     }
-
-
-    public AnimatorOverrideController OverRideController;
-    public AnimationClip[] AnimationClips;
-    private static readonly int IsWrestling = Animator.StringToHash("isWrestling");
-
+    
     void RandomAnimationPlay()
     {
-        int index = Random.Range(0, AnimationClips.Length);
+        int index = 0;
+        if (_animationIndexes.Count > 1)
+        {
+            index = Random.Range(0, _animationIndexes.Count);
+            _animationIndexes.RemoveAt(index);
+            Debug.Log(_animationIndexes.Count);
+        }
+        else
+        {
+            _animationIndexes.Clear();
+            for (int k = 0; k < AnimationClips.Length; k++)
+            {
+                _animationIndexes.Add(k);
+            }
+        }
+        
         OverRideController["Take 001"] = AnimationClips[index];
 
         anim.runtimeAnimatorController = OverRideController;

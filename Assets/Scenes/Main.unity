@@ -879,28 +879,28 @@ PrefabInstance:
       objectReference: {fileID: 2800000, guid: dd83e47987af1f544b2491cc138bc253, type: 3}
     - target: {fileID: 8645485101156954889, guid: 7dd4730ff4313d94e85d619b7e45d404, type: 3}
       propertyPath: AnimationClips.Array.size
-      value: 6
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8645485101156954889, guid: 7dd4730ff4313d94e85d619b7e45d404, type: 3}
       propertyPath: AnimationClips.Array.data[0]
       value: 
-      objectReference: {fileID: 1827226128182048838, guid: b5c870e396d9b7846875a79e64f2f6b5, type: 3}
+      objectReference: {fileID: 1827226128182048838, guid: 91ca61afb489c3443a7b929b16d71a38, type: 3}
     - target: {fileID: 8645485101156954889, guid: 7dd4730ff4313d94e85d619b7e45d404, type: 3}
       propertyPath: AnimationClips.Array.data[1]
       value: 
-      objectReference: {fileID: 1827226128182048838, guid: 9b0b45da5cc940941adfa66e0cf46eeb, type: 3}
+      objectReference: {fileID: 1827226128182048838, guid: b1a3e7d019b883d4d881cbdfdb371cfa, type: 3}
     - target: {fileID: 8645485101156954889, guid: 7dd4730ff4313d94e85d619b7e45d404, type: 3}
       propertyPath: AnimationClips.Array.data[2]
       value: 
-      objectReference: {fileID: 1827226128182048838, guid: c8f36304281f6aa4f91f2b6d35ba85ac, type: 3}
+      objectReference: {fileID: 1827226128182048838, guid: 9b0b45da5cc940941adfa66e0cf46eeb, type: 3}
     - target: {fileID: 8645485101156954889, guid: 7dd4730ff4313d94e85d619b7e45d404, type: 3}
       propertyPath: AnimationClips.Array.data[3]
       value: 
-      objectReference: {fileID: 1827226128182048838, guid: b1a3e7d019b883d4d881cbdfdb371cfa, type: 3}
+      objectReference: {fileID: 1827226128182048838, guid: c8f36304281f6aa4f91f2b6d35ba85ac, type: 3}
     - target: {fileID: 8645485101156954889, guid: 7dd4730ff4313d94e85d619b7e45d404, type: 3}
       propertyPath: AnimationClips.Array.data[4]
       value: 
-      objectReference: {fileID: 1827226128182048838, guid: 91ca61afb489c3443a7b929b16d71a38, type: 3}
+      objectReference: {fileID: 1827226128182048838, guid: b5c870e396d9b7846875a79e64f2f6b5, type: 3}
     - target: {fileID: 8645485101156954889, guid: 7dd4730ff4313d94e85d619b7e45d404, type: 3}
       propertyPath: AnimationClips.Array.data[5]
       value: 
@@ -908,7 +908,15 @@ PrefabInstance:
     - target: {fileID: 8645485101156954889, guid: 7dd4730ff4313d94e85d619b7e45d404, type: 3}
       propertyPath: AnimationClips.Array.data[6]
       value: 
-      objectReference: {fileID: 1827226128182048838, guid: 99393eb8e65b1f44ea6fe8fde70a91bd, type: 3}
+      objectReference: {fileID: 1827226128182048838, guid: 3031ac22069910a49ac64e110312cba3, type: 3}
+    - target: {fileID: 8645485101156954889, guid: 7dd4730ff4313d94e85d619b7e45d404, type: 3}
+      propertyPath: AnimationClips.Array.data[7]
+      value: 
+      objectReference: {fileID: 1827226128182048838, guid: 1b5dce98354509f4bbb145490d8ee29f, type: 3}
+    - target: {fileID: 8645485101156954889, guid: 7dd4730ff4313d94e85d619b7e45d404, type: 3}
+      propertyPath: AnimationClips.Array.data[8]
+      value: 
+      objectReference: {fileID: 1827226128182048838, guid: 14ae578f9f20d7747a15c4f2a6d2634b, type: 3}
     - target: {fileID: 8645485101156954890, guid: 7dd4730ff4313d94e85d619b7e45d404, type: 3}
       propertyPath: handId
       value: 3
@@ -2758,28 +2766,28 @@ PrefabInstance:
       objectReference: {fileID: 2800000, guid: dd83e47987af1f544b2491cc138bc253, type: 3}
     - target: {fileID: 2373285987960752171, guid: 13dd3ac243f8f244b9843df3b87ca582, type: 3}
       propertyPath: AnimationClips.Array.size
-      value: 6
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2373285987960752171, guid: 13dd3ac243f8f244b9843df3b87ca582, type: 3}
       propertyPath: AnimationClips.Array.data[0]
       value: 
-      objectReference: {fileID: 1827226128182048838, guid: b5c870e396d9b7846875a79e64f2f6b5, type: 3}
+      objectReference: {fileID: 1827226128182048838, guid: 91ca61afb489c3443a7b929b16d71a38, type: 3}
     - target: {fileID: 2373285987960752171, guid: 13dd3ac243f8f244b9843df3b87ca582, type: 3}
       propertyPath: AnimationClips.Array.data[1]
       value: 
-      objectReference: {fileID: 1827226128182048838, guid: 9b0b45da5cc940941adfa66e0cf46eeb, type: 3}
+      objectReference: {fileID: 1827226128182048838, guid: b1a3e7d019b883d4d881cbdfdb371cfa, type: 3}
     - target: {fileID: 2373285987960752171, guid: 13dd3ac243f8f244b9843df3b87ca582, type: 3}
       propertyPath: AnimationClips.Array.data[2]
       value: 
-      objectReference: {fileID: 1827226128182048838, guid: c8f36304281f6aa4f91f2b6d35ba85ac, type: 3}
+      objectReference: {fileID: 1827226128182048838, guid: 9b0b45da5cc940941adfa66e0cf46eeb, type: 3}
     - target: {fileID: 2373285987960752171, guid: 13dd3ac243f8f244b9843df3b87ca582, type: 3}
       propertyPath: AnimationClips.Array.data[3]
       value: 
-      objectReference: {fileID: 1827226128182048838, guid: b1a3e7d019b883d4d881cbdfdb371cfa, type: 3}
+      objectReference: {fileID: 1827226128182048838, guid: c8f36304281f6aa4f91f2b6d35ba85ac, type: 3}
     - target: {fileID: 2373285987960752171, guid: 13dd3ac243f8f244b9843df3b87ca582, type: 3}
       propertyPath: AnimationClips.Array.data[4]
       value: 
-      objectReference: {fileID: 1827226128182048838, guid: 91ca61afb489c3443a7b929b16d71a38, type: 3}
+      objectReference: {fileID: 1827226128182048838, guid: b5c870e396d9b7846875a79e64f2f6b5, type: 3}
     - target: {fileID: 2373285987960752171, guid: 13dd3ac243f8f244b9843df3b87ca582, type: 3}
       propertyPath: AnimationClips.Array.data[5]
       value: 
@@ -2787,7 +2795,15 @@ PrefabInstance:
     - target: {fileID: 2373285987960752171, guid: 13dd3ac243f8f244b9843df3b87ca582, type: 3}
       propertyPath: AnimationClips.Array.data[6]
       value: 
-      objectReference: {fileID: 1827226128182048838, guid: 99393eb8e65b1f44ea6fe8fde70a91bd, type: 3}
+      objectReference: {fileID: 1827226128182048838, guid: 3031ac22069910a49ac64e110312cba3, type: 3}
+    - target: {fileID: 2373285987960752171, guid: 13dd3ac243f8f244b9843df3b87ca582, type: 3}
+      propertyPath: AnimationClips.Array.data[7]
+      value: 
+      objectReference: {fileID: 1827226128182048838, guid: 1b5dce98354509f4bbb145490d8ee29f, type: 3}
+    - target: {fileID: 2373285987960752171, guid: 13dd3ac243f8f244b9843df3b87ca582, type: 3}
+      propertyPath: AnimationClips.Array.data[8]
+      value: 
+      objectReference: {fileID: 1827226128182048838, guid: 14ae578f9f20d7747a15c4f2a6d2634b, type: 3}
     - target: {fileID: 2838713027517050825, guid: 13dd3ac243f8f244b9843df3b87ca582, type: 3}
       propertyPath: m_RootOrder
       value: 17
@@ -11127,28 +11143,28 @@ PrefabInstance:
       objectReference: {fileID: 2800000, guid: dd83e47987af1f544b2491cc138bc253, type: 3}
     - target: {fileID: 8734206296889652338, guid: 09b96d6da0680244eb39260b77d0cfdc, type: 3}
       propertyPath: AnimationClips.Array.size
-      value: 6
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8734206296889652338, guid: 09b96d6da0680244eb39260b77d0cfdc, type: 3}
       propertyPath: AnimationClips.Array.data[0]
       value: 
-      objectReference: {fileID: 1827226128182048838, guid: b5c870e396d9b7846875a79e64f2f6b5, type: 3}
+      objectReference: {fileID: 1827226128182048838, guid: 91ca61afb489c3443a7b929b16d71a38, type: 3}
     - target: {fileID: 8734206296889652338, guid: 09b96d6da0680244eb39260b77d0cfdc, type: 3}
       propertyPath: AnimationClips.Array.data[1]
       value: 
-      objectReference: {fileID: 1827226128182048838, guid: 9b0b45da5cc940941adfa66e0cf46eeb, type: 3}
+      objectReference: {fileID: 1827226128182048838, guid: b1a3e7d019b883d4d881cbdfdb371cfa, type: 3}
     - target: {fileID: 8734206296889652338, guid: 09b96d6da0680244eb39260b77d0cfdc, type: 3}
       propertyPath: AnimationClips.Array.data[2]
       value: 
-      objectReference: {fileID: 1827226128182048838, guid: c8f36304281f6aa4f91f2b6d35ba85ac, type: 3}
+      objectReference: {fileID: 1827226128182048838, guid: 9b0b45da5cc940941adfa66e0cf46eeb, type: 3}
     - target: {fileID: 8734206296889652338, guid: 09b96d6da0680244eb39260b77d0cfdc, type: 3}
       propertyPath: AnimationClips.Array.data[3]
       value: 
-      objectReference: {fileID: 1827226128182048838, guid: b1a3e7d019b883d4d881cbdfdb371cfa, type: 3}
+      objectReference: {fileID: 1827226128182048838, guid: c8f36304281f6aa4f91f2b6d35ba85ac, type: 3}
     - target: {fileID: 8734206296889652338, guid: 09b96d6da0680244eb39260b77d0cfdc, type: 3}
       propertyPath: AnimationClips.Array.data[4]
       value: 
-      objectReference: {fileID: 1827226128182048838, guid: 91ca61afb489c3443a7b929b16d71a38, type: 3}
+      objectReference: {fileID: 1827226128182048838, guid: b5c870e396d9b7846875a79e64f2f6b5, type: 3}
     - target: {fileID: 8734206296889652338, guid: 09b96d6da0680244eb39260b77d0cfdc, type: 3}
       propertyPath: AnimationClips.Array.data[5]
       value: 
@@ -11156,7 +11172,15 @@ PrefabInstance:
     - target: {fileID: 8734206296889652338, guid: 09b96d6da0680244eb39260b77d0cfdc, type: 3}
       propertyPath: AnimationClips.Array.data[6]
       value: 
-      objectReference: {fileID: 1827226128182048838, guid: 99393eb8e65b1f44ea6fe8fde70a91bd, type: 3}
+      objectReference: {fileID: 1827226128182048838, guid: 3031ac22069910a49ac64e110312cba3, type: 3}
+    - target: {fileID: 8734206296889652338, guid: 09b96d6da0680244eb39260b77d0cfdc, type: 3}
+      propertyPath: AnimationClips.Array.data[7]
+      value: 
+      objectReference: {fileID: 1827226128182048838, guid: 1b5dce98354509f4bbb145490d8ee29f, type: 3}
+    - target: {fileID: 8734206296889652338, guid: 09b96d6da0680244eb39260b77d0cfdc, type: 3}
+      propertyPath: AnimationClips.Array.data[8]
+      value: 
+      objectReference: {fileID: 1827226128182048838, guid: 14ae578f9f20d7747a15c4f2a6d2634b, type: 3}
     - target: {fileID: 8734206296889652341, guid: 09b96d6da0680244eb39260b77d0cfdc, type: 3}
       propertyPath: handId
       value: 1
@@ -11437,28 +11461,28 @@ PrefabInstance:
       objectReference: {fileID: 2800000, guid: dd83e47987af1f544b2491cc138bc253, type: 3}
     - target: {fileID: 6558328930284890442, guid: 770a23465bb6e364788df1ee6b861bb1, type: 3}
       propertyPath: AnimationClips.Array.size
-      value: 6
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6558328930284890442, guid: 770a23465bb6e364788df1ee6b861bb1, type: 3}
       propertyPath: AnimationClips.Array.data[0]
       value: 
-      objectReference: {fileID: 1827226128182048838, guid: b5c870e396d9b7846875a79e64f2f6b5, type: 3}
+      objectReference: {fileID: 1827226128182048838, guid: 91ca61afb489c3443a7b929b16d71a38, type: 3}
     - target: {fileID: 6558328930284890442, guid: 770a23465bb6e364788df1ee6b861bb1, type: 3}
       propertyPath: AnimationClips.Array.data[1]
       value: 
-      objectReference: {fileID: 1827226128182048838, guid: 9b0b45da5cc940941adfa66e0cf46eeb, type: 3}
+      objectReference: {fileID: 1827226128182048838, guid: b1a3e7d019b883d4d881cbdfdb371cfa, type: 3}
     - target: {fileID: 6558328930284890442, guid: 770a23465bb6e364788df1ee6b861bb1, type: 3}
       propertyPath: AnimationClips.Array.data[2]
       value: 
-      objectReference: {fileID: 1827226128182048838, guid: c8f36304281f6aa4f91f2b6d35ba85ac, type: 3}
+      objectReference: {fileID: 1827226128182048838, guid: 9b0b45da5cc940941adfa66e0cf46eeb, type: 3}
     - target: {fileID: 6558328930284890442, guid: 770a23465bb6e364788df1ee6b861bb1, type: 3}
       propertyPath: AnimationClips.Array.data[3]
       value: 
-      objectReference: {fileID: 1827226128182048838, guid: b1a3e7d019b883d4d881cbdfdb371cfa, type: 3}
+      objectReference: {fileID: 1827226128182048838, guid: c8f36304281f6aa4f91f2b6d35ba85ac, type: 3}
     - target: {fileID: 6558328930284890442, guid: 770a23465bb6e364788df1ee6b861bb1, type: 3}
       propertyPath: AnimationClips.Array.data[4]
       value: 
-      objectReference: {fileID: 1827226128182048838, guid: 91ca61afb489c3443a7b929b16d71a38, type: 3}
+      objectReference: {fileID: 1827226128182048838, guid: b5c870e396d9b7846875a79e64f2f6b5, type: 3}
     - target: {fileID: 6558328930284890442, guid: 770a23465bb6e364788df1ee6b861bb1, type: 3}
       propertyPath: AnimationClips.Array.data[5]
       value: 
@@ -11466,7 +11490,15 @@ PrefabInstance:
     - target: {fileID: 6558328930284890442, guid: 770a23465bb6e364788df1ee6b861bb1, type: 3}
       propertyPath: AnimationClips.Array.data[6]
       value: 
-      objectReference: {fileID: 1827226128182048838, guid: 99393eb8e65b1f44ea6fe8fde70a91bd, type: 3}
+      objectReference: {fileID: 1827226128182048838, guid: 3031ac22069910a49ac64e110312cba3, type: 3}
+    - target: {fileID: 6558328930284890442, guid: 770a23465bb6e364788df1ee6b861bb1, type: 3}
+      propertyPath: AnimationClips.Array.data[7]
+      value: 
+      objectReference: {fileID: 1827226128182048838, guid: 1b5dce98354509f4bbb145490d8ee29f, type: 3}
+    - target: {fileID: 6558328930284890442, guid: 770a23465bb6e364788df1ee6b861bb1, type: 3}
+      propertyPath: AnimationClips.Array.data[8]
+      value: 
+      objectReference: {fileID: 1827226128182048838, guid: 14ae578f9f20d7747a15c4f2a6d2634b, type: 3}
     - target: {fileID: 6558328930284890443, guid: 770a23465bb6e364788df1ee6b861bb1, type: 3}
       propertyPath: handId
       value: -1
@@ -17467,14 +17499,14 @@ RectTransform:
   m_GameObject: {fileID: 1090353945}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children: []
   m_Father: {fileID: 451508829}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 75, y: -400}
+  m_AnchoredPosition: {x: 100, y: -400}
   m_SizeDelta: {x: 121, y: 125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1090353947
@@ -19274,28 +19306,28 @@ PrefabInstance:
       objectReference: {fileID: 2800000, guid: dd83e47987af1f544b2491cc138bc253, type: 3}
     - target: {fileID: 2475453667155728164, guid: 887ebc2afac49184793737bed293dd33, type: 3}
       propertyPath: AnimationClips.Array.size
-      value: 6
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2475453667155728164, guid: 887ebc2afac49184793737bed293dd33, type: 3}
       propertyPath: AnimationClips.Array.data[0]
       value: 
-      objectReference: {fileID: 1827226128182048838, guid: b5c870e396d9b7846875a79e64f2f6b5, type: 3}
+      objectReference: {fileID: 1827226128182048838, guid: 91ca61afb489c3443a7b929b16d71a38, type: 3}
     - target: {fileID: 2475453667155728164, guid: 887ebc2afac49184793737bed293dd33, type: 3}
       propertyPath: AnimationClips.Array.data[1]
       value: 
-      objectReference: {fileID: 1827226128182048838, guid: 9b0b45da5cc940941adfa66e0cf46eeb, type: 3}
+      objectReference: {fileID: 1827226128182048838, guid: b1a3e7d019b883d4d881cbdfdb371cfa, type: 3}
     - target: {fileID: 2475453667155728164, guid: 887ebc2afac49184793737bed293dd33, type: 3}
       propertyPath: AnimationClips.Array.data[2]
       value: 
-      objectReference: {fileID: 1827226128182048838, guid: c8f36304281f6aa4f91f2b6d35ba85ac, type: 3}
+      objectReference: {fileID: 1827226128182048838, guid: 9b0b45da5cc940941adfa66e0cf46eeb, type: 3}
     - target: {fileID: 2475453667155728164, guid: 887ebc2afac49184793737bed293dd33, type: 3}
       propertyPath: AnimationClips.Array.data[3]
       value: 
-      objectReference: {fileID: 1827226128182048838, guid: b1a3e7d019b883d4d881cbdfdb371cfa, type: 3}
+      objectReference: {fileID: 1827226128182048838, guid: c8f36304281f6aa4f91f2b6d35ba85ac, type: 3}
     - target: {fileID: 2475453667155728164, guid: 887ebc2afac49184793737bed293dd33, type: 3}
       propertyPath: AnimationClips.Array.data[4]
       value: 
-      objectReference: {fileID: 1827226128182048838, guid: 91ca61afb489c3443a7b929b16d71a38, type: 3}
+      objectReference: {fileID: 1827226128182048838, guid: b5c870e396d9b7846875a79e64f2f6b5, type: 3}
     - target: {fileID: 2475453667155728164, guid: 887ebc2afac49184793737bed293dd33, type: 3}
       propertyPath: AnimationClips.Array.data[5]
       value: 
@@ -19303,7 +19335,15 @@ PrefabInstance:
     - target: {fileID: 2475453667155728164, guid: 887ebc2afac49184793737bed293dd33, type: 3}
       propertyPath: AnimationClips.Array.data[6]
       value: 
-      objectReference: {fileID: 1827226128182048838, guid: 99393eb8e65b1f44ea6fe8fde70a91bd, type: 3}
+      objectReference: {fileID: 1827226128182048838, guid: 3031ac22069910a49ac64e110312cba3, type: 3}
+    - target: {fileID: 2475453667155728164, guid: 887ebc2afac49184793737bed293dd33, type: 3}
+      propertyPath: AnimationClips.Array.data[7]
+      value: 
+      objectReference: {fileID: 1827226128182048838, guid: 1b5dce98354509f4bbb145490d8ee29f, type: 3}
+    - target: {fileID: 2475453667155728164, guid: 887ebc2afac49184793737bed293dd33, type: 3}
+      propertyPath: AnimationClips.Array.data[8]
+      value: 
+      objectReference: {fileID: 1827226128182048838, guid: 14ae578f9f20d7747a15c4f2a6d2634b, type: 3}
     - target: {fileID: 2475453667155728165, guid: 887ebc2afac49184793737bed293dd33, type: 3}
       propertyPath: handId
       value: 2
@@ -19684,28 +19724,28 @@ PrefabInstance:
       objectReference: {fileID: 2800000, guid: dd83e47987af1f544b2491cc138bc253, type: 3}
     - target: {fileID: 8879984846791255931, guid: 0ee54f147c8b94640b2d295d748ff8d5, type: 3}
       propertyPath: AnimationClips.Array.size
-      value: 6
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8879984846791255931, guid: 0ee54f147c8b94640b2d295d748ff8d5, type: 3}
       propertyPath: AnimationClips.Array.data[0]
       value: 
-      objectReference: {fileID: 1827226128182048838, guid: b5c870e396d9b7846875a79e64f2f6b5, type: 3}
+      objectReference: {fileID: 1827226128182048838, guid: 91ca61afb489c3443a7b929b16d71a38, type: 3}
     - target: {fileID: 8879984846791255931, guid: 0ee54f147c8b94640b2d295d748ff8d5, type: 3}
       propertyPath: AnimationClips.Array.data[1]
       value: 
-      objectReference: {fileID: 1827226128182048838, guid: 9b0b45da5cc940941adfa66e0cf46eeb, type: 3}
+      objectReference: {fileID: 1827226128182048838, guid: b1a3e7d019b883d4d881cbdfdb371cfa, type: 3}
     - target: {fileID: 8879984846791255931, guid: 0ee54f147c8b94640b2d295d748ff8d5, type: 3}
       propertyPath: AnimationClips.Array.data[2]
       value: 
-      objectReference: {fileID: 1827226128182048838, guid: c8f36304281f6aa4f91f2b6d35ba85ac, type: 3}
+      objectReference: {fileID: 1827226128182048838, guid: 9b0b45da5cc940941adfa66e0cf46eeb, type: 3}
     - target: {fileID: 8879984846791255931, guid: 0ee54f147c8b94640b2d295d748ff8d5, type: 3}
       propertyPath: AnimationClips.Array.data[3]
       value: 
-      objectReference: {fileID: 1827226128182048838, guid: b1a3e7d019b883d4d881cbdfdb371cfa, type: 3}
+      objectReference: {fileID: 1827226128182048838, guid: c8f36304281f6aa4f91f2b6d35ba85ac, type: 3}
     - target: {fileID: 8879984846791255931, guid: 0ee54f147c8b94640b2d295d748ff8d5, type: 3}
       propertyPath: AnimationClips.Array.data[4]
       value: 
-      objectReference: {fileID: 1827226128182048838, guid: 91ca61afb489c3443a7b929b16d71a38, type: 3}
+      objectReference: {fileID: 1827226128182048838, guid: b5c870e396d9b7846875a79e64f2f6b5, type: 3}
     - target: {fileID: 8879984846791255931, guid: 0ee54f147c8b94640b2d295d748ff8d5, type: 3}
       propertyPath: AnimationClips.Array.data[5]
       value: 
@@ -19713,7 +19753,15 @@ PrefabInstance:
     - target: {fileID: 8879984846791255931, guid: 0ee54f147c8b94640b2d295d748ff8d5, type: 3}
       propertyPath: AnimationClips.Array.data[6]
       value: 
-      objectReference: {fileID: 1827226128182048838, guid: 99393eb8e65b1f44ea6fe8fde70a91bd, type: 3}
+      objectReference: {fileID: 1827226128182048838, guid: 3031ac22069910a49ac64e110312cba3, type: 3}
+    - target: {fileID: 8879984846791255931, guid: 0ee54f147c8b94640b2d295d748ff8d5, type: 3}
+      propertyPath: AnimationClips.Array.data[7]
+      value: 
+      objectReference: {fileID: 1827226128182048838, guid: 1b5dce98354509f4bbb145490d8ee29f, type: 3}
+    - target: {fileID: 8879984846791255931, guid: 0ee54f147c8b94640b2d295d748ff8d5, type: 3}
+      propertyPath: AnimationClips.Array.data[8]
+      value: 
+      objectReference: {fileID: 1827226128182048838, guid: 14ae578f9f20d7747a15c4f2a6d2634b, type: 3}
     - target: {fileID: 8986566193152606442, guid: 0ee54f147c8b94640b2d295d748ff8d5, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -22497,28 +22545,28 @@ PrefabInstance:
       objectReference: {fileID: 2800000, guid: dd83e47987af1f544b2491cc138bc253, type: 3}
     - target: {fileID: 9051667895357920225, guid: 712931f53612ea945949c73803cf68a9, type: 3}
       propertyPath: AnimationClips.Array.size
-      value: 6
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 9051667895357920225, guid: 712931f53612ea945949c73803cf68a9, type: 3}
       propertyPath: AnimationClips.Array.data[0]
       value: 
-      objectReference: {fileID: 1827226128182048838, guid: b5c870e396d9b7846875a79e64f2f6b5, type: 3}
+      objectReference: {fileID: 1827226128182048838, guid: 91ca61afb489c3443a7b929b16d71a38, type: 3}
     - target: {fileID: 9051667895357920225, guid: 712931f53612ea945949c73803cf68a9, type: 3}
       propertyPath: AnimationClips.Array.data[1]
       value: 
-      objectReference: {fileID: 1827226128182048838, guid: 9b0b45da5cc940941adfa66e0cf46eeb, type: 3}
+      objectReference: {fileID: 1827226128182048838, guid: b1a3e7d019b883d4d881cbdfdb371cfa, type: 3}
     - target: {fileID: 9051667895357920225, guid: 712931f53612ea945949c73803cf68a9, type: 3}
       propertyPath: AnimationClips.Array.data[2]
       value: 
-      objectReference: {fileID: 1827226128182048838, guid: c8f36304281f6aa4f91f2b6d35ba85ac, type: 3}
+      objectReference: {fileID: 1827226128182048838, guid: 9b0b45da5cc940941adfa66e0cf46eeb, type: 3}
     - target: {fileID: 9051667895357920225, guid: 712931f53612ea945949c73803cf68a9, type: 3}
       propertyPath: AnimationClips.Array.data[3]
       value: 
-      objectReference: {fileID: 1827226128182048838, guid: b1a3e7d019b883d4d881cbdfdb371cfa, type: 3}
+      objectReference: {fileID: 1827226128182048838, guid: c8f36304281f6aa4f91f2b6d35ba85ac, type: 3}
     - target: {fileID: 9051667895357920225, guid: 712931f53612ea945949c73803cf68a9, type: 3}
       propertyPath: AnimationClips.Array.data[4]
       value: 
-      objectReference: {fileID: 1827226128182048838, guid: 91ca61afb489c3443a7b929b16d71a38, type: 3}
+      objectReference: {fileID: 1827226128182048838, guid: b5c870e396d9b7846875a79e64f2f6b5, type: 3}
     - target: {fileID: 9051667895357920225, guid: 712931f53612ea945949c73803cf68a9, type: 3}
       propertyPath: AnimationClips.Array.data[5]
       value: 
@@ -22526,7 +22574,15 @@ PrefabInstance:
     - target: {fileID: 9051667895357920225, guid: 712931f53612ea945949c73803cf68a9, type: 3}
       propertyPath: AnimationClips.Array.data[6]
       value: 
-      objectReference: {fileID: 1827226128182048838, guid: 99393eb8e65b1f44ea6fe8fde70a91bd, type: 3}
+      objectReference: {fileID: 1827226128182048838, guid: 3031ac22069910a49ac64e110312cba3, type: 3}
+    - target: {fileID: 9051667895357920225, guid: 712931f53612ea945949c73803cf68a9, type: 3}
+      propertyPath: AnimationClips.Array.data[7]
+      value: 
+      objectReference: {fileID: 1827226128182048838, guid: 1b5dce98354509f4bbb145490d8ee29f, type: 3}
+    - target: {fileID: 9051667895357920225, guid: 712931f53612ea945949c73803cf68a9, type: 3}
+      propertyPath: AnimationClips.Array.data[8]
+      value: 
+      objectReference: {fileID: 1827226128182048838, guid: 14ae578f9f20d7747a15c4f2a6d2634b, type: 3}
     - target: {fileID: 9051667895357920231, guid: 712931f53612ea945949c73803cf68a9, type: 3}
       propertyPath: handId
       value: 4
