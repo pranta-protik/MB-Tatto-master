@@ -9,6 +9,8 @@ using UnityEngine.UI;
 using MoreMountains.NiceVibrations;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
+
 public class UiManager : Singleton<UiManager>
 {
     public Button btnNext;
@@ -55,11 +57,14 @@ public class UiManager : Singleton<UiManager>
     private bool _shouldUpdateLikeText;
     private float _currentLike;
     private float _startLike;
+    private int _targetLikeIndex;
     private int _targetLike;
+    
 
     private bool _shouldUpdateFollowersText;
     private float _currentFollowers;
     private float _startFollowers;
+    private int _targetFollowersIndex;
     private int _targetFollowers;
 
     public bool isInstaGalleryPhotoUpdated;
@@ -231,8 +236,17 @@ public class UiManager : Singleton<UiManager>
             mobileScreen.SetActive(false);
             instaPostPage.SetActive(true);
             instaPostPage.transform.GetChild(2).GetComponent<Image>().DOFade(0, 0.5f);
-            _targetLike = PlayerPrefs.GetInt("TargetLike", GameManager.Instance.baseLikes);
-            _currentLike = PlayerPrefs.GetInt("LastLike", 0);
+            _targetLikeIndex = PlayerPrefs.GetInt("TargetLikeIndex", 0);
+            
+            if (_targetLikeIndex < GameManager.Instance.likes.Count)
+            {
+                _targetLike = GameManager.Instance.likes[_targetLikeIndex];   
+            }
+            else
+            {
+                _targetLike = GameManager.Instance.likes[GameManager.Instance.likes.Count - 1] + Random.Range(-100, 100);
+            }
+            _currentLike = 0;
             _startLike = _currentLike;
             _shouldUpdateLikeText = true;
         });
@@ -251,30 +265,87 @@ public class UiManager : Singleton<UiManager>
             instaPostPage.transform.GetChild(1).GetChild(2).GetChild(0).gameObject.SetActive(true);
             instaPostPage.transform.GetChild(1).GetChild(2).GetChild(1).gameObject.SetActive(true);
             instaPostPage.transform.GetChild(1).GetChild(2).GetChild(2).gameObject.SetActive(true);
-            PlayerPrefs.SetInt("LastLike", _targetLike);
-            PlayerPrefs.SetInt("TargetLike", _targetLike * 2);
+            PlayerPrefs.SetInt("TargetLikeIndex", _targetLikeIndex + 1);
             Invoke(nameof(EnableInstaGalleryPage), 1.5f);
         }
 
-        instaPostPage.transform.GetChild(1).GetChild(1).GetComponent<TextMeshProUGUI>().SetText(Mathf.RoundToInt(_currentLike).ToString());
+        int leftValue = Mathf.RoundToInt(_currentLike) / 1000;
+        int rightValue = Mathf.RoundToInt(_currentLike) % 1000;
+
+        if (leftValue==0)
+        {
+            instaPostPage.transform.GetChild(1).GetChild(1).GetComponent<TextMeshProUGUI>().SetText(rightValue.ToString());    
+        }
+        else
+        {
+            string rightString;
+
+            if (rightValue == 0)
+            {
+                rightString = "000";
+            }
+            else if (rightValue < 10)
+            {
+                rightString = "00" + rightValue;
+            }
+            else if (rightValue < 100)
+            {
+                rightString = "0" + rightValue;
+            }
+            else
+            {
+                rightString = rightValue.ToString();
+            }
+
+            instaPostPage.transform.GetChild(1).GetChild(1).GetComponent<TextMeshProUGUI>().SetText(leftValue + "," + rightString);
+        }
     }
 
+    private string _followerValueLetter = "K";
     private void UpdateFollowersText()
     {
         if (_currentFollowers < _targetFollowers)
         {
             _currentFollowers += ((_targetFollowers - _startFollowers) / 1.5f) * Time.deltaTime;
             _currentFollowers = Mathf.Clamp(_currentFollowers, 0, _targetFollowers);
+
+            string followerString = GameManager.Instance.followers[_targetFollowersIndex];
+         
+            if (followerString.EndsWith("K"))
+            {
+                _followerValueLetter = "K";
+            }
+            else if (followerString.EndsWith("M"))
+            {
+                _followerValueLetter = "M";
+            }
+            else
+            {
+                _followerValueLetter = "B";
+            }
+
+            instaGalleryPage.transform.GetChild(1).GetChild(2).GetComponent<TextMeshProUGUI>()
+                .SetText(Mathf.RoundToInt(_currentFollowers) + _followerValueLetter);
         }
         else
         {
             _shouldUpdateFollowersText = false;
-            PlayerPrefs.SetInt("LastFollowers", _targetFollowers);
-            PlayerPrefs.SetInt("TargetFollowers", _targetFollowers * 2);
+            PlayerPrefs.SetInt("TargetFollowersIndex", _targetFollowersIndex + 1);
+
+            string followerValue;
+            
+            if (PlayerPrefs.GetInt("TargetFollowersIndex", 0) < GameManager.Instance.followers.Count)
+            {
+                followerValue = GameManager.Instance.followers[_targetFollowersIndex];
+            }
+            else
+            {
+                followerValue = Random.Range(899, 999) + "M";
+            }
+            
+            instaGalleryPage.transform.GetChild(1).GetChild(2).GetComponent<TextMeshProUGUI>().SetText(followerValue);
             _isFollowersUpdated = true;
         }
-        
-        instaGalleryPage.transform.GetChild(1).GetChild(2).GetComponent<TextMeshProUGUI>().SetText(Mathf.RoundToInt(_currentFollowers).ToString());
     }
     
     private void EnableInfluenceMeterScreen()
@@ -288,8 +359,15 @@ public class UiManager : Singleton<UiManager>
         instaPostPage.SetActive(false);
         instaGalleryPage.SetActive(true);
 
-        _targetFollowers = PlayerPrefs.GetInt("TargetFollowers", GameManager.Instance.baseFollowers);
-        _currentFollowers = PlayerPrefs.GetInt("LastFollowers", 0);
+        _targetFollowersIndex = PlayerPrefs.GetInt("TargetFollowersIndex", 0);
+
+        if (_targetFollowersIndex >= GameManager.Instance.followers.Count)
+        {
+            _targetFollowersIndex = GameManager.Instance.followers.Count - 1;
+        }
+        
+        _targetFollowers = Random.Range(499, 999);
+        _currentFollowers = 0;
         _startFollowers = _currentFollowers;
         _shouldUpdateFollowersText = true;
     }
