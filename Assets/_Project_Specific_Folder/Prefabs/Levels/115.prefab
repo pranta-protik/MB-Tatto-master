@@ -958,11 +958,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2543004167092491851, guid: 6d3a94def6e979f48a4bae4cff026767, type: 3}
       propertyPath: id
-      value: 4
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2543004167092491851, guid: 6d3a94def6e979f48a4bae4cff026767, type: 3}
       propertyPath: Cost
       value: 900
+      objectReference: {fileID: 0}
+    - target: {fileID: 2543004167092491851, guid: 6d3a94def6e979f48a4bae4cff026767, type: 3}
+      propertyPath: IsSpecial
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2543004167092491851, guid: 6d3a94def6e979f48a4bae4cff026767, type: 3}
       propertyPath: UICostText
@@ -1162,7 +1166,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2543004167092491851, guid: 6d3a94def6e979f48a4bae4cff026767, type: 3}
       propertyPath: id
-      value: 3
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2543004167092491851, guid: 6d3a94def6e979f48a4bae4cff026767, type: 3}
       propertyPath: Cost
@@ -1338,7 +1342,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 846034898941416354, guid: bea195536ca0c184cb759fb5ce6f1a66, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 29
+      value: 27.971
       objectReference: {fileID: 0}
     - target: {fileID: 846034898941416354, guid: bea195536ca0c184cb759fb5ce6f1a66, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1346,7 +1350,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 846034898941416354, guid: bea195536ca0c184cb759fb5ce6f1a66, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.21487
+      value: 0.221
       objectReference: {fileID: 0}
     - target: {fileID: 846034898941416354, guid: bea195536ca0c184cb759fb5ce6f1a66, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1642,7 +1646,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4849105759451903177, guid: 06feccca8f045404fb356a4b906b36c8, type: 3}
       propertyPath: id
-      value: 4
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4849105759451903177, guid: 06feccca8f045404fb356a4b906b36c8, type: 3}
       propertyPath: Cost
@@ -1700,11 +1704,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 79396944515112514, guid: 170fb97c71c0d14499cf3696933ee382, type: 3}
       propertyPath: id
-      value: 2
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 79396944515112514, guid: 170fb97c71c0d14499cf3696933ee382, type: 3}
       propertyPath: Cost
       value: 3100
+      objectReference: {fileID: 0}
+    - target: {fileID: 79396944515112514, guid: 170fb97c71c0d14499cf3696933ee382, type: 3}
+      propertyPath: IsSpecial
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 79396944515112514, guid: 170fb97c71c0d14499cf3696933ee382, type: 3}
       propertyPath: UICostText
@@ -1840,7 +1848,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2543004167092491851, guid: 6d3a94def6e979f48a4bae4cff026767, type: 3}
       propertyPath: id
-      value: 5
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2543004167092491851, guid: 6d3a94def6e979f48a4bae4cff026767, type: 3}
       propertyPath: Cost
@@ -1950,7 +1958,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4849105759451903176, guid: 06feccca8f045404fb356a4b906b36c8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.24
+      value: 0.232
       objectReference: {fileID: 0}
     - target: {fileID: 4849105759451903176, guid: 06feccca8f045404fb356a4b906b36c8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1982,7 +1990,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4849105759451903177, guid: 06feccca8f045404fb356a4b906b36c8, type: 3}
       propertyPath: id
-      value: 1
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4849105759451903177, guid: 06feccca8f045404fb356a4b906b36c8, type: 3}
       propertyPath: Cost
@@ -2364,7 +2372,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2308591637298703741, guid: 9a1d9d415da6b4f46a40d178bb458aa8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.26
+      value: -0.232
       objectReference: {fileID: 0}
     - target: {fileID: 2308591637298703741, guid: 9a1d9d415da6b4f46a40d178bb458aa8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2484,7 +2492,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2543004167092491851, guid: 6d3a94def6e979f48a4bae4cff026767, type: 3}
       propertyPath: id
-      value: 2
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2543004167092491851, guid: 6d3a94def6e979f48a4bae4cff026767, type: 3}
       propertyPath: Cost
@@ -2492,7 +2500,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2543004167092491851, guid: 6d3a94def6e979f48a4bae4cff026767, type: 3}
       propertyPath: IsSpecial
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2543004167092491851, guid: 6d3a94def6e979f48a4bae4cff026767, type: 3}
       propertyPath: UICostText
@@ -2964,7 +2972,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 846034898941416354, guid: bea195536ca0c184cb759fb5ce6f1a66, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 29
+      value: 31.101
       objectReference: {fileID: 0}
     - target: {fileID: 846034898941416354, guid: bea195536ca0c184cb759fb5ce6f1a66, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2972,7 +2980,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 846034898941416354, guid: bea195536ca0c184cb759fb5ce6f1a66, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.24
+      value: -0.211
       objectReference: {fileID: 0}
     - target: {fileID: 846034898941416354, guid: bea195536ca0c184cb759fb5ce6f1a66, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3194,7 +3202,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2308591637298703741, guid: 9a1d9d415da6b4f46a40d178bb458aa8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.23
+      value: 0.188
       objectReference: {fileID: 0}
     - target: {fileID: 2308591637298703741, guid: 9a1d9d415da6b4f46a40d178bb458aa8, type: 3}
       propertyPath: m_LocalRotation.w

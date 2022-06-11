@@ -961,7 +961,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2543004167092491851, guid: 6d3a94def6e979f48a4bae4cff026767, type: 3}
       propertyPath: id
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2543004167092491851, guid: 6d3a94def6e979f48a4bae4cff026767, type: 3}
       propertyPath: Cost
@@ -1165,7 +1165,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2543004167092491851, guid: 6d3a94def6e979f48a4bae4cff026767, type: 3}
       propertyPath: id
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2543004167092491851, guid: 6d3a94def6e979f48a4bae4cff026767, type: 3}
       propertyPath: Cost
@@ -1173,7 +1173,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2543004167092491851, guid: 6d3a94def6e979f48a4bae4cff026767, type: 3}
       propertyPath: IsSpecial
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2543004167092491851, guid: 6d3a94def6e979f48a4bae4cff026767, type: 3}
       propertyPath: UICostText
@@ -1459,6 +1459,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6828944569146319531}
     m_Modifications:
+    - target: {fileID: 3819676341684958706, guid: 15e6b70ef60562941a5a91f4d29521c8, type: 3}
+      propertyPath: Id
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7198075378150382944, guid: 15e6b70ef60562941a5a91f4d29521c8, type: 3}
       propertyPath: m_RootOrder
       value: 28
@@ -1814,6 +1818,10 @@ PrefabInstance:
     - target: {fileID: 4849105759451903177, guid: 06feccca8f045404fb356a4b906b36c8, type: 3}
       propertyPath: Cost
       value: 1800
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849105759451903177, guid: 06feccca8f045404fb356a4b906b36c8, type: 3}
+      propertyPath: IsSpecial
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4849105759451903177, guid: 06feccca8f045404fb356a4b906b36c8, type: 3}
       propertyPath: UICostText
