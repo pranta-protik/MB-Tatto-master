@@ -659,6 +659,7 @@ public class Collsion : MonoBehaviour
 
         if (other.gameObject.CompareTag("DecisionTrigger"))
         {
+            UiManager.Instance.haptics.SetActive(false);
             UiManager.Instance.PointText.transform.parent.gameObject.SetActive(false);
             GameManager.Instance.p.enabled = false;
             anim.Play("idle");

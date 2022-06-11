@@ -44,6 +44,8 @@ public class UiManager : Singleton<UiManager>
     public float incrementAmount;
     private bool _isHandAnimating;
 
+    public GameObject haptics;
+
     public GameObject selectionMenu;
     public Button selectionMenuButton;
 
@@ -59,7 +61,6 @@ public class UiManager : Singleton<UiManager>
     private float _startLike;
     private int _targetLikeIndex;
     private int _targetLike;
-    
 
     private bool _shouldUpdateFollowersText;
     private float _currentFollowers;
@@ -68,6 +69,7 @@ public class UiManager : Singleton<UiManager>
     private int _targetFollowers;
 
     public bool isInstaGalleryPhotoUpdated;
+    public string followerValue;
     private bool _isFollowersUpdated;
 
     public override void Start()
@@ -332,7 +334,7 @@ public class UiManager : Singleton<UiManager>
             _shouldUpdateFollowersText = false;
             PlayerPrefs.SetInt("TargetFollowersIndex", _targetFollowersIndex + 1);
 
-            string followerValue;
+            
             
             if (PlayerPrefs.GetInt("TargetFollowersIndex", 0) < GameManager.Instance.followers.Count)
             {
@@ -420,15 +422,15 @@ public class UiManager : Singleton<UiManager>
     
     public void EnableHaptics()
     {
-        enable.gameObject.SetActive(false);
-        disable.gameObject.SetActive(true);
+        haptics.transform.GetChild(0).gameObject.SetActive(false);
+        haptics.transform.GetChild(1).gameObject.SetActive(true);
         HapticsAllowed = false;
         MMVibrationManager.SetHapticsActive(HapticsAllowed);
     }
     public void DisableHaptics()
     {
-        enable.gameObject.SetActive(true);
-        disable.gameObject.SetActive(false);
+        haptics.transform.GetChild(0).gameObject.SetActive(true);
+        haptics.transform.GetChild(1).gameObject.SetActive(false);
         HapticsAllowed = true;
         MMVibrationManager.SetHapticsActive(HapticsAllowed);
     }
