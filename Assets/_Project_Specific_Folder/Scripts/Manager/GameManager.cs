@@ -271,17 +271,17 @@ public class GameManager : Singleton<GameManager>
                 break;
             case 6:
                 // CollsionScript.Tattos = new Texture[6];
-                CollsionScript.Default = m_textureManager.defaultCartoon;
-                CollsionScript.Tattos = m_textureManager.CartoonExpensiveTattos;
-                CollsionScript.CheapTttos = m_textureManager.CartoonCheapTattos;
+                CollsionScript.Default = m_textureManager.DefaultCaligraphy;
+                CollsionScript.Tattos = m_textureManager.CaligraphyExpensiveTattos;
+                CollsionScript.CheapTttos = m_textureManager.CaligraphyCheapTattos;
 
 
 
-                CollsionScript.GoodBlue = m_textureManager.CartoonGoodBlue;
-                CollsionScript.BadBlue = m_textureManager.CartoonBadBlue;
+                CollsionScript.GoodBlue = m_textureManager.CaligraphyGoodBlue;
+                CollsionScript.BadBlue = m_textureManager.CaligraphyBadBlue;
 
-                CollsionScript.GoodYellow = m_textureManager.CartoonGoodYellow;
-                CollsionScript.BadYellow = m_textureManager.CartoonBadYellow;
+                CollsionScript.GoodYellow = m_textureManager.CaligraphyGoodYellow;
+                CollsionScript.BadYellow = m_textureManager.CaligraphyBadYellow;
 
                 break;
             case 7:

@@ -167,10 +167,11 @@ public class Collsion : MonoBehaviour
         }
         if (other.gameObject.CompareTag("GoodGate"))
         {
+            MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+            
             if (other.GetComponentInParent<Gates>().IsSpecial)
             {
                 StartCoroutine(AnimationDelayRoutine());
-                MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
                 StorageManager.Instance.IncreasePoints(other.GetComponentInParent<Gates>().Cost);
 
                 Shine.Play();
@@ -246,6 +247,7 @@ public class Collsion : MonoBehaviour
 
         if (other.gameObject.CompareTag("BadGate"))
         {
+            MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
             UiManager.Instance.priceTag.GetComponent<Image>().DOColor(Color.red, 0.5f).SetLoops(2, LoopType.Yoyo);
          
             StartCoroutine(AnimationDelayRoutine());
@@ -256,8 +258,7 @@ public class Collsion : MonoBehaviour
             if (IsGood)
             {
                 m_i = Dummy.Count;
-
-                MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+                
                 StorageManager.Instance.IncreasePoints(-other.GetComponentInParent<Gates>().Cost);
                 //GameManager.Instance.Level = g.transform.GetComponentInParent<Gates>().id + 1;
                 
