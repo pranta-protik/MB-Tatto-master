@@ -9,6 +9,7 @@ using PathCreation.Examples;
 using System;
 using System.Globalization;
 using Facebook.Unity;
+using MoreMountains.NiceVibrations;
 
 [Serializable]
 public class ItemPacks
@@ -60,7 +61,9 @@ public class GameManager : Singleton<GameManager>
     public int currentHandId;
     public int baseLikes;
     public int baseFollowers;
-    
+    public List<int> likes = new List<int>();
+    public List<string> followers = new List<string>();
+
     int SavedLevelNo;
     GameObject Path;
     public float timer = 0.0f;
@@ -68,7 +71,6 @@ public class GameManager : Singleton<GameManager>
     public override void Start()
     {
         // First time hand enable
-
         HandNumber = PlayerPrefs.GetInt("SelectedHandCardId");
         Hands[HandNumber].MainHand.gameObject.SetActive(true);
         Hands[HandNumber].CopyHand.gameObject.SetActive(true);
