@@ -60,7 +60,9 @@ public class GameManager : Singleton<GameManager>
     public int currentHandId;
     public int baseLikes;
     public int baseFollowers;
-    
+    public List<int> likes = new List<int>();
+    public List<string> followers = new List<string>();
+
     int SavedLevelNo;
     GameObject Path;
     public float timer = 0.0f;
