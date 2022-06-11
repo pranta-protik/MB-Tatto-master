@@ -60,7 +60,7 @@ public class InstaGallery : MonoBehaviour
         {
             GameObject pictureFrameObj = Instantiate(pictureFramePrefab, _contentTransform.position, Quaternion.identity, _contentTransform);
 
-            string filename = $"{Application.persistentDataPath}/Snapshots/" + (i + 1) + "*.png";
+            string filename = $"{Application.persistentDataPath}/Snapshots/" + (i + 1) + ".png";
             
             byte[] savedSnapshot = File.ReadAllBytes(filename);
             Texture2D loadedTexture = new Texture2D(720, 720, TextureFormat.ARGB32, false);
