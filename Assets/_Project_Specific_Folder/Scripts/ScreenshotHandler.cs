@@ -42,9 +42,12 @@ public class ScreenshotHandler : MonoBehaviour
                 Console.WriteLine("Cannot create Directory");
             }
             
+            PlayerPrefs.SetInt("SnapshotsTaken", PlayerPrefs.GetInt("SnapshotsTaken", 0) + 1);
+            string snapShotNo = PlayerPrefs.GetInt("SnapshotsTaken", 0).ToString();
+            
             byte[] byteArray = renderResult.EncodeToPNG();
             string snapshotName =
-                $"{Application.persistentDataPath}/Snapshots/Snapshot_{renderTexture.width}x{renderTexture.height}_{System.DateTime.Now:yyyy-MM-dd_HH-mm-ss}.png";
+                $"{Application.persistentDataPath}/Snapshots/{snapShotNo}.png";
 
             new System.Threading.Thread(() =>
             {

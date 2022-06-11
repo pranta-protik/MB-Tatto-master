@@ -25,21 +25,19 @@ public class InstaGallery : MonoBehaviour
         int totalPhotos = PlayerPrefs.GetInt("SnapshotsTaken", 0);
         transform.GetChild(1).GetChild(1).GetComponent<TextMeshProUGUI>().SetText(totalPhotos.ToString());
 
-        string[] files = Directory.GetFiles($"{Application.persistentDataPath}/Snapshots/", "*.png");
-
         if (totalPhotos <= 9)
         {
-            SpawnPictureFrames(0, totalPhotos, files);
+            SpawnPictureFrames(0, totalPhotos);
         }
         else
         {
             if (totalPhotos % 9 == 1)
             {
-                SpawnPictureFrames((totalPhotos - ((totalPhotos - 2) % 9)) - 2, totalPhotos, files);
+                SpawnPictureFrames((totalPhotos - ((totalPhotos - 2) % 9)) - 2, totalPhotos);
             }
             else
             {
-                SpawnPictureFrames((totalPhotos - ((totalPhotos - 1) % 9)) - 1, totalPhotos, files);
+                SpawnPictureFrames((totalPhotos - ((totalPhotos - 1) % 9)) - 1, totalPhotos);
             }
         }
 
@@ -56,13 +54,15 @@ public class InstaGallery : MonoBehaviour
         _isScrollbarSet = true;
     }
 
-    private void SpawnPictureFrames(int startIndex, int totalPhotos, string[] files)
+    private void SpawnPictureFrames(int startIndex, int totalPhotos)
     {
         for (int i = startIndex; i < totalPhotos; i++)
         {
             GameObject pictureFrameObj = Instantiate(pictureFramePrefab, _contentTransform.position, Quaternion.identity, _contentTransform);
 
-            byte[] savedSnapshot = File.ReadAllBytes(files[i]);
+            string filename = $"{Application.persistentDataPath}/Snapshots/" + (i + 1) + "*.png";
+            
+            byte[] savedSnapshot = File.ReadAllBytes(filename);
             Texture2D loadedTexture = new Texture2D(720, 720, TextureFormat.ARGB32, false);
             loadedTexture.LoadImage(savedSnapshot);
 
