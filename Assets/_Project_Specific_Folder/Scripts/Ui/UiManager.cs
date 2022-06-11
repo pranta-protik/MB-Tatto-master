@@ -152,6 +152,8 @@ public class UiManager : Singleton<UiManager>
 
     public void OnSliderClick()
     {
+        mobileScreenSlider.transform.GetChild(2).GetChild(0).DOKill();
+        mobileScreenSlider.transform.GetChild(2).GetChild(0).localScale = new Vector3(1f, 1f, 1f);
         mobileScreen.transform.GetChild(7).gameObject.SetActive(false);
     }
     
@@ -209,6 +211,8 @@ public class UiManager : Singleton<UiManager>
 
     public void TakePicture()
     {
+        mobileScreen.transform.GetChild(3).DOKill();
+        mobileScreen.transform.GetChild(3).localScale = new Vector3(1f, 1f, 1f);
         mobileScreen.transform.GetChild(3).GetComponent<Button>().interactable = false;
         StartCoroutine(CameraFlashEffect());
     }
@@ -246,6 +250,7 @@ public class UiManager : Singleton<UiManager>
             _shouldUpdateLikeText = false;
             instaPostPage.transform.GetChild(1).GetChild(2).GetChild(0).gameObject.SetActive(true);
             instaPostPage.transform.GetChild(1).GetChild(2).GetChild(1).gameObject.SetActive(true);
+            instaPostPage.transform.GetChild(1).GetChild(2).GetChild(2).gameObject.SetActive(true);
             PlayerPrefs.SetInt("LastLike", _targetLike);
             PlayerPrefs.SetInt("TargetLike", _targetLike * 2);
             Invoke(nameof(EnableInstaGalleryPage), 1.5f);
@@ -351,16 +356,16 @@ public class UiManager : Singleton<UiManager>
     }
     private void NextCallBack()
     {
-        UiManager.Instance.UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>()._increaseAmount = 25;
+        // UiManager.Instance.UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>()._increaseAmount = 25;
         
-        // if (GameManager.Instance.levelNo <= 3)
-        // {
-        //     UiManager.Instance.UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>()._increaseAmount = 25;
-        // }
-        // else if (GameManager.Instance.levelNo > 3)
-        // {
-        //     UiManager.Instance.UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>()._increaseAmount = 17;
-        // }
+        if (GameManager.Instance.levelNo <= 23)
+        {
+            UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>().increaseAmount = 25;
+        }
+        else
+        {
+            UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>().increaseAmount = 10;
+        }
 
         UnlockPanel.gameObject.SetActive(true);
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -406,16 +411,16 @@ public class UiManager : Singleton<UiManager>
         GameManager.Instance.SetTotalTime();
 
 
-        // if (GameManager.Instance.levelNo <= 3)
-        // {
-        //     UiManager.Instance.UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>()._increaseAmount = 25;
-        // }
-        // else if (GameManager.Instance.levelNo > 3)
-        // {
-        //     UiManager.Instance.UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>()._increaseAmount = 17;
-        // }
+        if (GameManager.Instance.levelNo <= 23)
+        {
+            UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>().increaseAmount = 25;
+        }
+        else
+        {
+            UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>().increaseAmount = 10;
+        }
         
-        UiManager.Instance.UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>()._increaseAmount = 25;
+        // UiManager.Instance.UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>()._increaseAmount = 25;
         
         decisionScreen.SetActive(false);
         spinnerScreen.SetActive(true);

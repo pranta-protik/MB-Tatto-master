@@ -24,8 +24,4 @@ public class TextureManager : Singleton<TextureManager>
 
     public Texture[] MoneyExpensiveTattos, MoneyCheapTattos;
     public Texture[] MoneyBadBlue, MoneyGoodBlue, MoneyGoodYellow, MoneyBadYellow;
-
-
-
-
 }

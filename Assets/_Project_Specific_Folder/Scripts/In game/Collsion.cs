@@ -59,6 +59,12 @@ public class Collsion : MonoBehaviour
     public int lastGateId;
     private new Camera _camera;
     
+    public AnimatorOverrideController OverRideController;
+    public AnimationClip[] AnimationClips;
+    private static readonly int IsWrestling = Animator.StringToHash("isWrestling");
+
+    [SerializeField] private List<int> _animationIndexes = new List<int>();
+    
     private void Start()
     {
         _camera = Camera.main;
@@ -72,7 +78,11 @@ public class Collsion : MonoBehaviour
         {
             runtimeAnimatorController = anim.runtimeAnimatorController
         };
-        
+
+        for (int k = 0; k < AnimationClips.Length; k++)
+        {
+            _animationIndexes.Add(k);
+        }
         
         StiackerMat.DOFade(0, 0);
         Startpos = transform.localPosition;
@@ -668,6 +678,7 @@ public class Collsion : MonoBehaviour
                         _camera.transform.DORotate(new Vector3(46f, 90f, 0f), 0.01f).OnComplete(() =>
                         {
                             UiManager.Instance.mobileScreen.SetActive(true);
+                            UiManager.Instance.mobileScreen.transform.GetChild(3).DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.5f).SetLoops(-1, LoopType.Yoyo);
                             UiManager.Instance.mobileScreenSlider.transform.GetChild(2).GetChild(0).DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.5f)
                                 .SetLoops(-1, LoopType.Yoyo);
                             UiManager.Instance.mobileScreen.transform.GetChild(7).GetComponent<RectTransform>().DOAnchorPosY(340, 1f)
@@ -734,15 +745,26 @@ public class Collsion : MonoBehaviour
         yield return new WaitForSeconds(.6f);
         GameManager.Instance.p.MaxSpeed = lastSpeed;
     }
-
-
-    public AnimatorOverrideController OverRideController;
-    public AnimationClip[] AnimationClips;
-    private static readonly int IsWrestling = Animator.StringToHash("isWrestling");
-
+    
     void RandomAnimationPlay()
     {
-        int index = Random.Range(0, AnimationClips.Length);
+        int index = 0;
+        if (_animationIndexes.Count > 1)
+        {
+            int randomValue = Random.Range(0, _animationIndexes.Count);
+            index = _animationIndexes[randomValue];
+            _animationIndexes.RemoveAt(randomValue);
+        }
+        else
+        {
+            index = _animationIndexes[0];
+            _animationIndexes.Clear();
+            for (int k = 0; k < AnimationClips.Length; k++)
+            {
+                _animationIndexes.Add(k);
+            }
+        }
+        
         OverRideController["Take 001"] = AnimationClips[index];
 
         anim.runtimeAnimatorController = OverRideController;
