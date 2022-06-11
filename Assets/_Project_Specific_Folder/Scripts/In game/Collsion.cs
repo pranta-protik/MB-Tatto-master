@@ -678,6 +678,7 @@ public class Collsion : MonoBehaviour
                         _camera.transform.DORotate(new Vector3(46f, 90f, 0f), 0.01f).OnComplete(() =>
                         {
                             UiManager.Instance.mobileScreen.SetActive(true);
+                            UiManager.Instance.mobileScreen.transform.GetChild(3).DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.5f).SetLoops(-1, LoopType.Yoyo);
                             UiManager.Instance.mobileScreenSlider.transform.GetChild(2).GetChild(0).DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.5f)
                                 .SetLoops(-1, LoopType.Yoyo);
                             UiManager.Instance.mobileScreen.transform.GetChild(7).GetComponent<RectTransform>().DOAnchorPosY(340, 1f)
@@ -750,12 +751,13 @@ public class Collsion : MonoBehaviour
         int index = 0;
         if (_animationIndexes.Count > 1)
         {
-            index = Random.Range(0, _animationIndexes.Count);
-            _animationIndexes.RemoveAt(index);
-            Debug.Log(_animationIndexes.Count);
+            int randomValue = Random.Range(0, _animationIndexes.Count);
+            index = _animationIndexes[randomValue];
+            _animationIndexes.RemoveAt(randomValue);
         }
         else
         {
+            index = _animationIndexes[0];
             _animationIndexes.Clear();
             for (int k = 0; k < AnimationClips.Length; k++)
             {

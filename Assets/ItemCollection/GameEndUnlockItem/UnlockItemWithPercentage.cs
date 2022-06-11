@@ -35,12 +35,21 @@ namespace ItemCollection.GameEndUnlockItem
 
         private int _unlockPercentage = 0;
         private int _nextPackIndex = 0;
-        public  int _increaseAmount = 25;
-        public  float _duration = 2.0f;
+        public  int increaseAmount = 25;
+        public  float duration = 2.0f;
 
 
         private void Awake()
         {
+            if (GameManager.Instance.levelNo <= 23)
+            {
+                increaseAmount = 25;
+            }
+            else
+            {
+                increaseAmount = 10;
+            }
+            
             transform.GetChild(8).GetComponent<Image>().DOFade(0f, 0.5f).OnComplete(() =>
             {
                 transform.GetChild(8).gameObject.SetActive(false);
@@ -61,7 +70,7 @@ namespace ItemCollection.GameEndUnlockItem
             imgUnLocked.fillAmount = _unlockPercentage /100f;
 
             if (_unlockPercentage < 100)
-                _unlockPercentage += _increaseAmount;
+                _unlockPercentage += increaseAmount;
 
             StartCoroutine(DisplayItemPack());
 
@@ -97,7 +106,7 @@ namespace ItemCollection.GameEndUnlockItem
 
             if (success)
             {
-                _unlockPercentage += _increaseAmount;
+                _unlockPercentage += increaseAmount;
                 StartCoroutine(DisplayItemPack(true));
             }
             else
@@ -122,14 +131,14 @@ namespace ItemCollection.GameEndUnlockItem
             float targetFillAmount = _unlockPercentage / 100f;
 
             //Debug.Log("FillAmount " + imgUnLocked.fillAmount + "  targetFillAmount " + targetFillAmount);
-            DOTween.To(() => imgUnLocked.fillAmount, x => imgUnLocked.fillAmount = x, targetFillAmount, _duration);
-            int previousPercentage = _unlockPercentage - _increaseAmount;
-            DOTween.To(() => previousPercentage, x => previousPercentage = x, _unlockPercentage, _duration).OnUpdate(
+            DOTween.To(() => imgUnLocked.fillAmount, x => imgUnLocked.fillAmount = x, targetFillAmount, duration);
+            int previousPercentage = _unlockPercentage - increaseAmount;
+            DOTween.To(() => previousPercentage, x => previousPercentage = x, _unlockPercentage, duration).OnUpdate(
                 delegate { txtUnlockPercentage.text = previousPercentage + "%"; });
 
             if (_unlockPercentage < 100)
             {
-                yield return new WaitForSeconds(_duration);
+                yield return new WaitForSeconds(duration);
                 if (shouldCallNext)
                 {
                     //btnReveal.gameObject.SetActive(false);
@@ -147,7 +156,7 @@ namespace ItemCollection.GameEndUnlockItem
             //Claim Button SetActive True
             btnReveal.gameObject.SetActive(false);
             btnNext.gameObject.SetActive(false);
-            yield return new WaitForSeconds(_duration);
+            yield return new WaitForSeconds(duration);
             btnCollect.gameObject.SetActive(true); 
             // txtUnlockPercentage.text = "100" + "%";
         }
