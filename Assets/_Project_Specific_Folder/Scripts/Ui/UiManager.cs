@@ -50,6 +50,7 @@ public class UiManager : Singleton<UiManager>
     public Button selectionMenuButton;
 
     public GameObject mobileScreen;
+    public GameObject transitionScreen;
     public Slider mobileScreenSlider;
     public bool isMobileActive;
     public GameObject instaPostPage;
@@ -148,6 +149,7 @@ public class UiManager : Singleton<UiManager>
 
     public void OnSelectionMenuButtonClick()
     {
+        LevelText.transform.parent.gameObject.SetActive(false);
         shop.SetActive(false);
         selectionMenuButton.gameObject.SetActive(false);
         _camera.transform.DOLocalRotate(new Vector3(42, 90, 0), .3f).OnComplete(() =>
@@ -169,6 +171,7 @@ public class UiManager : Singleton<UiManager>
         selectionMenu.SetActive(false);
         _camera.transform.DOLocalRotate(new Vector3(27.761f, 90, 0), .3f).OnComplete(() =>
         {
+            LevelText.transform.parent.gameObject.SetActive(true);
             shop.SetActive(true);
             selectionMenuButton.gameObject.SetActive(true);
         });
@@ -375,7 +378,7 @@ public class UiManager : Singleton<UiManager>
     
     public void ShowPriceTag()
     {
-        priceTag.GetComponent<RectTransform>().DOAnchorPos(new Vector2(-117f, -63f), 0.5f);
+        priceTag.GetComponent<RectTransform>().DOAnchorPos(new Vector2(-140f, -80f), 0.5f);
     }
 
     public IEnumerator FdeDelayRoutine()
