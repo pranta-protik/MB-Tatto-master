@@ -260,7 +260,7 @@ public class GameManager : Singleton<GameManager>
                 break;
             case 5:
                 // CollsionScript.Tattos = new Texture[6];
-                CollsionScript.Default = m_textureManager.DefaultSkull;
+                CollsionScript.Default = m_textureManager.DefaultMoney;
                 CollsionScript.Tattos = m_textureManager.MoneyExpensiveTattos;
                 CollsionScript.CheapTttos = m_textureManager.MoneyCheapTattos;
 
