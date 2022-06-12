@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
@@ -670,30 +671,74 @@ public class Collsion : MonoBehaviour
             c1.enabled = false;
 
             GameObject mobile = other.transform.GetChild(2).gameObject;
-            mobile.transform.DOLocalMoveY(1f, 0.5f).OnComplete(() =>
+           
+            mobile.transform.DOLocalMoveY(0.9f, 0.5f);
+            
+            mobile.transform.DORotate(new Vector3(-50f, 270f, 90f), 0.5f).OnComplete(() =>
             {
-                mobile.transform.DOLocalRotate(new Vector3(-50f, 270f, 90f), 0.5f).OnComplete(() =>
+                mobile.transform.DOLocalMove(new Vector3(-.675f, 0.95f, 0.13f), 1f).OnComplete(() =>
                 {
-                    mobile.transform.DOLocalMoveX(-.65f, 1f).OnComplete(() =>
+                    _camera.transform.DORotate(new Vector3(46f, 90f, 0f), 0.01f).OnComplete(() =>
                     {
-                        _camera.transform.DORotate(new Vector3(46f, 90f, 0f), 0.01f).OnComplete(() =>
+                        UiManager.Instance.mobileScreen.SetActive(true);
+
+                        int lastPhotoNo = PlayerPrefs.GetInt("SnapshotsTaken", 0);
+
+                        if (lastPhotoNo > 0)
                         {
-                            UiManager.Instance.mobileScreen.SetActive(true);
-                            UiManager.Instance.mobileScreen.transform.GetChild(3).DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.5f).SetLoops(-1, LoopType.Yoyo);
-                            UiManager.Instance.mobileScreenSlider.transform.GetChild(2).GetChild(0).DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.5f)
-                                .SetLoops(-1, LoopType.Yoyo);
-                            UiManager.Instance.mobileScreen.transform.GetChild(7).GetComponent<RectTransform>().DOAnchorPosY(340, 1f)
-                                .SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
-                            
-                            mobile.SetActive(false);
-                            UiManager.Instance.mobileScreen.transform.GetChild(8).GetComponent<Image>().color = Color.black;
-                            UiManager.Instance.mobileScreen.transform.GetChild(8).GetComponent<Image>().DOFade(0f, 1f);
-                            UiManager.Instance.isMobileActive = true;
+                            string filename = $"{Application.persistentDataPath}/Snapshots/" + lastPhotoNo + ".png";
+            
+                            byte[] savedSnapshot = File.ReadAllBytes(filename);
+                            Texture2D loadedTexture = new Texture2D(720, 720, TextureFormat.ARGB32, false);
+                            loadedTexture.LoadImage(savedSnapshot);
+                        
+                            UiManager.Instance.mobileScreen.transform.GetChild(2).GetChild(0).GetComponent<RawImage>().texture = loadedTexture;   
+                        }
+                        else
+                        {
+                            UiManager.Instance.mobileScreen.transform.GetChild(2).GetChild(0).gameObject.SetActive(false);   
+                        }
+
+                        UiManager.Instance.mobileScreen.transform.GetChild(3).DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.5f).SetLoops(-1, LoopType.Yoyo);
+                        UiManager.Instance.mobileScreenSlider.transform.GetChild(2).GetChild(0).DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.5f)
+                            .SetLoops(-1, LoopType.Yoyo);
+                        UiManager.Instance.mobileScreen.transform.GetChild(7).GetComponent<RectTransform>().DOAnchorPosY(340, 1f)
+                            .SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
+                    
+                        mobile.SetActive(false);
+                        UiManager.Instance.mobileScreen.transform.GetChild(8).GetComponent<Image>().color = Color.black;
+                        UiManager.Instance.mobileScreen.transform.GetChild(8).GetComponent<Image>().DOFade(0f, 1f).OnComplete(() =>
+                        {
                             UiManager.Instance.mobileScreen.transform.GetChild(8).gameObject.SetActive(false);
                         });
+                        UiManager.Instance.isMobileActive = true;
                     });
                 });
             });
+            // mobile.transform.DOLocalMoveY(1f, 0.5f).OnComplete(() =>
+            // {
+            //     mobile.transform.DOLocalRotate(new Vector3(-50f, 270f, 90f), 0.5f).OnComplete(() =>
+            //     {
+            //         mobile.transform.DOLocalMoveX(-.65f, 1f).OnComplete(() =>
+            //         {
+            //             _camera.transform.DORotate(new Vector3(46f, 90f, 0f), 0.01f).OnComplete(() =>
+            //             {
+            //                 UiManager.Instance.mobileScreen.SetActive(true);
+            //                 UiManager.Instance.mobileScreen.transform.GetChild(3).DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.5f).SetLoops(-1, LoopType.Yoyo);
+            //                 UiManager.Instance.mobileScreenSlider.transform.GetChild(2).GetChild(0).DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.5f)
+            //                     .SetLoops(-1, LoopType.Yoyo);
+            //                 UiManager.Instance.mobileScreen.transform.GetChild(7).GetComponent<RectTransform>().DOAnchorPosY(340, 1f)
+            //                     .SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
+            //                 
+            //                 mobile.SetActive(false);
+            //                 UiManager.Instance.mobileScreen.transform.GetChild(8).GetComponent<Image>().color = Color.black;
+            //                 UiManager.Instance.mobileScreen.transform.GetChild(8).GetComponent<Image>().DOFade(0f, 1f);
+            //                 UiManager.Instance.isMobileActive = true;
+            //                 UiManager.Instance.mobileScreen.transform.GetChild(8).gameObject.SetActive(false);
+            //             });
+            //         });
+            //     });
+            // });
             // UiManager.Instance.decisionScreen.SetActive(true);
             // UiManager.Instance.cashCounter.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText("$" + StorageManager.GetTotalCoin());
             // UiManager.Instance.cashCounter.SetActive(false);
