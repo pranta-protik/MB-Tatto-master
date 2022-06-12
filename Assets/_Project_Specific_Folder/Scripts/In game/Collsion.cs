@@ -891,7 +891,7 @@ public class Collsion : MonoBehaviour
 
     public IEnumerator UpdateTexture(GameObject g)
     {
-        MMVibrationManager.Haptic(HapticTypes.MediumImpact);
+        // MMVibrationManager.Haptic(HapticTypes.MediumImpact);
         StorageManager.Instance.IncreasePoints(g.GetComponentInParent<Gates>().Cost);
         yield return new WaitForSeconds(.2f);
         StiackerMat.DOFade(0, .3f).OnComplete(() =>
@@ -918,14 +918,14 @@ public class Collsion : MonoBehaviour
         PopUp.transform.GetChild(0).gameObject.SetActive(true);
         PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "-" + g.GetComponentInParent<DownGrade>().Cost.ToString();
         PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = Color.red;
-        MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+        // MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
   
     }
 
 
     public IEnumerator UpdateTextureCheap(GameObject g)
     {
-        MMVibrationManager.Haptic(HapticTypes.MediumImpact);
+        // MMVibrationManager.Haptic(HapticTypes.MediumImpact);
         StorageManager.Instance.IncreasePoints(-g.GetComponentInParent<Gates>().Cost);
         yield return new WaitForSeconds(.2f);
 
@@ -972,7 +972,7 @@ public class Collsion : MonoBehaviour
 
     public IEnumerator UpdateCheapTextureVideo(GameObject g)
     {
-        MMVibrationManager.Haptic(HapticTypes.MediumImpact);
+        // MMVibrationManager.Haptic(HapticTypes.MediumImpact);
         StorageManager.Instance.IncreasePoints(-g.GetComponentInParent<Gates>().Cost);
         GameManager.Instance.Level = g.transform.GetComponentInParent<Gates>().id + 1;
         yield return new WaitForSeconds(.2f);
@@ -993,7 +993,7 @@ public class Collsion : MonoBehaviour
 
     public IEnumerator UpdateTextureVideo(GameObject g)
     {
-        MMVibrationManager.Haptic(HapticTypes.MediumImpact);
+        // MMVibrationManager.Haptic(HapticTypes.MediumImpact);
         StorageManager.Instance.IncreasePoints(g.GetComponentInParent<Gates>().Cost);
         //GameManager.Instance.Level = g.transform.GetComponentInParent<Gates>().id + 1;
         yield return new WaitForSeconds(.2f);
