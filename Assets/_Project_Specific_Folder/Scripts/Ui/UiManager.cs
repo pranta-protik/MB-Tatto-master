@@ -378,7 +378,7 @@ public class UiManager : Singleton<UiManager>
     
     public void ShowPriceTag()
     {
-        priceTag.GetComponent<RectTransform>().DOAnchorPos(new Vector2(-140f, -80f), 0.5f);
+        priceTag.GetComponent<RectTransform>().DOAnchorPos(new Vector2(-126f, -70f), 0.5f);
     }
 
     public IEnumerator FdeDelayRoutine()
