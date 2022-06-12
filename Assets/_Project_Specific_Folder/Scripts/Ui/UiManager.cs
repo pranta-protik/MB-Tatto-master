@@ -77,8 +77,11 @@ public class UiManager : Singleton<UiManager>
     {
         base.Start();
 
-        mobileScreenSlider = mobileScreen.transform.GetChild(4).GetComponent<Slider>();
-        
+        if (mobileScreen != null)
+        {
+            mobileScreenSlider = mobileScreen.transform.GetChild(4).GetComponent<Slider>();
+        }
+
         if (TotalText != null)
         {
             TotalText.SetText("$" + StorageManager.GetTotalCoin());
