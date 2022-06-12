@@ -88,7 +88,6 @@ namespace ItemCollection.GameEndUnlockItem
             PlayerPrefs.SetInt(NextPackIndexKey, PlayerPrefs.GetInt(NextPackIndexKey, 0) + 1);
             SaveUnlockPercentage(0);
             NextCallBack();
-    
         }
 
         private void RevealCallBack()
@@ -147,17 +146,19 @@ namespace ItemCollection.GameEndUnlockItem
                     yield break;
                 }
 
-                btnReveal.gameObject.SetActive(true);
-                yield return new WaitForSeconds(1.0f);
-                btnNext.gameObject.SetActive(true);
+                // btnReveal.gameObject.SetActive(true);
+                // yield return new WaitForSeconds(0.5f);
+                // btnNext.gameObject.SetActive(true);
+                NextCallBack();
                 yield break;
             }
 
             //Claim Button SetActive True
-            btnReveal.gameObject.SetActive(false);
-            btnNext.gameObject.SetActive(false);
+            // btnReveal.gameObject.SetActive(false);
+            // btnNext.gameObject.SetActive(false);
             yield return new WaitForSeconds(duration);
-            btnCollect.gameObject.SetActive(true); 
+            // btnCollect.gameObject.SetActive(true); 
+            CollectCallBack();
             // txtUnlockPercentage.text = "100" + "%";
         }
 

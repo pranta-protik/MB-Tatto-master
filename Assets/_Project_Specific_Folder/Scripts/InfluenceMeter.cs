@@ -78,7 +78,7 @@ public class InfluenceMeter : MonoBehaviour
         }
         else
         {
-            transform.GetChild(4).gameObject.SetActive(true);
+            EnableNextButton();
         }
     }
 
@@ -87,10 +87,16 @@ public class InfluenceMeter : MonoBehaviour
         _playerIcon.DOAnchorPosY(playerIconYPositions[_playerIconYPositionIndex + 1], playerIconMoveDuration).OnComplete(() =>
         {
             PlayerPrefs.SetInt("PlayerIconYPositionIndex", _playerIconYPositionIndex + 1);
-            transform.GetChild(4).gameObject.SetActive(true);
+            EnableNextButton();
         });   
     }
 
+    private void EnableNextButton()
+    {
+        transform.GetChild(4).gameObject.SetActive(true);
+        transform.GetChild(4).DOScale(new Vector3(0.8f, 0.8f, 0.8f), 0.5f).SetLoops(-1, LoopType.Yoyo);
+    }
+    
     public void EnableUnlockScreen()
     {
         transform.GetChild(5).gameObject.SetActive(true);
