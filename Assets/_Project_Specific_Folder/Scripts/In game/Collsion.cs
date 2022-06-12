@@ -364,6 +364,7 @@ public class Collsion : MonoBehaviour
         if (other.gameObject.CompareTag("Spike"))
         {
             // GameManager.Instance.Level = other.GetComponent<DownGrade>().DownGradeAmmount;
+            UiManager.Instance.priceTag.GetComponent<Image>().DOColor(Color.red, 0.5f).SetLoops(2, LoopType.Yoyo);
             DownGradeTexture(GameManager.Instance.Level, other.gameObject);
             MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
             StartCoroutine(SpeedSlowDownRoutine());
@@ -412,6 +413,7 @@ public class Collsion : MonoBehaviour
 
         if (other.gameObject.CompareTag("Lava"))
         {
+            UiManager.Instance.priceTag.GetComponent<Image>().DOColor(Color.red, 0.5f).SetLoops(2, LoopType.Yoyo);
             DownGradeTexture(GameManager.Instance.Level, other.gameObject);
             MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
             StartCoroutine(SpeedSlowDownRoutine());
