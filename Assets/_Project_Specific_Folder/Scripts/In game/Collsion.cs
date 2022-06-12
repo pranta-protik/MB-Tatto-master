@@ -592,15 +592,15 @@ public class Collsion : MonoBehaviour
                 StorageManager.Instance.RewardValue = 500;
             }
 
-           // Camera.main.transform.gameObject.SetActive(false);
-           // cam.gameObject.SetActive(true);
-            
+            // Camera.main.transform.gameObject.SetActive(false);
+            // cam.gameObject.SetActive(true);
+
             // StartCoroutine(StopRoutine(other.gameObject));
-            
+
             //c.enabled = false;
             //c1.enabled = false;
             //GameManager.Instance.p.enabled = false;
-            
+
             //c.transform.DOLocalMoveX(-1.66f, .1f);
             //c1.transform.DOLocalMoveX(-1.66f, .1f);
             //transform.root.parent = other.transform.root;
@@ -616,12 +616,12 @@ public class Collsion : MonoBehaviour
             //    transform.parent.parent = GameManager.Instance.PivotParent.transform;
             //    GameManager.Instance.Boss.transform.parent = GameManager.Instance.PivotParent.transform;
             //    GameManager.Instance.Boss.transform.GetComponent<Animator>().enabled = true;
-                
+
             //    transform.parent.DOLocalMove(new Vector3(0.296f, -0.038f, -0.038f), 0.3f).OnComplete(() =>
             //    {
             //        FindObjectOfType<EndDetector>().EndParticle.Play();
             //    });
-                
+
             //    cam.transform.DOLocalMoveX(cam.transform.position.x + 2.5f, 0.3f).OnComplete(() =>
             //    {
             //        GameManager.Instance.PivotParent.transform.GetComponent<MySDK.Rotator>().enabled = true;
