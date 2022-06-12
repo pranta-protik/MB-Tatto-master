@@ -918,7 +918,7 @@ public class Collsion : MonoBehaviour
         PopUp.transform.GetChild(0).gameObject.SetActive(true);
         PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "-" + g.GetComponentInParent<DownGrade>().Cost.ToString();
         PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = Color.red;
-        MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+        // MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
   
     }
 
