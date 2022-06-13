@@ -104,14 +104,25 @@ public class UiManager : Singleton<UiManager>
 
         if (currentLevelText == 0)
         {
-            shop.SetActive(false);
-            selectionMenuButton.gameObject.SetActive(false);
-            foreach (GameObject upgradeButton in upgradeButtons)
+            if (shop != null)
             {
-                upgradeButton.SetActive(false);
+                shop.SetActive(false);
+            }
+
+            if (selectionMenuButton != null)
+            {
+                selectionMenuButton.gameObject.SetActive(false);
+            }
+
+            if (upgradeButtons != null)
+            {
+                foreach (GameObject upgradeButton in upgradeButtons)
+                {
+                    upgradeButton.SetActive(false);
+                }
             }
         }
-        
+
         // if (hand != null)
         // {
         //     hand.onClick.AddListener(EnableShopCallBack);

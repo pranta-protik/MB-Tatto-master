@@ -41,8 +41,9 @@ namespace ItemCollection.GameEndUnlockItem
 
         private void Awake()
         {
-            // Debug.Log("Level No: " + GameManager.Instance.levelNo);
-            if (GameManager.Instance.levelNo <= 23)
+            int currentLevelNo = PlayerPrefs.GetInt("current_scene_text", 0);
+            
+            if (currentLevelNo <= 19)
             {
                 increaseAmount = 25;
             }

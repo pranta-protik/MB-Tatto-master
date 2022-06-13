@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff667c52414dae740bb8ad5f36310c63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsSpecial: 0
   GateType: 0
   Cost: 200
   UICostText: 2K
@@ -264,7 +265,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ad9e54a05d67d6143ac86db4faedaa2f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2877524e8fbbe2f468257101374803db, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
