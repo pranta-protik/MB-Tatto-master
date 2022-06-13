@@ -676,11 +676,11 @@ public class Collsion : MonoBehaviour
 
             GameObject mobile = other.transform.GetChild(2).gameObject;
            
-            mobile.transform.DOLocalMoveY(0.9f, 0.5f);
+            mobile.transform.DOLocalMoveY(0.88f, 0.5f);
 
             mobile.transform.DORotate(new Vector3(-50f, 270f, 90f), 0.5f).OnComplete(() =>
             {
-                mobile.transform.DOLocalMove(new Vector3(-.705f, 0.95f, 0.13f), 1f).OnComplete(() =>
+                mobile.transform.DOLocalMove(new Vector3(-.66f, 0.88f, 0.113f), 1f).OnComplete(() =>
                 {
                     UiManager.Instance.transitionScreen.SetActive(true);
                     UiManager.Instance.transitionScreen.GetComponent<Image>().DOFade(1f, 0.5f).OnComplete(() =>

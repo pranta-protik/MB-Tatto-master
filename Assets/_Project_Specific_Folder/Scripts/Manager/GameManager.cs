@@ -72,12 +72,12 @@ public class GameManager : Singleton<GameManager>
 
     public override void Start()
     {
-#if UNITY_EDITOR
-
-        levelNo = amarIcchaLevel;
-        PlayerPrefs.SetInt("current_scene", levelNo);
-
-#endif
+// #if UNITY_EDITOR
+//
+//         levelNo = amarIcchaLevel;
+//         PlayerPrefs.SetInt("current_scene", levelNo);
+//
+// #endif
         
         // First time hand enable
         HandNumber = PlayerPrefs.GetInt("SelectedHandCardId");

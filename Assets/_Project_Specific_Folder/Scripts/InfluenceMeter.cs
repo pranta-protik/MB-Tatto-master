@@ -6,9 +6,16 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+[Serializable]
+public class InfluenceMeterAttributes
+{
+    public float playerIconYPosition;
+    public GameObject crossedOpponent;
+}
+
 public class InfluenceMeter : MonoBehaviour
 {
-    public List<float> playerIconYPositions;
+    public List<InfluenceMeterAttributes> playerIconYPositions;
     public float playerIconMoveDuration;
 
     public float meterScrollDownThreshold;
@@ -42,11 +49,11 @@ public class InfluenceMeter : MonoBehaviour
         _playerIconYPositionIndex = PlayerPrefs.GetInt("PlayerIconYPositionIndex", 0);
         if (_playerIconYPositionIndex < playerIconYPositions.Count)
         {
-            _playerIcon.anchoredPosition = new Vector2(230f, playerIconYPositions[_playerIconYPositionIndex]);    
+            _playerIcon.anchoredPosition = new Vector2(230f, playerIconYPositions[_playerIconYPositionIndex].playerIconYPosition);    
         }
         else
         {
-            _playerIcon.anchoredPosition = new Vector2(230f, playerIconYPositions[playerIconYPositions.Count - 1]);
+            _playerIcon.anchoredPosition = new Vector2(230f, playerIconYPositions[playerIconYPositions.Count - 1].playerIconYPosition);
         }
 
         _meterIcon = transform.GetChild(1).GetChild(0).GetComponent<RectTransform>();
@@ -84,7 +91,7 @@ public class InfluenceMeter : MonoBehaviour
 
     private void UpdatePlayerIcon()
     {
-        _playerIcon.DOAnchorPosY(playerIconYPositions[_playerIconYPositionIndex + 1], playerIconMoveDuration).OnComplete(() =>
+        _playerIcon.DOAnchorPosY(playerIconYPositions[_playerIconYPositionIndex + 1].playerIconYPosition, playerIconMoveDuration).OnComplete(() =>
         {
             PlayerPrefs.SetInt("PlayerIconYPositionIndex", _playerIconYPositionIndex + 1);
             EnableNextButton();
