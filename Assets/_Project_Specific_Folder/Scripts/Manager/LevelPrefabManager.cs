@@ -8,13 +8,15 @@ namespace SuperCop.Scripts
         private static LevelPrefabManager instance = null;
         public static LevelPrefabManager Instance => instance ??= new LevelPrefabManager();
 
-        private List<string> levelIdList = new List<string>()
-        {
-            "101","102","103","104","105","106","107","108","109","110","111","112","113","114","115"
-        };
+        private List<string> levelIdList = new List<string>();
 
         private string GetCurrentLevelId()
         {
+            for (int i = 0; i < 50; i++)
+            {
+                levelIdList.Add((101 + i).ToString());
+            }
+            
             int levelNo = PlayerPrefs.GetInt("current_scene", 0);
 
             return levelNo > levelIdList.Count - 1

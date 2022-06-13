@@ -134,7 +134,16 @@ public class Book : MonoBehaviour
 
     private void EnableEndUi()
     {
-        UiManager.Instance.UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>().increaseAmount = 25;
+        // UiManager.Instance.UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>().increaseAmount = 25;
+        
+        if (GameManager.Instance.levelNo <= 23)
+        {
+            UiManager.Instance.UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>().increaseAmount = 25;
+        }
+        else
+        {
+            UiManager.Instance.UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>().increaseAmount = 10;
+        }
         // if (GameManager.Instance.levelNo <= 3)
         // {
         //     UiManager.Instance.UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>()._increaseAmount = 25;

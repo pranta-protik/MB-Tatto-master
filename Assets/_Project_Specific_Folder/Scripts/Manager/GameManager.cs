@@ -67,14 +67,24 @@ public class GameManager : Singleton<GameManager>
     int SavedLevelNo;
     GameObject Path;
     public float timer = 0.0f;
+    [SerializeField] private int amarIcchaLevel;
+
 
     public override void Start()
     {
+#if UNITY_EDITOR
+
+        levelNo = amarIcchaLevel;
+        PlayerPrefs.SetInt("current_scene", levelNo);
+
+#endif
+        
         // First time hand enable
         HandNumber = PlayerPrefs.GetInt("SelectedHandCardId");
         Hands[HandNumber].MainHand.gameObject.SetActive(true);
         Hands[HandNumber].CopyHand.gameObject.SetActive(true);
-        CollsionScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Collsion>();
+        CollsionScript = Hands[HandNumber].MainHand.GetComponent<Collsion>();
+        // GameObject.FindGameObjectWithTag("Player").GetComponent<Collsion>();
         if (!cam.player) cam.player = GameObject.FindGameObjectWithTag("Player");
 
 
@@ -377,7 +387,8 @@ public class GameManager : Singleton<GameManager>
             {
                 hand.MainHand.gameObject.SetActive(true);
                 hand.CopyHand.gameObject.SetActive(true);
-                CollsionScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Collsion>();
+                CollsionScript = hand.MainHand.GetComponent<Collsion>(); 
+                // GameObject.FindGameObjectWithTag("Player").GetComponent<Collsion>();
                 cam.player = hand.MainHand.gameObject;
                 SetLevelDetails(currentLvlPrefab);
             }

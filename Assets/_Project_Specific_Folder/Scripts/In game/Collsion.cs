@@ -65,9 +65,11 @@ public class Collsion : MonoBehaviour
     private static readonly int IsWrestling = Animator.StringToHash("isWrestling");
 
     [SerializeField] private List<int> _animationIndexes = new List<int>();
+    private float _lastSpeed;
     
     private void Start()
     {
+        _lastSpeed = GameManager.Instance.p.MaxSpeed;
         _camera = Camera.main;
         cam = GameManager.Instance.FakeCam;
         anim = GetComponent<Animator>();
@@ -792,10 +794,9 @@ public class Collsion : MonoBehaviour
 
     public IEnumerator SpeedSlowDownRoutine()
     {
-        float lastSpeed = GameManager.Instance.p.MaxSpeed;
-        GameManager.Instance.p.speed = GameManager.Instance.p.MaxSpeed = lastSpeed / 3f;
+        GameManager.Instance.p.speed = GameManager.Instance.p.MaxSpeed = _lastSpeed / 3f;
         yield return new WaitForSeconds(.6f);
-        GameManager.Instance.p.MaxSpeed = lastSpeed;
+        GameManager.Instance.p.MaxSpeed = _lastSpeed;
     }
     
     void RandomAnimationPlay()
@@ -999,7 +1000,7 @@ public class Collsion : MonoBehaviour
         StorageManager.Instance.IncreasePoints(g.GetComponentInParent<Gates>().Cost);
         //GameManager.Instance.Level = g.transform.GetComponentInParent<Gates>().id + 1;
         yield return new WaitForSeconds(.2f);
-
+        
         StiackerMat.DOFade(0, .3f).OnComplete(() =>
         {
             Shine.Play();
@@ -1008,10 +1009,13 @@ public class Collsion : MonoBehaviour
             PopUp.transform.GetChild(0).gameObject.SetActive(true);
             PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "+" + g.GetComponentInParent<Gates>().Cost.ToString();
             PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = GoodGatePopUpColor;
-
+            
             StiackerMat.mainTexture = Tattos[g.transform.GetComponentInParent<Gates>().id];
-            Dummy.Add(StiackerMat.mainTexture);
             StiackerMat.DOFade(1, .5f);
+            if (StiackerMat.mainTexture != null)
+            {
+                Dummy.Add(StiackerMat.mainTexture);   
+            }
         });
     }
 }

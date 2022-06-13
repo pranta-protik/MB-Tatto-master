@@ -41,6 +41,7 @@ namespace ItemCollection.GameEndUnlockItem
 
         private void Awake()
         {
+            // Debug.Log("Level No: " + GameManager.Instance.levelNo);
             if (GameManager.Instance.levelNo <= 23)
             {
                 increaseAmount = 25;
