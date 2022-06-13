@@ -44,6 +44,8 @@ public class UiManager : Singleton<UiManager>
     public float incrementAmount;
     private bool _isHandAnimating;
 
+    public GameObject[] upgradeButtons;
+    
     public GameObject haptics;
 
     public GameObject selectionMenu;
@@ -100,6 +102,16 @@ public class UiManager : Singleton<UiManager>
         
         _camera = Camera.main;
 
+        if (currentLevelText == 0)
+        {
+            shop.SetActive(false);
+            selectionMenuButton.gameObject.SetActive(false);
+            foreach (GameObject upgradeButton in upgradeButtons)
+            {
+                upgradeButton.SetActive(false);
+            }
+        }
+        
         // if (hand != null)
         // {
         //     hand.onClick.AddListener(EnableShopCallBack);

@@ -23,6 +23,8 @@ public class InfluenceMeter : MonoBehaviour
     public float meterScrollDownDuration;
     public float meterIconBaseYValue;
 
+    public GameObject confettiEffect;
+    
     private int _playerIconYPositionIndex;
     private float _scrollDownThreshold;
     private RectTransform _playerIcon;
@@ -94,7 +96,18 @@ public class InfluenceMeter : MonoBehaviour
         _playerIcon.DOAnchorPosY(playerIconYPositions[_playerIconYPositionIndex + 1].playerIconYPosition, playerIconMoveDuration).OnComplete(() =>
         {
             PlayerPrefs.SetInt("PlayerIconYPositionIndex", _playerIconYPositionIndex + 1);
-            EnableNextButton();
+            
+            if (playerIconYPositions[_playerIconYPositionIndex + 1].crossedOpponent != null)
+            {
+                InfluencerStatus influencerStatus = playerIconYPositions[_playerIconYPositionIndex + 1].crossedOpponent.GetComponent<InfluencerStatus>();
+                PlayerPrefs.SetInt("InfluencerStatus" + influencerStatus.influencerId, 1);
+                confettiEffect.SetActive(true);
+                influencerStatus.transform.GetChild(0).DOScale(new Vector3(1f, 1f, 1f), 0.5f).SetDelay(0.5f).OnComplete(EnableNextButton);
+            }
+            else
+            {
+                EnableNextButton();
+            }
         });   
     }
 
