@@ -12,10 +12,10 @@ using UnityEngine.Serialization;
 
 public class Collsion : MonoBehaviour
 {
-    public class CollectedGoodTattoosAttributes
+    private class CollectedGoodTattoosAttributes
     {
-        public Texture2D collectedGoodTattoo;
-        public int collectedGoodTattooLevel;
+        public readonly Texture2D collectedGoodTattoo;
+        public readonly int collectedGoodTattooLevel;
 
         public CollectedGoodTattoosAttributes(Texture2D collectedGoodTattoo, int collectedGoodTattooLevel)
         {
@@ -32,15 +32,15 @@ public class Collsion : MonoBehaviour
     
     [HideInInspector] public Animator mainHandAnimator;
     [HideInInspector] public Animator tattooHandAnimator;
-    public Texture2D defaultTattoo;
+    [HideInInspector] public Texture2D defaultTattoo;
     [HideInInspector] public List<Texture2D> expensiveTattoos;
     [HideInInspector] public List<Texture2D> cheapTattoos;
-    public List<Texture2D> expensiveBlueTattoos;
-    public List<Texture2D> expensiveYellowTattoos;
-    public List<Texture2D> cheapBlueTattoos;
-    public List<Texture2D> cheapYellowTattoos;
-    public List<int> expensiveColorTattooIdSequences;
-    public List<int> cheapColorTattooIdSequences;
+    [HideInInspector] public List<Texture2D> expensiveBlueTattoos;
+    [HideInInspector] public List<Texture2D> expensiveYellowTattoos;
+    [HideInInspector] public List<Texture2D> cheapBlueTattoos;
+    [HideInInspector] public List<Texture2D> cheapYellowTattoos;
+    [HideInInspector] public List<int> expensiveColorTattooIdSequences;
+    [HideInInspector] public List<int> cheapColorTattooIdSequences;
     
     private HandController _tattooHandController;
     private HandController _mainHandController;
@@ -135,11 +135,10 @@ public class Collsion : MonoBehaviour
         
         _collectedGoodTattoosAttributes.Add(new CollectedGoodTattoosAttributes(defaultTattoo, -1));
         
+        
         _lastSpeed = GameManager.Instance.p.maxSpeed;
         _camera = Camera.main;
         cam = GameManager.Instance.FakeCam;
-        
-        StiackerMat.DOFade(0, 0);
         Startpos = transform.localPosition;
 
     }
@@ -214,13 +213,14 @@ public class Collsion : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
+        #region Normal Gates
         if (other.gameObject.CompareTag("GoodGate"))
         {
             _hasGoneThroughGoodGate = true;
             other.GetComponent<BoxCollider>().enabled = false;
             Gates gate = other.GetComponentInParent<Gates>();
             
-            GateEnteringEffects(gate, true);
+            NormalGateEnteringEffects(gate, true);
             
             // Went through special good gates
             if (gate.isSpecial)
@@ -240,7 +240,7 @@ public class Collsion : MonoBehaviour
             other.GetComponent<BoxCollider>().enabled = false;
             Gates gate = other.GetComponentInParent<Gates>();
             
-            GateEnteringEffects(gate, false);
+            NormalGateEnteringEffects(gate, false);
             
             UiManager.Instance.priceTag.GetComponent<Image>().DOColor(Color.red, 0.5f).SetLoops(2, LoopType.Yoyo);
             
@@ -281,11 +281,13 @@ public class Collsion : MonoBehaviour
                 }    
             }
         }
-        
+        #endregion
+
+        #region Color Gates
         if (other.gameObject.CompareTag("Blue"))
         {
-            MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
-            StartCoroutine(AnimationDelayRoutine());
+            other.GetComponent<BoxCollider>().enabled = false;
+            CommonGateEnteringEffects();
 
             if (_hasGoneThroughGoodGate)
             {
@@ -305,8 +307,8 @@ public class Collsion : MonoBehaviour
         
         if (other.gameObject.CompareTag("Yellow"))
         {
-            MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
-            StartCoroutine(AnimationDelayRoutine());
+            other.GetComponent<BoxCollider>().enabled = false;
+            CommonGateEnteringEffects();
 
             if (_hasGoneThroughGoodGate)
             {
@@ -323,24 +325,22 @@ public class Collsion : MonoBehaviour
                 }
             }
         }
+        #endregion
 
-     
-        
+        #region Ornament Gates
         if(other.gameObject.CompareTag("Ring"))
         {
-            MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
-            rings[other.gameObject.GetComponent<Ring>().Id].gameObject.SetActive(true); 
-            StartCoroutine(AnimationDelayRoutine());
             other.GetComponent<BoxCollider>().enabled = false;
+            CommonGateEnteringEffects();
+            rings[other.gameObject.GetComponent<OrnamentGates>().ornamentId].gameObject.SetActive(true);
         }
-        if (other.gameObject.CompareTag("Bre"))
+        if (other.gameObject.CompareTag("Bracelet"))
         {
-            MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
-            bracelets[other.gameObject.GetComponent<Bracelet>().Id].gameObject.SetActive(true);
-            StartCoroutine(AnimationDelayRoutine());
             other.GetComponent<BoxCollider>().enabled = false;
+            CommonGateEnteringEffects();
+            bracelets[other.gameObject.GetComponent<OrnamentGates>().ornamentId].gameObject.SetActive(true);
         }
-
+        #endregion
         
 
         if (other.gameObject.CompareTag("Enemy"))
@@ -624,10 +624,15 @@ public class Collsion : MonoBehaviour
         }
     }
     
-    private void GateEnteringEffects(Gates gate, bool isGood)
+    private void CommonGateEnteringEffects()
     {
         MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
         StartCoroutine(AnimationDelayRoutine());
+    }
+    
+    private void NormalGateEnteringEffects(Gates gate, bool isGood)
+    {
+        CommonGateEnteringEffects();
 
         int score;
         string scoreText;
@@ -747,6 +752,8 @@ public class Collsion : MonoBehaviour
         });
     }
 
+   
+
     public IEnumerator UpdateTexture(GameObject g)
     {
         // MMVibrationManager.Haptic(HapticTypes.MediumImpact);
@@ -849,6 +856,15 @@ public class Collsion : MonoBehaviour
 
     }
 
+    #region Tattoo Drawing
+
+    public void DrawDefaultTattoo()
+    {
+        Mpb.SetTexture(SHPropTexture, defaultTattoo);
+        _skinnedMeshRenderer.SetPropertyBlock(Mpb);
+        _skinnedMeshRenderer.material.DOFade(1, 1.8f);
+    }
+
     private IEnumerator UpdateTattooTexture(Texture2D tattooTexture)
     {
         yield return new WaitForSeconds(0.2f);
@@ -860,6 +876,9 @@ public class Collsion : MonoBehaviour
             _skinnedMeshRenderer.material.DOFade(1, 0.5f);
         });
     }
+
+    #endregion
+    
     
     #region Hand Animation
 

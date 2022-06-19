@@ -160,7 +160,7 @@ public class GameManager : Singleton<GameManager>
         // UiManager.Instance.hand.gameObject.SetActive(false);
         UiManager.Instance.shop.SetActive(false);
         UiManager.Instance.LevelText.transform.parent.gameObject.SetActive(false);
-        CollsionScript.StiackerMat.mainTexture = CollsionScript.Default;
+        // CollsionScript.StiackerMat.mainTexture = CollsionScript.Default;
         UiManager.Instance.StartUI.SetActive(false);
         PivotParent = GameObject.FindGameObjectWithTag("PivotParent");
         Boss = GameObject.FindGameObjectWithTag("EndIt");
@@ -174,7 +174,7 @@ public class GameManager : Singleton<GameManager>
     IEnumerator DelayStart()
     {
         TattoMachine.transform.GetChild(1).gameObject.SetActive(true);
-        CollsionScript.ChangeMaterials();
+        CollsionScript.DrawDefaultTattoo();
         yield return new WaitForSeconds(.5f);
         UiManager.Instance.ShowPriceTag();
         TattoMachine.transform.DOMoveZ(-0.98f, .3f);

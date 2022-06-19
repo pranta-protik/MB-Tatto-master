@@ -505,7 +505,7 @@ GameObject:
   - component: {fileID: 6074063963026133701}
   - component: {fileID: 8336057047661176335}
   - component: {fileID: 7236732741434145421}
-  - component: {fileID: 3819676341684958706}
+  - component: {fileID: 1684686655879015145}
   m_Layer: 0
   m_Name: Lasergate Ring
   m_TagString: Ring
@@ -592,7 +592,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.6559818, y: 1.9544052, z: 0.30001065}
   m_Center: {x: 0, y: 0.95217067, z: -0.00000011920932}
---- !u!114 &3819676341684958706
+--- !u!114 &1684686655879015145
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -601,7 +601,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 7543357610566862810}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d78735a73038c40429127f970608fef3, type: 3}
+  m_Script: {fileID: 11500000, guid: 36f1482c00b5801419d651459e012f3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Id: 0
+  ornamentId: 3
+  ornamentType: 0

@@ -3068,7 +3068,7 @@ Transform:
   - {fileID: 1079283062}
   - {fileID: 1604221683}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &378904803
 MonoBehaviour:
@@ -4995,6 +4995,63 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &685322438
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 685322440}
+  - component: {fileID: 685322439}
+  m_Layer: 0
+  m_Name: OrnamentManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &685322439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685322438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40bcfbf4d11216147a36412e1efae69b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DontDestroyLoad: 0
+  m_IsSingletonLogsEnabled: 0
+  flowerRingSprites:
+  - {fileID: 21300000, guid: 82334407b7606694ebc9df73554de7c7, type: 3}
+  - {fileID: 21300000, guid: 21bad7c5e5338184ea9cc1e8037679f7, type: 3}
+  flowerBraceletSprites:
+  - {fileID: 21300000, guid: f45cb90bd5d80b247bfc53ad42b27bfb, type: 3}
+  - {fileID: 21300000, guid: aabe87e5e1317b1418d5af08fb42a116, type: 3}
+  skullRingSprites:
+  - {fileID: 21300000, guid: b995d351f67ddf444bb1c34ff292ae7c, type: 3}
+  - {fileID: 21300000, guid: d628f8c8648c5034783c6772568a3a54, type: 3}
+  skullBraceletSprites:
+  - {fileID: 21300000, guid: 6cc71e00fe81d4f429fccbe5d9a8ed72, type: 3}
+  - {fileID: 21300000, guid: 06c05bab80b4eba479ad849b70e2b4fb, type: 3}
+--- !u!4 &685322440
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685322438}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &688293880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5402,7 +5459,7 @@ Transform:
   - {fileID: 1429514596}
   - {fileID: 2049859918}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &717399742
 GameObject:
@@ -5938,7 +5995,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &780703548 stripped
 GameObject:
@@ -18506,7 +18563,7 @@ Transform:
   - {fileID: 791488514}
   - {fileID: 1851455666}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 52.761, y: 90, z: 0}
 --- !u!114 &1172234475
 MonoBehaviour:
@@ -18765,7 +18822,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1211506815
 GameObject:
@@ -19020,7 +19077,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1234390834
 GameObject:
@@ -19155,7 +19212,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DontDestroyLoad: 0
   m_IsSingletonLogsEnabled: 0
-  currentBadTattooLevel: 0
   LastTattoTexture: {fileID: 0}
   TextureName: 
   HandNumber: 4
@@ -19256,7 +19312,7 @@ MonoBehaviour:
   - 279M
   - 287M
   timer: 0
-  amarIcchaLevel: 3
+  amarIcchaLevel: 5
 --- !u!1001 &1287034089
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20659,7 +20715,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1392618666
 GameObject:
@@ -24595,7 +24651,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1856887681
 GameObject:
@@ -24643,7 +24699,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1859920058
 GameObject:
