@@ -27,8 +27,8 @@ public class EndDetector : MonoBehaviour
             
 
             GameManager.Instance.CollsionScript.StartTapRoutine = false;
-            GameManager.Instance.CollsionScript.anim.Play("g 0 0");
-            GameManager.Instance.CollsionScript.anim1.Play("g 0 0");
+            GameManager.Instance.CollsionScript.mainHandAnimator.Play("g 0 0");
+            GameManager.Instance.CollsionScript.tattooHandAnimator.Play("g 0 0");
             EndParticle.Play();
             UiManager.Instance.TapFastPanel.gameObject.SetActive(false);       
             GameManager.Instance.IsGameOver = true;

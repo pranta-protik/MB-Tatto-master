@@ -14,6 +14,7 @@ namespace PathCreation.Examples
 
         void Start()
         {
+            enabled = false;
             if (pathCreator != null)
             {
                 pathCreator.pathUpdated += OnPathChanged;

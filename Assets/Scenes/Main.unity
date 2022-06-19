@@ -2493,6 +2493,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2373285987960752171, guid: 13dd3ac243f8f244b9843df3b87ca582, type: 3}
+      propertyPath: tattooHand
+      value: 
+      objectReference: {fileID: 1079283061}
+    - target: {fileID: 2373285987960752171, guid: 13dd3ac243f8f244b9843df3b87ca582, type: 3}
       propertyPath: Rings.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -4243,6 +4247,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 8645485101156954889, guid: 131f9305687aee445b6a192bec00b1cc, type: 3}
+      propertyPath: tattooHand
+      value: 
+      objectReference: {fileID: 780703548}
     - target: {fileID: 8879839752688848452, guid: 131f9305687aee445b6a192bec00b1cc, type: 3}
       propertyPath: m_Name
       value: player_FemHand02
@@ -5888,6 +5896,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &780703548 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3659479601355783230, guid: 5df2367edeecd1343afb724adeb07a71, type: 3}
+  m_PrefabInstance: {fileID: 167582303}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &791488513
 GameObject:
   m_ObjectHideFlags: 0
@@ -11352,6 +11365,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 8734206296889652338, guid: 09b96d6da0680244eb39260b77d0cfdc, type: 3}
+      propertyPath: tattooHand
+      value: 
+      objectReference: {fileID: 1687936780}
     - target: {fileID: 8734206296889652338, guid: 09b96d6da0680244eb39260b77d0cfdc, type: 3}
       propertyPath: Rings.Array.size
       value: 4
@@ -19808,6 +19825,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 378904802}
     m_Modifications:
     - target: {fileID: 2475453667155728164, guid: 887ebc2afac49184793737bed293dd33, type: 3}
+      propertyPath: tattooHand
+      value: 
+      objectReference: {fileID: 146056923}
+    - target: {fileID: 2475453667155728164, guid: 887ebc2afac49184793737bed293dd33, type: 3}
       propertyPath: Rings.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -20225,6 +20246,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8879984846791255931, guid: 0ee54f147c8b94640b2d295d748ff8d5, type: 3}
+      propertyPath: tattooHand
+      value: 
+      objectReference: {fileID: 1741970589}
     - target: {fileID: 8879984846791255931, guid: 0ee54f147c8b94640b2d295d748ff8d5, type: 3}
       propertyPath: Rings.Array.size
       value: 4
@@ -23852,6 +23877,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 9051667895357920225, guid: 712931f53612ea945949c73803cf68a9, type: 3}
+      propertyPath: tattooHand
+      value: 
+      objectReference: {fileID: 2073972714}
     - target: {fileID: 9051667895357920225, guid: 712931f53612ea945949c73803cf68a9, type: 3}
       propertyPath: Rings.Array.size
       value: 4
