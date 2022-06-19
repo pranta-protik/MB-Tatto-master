@@ -383,7 +383,7 @@ public class GameManager : Singleton<GameManager>
     {
         foreach (ItemPacks hand in Hands)
         {
-            if (hand.MainHand.GetComponent<Controller>().handId == handId)
+            if (hand.MainHand.GetComponent<HandController>().handId == handId)
             {
                 hand.MainHand.gameObject.SetActive(true);
                 hand.CopyHand.gameObject.SetActive(true);

@@ -13,7 +13,7 @@ public class Collsion : MonoBehaviour
 {
     public List<GameObject> Rings = new List<GameObject>();
     public List<GameObject> Brecelets = new List<GameObject>();
-    public Controller c, c1;
+    public HandController c, c1;
     public ParticleSystem HeatEffect, Shine;
     public Camera cam;
     public Text LevelText, ColorText;
@@ -74,8 +74,8 @@ public class Collsion : MonoBehaviour
         cam = GameManager.Instance.FakeCam;
         anim = GetComponent<Animator>();
         anim1 = GameObject.FindGameObjectWithTag("Copy").GetComponent<Animator>();
-        c = GetComponent<Controller>();
-        c1 = GameObject.FindGameObjectWithTag("Copy").GetComponent<Controller>();
+        c = GetComponent<HandController>();
+        c1 = GameObject.FindGameObjectWithTag("Copy").GetComponent<HandController>();
 
         OverRideController = new AnimatorOverrideController
         {
