@@ -12,15 +12,23 @@ using UnityEngine.Serialization;
 public class Collsion : MonoBehaviour
 {
     public GameObject tattooHand;
+    public Animator scoreAnimator;
+    public AnimatorOverrideController animatorOverrideController;
+    public AnimationClip[] animationClips;
+    public Color goodGateScorePopUpColor;
+    public Color badGateScorePopUpColor;
+    
+    [HideInInspector] public Animator mainHandAnimator;
+    [HideInInspector] public Animator tattooHandAnimator;
     
     private HandController _tattooHandController;
     private HandController _mainHandController;
     private ParticleSystem _hurtEffect;
     private ParticleSystem _shineEffect;
+    private readonly List<int> _animationIndexes = new List<int>();
+    private static readonly int Gesture = Animator.StringToHash("Gesture");
     
-    [HideInInspector] public Animator mainHandAnimator;
-    [HideInInspector] public Animator tattooHandAnimator;
-
+    
     public Camera cam;
     public Text LevelText, ColorText;
 
@@ -37,18 +45,12 @@ public class Collsion : MonoBehaviour
     Vector3 Startpos;
     public float Multiplier;
     public bool StartTapRoutine;
-
-    public Animator PopUp;
+    
     bool IsYellow, IsBlue;
     private float timeLeft = .4f;
     [SerializeField] public ParticleSystem Ps;
     bool m_FirstClick;
     [SerializeField] bool m_isTapping;
-
-
-    public Color GoodGatePopUpColor;
-
-    public Color BadGatePopUpColor;
 
     [SerializeField] int i; public int SavedTattooNo;
     private int _targetTattooValue;
@@ -66,11 +68,9 @@ public class Collsion : MonoBehaviour
     public int lastGateId;
     private new Camera _camera;
     
-    public AnimatorOverrideController OverRideController;
-    public AnimationClip[] AnimationClips;
     private static readonly int IsWrestling = Animator.StringToHash("isWrestling");
 
-    [SerializeField] private List<int> _animationIndexes = new List<int>();
+    
     private float _lastSpeed;
     private bool _shouldChange;
     
@@ -78,6 +78,7 @@ public class Collsion : MonoBehaviour
     public List<GameObject> rings = new List<GameObject>();
     public List<GameObject> bracelets = new List<GameObject>();
     
+
     private void Start()
     {
         _mainHandController = GetComponent<HandController>();
@@ -89,24 +90,20 @@ public class Collsion : MonoBehaviour
         mainHandAnimator = GetComponent<Animator>();
         tattooHandAnimator = tattooHand.GetComponent<Animator>();
         
+        animatorOverrideController = new AnimatorOverrideController
+        {
+            runtimeAnimatorController = mainHandAnimator.runtimeAnimatorController
+        };
+        
+        for (int clipIndex = 0; clipIndex < animationClips.Length; clipIndex++)
+        {
+            _animationIndexes.Add(clipIndex);
+        }
+        
         
         _lastSpeed = GameManager.Instance.p.maxSpeed;
         _camera = Camera.main;
         cam = GameManager.Instance.FakeCam;
-        mainHandAnimator = GetComponent<Animator>();
-        tattooHandAnimator = GameObject.FindGameObjectWithTag("Copy").GetComponent<Animator>();
-        
-        _tattooHandController = GameObject.FindGameObjectWithTag("Copy").GetComponent<HandController>();
-
-        OverRideController = new AnimatorOverrideController
-        {
-            runtimeAnimatorController = mainHandAnimator.runtimeAnimatorController
-        };
-
-        for (int k = 0; k < AnimationClips.Length; k++)
-        {
-            _animationIndexes.Add(k);
-        }
         
         StiackerMat.DOFade(0, 0);
         Startpos = transform.localPosition;
@@ -186,80 +183,30 @@ public class Collsion : MonoBehaviour
         if (other.gameObject.CompareTag("GoodGate"))
         {
             MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+            StartCoroutine(AnimationDelayRoutine());
+            other.GetComponent<BoxCollider>().enabled = false;
             
-            if (other.GetComponentInParent<Gates>().isSpecial)
+            Gates gate = other.GetComponentInParent<Gates>();
+            StorageManager.Instance.IncreaseScore(gate.gateCost);
+            
+            if (gate.isSpecial)
             {
-                StartCoroutine(AnimationDelayRoutine());
-                StorageManager.Instance.IncreasePoints(other.GetComponentInParent<Gates>().gateCost);
-
+                StorageManager.Instance.IncreaseScore(gate.gateCost);
+                
                 _shineEffect.Play();
-                PopUp.Play("opps");
-
-                PopUp.transform.GetChild(0).gameObject.SetActive(true);
-                PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "+" + other.GetComponentInParent<Gates>().gateCost.ToString();
-                PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = GoodGatePopUpColor;
-                other.GetComponent<BoxCollider>().enabled = false;
-
+                
+                scoreAnimator.transform.GetChild(0).gameObject.SetActive(true);
+                scoreAnimator.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "+" + gate.gateCost;
+                scoreAnimator.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = goodGateScorePopUpColor;
+                scoreAnimator.Play("PopUp");
+                
                 UiManager.Instance.priceTag.transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.3f).SetLoops(4, LoopType.Yoyo);
-                // lastGateId = other.gameObject.transform.GetComponentInParent<Gates>().id;
             }
             else
             {
-                IsGood = true;
-                StartCoroutine(AnimationDelayRoutine());
-                GameManager.Instance.Level++;
-
-                IsGoodGate = true;
-                other.GetComponent<BoxCollider>().enabled = false;
-                // if (IsYellow)
-                // {
-                //     if (GameManager.Instance.Level == 5)
-                //     {
-                //         StiackerMat.DOFade(0, .3f).OnComplete(() =>
-                //         {
-                //             StiackerMat.mainTexture = GoodYellow[01];
-                //             StiackerMat.DOFade(1, .5f);
-                //
-                //         });
-                //     }
-                //     else
-                //         StartCoroutine(UpdateTexture(other.gameObject));
-                // }
-                // else if (IsBlue)
-                // {
-                //     if (GameManager.Instance.Level == 5)
-                //     {
-                //         StiackerMat.DOFade(0, .3f).OnComplete(() =>
-                //         {
-                //             StiackerMat.mainTexture = GoodBlue[01];
-                //             StiackerMat.DOFade(1, .5f);
-                //         });
-                //     }
-                //     else
-                //         StartCoroutine(UpdateTexture(other.gameObject));
-                // }
-                // else
-                // {
-                //     if (!GameManager.Instance.IsVideo)
-                //         StartCoroutine(UpdateTexture(other.gameObject));
-                //     else
-                //     {
-                //         StartCoroutine(UpdateTextureVideo(other.gameObject));
-                //         LastLevel = GameManager.Instance.Level;
-                //     }
-                // }
-
                 lastGateId = other.gameObject.transform.GetComponentInParent<Gates>().gateLevel;
-                
-                if (!GameManager.Instance.IsVideo)
-                {
-                    StartCoroutine(UpdateTexture(other.gameObject));   
-                }
-                else
-                {
-                    StartCoroutine(UpdateTextureVideo(other.gameObject));
-                    LastLevel = GameManager.Instance.Level;
-                }
+                StartCoroutine(UpdateExpensiveTexture(other.gameObject));
+                LastLevel = GameManager.Instance.Level;
             }
         }
         
@@ -292,15 +239,15 @@ public class Collsion : MonoBehaviour
             {
                 m_i = Dummy.Count;
                 
-                StorageManager.Instance.IncreasePoints(-other.GetComponentInParent<Gates>().gateCost);
+                StorageManager.Instance.IncreaseScore(-other.GetComponentInParent<Gates>().gateCost);
                 //GameManager.Instance.Level = g.transform.GetComponentInParent<Gates>().id + 1;
                 
                 _shineEffect.Play();
-                PopUp.Play("opps");
+                scoreAnimator.Play("opps");
 
-                PopUp.transform.GetChild(0).gameObject.SetActive(true);
-                PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "-" + other.GetComponentInParent<Gates>().gateCost.ToString();
-                PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = BadGatePopUpColor;
+                scoreAnimator.transform.GetChild(0).gameObject.SetActive(true);
+                scoreAnimator.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "-" + other.GetComponentInParent<Gates>().gateCost.ToString();
+                scoreAnimator.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = badGateScorePopUpColor;
                 
                 if (_shouldChange)
                 {
@@ -609,11 +556,11 @@ public class Collsion : MonoBehaviour
         {
             Debug.Log("level end trigger");
             // GameManager.Instance.IsLevelEnd = true;
-            if (StorageManager.Instance.RewardValue <= 0)
+            if (StorageManager.Instance.currentLevelScore <= 0)
             {
                 StorageManager.Instance.currentLevel = PlayerPrefs.GetInt("current_scene");
                 StorageManager.Instance.currentLevelText = PlayerPrefs.GetInt("current_scene_text", 0);
-                StorageManager.Instance.RewardValue = 500;
+                StorageManager.Instance.currentLevelScore = 500;
             }
 
             // Camera.main.transform.gameObject.SetActive(false);
@@ -685,7 +632,7 @@ public class Collsion : MonoBehaviour
         if (other.gameObject.CompareTag("DecisionTrigger"))
         {
             UiManager.Instance.haptics.SetActive(false);
-            UiManager.Instance.PointText.transform.parent.gameObject.SetActive(false);
+            UiManager.Instance.scoreText.transform.parent.gameObject.SetActive(false);
             GameManager.Instance.p.enabled = false;
             mainHandAnimator.Play("idle");
             tattooHandAnimator.Play("idle");
@@ -800,16 +747,9 @@ public class Collsion : MonoBehaviour
         GameManager.Instance.TextureName = GameManager.Instance.CollsionScript.StiackerMat.mainTexture.name;
         GameManager.Instance.LastTattoTexture = GameManager.Instance.CollsionScript.StiackerMat.mainTexture;
         PlayerPrefs.SetString("TattooFrame" + SavedTattooNo, GameManager.Instance.TextureName);
-        PlayerPrefs.SetInt("TattoCost" + SavedTattooNo, StorageManager.Instance.RewardValue);
+        PlayerPrefs.SetInt("TattoCost" + SavedTattooNo, StorageManager.Instance.currentLevelScore);
         SavedTattooNo++;
         PlayerPrefs.SetInt("SavedTattooNo", SavedTattooNo);
-    }
-
-
-    public IEnumerator AnimationDelayRoutine()
-    {
-        yield return new WaitForSeconds(.55f);
-        RandomAnimationPlay();
     }
 
     public IEnumerator SpeedSlowDownRoutine()
@@ -819,49 +759,7 @@ public class Collsion : MonoBehaviour
         GameManager.Instance.p.maxSpeed = _lastSpeed;
     }
     
-    void RandomAnimationPlay()
-    {
-        int index = 0;
-        if (_animationIndexes.Count > 1)
-        {
-            int randomValue = Random.Range(0, _animationIndexes.Count);
-            index = _animationIndexes[randomValue];
-            _animationIndexes.RemoveAt(randomValue);
-        }
-        else
-        {
-            index = _animationIndexes[0];
-            _animationIndexes.Clear();
-            for (int k = 0; k < AnimationClips.Length; k++)
-            {
-                _animationIndexes.Add(k);
-            }
-        }
-        
-        OverRideController["Take 001"] = AnimationClips[index];
-
-        mainHandAnimator.runtimeAnimatorController = OverRideController;
-        tattooHandAnimator.runtimeAnimatorController = OverRideController;
-        mainHandAnimator.SetTrigger("Gesture");
-        tattooHandAnimator.SetTrigger("Gesture");
-        //   if(GameManager.Instance.Level % 2 == 0)
-        //   {
-        //       anim.Play("g 0"); anim1.Play("g 0");
-        //   }
-        //else
-        //   {
-        //       int i = Random.Range(0, 2);
-        //       if (i == 0)
-        //       {
-        //           anim.Play("g 1"); anim1.Play("g 1");
-        //       }
-        //       else
-        //       {
-        //           anim.Play("g"); anim1.Play("g");
-        //       }
-        //   }
-
-    }
+    
 
 
     // public IEnumerator StopRoutine(GameObject g)
@@ -915,17 +813,17 @@ public class Collsion : MonoBehaviour
     public IEnumerator UpdateTexture(GameObject g)
     {
         // MMVibrationManager.Haptic(HapticTypes.MediumImpact);
-        StorageManager.Instance.IncreasePoints(g.GetComponentInParent<Gates>().gateCost);
+        StorageManager.Instance.IncreaseScore(g.GetComponentInParent<Gates>().gateCost);
         yield return new WaitForSeconds(.2f);
         StiackerMat.DOFade(0, .3f).OnComplete(() =>
         {
             _shineEffect.Play();
 
-            PopUp.Play("opps");
+            scoreAnimator.Play("opps");
 
-            PopUp.transform.GetChild(0).gameObject.SetActive(true);
-            PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "+" + g.GetComponentInParent<Gates>().gateCost.ToString();
-            PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = GoodGatePopUpColor;
+            scoreAnimator.transform.GetChild(0).gameObject.SetActive(true);
+            scoreAnimator.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "+" + g.GetComponentInParent<Gates>().gateCost.ToString();
+            scoreAnimator.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = goodGateScorePopUpColor;
             StiackerMat.mainTexture = Tattos[GameManager.Instance.Level - 1];
             StiackerMat.DOFade(1, .5f);
         });
@@ -935,12 +833,12 @@ public class Collsion : MonoBehaviour
     public void DownGradeTexture(int ammount, GameObject g)
     {
         
-        StorageManager.Instance.IncreasePoints(-g.GetComponentInParent<DownGrade>().Cost);
-        PopUp.Play("opps");
+        StorageManager.Instance.IncreaseScore(-g.GetComponentInParent<DownGrade>().Cost);
+        scoreAnimator.Play("opps");
 
-        PopUp.transform.GetChild(0).gameObject.SetActive(true);
-        PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "-" + g.GetComponentInParent<DownGrade>().Cost.ToString();
-        PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = Color.red;
+        scoreAnimator.transform.GetChild(0).gameObject.SetActive(true);
+        scoreAnimator.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "-" + g.GetComponentInParent<DownGrade>().Cost.ToString();
+        scoreAnimator.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = Color.red;
         // MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
   
     }
@@ -949,15 +847,15 @@ public class Collsion : MonoBehaviour
     public IEnumerator UpdateTextureCheap(GameObject g)
     {
         // MMVibrationManager.Haptic(HapticTypes.MediumImpact);
-        StorageManager.Instance.IncreasePoints(-g.GetComponentInParent<Gates>().gateCost);
+        StorageManager.Instance.IncreaseScore(-g.GetComponentInParent<Gates>().gateCost);
         yield return new WaitForSeconds(.2f);
 
         _shineEffect.Play();
-        PopUp.Play("opps");
+        scoreAnimator.Play("opps");
 
-        PopUp.transform.GetChild(0).gameObject.SetActive(true);
-        PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "-" + g.GetComponentInParent<Gates>().gateCost.ToString();
-        PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = BadGatePopUpColor;
+        scoreAnimator.transform.GetChild(0).gameObject.SetActive(true);
+        scoreAnimator.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "-" + g.GetComponentInParent<Gates>().gateCost.ToString();
+        scoreAnimator.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = badGateScorePopUpColor;
         
         if (_shouldChange)
         {
@@ -996,39 +894,36 @@ public class Collsion : MonoBehaviour
     public IEnumerator UpdateCheapTextureVideo(GameObject g)
     {
         // MMVibrationManager.Haptic(HapticTypes.MediumImpact);
-        StorageManager.Instance.IncreasePoints(-g.GetComponentInParent<Gates>().gateCost);
+        StorageManager.Instance.IncreaseScore(-g.GetComponentInParent<Gates>().gateCost);
         GameManager.Instance.Level = g.transform.GetComponentInParent<Gates>().gateLevel + 1;
         yield return new WaitForSeconds(.2f);
 
         StiackerMat.DOFade(0, .3f).OnComplete(() =>
         {
             _shineEffect.Play();
-            PopUp.Play("opps");
+            scoreAnimator.Play("opps");
 
-            PopUp.transform.GetChild(0).gameObject.SetActive(true);
-            PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "-" + g.GetComponentInParent<Gates>().gateCost.ToString();
-            PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = BadGatePopUpColor;                
+            scoreAnimator.transform.GetChild(0).gameObject.SetActive(true);
+            scoreAnimator.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "-" + g.GetComponentInParent<Gates>().gateCost.ToString();
+            scoreAnimator.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = badGateScorePopUpColor;                
             StiackerMat.mainTexture = CheapTttos[g.transform.GetComponentInParent<Gates>().gateLevel];
             StiackerMat.DOFade(1, .5f);
         });
 
     }
 
-    public IEnumerator UpdateTextureVideo(GameObject g)
+    private IEnumerator UpdateExpensiveTexture(GameObject g)
     {
-        // MMVibrationManager.Haptic(HapticTypes.MediumImpact);
-        StorageManager.Instance.IncreasePoints(g.GetComponentInParent<Gates>().gateCost);
-        //GameManager.Instance.Level = g.transform.GetComponentInParent<Gates>().id + 1;
         yield return new WaitForSeconds(.2f);
         
         StiackerMat.DOFade(0, .3f).OnComplete(() =>
         {
             _shineEffect.Play();
-            PopUp.Play("opps");
+            scoreAnimator.Play("opps");
 
-            PopUp.transform.GetChild(0).gameObject.SetActive(true);
-            PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "+" + g.GetComponentInParent<Gates>().gateCost.ToString();
-            PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = GoodGatePopUpColor;
+            scoreAnimator.transform.GetChild(0).gameObject.SetActive(true);
+            scoreAnimator.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "+" + g.GetComponentInParent<Gates>().gateCost.ToString();
+            scoreAnimator.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = goodGateScorePopUpColor;
             
             StiackerMat.mainTexture = Tattos[g.transform.GetComponentInParent<Gates>().gateLevel];
             StiackerMat.DOFade(1, .5f);
@@ -1038,4 +933,40 @@ public class Collsion : MonoBehaviour
             }
         });
     }
+
+    #region Hand Animation
+
+    private IEnumerator AnimationDelayRoutine()
+    {
+        yield return new WaitForSeconds(0.55f);
+        PlayRandomAnimation();
+    }
+    
+    private void PlayRandomAnimation()
+    {
+        int index;
+        
+        if (_animationIndexes.Count > 1)
+        {
+            int randomValue = Random.Range(0, _animationIndexes.Count);
+            index = _animationIndexes[randomValue];
+            _animationIndexes.RemoveAt(randomValue);
+        }
+        else
+        {
+            index = _animationIndexes[0];
+            _animationIndexes.Clear();
+            for (int k = 0; k < animationClips.Length; k++)
+            {
+                _animationIndexes.Add(k);
+            }
+        }
+        animatorOverrideController["Take 001"] = animationClips[index];
+        mainHandAnimator.runtimeAnimatorController = animatorOverrideController;
+        tattooHandAnimator.runtimeAnimatorController = animatorOverrideController;
+        mainHandAnimator.SetTrigger(Gesture);
+        tattooHandAnimator.SetTrigger(Gesture);
+    }
+
+    #endregion
 }

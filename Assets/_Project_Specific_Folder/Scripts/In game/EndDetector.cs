@@ -38,8 +38,46 @@ public class EndDetector : MonoBehaviour
             // all shit saving
             GameManager.Instance.GameEnd = true;
             GameManager.Instance.SetTotalTime();
-            StorageManager.Instance.SetTotalScore();
-            StorageManager.Instance.GetTotalScore();
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            // StorageManager.Instance.SetTotalScore();
+            // StorageManager.Instance.GetTotalScores();
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             Confetti.gameObject.SetActive(true);
 
             // Tattoo wall mechanics

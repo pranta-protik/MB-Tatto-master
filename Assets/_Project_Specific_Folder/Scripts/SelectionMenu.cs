@@ -44,7 +44,7 @@ public class SelectionMenu : MonoBehaviour
         
         _unlockButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText("$" + baseUnlockCost * _multiplier);
         
-        if (StorageManager.GetTotalCoin() >= baseUnlockCost * _multiplier)
+        if (StorageManager.GetTotalScore() >= baseUnlockCost * _multiplier)
         {
             EnableButton(_unlockButton.GetComponent<Button>());
         }
@@ -70,8 +70,8 @@ public class SelectionMenu : MonoBehaviour
 
     public void OnUnlockButtonClick()
     {
-        StorageManager.SaveTotalCoin(StorageManager.GetTotalCoin() - (baseUnlockCost * _multiplier));
-        UiManager.Instance.TotalText.SetText("$" + StorageManager.GetTotalCoin());
+        StorageManager.SetTotalScore(StorageManager.GetTotalScore() - (baseUnlockCost * _multiplier));
+        UiManager.Instance.TotalText.SetText("$" + StorageManager.GetTotalScore());
 
         PlayerPrefs.SetInt("LastMultiplier", _multiplier + 1);
 

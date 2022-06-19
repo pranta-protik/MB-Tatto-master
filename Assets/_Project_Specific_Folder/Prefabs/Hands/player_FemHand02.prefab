@@ -20544,28 +20544,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0b27c2330bbee44f93b5f34677ee90a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: 0
-  maxDragDistance: 40
-  sensitivity: 300
-  SwipeSensitivity: 1
-  turnTreshold: 15
-  movementSmoothing: 0
-  rotationSmoothing: 0
-  originPos: {x: 0, y: 0, z: 0}
-  positionX: 0
-  positionY: 0
-  speed: 0.8
-  computerSpeed: 15
-  dir: -1
-  rotationSpeed: 0
-  mapWidth: 2
-  touching: 0
-  end: 0
-  EndSceneSpeed: 0.5
-  count: 0
-  TileCount: 0
-  multiply: 0
   handId: 0
+  positionXClampValue: 4
+  mobileSpeed: 0.8
+  computerSpeed: 15
 --- !u!114 &8645485101156954889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20578,25 +20560,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 981833c300ce33f4b815997eb49398ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Rings:
-  - {fileID: 4833750486275377264}
-  - {fileID: 2209021709598404048}
-  - {fileID: 8537185987371106151}
-  - {fileID: 6858002976432056123}
-  Brecelets:
-  - {fileID: 1424353656581210136}
-  - {fileID: 6651678439905660087}
-  - {fileID: 6094053406034685374}
-  - {fileID: 3732758135327918265}
-  c: {fileID: 0}
-  c1: {fileID: 0}
-  HeatEffect: {fileID: 8645485100008913223}
-  Shine: {fileID: 8645485101748739657}
+  tattooHand: {fileID: 0}
+  mainHandAnimator: {fileID: 0}
+  tattooHandAnimator: {fileID: 0}
+  scoreAnimator: {fileID: 8645485099988318624}
+  animatorOverrideController: {fileID: 22100000, guid: ccf2c04e5ea1305488d5223e19df82ac, type: 2}
+  animationClips:
+  - {fileID: 1827226128182048838, guid: 91ca61afb489c3443a7b929b16d71a38, type: 3}
+  - {fileID: 1827226128182048838, guid: b1a3e7d019b883d4d881cbdfdb371cfa, type: 3}
+  - {fileID: 1827226128182048838, guid: e86535c217774124eb9ef949a04a66ec, type: 3}
+  - {fileID: 1827226128182048838, guid: c8f36304281f6aa4f91f2b6d35ba85ac, type: 3}
+  - {fileID: 1827226128182048838, guid: 9b0b45da5cc940941adfa66e0cf46eeb, type: 3}
+  - {fileID: 1827226128182048838, guid: 99393eb8e65b1f44ea6fe8fde70a91bd, type: 3}
+  - {fileID: 1827226128182048838, guid: b5c870e396d9b7846875a79e64f2f6b5, type: 3}
+  - {fileID: 1827226128182048838, guid: cc0a411143464df44becb656a912bb2d, type: 3}
   cam: {fileID: 0}
   LevelText: {fileID: 0}
   ColorText: {fileID: 0}
-  anim: {fileID: 0}
-  anim1: {fileID: 0}
   SecondHand: {fileID: 0}
   Burnt: {fileID: 2800000, guid: 08763b4448871f041b6e4b84e42e328f, type: 3}
   Tattos: []
@@ -20612,7 +20592,6 @@ MonoBehaviour:
   IsGoodGate: 0
   Multiplier: 0.3
   StartTapRoutine: 0
-  PopUp: {fileID: 8645485099988318624}
   Ps: {fileID: 0}
   m_isTapping: 0
   GoodGatePopUpColor: {r: 0.7254902, g: 0.7607844, b: 0.9921569, a: 1}
@@ -20625,17 +20604,9 @@ MonoBehaviour:
   m_i: 0
   Dummy: []
   lastGateId: 0
-  OverRideController: {fileID: 22100000, guid: ccf2c04e5ea1305488d5223e19df82ac, type: 2}
-  AnimationClips:
-  - {fileID: 1827226128182048838, guid: cc0a411143464df44becb656a912bb2d, type: 3}
-  - {fileID: 1827226128182048838, guid: b5c870e396d9b7846875a79e64f2f6b5, type: 3}
-  - {fileID: 1827226128182048838, guid: 9b0b45da5cc940941adfa66e0cf46eeb, type: 3}
-  - {fileID: 1827226128182048838, guid: c8f36304281f6aa4f91f2b6d35ba85ac, type: 3}
-  - {fileID: 1827226128182048838, guid: e86535c217774124eb9ef949a04a66ec, type: 3}
-  - {fileID: 1827226128182048838, guid: b1a3e7d019b883d4d881cbdfdb371cfa, type: 3}
-  - {fileID: 1827226128182048838, guid: 91ca61afb489c3443a7b929b16d71a38, type: 3}
-  - {fileID: 1827226128182048838, guid: 99393eb8e65b1f44ea6fe8fde70a91bd, type: 3}
   _animationIndexes: 
+  rings: []
+  bracelets: []
 --- !u!1 &9128488199690859981
 GameObject:
   m_ObjectHideFlags: 0
@@ -20744,11 +20715,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d4dc341a4087b6c4b9eb29491075f28b, type: 3}
   m_PrefabInstance: {fileID: 1326710705913598081}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2209021709598404048 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d4dc341a4087b6c4b9eb29491075f28b, type: 3}
-  m_PrefabInstance: {fileID: 1326710705913598081}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2235258534247824713
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20822,11 +20788,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a211e2eac6d953342a7eeb231a54fe9f, type: 3}
---- !u!1 &1424353656581210136 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a211e2eac6d953342a7eeb231a54fe9f, type: 3}
-  m_PrefabInstance: {fileID: 2235258534247824713}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1769776897811356322 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a211e2eac6d953342a7eeb231a54fe9f, type: 3}
@@ -20905,11 +20866,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5cd7b8600357244b803550c7d672074, type: 3}
---- !u!1 &3732758135327918265 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d5cd7b8600357244b803550c7d672074, type: 3}
-  m_PrefabInstance: {fileID: 4543008798342034920}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4073148606941221379 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d5cd7b8600357244b803550c7d672074, type: 3}
@@ -20993,11 +20949,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2dffe1c9c78fa514da5beb9fcf6c9912, type: 3}
   m_PrefabInstance: {fileID: 5752653242301281569}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &4833750486275377264 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2dffe1c9c78fa514da5beb9fcf6c9912, type: 3}
-  m_PrefabInstance: {fileID: 5752653242301281569}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5804836031127532006
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21076,11 +21027,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f25595e754263af41aad2de3e2d8ff48, type: 3}
   m_PrefabInstance: {fileID: 5804836031127532006}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &6651678439905660087 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f25595e754263af41aad2de3e2d8ff48, type: 3}
-  m_PrefabInstance: {fileID: 5804836031127532006}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6047749972659591786
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21154,11 +21100,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb409be1ae7ffab46a0ad4783f0e5f92, type: 3}
---- !u!1 &6858002976432056123 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: bb409be1ae7ffab46a0ad4783f0e5f92, type: 3}
-  m_PrefabInstance: {fileID: 6047749972659591786}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6081924326980697473 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bb409be1ae7ffab46a0ad4783f0e5f92, type: 3}
@@ -21237,11 +21178,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5013b976dfc44044189859a6d336f790, type: 3}
---- !u!1 &6094053406034685374 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5013b976dfc44044189859a6d336f790, type: 3}
-  m_PrefabInstance: {fileID: 6364435754000175343}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6906760292215338756 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5013b976dfc44044189859a6d336f790, type: 3}
@@ -21320,11 +21256,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6a5d379bf4a8a84288cfad979422ea5, type: 3}
---- !u!1 &8537185987371106151 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b6a5d379bf4a8a84288cfad979422ea5, type: 3}
-  m_PrefabInstance: {fileID: 8843737874139398710}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9021270533769143773 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b6a5d379bf4a8a84288cfad979422ea5, type: 3}

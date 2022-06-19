@@ -46,7 +46,7 @@ public class Buttons : MonoBehaviour
 
         if (scoreText != null)
         {
-            scoreText.SetText("$" + StorageManager.GetTotalCoin());
+            scoreText.SetText("$" + StorageManager.GetTotalScore());
         }
 
         _currentLevel = PlayerPrefs.GetInt("current_scene_text") + 1;
@@ -104,8 +104,8 @@ public class Buttons : MonoBehaviour
     public void BuyCard()
     {
 
-        StorageManager.SaveTotalCoin(StorageManager.GetTotalCoin() - Buttonss[SelectedId].GetComponent<ButtonCard>().requiredCash);
-        scoreText.SetText("$" + StorageManager.GetTotalCoin());
+        StorageManager.SetTotalScore(StorageManager.GetTotalScore() - Buttonss[SelectedId].GetComponent<ButtonCard>().requiredCash);
+        scoreText.SetText("$" + StorageManager.GetTotalScore());
         SpawnedButtons[SelectedId].GetComponent<ButtonCard>().EnableCard();
 
         PlayerPrefs.SetInt("SelectedHandId", Buttonss[SelectedId].GetComponent<ButtonCard>().handId);
@@ -158,7 +158,7 @@ public class Buttons : MonoBehaviour
     {
         if (btnCard.requirementType == ButtonCard.BRequirementType.Cash)
         {
-            if (StorageManager.GetTotalCoin() >= btnCard.requiredCash)
+            if (StorageManager.GetTotalScore() >= btnCard.requiredCash)
             {
                 PlayerPrefs.SetInt("IsUnlockable"+btnCard.handId, 1);
             }
@@ -271,7 +271,7 @@ public class Buttons : MonoBehaviour
             actionButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText("$" + btnCard.requiredCash);
             actionButton.gameObject.SetActive(true);
             DisableButton(startButton);
-            if (StorageManager.GetTotalCoin() >= btnCard.requiredCash)
+            if (StorageManager.GetTotalScore() >= btnCard.requiredCash)
             {
                 EnableButton(actionButton);
             }

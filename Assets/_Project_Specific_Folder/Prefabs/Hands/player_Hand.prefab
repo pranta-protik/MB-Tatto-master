@@ -20241,11 +20241,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tattooHand: {fileID: 0}
+  mainHandAnimator: {fileID: 0}
+  tattooHandAnimator: {fileID: 0}
+  scoreAnimator: {fileID: 8879984847051700071}
+  animatorOverrideController: {fileID: 22100000, guid: ccf2c04e5ea1305488d5223e19df82ac, type: 2}
+  animationClips:
+  - {fileID: 1827226128182048838, guid: 91ca61afb489c3443a7b929b16d71a38, type: 3}
+  - {fileID: 1827226128182048838, guid: b1a3e7d019b883d4d881cbdfdb371cfa, type: 3}
+  - {fileID: 1827226128182048838, guid: e86535c217774124eb9ef949a04a66ec, type: 3}
+  - {fileID: 1827226128182048838, guid: c8f36304281f6aa4f91f2b6d35ba85ac, type: 3}
+  - {fileID: 1827226128182048838, guid: 9b0b45da5cc940941adfa66e0cf46eeb, type: 3}
+  - {fileID: 1827226128182048838, guid: 99393eb8e65b1f44ea6fe8fde70a91bd, type: 3}
+  - {fileID: 1827226128182048838, guid: b5c870e396d9b7846875a79e64f2f6b5, type: 3}
+  - {fileID: 1827226128182048838, guid: cc0a411143464df44becb656a912bb2d, type: 3}
   cam: {fileID: 0}
   LevelText: {fileID: 0}
   ColorText: {fileID: 0}
-  anim: {fileID: 8879984846791255930}
-  anim1: {fileID: 0}
   SecondHand: {fileID: 0}
   Burnt: {fileID: 2800000, guid: 08763b4448871f041b6e4b84e42e328f, type: 3}
   Tattos: []
@@ -20261,7 +20272,6 @@ MonoBehaviour:
   IsGoodGate: 0
   Multiplier: 0.3
   StartTapRoutine: 0
-  PopUp: {fileID: 8879984847051700071}
   Ps: {fileID: 0}
   m_isTapping: 0
   GoodGatePopUpColor: {r: 0.7254902, g: 0.7607844, b: 0.9921569, a: 1}
@@ -20274,16 +20284,6 @@ MonoBehaviour:
   m_i: 0
   Dummy: []
   lastGateId: 0
-  OverRideController: {fileID: 22100000, guid: ccf2c04e5ea1305488d5223e19df82ac, type: 2}
-  AnimationClips:
-  - {fileID: 1827226128182048838, guid: cc0a411143464df44becb656a912bb2d, type: 3}
-  - {fileID: 1827226128182048838, guid: b5c870e396d9b7846875a79e64f2f6b5, type: 3}
-  - {fileID: 1827226128182048838, guid: 9b0b45da5cc940941adfa66e0cf46eeb, type: 3}
-  - {fileID: 1827226128182048838, guid: c8f36304281f6aa4f91f2b6d35ba85ac, type: 3}
-  - {fileID: 1827226128182048838, guid: e86535c217774124eb9ef949a04a66ec, type: 3}
-  - {fileID: 1827226128182048838, guid: b1a3e7d019b883d4d881cbdfdb371cfa, type: 3}
-  - {fileID: 1827226128182048838, guid: 91ca61afb489c3443a7b929b16d71a38, type: 3}
-  - {fileID: 1827226128182048838, guid: 99393eb8e65b1f44ea6fe8fde70a91bd, type: 3}
   _animationIndexes: 
   rings: []
   bracelets: []

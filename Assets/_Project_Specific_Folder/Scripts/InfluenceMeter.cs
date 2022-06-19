@@ -36,11 +36,11 @@ public class InfluenceMeter : MonoBehaviour
 
     private void Start()
     {
-        _targetCash = StorageManager.Instance.RewardValue < 0 ? 500 : StorageManager.Instance.RewardValue;
+        _targetCash = StorageManager.Instance.currentLevelScore < 0 ? 500 : StorageManager.Instance.currentLevelScore;
         _cashText = transform.GetChild(3).GetComponent<TextMeshProUGUI>();
         _cashText.SetText("$" + _targetCash);
         
-        StorageManager.SaveTotalCoin(StorageManager.GetTotalCoin() + _targetCash);
+        StorageManager.SetTotalScore(StorageManager.GetTotalScore() + _targetCash);
 
         _followersText = transform.GetChild(1).GetChild(0).GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>();
         _followersText.SetText(UiManager.Instance.followerValue);

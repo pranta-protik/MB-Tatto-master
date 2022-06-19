@@ -28,7 +28,7 @@ public class SwipeMenu : MonoBehaviour
     {
         if (scoreText != null)
         {
-            scoreText.SetText("$" + StorageManager.GetTotalCoin());
+            scoreText.SetText("$" + StorageManager.GetTotalScore());
         }
         
         _currentLevel = PlayerPrefs.GetInt("current_scene_text") + 1;
@@ -152,8 +152,8 @@ public class SwipeMenu : MonoBehaviour
 
     public void BuyCard()
     {
-        StorageManager.SaveTotalCoin(StorageManager.GetTotalCoin() - _selectedCardOld.requiredCash);
-        scoreText.SetText("$" + StorageManager.GetTotalCoin());
+        StorageManager.SetTotalScore(StorageManager.GetTotalScore() - _selectedCardOld.requiredCash);
+        scoreText.SetText("$" + StorageManager.GetTotalScore());
         _selectedCardOld.EnableCard();
     }
     
@@ -245,7 +245,7 @@ public class SwipeMenu : MonoBehaviour
             actionButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText("$" + handCardOld.requiredCash);
             actionButton.gameObject.SetActive(true);
             DisableButton(startButton);
-            if (StorageManager.GetTotalCoin() >= handCardOld.requiredCash)
+            if (StorageManager.GetTotalScore() >= handCardOld.requiredCash)
             {
                 EnableButton(actionButton);
             }

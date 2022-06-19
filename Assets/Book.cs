@@ -37,12 +37,12 @@ public class Book : MonoBehaviour
         _currentTattooValue = 0;
         valueText.SetText("$" + "0");
 
-        _targetTattooValue = StorageManager.Instance.RewardValue;
+        _targetTattooValue = StorageManager.Instance.currentLevelScore;
         // _targetTattooValue += StorageManager.Instance.RewardValue;
 
         _incrementAmount = (_targetTattooValue - _currentTattooValue) / 1.5f;
 
-        StorageManager.SaveTattooValue(_targetTattooValue);
+        // StorageManager.SaveTattooValue(_targetTattooValue);
 
         EnableEndUi();
 

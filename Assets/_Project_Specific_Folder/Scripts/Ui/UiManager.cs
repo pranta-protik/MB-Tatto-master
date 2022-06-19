@@ -9,10 +9,13 @@ using UnityEngine.UI;
 using MoreMountains.NiceVibrations;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class UiManager : Singleton<UiManager>
 {
+    public TMP_Text scoreText ;
+    
     public Button btnNext;
     // public Button hand; 
 
@@ -25,8 +28,10 @@ public class UiManager : Singleton<UiManager>
     public GameObject fillbarTimer;
     public Image Timer;
     public float timerInitvalue;
-    public TMP_Text TotalText, PointText , NormalCoin ; 
+    public TMP_Text TotalText ;
     
+    public TMP_Text NormalCoin ;
+
     public bool HapticsAllowed;
     public GameObject enable, disable;
 
@@ -86,7 +91,7 @@ public class UiManager : Singleton<UiManager>
 
         if (TotalText != null)
         {
-            TotalText.SetText("$" + StorageManager.GetTotalCoin());
+            TotalText.SetText("$" + StorageManager.GetTotalScore());
         }
         if (btnNext != null)
         {
@@ -508,11 +513,11 @@ public class UiManager : Singleton<UiManager>
     public void SellTattoo()
     {
         cashCounter.SetActive(true);
-        if (StorageManager.Instance.RewardValue <= 0)
+        if (StorageManager.Instance.currentLevelScore <= 0)
         {
-            StorageManager.Instance.currentLevel = PlayerPrefs.GetInt("current_scene");
-            StorageManager.Instance.currentLevelText = PlayerPrefs.GetInt("current_scene_text", 0);
-            StorageManager.Instance.RewardValue = 500;
+            // StorageManager.Instance.currentLevel = PlayerPrefs.GetInt("current_scene");
+            // StorageManager.Instance.currentLevelText = PlayerPrefs.GetInt("current_scene_text", 0);
+            StorageManager.Instance.currentLevelScore = 500;
         }
 
 
@@ -532,7 +537,7 @@ public class UiManager : Singleton<UiManager>
         
         decisionScreen.SetActive(false);
         spinnerScreen.SetActive(true);
-        spinnerScreen.transform.GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>().SetText("$" + StorageManager.Instance.RewardValue);
+        spinnerScreen.transform.GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>().SetText("$" + StorageManager.Instance.currentLevelScore);
         spinnerScreen.transform.GetChild(5).DOScale(new Vector3(0.8f, 0.8f, 0.8f), 0.5f).SetLoops(-1, LoopType.Yoyo);
     }
     public void KeepTattooCallBack()

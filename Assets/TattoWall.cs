@@ -33,15 +33,15 @@ public class TattoWall : MonoBehaviour
    
     private void Start()
     {
-        _currentTattooValue = StorageManager.GetTattooValue();
+        // _currentTattooValue = StorageManager.GetTattooValue();
         valueText.SetText("$" + _currentTattooValue);
         
-        _targetTattooValue = StorageManager.GetTattooValue();
-        _targetTattooValue += StorageManager.Instance.RewardValue;
+        // _targetTattooValue = StorageManager.GetTattooValue();
+        _targetTattooValue += StorageManager.Instance.currentLevelScore;
         
         _incrementAmount = (_targetTattooValue - _currentTattooValue) / 1.5f;
         
-        StorageManager.SaveTattooValue(_targetTattooValue);
+        // StorageManager.SaveTattooValue(_targetTattooValue);
         
         EnableEndUi();
 
