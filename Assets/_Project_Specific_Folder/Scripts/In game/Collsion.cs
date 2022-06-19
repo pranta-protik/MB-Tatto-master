@@ -73,7 +73,12 @@ public class Collsion : MonoBehaviour
     
     private float _lastSpeed;
     private bool _shouldChange;
-    
+
+    private SkinnedMeshRenderer _skinnedMeshRenderer;
+    private static readonly int SHPropTexture = Shader.PropertyToID("_MainTex");
+    private MaterialPropertyBlock _mpb;
+    private MaterialPropertyBlock Mpb => _mpb ??= new MaterialPropertyBlock();
+
     [Header("Hand Ornaments Section")]
     public List<GameObject> rings = new List<GameObject>();
     public List<GameObject> bracelets = new List<GameObject>();
@@ -99,6 +104,9 @@ public class Collsion : MonoBehaviour
         {
             _animationIndexes.Add(clipIndex);
         }
+
+        _skinnedMeshRenderer = tattooHand.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>();
+        
         
         
         _lastSpeed = GameManager.Instance.p.maxSpeed;
@@ -182,31 +190,30 @@ public class Collsion : MonoBehaviour
     {
         if (other.gameObject.CompareTag("GoodGate"))
         {
+            other.GetComponent<BoxCollider>().enabled = false;
+            Gates gate = other.GetComponentInParent<Gates>();
+            
             MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
             StartCoroutine(AnimationDelayRoutine());
-            other.GetComponent<BoxCollider>().enabled = false;
             
-            Gates gate = other.GetComponentInParent<Gates>();
             StorageManager.Instance.IncreaseScore(gate.gateCost);
+            _shineEffect.Play();
+            
+            scoreAnimator.transform.GetChild(0).gameObject.SetActive(true);
+            scoreAnimator.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "+" + gate.gateCost;
+            scoreAnimator.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = goodGateScorePopUpColor;
+            
+            scoreAnimator.Play("PopUp");
             
             if (gate.isSpecial)
             {
-                StorageManager.Instance.IncreaseScore(gate.gateCost);
-                
-                _shineEffect.Play();
-                
-                scoreAnimator.transform.GetChild(0).gameObject.SetActive(true);
-                scoreAnimator.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "+" + gate.gateCost;
-                scoreAnimator.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = goodGateScorePopUpColor;
-                scoreAnimator.Play("PopUp");
-                
                 UiManager.Instance.priceTag.transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.3f).SetLoops(4, LoopType.Yoyo);
             }
             else
             {
-                lastGateId = other.gameObject.transform.GetComponentInParent<Gates>().gateLevel;
-                StartCoroutine(UpdateExpensiveTexture(other.gameObject));
-                LastLevel = GameManager.Instance.Level;
+                StartCoroutine(UpdateExpensiveTexture(gate.gateLevel));
+                // lastGateId = other.gameObject.transform.GetComponentInParent<Gates>().gateLevel;
+                // LastLevel = GameManager.Instance.Level;
             }
         }
         
@@ -912,25 +919,19 @@ public class Collsion : MonoBehaviour
 
     }
 
-    private IEnumerator UpdateExpensiveTexture(GameObject g)
+    private IEnumerator UpdateExpensiveTexture(int gateLevel)
     {
         yield return new WaitForSeconds(.2f);
         
-        StiackerMat.DOFade(0, .3f).OnComplete(() =>
+        _skinnedMeshRenderer.material.DOFade(0, .3f).OnComplete(() =>
         {
-            _shineEffect.Play();
-            scoreAnimator.Play("opps");
-
-            scoreAnimator.transform.GetChild(0).gameObject.SetActive(true);
-            scoreAnimator.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "+" + g.GetComponentInParent<Gates>().gateCost.ToString();
-            scoreAnimator.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = goodGateScorePopUpColor;
-            
-            StiackerMat.mainTexture = Tattos[g.transform.GetComponentInParent<Gates>().gateLevel];
-            StiackerMat.DOFade(1, .5f);
-            if (StiackerMat.mainTexture != null)
-            {
-                Dummy.Add(StiackerMat.mainTexture);   
-            }
+            Mpb.SetTexture(SHPropTexture, Tattos[gateLevel]);
+            _skinnedMeshRenderer.SetPropertyBlock(Mpb);
+            _skinnedMeshRenderer.material.DOFade(1, 0.5f);
+            // if (StiackerMat.mainTexture != null)
+            // {
+            //     Dummy.Add(StiackerMat.mainTexture);   
+            // }
         });
     }
 
