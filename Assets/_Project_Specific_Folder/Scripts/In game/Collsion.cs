@@ -55,8 +55,9 @@ public class Collsion : MonoBehaviour
     private bool _shouldChangeTattoo;
     private bool _hasGoneThroughGoodGate;
     [SerializeField] private List<CollectedGoodTattoosAttributes> _collectedGoodTattoosAttributes = new List<CollectedGoodTattoosAttributes>();
-    private int _currentTattooLevel;
-
+    private int _currentExpensiveTattooLevel;
+    private int _currentCheapTattooLevel;
+    
     public Camera cam;
     public Text LevelText, ColorText;
 
@@ -228,7 +229,7 @@ public class Collsion : MonoBehaviour
             }
             else
             {
-                _currentTattooLevel = gate.gateLevel + 1;
+                _currentExpensiveTattooLevel = gate.gateLevel + 1;
                 _collectedGoodTattoosAttributes.Add(new CollectedGoodTattoosAttributes(expensiveTattoos[gate.gateLevel], gate.gateLevel));
                 StartCoroutine(UpdateTattooTexture(expensiveTattoos[gate.gateLevel]));
             }
@@ -261,18 +262,21 @@ public class Collsion : MonoBehaviour
                         {
                             CollectedGoodTattoosAttributes collectedGoodTattoosAttribute =
                                 _collectedGoodTattoosAttributes[_collectedGoodTattoosAttributes.Count - 2];
+                            
+                            _currentExpensiveTattooLevel = collectedGoodTattoosAttribute.collectedGoodTattooLevel + 1;
+                            
                             StartCoroutine(UpdateTattooTexture(collectedGoodTattoosAttribute.collectedGoodTattoo));
                             _collectedGoodTattoosAttributes.Remove(collectedGoodTattoosAttribute);
                         }
                     }
                     else
                     {
-                        if (GameManager.Instance.currentBadTattooLevel < cheapTattoos.Count)
+                        if (_currentCheapTattooLevel < cheapTattoos.Count)
                         {
-                            GameManager.Instance.currentBadTattooLevel += 1;
+                            _currentCheapTattooLevel += 1;
                         }
                         
-                        StartCoroutine(UpdateTattooTexture(cheapTattoos[GameManager.Instance.currentBadTattooLevel - 1]));    
+                        StartCoroutine(UpdateTattooTexture(cheapTattoos[_currentCheapTattooLevel - 1]));    
                     }
                 }    
             }
@@ -285,13 +289,16 @@ public class Collsion : MonoBehaviour
 
             if (_hasGoneThroughGoodGate)
             {
-                
+                if (expensiveColorTattooIdSequences.Contains(_currentExpensiveTattooLevel))
+                {
+                    StartCoroutine(UpdateTattooTexture(expensiveBlueTattoos[expensiveColorTattooIdSequences.IndexOf(_currentExpensiveTattooLevel)]));
+                }
             }
             else
             {
-                if (cheapColorTattooIdSequences.Contains(GameManager.Instance.currentBadTattooLevel))
+                if (cheapColorTattooIdSequences.Contains(_currentCheapTattooLevel))
                 {
-                    StartCoroutine(UpdateTattooTexture(cheapBlueTattoos[cheapColorTattooIdSequences.IndexOf(GameManager.Instance.currentBadTattooLevel)]));
+                    StartCoroutine(UpdateTattooTexture(cheapBlueTattoos[cheapColorTattooIdSequences.IndexOf(_currentCheapTattooLevel)]));
                 }
             }
         }
@@ -303,13 +310,16 @@ public class Collsion : MonoBehaviour
 
             if (_hasGoneThroughGoodGate)
             {
-                
+                if (expensiveColorTattooIdSequences.Contains(_currentExpensiveTattooLevel))
+                {
+                    StartCoroutine(UpdateTattooTexture(expensiveYellowTattoos[expensiveColorTattooIdSequences.IndexOf(_currentExpensiveTattooLevel)]));
+                }
             }
             else
             {
-                if (cheapColorTattooIdSequences.Contains(GameManager.Instance.currentBadTattooLevel))
+                if (cheapColorTattooIdSequences.Contains(_currentCheapTattooLevel))
                 {
-                    StartCoroutine(UpdateTattooTexture(cheapYellowTattoos[cheapColorTattooIdSequences.IndexOf(GameManager.Instance.currentBadTattooLevel)]));
+                    StartCoroutine(UpdateTattooTexture(cheapYellowTattoos[cheapColorTattooIdSequences.IndexOf(_currentCheapTattooLevel)]));
                 }
             }
         }

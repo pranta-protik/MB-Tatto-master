@@ -19,9 +19,7 @@ public class ItemPacks
 }
 public class GameManager : Singleton<GameManager>
 {
-    public int currentBadTattooLevel;
-    
-    
+
     public Texture LastTattoTexture;
     public string TextureName;
 
