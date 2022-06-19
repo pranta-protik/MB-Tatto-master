@@ -658,6 +658,10 @@ PrefabInstance:
       value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 2543004167681197810, guid: 6d3a94def6e979f48a4bae4cff026767, type: 3}
+      propertyPath: isLast
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2543004167681197810, guid: 6d3a94def6e979f48a4bae4cff026767, type: 3}
       propertyPath: gateCost
       value: 500
       objectReference: {fileID: 0}
@@ -1034,6 +1038,10 @@ PrefabInstance:
     - target: {fileID: 79396944061402875, guid: 170fb97c71c0d14499cf3696933ee382, type: 3}
       propertyPath: Cost
       value: 1200
+      objectReference: {fileID: 0}
+    - target: {fileID: 79396944061402875, guid: 170fb97c71c0d14499cf3696933ee382, type: 3}
+      propertyPath: isLast
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 79396944061402875, guid: 170fb97c71c0d14499cf3696933ee382, type: 3}
       propertyPath: gateCost
@@ -2232,6 +2240,14 @@ PrefabInstance:
     - target: {fileID: 2543004167092491851, guid: 6d3a94def6e979f48a4bae4cff026767, type: 3}
       propertyPath: gateCost
       value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 2543004167092491851, guid: 6d3a94def6e979f48a4bae4cff026767, type: 3}
+      propertyPath: gateType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2543004167092491851, guid: 6d3a94def6e979f48a4bae4cff026767, type: 3}
+      propertyPath: isSpecial
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2543004167092491851, guid: 6d3a94def6e979f48a4bae4cff026767, type: 3}
       propertyPath: UICostText

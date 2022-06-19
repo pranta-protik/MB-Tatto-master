@@ -3,8 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using Singleton;
 
-public class TextureManager : Singleton<TextureManager> 
+public class TextureManager : Singleton<TextureManager>
 {
+    public Texture2D flowerDefaultTattoo;
+    public List<Texture2D> flowerExpensiveTattoos;
+    public List<Texture2D> flowerExpensiveBlueTattoos;
+    public List<Texture2D> flowerExpensiveYellowTattoos;
+    public List<Texture2D> flowerCheapTattoos;
+    public List<Texture2D> flowerCheapBlueTattoos;
+    public List<Texture2D> flowerCheapYellowTattoos;
+    public List<int> flowerExpensiveColorTattooIdSequences;
+    public List<int> flowerCheapColorTattooIdSequences;
+    
     public Texture DefaultFlower, DefaultSkull, DefaultPinup , DefaultCeleb , DefaultCaligraphy , DefaultMoney;
 
     public Texture[] FlowerExpensiveTattos, FlowerCheapTattos;

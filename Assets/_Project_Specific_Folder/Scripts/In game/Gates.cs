@@ -15,9 +15,10 @@ public class Gates : MonoBehaviour
     [FormerlySerializedAs("gateGateType")] [FormerlySerializedAs("GateType")] public EGateType gateType;
     [FormerlySerializedAs("Cost")] public int gateCost;
     [FormerlySerializedAs("gateUICostText")] [FormerlySerializedAs("UICostText")] public string gateUICostString;
-    [FormerlySerializedAs("gateId")] [FormerlySerializedAs("id")] public int gateLevel;
     [FormerlySerializedAs("IsSpecial")] public bool isSpecial;
-    
+    public bool isLast;
+    [FormerlySerializedAs("gateId")] [FormerlySerializedAs("id")] public int gateLevel;
+
     private TMP_Text _gateCostText;
 
     void Start()

@@ -19155,6 +19155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DontDestroyLoad: 0
   m_IsSingletonLogsEnabled: 0
+  currentBadTattooLevel: 0
   LastTattoTexture: {fileID: 0}
   TextureName: 
   HandNumber: 4
@@ -19255,7 +19256,7 @@ MonoBehaviour:
   - 279M
   - 287M
   timer: 0
-  amarIcchaLevel: 0
+  amarIcchaLevel: 3
 --- !u!1001 &1287034089
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24675,6 +24676,44 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DontDestroyLoad: 0
   m_IsSingletonLogsEnabled: 0
+  flowerDefaultTattoo: {fileID: 2800000, guid: 68906f73a7d7a734ba32b64c0727f9be, type: 3}
+  flowerExpensiveTattoos:
+  - {fileID: 2800000, guid: 7684830d85a3b8642af02ec75969e33d, type: 3}
+  - {fileID: 2800000, guid: 0e450ae456587c34cbcab57c5d568fe6, type: 3}
+  - {fileID: 2800000, guid: e2f0b2c04d277d049a34e6d7c9636143, type: 3}
+  - {fileID: 2800000, guid: 115a2dcfc4ca03843b39c9ed69f77dd4, type: 3}
+  - {fileID: 2800000, guid: adbb3eb6ce7b0e349bf7eaaa378c11fb, type: 3}
+  - {fileID: 2800000, guid: a501bc1ac0b55f04d941b1534565f60d, type: 3}
+  - {fileID: 2800000, guid: bd23c68033ec66447828e84f6db9a842, type: 3}
+  - {fileID: 2800000, guid: cd1f30f99cb3b934f99694d7ed2fd011, type: 3}
+  - {fileID: 2800000, guid: ee0a6e1e3a6d82a41b0b83d2407ed2e4, type: 3}
+  - {fileID: 2800000, guid: 713b93775c48c4d428664566c719f45e, type: 3}
+  - {fileID: 2800000, guid: c9c1a3dbe68bb9c48b3410e5bf5a95aa, type: 3}
+  - {fileID: 2800000, guid: 7f25f7bc547dc3c46ae9cec2722aa75f, type: 3}
+  - {fileID: 2800000, guid: 226d5c660c128bb4aaacc730cb9b85ca, type: 3}
+  - {fileID: 2800000, guid: 528b1ef08bf456444aab4390961c0560, type: 3}
+  - {fileID: 2800000, guid: 60254631a4692fb4ebe046f82f5df6ff, type: 3}
+  flowerExpensiveBlueTattoos:
+  - {fileID: 2800000, guid: fd1cf03f13b436f418ae95008ad2a653, type: 3}
+  - {fileID: 2800000, guid: 09cc29a1182692e47a2bacb94531723f, type: 3}
+  flowerExpensiveYellowTattoos:
+  - {fileID: 2800000, guid: d6219075d82755649b8e79324419dfbd, type: 3}
+  - {fileID: 2800000, guid: 731709182f869d44cbe1045606adaf38, type: 3}
+  flowerCheapTattoos:
+  - {fileID: 2800000, guid: 61211112e0a990b4a9aace533d346f26, type: 3}
+  - {fileID: 2800000, guid: 1b7bec209599c7f44b40242430ef04c6, type: 3}
+  - {fileID: 2800000, guid: b9bdb87f50578c94fb26ae4d6f4a0f6a, type: 3}
+  - {fileID: 2800000, guid: 9751431d4c8cc6944959e4b1b29a0e41, type: 3}
+  - {fileID: 2800000, guid: 0be8c64315cbbeb4ea20e6f8165e9920, type: 3}
+  - {fileID: 2800000, guid: fae516a1c7083524f9b4f04d83e8fb7d, type: 3}
+  flowerCheapBlueTattoos:
+  - {fileID: 2800000, guid: 6e324afabd3f96946bc94428b866136c, type: 3}
+  - {fileID: 2800000, guid: 593458492cf489b47b8900514c44ffd4, type: 3}
+  flowerCheapYellowTattoos:
+  - {fileID: 2800000, guid: e5509550a5296784b91dee79378b7269, type: 3}
+  - {fileID: 2800000, guid: 1b3bdf2f3fde448478ed7069e085cfcf, type: 3}
+  flowerExpensiveColorTattooIdSequences: 0a0000000b000000
+  flowerCheapColorTattooIdSequences: 0400000005000000
   DefaultFlower: {fileID: 2800000, guid: 68906f73a7d7a734ba32b64c0727f9be, type: 3}
   DefaultSkull: {fileID: 2800000, guid: 51586b72977edae49a9eb93187a2cbc2, type: 3}
   DefaultPinup: {fileID: 2800000, guid: f7a9ead41cf2ca34bb73db79adaa62ff, type: 3}

@@ -19,6 +19,9 @@ public class ItemPacks
 }
 public class GameManager : Singleton<GameManager>
 {
+    public int currentBadTattooLevel;
+    
+    
     public Texture LastTattoTexture;
     public string TextureName;
 
@@ -72,12 +75,12 @@ public class GameManager : Singleton<GameManager>
 
     public override void Start()
     {
-// #if UNITY_EDITOR
-//
-//         levelNo = amarIcchaLevel;
-//         PlayerPrefs.SetInt("current_scene", levelNo);
-//
-// #endif
+#if UNITY_EDITOR
+
+        levelNo = amarIcchaLevel;
+        PlayerPrefs.SetInt("current_scene", levelNo);
+
+#endif
         
         // First time hand enable
         HandNumber = PlayerPrefs.GetInt("SelectedHandCardId");
@@ -152,10 +155,6 @@ public class GameManager : Singleton<GameManager>
 
         SetLevelDetails(currentLvlPrefab);
     }
-    public void Reset()
-    {
-       
-    }
 
     public void StartIt()
     {
@@ -219,8 +218,19 @@ public class GameManager : Singleton<GameManager>
             //vehicle set
             case 1:
                 // CollsionScript.Tattos = new Texture[15];
+                CollsionScript.defaultTattoo = m_textureManager.flowerDefaultTattoo;
+                CollsionScript.expensiveTattoos = m_textureManager.flowerExpensiveTattoos;
+                CollsionScript.cheapTattoos = m_textureManager.flowerCheapTattoos;
+                CollsionScript.expensiveBlueTattoos = m_textureManager.flowerExpensiveBlueTattoos;
+                CollsionScript.expensiveYellowTattoos = m_textureManager.flowerExpensiveYellowTattoos;
+                CollsionScript.cheapBlueTattoos = m_textureManager.flowerCheapBlueTattoos;
+                CollsionScript.cheapYellowTattoos = m_textureManager.flowerCheapYellowTattoos;
+                CollsionScript.expensiveColorTattooIdSequences = m_textureManager.flowerExpensiveColorTattooIdSequences;
+                CollsionScript.cheapColorTattooIdSequences = m_textureManager.flowerCheapColorTattooIdSequences;
+                
                 CollsionScript.Default = m_textureManager.DefaultFlower;
                 CollsionScript.Tattos = m_textureManager.FlowerExpensiveTattos;
+                
                 CollsionScript.CheapTttos = m_textureManager.FlowerCheapTattos;
 
                 CollsionScript.GoodBlue = m_textureManager.FlowerGoodBlue;

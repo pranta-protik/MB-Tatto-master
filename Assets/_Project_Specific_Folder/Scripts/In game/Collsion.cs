@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
@@ -11,6 +12,17 @@ using UnityEngine.Serialization;
 
 public class Collsion : MonoBehaviour
 {
+    public class CollectedGoodTattoosAttributes
+    {
+        public Texture2D collectedGoodTattoo;
+        public int collectedGoodTattooLevel;
+
+        public CollectedGoodTattoosAttributes(Texture2D collectedGoodTattoo, int collectedGoodTattooLevel)
+        {
+            this.collectedGoodTattoo = collectedGoodTattoo;
+            this.collectedGoodTattooLevel = collectedGoodTattooLevel;
+        }
+    }
     public GameObject tattooHand;
     public Animator scoreAnimator;
     public AnimatorOverrideController animatorOverrideController;
@@ -20,6 +32,15 @@ public class Collsion : MonoBehaviour
     
     [HideInInspector] public Animator mainHandAnimator;
     [HideInInspector] public Animator tattooHandAnimator;
+    public Texture2D defaultTattoo;
+    [HideInInspector] public List<Texture2D> expensiveTattoos;
+    [HideInInspector] public List<Texture2D> cheapTattoos;
+    public List<Texture2D> expensiveBlueTattoos;
+    public List<Texture2D> expensiveYellowTattoos;
+    public List<Texture2D> cheapBlueTattoos;
+    public List<Texture2D> cheapYellowTattoos;
+    public List<int> expensiveColorTattooIdSequences;
+    public List<int> cheapColorTattooIdSequences;
     
     private HandController _tattooHandController;
     private HandController _mainHandController;
@@ -27,8 +48,15 @@ public class Collsion : MonoBehaviour
     private ParticleSystem _shineEffect;
     private readonly List<int> _animationIndexes = new List<int>();
     private static readonly int Gesture = Animator.StringToHash("Gesture");
-    
-    
+    private SkinnedMeshRenderer _skinnedMeshRenderer;
+    private static readonly int SHPropTexture = Shader.PropertyToID("_MainTex");
+    private MaterialPropertyBlock _mpb;
+    private MaterialPropertyBlock Mpb => _mpb ??= new MaterialPropertyBlock();
+    private bool _shouldChangeTattoo;
+    private bool _hasGoneThroughGoodGate;
+    [SerializeField] private List<CollectedGoodTattoosAttributes> _collectedGoodTattoosAttributes = new List<CollectedGoodTattoosAttributes>();
+    private int _currentTattooLevel;
+
     public Camera cam;
     public Text LevelText, ColorText;
 
@@ -72,12 +100,8 @@ public class Collsion : MonoBehaviour
 
     
     private float _lastSpeed;
-    private bool _shouldChange;
+    
 
-    private SkinnedMeshRenderer _skinnedMeshRenderer;
-    private static readonly int SHPropTexture = Shader.PropertyToID("_MainTex");
-    private MaterialPropertyBlock _mpb;
-    private MaterialPropertyBlock Mpb => _mpb ??= new MaterialPropertyBlock();
 
     [Header("Hand Ornaments Section")]
     public List<GameObject> rings = new List<GameObject>();
@@ -106,8 +130,9 @@ public class Collsion : MonoBehaviour
         }
 
         _skinnedMeshRenderer = tattooHand.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>();
+        _skinnedMeshRenderer.material.DOFade(0, 0f);
         
-        
+        _collectedGoodTattoosAttributes.Add(new CollectedGoodTattoosAttributes(defaultTattoo, -1));
         
         _lastSpeed = GameManager.Instance.p.maxSpeed;
         _camera = Camera.main;
@@ -185,37 +210,111 @@ public class Collsion : MonoBehaviour
         //     }
         // }
     }
-
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("GoodGate"))
         {
+            _hasGoneThroughGoodGate = true;
             other.GetComponent<BoxCollider>().enabled = false;
             Gates gate = other.GetComponentInParent<Gates>();
             
-            MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
-            StartCoroutine(AnimationDelayRoutine());
+            GateEnteringEffects(gate, true);
             
-            StorageManager.Instance.IncreaseScore(gate.gateCost);
-            _shineEffect.Play();
-            
-            scoreAnimator.transform.GetChild(0).gameObject.SetActive(true);
-            scoreAnimator.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "+" + gate.gateCost;
-            scoreAnimator.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = goodGateScorePopUpColor;
-            
-            scoreAnimator.Play("PopUp");
-            
+            // Went through special good gates
             if (gate.isSpecial)
             {
                 UiManager.Instance.priceTag.transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.3f).SetLoops(4, LoopType.Yoyo);
             }
             else
             {
-                StartCoroutine(UpdateExpensiveTexture(gate.gateLevel));
-                // lastGateId = other.gameObject.transform.GetComponentInParent<Gates>().gateLevel;
-                // LastLevel = GameManager.Instance.Level;
+                _currentTattooLevel = gate.gateLevel + 1;
+                _collectedGoodTattoosAttributes.Add(new CollectedGoodTattoosAttributes(expensiveTattoos[gate.gateLevel], gate.gateLevel));
+                StartCoroutine(UpdateTattooTexture(expensiveTattoos[gate.gateLevel]));
             }
         }
+        
+        if (other.gameObject.CompareTag("BadGate"))
+        {
+            other.GetComponent<BoxCollider>().enabled = false;
+            Gates gate = other.GetComponentInParent<Gates>();
+            
+            GateEnteringEffects(gate, false);
+            
+            UiManager.Instance.priceTag.GetComponent<Image>().DOColor(Color.red, 0.5f).SetLoops(2, LoopType.Yoyo);
+            
+            // Went through last bad gate
+            if (gate.isLast)
+            {
+                StartCoroutine(UpdateTattooTexture(cheapTattoos[gate.gateLevel]));    
+            }
+            else
+            {
+                _shouldChangeTattoo = !_shouldChangeTattoo;
+
+                if (_shouldChangeTattoo)
+                {
+                    // Went through bad gate after visiting good gates
+                    if (_hasGoneThroughGoodGate)
+                    {
+                        if (_collectedGoodTattoosAttributes.Count > 1)
+                        {
+                            CollectedGoodTattoosAttributes collectedGoodTattoosAttribute =
+                                _collectedGoodTattoosAttributes[_collectedGoodTattoosAttributes.Count - 2];
+                            StartCoroutine(UpdateTattooTexture(collectedGoodTattoosAttribute.collectedGoodTattoo));
+                            _collectedGoodTattoosAttributes.Remove(collectedGoodTattoosAttribute);
+                        }
+                    }
+                    else
+                    {
+                        if (GameManager.Instance.currentBadTattooLevel < cheapTattoos.Count)
+                        {
+                            GameManager.Instance.currentBadTattooLevel += 1;
+                        }
+                        
+                        StartCoroutine(UpdateTattooTexture(cheapTattoos[GameManager.Instance.currentBadTattooLevel - 1]));    
+                    }
+                }    
+            }
+        }
+        
+        if (other.gameObject.CompareTag("Blue"))
+        {
+            MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+            StartCoroutine(AnimationDelayRoutine());
+
+            if (_hasGoneThroughGoodGate)
+            {
+                
+            }
+            else
+            {
+                if (cheapColorTattooIdSequences.Contains(GameManager.Instance.currentBadTattooLevel))
+                {
+                    StartCoroutine(UpdateTattooTexture(cheapBlueTattoos[cheapColorTattooIdSequences.IndexOf(GameManager.Instance.currentBadTattooLevel)]));
+                }
+            }
+        }
+        
+        if (other.gameObject.CompareTag("Yellow"))
+        {
+            MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+            StartCoroutine(AnimationDelayRoutine());
+
+            if (_hasGoneThroughGoodGate)
+            {
+                
+            }
+            else
+            {
+                if (cheapColorTattooIdSequences.Contains(GameManager.Instance.currentBadTattooLevel))
+                {
+                    StartCoroutine(UpdateTattooTexture(cheapYellowTattoos[cheapColorTattooIdSequences.IndexOf(GameManager.Instance.currentBadTattooLevel)]));
+                }
+            }
+        }
+
+     
         
         if(other.gameObject.CompareTag("Ring"))
         {
@@ -232,98 +331,7 @@ public class Collsion : MonoBehaviour
             other.GetComponent<BoxCollider>().enabled = false;
         }
 
-        if (other.gameObject.CompareTag("BadGate"))
-        {
-            MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
-            UiManager.Instance.priceTag.GetComponent<Image>().DOColor(Color.red, 0.5f).SetLoops(2, LoopType.Yoyo);
-         
-            StartCoroutine(AnimationDelayRoutine());
-            
-            lastGateId = 0;
-            _shouldChange = !_shouldChange;
-            
-            if (IsGood)
-            {
-                m_i = Dummy.Count;
-                
-                StorageManager.Instance.IncreaseScore(-other.GetComponentInParent<Gates>().gateCost);
-                //GameManager.Instance.Level = g.transform.GetComponentInParent<Gates>().id + 1;
-                
-                _shineEffect.Play();
-                scoreAnimator.Play("opps");
-
-                scoreAnimator.transform.GetChild(0).gameObject.SetActive(true);
-                scoreAnimator.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "-" + other.GetComponentInParent<Gates>().gateCost.ToString();
-                scoreAnimator.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = badGateScorePopUpColor;
-                
-                if (_shouldChange)
-                {
-                    GameManager.Instance.Level--;
-                    
-                    StiackerMat.DOFade(0, .3f).OnComplete(() =>
-                    {
-                        if (j < Dummy.Count+1)
-                        {
-                            StiackerMat.mainTexture = Dummy[m_i - j];
-                            j++;
-                        }
-                        else
-                        {
-                            StiackerMat.mainTexture = Default;
-                        }
-                        
-                        StiackerMat.DOFade(1, .5f);
-                    });       
-                }
-
-            }
-            else
-            {
-                if (_shouldChange)
-                {
-                    GameManager.Instance.Level++;   
-                }
-
-                IsGoodGate = false;
-                // if (IsYellow)
-                // {
-                //     if (GameManager.Instance.Level == 5)
-                //     {
-                //         StiackerMat.DOFade(0, .3f).OnComplete(() =>
-                //         {
-                //             StiackerMat.mainTexture = BadYellow[01];
-                //             StiackerMat.DOFade(1, .5f);
-                //
-                //         });
-                //     }
-                //     else
-                //         StartCoroutine(UpdateTextureCheap(other.gameObject));
-                //
-                // }
-                // else if (IsBlue)
-                // {
-                //     if (GameManager.Instance.Level == 5)
-                //     {
-                //         StiackerMat.DOFade(0, .3f).OnComplete(() =>
-                //         {
-                //             StiackerMat.mainTexture = BadBlue[01];
-                //             StiackerMat.DOFade(1, .5f);
-                //         });
-                //     }
-                //     else
-                //         StartCoroutine(UpdateTextureCheap(other.gameObject));
-                // }
-                // else
-                // {
-                //     // if (!GameManager.Instance.IsVideo)
-                //     StartCoroutine(UpdateTextureCheap(other.gameObject));
-                //     //  else
-                //     //   StartCoroutine(UpdateCheapTextureVideo(other.gameObject));
-                // }
-                
-                StartCoroutine(UpdateTextureCheap(other.gameObject));
-            }
-        }
+        
 
         if (other.gameObject.CompareTag("Enemy"))
         {
@@ -436,128 +444,7 @@ public class Collsion : MonoBehaviour
             }
         }
 
-        if (other.gameObject.CompareTag("Yellow"))
-        {
-            MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
-            StartCoroutine(AnimationDelayRoutine());
-
-            if (lastGateId == 10)
-            {
-                StiackerMat.DOFade(0, 0.3f).OnComplete(() =>
-                {
-                    _shineEffect.Play();
-                    StiackerMat.mainTexture = GoodYellow[0];
-                    StiackerMat.DOFade(1, 0.5f);
-                    IsYellow = true;
-                });
-            }
-            // if (IsGoodGate)
-            // {
-            //     if (GameManager.Instance.Level == 4)
-            //     {
-            //         StiackerMat.DOFade(0, .3f).OnComplete(() =>
-            //         {
-            //             Shine.Play();
-            //             StiackerMat.mainTexture = GoodYellow[0];
-            //             StiackerMat.DOFade(1, .5f);
-            //             IsYellow = true;
-            //         });
-            //     }
-            //     else if (GameManager.Instance.Level == 5)
-            //     {
-            //         StiackerMat.DOFade(0, .3f).OnComplete(() =>
-            //         {
-            //             Shine.Play();
-            //             StiackerMat.mainTexture = GoodYellow[01];
-            //             StiackerMat.DOFade(1, .5f);
-            //
-            //         });
-            //     }
-            // }
-            // else
-            // {
-            //     if (GameManager.Instance.Level == 4)
-            //     {
-            //         StiackerMat.DOFade(0, .3f).OnComplete(() =>
-            //         {
-            //             Shine.Play();
-            //             StiackerMat.mainTexture = BadYellow[0];
-            //             StiackerMat.DOFade(1, .5f);
-            //             IsYellow = true;
-            //         });
-            //     }
-            //     else if (GameManager.Instance.Level == 5)
-            //     {
-            //         StiackerMat.DOFade(0, .3f).OnComplete(() =>
-            //         {
-            //             Shine.Play();
-            //             StiackerMat.mainTexture = BadYellow[01];
-            //             StiackerMat.DOFade(1, .5f);
-            //         });
-            //     }
-            // }
-        }
-
-        if (other.gameObject.CompareTag("Blue"))
-        {
-            MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
-            StartCoroutine(AnimationDelayRoutine());
-            
-            if (lastGateId == 10)
-            {
-                StiackerMat.DOFade(0, 0.3f).OnComplete(() =>
-                {
-                    _shineEffect.Play();
-                    StiackerMat.mainTexture = GoodBlue[0];
-                    StiackerMat.DOFade(1, 0.5f);
-                    IsBlue = true;
-                });
-            }
-            
-            // if (IsGoodGate)
-            // {
-            //     if (GameManager.Instance.Level == 4)
-            //     {
-            //         StiackerMat.DOFade(0, .3f).OnComplete(() =>
-            //         {
-            //             Shine.Play();
-            //             StiackerMat.mainTexture = GoodBlue[0];
-            //             StiackerMat.DOFade(1, .5f);
-            //             IsBlue = true;
-            //         });
-            //     }
-            //     else if (GameManager.Instance.Level == 5)
-            //     {
-            //         StiackerMat.DOFade(0, .3f).OnComplete(() =>
-            //         {
-            //             Shine.Play();
-            //             StiackerMat.mainTexture = GoodBlue[01];
-            //             StiackerMat.DOFade(1, .5f);
-            //         });
-            //     }
-            // }
-            // else
-            // {
-            //     if (GameManager.Instance.Level == 4)
-            //     {
-            //         StiackerMat.DOFade(0, .3f).OnComplete(() =>
-            //         {
-            //             Shine.Play();
-            //             StiackerMat.mainTexture = BadBlue[0];
-            //             StiackerMat.DOFade(1, .5f);
-            //         });
-            //         IsBlue = true;
-            //     }
-            //     else if (GameManager.Instance.Level == 5)
-            //     {
-            //         StiackerMat.DOFade(0, .3f).OnComplete(() =>
-            //         {
-            //             StiackerMat.mainTexture = BadBlue[01];
-            //             StiackerMat.DOFade(1, .5f);
-            //         });
-            //     }
-            // }
-        }
+        
 
         if (other.gameObject.CompareTag("Finish"))
         {
@@ -726,6 +613,39 @@ public class Collsion : MonoBehaviour
             // UiManager.Instance.cashCounter.SetActive(false);
         }
     }
+    
+    private void GateEnteringEffects(Gates gate, bool isGood)
+    {
+        MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+        StartCoroutine(AnimationDelayRoutine());
+
+        int score;
+        string scoreText;
+        Color color;
+        
+        if (isGood)
+        {
+            score = gate.gateCost;
+            scoreText = "+" + gate.gateCost;
+            color = goodGateScorePopUpColor;
+        }
+        else
+        {
+            score = gate.gateCost * -1;
+            scoreText = "-" + gate.gateCost;
+            color = badGateScorePopUpColor;
+        }
+        
+        StorageManager.Instance.IncreaseScore(score);
+        _shineEffect.Play();
+
+        scoreAnimator.transform.GetChild(0).gameObject.SetActive(true);
+        scoreAnimator.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = scoreText;
+        scoreAnimator.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = color;
+
+        scoreAnimator.Play("PopUp");
+    }
+    
     public IEnumerator BookRoutine()
     {
        EndDetector e =  FindObjectOfType<EndDetector>();
@@ -864,7 +784,7 @@ public class Collsion : MonoBehaviour
         scoreAnimator.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "-" + g.GetComponentInParent<Gates>().gateCost.ToString();
         scoreAnimator.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = badGateScorePopUpColor;
         
-        if (_shouldChange)
+        if (_shouldChangeTattoo)
         {
             StiackerMat.DOFade(0, .3f).OnComplete(() =>
             {
@@ -919,22 +839,18 @@ public class Collsion : MonoBehaviour
 
     }
 
-    private IEnumerator UpdateExpensiveTexture(int gateLevel)
+    private IEnumerator UpdateTattooTexture(Texture2D tattooTexture)
     {
-        yield return new WaitForSeconds(.2f);
+        yield return new WaitForSeconds(0.2f);
         
         _skinnedMeshRenderer.material.DOFade(0, .3f).OnComplete(() =>
         {
-            Mpb.SetTexture(SHPropTexture, Tattos[gateLevel]);
+            Mpb.SetTexture(SHPropTexture, tattooTexture);
             _skinnedMeshRenderer.SetPropertyBlock(Mpb);
             _skinnedMeshRenderer.material.DOFade(1, 0.5f);
-            // if (StiackerMat.mainTexture != null)
-            // {
-            //     Dummy.Add(StiackerMat.mainTexture);   
-            // }
         });
     }
-
+    
     #region Hand Animation
 
     private IEnumerator AnimationDelayRoutine()
