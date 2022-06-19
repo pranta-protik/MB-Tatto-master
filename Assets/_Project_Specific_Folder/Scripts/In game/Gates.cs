@@ -12,23 +12,25 @@ public enum EGateType
 }
 public class Gates : MonoBehaviour
 {
-    [FormerlySerializedAs("IsSpecial")] public bool isSpecial;
     [FormerlySerializedAs("gateGateType")] [FormerlySerializedAs("GateType")] public EGateType gateType;
     [FormerlySerializedAs("Cost")] public int gateCost;
     [FormerlySerializedAs("gateUICostText")] [FormerlySerializedAs("UICostText")] public string gateUICostString;
-    [FormerlySerializedAs("CostText")] public TMP_Text gateCostText;
-    [FormerlySerializedAs("id")] public int gateId;
+    [FormerlySerializedAs("gateId")] [FormerlySerializedAs("id")] public int gateLevel;
+    [FormerlySerializedAs("IsSpecial")] public bool isSpecial;
+    
+    private TMP_Text _gateCostText;
 
     void Start()
     {
+        _gateCostText = transform.GetChild(4).GetChild(0).GetComponent<TMP_Text>();
+        
         if (gateType == EGateType.Expensive)
         {
-            gateCostText.text = "+ $" + gateUICostString;
+            _gateCostText.text = "+ $" + gateUICostString;
         }
-
-        else
+        else if(gateType == EGateType.Cheap)
         {
-            gateCostText.text = "- $" + gateUICostString;
+            _gateCostText.text = "- $" + gateUICostString;
         }
     }
 }

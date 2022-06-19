@@ -249,7 +249,7 @@ public class Collsion : MonoBehaviour
                 //     }
                 // }
 
-                lastGateId = other.gameObject.transform.GetComponentInParent<Gates>().gateId;
+                lastGateId = other.gameObject.transform.GetComponentInParent<Gates>().gateLevel;
                 
                 if (!GameManager.Instance.IsVideo)
                 {
@@ -997,7 +997,7 @@ public class Collsion : MonoBehaviour
     {
         // MMVibrationManager.Haptic(HapticTypes.MediumImpact);
         StorageManager.Instance.IncreasePoints(-g.GetComponentInParent<Gates>().gateCost);
-        GameManager.Instance.Level = g.transform.GetComponentInParent<Gates>().gateId + 1;
+        GameManager.Instance.Level = g.transform.GetComponentInParent<Gates>().gateLevel + 1;
         yield return new WaitForSeconds(.2f);
 
         StiackerMat.DOFade(0, .3f).OnComplete(() =>
@@ -1008,7 +1008,7 @@ public class Collsion : MonoBehaviour
             PopUp.transform.GetChild(0).gameObject.SetActive(true);
             PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "-" + g.GetComponentInParent<Gates>().gateCost.ToString();
             PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = BadGatePopUpColor;                
-            StiackerMat.mainTexture = CheapTttos[g.transform.GetComponentInParent<Gates>().gateId];
+            StiackerMat.mainTexture = CheapTttos[g.transform.GetComponentInParent<Gates>().gateLevel];
             StiackerMat.DOFade(1, .5f);
         });
 
@@ -1030,7 +1030,7 @@ public class Collsion : MonoBehaviour
             PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "+" + g.GetComponentInParent<Gates>().gateCost.ToString();
             PopUp.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = GoodGatePopUpColor;
             
-            StiackerMat.mainTexture = Tattos[g.transform.GetComponentInParent<Gates>().gateId];
+            StiackerMat.mainTexture = Tattos[g.transform.GetComponentInParent<Gates>().gateLevel];
             StiackerMat.DOFade(1, .5f);
             if (StiackerMat.mainTexture != null)
             {
