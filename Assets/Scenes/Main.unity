@@ -3054,20 +3054,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33aabe1a2dec93349b06e6e5dc51bc06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FollowerType: 0
-  Next: {fileID: 0}
-  Retry: {fileID: 0}
-  TimeText: {fileID: 0}
-  TimeLeft: 30
-  players: 1
-  pathCreator: {fileID: 0}
   endOfPathInstruction: 2
-  speed: 0
-  BotSpeed: 0
   distanceTravelled: 3.7
-  MaxSpeed: 2
-  MinSpeed: 3
-  IncreazseMultiplier: 4
+  maxSpeed: 3
+  increaseMultiplier: 4
+  pathCreator: {fileID: 0}
+  speed: 0
 --- !u!222 &387661100
 CanvasRenderer:
   m_ObjectHideFlags: 0

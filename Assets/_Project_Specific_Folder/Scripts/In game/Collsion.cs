@@ -69,7 +69,7 @@ public class Collsion : MonoBehaviour
     
     private void Start()
     {
-        _lastSpeed = GameManager.Instance.p.MaxSpeed;
+        _lastSpeed = GameManager.Instance.p.maxSpeed;
         _camera = Camera.main;
         cam = GameManager.Instance.FakeCam;
         anim = GetComponent<Animator>();
@@ -794,9 +794,9 @@ public class Collsion : MonoBehaviour
 
     public IEnumerator SpeedSlowDownRoutine()
     {
-        GameManager.Instance.p.speed = GameManager.Instance.p.MaxSpeed = _lastSpeed / 3f;
+        GameManager.Instance.p.speed = GameManager.Instance.p.maxSpeed = _lastSpeed / 3f;
         yield return new WaitForSeconds(.6f);
-        GameManager.Instance.p.MaxSpeed = _lastSpeed;
+        GameManager.Instance.p.maxSpeed = _lastSpeed;
     }
     
     void RandomAnimationPlay()
