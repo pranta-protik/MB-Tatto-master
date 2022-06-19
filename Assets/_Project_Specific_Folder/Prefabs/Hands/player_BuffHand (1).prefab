@@ -412,7 +412,6 @@ GameObject:
   - component: {fileID: 3315578334293931430}
   - component: {fileID: 3315578334293931426}
   - component: {fileID: 3315578334293931427}
-  - component: {fileID: 3315578334293931424}
   - component: {fileID: 3315578334293931425}
   m_Layer: 0
   m_Name: player_BuffHand (1)
@@ -489,19 +488,7 @@ MonoBehaviour:
   count: 0
   TileCount: 0
   multiply: 0
---- !u!65 &3315578334293931424
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3315578334293931431}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.48154965, y: 0.9999999, z: 0.32693407}
-  m_Center: {x: 0.25922528, y: 0.0000000011549187, z: -0.004350999}
+  handId: 0
 --- !u!54 &3315578334293931425
 Rigidbody:
   m_ObjectHideFlags: 0

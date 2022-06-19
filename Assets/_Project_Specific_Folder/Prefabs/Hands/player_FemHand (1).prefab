@@ -1087,7 +1087,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8145970929672694336}
   - component: {fileID: 8540782143435034031}
-  - component: {fileID: 8540782143435034030}
   - component: {fileID: 8540782143435034032}
   - component: {fileID: 8540782143435034033}
   m_Layer: 0
@@ -1129,19 +1128,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &8540782143435034030
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8811184687545118970}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 0.48154965, y: 0.9999999, z: 0.32693407}
-  m_Center: {x: 0.25922528, y: 0.0000000011549187, z: -0.004350999}
 --- !u!95 &8540782143435034032
 Animator:
   serializedVersion: 3
@@ -1194,6 +1180,7 @@ MonoBehaviour:
   count: 0
   TileCount: 0
   multiply: 0
+  handId: 0
 --- !u!1 &8864833521009639819
 GameObject:
   m_ObjectHideFlags: 0

@@ -991,6 +991,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 981833c300ce33f4b815997eb49398ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Rings: []
+  Brecelets: []
   c: {fileID: 0}
   c1: {fileID: 0}
   HeatEffect: {fileID: 6558328930673764251}
@@ -1040,6 +1042,14 @@ MonoBehaviour:
   m_isTapping: 0
   GoodGatePopUpColor: {r: 0.7254902, g: 0.7607844, b: 0.9921569, a: 1}
   BadGatePopUpColor: {r: 1, g: 0, b: 0, a: 1}
+  i: 0
+  SavedTattooNo: 0
+  LastLevel: 0
+  IsGood: 0
+  j: 2
+  m_i: 0
+  Dummy: []
+  lastGateId: 0
   OverRideController: {fileID: 22100000, guid: ccf2c04e5ea1305488d5223e19df82ac, type: 2}
   AnimationClips:
   - {fileID: 1827226128182048838, guid: cc0a411143464df44becb656a912bb2d, type: 3}
@@ -1050,6 +1060,7 @@ MonoBehaviour:
   - {fileID: 1827226128182048838, guid: b1a3e7d019b883d4d881cbdfdb371cfa, type: 3}
   - {fileID: 1827226128182048838, guid: 91ca61afb489c3443a7b929b16d71a38, type: 3}
   - {fileID: 1827226128182048838, guid: 99393eb8e65b1f44ea6fe8fde70a91bd, type: 3}
+  _animationIndexes: 
 --- !u!114 &6558328930284890443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1083,6 +1094,7 @@ MonoBehaviour:
   count: 0
   TileCount: 0
   multiply: 0
+  handId: 0
 --- !u!1 &6358602442070034123
 GameObject:
   m_ObjectHideFlags: 0
@@ -1127,7 +1139,7 @@ GameObject:
   - component: {fileID: 6558328929825668629}
   - component: {fileID: 6558328929825668628}
   m_Layer: 0
-  m_Name: Canvas (3)
+  m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6087,7 +6099,7 @@ GameObject:
   - component: {fileID: 6558328930673764251}
   - component: {fileID: 6558328930673764250}
   m_Layer: 0
-  m_Name: CFX4 Disruptive Force (3)
+  m_Name: CFX4 Disruptive Force
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10922,7 +10934,7 @@ GameObject:
   - component: {fileID: 6558328931233303174}
   - component: {fileID: 6558328931233303177}
   m_Layer: 0
-  m_Name: MagicDust (3)
+  m_Name: MagicDust
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
