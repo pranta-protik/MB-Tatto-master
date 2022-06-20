@@ -150,7 +150,7 @@ public class Buttons : MonoBehaviour
         GameManager.Instance.SpawnHand(PlayerPrefs.GetInt("SelectedHandId"));
         // UiManager.Instance.hand.gameObject.SetActive(true);
         // UiManager.Instance.shop.SetActive(true);
-        UiManager.Instance.ShopPnael.SetActive(false);
+        // UiManager.Instance.ShopPnael.SetActive(false);
         _camera.transform.DOLocalRotate(new Vector3(27.761f, 90, 0), .3f).OnComplete(() => { });
     }
 

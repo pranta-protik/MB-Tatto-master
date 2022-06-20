@@ -88,25 +88,25 @@ public class Wheel : MonoBehaviour
 
     private void DisableWheel()
     {
-        UiManager.Instance.spinnerScreen.SetActive(false);
-        UiManager.Instance.cashPile.SetActive(true);
+        // UiManager.Instance.spinnerScreen.SetActive(false);
+        // UiManager.Instance.cashPile.SetActive(true);
 
         Vector3[] splitPositions = {new Vector3(0f, 0f, 0f), new Vector3(170f, 170f, 0f), new Vector3(-170f, 170f, 0f), new Vector3(170f, -170f, 0f), new Vector3(-170f, -170f, 0f)};
         
         float delay = 0f;
         
-        for (int i = 0; i < UiManager.Instance.cashPile.transform.childCount; i++)
-        {
-            Transform cashTransform = UiManager.Instance.cashPile.transform.GetChild(i);
-            float animationDelay = delay;
-            
-            cashTransform.DOLocalMove(splitPositions[i], 0.5f).OnComplete(() =>
-            {
-                cashTransform.DOLocalMove(new Vector3(153f, 868f, 0f), 0.3f).SetEase(Ease.OutSine).SetDelay(animationDelay);
-                cashTransform.DOScale(new Vector3(0f, 0f, 0f), 0.5f).SetEase(Ease.Linear).SetDelay(animationDelay);
-            });
-            delay += 0.1f;
-        }
+        // for (int i = 0; i < UiManager.Instance.cashPile.transform.childCount; i++)
+        // {
+        //     Transform cashTransform = UiManager.Instance.cashPile.transform.GetChild(i);
+        //     float animationDelay = delay;
+        //     
+        //     cashTransform.DOLocalMove(splitPositions[i], 0.5f).OnComplete(() =>
+        //     {
+        //         cashTransform.DOLocalMove(new Vector3(153f, 868f, 0f), 0.3f).SetEase(Ease.OutSine).SetDelay(animationDelay);
+        //         cashTransform.DOScale(new Vector3(0f, 0f, 0f), 0.5f).SetEase(Ease.Linear).SetDelay(animationDelay);
+        //     });
+        //     delay += 0.1f;
+        // }
         Invoke(nameof(UpdateTotalCash), .5f);
     }
 

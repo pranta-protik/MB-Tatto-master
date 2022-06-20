@@ -122,7 +122,7 @@ public class InfluenceMeter : MonoBehaviour
         transform.GetChild(5).gameObject.SetActive(true);
         transform.GetChild(5).GetComponent<Image>().DOFade(1f, 0.5f).OnComplete(() =>
         {
-            UiManager.Instance.UnlockPanel.SetActive(true);
+            UiManager.Instance.unlockPanel.SetActive(true);
             gameObject.SetActive(false); 
         });
     }

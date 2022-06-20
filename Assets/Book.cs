@@ -136,14 +136,14 @@ public class Book : MonoBehaviour
     {
         // UiManager.Instance.UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>().increaseAmount = 25;
         
-        if (GameManager.Instance.currentLevelNo <= 23)
-        {
-            UiManager.Instance.UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>().increaseAmount = 25;
-        }
-        else
-        {
-            UiManager.Instance.UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>().increaseAmount = 10;
-        }
+        // if (GameManager.Instance.currentLevelNo <= 23)
+        // {
+        //     UiManager.Instance.UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>().increaseAmount = 25;
+        // }
+        // else
+        // {
+        //     UiManager.Instance.UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>().increaseAmount = 10;
+        // }
         // if (GameManager.Instance.levelNo <= 3)
         // {
         //     UiManager.Instance.UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>()._increaseAmount = 25;
@@ -156,6 +156,6 @@ public class Book : MonoBehaviour
 
     private void EnableUnlockScreen()
     {
-        UiManager.Instance.UnlockPanel.gameObject.SetActive(true);
+        // UiManager.Instance.UnlockPanel.gameObject.SetActive(true);
     }
 }

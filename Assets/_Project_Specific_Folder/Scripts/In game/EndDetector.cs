@@ -43,7 +43,7 @@ public class EndDetector : MonoBehaviour
             
             
             EndParticle.Play();
-            UiManager.Instance.TapFastPanel.gameObject.SetActive(false);       
+            // UiManager.Instance.tapFastPanel.gameObject.SetActive(false);       
             GameManager.Instance.isGameOver = true;
             Cam.gameObject.SetActive(true);
 

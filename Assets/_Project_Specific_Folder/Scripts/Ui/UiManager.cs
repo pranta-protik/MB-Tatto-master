@@ -7,14 +7,14 @@ using UnityEngine.UI;
 using MoreMountains.NiceVibrations;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class UiManager : Singleton<UiManager>
 {
     public GameObject hurtScreen;
     public GameObject transitionScreen;
-
+    public TextMeshProUGUI totalScoreText;
+    public GameObject unlockPanel;
     [SerializeField] private GameObject startUI;
     [SerializeField] private GameObject hapticsIcon;
     [SerializeField] private GameObject priceTag;
@@ -22,50 +22,26 @@ public class UiManager : Singleton<UiManager>
     [SerializeField] private GameObject selectionMenuButton;
     [SerializeField] private GameObject shop;
     [SerializeField] private TextMeshProUGUI levelNoText;
+    [SerializeField] private GameObject[] upgradeButtons;
     
     private TextMeshProUGUI _scoreText;
     private Slider _mobileScreenSlider;
     private bool _isMobileActive;
     private int _currentLevel;
     private int _currentLevelText;
-        
-        
+    private bool _isHapticsAllowed;
+    private Camera _camera;
     
-    // public TMP_Text scoreText ;
-    
-    public Button btnNext;
-    // public Button hand; 
-    
-    public GameObject EndUi, CompleteUI, UnlockPanel, ShopPnael;
-    public GameObject TapFastPanel;
-    public GameObject decisionScreen, cashCounter, spinnerScreen, cashPile;
-    
-    
-    public GameObject fillbarTimer;
-    public Image Timer;
-    public float timerInitvalue;
-    public TMP_Text TotalText ;
-    
-    public TMP_Text NormalCoin ;
-
-    public bool HapticsAllowed;
-    public GameObject enable, disable;
+    // public GameObject tapFastPanel;
 
     public GameObject PopUp;
     public float popUpScale = 4.5f;
     public float popUpDuration = 0.3f;
-    
-    
-    private new Camera _camera;
-    
 
     public bool shouldUpdateTotalCash;
     public int targetCashAmount;
     public float currentCashAmount;
     public float incrementAmount;
-    private bool _isHandAnimating;
-
-    public GameObject[] upgradeButtons;
 
     public GameObject selectionMenu;
 
@@ -93,6 +69,8 @@ public class UiManager : Singleton<UiManager>
     {
         base.Start();
 
+        _camera = Camera.main;
+        
         if (priceTag!=null)
         {
             _scoreText = priceTag.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
@@ -132,20 +110,127 @@ public class UiManager : Singleton<UiManager>
             }
         }
 
-        
-        
-        if (TotalText != null)
+        if (totalScoreText!= null)
         {
-            TotalText.SetText("$" + StorageManager.GetTotalScore());
+            totalScoreText.SetText("$" + StorageManager.GetTotalScore());
         }
-        if (btnNext != null)
+    }
+    
+    // private void EnableShopCallBack()
+    // {
+    //     hand.gameObject.SetActive(false);
+    //     shop.SetActive(false);
+    //
+    //     if (_isHandAnimating)
+    //     {
+    //         DOTween.Kill(hand.transform);
+    //         hand.transform.localScale = new Vector3(1f, 1f, 1f);
+    //         _isHandAnimating = false;
+    //     }
+    //     _camera.transform.DOLocalRotate(new Vector3(42, 90, 0), .3f).OnComplete(() => { ShopPnael.SetActive(true); });
+    // }
+
+    
+    
+    private void Update()
+    {
+        if (_isMobileActive)
         {
-            btnNext.onClick.AddListener(NextCallBack);
+            _camera.fieldOfView = _mobileScreenSlider.minValue + (_mobileScreenSlider.maxValue - _mobileScreenSlider.value);   
         }
 
-        _camera = Camera.main;
+        if (_shouldUpdateLikeText)
+        {
+            UpdateLikeText();
+        }
+
+        if (_shouldUpdateFollowersText)
+        {
+            UpdateFollowersText();
+        }
+
+        if (isInstaGalleryPhotoUpdated && _isFollowersUpdated)
+        {
+            Invoke(nameof(EnableInfluenceMeterScreen), 1f);
+            isInstaGalleryPhotoUpdated = false;
+            _isFollowersUpdated = false;
+        }
     }
 
+    #region PopUps
+
+    public void OnShopPopUpButtonClick()
+    {
+        shop.transform.GetChild(1).gameObject.SetActive(true);
+        shop.transform.GetChild(2).gameObject.SetActive(true);
+        shop.transform.GetChild(2).DOScale(new Vector3(popUpScale, popUpScale, popUpScale), popUpDuration);
+    }
+
+    public void OnClosePopUpButtonClick()
+    {
+        shop.transform.GetChild(2).DOScale(new Vector3(0f, 0f, 0f), popUpDuration).OnComplete(() =>
+        {
+            shop.transform.GetChild(1).gameObject.SetActive(false);
+            shop.transform.GetChild(2).gameObject.SetActive(false); 
+        });
+    }
+
+    #endregion
+
+    #region Haptics
+
+    public void OnEnableHapticsButtonClick()
+    {
+        hapticsIcon.transform.GetChild(0).gameObject.SetActive(false);
+        hapticsIcon.transform.GetChild(1).gameObject.SetActive(true);
+        _isHapticsAllowed = true;
+        MMVibrationManager.SetHapticsActive(_isHapticsAllowed);
+    }
+    public void OnDisableHapticsButtonClick()
+    {
+        hapticsIcon.transform.GetChild(0).gameObject.SetActive(true);
+        hapticsIcon.transform.GetChild(1).gameObject.SetActive(false);
+        _isHapticsAllowed = false;
+        MMVibrationManager.SetHapticsActive(_isHapticsAllowed);
+    }
+
+    #endregion
+
+    #region SelectionMenu
+
+    public void OnSelectionMenuButtonClick()
+    {
+        levelNoText.transform.parent.gameObject.SetActive(false);
+        shop.SetActive(false);
+        selectionMenuButton.gameObject.SetActive(false);
+        _camera.transform.DOLocalRotate(new Vector3(42, 90, 0), .3f).OnComplete(() =>
+        {
+            selectionMenu.SetActive(true);
+            selectionMenu.GetComponent<SelectionMenu>().CheckUnlockButtonAvailability();
+        });
+    }
+    
+    public void OnCloseSelectionMenuButtonClick()
+    {
+        selectionMenu.SetActive(false);
+        _camera.transform.DOLocalRotate(new Vector3(27.761f, 90, 0), .3f).OnComplete(() =>
+        {
+            levelNoText.transform.parent.gameObject.SetActive(true);
+            shop.SetActive(true);
+            selectionMenuButton.gameObject.SetActive(true);
+        });
+    }
+
+    #endregion
+    
+    public void OnSliderClick()
+    {
+        _mobileScreenSlider.transform.GetChild(2).GetChild(0).DOKill();
+        _mobileScreenSlider.transform.GetChild(2).GetChild(0).localScale = new Vector3(1f, 1f, 1f);
+        mobileScreen.transform.GetChild(7).gameObject.SetActive(false);
+    }
+
+    
     #region Gameplay changes
 
     public void ClearUIOnGameStart()
@@ -207,95 +292,37 @@ public class UiManager : Singleton<UiManager>
 
         _isMobileActive = true;
     }
+    
+    public void ShowPriceTag()
+    {
+        priceTag.GetComponent<RectTransform>().DOAnchorPos(new Vector2(-126f, -70f), 0.5f);
+    }
+
+    public IEnumerator HurtScreenRoutine()
+    {
+        hurtScreen.SetActive(true);
+        yield return new WaitForSeconds(0.3f);
+        hurtScreen.SetActive(false);
+    }
 
     #endregion
     
     
-    // private void EnableShopCallBack()
-    // {
-    //     hand.gameObject.SetActive(false);
-    //     shop.SetActive(false);
-    //
-    //     if (_isHandAnimating)
-    //     {
-    //         DOTween.Kill(hand.transform);
-    //         hand.transform.localScale = new Vector3(1f, 1f, 1f);
-    //         _isHandAnimating = false;
-    //     }
-    //     _camera.transform.DOLocalRotate(new Vector3(42, 90, 0), .3f).OnComplete(() => { ShopPnael.SetActive(true); });
-    // }
-
-    public void OnSelectionMenuButtonClick()
-    {
-        levelNoText.transform.parent.gameObject.SetActive(false);
-        shop.SetActive(false);
-        selectionMenuButton.gameObject.SetActive(false);
-        _camera.transform.DOLocalRotate(new Vector3(42, 90, 0), .3f).OnComplete(() =>
-        {
-            selectionMenu.SetActive(true);
-            selectionMenu.GetComponent<SelectionMenu>().CheckUnlockButtonAvailability();
-        });
-    }
-
-    public void OnSliderClick()
-    {
-        _mobileScreenSlider.transform.GetChild(2).GetChild(0).DOKill();
-        _mobileScreenSlider.transform.GetChild(2).GetChild(0).localScale = new Vector3(1f, 1f, 1f);
-        mobileScreen.transform.GetChild(7).gameObject.SetActive(false);
-    }
     
-    public void OnCloseSelectionMenuButtonClick()
-    {
-        selectionMenu.SetActive(false);
-        _camera.transform.DOLocalRotate(new Vector3(27.761f, 90, 0), .3f).OnComplete(() =>
-        {
-            levelNoText.transform.parent.gameObject.SetActive(true);
-            shop.SetActive(true);
-            selectionMenuButton.gameObject.SetActive(true);
-        });
-    }
-
     
-    private void Update()
-    {
-        if (shouldUpdateTotalCash)
-        {
-            if (currentCashAmount < targetCashAmount)
-            {
-                currentCashAmount += Time.unscaledDeltaTime * incrementAmount;
-                currentCashAmount = Mathf.Clamp(currentCashAmount, 0, targetCashAmount);
-                cashCounter.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText("$" + Mathf.RoundToInt(currentCashAmount));
-            }
-            else
-            {
-                cashPile.SetActive(false);
-                UnlockPanel.SetActive(true);
-                shouldUpdateTotalCash = false;
-            }
-        }
-
-        if (_isMobileActive)
-        {
-            _camera.fieldOfView = _mobileScreenSlider.minValue + (_mobileScreenSlider.maxValue - _mobileScreenSlider.value);   
-        }
-
-        if (_shouldUpdateLikeText)
-        {
-            UpdateLikeText();
-        }
-
-        if (_shouldUpdateFollowersText)
-        {
-            UpdateFollowersText();
-        }
-
-        if (isInstaGalleryPhotoUpdated && _isFollowersUpdated)
-        {
-            Invoke(nameof(EnableInfluenceMeterScreen), 1f);
-            isInstaGalleryPhotoUpdated = false;
-            _isFollowersUpdated = false;
-        }
-    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     public void TakePicture()
     {
@@ -454,17 +481,7 @@ public class UiManager : Singleton<UiManager>
         _shouldUpdateFollowersText = true;
     }
     
-    public void ShowPriceTag()
-    {
-        priceTag.GetComponent<RectTransform>().DOAnchorPos(new Vector2(-126f, -70f), 0.5f);
-    }
-
-    public IEnumerator HurtScreenRoutine()
-    {
-        hurtScreen.SetActive(true);
-        yield return new WaitForSeconds(0.3f);
-        hurtScreen.SetActive(false);
-    }
+    
     public IEnumerator FdeDelayRoutine()
     {
         yield return new WaitForSeconds(1f);
@@ -487,50 +504,21 @@ public class UiManager : Singleton<UiManager>
         shop.transform.GetChild(2).GetChild(1).GetComponent<TextMeshProUGUI>().SetText(timeLeftText);
     }
     
-    public void ShopPopUp()
-    {
-        shop.transform.GetChild(1).gameObject.SetActive(true);
-        shop.transform.GetChild(2).gameObject.SetActive(true);
-        shop.transform.GetChild(2).DOScale(new Vector3(popUpScale, popUpScale, popUpScale), popUpDuration);
-    }
-
-    public void ClosePopUp()
-    {
-        shop.transform.GetChild(2).DOScale(new Vector3(0f, 0f, 0f), popUpDuration).OnComplete(() =>
-        {
-            shop.transform.GetChild(1).gameObject.SetActive(false);
-            shop.transform.GetChild(2).gameObject.SetActive(false); 
-        });
-    }
     
-    public void EnableHaptics()
-    {
-        hapticsIcon.transform.GetChild(0).gameObject.SetActive(false);
-        hapticsIcon.transform.GetChild(1).gameObject.SetActive(true);
-        HapticsAllowed = true;
-        MMVibrationManager.SetHapticsActive(HapticsAllowed);
-    }
-    public void DisableHaptics()
-    {
-        hapticsIcon.transform.GetChild(0).gameObject.SetActive(true);
-        hapticsIcon.transform.GetChild(1).gameObject.SetActive(false);
-        HapticsAllowed = false;
-        MMVibrationManager.SetHapticsActive(HapticsAllowed);
-    }
     private void NextCallBack()
     {
         // UiManager.Instance.UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>()._increaseAmount = 25;
         
         if (GameManager.Instance.currentLevelNo <= 23)
         {
-            UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>().increaseAmount = 25;
+            unlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>().increaseAmount = 25;
         }
         else
         {
-            UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>().increaseAmount = 10;
+            unlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>().increaseAmount = 10;
         }
 
-        UnlockPanel.gameObject.SetActive(true);
+        unlockPanel.gameObject.SetActive(true);
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void LoadSelectionMenu()
@@ -551,70 +539,12 @@ public class UiManager : Singleton<UiManager>
         }
         PlayerPrefs.SetInt("current_scene_text", _currentLevelText + 1);
 
-        SceneManager.LoadScene("main");
+        SceneManager.LoadScene("Main");
         //   StorageManager.Instance.SetTotalScore();
     }
 
     public void Next()
     {
-        SceneManager.LoadScene("main");   
-    }
-
-    public void SellTattoo()
-    {
-        cashCounter.SetActive(true);
-        if (StorageManager.Instance.currentLevelScore <= 0)
-        {
-            // StorageManager.Instance.currentLevel = PlayerPrefs.GetInt("current_scene");
-            // StorageManager.Instance.currentLevelText = PlayerPrefs.GetInt("current_scene_text", 0);
-            StorageManager.Instance.currentLevelScore = 500;
-        }
-
-
-        // GameManager.Instance.SetTotalTime();
-
-
-        if (GameManager.Instance.currentLevelNo <= 23)
-        {
-            UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>().increaseAmount = 25;
-        }
-        else
-        {
-            UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>().increaseAmount = 10;
-        }
-        
-        // UiManager.Instance.UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>()._increaseAmount = 25;
-        
-        decisionScreen.SetActive(false);
-        spinnerScreen.SetActive(true);
-        spinnerScreen.transform.GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>().SetText("$" + StorageManager.Instance.currentLevelScore);
-        spinnerScreen.transform.GetChild(5).DOScale(new Vector3(0.8f, 0.8f, 0.8f), 0.5f).SetLoops(-1, LoopType.Yoyo);
-    }
-    public void KeepTattooCallBack()
-    {
-        decisionScreen.SetActive(false);
-        cashCounter.SetActive(false);
-        
-        // GameManager.Instance.SetTotalTime();
-        
-        // StartCoroutine(GameManager.Instance.CollsionScript.BookRoutine()); 
-        //GameManager.Instance.bossWall.DOMoveY(-1.5f, 1f).OnComplete(() =>
-        //{
-        //    GameManager.Instance.p.enabled = true;
-
-        //    GameManager.Instance.CollsionScript.c.enabled = true;
-        //    GameManager.Instance.CollsionScript.c1.enabled = true; 
-        //});
-
-    }
-
-    public void SpinWheel()
-    {
-        spinnerScreen.transform.GetChild(5).DOScale(new Vector3(0.7f, 0.7f, 0.7f), 0.1f).OnComplete(() =>
-        {
-            DOTween.KillAll();
-            spinnerScreen.transform.GetChild(3).GetComponent<Wheel>().startSpinning = true;
-            spinnerScreen.transform.GetChild(5).GetComponent<Button>().interactable = false;
-        });
+        SceneManager.LoadScene("Main");   
     }
 }
