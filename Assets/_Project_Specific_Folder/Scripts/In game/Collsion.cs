@@ -1,14 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
 using MoreMountains.NiceVibrations;
 using PathCreation.Examples;
-using UnityEngine.Serialization;
 
 
 public class Collsion : MonoBehaviour
@@ -779,7 +777,7 @@ public class Collsion : MonoBehaviour
     {
         yield return new WaitForSeconds(0.2f);
         
-        _skinnedMeshRenderer.material.DOFade(0, .3f).OnComplete(() =>
+        _skinnedMeshRenderer.material.DOFade(0, 0.3f).OnComplete(() =>
         {
             Mpb.SetTexture(SHPropTexture, tattooTexture);
             _skinnedMeshRenderer.SetPropertyBlock(Mpb);
@@ -789,7 +787,7 @@ public class Collsion : MonoBehaviour
 
     private void RemoveTattoo()
     {
-        _skinnedMeshRenderer.material.DOFade(0, 0.3f).SetDelay(0.2f).OnComplete(() =>
+        _skinnedMeshRenderer.material.DOFade(0, 0.3f).OnComplete(() =>
         {
             Mpb.SetTexture(SHPropTexture, TextureManager.Instance.handBurntTexture);
             _skinnedMeshRenderer.SetPropertyBlock(Mpb);
@@ -836,6 +834,7 @@ public class Collsion : MonoBehaviour
     private IEnumerator SpeedSlowDownRoutine()
     {
         _playerPathFollower.maxSpeed = _playerInitialSpeed / _playerPathFollower.speedDecrementFactor;
+        _playerPathFollower.speed = _playerPathFollower.maxSpeed;
         yield return new WaitForSeconds(_playerPathFollower.speedDecrementDuration);
         _playerPathFollower.maxSpeed = _playerInitialSpeed;
     }
