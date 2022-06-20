@@ -2,26 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-using UnityEngine.Serialization;
 
 public class HandController : MonoBehaviour
 {
     public int handId;
 
-    [Header("Control & Movement")] 
-    public float positionXClampValue = 4f;
-    public float mobileSpeed = 0.8f; 
-    public float computerSpeed = 15f;
-    
+    [Header("Control & Movement")] [SerializeField]
+    private float positionXClampValue = 4f;
+
+    [SerializeField] private float mobileSpeed = 0.8f;
+    [SerializeField] private float computerSpeed = 15f;
+    public ERotationAxis rotationAxis;
+    [SerializeField] private float rotationDuration = 0.5f;
+
     private float _positionX, _positionY;
     private bool _isTouching;
-    
+    private bool _canRotate;
+
     void Start()
-    { 
+    {
         _positionX = 0f;
         _positionY = 3.1549f;
+        _canRotate = true;
     }
-    
+
     private void Update()
     {
         if (GameManager.Instance.hasGameStarted)
@@ -29,7 +33,7 @@ public class HandController : MonoBehaviour
             HandlePlayerMovement();
         }
     }
-    
+
     private void HandlePlayerMovement()
     {
         //Mobile control
@@ -58,20 +62,50 @@ public class HandController : MonoBehaviour
         //Keyboard control
         float x = Input.GetAxis("Horizontal") * Time.deltaTime * computerSpeed;
         Vector3 newPosition = transform.localPosition + Vector3.right * x;
-        newPosition.x = Mathf.Clamp(newPosition.x, -positionXClampValue,positionXClampValue);
+        newPosition.x = Mathf.Clamp(newPosition.x, -positionXClampValue, positionXClampValue);
         transform.localPosition = newPosition;
-        
+
         if (Input.GetAxis("Horizontal") > .1f)
         {
-            transform.DOLocalRotate(new Vector3(6, -90, 25), .3f);
+            // if (_canTilt)
+            // {
+            //     transform.DOLocalRotate(new Vector3(6, -90, 25), .3f);
+            // }
         }
+
         if (Input.GetAxis("Horizontal") < -.1f)
         {
-            transform.DOLocalRotate(new Vector3(-6, -90,25), .3f);
+            // if (_canTilt)
+            // {
+            //     transform.DOLocalRotate(new Vector3(-6, -90, 25), .3f);
+            // }
         }
+
         if (Input.GetAxis("Horizontal") == 0)
         {
-            transform.DOLocalRotate(new Vector3(0, -90, 25), .3f);
+            // if (_canTilt)
+            // {
+            //     transform.DOLocalRotate(new Vector3(0, -90, 25), .3f);
+            // }
+        }
+    }
+
+    public void RotateHandAlongXAxis()
+    {
+        if (_canRotate)
+        {
+            _canRotate = false;
+            transform.DOBlendableRotateBy(new Vector3(0f, 360f, 0f), rotationDuration, RotateMode.FastBeyond360).OnComplete(() => { _canRotate = true; });
+        }
+    }
+
+    public void RotateHandAlongYAxis()
+    {
+        if (_canRotate)
+        {
+            _canRotate = false;
+            transform.DOLocalRotate(new Vector3(-360f, 0f, 0f), rotationDuration, RotateMode.LocalAxisAdd).SetRelative(true)
+                .OnComplete(() => { _canRotate = true; });
         }
     }
 }

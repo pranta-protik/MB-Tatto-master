@@ -471,6 +471,8 @@ MonoBehaviour:
   positionXClampValue: 4
   mobileSpeed: 0.8
   computerSpeed: 15
+  rotationAxis: 1
+  rotationDuration: 0.5
 --- !u!54 &3315578334293931425
 Rigidbody:
   m_ObjectHideFlags: 0

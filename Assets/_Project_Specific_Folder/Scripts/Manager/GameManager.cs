@@ -7,6 +7,12 @@ using PathCreation.Examples;
 using System;
 using PathCreation;
 
+public enum ERotationAxis
+{
+    X,
+    Y
+}
+
 [Serializable]
 public class HandGroup
 {
@@ -21,7 +27,7 @@ public class GameManager : Singleton<GameManager>
         Complete,
         Test
     }
-    
+
     public int totalLevelNo = 50;
     public List<GameObject> levelPrefabs = new List<GameObject>();
     public List<int> likes = new List<int>();

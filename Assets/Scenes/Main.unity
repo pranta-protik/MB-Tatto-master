@@ -650,6 +650,14 @@ PrefabInstance:
       propertyPath: handId
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4469959651996483948, guid: 5df2367edeecd1343afb724adeb07a71, type: 3}
+      propertyPath: rotationAxis
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4469959651996483948, guid: 5df2367edeecd1343afb724adeb07a71, type: 3}
+      propertyPath: rotationDuration
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5df2367edeecd1343afb724adeb07a71, type: 3}
 --- !u!4 &167582304 stripped
@@ -986,6 +994,14 @@ PrefabInstance:
     - target: {fileID: 2772621672912360679, guid: 2fe6a5243c45ad444a73b2fc08110ae2, type: 3}
       propertyPath: handId
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2772621672912360679, guid: 2fe6a5243c45ad444a73b2fc08110ae2, type: 3}
+      propertyPath: rotationAxis
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2772621672912360679, guid: 2fe6a5243c45ad444a73b2fc08110ae2, type: 3}
+      propertyPath: rotationDuration
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3079122292801841587, guid: 2fe6a5243c45ad444a73b2fc08110ae2, type: 3}
       propertyPath: m_Name
@@ -1455,6 +1471,14 @@ PrefabInstance:
     - target: {fileID: 2373285987960752168, guid: 13dd3ac243f8f244b9843df3b87ca582, type: 3}
       propertyPath: handId
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2373285987960752168, guid: 13dd3ac243f8f244b9843df3b87ca582, type: 3}
+      propertyPath: rotationAxis
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2373285987960752168, guid: 13dd3ac243f8f244b9843df3b87ca582, type: 3}
+      propertyPath: rotationDuration
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2373285987960752171, guid: 13dd3ac243f8f244b9843df3b87ca582, type: 3}
       propertyPath: tattooHand
@@ -2906,6 +2930,14 @@ PrefabInstance:
       propertyPath: handId
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8645485101156954890, guid: 131f9305687aee445b6a192bec00b1cc, type: 3}
+      propertyPath: rotationAxis
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8645485101156954890, guid: 131f9305687aee445b6a192bec00b1cc, type: 3}
+      propertyPath: rotationDuration
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8879839752688848452, guid: 131f9305687aee445b6a192bec00b1cc, type: 3}
       propertyPath: m_Name
       value: player_FemHand02
@@ -3519,6 +3551,14 @@ PrefabInstance:
     - target: {fileID: 7245434087078294345, guid: 2711f0381d69fc64a9f7d094d9ddd43e, type: 3}
       propertyPath: handId
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7245434087078294345, guid: 2711f0381d69fc64a9f7d094d9ddd43e, type: 3}
+      propertyPath: rotationAxis
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7245434087078294345, guid: 2711f0381d69fc64a9f7d094d9ddd43e, type: 3}
+      propertyPath: rotationDuration
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7515832935367560734, guid: 2711f0381d69fc64a9f7d094d9ddd43e, type: 3}
       propertyPath: m_Name
@@ -10039,6 +10079,14 @@ PrefabInstance:
       propertyPath: handId
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8734206296889652341, guid: 09b96d6da0680244eb39260b77d0cfdc, type: 3}
+      propertyPath: rotationAxis
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8734206296889652341, guid: 09b96d6da0680244eb39260b77d0cfdc, type: 3}
+      propertyPath: rotationDuration
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8734206296889652342, guid: 09b96d6da0680244eb39260b77d0cfdc, type: 3}
       propertyPath: m_Name
       value: player_BuffHand
@@ -15289,6 +15337,14 @@ PrefabInstance:
       propertyPath: handId
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3315578334293931427, guid: e4441a83bfaee664b989166b1538b3f7, type: 3}
+      propertyPath: rotationAxis
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3315578334293931427, guid: e4441a83bfaee664b989166b1538b3f7, type: 3}
+      propertyPath: rotationDuration
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3315578334293931430, guid: e4441a83bfaee664b989166b1538b3f7, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -17300,6 +17356,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 378904802}
     m_Modifications:
+    - target: {fileID: 6949288790764203985, guid: ef35299a3d9d67d4f8f1b8bad8160689, type: 3}
+      propertyPath: rotationAxis
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6949288790764203985, guid: ef35299a3d9d67d4f8f1b8bad8160689, type: 3}
+      propertyPath: rotationDuration
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7492419862422192184, guid: ef35299a3d9d67d4f8f1b8bad8160689, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -17918,6 +17982,14 @@ PrefabInstance:
       propertyPath: handId
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2475453667155728165, guid: 887ebc2afac49184793737bed293dd33, type: 3}
+      propertyPath: rotationAxis
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2475453667155728165, guid: 887ebc2afac49184793737bed293dd33, type: 3}
+      propertyPath: rotationDuration
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2724724520286695625, guid: 887ebc2afac49184793737bed293dd33, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -18179,6 +18251,14 @@ PrefabInstance:
     - target: {fileID: 8646175687244585552, guid: 0ee54f147c8b94640b2d295d748ff8d5, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8879984846791255813, guid: 0ee54f147c8b94640b2d295d748ff8d5, type: 3}
+      propertyPath: rotationAxis
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8879984846791255813, guid: 0ee54f147c8b94640b2d295d748ff8d5, type: 3}
+      propertyPath: rotationDuration
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8879984846791255931, guid: 0ee54f147c8b94640b2d295d748ff8d5, type: 3}
       propertyPath: tattooHand
@@ -21354,6 +21434,14 @@ PrefabInstance:
       propertyPath: handId
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 9051667895357920231, guid: 712931f53612ea945949c73803cf68a9, type: 3}
+      propertyPath: rotationAxis
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051667895357920231, guid: 712931f53612ea945949c73803cf68a9, type: 3}
+      propertyPath: rotationDuration
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 712931f53612ea945949c73803cf68a9, type: 3}
 --- !u!1 &1805320404 stripped
@@ -22003,6 +22091,14 @@ PrefabInstance:
     - target: {fileID: 5017790756821174045, guid: 589d83ddd9d695443937a57cbf13bec9, type: 3}
       propertyPath: handId
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5017790756821174045, guid: 589d83ddd9d695443937a57cbf13bec9, type: 3}
+      propertyPath: rotationAxis
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5017790756821174045, guid: 589d83ddd9d695443937a57cbf13bec9, type: 3}
+      propertyPath: rotationDuration
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5288263670749313606, guid: 589d83ddd9d695443937a57cbf13bec9, type: 3}
       propertyPath: m_Name

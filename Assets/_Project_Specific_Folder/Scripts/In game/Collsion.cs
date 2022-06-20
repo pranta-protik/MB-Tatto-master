@@ -441,9 +441,6 @@ public class Collsion : MonoBehaviour
         }
         
         #endregion
-        
-        
-        
     }
 
     #region Gate Effects
@@ -451,9 +448,20 @@ public class Collsion : MonoBehaviour
     private void CommonGateEnteringEffects()
     {
         MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+        if (_mainHandController.rotationAxis == ERotationAxis.X)
+        {
+            _mainHandController.RotateHandAlongXAxis();
+            _tattooHandController.RotateHandAlongXAxis();
+        }
+        else if (_mainHandController.rotationAxis == ERotationAxis.Y)
+        {
+            _mainHandController.RotateHandAlongYAxis();
+            _tattooHandController.RotateHandAlongYAxis();
+        }
+
         StartCoroutine(AnimationDelayRoutine());
     }
-    
+
     private void CommonObstacleHitEffects()
     {
         MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
