@@ -8,6 +8,8 @@ namespace PathCreation.Examples
         public float distanceTravelled = 3.7f;
         public float maxSpeed = 2f;
         public float increaseMultiplier = 4f;
+        public float speedDecrementFactor = 3f;
+        public float speedDecrementDuration = 0.6f;
 
         [HideInInspector] public PathCreator pathCreator;
         [HideInInspector] public float speed;
@@ -28,7 +30,6 @@ namespace PathCreation.Examples
             if (speed <= 0)
             {
                 speed = 0;
-
             }
             
             if (GameManager.Instance.StartGame && !GameManager.Instance.GameOver)

@@ -1,125 +1,133 @@
-﻿//======================================
-/*
-@autor ktk.kumamoto
-@date 2017.8.11 create
-@note LaserController
-*/
-//======================================
+﻿using UnityEngine;
+using UnityEngine.Serialization;
 
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+public class LaserController : MonoBehaviour
+{
 
-public class LaserController : MonoBehaviour {
+	public float length = 500f;
+	public float width = 0.1f;
+	[FormerlySerializedAs("OvarAll_Size")] public float overallSize = 1.0f;
 
-	public float length = 500f;			//laser_length
-	public float width = 0.1f;			//laser_width
-	public float OvarAll_Size = 1.0f; 	//eff_scale
+	[FormerlySerializedAs("hit_effect")] public GameObject hitEffect;
 
-	public GameObject hit_effect;		//hitEffect:GameObject
+	[FormerlySerializedAs("laser_add")] [SerializeField]
+	private GameObject laserAdd;
 
-	[SerializeField]
-	private GameObject laser_add; 		//main_laser_add:GameObject
+	[FormerlySerializedAs("laser_alpha")] [SerializeField]
+	private GameObject laserAlpha;
 
-	[SerializeField]
-	private GameObject laser_alpha; 		//main_laser_alpha:GameObject
-
-	[SerializeField]
-	private GameObject trf_scaleController; 		//eff_scale:GameObject
+	[FormerlySerializedAs("trf_scaleController")] [SerializeField]
+	private GameObject trfScaleController;
 
 
-	void Start () {
-
+	void Start()
+	{
 		// Effect Scale
-		if (trf_scaleController) {
-			trf_scaleController.transform.localScale = new Vector3 (OvarAll_Size, OvarAll_Size, OvarAll_Size);
+		if (trfScaleController)
+		{
+			trfScaleController.transform.localScale = new Vector3(overallSize, overallSize, overallSize);
 		}
 
 		// laser width
-		if (laser_add) {
-			var pa1_width = laser_add.GetComponent<ParticleSystem> ().main;
+		if (laserAdd)
+		{
+			var pa1_width = laserAdd.GetComponent<ParticleSystem>().main;
 			pa1_width.startSize = width;
 		}
-		if (laser_alpha) {
-			var pa2_width = laser_alpha.GetComponent<ParticleSystem> ().main;
+
+		if (laserAlpha)
+		{
+			var pa2_width = laserAlpha.GetComponent<ParticleSystem>().main;
 			pa2_width.startSize = width;
 		}
 
 		// laser length
-		if (laser_add) {
-			var pa1_length = laser_add.GetComponent<ParticleSystemRenderer> ();
+		if (laserAdd)
+		{
+			var pa1_length = laserAdd.GetComponent<ParticleSystemRenderer>();
 			pa1_length.lengthScale = length / width / 10;
 		}
-		if (laser_alpha) {
-			var pa2_length = laser_alpha.GetComponent<ParticleSystemRenderer> ();
+
+		if (laserAlpha)
+		{
+			var pa2_length = laserAlpha.GetComponent<ParticleSystemRenderer>();
 			pa2_length.lengthScale = length / width / 10;
 		}
-
 	}
-	
 
-	void Update () {
+
+	void Update()
+	{
 		// Effect Scale
-		if (trf_scaleController) {
-			trf_scaleController.transform.localScale = new Vector3 (OvarAll_Size, OvarAll_Size, OvarAll_Size);
+		if (trfScaleController)
+		{
+			trfScaleController.transform.localScale = new Vector3(overallSize, overallSize, overallSize);
 		}
-
 
 		// laser length
-		if (laser_add) {
-			var pa1_length = laser_add.GetComponent<ParticleSystemRenderer> ();
+		if (laserAdd)
+		{
+			var pa1_length = laserAdd.GetComponent<ParticleSystemRenderer>();
 			pa1_length.lengthScale = length / width / 10;
 		}
-		if (laser_alpha) {
-			var pa2_length = laser_alpha.GetComponent<ParticleSystemRenderer> ();
+
+		if (laserAlpha)
+		{
+			var pa2_length = laserAlpha.GetComponent<ParticleSystemRenderer>();
 			pa2_length.lengthScale = length / width / 10;
 		}
 
-
 		// Hit Controller:
-		RaycastHit hit;
-
-		if(Physics.Raycast(transform.position, transform.forward, out hit))
+		if (Physics.Raycast(transform.position, transform.forward, out var hit))
 		{
-			Debug.Log (hit.distance);
-			if(hit.collider && hit.distance <= length / 10 * OvarAll_Size)
+			Debug.Log(hit.distance);
+			if (hit.collider && hit.distance <= length / 10 * overallSize)
 			{
-				
-				if (laser_add) {
-					var pa1_length = laser_add.GetComponent<ParticleSystemRenderer> ();
-					pa1_length.lengthScale = hit.distance * 10 / width / 10 / OvarAll_Size;
+
+				if (laserAdd)
+				{
+					var pa1_length = laserAdd.GetComponent<ParticleSystemRenderer>();
+					pa1_length.lengthScale = hit.distance * 10 / width / 10 / overallSize;
 				}
-				if (laser_alpha) {
-					var pa2_length = laser_alpha.GetComponent<ParticleSystemRenderer> ();
-					pa2_length.lengthScale = hit.distance * 10 / width / 10 / OvarAll_Size;
+
+				if (laserAlpha)
+				{
+					var pa2_length = laserAlpha.GetComponent<ParticleSystemRenderer>();
+					pa2_length.lengthScale = hit.distance * 10 / width / 10 / overallSize;
 				}
 
 				//Hit Effect Instance
-				GameObject ins_hiteff = (GameObject)Instantiate (hit_effect, hit.point, Quaternion.identity);
-				ins_hiteff.transform.localScale = new Vector3 (OvarAll_Size, OvarAll_Size, OvarAll_Size);
+				GameObject insHitEff = (GameObject) Instantiate(hitEffect, hit.point, Quaternion.identity);
+				insHitEff.transform.localScale = new Vector3(overallSize, overallSize, overallSize);
 			}
-		}else{
+		}
+		else
+		{
 			// laser length
-			if (laser_add) {
-				var pa1_length = laser_add.GetComponent<ParticleSystemRenderer> ();
+			if (laserAdd)
+			{
+				var pa1_length = laserAdd.GetComponent<ParticleSystemRenderer>();
 				pa1_length.lengthScale = length / width / 10;
 			}
-			if (laser_alpha) {
-				var pa2_length = laser_alpha.GetComponent<ParticleSystemRenderer> ();
+
+			if (laserAlpha)
+			{
+				var pa2_length = laserAlpha.GetComponent<ParticleSystemRenderer>();
 				pa2_length.lengthScale = length / width / 10;
 			}
 		}
-			
 
 		// laser width
-		if (laser_add) {
-			var pa1_width = laser_add.GetComponent<ParticleSystem> ().main;
+		if (laserAdd)
+		{
+			var pa1_width = laserAdd.GetComponent<ParticleSystem>().main;
 			pa1_width.startSize = width;
 		}
-		if (laser_alpha) {
-			var pa2_width = laser_alpha.GetComponent<ParticleSystem> ().main;
+
+		if (laserAlpha)
+		{
+			var pa2_width = laserAlpha.GetComponent<ParticleSystem>().main;
 			pa2_width.startSize = width;
 		}
-
 	}
 }

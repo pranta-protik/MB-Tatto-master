@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
 using MoreMountains.NiceVibrations;
+using PathCreation.Examples;
 using UnityEngine.Serialization;
 
 
@@ -57,13 +58,16 @@ public class Collsion : MonoBehaviour
     [SerializeField] private List<CollectedGoodTattoosAttributes> _collectedGoodTattoosAttributes = new List<CollectedGoodTattoosAttributes>();
     private int _currentExpensiveTattooLevel;
     private int _currentCheapTattooLevel;
-    
+    private PathFollower _playerPathFollower;
+    private float _playerInitialSpeed;
+
+
     public Camera cam;
     public Text LevelText, ColorText;
 
 
     public GameObject SecondHand;
-    public Texture Burnt;
+    // public Texture Burnt;
     public Texture[] Tattos, CheapTttos;
     public Texture[] BadBlue, GoodBlue, GoodYellow, BadYellow;
     public Material StiackerMat;
@@ -99,8 +103,8 @@ public class Collsion : MonoBehaviour
     
     private static readonly int IsWrestling = Animator.StringToHash("isWrestling");
 
+
     
-    private float _lastSpeed;
     
 
 
@@ -134,9 +138,11 @@ public class Collsion : MonoBehaviour
         _skinnedMeshRenderer.material.DOFade(0, 0f);
         
         _collectedGoodTattoosAttributes.Add(new CollectedGoodTattoosAttributes(defaultTattoo, -1));
+
+        _playerPathFollower = GetComponentInParent<PathFollower>();
+        _playerInitialSpeed = _playerPathFollower.maxSpeed;
         
         
-        _lastSpeed = GameManager.Instance.p.maxSpeed;
         _camera = Camera.main;
         cam = GameManager.Instance.FakeCam;
         Startpos = transform.localPosition;
@@ -209,6 +215,12 @@ public class Collsion : MonoBehaviour
         //         UiManager.Instance.Timer.fillAmount = UiManager.Instance.timerInitvalue;
         //     }
         // }
+    }
+    
+    private void CommonObstacleHitEffects()
+    {
+        MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+        StartCoroutine(SpeedSlowDownRoutine());
     }
     
     private void OnTriggerEnter(Collider other)
@@ -341,19 +353,22 @@ public class Collsion : MonoBehaviour
             bracelets[other.gameObject.GetComponent<OrnamentGates>().ornamentId].gameObject.SetActive(true);
         }
         #endregion
-        
 
-        if (other.gameObject.CompareTag("Enemy"))
+        #region Obstacles
+        if (other.gameObject.CompareTag("Remove"))
         {
-            _hurtEffect.Play();
-            MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
-            StartCoroutine(SpeedSlowDownRoutine());
-            StartCoroutine(UiManager.Instance.FdeDelayRoutine());
-            Invoke("RemoveMat", .2f);
-            tattooHandAnimator.Play("Hurt");
-            mainHandAnimator.Play("Hurt");
             other.GetComponent<BoxCollider>().enabled = false;
+            CommonObstacleHitEffects();
+            
+            _hurtEffect.Play();
+            StartCoroutine(UiManager.Instance.HurtScreenRoutine());
+            RemoveTattoo();
+            
+            mainHandAnimator.Play("Hurt");
+            tattooHandAnimator.Play("Hurt");
         }
+        #endregion
+        
 
         if (other.gameObject.CompareTag("Spike"))
         {
@@ -623,7 +638,9 @@ public class Collsion : MonoBehaviour
             // UiManager.Instance.cashCounter.SetActive(false);
         }
     }
-    
+
+    #region Gate Effects
+
     private void CommonGateEnteringEffects()
     {
         MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
@@ -660,6 +677,9 @@ public class Collsion : MonoBehaviour
 
         scoreAnimator.Play("PopUp");
     }
+
+    #endregion
+    
     
     public IEnumerator BookRoutine()
     {
@@ -694,12 +714,7 @@ public class Collsion : MonoBehaviour
         PlayerPrefs.SetInt("SavedTattooNo", SavedTattooNo);
     }
 
-    public IEnumerator SpeedSlowDownRoutine()
-    {
-        GameManager.Instance.p.speed = GameManager.Instance.p.maxSpeed = _lastSpeed / 3f;
-        yield return new WaitForSeconds(.6f);
-        GameManager.Instance.p.maxSpeed = _lastSpeed;
-    }
+    
     
     
 
@@ -737,43 +752,7 @@ public class Collsion : MonoBehaviour
     //     UiManager.Instance.TapFastPanel.SetActive(true);
     //
     // }
-
-    public void ChangeMaterials()
-    {
-        StiackerMat.DOFade(1, 1.8f);
-    }
-
-    public void RemoveMat()
-    {
-        StiackerMat.DOFade(0, .3f).OnComplete(() =>
-        {
-            StiackerMat.mainTexture = Burnt;
-            StiackerMat.DOFade(1, .5f);
-        });
-    }
-
-   
-
-    public IEnumerator UpdateTexture(GameObject g)
-    {
-        // MMVibrationManager.Haptic(HapticTypes.MediumImpact);
-        StorageManager.Instance.IncreaseScore(g.GetComponentInParent<Gates>().gateCost);
-        yield return new WaitForSeconds(.2f);
-        StiackerMat.DOFade(0, .3f).OnComplete(() =>
-        {
-            _shineEffect.Play();
-
-            scoreAnimator.Play("opps");
-
-            scoreAnimator.transform.GetChild(0).gameObject.SetActive(true);
-            scoreAnimator.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "+" + g.GetComponentInParent<Gates>().gateCost.ToString();
-            scoreAnimator.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = goodGateScorePopUpColor;
-            StiackerMat.mainTexture = Tattos[GameManager.Instance.Level - 1];
-            StiackerMat.DOFade(1, .5f);
-        });
-
-    }
-
+    
     public void DownGradeTexture(int ammount, GameObject g)
     {
         
@@ -785,75 +764,6 @@ public class Collsion : MonoBehaviour
         scoreAnimator.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = Color.red;
         // MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
   
-    }
-
-
-    public IEnumerator UpdateTextureCheap(GameObject g)
-    {
-        // MMVibrationManager.Haptic(HapticTypes.MediumImpact);
-        StorageManager.Instance.IncreaseScore(-g.GetComponentInParent<Gates>().gateCost);
-        yield return new WaitForSeconds(.2f);
-
-        _shineEffect.Play();
-        scoreAnimator.Play("opps");
-
-        scoreAnimator.transform.GetChild(0).gameObject.SetActive(true);
-        scoreAnimator.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "-" + g.GetComponentInParent<Gates>().gateCost.ToString();
-        scoreAnimator.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = badGateScorePopUpColor;
-        
-        if (_shouldChangeTattoo)
-        {
-            StiackerMat.DOFade(0, .3f).OnComplete(() =>
-            {
-                StiackerMat.mainTexture = CheapTttos[GameManager.Instance.Level - 1];
-                StiackerMat.DOFade(1, .5f);
-            });
-        }
-    }
-
-    public void ApplyBurntTexture()
-    {
-
-        StiackerMat.DOFade(0, .3f).OnComplete(() =>
-        {
-
-            StiackerMat.mainTexture = Tattos[GameManager.Instance.Level - 1];
-            StiackerMat.DOFade(1, .5f);
-        });
-
-    }
-
-    public IEnumerator GoodGateRot()
-    {
-        // GetComponent<Controller>().enabled = false;
-        transform.DOLocalMove(new Vector3(-1.35f, 3.15f, -2.67f), .1f);
-        tattooHandAnimator.transform.DOLocalMove(new Vector3(-1.35f, 3.15f, -2.67f), .1f);
-        yield return new WaitForSeconds(1f);
-        //  GetComponent<Controller>().enabled = true;
-        transform.DOLocalMove(Startpos, .1f);
-        tattooHandAnimator.transform.DOLocalMove(Startpos, .1f);
-
-    }
-
-    public IEnumerator UpdateCheapTextureVideo(GameObject g)
-    {
-        // MMVibrationManager.Haptic(HapticTypes.MediumImpact);
-        StorageManager.Instance.IncreaseScore(-g.GetComponentInParent<Gates>().gateCost);
-        GameManager.Instance.Level = g.transform.GetComponentInParent<Gates>().gateLevel + 1;
-        yield return new WaitForSeconds(.2f);
-
-        StiackerMat.DOFade(0, .3f).OnComplete(() =>
-        {
-            _shineEffect.Play();
-            scoreAnimator.Play("opps");
-
-            scoreAnimator.transform.GetChild(0).gameObject.SetActive(true);
-            scoreAnimator.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "-" + g.GetComponentInParent<Gates>().gateCost.ToString();
-            scoreAnimator.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = badGateScorePopUpColor;                
-            StiackerMat.mainTexture = CheapTttos[g.transform.GetComponentInParent<Gates>().gateLevel];
-            StiackerMat.DOFade(1, .5f);
-        });
-
     }
 
     #region Tattoo Drawing
@@ -877,8 +787,17 @@ public class Collsion : MonoBehaviour
         });
     }
 
+    private void RemoveTattoo()
+    {
+        _skinnedMeshRenderer.material.DOFade(0, 0.3f).SetDelay(0.2f).OnComplete(() =>
+        {
+            Mpb.SetTexture(SHPropTexture, TextureManager.Instance.handBurntTexture);
+            _skinnedMeshRenderer.SetPropertyBlock(Mpb);
+            _skinnedMeshRenderer.material.DOFade(1, 0.5f);
+        });
+    }
+
     #endregion
-    
     
     #region Hand Animation
 
@@ -914,5 +833,11 @@ public class Collsion : MonoBehaviour
         tattooHandAnimator.SetTrigger(Gesture);
     }
 
+    private IEnumerator SpeedSlowDownRoutine()
+    {
+        _playerPathFollower.maxSpeed = _playerInitialSpeed / _playerPathFollower.speedDecrementFactor;
+        yield return new WaitForSeconds(_playerPathFollower.speedDecrementDuration);
+        _playerPathFollower.maxSpeed = _playerInitialSpeed;
+    }
     #endregion
 }

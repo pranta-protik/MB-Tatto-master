@@ -14,7 +14,8 @@ public class TextureManager : Singleton<TextureManager>
     public List<Texture2D> flowerCheapYellowTattoos;
     public List<int> flowerExpensiveColorTattooIdSequences;
     public List<int> flowerCheapColorTattooIdSequences;
-    
+
+    public Texture2D handBurntTexture;
     
     public Texture DefaultFlower, DefaultSkull, DefaultPinup , DefaultCeleb , DefaultCaligraphy , DefaultMoney;
 

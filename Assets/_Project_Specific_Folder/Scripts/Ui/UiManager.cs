@@ -14,13 +14,16 @@ using Random = UnityEngine.Random;
 
 public class UiManager : Singleton<UiManager>
 {
+    public GameObject hurtScreen;
+    
+    
     public TMP_Text scoreText ;
     
     public Button btnNext;
     // public Button hand; 
 
     public TMP_Text LevelText;
-    public GameObject StartUI, EndUi, CompleteUI, FadeIn, UnlockPanel, ShopPnael;
+    public GameObject StartUI, EndUi, CompleteUI, UnlockPanel, ShopPnael;
     public GameObject TapFastPanel;
     public GameObject decisionScreen, cashCounter, spinnerScreen, cashPile;
     public GameObject priceTag;
@@ -412,12 +415,15 @@ public class UiManager : Singleton<UiManager>
         priceTag.GetComponent<RectTransform>().DOAnchorPos(new Vector2(-126f, -70f), 0.5f);
     }
 
+    public IEnumerator HurtScreenRoutine()
+    {
+        hurtScreen.SetActive(true);
+        yield return new WaitForSeconds(0.3f);
+        hurtScreen.SetActive(false);
+    }
     public IEnumerator FdeDelayRoutine()
     {
-        FadeIn.SetActive(true);
-        yield return new WaitForSeconds(.3f);
-        FadeIn.SetActive(false);
-     
+        yield return new WaitForSeconds(1f);
     }
     public void PopUps()
     {

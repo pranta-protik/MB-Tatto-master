@@ -56,7 +56,7 @@ public class ButtonControler : MonoBehaviour {
 
 		for(int i = 0; i < EffectLaser_Set.Length; i++)
 		{
-			EffectLaser_Set[i].GetComponent<LaserController>().OvarAll_Size =  hSliderValue;
+			EffectLaser_Set[i].GetComponent<LaserController>().overallSize =  hSliderValue;
 		}
 
 

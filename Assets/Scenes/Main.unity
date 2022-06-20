@@ -3086,6 +3086,8 @@ MonoBehaviour:
   distanceTravelled: 3.7
   maxSpeed: 3
   increaseMultiplier: 4
+  speedDecrementFactor: 3
+  speedDecrementDuration: 0.6
   pathCreator: {fileID: 0}
   speed: 0
 --- !u!222 &387661100
@@ -19312,7 +19314,7 @@ MonoBehaviour:
   - 279M
   - 287M
   timer: 0
-  amarIcchaLevel: 5
+  amarIcchaLevel: 3
 --- !u!1001 &1287034089
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24770,6 +24772,7 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 1b3bdf2f3fde448478ed7069e085cfcf, type: 3}
   flowerExpensiveColorTattooIdSequences: 0a0000000b000000
   flowerCheapColorTattooIdSequences: 0400000005000000
+  handBurntTexture: {fileID: 0}
   DefaultFlower: {fileID: 2800000, guid: 68906f73a7d7a734ba32b64c0727f9be, type: 3}
   DefaultSkull: {fileID: 2800000, guid: 51586b72977edae49a9eb93187a2cbc2, type: 3}
   DefaultPinup: {fileID: 2800000, guid: f7a9ead41cf2ca34bb73db79adaa62ff, type: 3}
@@ -37787,13 +37790,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DontDestroyLoad: 0
   m_IsSingletonLogsEnabled: 0
+  hurtScreen: {fileID: 2875735081493675973}
   scoreText: {fileID: 6663376086199890229}
   btnNext: {fileID: 2080464153}
   LevelText: {fileID: 3464536507856245032}
   StartUI: {fileID: 1473265678204927958}
   EndUi: {fileID: 5129942751915642798}
   CompleteUI: {fileID: 7530967020445585520}
-  FadeIn: {fileID: 2875735081493675973}
   UnlockPanel: {fileID: 8886289068977303665}
   ShopPnael: {fileID: 1124990753}
   TapFastPanel: {fileID: 1698252271999335891}
@@ -40134,7 +40137,7 @@ GameObject:
   - component: {fileID: 6137491427846726696}
   - component: {fileID: 5769100299084427338}
   m_Layer: 5
-  m_Name: Red fade
+  m_Name: HurtScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
