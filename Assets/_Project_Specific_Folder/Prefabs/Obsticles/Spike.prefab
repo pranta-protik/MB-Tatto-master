@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7940456352486561719}
   - component: {fileID: 5320683769016116093}
   - component: {fileID: 6779967011759259647}
-  - component: {fileID: 612633896028322395}
+  - component: {fileID: 8096482570260290923}
   m_Layer: 0
   m_Name: Spike
   m_TagString: Spike
@@ -96,7 +96,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5387204, y: 0.7531719, z: 1.5387188}
   m_Center: {x: 3.1898036e-22, y: 0.37658554, z: -0.000000059604645}
---- !u!114 &612633896028322395
+--- !u!114 &8096482570260290923
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,8 +105,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5968995476065469096}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52452cd71a802194e82c072ab0920581, type: 3}
+  m_Script: {fileID: 11500000, guid: c03994a9c7c2c7c40adaaf1bbe4ce798, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DownGradeAmmount: 0
-  Cost: 500
+  decrementAmount: 500

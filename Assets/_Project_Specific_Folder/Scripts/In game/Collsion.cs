@@ -135,7 +135,7 @@ public class Collsion : MonoBehaviour
         _skinnedMeshRenderer = tattooHand.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>();
         _skinnedMeshRenderer.material.DOFade(0, 0f);
         
-        _collectedGoodTattoosAttributes.Add(new CollectedGoodTattoosAttributes(defaultTattoo, -1));
+        ResetHandTattooStatus();
 
         _playerPathFollower = GetComponentInParent<PathFollower>();
         _playerInitialSpeed = _playerPathFollower.maxSpeed;
@@ -147,6 +147,16 @@ public class Collsion : MonoBehaviour
 
     }
 
+    private void ResetHandTattooStatus()
+    {
+        _hasGoneThroughGoodGate = false;
+        _shouldChangeTattoo = false;
+        _currentExpensiveTattooLevel = 0;
+        _currentCheapTattooLevel = 0;
+        _collectedGoodTattoosAttributes.Clear();
+        _collectedGoodTattoosAttributes.Add(new CollectedGoodTattoosAttributes(defaultTattoo, -1));
+    }
+    
     private void Update()
     {
         if (GameManager.Instance.IsGameOver)
@@ -215,12 +225,6 @@ public class Collsion : MonoBehaviour
         // }
     }
     
-    private void CommonObstacleHitEffects()
-    {
-        MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
-        StartCoroutine(SpeedSlowDownRoutine());
-    }
-    
     private void OnTriggerEnter(Collider other)
     {
         #region Normal Gates
@@ -230,8 +234,10 @@ public class Collsion : MonoBehaviour
             other.GetComponent<BoxCollider>().enabled = false;
             Gates gate = other.GetComponentInParent<Gates>();
             
-            NormalGateEnteringEffects(gate, true);
-            
+            CommonGateEnteringEffects();
+            _shineEffect.Play();
+            ScoreUpdateEffects(gate.gateCost, true);
+
             // Went through special good gates
             if (gate.isSpecial)
             {
@@ -250,9 +256,9 @@ public class Collsion : MonoBehaviour
             other.GetComponent<BoxCollider>().enabled = false;
             Gates gate = other.GetComponentInParent<Gates>();
             
-            NormalGateEnteringEffects(gate, false);
-            
-            UiManager.Instance.priceTag.GetComponent<Image>().DOColor(Color.red, 0.5f).SetLoops(2, LoopType.Yoyo);
+            CommonGateEnteringEffects();
+            _shineEffect.Play();
+            ScoreUpdateEffects(gate.gateCost, false);
             
             // Went through last bad gate
             if (gate.isLast)
@@ -342,13 +348,13 @@ public class Collsion : MonoBehaviour
         {
             other.GetComponent<BoxCollider>().enabled = false;
             CommonGateEnteringEffects();
-            rings[other.gameObject.GetComponent<OrnamentGates>().ornamentId].gameObject.SetActive(true);
+            rings[other.gameObject.GetComponent<OrnamentGate>().ornamentId].gameObject.SetActive(true);
         }
         if (other.gameObject.CompareTag("Bracelet"))
         {
             other.GetComponent<BoxCollider>().enabled = false;
             CommonGateEnteringEffects();
-            bracelets[other.gameObject.GetComponent<OrnamentGates>().ornamentId].gameObject.SetActive(true);
+            bracelets[other.gameObject.GetComponent<OrnamentGate>().ornamentId].gameObject.SetActive(true);
         }
         #endregion
 
@@ -359,65 +365,24 @@ public class Collsion : MonoBehaviour
             CommonObstacleHitEffects();
             
             _hurtEffect.Play();
-            StartCoroutine(UiManager.Instance.HurtScreenRoutine());
-            RemoveTattoo();
             
-            mainHandAnimator.Play("Hurt");
-            tattooHandAnimator.Play("Hurt");
+            RemoveTattoo();
+            ResetHandTattooStatus();
         }
+        
+        if (other.gameObject.CompareTag("Spike"))
+        {
+            other.GetComponent<BoxCollider>().enabled = false;
+            CommonObstacleHitEffects();
+            
+            ScoreUpdateEffects(other.GetComponent<Obstacle>().decrementAmount, false);
+        }
+
+        
         #endregion
         
 
-        if (other.gameObject.CompareTag("Spike"))
-        {
-            // GameManager.Instance.Level = other.GetComponent<DownGrade>().DownGradeAmmount;
-            UiManager.Instance.priceTag.GetComponent<Image>().DOColor(Color.red, 0.5f).SetLoops(2, LoopType.Yoyo);
-            DownGradeTexture(GameManager.Instance.Level, other.gameObject);
-            MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
-            StartCoroutine(SpeedSlowDownRoutine());
-            StartCoroutine(UiManager.Instance.FdeDelayRoutine());
-            tattooHandAnimator.Play("Hurt");
-            mainHandAnimator.Play("Hurt");
-            other.GetComponent<BoxCollider>().enabled = false;
-            
-            GameManager.Instance.Level--;
-            
-            if (IsGood)
-            {
-                m_i = Dummy.Count;
-                
-                StiackerMat.DOFade(0, .3f).OnComplete(() =>
-                {
-                    if (j < Dummy.Count+1)
-                    {
-                        StiackerMat.mainTexture = Dummy[m_i - j];
-                        j++;
-                    }
-                    else
-                    {
-                        StiackerMat.mainTexture = Default;
-                    }
-                        
-                    StiackerMat.DOFade(1, .5f);
-                });       
-            }
-            else
-            {
-                StiackerMat.DOFade(0, .3f).OnComplete(() =>
-                {
-                    if (GameManager.Instance.Level == 0)
-                    {
-                        StiackerMat.mainTexture = CheapTttos[GameManager.Instance.Level];
-                    }
-                    else
-                    {
-                        StiackerMat.mainTexture = CheapTttos[GameManager.Instance.Level - 1];   
-                    }
-                    StiackerMat.DOFade(1, .5f);
-                });
-            }
-        }
-
+        
         if (other.gameObject.CompareTag("Lava"))
         {
             UiManager.Instance.priceTag.GetComponent<Image>().DOColor(Color.red, 0.5f).SetLoops(2, LoopType.Yoyo);
@@ -645,29 +610,35 @@ public class Collsion : MonoBehaviour
         StartCoroutine(AnimationDelayRoutine());
     }
     
-    private void NormalGateEnteringEffects(Gates gate, bool isGood)
+    private void CommonObstacleHitEffects()
     {
-        CommonGateEnteringEffects();
+        MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+        StartCoroutine(SpeedSlowDownRoutine());
+        StartCoroutine(UiManager.Instance.HurtScreenRoutine());
+        mainHandAnimator.Play("Hurt");
+        tattooHandAnimator.Play("Hurt");
+    }
 
+    private void ScoreUpdateEffects(int cost, bool isGood)
+    {
         int score;
         string scoreText;
         Color color;
         
         if (isGood)
         {
-            score = gate.gateCost;
-            scoreText = "+" + gate.gateCost;
+            score = cost;
+            scoreText = "+" + cost;
             color = goodGateScorePopUpColor;
         }
         else
         {
-            score = gate.gateCost * -1;
-            scoreText = "-" + gate.gateCost;
+            score = cost * -1;
+            scoreText = "-" + cost;
             color = badGateScorePopUpColor;
         }
         
-        StorageManager.Instance.IncreaseScore(score);
-        _shineEffect.Play();
+        StorageManager.Instance.UpdateScore(score);
 
         scoreAnimator.transform.GetChild(0).gameObject.SetActive(true);
         scoreAnimator.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = scoreText;
@@ -754,7 +725,7 @@ public class Collsion : MonoBehaviour
     public void DownGradeTexture(int ammount, GameObject g)
     {
         
-        StorageManager.Instance.IncreaseScore(-g.GetComponentInParent<DownGrade>().Cost);
+        StorageManager.Instance.UpdateScore(-g.GetComponentInParent<DownGrade>().Cost);
         scoreAnimator.Play("opps");
 
         scoreAnimator.transform.GetChild(0).gameObject.SetActive(true);

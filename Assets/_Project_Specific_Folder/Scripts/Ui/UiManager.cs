@@ -15,9 +15,10 @@ using Random = UnityEngine.Random;
 public class UiManager : Singleton<UiManager>
 {
     public GameObject hurtScreen;
+    public GameObject priceTag;
+    [HideInInspector] public TextMeshProUGUI scoreText;
     
-    
-    public TMP_Text scoreText ;
+    // public TMP_Text scoreText ;
     
     public Button btnNext;
     // public Button hand; 
@@ -26,7 +27,7 @@ public class UiManager : Singleton<UiManager>
     public GameObject StartUI, EndUi, CompleteUI, UnlockPanel, ShopPnael;
     public GameObject TapFastPanel;
     public GameObject decisionScreen, cashCounter, spinnerScreen, cashPile;
-    public GameObject priceTag;
+    
     
     public GameObject fillbarTimer;
     public Image Timer;
@@ -87,6 +88,13 @@ public class UiManager : Singleton<UiManager>
     {
         base.Start();
 
+        if (priceTag!=null)
+        {
+            scoreText = priceTag.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        }
+        
+        
+        
         if (mobileScreen != null)
         {
             mobileScreenSlider = mobileScreen.transform.GetChild(4).GetComponent<Slider>();

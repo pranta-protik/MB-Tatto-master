@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OrnamentGates : MonoBehaviour
+public class OrnamentGate : MonoBehaviour
 {
     public enum EOrnamentType
     {

@@ -2,21 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0bbd3f85-ed93-443c-811c-694e308cff41" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/In game/Obstacle.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/In game/Obstacle.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Tatto-master/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Tatto-master/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3rd Party/KTK_Laser_Effects_Volume1/Script/LaserController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3rd Party/KTK_Laser_Effects_Volume1/Script/LaserController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Flower/Cheap/flowr_playerHand_Basecol_cheap00.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Flower/Cheap/flowr_playerHand_Basecol_cheap00.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Flower/Cheap/flowr_playerHand_Basecol_cheap01.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Flower/Cheap/flowr_playerHand_Basecol_cheap01.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Flower/Cheap/flowr_playerHand_Basecol_cheap02.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Flower/Cheap/flowr_playerHand_Basecol_cheap02.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Flower/Cheap/flowr_playerHand_Basecol_cheap03.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Flower/Cheap/flowr_playerHand_Basecol_cheap03.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Flower/Cheap/flowr_playerHand_Basecol_cheap04.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Flower/Cheap/flowr_playerHand_Basecol_cheap04.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Flower/Cheap/flowr_playerHand_Basecol_cheap04_blue.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Flower/Cheap/flowr_playerHand_Basecol_cheap04_blue.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Flower/Cheap/flowr_playerHand_Basecol_cheap04_yellow.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Flower/Cheap/flowr_playerHand_Basecol_cheap04_yellow.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Flower/Cheap/flowr_playerHand_Basecol_cheap05.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Flower/Cheap/flowr_playerHand_Basecol_cheap05.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Flower/Cheap/flowr_playerHand_Basecol_cheap05_blue.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Flower/Cheap/flowr_playerHand_Basecol_cheap05_blue.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Flower/Cheap/flowr_playerHand_Basecol_cheap05_yellow.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Flower/Cheap/flowr_playerHand_Basecol_cheap05_yellow.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Flower/Cheap/flowr_playerHand_Basecol_cheap06.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Textures/Tattoos/Flower/Cheap/flowr_playerHand_Basecol_cheap06.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Obsticles/Spike.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Obsticles/Spike.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/In game/Collsion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/In game/Collsion.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/In game/OrnamentGates.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/In game/OrnamentGate.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/In game/OrnamentGates.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/In game/OrnamentGate.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/Manager/StorageManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/Manager/StorageManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +107,7 @@
       <workItem from="1655028774007" duration="1474000" />
       <workItem from="1655031072516" duration="7312000" />
       <workItem from="1655114544203" duration="14602000" />
-      <workItem from="1655700243932" duration="3899000" />
+      <workItem from="1655700243932" duration="6226000" />
     </task>
     <servers />
   </component>
