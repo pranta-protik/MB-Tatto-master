@@ -1,13 +1,11 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InstaGallery : MonoBehaviour
+public class InstagramGallery : MonoBehaviour
 {
     public GameObject pictureFramePrefab;
     private Scrollbar _scrollbar;
