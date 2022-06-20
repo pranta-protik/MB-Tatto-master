@@ -22,12 +22,17 @@ public class Collsion : MonoBehaviour
             this.collectedGoodTattooLevel = collectedGoodTattooLevel;
         }
     }
+    
     public GameObject tattooHand;
     public Animator scoreAnimator;
     public AnimatorOverrideController animatorOverrideController;
     public AnimationClip[] animationClips;
     public Color goodGateScorePopUpColor;
     public Color badGateScorePopUpColor;
+    
+    [Header("Hand Ornaments Section")]
+    public List<GameObject> rings = new List<GameObject>();
+    public List<GameObject> bracelets = new List<GameObject>();
     
     [HideInInspector] public Animator mainHandAnimator;
     [HideInInspector] public Animator tattooHandAnimator;
@@ -58,7 +63,8 @@ public class Collsion : MonoBehaviour
     private int _currentCheapTattooLevel;
     private PathFollower _playerPathFollower;
     private float _playerInitialSpeed;
-
+    
+    
 
     public Camera cam;
     public Text LevelText, ColorText;
@@ -77,18 +83,10 @@ public class Collsion : MonoBehaviour
     public float Multiplier;
     public bool StartTapRoutine;
     
-    bool IsYellow, IsBlue;
-    private float timeLeft = .4f;
     [SerializeField] public ParticleSystem Ps;
-    bool m_FirstClick;
     [SerializeField] bool m_isTapping;
 
     [SerializeField] int i; public int SavedTattooNo;
-    private int _targetTattooValue;
-    private float _currentTattooValue;
-    private bool _shouldUpdateCash;
-    private bool _isUnlockScreenEnabled;
-    private float _incrementAmount;
     [SerializeField]int LastLevel;
     [SerializeField] bool IsGood;
 
@@ -100,17 +98,7 @@ public class Collsion : MonoBehaviour
     private new Camera _camera;
     
     private static readonly int IsWrestling = Animator.StringToHash("isWrestling");
-
-
     
-    
-
-
-    [Header("Hand Ornaments Section")]
-    public List<GameObject> rings = new List<GameObject>();
-    public List<GameObject> bracelets = new List<GameObject>();
-    
-
     private void Start()
     {
         _mainHandController = GetComponent<HandController>();
@@ -241,7 +229,7 @@ public class Collsion : MonoBehaviour
             // Went through special good gates
             if (gate.isSpecial)
             {
-                UiManager.Instance.priceTag.transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.3f).SetLoops(4, LoopType.Yoyo);
+                UiManager.Instance.PriceTagScaleEffect();
             }
             else
             {
@@ -374,7 +362,41 @@ public class Collsion : MonoBehaviour
         }
         
         #endregion
-        
+
+        #region Level End Triggers
+
+        if (other.gameObject.CompareTag("FinishLine"))
+        {
+            UiManager.Instance.ClearUIOnFinishLine();
+            
+            _playerPathFollower.enabled = false;
+            mainHandAnimator.Play("idle");
+            tattooHandAnimator.Play("idle");
+            mainHandAnimator.transform.DOLocalMoveX(0, .2f); 
+            tattooHandAnimator.transform.DOLocalMoveX(0, .2f);
+            _mainHandController.enabled = false;
+            _tattooHandController.enabled = false;
+            
+            GameObject mobileObj = other.transform.GetChild(2).gameObject;
+            
+            mobileObj.transform.DOLocalMoveY(0.88f, 0.5f);
+            mobileObj.transform.DORotate(new Vector3(-50f, 270f, 90f), 0.5f).OnComplete(() =>
+            {
+                mobileObj.transform.DOLocalMove(new Vector3(-.66f, 0.88f, 0.113f), 1f).OnComplete(() =>
+                {
+                    UiManager.Instance.transitionScreen.SetActive(true);
+                    UiManager.Instance.transitionScreen.GetComponent<Image>().DOFade(1f, 0.5f).OnComplete(() =>
+                    {
+                        _camera.transform.DORotate(new Vector3(46f, 90f, 0f), 0.01f).OnComplete(() =>
+                        {
+                            mobileObj.SetActive(false);
+                            UiManager.Instance.EnableMobileScreenUI();
+                        });
+                    });
+                });
+            });
+        }
+
         if (other.gameObject.CompareTag("Finish"))
         {
             Debug.Log("level end trigger");
@@ -451,96 +473,11 @@ public class Collsion : MonoBehaviour
             //
             // });
         }
-
-        if (other.gameObject.CompareTag("DecisionTrigger"))
-        {
-            UiManager.Instance.haptics.SetActive(false);
-            UiManager.Instance.scoreText.transform.parent.gameObject.SetActive(false);
-            GameManager.Instance.p.enabled = false;
-            mainHandAnimator.Play("idle");
-            tattooHandAnimator.Play("idle");
-            mainHandAnimator.transform.DOLocalMoveX(0, .2f); 
-            tattooHandAnimator.transform.DOLocalMoveX(0, .2f);
-            _mainHandController.enabled = false;
-            _tattooHandController.enabled = false;
-
-            GameObject mobile = other.transform.GetChild(2).gameObject;
-           
-            mobile.transform.DOLocalMoveY(0.88f, 0.5f);
-
-            mobile.transform.DORotate(new Vector3(-50f, 270f, 90f), 0.5f).OnComplete(() =>
-            {
-                mobile.transform.DOLocalMove(new Vector3(-.66f, 0.88f, 0.113f), 1f).OnComplete(() =>
-                {
-                    UiManager.Instance.transitionScreen.SetActive(true);
-                    UiManager.Instance.transitionScreen.GetComponent<Image>().DOFade(1f, 0.5f).OnComplete(() =>
-                    {
-                        _camera.transform.DORotate(new Vector3(46f, 90f, 0f), 0.01f).OnComplete(() =>
-                        {
-                            mobile.SetActive(false);
-                            UiManager.Instance.mobileScreen.SetActive(true);
-                            UiManager.Instance.transitionScreen.SetActive(false);
-                            UiManager.Instance.mobileScreen.transform.GetChild(8).GetComponent<Image>().DOFade(0f, 0.5f).OnComplete(() =>
-                            {
-                                UiManager.Instance.mobileScreen.transform.GetChild(8).gameObject.SetActive(false);
-                            });
-
-                            int lastPhotoNo = PlayerPrefs.GetInt("SnapshotsTaken", 0);
-
-                            if (lastPhotoNo > 0)
-                            {
-                                string filename = $"{Application.persistentDataPath}/Snapshots/" + lastPhotoNo + ".png";
-
-                                byte[] savedSnapshot = File.ReadAllBytes(filename);
-                                Texture2D loadedTexture = new Texture2D(720, 720, TextureFormat.ARGB32, false);
-                                loadedTexture.LoadImage(savedSnapshot);
-
-                                UiManager.Instance.mobileScreen.transform.GetChild(2).GetChild(0).GetComponent<RawImage>().texture = loadedTexture;
-                            }
-                            else
-                            {
-                                UiManager.Instance.mobileScreen.transform.GetChild(2).GetChild(0).gameObject.SetActive(false);
-                            }
-
-                            UiManager.Instance.mobileScreen.transform.GetChild(3).DOScale(new Vector3(1.15f, 1.15f, 1.15f), 0.5f).SetLoops(-1, LoopType.Yoyo);
-                            UiManager.Instance.mobileScreenSlider.transform.GetChild(2).GetChild(0).DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.5f)
-                                .SetLoops(-1, LoopType.Yoyo);
-                            UiManager.Instance.mobileScreen.transform.GetChild(7).GetComponent<RectTransform>().DOAnchorPosY(340, 1f)
-                                .SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
-
-                            UiManager.Instance.isMobileActive = true;
-                        });
-                    });
-                });
-            });
-            // mobile.transform.DOLocalMoveY(1f, 0.5f).OnComplete(() =>
-            // {
-            //     mobile.transform.DOLocalRotate(new Vector3(-50f, 270f, 90f), 0.5f).OnComplete(() =>
-            //     {
-            //         mobile.transform.DOLocalMoveX(-.65f, 1f).OnComplete(() =>
-            //         {
-            //             _camera.transform.DORotate(new Vector3(46f, 90f, 0f), 0.01f).OnComplete(() =>
-            //             {
-            //                 UiManager.Instance.mobileScreen.SetActive(true);
-            //                 UiManager.Instance.mobileScreen.transform.GetChild(3).DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.5f).SetLoops(-1, LoopType.Yoyo);
-            //                 UiManager.Instance.mobileScreenSlider.transform.GetChild(2).GetChild(0).DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.5f)
-            //                     .SetLoops(-1, LoopType.Yoyo);
-            //                 UiManager.Instance.mobileScreen.transform.GetChild(7).GetComponent<RectTransform>().DOAnchorPosY(340, 1f)
-            //                     .SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
-            //                 
-            //                 mobile.SetActive(false);
-            //                 UiManager.Instance.mobileScreen.transform.GetChild(8).GetComponent<Image>().color = Color.black;
-            //                 UiManager.Instance.mobileScreen.transform.GetChild(8).GetComponent<Image>().DOFade(0f, 1f);
-            //                 UiManager.Instance.isMobileActive = true;
-            //                 UiManager.Instance.mobileScreen.transform.GetChild(8).gameObject.SetActive(false);
-            //             });
-            //         });
-            //     });
-            // });
-            // UiManager.Instance.decisionScreen.SetActive(true);
-            // UiManager.Instance.cashCounter.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText("$" + StorageManager.GetTotalCoin());
-            // UiManager.Instance.cashCounter.SetActive(false);
-        }
+        
+        #endregion
+        
+        
+        
     }
 
     #region Gate Effects
@@ -583,25 +520,26 @@ public class Collsion : MonoBehaviour
     
     private void ScoreUpdateEffects(int cost, bool isGood)
     {
-        int score;
+        int score = StorageManager.Instance.GetCurrentScore();
         string scoreText;
         Color color;
         
         if (isGood)
         {
-            score = cost;
+            score += cost;
             scoreText = "+" + cost;
             color = goodGateScorePopUpColor;
         }
         else
         {
-            score = cost * -1;
+            score += cost * -1;
             scoreText = "-" + cost;
             color = badGateScorePopUpColor;
         }
         
-        StorageManager.Instance.UpdateScore(score);
-
+        StorageManager.Instance.SetCurrentScore(score);
+        UiManager.Instance.UpdatePriceTag(score);
+        
         scoreAnimator.transform.GetChild(0).gameObject.SetActive(true);
         scoreAnimator.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().SetText(scoreText);
         scoreAnimator.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().color = color;

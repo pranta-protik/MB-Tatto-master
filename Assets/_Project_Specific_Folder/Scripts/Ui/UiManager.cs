@@ -1,7 +1,5 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Globalization;
+using System.IO;
 using UnityEngine;
 using Singleton;
 using TMPro;
@@ -9,14 +7,20 @@ using UnityEngine.UI;
 using MoreMountains.NiceVibrations;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class UiManager : Singleton<UiManager>
 {
     public GameObject hurtScreen;
-    public GameObject priceTag;
-    [HideInInspector] public TextMeshProUGUI scoreText;
+    public GameObject transitionScreen;
+    
+    [SerializeField] private GameObject hapticsIcon;
+    [SerializeField] private GameObject priceTag;
+    [SerializeField] private GameObject mobileScreen;
+    
+    private TextMeshProUGUI _scoreText;
+    private Slider _mobileScreenSlider;
+    private bool _isMobileActive;
     
     // public TMP_Text scoreText ;
     
@@ -54,16 +58,10 @@ public class UiManager : Singleton<UiManager>
     private bool _isHandAnimating;
 
     public GameObject[] upgradeButtons;
-    
-    public GameObject haptics;
 
     public GameObject selectionMenu;
     public Button selectionMenuButton;
-
-    public GameObject mobileScreen;
-    public GameObject transitionScreen;
-    public Slider mobileScreenSlider;
-    public bool isMobileActive;
+    
     public GameObject instaPostPage;
     public GameObject instaGalleryPage;
     public GameObject influenceMeterPage;
@@ -90,16 +88,16 @@ public class UiManager : Singleton<UiManager>
 
         if (priceTag!=null)
         {
-            scoreText = priceTag.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+            _scoreText = priceTag.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         }
-        
-        
         
         if (mobileScreen != null)
         {
-            mobileScreenSlider = mobileScreen.transform.GetChild(4).GetComponent<Slider>();
+            _mobileScreenSlider = mobileScreen.transform.GetChild(4).GetComponent<Slider>();
         }
 
+        
+        
         if (TotalText != null)
         {
             TotalText.SetText("$" + StorageManager.GetTotalScore());
@@ -175,6 +173,58 @@ public class UiManager : Singleton<UiManager>
         // }
     }
 
+    public void PriceTagScaleEffect()
+    {
+        priceTag.transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.3f).SetLoops(4, LoopType.Yoyo);
+    }
+    
+    public void UpdatePriceTag(int value)
+    {
+        _scoreText.SetText(value.ToString());
+        if (value < 0)
+        {
+            priceTag.GetComponent<Image>().DOColor(Color.red, 0.5f).SetLoops(2, LoopType.Yoyo);
+        }
+    }
+    public void ClearUIOnFinishLine()
+    {
+        hapticsIcon.SetActive(false);
+        priceTag.SetActive(false);
+    }
+
+    public void EnableMobileScreenUI()
+    {
+        mobileScreen.SetActive(true);
+        transitionScreen.SetActive(false);
+        mobileScreen.transform.GetChild(8).GetComponent<Image>().DOFade(0f, 0.5f).OnComplete(() =>
+        {
+            mobileScreen.transform.GetChild(8).gameObject.SetActive(false);
+        });
+        
+        int lastSnapshotNo = PlayerPrefs.GetInt("SnapshotsTaken", 0);
+
+        if (lastSnapshotNo > 0)
+        {
+            string filename = $"{Application.persistentDataPath}/Snapshots/" + lastSnapshotNo + ".png";
+
+            byte[] savedSnapshot = File.ReadAllBytes(filename);
+            Texture2D loadedTexture = new Texture2D(720, 720, TextureFormat.ARGB32, false);
+            loadedTexture.LoadImage(savedSnapshot);
+
+            mobileScreen.transform.GetChild(2).GetChild(0).GetComponent<RawImage>().texture = loadedTexture;
+        }
+        else
+        {
+            mobileScreen.transform.GetChild(2).GetChild(0).gameObject.SetActive(false);
+        }
+
+        mobileScreen.transform.GetChild(3).DOScale(new Vector3(1.15f, 1.15f, 1.15f), 0.5f).SetLoops(-1, LoopType.Yoyo);
+        _mobileScreenSlider.transform.GetChild(2).GetChild(0).DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.5f).SetLoops(-1, LoopType.Yoyo);
+        mobileScreen.transform.GetChild(7).GetComponent<RectTransform>().DOAnchorPosY(340, 1f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
+
+        _isMobileActive = true;
+    }
+    
     // private void EnableShopCallBack()
     // {
     //     hand.gameObject.SetActive(false);
@@ -203,8 +253,8 @@ public class UiManager : Singleton<UiManager>
 
     public void OnSliderClick()
     {
-        mobileScreenSlider.transform.GetChild(2).GetChild(0).DOKill();
-        mobileScreenSlider.transform.GetChild(2).GetChild(0).localScale = new Vector3(1f, 1f, 1f);
+        _mobileScreenSlider.transform.GetChild(2).GetChild(0).DOKill();
+        _mobileScreenSlider.transform.GetChild(2).GetChild(0).localScale = new Vector3(1f, 1f, 1f);
         mobileScreen.transform.GetChild(7).gameObject.SetActive(false);
     }
     
@@ -238,9 +288,9 @@ public class UiManager : Singleton<UiManager>
             }
         }
 
-        if (isMobileActive)
+        if (_isMobileActive)
         {
-            _camera.fieldOfView = mobileScreenSlider.minValue + (mobileScreenSlider.maxValue - mobileScreenSlider.value);   
+            _camera.fieldOfView = _mobileScreenSlider.minValue + (_mobileScreenSlider.maxValue - _mobileScreenSlider.value);   
         }
 
         if (_shouldUpdateLikeText)
@@ -469,16 +519,16 @@ public class UiManager : Singleton<UiManager>
     
     public void EnableHaptics()
     {
-        haptics.transform.GetChild(0).gameObject.SetActive(false);
-        haptics.transform.GetChild(1).gameObject.SetActive(true);
-        HapticsAllowed = false;
+        hapticsIcon.transform.GetChild(0).gameObject.SetActive(false);
+        hapticsIcon.transform.GetChild(1).gameObject.SetActive(true);
+        HapticsAllowed = true;
         MMVibrationManager.SetHapticsActive(HapticsAllowed);
     }
     public void DisableHaptics()
     {
-        haptics.transform.GetChild(0).gameObject.SetActive(true);
-        haptics.transform.GetChild(1).gameObject.SetActive(false);
-        HapticsAllowed = true;
+        hapticsIcon.transform.GetChild(0).gameObject.SetActive(true);
+        hapticsIcon.transform.GetChild(1).gameObject.SetActive(false);
+        HapticsAllowed = false;
         MMVibrationManager.SetHapticsActive(HapticsAllowed);
     }
     private void NextCallBack()

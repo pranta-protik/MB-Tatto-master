@@ -1587,6 +1587,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lasergate Ring
       objectReference: {fileID: 0}
+    - target: {fileID: 7543357610566862810, guid: 15e6b70ef60562941a5a91f4d29521c8, type: 3}
+      propertyPath: m_TagString
+      value: Ring
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15e6b70ef60562941a5a91f4d29521c8, type: 3}
 --- !u!4 &7499196350305293995 stripped

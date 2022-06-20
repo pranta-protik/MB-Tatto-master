@@ -12,13 +12,13 @@ public class StorageManager : Singleton<StorageManager>
     [HideInInspector] public int currentLevel;
     [HideInInspector] public int currentLevelText;
 
-    public void UpdateScore(int count)
+    public int GetCurrentScore()
     {
-        currentLevelScore += count;
-        UiManager.Instance.scoreText.SetText(currentLevelScore.ToString());
-        if (count < 0)
-        {
-            UiManager.Instance.priceTag.GetComponent<Image>().DOColor(Color.red, 0.5f).SetLoops(2, LoopType.Yoyo);
-        }
+        return currentLevelScore;
+    }
+    
+    public void SetCurrentScore(int score)
+    {
+        currentLevelScore = score;
     }
 }
