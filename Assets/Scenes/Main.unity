@@ -501,6 +501,89 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 516}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &76138220
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 76138223}
+  - component: {fileID: 76138222}
+  - component: {fileID: 76138221}
+  m_Layer: 0
+  m_Name: Road Mesh Holder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!23 &76138221
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 76138220}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 0979918098e08c44fbf6535e12844422, type: 2}
+  - {fileID: 2100000, guid: c1d8d882244c5344fa86a8fd23246f81, type: 2}
+  - {fileID: 2100000, guid: c1d8d882244c5344fa86a8fd23246f81, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &76138222
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 76138220}
+  m_Mesh: {fileID: 902141492}
+--- !u!4 &76138223
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 76138220}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &105773472
 GameObject:
   m_ObjectHideFlags: 0
@@ -1805,6 +1888,89 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 246476784}
   m_CullTransparentMesh: 1
+--- !u!1 &248709622
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 248709625}
+  - component: {fileID: 248709624}
+  - component: {fileID: 248709623}
+  m_Layer: 0
+  m_Name: Road Mesh Holder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!23 &248709623
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248709622}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 0979918098e08c44fbf6535e12844422, type: 2}
+  - {fileID: 2100000, guid: c1d8d882244c5344fa86a8fd23246f81, type: 2}
+  - {fileID: 2100000, guid: c1d8d882244c5344fa86a8fd23246f81, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &248709624
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248709622}
+  m_Mesh: {fileID: 1503096474}
+--- !u!4 &248709625
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248709622}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &251644473
 GameObject:
   m_ObjectHideFlags: 0
@@ -12031,6 +12197,273 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!43 &902141492
+Mesh:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 10
+  m_SubMeshes:
+  - serializedVersion: 2
+    firstByte: 0
+    indexCount: 6
+    topology: 0
+    baseVertex: 0
+    firstVertex: 0
+    vertexCount: 10
+    localAABB:
+      m_Center: {x: 14.261752, y: -0.0039081573, z: 0.005515218}
+      m_Extent: {x: 17.817553, y: 0.0039081573, z: 0.4655152}
+  - serializedVersion: 2
+    firstByte: 12
+    indexCount: 6
+    topology: 0
+    baseVertex: 0
+    firstVertex: 2
+    vertexCount: 10
+    localAABB:
+      m_Center: {x: 14.261752, y: -1.1739081, z: 0.005515218}
+      m_Extent: {x: 17.817553, y: 0.0039081573, z: 0.4655152}
+  - serializedVersion: 2
+    firstByte: 24
+    indexCount: 12
+    topology: 0
+    baseVertex: 0
+    firstVertex: 4
+    vertexCount: 12
+    localAABB:
+      m_Center: {x: 14.261752, y: -0.58890814, z: 0.005515218}
+      m_Extent: {x: 17.817553, y: 0.58890814, z: 0.4655152}
+  m_Shapes:
+    vertices: []
+    shapes: []
+    channels: []
+    fullWeights: []
+  m_BindPose: []
+  m_BoneNameHashes: 
+  m_RootBoneNameHash: 0
+  m_BonesAABB: []
+  m_VariableBoneCountWeights:
+    m_Data: 
+  m_MeshCompression: 0
+  m_IsReadable: 1
+  m_KeepVertices: 1
+  m_KeepIndices: 1
+  m_IndexFormat: 0
+  m_IndexBuffer: 0000080001000100080009000b000a00030003000a000200040006000e000c0004000e0005000f0007000d000f000500
+  m_VertexData:
+    serializedVersion: 3
+    m_VertexCount: 16
+    m_Channels:
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 3
+    - stream: 0
+      offset: 12
+      format: 0
+      dimension: 3
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 24
+      format: 0
+      dimension: 2
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    m_DataSize: 512
+    _typelessdata: 3b9263c0000000001e85eb3e000000000000803f000000000000000000000000918d63c0000000001e85ebbe000000000000803f000000000000803f000000003b9263c08fc295bf1e85eb3e00000080000080bf000000800000000000000000918d63c08fc295bf1e85ebbe00000080000080bf0000008000000000000000003b9263c0000000001e85eb3ee149a2b900000080ffff7f3f0000000000000000918d63c0000000001e85ebbee149a23900000000ffff7fbf00000000000000003b9263c08fc295bf1e85eb3ee149a2b900000080ffff7f3f0000000000000000918d63c08fc295bf1e85ebbee149a23900000000ffff7fbf0000000000000000eb500042001000bce62af13e000000000000803f00000000000000000000803f35510042001000bc56dfe5be000000000000803f000000000000803f0000803feb500042afc296bfe62af13e00000080000080bf00000080000000000000000035510042afc296bf56dfe5be00000080000080bf000000800000000000000000eb500042001000bce62af13ee149a2b900000080ffff7f3f000000000000000035510042001000bc56dfe5bee149a23900000000ffff7fbf0000000000000000eb500042afc296bfe62af13ee149a2b900000080ffff7f3f000000000000000035510042afc296bf56dfe5bee149a23900000000ffff7fbf0000000000000000
+  m_CompressedMesh:
+    m_Vertices:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UV:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Normals:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Tangents:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Weights:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_NormalSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_TangentSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_FloatColors:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_BoneIndices:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Triangles:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UVInfo: 0
+  m_LocalAABB:
+    m_Center: {x: 14.261752, y: -0.58890814, z: 0.005515218}
+    m_Extent: {x: 17.817553, y: 0.58890814, z: 0.4655152}
+  m_MeshUsageFlags: 0
+  m_BakedConvexCollisionMesh: 
+  m_BakedTriangleCollisionMesh: 
+  m_MeshMetrics[0]: 1
+  m_MeshMetrics[1]: 1
+  m_MeshOptimizationFlags: 1
+  m_StreamData:
+    serializedVersion: 2
+    offset: 0
+    size: 0
+    path: 
+--- !u!1 &914290023
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 914290026}
+  - component: {fileID: 914290025}
+  - component: {fileID: 914290024}
+  m_Layer: 0
+  m_Name: Road Mesh Holder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!23 &914290024
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914290023}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 0979918098e08c44fbf6535e12844422, type: 2}
+  - {fileID: 2100000, guid: c1d8d882244c5344fa86a8fd23246f81, type: 2}
+  - {fileID: 2100000, guid: c1d8d882244c5344fa86a8fd23246f81, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &914290025
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914290023}
+  m_Mesh: {fileID: 1318726730}
+--- !u!4 &914290026
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914290023}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &920170291
 GameObject:
   m_ObjectHideFlags: 0
@@ -18499,7 +18932,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  a: -0.95
+  offset: -0.95
 --- !u!81 &1172234472
 AudioListener:
   m_ObjectHideFlags: 0
@@ -19214,24 +19647,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DontDestroyLoad: 0
   m_IsSingletonLogsEnabled: 0
-  handGroups:
-  - mainHand: {fileID: 1331897427}
-    tattooHand: {fileID: 1741970589}
-  - mainHand: {fileID: 1521261224}
-    tattooHand: {fileID: 1687936780}
-  - mainHand: {fileID: 867627803}
-    tattooHand: {fileID: 146056923}
-  - mainHand: {fileID: 1522631570}
-    tattooHand: {fileID: 780703548}
-  - mainHand: {fileID: 2023314334}
-    tattooHand: {fileID: 2073972714}
-  - mainHand: {fileID: 1604221682}
-    tattooHand: {fileID: 1079283061}
-  LastTattoTexture: {fileID: 0}
-  TextureName: 
-  HandNumber: 4
-  Hands: []
-  LevelPrefabs:
+  totalLevelNo: 50
+  levelPrefabs:
   - {fileID: 6828944569146319530, guid: 1e9203e20f9636a46a1b0a202da32413, type: 3}
   - {fileID: 6828944569146319530, guid: 10648a6f84edf224a955a5a3951cb2c5, type: 3}
   - {fileID: 6828944569146319530, guid: 882f10584960ae84d9a9f451f36b97b1, type: 3}
@@ -19256,22 +19673,35 @@ MonoBehaviour:
   - {fileID: 6828944569146319530, guid: ca6700f910dfdf942b8bcdc9ce772fb1, type: 3}
   - {fileID: 6828944569146319530, guid: 9ef80e055ffe7104fbaec94cf54b343a, type: 3}
   - {fileID: 6828944569146319530, guid: f65567198b09345488429e4ddb8ff370, type: 3}
-  levelNo: 0
-  currentLvlPrefab: {fileID: 0}
+  currentLevelNo: 0
+  currentLevelPrefab: {fileID: 0}
+  pathCreator: {fileID: 0}
+  hasGameStarted: 0
+  handGroups:
+  - mainHand: {fileID: 1331897427}
+    tattooHand: {fileID: 1741970589}
+  - mainHand: {fileID: 1521261224}
+    tattooHand: {fileID: 1687936780}
+  - mainHand: {fileID: 867627803}
+    tattooHand: {fileID: 146056923}
+  - mainHand: {fileID: 1522631570}
+    tattooHand: {fileID: 780703548}
+  - mainHand: {fileID: 2023314334}
+    tattooHand: {fileID: 2073972714}
+  - mainHand: {fileID: 1604221682}
+    tattooHand: {fileID: 1079283061}
+  playerPathFollower: {fileID: 378904803}
+  tattooGun: {fileID: 709119814}
+  LastTattoTexture: {fileID: 0}
+  TextureName: 
   Level: 0
   IsGameOver: 0
-  StartGame: 0
   IsVideo: 1
   IsLevelEnd: 0
   GameOver: 0
   GameEnd: 0
   Boss: {fileID: 0}
-  TattoMachine: {fileID: 709119814}
   FakeCam: {fileID: 9100954228620733603}
-  pathCreator: {fileID: 0}
-  p: {fileID: 378904803}
-  CollsionScript: {fileID: 0}
-  m_textureManager: {fileID: 1859920059}
   cam: {fileID: 1172234471}
   FianlCamPos: {fileID: 2040196988}
   FinalCamPos: {fileID: 2040196989}
@@ -19314,7 +19744,6 @@ MonoBehaviour:
   - 263M
   - 279M
   - 287M
-  timer: 0
   specificLevelId: 0
 --- !u!1001 &1287034089
 PrefabInstance:
@@ -19653,6 +20082,190 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1316883943}
   m_CullTransparentMesh: 1
+--- !u!43 &1318726730
+Mesh:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 10
+  m_SubMeshes:
+  - serializedVersion: 2
+    firstByte: 0
+    indexCount: 6
+    topology: 0
+    baseVertex: 0
+    firstVertex: 0
+    vertexCount: 10
+    localAABB:
+      m_Center: {x: 14.261752, y: -0.0039081573, z: 0.005515218}
+      m_Extent: {x: 17.817553, y: 0.0039081573, z: 0.4655152}
+  - serializedVersion: 2
+    firstByte: 12
+    indexCount: 6
+    topology: 0
+    baseVertex: 0
+    firstVertex: 2
+    vertexCount: 10
+    localAABB:
+      m_Center: {x: 14.261752, y: -1.1739081, z: 0.005515218}
+      m_Extent: {x: 17.817553, y: 0.0039081573, z: 0.4655152}
+  - serializedVersion: 2
+    firstByte: 24
+    indexCount: 12
+    topology: 0
+    baseVertex: 0
+    firstVertex: 4
+    vertexCount: 12
+    localAABB:
+      m_Center: {x: 14.261752, y: -0.58890814, z: 0.005515218}
+      m_Extent: {x: 17.817553, y: 0.58890814, z: 0.4655152}
+  m_Shapes:
+    vertices: []
+    shapes: []
+    channels: []
+    fullWeights: []
+  m_BindPose: []
+  m_BoneNameHashes: 
+  m_RootBoneNameHash: 0
+  m_BonesAABB: []
+  m_VariableBoneCountWeights:
+    m_Data: 
+  m_MeshCompression: 0
+  m_IsReadable: 1
+  m_KeepVertices: 1
+  m_KeepIndices: 1
+  m_IndexFormat: 0
+  m_IndexBuffer: 0000080001000100080009000b000a00030003000a000200040006000e000c0004000e0005000f0007000d000f000500
+  m_VertexData:
+    serializedVersion: 3
+    m_VertexCount: 16
+    m_Channels:
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 3
+    - stream: 0
+      offset: 12
+      format: 0
+      dimension: 3
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 24
+      format: 0
+      dimension: 2
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    m_DataSize: 512
+    _typelessdata: 3b9263c0000000001e85eb3e000000000000803f000000000000000000000000918d63c0000000001e85ebbe000000000000803f000000000000803f000000003b9263c08fc295bf1e85eb3e00000080000080bf000000800000000000000000918d63c08fc295bf1e85ebbe00000080000080bf0000008000000000000000003b9263c0000000001e85eb3ee149a2b900000080ffff7f3f0000000000000000918d63c0000000001e85ebbee149a23900000000ffff7fbf00000000000000003b9263c08fc295bf1e85eb3ee149a2b900000080ffff7f3f0000000000000000918d63c08fc295bf1e85ebbee149a23900000000ffff7fbf0000000000000000eb500042001000bce62af13e000000000000803f00000000000000000000803f35510042001000bc56dfe5be000000000000803f000000000000803f0000803feb500042afc296bfe62af13e00000080000080bf00000080000000000000000035510042afc296bf56dfe5be00000080000080bf000000800000000000000000eb500042001000bce62af13ee149a2b900000080ffff7f3f000000000000000035510042001000bc56dfe5bee149a23900000000ffff7fbf0000000000000000eb500042afc296bfe62af13ee149a2b900000080ffff7f3f000000000000000035510042afc296bf56dfe5bee149a23900000000ffff7fbf0000000000000000
+  m_CompressedMesh:
+    m_Vertices:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UV:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Normals:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Tangents:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Weights:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_NormalSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_TangentSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_FloatColors:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_BoneIndices:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Triangles:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UVInfo: 0
+  m_LocalAABB:
+    m_Center: {x: 14.261752, y: -0.58890814, z: 0.005515218}
+    m_Extent: {x: 17.817553, y: 0.58890814, z: 0.4655152}
+  m_MeshUsageFlags: 0
+  m_BakedConvexCollisionMesh: 
+  m_BakedTriangleCollisionMesh: 
+  m_MeshMetrics[0]: 1
+  m_MeshMetrics[1]: 1
+  m_MeshOptimizationFlags: 1
+  m_StreamData:
+    serializedVersion: 2
+    offset: 0
+    size: 0
+    path: 
 --- !u!1 &1326329033
 GameObject:
   m_ObjectHideFlags: 0
@@ -21723,6 +22336,190 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!43 &1503096474
+Mesh:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 10
+  m_SubMeshes:
+  - serializedVersion: 2
+    firstByte: 0
+    indexCount: 6
+    topology: 0
+    baseVertex: 0
+    firstVertex: 0
+    vertexCount: 10
+    localAABB:
+      m_Center: {x: 14.261752, y: -0.0039081573, z: 0.005515218}
+      m_Extent: {x: 17.817553, y: 0.0039081573, z: 0.4655152}
+  - serializedVersion: 2
+    firstByte: 12
+    indexCount: 6
+    topology: 0
+    baseVertex: 0
+    firstVertex: 2
+    vertexCount: 10
+    localAABB:
+      m_Center: {x: 14.261752, y: -1.1739081, z: 0.005515218}
+      m_Extent: {x: 17.817553, y: 0.0039081573, z: 0.4655152}
+  - serializedVersion: 2
+    firstByte: 24
+    indexCount: 12
+    topology: 0
+    baseVertex: 0
+    firstVertex: 4
+    vertexCount: 12
+    localAABB:
+      m_Center: {x: 14.261752, y: -0.58890814, z: 0.005515218}
+      m_Extent: {x: 17.817553, y: 0.58890814, z: 0.4655152}
+  m_Shapes:
+    vertices: []
+    shapes: []
+    channels: []
+    fullWeights: []
+  m_BindPose: []
+  m_BoneNameHashes: 
+  m_RootBoneNameHash: 0
+  m_BonesAABB: []
+  m_VariableBoneCountWeights:
+    m_Data: 
+  m_MeshCompression: 0
+  m_IsReadable: 1
+  m_KeepVertices: 1
+  m_KeepIndices: 1
+  m_IndexFormat: 0
+  m_IndexBuffer: 0000080001000100080009000b000a00030003000a000200040006000e000c0004000e0005000f0007000d000f000500
+  m_VertexData:
+    serializedVersion: 3
+    m_VertexCount: 16
+    m_Channels:
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 3
+    - stream: 0
+      offset: 12
+      format: 0
+      dimension: 3
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 24
+      format: 0
+      dimension: 2
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    m_DataSize: 512
+    _typelessdata: 3b9263c0000000001e85eb3e000000000000803f000000000000000000000000918d63c0000000001e85ebbe000000000000803f000000000000803f000000003b9263c08fc295bf1e85eb3e00000080000080bf000000800000000000000000918d63c08fc295bf1e85ebbe00000080000080bf0000008000000000000000003b9263c0000000001e85eb3ee149a2b900000080ffff7f3f0000000000000000918d63c0000000001e85ebbee149a23900000000ffff7fbf00000000000000003b9263c08fc295bf1e85eb3ee149a2b900000080ffff7f3f0000000000000000918d63c08fc295bf1e85ebbee149a23900000000ffff7fbf0000000000000000eb500042001000bce62af13e000000000000803f00000000000000000000803f35510042001000bc56dfe5be000000000000803f000000000000803f0000803feb500042afc296bfe62af13e00000080000080bf00000080000000000000000035510042afc296bf56dfe5be00000080000080bf000000800000000000000000eb500042001000bce62af13ee149a2b900000080ffff7f3f000000000000000035510042001000bc56dfe5bee149a23900000000ffff7fbf0000000000000000eb500042afc296bfe62af13ee149a2b900000080ffff7f3f000000000000000035510042afc296bf56dfe5bee149a23900000000ffff7fbf0000000000000000
+  m_CompressedMesh:
+    m_Vertices:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UV:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Normals:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Tangents:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Weights:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_NormalSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_TangentSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_FloatColors:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_BoneIndices:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Triangles:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UVInfo: 0
+  m_LocalAABB:
+    m_Center: {x: 14.261752, y: -0.58890814, z: 0.005515218}
+    m_Extent: {x: 17.817553, y: 0.58890814, z: 0.4655152}
+  m_MeshUsageFlags: 0
+  m_BakedConvexCollisionMesh: 
+  m_BakedTriangleCollisionMesh: 
+  m_MeshMetrics[0]: 1
+  m_MeshMetrics[1]: 1
+  m_MeshOptimizationFlags: 1
+  m_StreamData:
+    serializedVersion: 2
+    offset: 0
+    size: 0
+    path: 
 --- !u!1 &1509577480
 GameObject:
   m_ObjectHideFlags: 0
@@ -24771,44 +25568,6 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 86bdcd633af492b47a58beb85a4fa221, type: 3}
   celebrityExpensiveColorTattooIdSequences: 080000000b000000
   celebrityCheapColorTattooIdSequences: 04000000
-  calligraphyDefaultTattoo: {fileID: 2800000, guid: 1f836455c51e20a498b9e0d6be2f7809, type: 3}
-  calligraphyExpensiveTattoos:
-  - {fileID: 2800000, guid: b6fd91880c20fb64ab336a520692875b, type: 3}
-  - {fileID: 2800000, guid: 02e39ea461d07b6479e9c61453a65110, type: 3}
-  - {fileID: 2800000, guid: facb14b1e9fbf1240b5519141e674fad, type: 3}
-  - {fileID: 2800000, guid: da526e797b3aa954d83482fbb9392eb5, type: 3}
-  - {fileID: 2800000, guid: 737947f3cb9f489498a16193e329485b, type: 3}
-  - {fileID: 2800000, guid: efd49fdd35fd77847947b2d5c93f4dff, type: 3}
-  - {fileID: 2800000, guid: 31f4639a10f092a46a1ae0185f45c3ed, type: 3}
-  - {fileID: 2800000, guid: c8b1759bd737fb541934d3d0e9c88014, type: 3}
-  - {fileID: 2800000, guid: 8ae3f6a55a5c3a84d8bde346248694c9, type: 3}
-  - {fileID: 2800000, guid: 5f9c0b06d31baab4499616957b5612a4, type: 3}
-  - {fileID: 2800000, guid: f4d42f27fdd24594e96f3512ba02ae1f, type: 3}
-  - {fileID: 2800000, guid: 84bb5cbc48239514eab608530f2541da, type: 3}
-  - {fileID: 2800000, guid: 36c72d38513952e4bae2d37afa916317, type: 3}
-  - {fileID: 2800000, guid: cd8223ca059092c4bb32ebf398b66df2, type: 3}
-  - {fileID: 2800000, guid: e68c1d05052789441ac693843f265923, type: 3}
-  calligraphyExpensiveBlueTattoos:
-  - {fileID: 2800000, guid: e434e51bd81b0714e991b980a333bc99, type: 3}
-  - {fileID: 2800000, guid: 604ee8490eef980469800ca34e238cd5, type: 3}
-  calligraphyExpensiveYellowTattoos:
-  - {fileID: 2800000, guid: 94709cb7d583eec489d0bfd775ed53cd, type: 3}
-  - {fileID: 2800000, guid: 2233d526ca54e0e4f94d8ff11293aa3a, type: 3}
-  calligraphyCheapTattoos:
-  - {fileID: 2800000, guid: 8ef5dcaebf972ca4e8b38c952dc86f90, type: 3}
-  - {fileID: 2800000, guid: 08536b3808eb6b740ab75340c2343de9, type: 3}
-  - {fileID: 2800000, guid: 978f8d947ba0b6f4ab4218ec07d3119a, type: 3}
-  - {fileID: 2800000, guid: 970a10d839032e54fb00c10ee56981fa, type: 3}
-  - {fileID: 2800000, guid: 7dd178e0e32bb4f41974193dab169ae9, type: 3}
-  - {fileID: 2800000, guid: 37fc400aaaf17b14ba29be86cf047142, type: 3}
-  calligraphyCheapBlueTattoos:
-  - {fileID: 2800000, guid: af0d61e620f848245b59cfcd5b6f9295, type: 3}
-  - {fileID: 2800000, guid: d04bbbf95178e7549b821c13205a27fa, type: 3}
-  calligraphyCheapYellowTattoos:
-  - {fileID: 2800000, guid: b9d65dda6646d3943b11cfdad31d12cf, type: 3}
-  - {fileID: 2800000, guid: 0805d70403f68164f8600cc345bf6d99, type: 3}
-  calligraphyExpensiveColorTattooIdSequences: 090000000a000000
-  calligraphyCheapColorTattooIdSequences: 0400000005000000
   moneyDefaultTattoo: {fileID: 2800000, guid: 5cf0c33d3e908f842aa282c4ff56f019, type: 3}
   moneyExpensiveTattoos:
   - {fileID: 2800000, guid: f6f0b91f20b63b94a990cff121b3b582, type: 3}
@@ -24847,129 +25606,8 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 71fe43542b726b14dafc1b82151e3206, type: 3}
   moneyExpensiveColorTattooIdSequences: 090000000b000000
   moneyCheapColorTattooIdSequences: 0400000005000000
-  DefaultFlower: {fileID: 2800000, guid: 68906f73a7d7a734ba32b64c0727f9be, type: 3}
-  DefaultSkull: {fileID: 2800000, guid: 51586b72977edae49a9eb93187a2cbc2, type: 3}
-  DefaultPinup: {fileID: 2800000, guid: f7a9ead41cf2ca34bb73db79adaa62ff, type: 3}
-  DefaultCeleb: {fileID: 2800000, guid: cd093bbab07bf5b42ad4d9dffc6c8d2f, type: 3}
-  DefaultCaligraphy: {fileID: 2800000, guid: 1f836455c51e20a498b9e0d6be2f7809, type: 3}
-  DefaultMoney: {fileID: 2800000, guid: 5cf0c33d3e908f842aa282c4ff56f019, type: 3}
-  FlowerExpensiveTattos:
-  - {fileID: 2800000, guid: 7684830d85a3b8642af02ec75969e33d, type: 3}
-  - {fileID: 2800000, guid: 0e450ae456587c34cbcab57c5d568fe6, type: 3}
-  - {fileID: 2800000, guid: e2f0b2c04d277d049a34e6d7c9636143, type: 3}
-  - {fileID: 2800000, guid: 115a2dcfc4ca03843b39c9ed69f77dd4, type: 3}
-  - {fileID: 2800000, guid: adbb3eb6ce7b0e349bf7eaaa378c11fb, type: 3}
-  - {fileID: 2800000, guid: a501bc1ac0b55f04d941b1534565f60d, type: 3}
-  - {fileID: 2800000, guid: bd23c68033ec66447828e84f6db9a842, type: 3}
-  - {fileID: 2800000, guid: cd1f30f99cb3b934f99694d7ed2fd011, type: 3}
-  - {fileID: 2800000, guid: ee0a6e1e3a6d82a41b0b83d2407ed2e4, type: 3}
-  - {fileID: 2800000, guid: 713b93775c48c4d428664566c719f45e, type: 3}
-  - {fileID: 2800000, guid: c9c1a3dbe68bb9c48b3410e5bf5a95aa, type: 3}
-  - {fileID: 2800000, guid: 7f25f7bc547dc3c46ae9cec2722aa75f, type: 3}
-  - {fileID: 2800000, guid: 226d5c660c128bb4aaacc730cb9b85ca, type: 3}
-  - {fileID: 2800000, guid: 528b1ef08bf456444aab4390961c0560, type: 3}
-  - {fileID: 2800000, guid: 60254631a4692fb4ebe046f82f5df6ff, type: 3}
-  FlowerCheapTattos:
-  - {fileID: 2800000, guid: 61211112e0a990b4a9aace533d346f26, type: 3}
-  - {fileID: 2800000, guid: 1b7bec209599c7f44b40242430ef04c6, type: 3}
-  - {fileID: 2800000, guid: b9bdb87f50578c94fb26ae4d6f4a0f6a, type: 3}
-  - {fileID: 2800000, guid: 9751431d4c8cc6944959e4b1b29a0e41, type: 3}
-  - {fileID: 2800000, guid: 0be8c64315cbbeb4ea20e6f8165e9920, type: 3}
-  - {fileID: 2800000, guid: fae516a1c7083524f9b4f04d83e8fb7d, type: 3}
-  FlowerBadBlue: []
-  FlowerGoodBlue:
-  - {fileID: 2800000, guid: 09cc29a1182692e47a2bacb94531723f, type: 3}
-  FlowerGoodYellow:
-  - {fileID: 2800000, guid: 731709182f869d44cbe1045606adaf38, type: 3}
-  FlowerBadYellow: []
-  SkullExpensiveTattos:
-  - {fileID: 2800000, guid: fe5f278dc00ff154a88bef10ac7b31e6, type: 3}
-  - {fileID: 2800000, guid: 59c5f6181c7ddad40be096efe8c999fb, type: 3}
-  - {fileID: 2800000, guid: 7f03bbc5666a23b4283ff71bd81bd216, type: 3}
-  - {fileID: 2800000, guid: 7b2aac6e709744d4e97f739c7df5f089, type: 3}
-  - {fileID: 2800000, guid: ddd01f458f3e3a349b3ee171a0c16b4f, type: 3}
-  - {fileID: 2800000, guid: 23c21173a91bcb24ca182dc733592d54, type: 3}
-  - {fileID: 2800000, guid: b169dfcaf3edfcc42a61bb7296883fe1, type: 3}
-  - {fileID: 2800000, guid: 23f503535b4cb7f4c878b81aef92a205, type: 3}
-  - {fileID: 2800000, guid: 66118f4295829894387c1139c412a3e6, type: 3}
-  - {fileID: 2800000, guid: d86f97d5ceeb998498087f5f99d2df84, type: 3}
-  - {fileID: 2800000, guid: 95627a068e4d0664f82d344fc213aa75, type: 3}
-  - {fileID: 2800000, guid: 10aaddba0d9f7064f944bbcc743f9fb0, type: 3}
-  - {fileID: 2800000, guid: 7589cc6a2d57e8245bdf87564a2f6542, type: 3}
-  - {fileID: 2800000, guid: 687168022b8b26e478b2facc6052e12d, type: 3}
-  - {fileID: 2800000, guid: 0eec76cd514400a4b800d780d1420a24, type: 3}
-  SkullCheapTattos:
-  - {fileID: 2800000, guid: 70dcff40d21fdb048b1f36ceaaa0b998, type: 3}
-  - {fileID: 2800000, guid: 0f2783b918cfc634d80974cf2b187d34, type: 3}
-  - {fileID: 2800000, guid: 5eaab0d8bf5f89e4ca07bb4eb917213d, type: 3}
-  - {fileID: 2800000, guid: c06e8edd2ada7f647bac21274052160f, type: 3}
-  - {fileID: 2800000, guid: 4916f226ccdedc444bc6df26e5bc8d98, type: 3}
-  - {fileID: 2800000, guid: 2470a6b67ecfc4f42b4397e558073aeb, type: 3}
-  SkullBadBlue: []
-  SkullGoodBlue:
-  - {fileID: 2800000, guid: eb824163bedd3a2479bf0b1e969a90e7, type: 3}
-  SkullGoodYellow:
-  - {fileID: 2800000, guid: 922059f04371125438b91f0e4ee7f1de, type: 3}
-  SkullBadYellow: []
-  PinnupGirlExpensiveTattos:
-  - {fileID: 2800000, guid: 13ca252e634bccc4fa889bd433233e3d, type: 3}
-  - {fileID: 2800000, guid: 2e89ffe8f21cd7d49b138727ea3b94b5, type: 3}
-  - {fileID: 2800000, guid: 9bf5af9e3c933e24689e7aa45a48e147, type: 3}
-  - {fileID: 2800000, guid: 9c2d8866bad02964f9426fd6ae41c4d3, type: 3}
-  - {fileID: 2800000, guid: 71bc67afc034a684589820bcd952391e, type: 3}
-  - {fileID: 2800000, guid: 19e0d42cf690bf94594819710dabd217, type: 3}
-  - {fileID: 2800000, guid: ba6beba3741af0d43b2d86c1407101d6, type: 3}
-  - {fileID: 2800000, guid: 5075d414eb7b57143b6344f77278b779, type: 3}
-  - {fileID: 2800000, guid: c0ab98dc1aeb1424ca336e11a5fd4c58, type: 3}
-  - {fileID: 2800000, guid: ac53391aec64ae044a3b0e00c5ef904c, type: 3}
-  - {fileID: 2800000, guid: 22ba3de7fc865124e865579a5f4d3954, type: 3}
-  - {fileID: 2800000, guid: 4792ee425b0514248bf6eb31a2f71265, type: 3}
-  - {fileID: 2800000, guid: 6ee1ee8c04f3df04f8d4885090538ee8, type: 3}
-  - {fileID: 2800000, guid: 265d8ff94b0da9e4aaf149e4840bf66e, type: 3}
-  - {fileID: 2800000, guid: ed50be07704c83046ac49f974ca5f9a9, type: 3}
-  PinnupGirlCheapTattos:
-  - {fileID: 2800000, guid: 7806204e2d54d2a4abe81f9c76a1ffcb, type: 3}
-  - {fileID: 2800000, guid: baf6f63781b30b3428e374f559808f08, type: 3}
-  - {fileID: 2800000, guid: 0ccbe37b9baea1e44991a46700d2ecd9, type: 3}
-  - {fileID: 2800000, guid: dc305b79e1442ac4eb43deac780e8803, type: 3}
-  - {fileID: 2800000, guid: fc2093886c42fa148a7fbbc9dda4f202, type: 3}
-  - {fileID: 2800000, guid: 52bf831e7f9c28f4888417102d5b83b9, type: 3}
-  PinnupGirlBadBlue: []
-  PinnupGirlGoodBlue:
-  - {fileID: 2800000, guid: c0efdd6d371d7ee4a900f2ba03b01eb7, type: 3}
-  PinnupGirlGoodYellow:
-  - {fileID: 2800000, guid: 90273bbcfaf05434c8dc92c422d8091a, type: 3}
-  PinnupGirlBadYellow: []
-  CelebExpensiveTattos:
-  - {fileID: 2800000, guid: badf792ee2054dc41b54f3c276fb329d, type: 3}
-  - {fileID: 2800000, guid: 0e03ce2e8383e23439b7ae8f87e21c4e, type: 3}
-  - {fileID: 2800000, guid: 2afda2a8efad08d478c65925fbeeaca7, type: 3}
-  - {fileID: 2800000, guid: a3682ca048906bd4e96ffaa2825e77de, type: 3}
-  - {fileID: 2800000, guid: 2dfce161d81633441942711420d29659, type: 3}
-  - {fileID: 2800000, guid: e2b6f57e762a310498c30e629f11c095, type: 3}
-  - {fileID: 2800000, guid: 1168c81ad38b31f4ead65c7395ef5cb7, type: 3}
-  - {fileID: 2800000, guid: 708bfb661ae3a7042ab660d957830223, type: 3}
-  - {fileID: 2800000, guid: 5fe1961ea4e3c9a4580b40fb2e12b2c3, type: 3}
-  - {fileID: 2800000, guid: 9b04eb58679132a48aadc9c7b5980456, type: 3}
-  - {fileID: 2800000, guid: 76e5601f80eb847419963e404109d47f, type: 3}
-  - {fileID: 2800000, guid: 0d405d1a6d443fa4e86075187d8cdaf9, type: 3}
-  - {fileID: 2800000, guid: 19e674a1b9e34cf4db5d33d24b2d3f3e, type: 3}
-  - {fileID: 2800000, guid: 5e60208d7c7a92941a9665681ff9a364, type: 3}
-  - {fileID: 2800000, guid: f0dc45fbfd5b2fd439217a26cddd41c8, type: 3}
-  CelebCheapTattos:
-  - {fileID: 2800000, guid: 76cb3286e95e9474ebd0eee1cfa6882e, type: 3}
-  - {fileID: 2800000, guid: 884966d9ab41acd4280d9660d0f2ab1e, type: 3}
-  - {fileID: 2800000, guid: 7e7b0827b7c54bb4eb6ce7e9c94b31e9, type: 3}
-  - {fileID: 2800000, guid: 9c84da97c2c4d6847be843caf8803615, type: 3}
-  - {fileID: 2800000, guid: 121256d5aad15fa49b7c95c374362601, type: 3}
-  - {fileID: 2800000, guid: 15b88713ec2fb974cb58c6a7288d04f6, type: 3}
-  CelebBadBlue: []
-  CelebGoodBlue:
-  - {fileID: 2800000, guid: 201944689b61b2f43b5869fa9d5ed67b, type: 3}
-  CelebGoodYellow:
-  - {fileID: 2800000, guid: 04de33fa68bd93e4ea882c4f6e87d66a, type: 3}
-  CelebBadYellow: []
-  CaligraphyExpensiveTattos:
+  calligraphyDefaultTattoo: {fileID: 2800000, guid: 1f836455c51e20a498b9e0d6be2f7809, type: 3}
+  calligraphyExpensiveTattoos:
   - {fileID: 2800000, guid: b6fd91880c20fb64ab336a520692875b, type: 3}
   - {fileID: 2800000, guid: 02e39ea461d07b6479e9c61453a65110, type: 3}
   - {fileID: 2800000, guid: facb14b1e9fbf1240b5519141e674fad, type: 3}
@@ -24985,60 +25623,27 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 36c72d38513952e4bae2d37afa916317, type: 3}
   - {fileID: 2800000, guid: cd8223ca059092c4bb32ebf398b66df2, type: 3}
   - {fileID: 2800000, guid: e68c1d05052789441ac693843f265923, type: 3}
-  CaligraphyCheapTattos:
+  calligraphyExpensiveBlueTattoos:
+  - {fileID: 2800000, guid: e434e51bd81b0714e991b980a333bc99, type: 3}
+  - {fileID: 2800000, guid: 604ee8490eef980469800ca34e238cd5, type: 3}
+  calligraphyExpensiveYellowTattoos:
+  - {fileID: 2800000, guid: 94709cb7d583eec489d0bfd775ed53cd, type: 3}
+  - {fileID: 2800000, guid: 2233d526ca54e0e4f94d8ff11293aa3a, type: 3}
+  calligraphyCheapTattoos:
   - {fileID: 2800000, guid: 8ef5dcaebf972ca4e8b38c952dc86f90, type: 3}
   - {fileID: 2800000, guid: 08536b3808eb6b740ab75340c2343de9, type: 3}
   - {fileID: 2800000, guid: 978f8d947ba0b6f4ab4218ec07d3119a, type: 3}
   - {fileID: 2800000, guid: 970a10d839032e54fb00c10ee56981fa, type: 3}
   - {fileID: 2800000, guid: 7dd178e0e32bb4f41974193dab169ae9, type: 3}
   - {fileID: 2800000, guid: 37fc400aaaf17b14ba29be86cf047142, type: 3}
-  CaligraphyBadBlue: []
-  CaligraphyGoodBlue:
-  - {fileID: 2800000, guid: ce5ec2774aa17244e8b04a07ed9bf27f, type: 3}
-  CaligraphyGoodYellow:
-  - {fileID: 2800000, guid: 5d28004c3d61c744997babb2dd1e3c1e, type: 3}
-  CaligraphyBadYellow: []
-  MoneyExpensiveTattos:
-  - {fileID: 2800000, guid: f6f0b91f20b63b94a990cff121b3b582, type: 3}
-  - {fileID: 2800000, guid: 528557f6ae81df94f8615d4c1487c4ff, type: 3}
-  - {fileID: 2800000, guid: 03f8c2b8d3c560149becc0785276af84, type: 3}
-  - {fileID: 2800000, guid: dfd329f798dbb6c4b82f2247768f5f84, type: 3}
-  - {fileID: 2800000, guid: 63765b0a5d2a61b4c91d257d66e0ee6e, type: 3}
-  - {fileID: 2800000, guid: 5a9e2dde2fc19b8429d4e86732ac8625, type: 3}
-  - {fileID: 2800000, guid: bfa9cc21e35ee5c4ab2279506abe7633, type: 3}
-  - {fileID: 2800000, guid: 4a38b1dc25ef08c48921901e9954c680, type: 3}
-  - {fileID: 2800000, guid: 35b0d21af85ff4c4ea43d8ab807b0c1a, type: 3}
-  - {fileID: 2800000, guid: 2b1596a80b026dd4eb0e0051ebf8b342, type: 3}
-  - {fileID: 2800000, guid: 22494093ee8c77d469724b3a781fa000, type: 3}
-  - {fileID: 2800000, guid: a57162dbc8893614fbab514b95849080, type: 3}
-  - {fileID: 2800000, guid: 823d19ca3ef9e8444a4c20f658722684, type: 3}
-  - {fileID: 2800000, guid: cf879395697e4ab44b63290c7adf6902, type: 3}
-  - {fileID: 2800000, guid: d46740b38edf40346bbe5cde6d93ade4, type: 3}
-  MoneyCheapTattos:
-  - {fileID: 2800000, guid: 45a2775ddbddcd1419d556a56bebda87, type: 3}
-  - {fileID: 2800000, guid: 70ed4c4ddce8c084091ed0b34802a1be, type: 3}
-  - {fileID: 2800000, guid: 992ccd20493e8de498ef7358289dd484, type: 3}
-  - {fileID: 2800000, guid: 3e08d1096c86e034897f4b5e261617ab, type: 3}
-  - {fileID: 2800000, guid: c7a7e071f7828474b97125fb590f21b1, type: 3}
-  - {fileID: 2800000, guid: dc8964cc0b9a43a4884b3446aa2993b7, type: 3}
-  MoneyBadBlue: []
-  MoneyGoodBlue:
-  - {fileID: 2800000, guid: 089652930683fe74cb1b577879d37cbf, type: 3}
-  MoneyGoodYellow:
-  - {fileID: 2800000, guid: 2cab73e6a91c28840ad5d71aa594102f, type: 3}
-  MoneyBadYellow: []
-  ringFlowerTextures:
-  - {fileID: 21300000, guid: 82334407b7606694ebc9df73554de7c7, type: 3}
-  - {fileID: 21300000, guid: 21bad7c5e5338184ea9cc1e8037679f7, type: 3}
-  ringSkullTextures:
-  - {fileID: 21300000, guid: b995d351f67ddf444bb1c34ff292ae7c, type: 3}
-  - {fileID: 21300000, guid: d628f8c8648c5034783c6772568a3a54, type: 3}
-  braceletFlowerTextures:
-  - {fileID: 21300000, guid: f45cb90bd5d80b247bfc53ad42b27bfb, type: 3}
-  - {fileID: 21300000, guid: aabe87e5e1317b1418d5af08fb42a116, type: 3}
-  braceletSkullTextures:
-  - {fileID: 21300000, guid: 6cc71e00fe81d4f429fccbe5d9a8ed72, type: 3}
-  - {fileID: 21300000, guid: 06c05bab80b4eba479ad849b70e2b4fb, type: 3}
+  calligraphyCheapBlueTattoos:
+  - {fileID: 2800000, guid: af0d61e620f848245b59cfcd5b6f9295, type: 3}
+  - {fileID: 2800000, guid: d04bbbf95178e7549b821c13205a27fa, type: 3}
+  calligraphyCheapYellowTattoos:
+  - {fileID: 2800000, guid: b9d65dda6646d3943b11cfdad31d12cf, type: 3}
+  - {fileID: 2800000, guid: 0805d70403f68164f8600cc345bf6d99, type: 3}
+  calligraphyExpensiveColorTattooIdSequences: 090000000a000000
+  calligraphyCheapColorTattooIdSequences: 0400000005000000
 --- !u!4 &1859920060
 Transform:
   m_ObjectHideFlags: 0
@@ -37866,12 +38471,14 @@ MonoBehaviour:
   m_IsSingletonLogsEnabled: 0
   hurtScreen: {fileID: 2875735081493675973}
   transitionScreen: {fileID: 943916262}
+  startUI: {fileID: 1473265678204927958}
   hapticsIcon: {fileID: 1996186271}
   priceTag: {fileID: 6668516392213119779}
   mobileScreen: {fileID: 1961694457}
+  selectionMenuButton: {fileID: 425760740}
+  shop: {fileID: 167094096}
+  levelNoText: {fileID: 3464536507856245032}
   btnNext: {fileID: 2080464153}
-  LevelText: {fileID: 3464536507856245032}
-  StartUI: {fileID: 1473265678204927958}
   EndUi: {fileID: 5129942751915642798}
   CompleteUI: {fileID: 7530967020445585520}
   UnlockPanel: {fileID: 8886289068977303665}
@@ -37889,11 +38496,9 @@ MonoBehaviour:
   HapticsAllowed: 0
   enable: {fileID: 0}
   disable: {fileID: 0}
-  shop: {fileID: 167094096}
   PopUp: {fileID: 387661102}
   popUpScale: 5
   popUpDuration: 0.3
-  currentLevelText: 0
   shouldUpdateTotalCash: 0
   targetCashAmount: 0
   currentCashAmount: 0
@@ -37902,7 +38507,6 @@ MonoBehaviour:
   - {fileID: 830830721}
   - {fileID: 1686428516}
   selectionMenu: {fileID: 451508828}
-  selectionMenuButton: {fileID: 425760736}
   instaPostPage: {fileID: 845298533}
   instaGalleryPage: {fileID: 1990013023}
   influenceMeterPage: {fileID: 1804672026}
@@ -63226,7 +63830,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1279647959}
           m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-          m_MethodName: StartIt
+          m_MethodName: StartGameplay
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

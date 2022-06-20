@@ -24,7 +24,7 @@ public class HandController : MonoBehaviour
     
     private void Update()
     {
-        if (GameManager.Instance.StartGame)
+        if (GameManager.Instance.hasGameStarted)
         {
             HandlePlayerMovement();
         }

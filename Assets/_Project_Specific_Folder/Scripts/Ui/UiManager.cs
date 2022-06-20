@@ -7,28 +7,36 @@ using UnityEngine.UI;
 using MoreMountains.NiceVibrations;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class UiManager : Singleton<UiManager>
 {
     public GameObject hurtScreen;
     public GameObject transitionScreen;
-    
+
+    [SerializeField] private GameObject startUI;
     [SerializeField] private GameObject hapticsIcon;
     [SerializeField] private GameObject priceTag;
     [SerializeField] private GameObject mobileScreen;
+    [SerializeField] private GameObject selectionMenuButton;
+    [SerializeField] private GameObject shop;
+    [SerializeField] private TextMeshProUGUI levelNoText;
     
     private TextMeshProUGUI _scoreText;
     private Slider _mobileScreenSlider;
     private bool _isMobileActive;
+    private int _currentLevel;
+    private int _currentLevelText;
+        
+        
     
     // public TMP_Text scoreText ;
     
     public Button btnNext;
     // public Button hand; 
-
-    public TMP_Text LevelText;
-    public GameObject StartUI, EndUi, CompleteUI, UnlockPanel, ShopPnael;
+    
+    public GameObject EndUi, CompleteUI, UnlockPanel, ShopPnael;
     public GameObject TapFastPanel;
     public GameObject decisionScreen, cashCounter, spinnerScreen, cashPile;
     
@@ -43,13 +51,13 @@ public class UiManager : Singleton<UiManager>
     public bool HapticsAllowed;
     public GameObject enable, disable;
 
-    public GameObject shop , PopUp;
+    public GameObject PopUp;
     public float popUpScale = 4.5f;
     public float popUpDuration = 0.3f;
     
-    int _currentLevel;
+    
     private new Camera _camera;
-    public int currentLevelText;
+    
 
     public bool shouldUpdateTotalCash;
     public int targetCashAmount;
@@ -60,8 +68,7 @@ public class UiManager : Singleton<UiManager>
     public GameObject[] upgradeButtons;
 
     public GameObject selectionMenu;
-    public Button selectionMenuButton;
-    
+
     public GameObject instaPostPage;
     public GameObject instaGalleryPage;
     public GameObject influenceMeterPage;
@@ -95,28 +102,16 @@ public class UiManager : Singleton<UiManager>
         {
             _mobileScreenSlider = mobileScreen.transform.GetChild(4).GetComponent<Slider>();
         }
-
         
-        
-        if (TotalText != null)
-        {
-            TotalText.SetText("$" + StorageManager.GetTotalScore());
-        }
-        if (btnNext != null)
-        {
-            btnNext.onClick.AddListener(NextCallBack);
-        }
-        _currentLevel = PlayerPrefs.GetInt("current_scene");
-        currentLevelText = PlayerPrefs.GetInt("current_scene_text", 0);
+        _currentLevel = PlayerPrefs.GetInt("current_scene", 0);
+        _currentLevelText = PlayerPrefs.GetInt("current_scene_text", 0);
 
-        if (LevelText != null)
+        if (levelNoText != null)
         {
-            LevelText.text = (currentLevelText + 1).ToString();            
+            levelNoText.SetText((_currentLevelText + 1).ToString());            
         }
         
-        _camera = Camera.main;
-
-        if (currentLevelText == 0)
+        if (_currentLevelText == 0)
         {
             if (shop != null)
             {
@@ -125,7 +120,7 @@ public class UiManager : Singleton<UiManager>
 
             if (selectionMenuButton != null)
             {
-                selectionMenuButton.gameObject.SetActive(false);
+                selectionMenuButton.SetActive(false);
             }
 
             if (upgradeButtons != null)
@@ -137,42 +132,30 @@ public class UiManager : Singleton<UiManager>
             }
         }
 
-        // if (hand != null)
-        // {
-        //     hand.onClick.AddListener(EnableShopCallBack);
-        //
-        //     // Enable hand shop icon after 2nd level
-        //     if (currentLevelText > 0)
-        //     {
-        //         hand.gameObject.SetActive(true);
-        //
-        //         if (currentLevelText == 1)
-        //         {
-        //             _isHandAnimating = true;
-        //             hand.transform.DOScale(new Vector3(0.8f, 0.8f, 0.8f), 0.5f).SetLoops(-1, LoopType.Yoyo);
-        //         }
-        //     }
-        //     else
-        //     {
-        //         hand.gameObject.SetActive(false);
-        //     }
-        // }
+        
+        
+        if (TotalText != null)
+        {
+            TotalText.SetText("$" + StorageManager.GetTotalScore());
+        }
+        if (btnNext != null)
+        {
+            btnNext.onClick.AddListener(NextCallBack);
+        }
 
-        // Buttons handButton = ShopPnael.transform.GetChild(0).GetComponent<Buttons>();
-        //
-        // foreach (GameObject button in handButton.Buttonss)
-        // {
-        //     if (PlayerPrefs.GetInt("IsUnlockable" + button.GetComponent<ButtonCard>().handId) == 1 &&
-        //         PlayerPrefs.GetInt("IsNotified" + button.GetComponent<ButtonCard>().handId) == 0)
-        //     {
-        //         Debug.Log("Hee");
-        //         _isHandAnimating = true;
-        //         hand.transform.DOScale(new Vector3(0.8f, 0.8f, 0.8f), 0.5f).SetLoops(-1, LoopType.Yoyo);
-        //         break;
-        //     }
-        // }
+        _camera = Camera.main;
     }
 
+    #region Gameplay changes
+
+    public void ClearUIOnGameStart()
+    {
+        selectionMenuButton.SetActive(false);
+        shop.SetActive(false);
+        levelNoText.transform.parent.gameObject.SetActive(false);
+        startUI.SetActive(false);
+    }
+    
     public void PriceTagScaleEffect()
     {
         priceTag.transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.3f).SetLoops(4, LoopType.Yoyo);
@@ -224,6 +207,9 @@ public class UiManager : Singleton<UiManager>
 
         _isMobileActive = true;
     }
+
+    #endregion
+    
     
     // private void EnableShopCallBack()
     // {
@@ -241,7 +227,7 @@ public class UiManager : Singleton<UiManager>
 
     public void OnSelectionMenuButtonClick()
     {
-        LevelText.transform.parent.gameObject.SetActive(false);
+        levelNoText.transform.parent.gameObject.SetActive(false);
         shop.SetActive(false);
         selectionMenuButton.gameObject.SetActive(false);
         _camera.transform.DOLocalRotate(new Vector3(42, 90, 0), .3f).OnComplete(() =>
@@ -263,7 +249,7 @@ public class UiManager : Singleton<UiManager>
         selectionMenu.SetActive(false);
         _camera.transform.DOLocalRotate(new Vector3(27.761f, 90, 0), .3f).OnComplete(() =>
         {
-            LevelText.transform.parent.gameObject.SetActive(true);
+            levelNoText.transform.parent.gameObject.SetActive(true);
             shop.SetActive(true);
             selectionMenuButton.gameObject.SetActive(true);
         });
@@ -535,7 +521,7 @@ public class UiManager : Singleton<UiManager>
     {
         // UiManager.Instance.UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>()._increaseAmount = 25;
         
-        if (GameManager.Instance.levelNo <= 23)
+        if (GameManager.Instance.currentLevelNo <= 23)
         {
             UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>().increaseAmount = 25;
         }
@@ -551,7 +537,7 @@ public class UiManager : Singleton<UiManager>
     {
          DOTween.KillAll();
         
-        if (_currentLevel + 1 >= GameManager.Instance.LevelPrefabs.Count)
+        if (_currentLevel + 1 >= GameManager.Instance.levelPrefabs.Count)
         {
             PlayerPrefs.SetInt("current_scene", 0); 
             print("reload");
@@ -563,7 +549,7 @@ public class UiManager : Singleton<UiManager>
             PlayerPrefs.SetInt("current_scene", _currentLevel + 1);
 
         }
-        PlayerPrefs.SetInt("current_scene_text", currentLevelText + 1);
+        PlayerPrefs.SetInt("current_scene_text", _currentLevelText + 1);
 
         SceneManager.LoadScene("main");
         //   StorageManager.Instance.SetTotalScore();
@@ -585,10 +571,10 @@ public class UiManager : Singleton<UiManager>
         }
 
 
-        GameManager.Instance.SetTotalTime();
+        // GameManager.Instance.SetTotalTime();
 
 
-        if (GameManager.Instance.levelNo <= 23)
+        if (GameManager.Instance.currentLevelNo <= 23)
         {
             UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>().increaseAmount = 25;
         }
@@ -609,7 +595,7 @@ public class UiManager : Singleton<UiManager>
         decisionScreen.SetActive(false);
         cashCounter.SetActive(false);
         
-        GameManager.Instance.SetTotalTime();
+        // GameManager.Instance.SetTotalTime();
         
         // StartCoroutine(GameManager.Instance.CollsionScript.BookRoutine()); 
         //GameManager.Instance.bossWall.DOMoveY(-1.5f, 1f).OnComplete(() =>

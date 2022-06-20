@@ -22,8 +22,8 @@ public class EndDetector : MonoBehaviour
         {
             Camera.main.transform.DOShakePosition(1f, .1f);
             MMVibrationManager.Haptic(HapticTypes.MediumImpact);
-            GameManager.Instance.PivotParent.transform.GetChild(01).transform.parent = null;
-            GameManager.Instance.PivotParent.transform.DOLocalRotate(new Vector3(-40, -20, 20f), .3f);
+            // GameManager.Instance.PivotParent.transform.GetChild(01).transform.parent = null;
+            // GameManager.Instance.PivotParent.transform.DOLocalRotate(new Vector3(-40, -20, 20f), .3f);
             
             
             
@@ -44,13 +44,13 @@ public class EndDetector : MonoBehaviour
             
             EndParticle.Play();
             UiManager.Instance.TapFastPanel.gameObject.SetActive(false);       
-            GameManager.Instance.IsGameOver = true;
+            GameManager.Instance.isGameOver = true;
             Cam.gameObject.SetActive(true);
 
 
             // all shit saving
-            GameManager.Instance.GameEnd = true;
-            GameManager.Instance.SetTotalTime();
+            // GameManager.Instance.GameEnd = true;
+            // GameManager.Instance.SetTotalTime();
             
             
             
@@ -103,9 +103,9 @@ public class EndDetector : MonoBehaviour
 
 
         yield return new WaitForSeconds(3f);
-        GameManager.Instance.FakeCam.transform.parent = End.transform;
-        GameManager.Instance.FakeCam.gameObject.transform.DOLocalMove(new Vector3(0.32f, 1.06f, 0.08f), .8f);
-        GameManager.Instance.FakeCam.gameObject.transform.DOLocalRotate(new Vector3(0, 90, 0), .8f);
+        // GameManager.Instance.FakeCam.transform.parent = End.transform;
+        // GameManager.Instance.FakeCam.gameObject.transform.DOLocalMove(new Vector3(0.32f, 1.06f, 0.08f), .8f);
+        // GameManager.Instance.FakeCam.gameObject.transform.DOLocalRotate(new Vector3(0, 90, 0), .8f);
 
      
         SavedTattooNo = PlayerPrefs.GetInt("SavedTattooNo");
@@ -136,7 +136,7 @@ public class EndDetector : MonoBehaviour
         
         
         
-        PlayerPrefs.SetString("TattooFrame" + SavedTattooNo, GameManager.Instance.TextureName);
+        // PlayerPrefs.SetString("TattooFrame" + SavedTattooNo, GameManager.Instance.TextureName);
         SavedTattooNo++;
         PlayerPrefs.SetInt("SavedTattooNo" , SavedTattooNo);
         TattoWall.SetActive(true);

@@ -1,28 +1,17 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Serialization;
 
 [RequireComponent(typeof(AudioSource))]
 public class SoundManager : MonoBehaviour
 {
-    public static SoundManager sharedInstance = null;
+    private static SoundManager sharedInstance = null;
 
-    public AudioSource sfxAuidoSource;
+    [FormerlySerializedAs("sfxAuidoSource")] public AudioSource sfxAudioSource;
     [SerializeField] private AudioSource backgroundAudioSource;
-
-
-
+    
     [Header("Scanning SFX")]
-    public AudioClip Colleactable1;
-    public AudioClip Colleactable2;
-    public AudioClip TankHit;
-    public AudioClip Flying;
-    public AudioClip IronShoot;
-    public AudioClip EnemyHitPlayer;
-    public AudioClip SuperLaser;
-    public AudioClip BatBlade;
-    public AudioClip SizeUp , Webshoot;
+    public AudioClip Collectable;
 
     public static SoundManager SharedManager()
     {
@@ -45,30 +34,29 @@ public class SoundManager : MonoBehaviour
     void Start()
     {
    
-        sfxAuidoSource = GetComponent<AudioSource>();
+        sfxAudioSource = GetComponent<AudioSource>();
         //backgroundAudioSource =  GetComponent<AudioSource>();
-
     }
 
 
     public void PlaySFX(AudioClip audioClip)
     {
-        sfxAuidoSource.PlayOneShot(audioClip);
+        sfxAudioSource.PlayOneShot(audioClip);
     }
 
     public void StopSFX()
     {
-        sfxAuidoSource.Stop();
+        sfxAudioSource.Stop();
     }
     public void PlaySFXDelayed(AudioClip audioClip)
     {
-        StartCoroutine(delayedPlaySFX(audioClip));
+        StartCoroutine(delayedSFX(audioClip));
     }
 
-    public IEnumerator delayedPlaySFX(AudioClip audioClip)
+    private IEnumerator delayedSFX(AudioClip audioClip)
     {
         yield return new WaitForSeconds(1f);
-        sfxAuidoSource.PlayOneShot(audioClip);
+        sfxAudioSource.PlayOneShot(audioClip);
     }
 
 }

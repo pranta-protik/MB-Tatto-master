@@ -32,7 +32,7 @@ namespace PathCreation.Examples
                 speed = 0;
             }
             
-            if (GameManager.Instance.StartGame && !GameManager.Instance.GameOver)
+            if (GameManager.Instance.hasGameStarted)
             {
                 if (speed <= maxSpeed)
                 {

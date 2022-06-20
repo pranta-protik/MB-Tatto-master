@@ -10,20 +10,20 @@ public class Ring : MonoBehaviour
 
     private void Start()
     {
-        switch (Id)
-        {
-            case 0:
-                transform.GetChild(2).GetComponent<SpriteRenderer>().sprite = TextureManager.Instance.ringFlowerTextures[0];
-                break;
-            case 1:
-                transform.GetChild(2).GetComponent<SpriteRenderer>().sprite = TextureManager.Instance.ringFlowerTextures[1];
-                break;
-            case 2:
-                transform.GetChild(2).GetComponent<SpriteRenderer>().sprite = TextureManager.Instance.ringSkullTextures[0];
-                break;
-            case 3:
-                transform.GetChild(2).GetComponent<SpriteRenderer>().sprite = TextureManager.Instance.ringSkullTextures[1];
-                break;
-        }
+        // switch (Id)
+        // {
+        //     case 0:
+        //         transform.GetChild(2).GetComponent<SpriteRenderer>().sprite = TextureManager.Instance.ringFlowerTextures[0];
+        //         break;
+        //     case 1:
+        //         transform.GetChild(2).GetComponent<SpriteRenderer>().sprite = TextureManager.Instance.ringFlowerTextures[1];
+        //         break;
+        //     case 2:
+        //         transform.GetChild(2).GetComponent<SpriteRenderer>().sprite = TextureManager.Instance.ringSkullTextures[0];
+        //         break;
+        //     case 3:
+        //         transform.GetChild(2).GetComponent<SpriteRenderer>().sprite = TextureManager.Instance.ringSkullTextures[1];
+        //         break;
+        // }
     }
 }

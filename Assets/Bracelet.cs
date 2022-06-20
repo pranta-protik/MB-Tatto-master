@@ -10,20 +10,20 @@ public class Bracelet : MonoBehaviour
 
     private void Start()
     {
-        switch (Id)
-        {
-            case 0:
-                transform.GetChild(2).GetComponent<SpriteRenderer>().sprite = TextureManager.Instance.braceletFlowerTextures[0];
-                break;
-            case 1:
-                transform.GetChild(2).GetComponent<SpriteRenderer>().sprite = TextureManager.Instance.braceletFlowerTextures[1];
-                break;
-            case 2:
-                transform.GetChild(2).GetComponent<SpriteRenderer>().sprite = TextureManager.Instance.braceletSkullTextures[0];
-                break;
-            case 3:
-                transform.GetChild(2).GetComponent<SpriteRenderer>().sprite = TextureManager.Instance.braceletSkullTextures[1];
-                break;
-        }
+        // switch (Id)
+        // {
+        //     case 0:
+        //         transform.GetChild(2).GetComponent<SpriteRenderer>().sprite = TextureManager.Instance.braceletFlowerTextures[0];
+        //         break;
+        //     case 1:
+        //         transform.GetChild(2).GetComponent<SpriteRenderer>().sprite = TextureManager.Instance.braceletFlowerTextures[1];
+        //         break;
+        //     case 2:
+        //         transform.GetChild(2).GetComponent<SpriteRenderer>().sprite = TextureManager.Instance.braceletSkullTextures[0];
+        //         break;
+        //     case 3:
+        //         transform.GetChild(2).GetComponent<SpriteRenderer>().sprite = TextureManager.Instance.braceletSkullTextures[1];
+        //         break;
+        // }
     }
 }

@@ -63,44 +63,16 @@ public class Collsion : MonoBehaviour
     private int _currentCheapTattooLevel;
     private PathFollower _playerPathFollower;
     private float _playerInitialSpeed;
-    
-    
+    private Camera _camera;
 
-    public Camera cam;
-    public Text LevelText, ColorText;
-
-
-    public GameObject SecondHand;
-    // public Texture Burnt;
-    public Texture[] Tattos, CheapTttos;
-    public Texture[] BadBlue, GoodBlue, GoodYellow, BadYellow;
-    public Material StiackerMat;
-    public int min = 0, max = 255;
-    public Texture Default;
-
-    [SerializeField] bool IsGoodGate;
-    Vector3 Startpos;
-    public float Multiplier;
-    public bool StartTapRoutine;
-    
-    [SerializeField] public ParticleSystem Ps;
-    [SerializeField] bool m_isTapping;
-
-    [SerializeField] int i; public int SavedTattooNo;
-    [SerializeField]int LastLevel;
-    [SerializeField] bool IsGood;
-
-    [SerializeField] int j = 2;
-    [SerializeField] int m_i;
-    public List<Texture> Dummy = new List<Texture>();
-
-    public int lastGateId;
-    private new Camera _camera;
-    
-    private static readonly int IsWrestling = Animator.StringToHash("isWrestling");
+    // public float Multiplier;
+    // public bool StartTapRoutine;
+    // private static readonly int IsWrestling = Animator.StringToHash("isWrestling");
     
     private void Start()
     {
+        _camera = Camera.main;
+        
         _mainHandController = GetComponent<HandController>();
         _tattooHandController = tattooHand.GetComponent<HandController>();
         
@@ -127,12 +99,6 @@ public class Collsion : MonoBehaviour
 
         _playerPathFollower = GetComponentInParent<PathFollower>();
         _playerInitialSpeed = _playerPathFollower.maxSpeed;
-        
-        
-        _camera = Camera.main;
-        cam = GameManager.Instance.FakeCam;
-        Startpos = transform.localPosition;
-
     }
 
     private void ResetHandTattooStatus()
@@ -147,7 +113,7 @@ public class Collsion : MonoBehaviour
     
     private void Update()
     {
-        if (GameManager.Instance.IsGameOver)
+        if (GameManager.Instance.isGameOver)
             return;
 
         // if (Input.GetMouseButton(0))

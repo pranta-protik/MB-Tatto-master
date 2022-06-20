@@ -123,8 +123,8 @@ public class Book : MonoBehaviour
             {
                 GameObject g = Instantiate(FramePrefab, StartPos.transform.position, Quaternion.identity);
                 g.transform.DOLocalMove(FramePos[0].transform.position, .5f);
-                Texture2D lastTattooTexture = (Texture2D) Resources.Load(GameManager.Instance.TextureName);
-                g.transform.GetChild(0).GetComponent<Renderer>().material.mainTexture = lastTattooTexture;
+                // Texture2D lastTattooTexture = (Texture2D) Resources.Load(GameManager.Instance.TextureName);
+                // g.transform.GetChild(0).GetComponent<Renderer>().material.mainTexture = lastTattooTexture;
                 g.transform.DOLocalRotate(new Vector3(-45f, -90f, -0.791f), 0);
             }
         }
@@ -136,7 +136,7 @@ public class Book : MonoBehaviour
     {
         // UiManager.Instance.UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>().increaseAmount = 25;
         
-        if (GameManager.Instance.levelNo <= 23)
+        if (GameManager.Instance.currentLevelNo <= 23)
         {
             UiManager.Instance.UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>().increaseAmount = 25;
         }

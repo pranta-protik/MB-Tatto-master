@@ -99,7 +99,7 @@ public class TattoWall : MonoBehaviour
             {
                 GameObject g = Instantiate(FramePrefab, StartPos.transform.position, Quaternion.identity);
                 g.transform.DOLocalMove(FramePos[j].transform.position, 1.5f);
-                g.transform.GetChild(0).GetComponent<Renderer>().material.mainTexture = GameManager.Instance.LastTattoTexture;
+                // g.transform.GetChild(0).GetComponent<Renderer>().material.mainTexture = GameManager.Instance.LastTattoTexture;
                 g.transform.DOLocalRotate(new Vector3(0, -90, 0), 0);
             }
         }
@@ -111,7 +111,7 @@ public class TattoWall : MonoBehaviour
     {
         // UiManager.Instance.UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>().increaseAmount = 25;
         
-        if (GameManager.Instance.levelNo <= 23)
+        if (GameManager.Instance.currentLevelNo <= 23)
         {
             UiManager.Instance.UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>().increaseAmount = 25;
         }
