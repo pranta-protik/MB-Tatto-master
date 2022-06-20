@@ -1008,8 +1008,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tattooHand: {fileID: 0}
-  mainHandAnimator: {fileID: 0}
-  tattooHandAnimator: {fileID: 0}
   scoreAnimator: {fileID: 6558328930366824429}
   animatorOverrideController: {fileID: 22100000, guid: ccf2c04e5ea1305488d5223e19df82ac, type: 2}
   animationClips:
@@ -1021,11 +1019,23 @@ MonoBehaviour:
   - {fileID: 1827226128182048838, guid: 99393eb8e65b1f44ea6fe8fde70a91bd, type: 3}
   - {fileID: 1827226128182048838, guid: b5c870e396d9b7846875a79e64f2f6b5, type: 3}
   - {fileID: 1827226128182048838, guid: cc0a411143464df44becb656a912bb2d, type: 3}
+  goodGateScorePopUpColor: {r: 0.5058824, g: 0.7843138, b: 0.882353, a: 1}
+  badGateScorePopUpColor: {r: 0.80392164, g: 0.050980397, b: 0.07450981, a: 1}
+  mainHandAnimator: {fileID: 0}
+  tattooHandAnimator: {fileID: 0}
+  defaultTattoo: {fileID: 0}
+  expensiveTattoos: []
+  cheapTattoos: []
+  expensiveBlueTattoos: []
+  expensiveYellowTattoos: []
+  cheapBlueTattoos: []
+  cheapYellowTattoos: []
+  expensiveColorTattooIdSequences: 
+  cheapColorTattooIdSequences: 
   cam: {fileID: 0}
   LevelText: {fileID: 0}
   ColorText: {fileID: 0}
   SecondHand: {fileID: 0}
-  Burnt: {fileID: 2800000, guid: 08763b4448871f041b6e4b84e42e328f, type: 3}
   Tattos:
   - {fileID: 2800000, guid: 3cc5046375ad241459c04d6862da4fc1, type: 3}
   - {fileID: 2800000, guid: 613c041499d84e545b5113d0a0ebb5a9, type: 3}
@@ -1061,8 +1071,6 @@ MonoBehaviour:
   StartTapRoutine: 0
   Ps: {fileID: 0}
   m_isTapping: 0
-  GoodGatePopUpColor: {r: 0.7254902, g: 0.7607844, b: 0.9921569, a: 1}
-  BadGatePopUpColor: {r: 1, g: 0, b: 0, a: 1}
   i: 0
   SavedTattooNo: 0
   LastLevel: 0
@@ -1071,7 +1079,6 @@ MonoBehaviour:
   m_i: 0
   Dummy: []
   lastGateId: 0
-  _animationIndexes: 
   rings: []
   bracelets: []
 --- !u!1 &6358602442070034123

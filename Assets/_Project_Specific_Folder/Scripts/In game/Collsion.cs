@@ -224,7 +224,7 @@ public class Collsion : MonoBehaviour
         //     }
         // }
     }
-    
+
     private void OnTriggerEnter(Collider other)
     {
         #region Normal Gates
@@ -274,16 +274,7 @@ public class Collsion : MonoBehaviour
                     // Went through bad gate after visiting good gates
                     if (_hasGoneThroughGoodGate)
                     {
-                        if (_collectedGoodTattoosAttributes.Count > 1)
-                        {
-                            CollectedGoodTattoosAttributes collectedGoodTattoosAttribute =
-                                _collectedGoodTattoosAttributes[_collectedGoodTattoosAttributes.Count - 2];
-                            
-                            _currentExpensiveTattooLevel = collectedGoodTattoosAttribute.collectedGoodTattooLevel + 1;
-                            
-                            StartCoroutine(UpdateTattooTexture(collectedGoodTattoosAttribute.collectedGoodTattoo));
-                            _collectedGoodTattoosAttributes.Remove(collectedGoodTattoosAttribute);
-                        }
+                        DowngradeExpensiveTattoo();
                     }
                     else
                     {
@@ -373,67 +364,17 @@ public class Collsion : MonoBehaviour
         if (other.gameObject.CompareTag("Spike"))
         {
             other.GetComponent<BoxCollider>().enabled = false;
-            CommonObstacleHitEffects();
-            
-            ScoreUpdateEffects(other.GetComponent<Obstacle>().decrementAmount, false);
+            ObstacleHitEffects(other.GetComponent<Obstacle>().decrementAmount);
         }
-
-        
-        #endregion
-        
-
         
         if (other.gameObject.CompareTag("Lava"))
         {
-            UiManager.Instance.priceTag.GetComponent<Image>().DOColor(Color.red, 0.5f).SetLoops(2, LoopType.Yoyo);
-            DownGradeTexture(GameManager.Instance.Level, other.gameObject);
-            MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
-            StartCoroutine(SpeedSlowDownRoutine());
-            StartCoroutine(UiManager.Instance.FdeDelayRoutine());
-            tattooHandAnimator.Play("Hurt");
-            mainHandAnimator.Play("Hurt");
             other.GetComponent<BoxCollider>().enabled = false;
-            
-            GameManager.Instance.Level--;
-            
-            if (IsGood)
-            {
-                m_i = Dummy.Count;
-                
-                StiackerMat.DOFade(0, .3f).OnComplete(() =>
-                {
-                    if (j < Dummy.Count+1)
-                    {
-                        StiackerMat.mainTexture = Dummy[m_i - j];
-                        j++;
-                    }
-                    else
-                    {
-                        StiackerMat.mainTexture = Default;
-                    }
-                        
-                    StiackerMat.DOFade(1, .5f);
-                });       
-            }
-            else
-            {
-                StiackerMat.DOFade(0, .3f).OnComplete(() =>
-                {
-                    if (GameManager.Instance.Level == 0)
-                    {
-                        StiackerMat.mainTexture = CheapTttos[GameManager.Instance.Level];
-                    }
-                    else
-                    {
-                        StiackerMat.mainTexture = CheapTttos[GameManager.Instance.Level - 1];   
-                    }
-                    StiackerMat.DOFade(1, .5f);
-                });
-            }
+            ObstacleHitEffects(other.GetComponent<Obstacle>().decrementAmount);
         }
-
         
-
+        #endregion
+        
         if (other.gameObject.CompareTag("Finish"))
         {
             Debug.Log("level end trigger");
@@ -618,7 +559,28 @@ public class Collsion : MonoBehaviour
         mainHandAnimator.Play("Hurt");
         tattooHandAnimator.Play("Hurt");
     }
+    
+    private void ObstacleHitEffects(int amount)
+    {
+        CommonObstacleHitEffects();
+            
+        ScoreUpdateEffects(amount, false);
 
+        if (_hasGoneThroughGoodGate)
+        {
+            DowngradeExpensiveTattoo();
+        }
+        else
+        {
+            if (_currentCheapTattooLevel > 1)
+            {
+                _currentCheapTattooLevel -= 1;
+                 
+                StartCoroutine(UpdateTattooTexture(cheapTattoos[_currentCheapTattooLevel - 1]));
+            }
+        }
+    }
+    
     private void ScoreUpdateEffects(int cost, bool isGood)
     {
         int score;
@@ -641,53 +603,28 @@ public class Collsion : MonoBehaviour
         StorageManager.Instance.UpdateScore(score);
 
         scoreAnimator.transform.GetChild(0).gameObject.SetActive(true);
-        scoreAnimator.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = scoreText;
-        scoreAnimator.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = color;
+        scoreAnimator.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().SetText(scoreText);
+        scoreAnimator.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().color = color;
 
         scoreAnimator.Play("PopUp");
     }
 
-    #endregion
-    
-    
-    public IEnumerator BookRoutine()
+    private void DowngradeExpensiveTattoo()
     {
-       EndDetector e =  FindObjectOfType<EndDetector>();
-        e.Cam.gameObject.SetActive(true);
-        e.Confetti.gameObject.SetActive(true);
-
-        yield return new WaitForSeconds(2);
-        e.Book.gameObject.SetActive(true);
-        yield return new WaitForSeconds(1.5f);
-        e.Book.transform.DOLocalRotate(new Vector3(45.5f, -90.19f, 13.45f), .2f);
-        e.Book.GetComponent<Animator>().Play("open");
-        yield return new WaitForSeconds(.2f);
-
-
-        if (PlayerPrefs.GetInt("FirstTime", 0) == 0)
+        if (_collectedGoodTattoosAttributes.Count > 1)
         {
-            PlayerPrefs.SetInt("FirstTime", 1);
+            CollectedGoodTattoosAttributes collectedGoodTattoosAttribute =
+                _collectedGoodTattoosAttributes[_collectedGoodTattoosAttributes.Count - 2];
+                            
+            _currentExpensiveTattooLevel = collectedGoodTattoosAttribute.collectedGoodTattooLevel + 1;
+                            
+            StartCoroutine(UpdateTattooTexture(collectedGoodTattoosAttribute.collectedGoodTattoo));
+            _collectedGoodTattoosAttributes.Remove(collectedGoodTattoosAttribute);
         }
-        else if (PlayerPrefs.GetInt("FirstTime") == 1)
-            e.PageToFlipRef.SetActive(true);
-
-        yield return new WaitForSeconds(.3f);
-        e.Book.transform.GetChild(2).gameObject.SetActive(true);
-        SavedTattooNo = PlayerPrefs.GetInt("SavedTattooNo");
-
-        GameManager.Instance.TextureName = GameManager.Instance.CollsionScript.StiackerMat.mainTexture.name;
-        GameManager.Instance.LastTattoTexture = GameManager.Instance.CollsionScript.StiackerMat.mainTexture;
-        PlayerPrefs.SetString("TattooFrame" + SavedTattooNo, GameManager.Instance.TextureName);
-        PlayerPrefs.SetInt("TattoCost" + SavedTattooNo, StorageManager.Instance.currentLevelScore);
-        SavedTattooNo++;
-        PlayerPrefs.SetInt("SavedTattooNo", SavedTattooNo);
     }
 
+    #endregion
     
-    
-    
-
-
     // public IEnumerator StopRoutine(GameObject g)
     //
     // {
@@ -721,19 +658,6 @@ public class Collsion : MonoBehaviour
     //     UiManager.Instance.TapFastPanel.SetActive(true);
     //
     // }
-    
-    public void DownGradeTexture(int ammount, GameObject g)
-    {
-        
-        StorageManager.Instance.UpdateScore(-g.GetComponentInParent<DownGrade>().Cost);
-        scoreAnimator.Play("opps");
-
-        scoreAnimator.transform.GetChild(0).gameObject.SetActive(true);
-        scoreAnimator.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "-" + g.GetComponentInParent<DownGrade>().Cost.ToString();
-        scoreAnimator.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = Color.red;
-        // MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
-  
-    }
 
     #region Tattoo Drawing
 

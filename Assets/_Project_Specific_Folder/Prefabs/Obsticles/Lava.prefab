@@ -5384,10 +5384,10 @@ GameObject:
   - component: {fileID: 2308591637298703740}
   - component: {fileID: 2308591637298703739}
   - component: {fileID: 2308591637298703738}
-  - component: {fileID: 3630830852258970069}
+  - component: {fileID: 3011911010527599932}
   m_Layer: 0
   m_Name: Lava
-  m_TagString: Enemy
+  m_TagString: Lava
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5475,7 +5475,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3630830852258970069
+--- !u!114 &3011911010527599932
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5484,11 +5484,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2308591637298703737}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52452cd71a802194e82c072ab0920581, type: 3}
+  m_Script: {fileID: 11500000, guid: c03994a9c7c2c7c40adaaf1bbe4ce798, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DownGradeAmmount: 0
-  Cost: 500
+  decrementAmount: 500
 --- !u!1 &6016964339728644243
 GameObject:
   m_ObjectHideFlags: 0

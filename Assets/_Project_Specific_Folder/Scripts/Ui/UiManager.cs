@@ -561,7 +561,7 @@ public class UiManager : Singleton<UiManager>
         
         GameManager.Instance.SetTotalTime();
         
-        StartCoroutine(GameManager.Instance.CollsionScript.BookRoutine()); 
+        // StartCoroutine(GameManager.Instance.CollsionScript.BookRoutine()); 
         //GameManager.Instance.bossWall.DOMoveY(-1.5f, 1f).OnComplete(() =>
         //{
         //    GameManager.Instance.p.enabled = true;

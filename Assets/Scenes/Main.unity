@@ -19314,7 +19314,7 @@ MonoBehaviour:
   - 279M
   - 287M
   timer: 0
-  amarIcchaLevel: 3
+  amarIcchaLevel: 5
 --- !u!1001 &1287034089
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20388,6 +20388,18 @@ PrefabInstance:
     - target: {fileID: 5008393051183013904, guid: 0ee54f147c8b94640b2d295d748ff8d5, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5068839984112168702, guid: 0ee54f147c8b94640b2d295d748ff8d5, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5068839984112168702, guid: 0ee54f147c8b94640b2d295d748ff8d5, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5068839984112168702, guid: 0ee54f147c8b94640b2d295d748ff8d5, type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8646175687244585552, guid: 0ee54f147c8b94640b2d295d748ff8d5, type: 3}
       propertyPath: m_Name
@@ -37791,6 +37803,7 @@ MonoBehaviour:
   DontDestroyLoad: 0
   m_IsSingletonLogsEnabled: 0
   hurtScreen: {fileID: 2875735081493675973}
+  priceTag: {fileID: 6668516392213119779}
   scoreText: {fileID: 6663376086199890229}
   btnNext: {fileID: 2080464153}
   LevelText: {fileID: 3464536507856245032}
@@ -37804,7 +37817,6 @@ MonoBehaviour:
   cashCounter: {fileID: 456882544}
   spinnerScreen: {fileID: 1234390834}
   cashPile: {fileID: 1406253676}
-  priceTag: {fileID: 6668516392213119779}
   fillbarTimer: {fileID: 0}
   Timer: {fileID: 1698252273492107130}
   timerInitvalue: 0
