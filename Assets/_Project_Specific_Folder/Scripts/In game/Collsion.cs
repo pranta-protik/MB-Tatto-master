@@ -224,7 +224,7 @@ public class Collsion : MonoBehaviour
             
             CommonGateEnteringEffects();
             _shineEffect.Play();
-            ScoreUpdateEffects(gate.gateCost, true);
+            UpdateScore(gate.gateCost, true);
 
             // Went through special good gates
             if (gate.isSpecial)
@@ -246,7 +246,7 @@ public class Collsion : MonoBehaviour
             
             CommonGateEnteringEffects();
             _shineEffect.Play();
-            ScoreUpdateEffects(gate.gateCost, false);
+            UpdateScore(gate.gateCost, false);
             
             // Went through last bad gate
             if (gate.isLast)
@@ -501,7 +501,7 @@ public class Collsion : MonoBehaviour
     {
         CommonObstacleHitEffects();
             
-        ScoreUpdateEffects(amount, false);
+        UpdateScore(amount, false);
 
         if (_hasGoneThroughGoodGate)
         {
@@ -518,7 +518,7 @@ public class Collsion : MonoBehaviour
         }
     }
     
-    private void ScoreUpdateEffects(int cost, bool isGood)
+    private void UpdateScore(int cost, bool isGood)
     {
         int score = StorageManager.Instance.GetCurrentScore();
         string scoreText;

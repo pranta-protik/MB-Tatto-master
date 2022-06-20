@@ -24614,6 +24614,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DontDestroyLoad: 0
   m_IsSingletonLogsEnabled: 0
+  tattooClass: 0
   flowerDefaultTattoo: {fileID: 2800000, guid: 68906f73a7d7a734ba32b64c0727f9be, type: 3}
   flowerExpensiveTattoos:
   - {fileID: 2800000, guid: 7684830d85a3b8642af02ec75969e33d, type: 3}
@@ -24652,6 +24653,193 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 1b3bdf2f3fde448478ed7069e085cfcf, type: 3}
   flowerExpensiveColorTattooIdSequences: 0a0000000b000000
   flowerCheapColorTattooIdSequences: 0400000005000000
+  skullDefaultTattoo: {fileID: 2800000, guid: 51586b72977edae49a9eb93187a2cbc2, type: 3}
+  skullExpensiveTattoos:
+  - {fileID: 2800000, guid: fe5f278dc00ff154a88bef10ac7b31e6, type: 3}
+  - {fileID: 2800000, guid: 59c5f6181c7ddad40be096efe8c999fb, type: 3}
+  - {fileID: 2800000, guid: 7f03bbc5666a23b4283ff71bd81bd216, type: 3}
+  - {fileID: 2800000, guid: 7b2aac6e709744d4e97f739c7df5f089, type: 3}
+  - {fileID: 2800000, guid: ddd01f458f3e3a349b3ee171a0c16b4f, type: 3}
+  - {fileID: 2800000, guid: 23c21173a91bcb24ca182dc733592d54, type: 3}
+  - {fileID: 2800000, guid: b169dfcaf3edfcc42a61bb7296883fe1, type: 3}
+  - {fileID: 2800000, guid: 23f503535b4cb7f4c878b81aef92a205, type: 3}
+  - {fileID: 2800000, guid: 66118f4295829894387c1139c412a3e6, type: 3}
+  - {fileID: 2800000, guid: d86f97d5ceeb998498087f5f99d2df84, type: 3}
+  - {fileID: 2800000, guid: 95627a068e4d0664f82d344fc213aa75, type: 3}
+  - {fileID: 2800000, guid: 10aaddba0d9f7064f944bbcc743f9fb0, type: 3}
+  - {fileID: 2800000, guid: 7589cc6a2d57e8245bdf87564a2f6542, type: 3}
+  - {fileID: 2800000, guid: 687168022b8b26e478b2facc6052e12d, type: 3}
+  - {fileID: 2800000, guid: 0eec76cd514400a4b800d780d1420a24, type: 3}
+  skullExpensiveBlueTattoos:
+  - {fileID: 2800000, guid: c609974ea762f5d469e2d17e96d911e1, type: 3}
+  - {fileID: 2800000, guid: eb824163bedd3a2479bf0b1e969a90e7, type: 3}
+  skullExpensiveYellowTattoos:
+  - {fileID: 2800000, guid: 3c6f2ccc924ca8445a8cf88aebda6c24, type: 3}
+  - {fileID: 2800000, guid: 922059f04371125438b91f0e4ee7f1de, type: 3}
+  skullCheapTattoos:
+  - {fileID: 2800000, guid: 70dcff40d21fdb048b1f36ceaaa0b998, type: 3}
+  - {fileID: 2800000, guid: 0f2783b918cfc634d80974cf2b187d34, type: 3}
+  - {fileID: 2800000, guid: 5eaab0d8bf5f89e4ca07bb4eb917213d, type: 3}
+  - {fileID: 2800000, guid: c06e8edd2ada7f647bac21274052160f, type: 3}
+  - {fileID: 2800000, guid: 4916f226ccdedc444bc6df26e5bc8d98, type: 3}
+  - {fileID: 2800000, guid: 2470a6b67ecfc4f42b4397e558073aeb, type: 3}
+  skullCheapBlueTattoos:
+  - {fileID: 2800000, guid: 083b869bb2aeec34e8bd4652d5a0e4dc, type: 3}
+  - {fileID: 2800000, guid: 84779e7b70b16df4299c9455d7c20482, type: 3}
+  skullCheapYellowTattoos:
+  - {fileID: 2800000, guid: 2a7d65e0f425b7344bc92d9855e37054, type: 3}
+  - {fileID: 2800000, guid: 4d39e238620f54c47b2919c40c5f3d32, type: 3}
+  skullExpensiveColorTattooIdSequences: 090000000b000000
+  skullCheapColorTattooIdSequences: 0400000005000000
+  pinupGirlDefaultTattoo: {fileID: 2800000, guid: f7a9ead41cf2ca34bb73db79adaa62ff, type: 3}
+  pinupGirlExpensiveTattoos:
+  - {fileID: 2800000, guid: 13ca252e634bccc4fa889bd433233e3d, type: 3}
+  - {fileID: 2800000, guid: 2e89ffe8f21cd7d49b138727ea3b94b5, type: 3}
+  - {fileID: 2800000, guid: 9bf5af9e3c933e24689e7aa45a48e147, type: 3}
+  - {fileID: 2800000, guid: 9c2d8866bad02964f9426fd6ae41c4d3, type: 3}
+  - {fileID: 2800000, guid: 71bc67afc034a684589820bcd952391e, type: 3}
+  - {fileID: 2800000, guid: 19e0d42cf690bf94594819710dabd217, type: 3}
+  - {fileID: 2800000, guid: ba6beba3741af0d43b2d86c1407101d6, type: 3}
+  - {fileID: 2800000, guid: 5075d414eb7b57143b6344f77278b779, type: 3}
+  - {fileID: 2800000, guid: c0ab98dc1aeb1424ca336e11a5fd4c58, type: 3}
+  - {fileID: 2800000, guid: ac53391aec64ae044a3b0e00c5ef904c, type: 3}
+  - {fileID: 2800000, guid: 22ba3de7fc865124e865579a5f4d3954, type: 3}
+  - {fileID: 2800000, guid: 4792ee425b0514248bf6eb31a2f71265, type: 3}
+  - {fileID: 2800000, guid: ed50be07704c83046ac49f974ca5f9a9, type: 3}
+  - {fileID: 2800000, guid: 265d8ff94b0da9e4aaf149e4840bf66e, type: 3}
+  - {fileID: 2800000, guid: 6ee1ee8c04f3df04f8d4885090538ee8, type: 3}
+  pinupGirlExpensiveBlueTattoos:
+  - {fileID: 2800000, guid: e3a04436edb9cca48b349838769ae739, type: 3}
+  - {fileID: 2800000, guid: c0efdd6d371d7ee4a900f2ba03b01eb7, type: 3}
+  pinupGirlExpensiveYellowTattoos:
+  - {fileID: 2800000, guid: 408fc97fb958fca419c8f7c8a6e63eca, type: 3}
+  - {fileID: 2800000, guid: 90273bbcfaf05434c8dc92c422d8091a, type: 3}
+  pinupGirlCheapTattoos:
+  - {fileID: 2800000, guid: 7806204e2d54d2a4abe81f9c76a1ffcb, type: 3}
+  - {fileID: 2800000, guid: baf6f63781b30b3428e374f559808f08, type: 3}
+  - {fileID: 2800000, guid: 0ccbe37b9baea1e44991a46700d2ecd9, type: 3}
+  - {fileID: 2800000, guid: dc305b79e1442ac4eb43deac780e8803, type: 3}
+  - {fileID: 2800000, guid: fc2093886c42fa148a7fbbc9dda4f202, type: 3}
+  - {fileID: 2800000, guid: 52bf831e7f9c28f4888417102d5b83b9, type: 3}
+  pinupGirlCheapBlueTattoos:
+  - {fileID: 2800000, guid: 88219a4e057d60541876237fa637ca76, type: 3}
+  - {fileID: 2800000, guid: c3c0a47cdf4d57d44bbbce72c2a32ad4, type: 3}
+  pinupGirlCheapYellowTattoos:
+  - {fileID: 2800000, guid: 2a208d72764b24643ad96017076cd366, type: 3}
+  - {fileID: 2800000, guid: c28436d9cd61a1647938061a696912dd, type: 3}
+  pinupGirlExpensiveColorTattooIdSequences: 0a0000000b000000
+  pinupGirlCheapColorTattooIdSequences: 0400000005000000
+  celebrityDefaultTattoo: {fileID: 2800000, guid: cd093bbab07bf5b42ad4d9dffc6c8d2f, type: 3}
+  celebrityExpensiveTattoos:
+  - {fileID: 2800000, guid: badf792ee2054dc41b54f3c276fb329d, type: 3}
+  - {fileID: 2800000, guid: 0e03ce2e8383e23439b7ae8f87e21c4e, type: 3}
+  - {fileID: 2800000, guid: 2afda2a8efad08d478c65925fbeeaca7, type: 3}
+  - {fileID: 2800000, guid: a3682ca048906bd4e96ffaa2825e77de, type: 3}
+  - {fileID: 2800000, guid: 2dfce161d81633441942711420d29659, type: 3}
+  - {fileID: 2800000, guid: e2b6f57e762a310498c30e629f11c095, type: 3}
+  - {fileID: 2800000, guid: 1168c81ad38b31f4ead65c7395ef5cb7, type: 3}
+  - {fileID: 2800000, guid: 708bfb661ae3a7042ab660d957830223, type: 3}
+  - {fileID: 2800000, guid: 5fe1961ea4e3c9a4580b40fb2e12b2c3, type: 3}
+  - {fileID: 2800000, guid: 9b04eb58679132a48aadc9c7b5980456, type: 3}
+  - {fileID: 2800000, guid: 76e5601f80eb847419963e404109d47f, type: 3}
+  - {fileID: 2800000, guid: 0d405d1a6d443fa4e86075187d8cdaf9, type: 3}
+  - {fileID: 2800000, guid: 19e674a1b9e34cf4db5d33d24b2d3f3e, type: 3}
+  - {fileID: 2800000, guid: 5e60208d7c7a92941a9665681ff9a364, type: 3}
+  - {fileID: 2800000, guid: f0dc45fbfd5b2fd439217a26cddd41c8, type: 3}
+  celebrityExpensiveBlueTattoos:
+  - {fileID: 2800000, guid: 99a58b4cb754a0340ba2ec412402130c, type: 3}
+  - {fileID: 2800000, guid: 201944689b61b2f43b5869fa9d5ed67b, type: 3}
+  celebrityExpensiveYellowTattoos:
+  - {fileID: 2800000, guid: 0e8fd02e799ec13428c7179d023c19c2, type: 3}
+  - {fileID: 2800000, guid: 04de33fa68bd93e4ea882c4f6e87d66a, type: 3}
+  celebrityCheapTattoos:
+  - {fileID: 2800000, guid: 884966d9ab41acd4280d9660d0f2ab1e, type: 3}
+  - {fileID: 2800000, guid: 7e7b0827b7c54bb4eb6ce7e9c94b31e9, type: 3}
+  - {fileID: 2800000, guid: 9c84da97c2c4d6847be843caf8803615, type: 3}
+  - {fileID: 2800000, guid: 121256d5aad15fa49b7c95c374362601, type: 3}
+  - {fileID: 2800000, guid: 15b88713ec2fb974cb58c6a7288d04f6, type: 3}
+  celebrityCheapBlueTattoos:
+  - {fileID: 2800000, guid: 430550e8afed3d14ba7bbd07599ee820, type: 3}
+  celebrityCheapYellowTattoos:
+  - {fileID: 2800000, guid: 86bdcd633af492b47a58beb85a4fa221, type: 3}
+  celebrityExpensiveColorTattooIdSequences: 080000000b000000
+  celebrityCheapColorTattooIdSequences: 04000000
+  calligraphyDefaultTattoo: {fileID: 2800000, guid: 1f836455c51e20a498b9e0d6be2f7809, type: 3}
+  calligraphyExpensiveTattoos:
+  - {fileID: 2800000, guid: b6fd91880c20fb64ab336a520692875b, type: 3}
+  - {fileID: 2800000, guid: 02e39ea461d07b6479e9c61453a65110, type: 3}
+  - {fileID: 2800000, guid: facb14b1e9fbf1240b5519141e674fad, type: 3}
+  - {fileID: 2800000, guid: da526e797b3aa954d83482fbb9392eb5, type: 3}
+  - {fileID: 2800000, guid: 737947f3cb9f489498a16193e329485b, type: 3}
+  - {fileID: 2800000, guid: efd49fdd35fd77847947b2d5c93f4dff, type: 3}
+  - {fileID: 2800000, guid: 31f4639a10f092a46a1ae0185f45c3ed, type: 3}
+  - {fileID: 2800000, guid: c8b1759bd737fb541934d3d0e9c88014, type: 3}
+  - {fileID: 2800000, guid: 8ae3f6a55a5c3a84d8bde346248694c9, type: 3}
+  - {fileID: 2800000, guid: 5f9c0b06d31baab4499616957b5612a4, type: 3}
+  - {fileID: 2800000, guid: f4d42f27fdd24594e96f3512ba02ae1f, type: 3}
+  - {fileID: 2800000, guid: 84bb5cbc48239514eab608530f2541da, type: 3}
+  - {fileID: 2800000, guid: 36c72d38513952e4bae2d37afa916317, type: 3}
+  - {fileID: 2800000, guid: cd8223ca059092c4bb32ebf398b66df2, type: 3}
+  - {fileID: 2800000, guid: e68c1d05052789441ac693843f265923, type: 3}
+  calligraphyExpensiveBlueTattoos:
+  - {fileID: 2800000, guid: e434e51bd81b0714e991b980a333bc99, type: 3}
+  - {fileID: 2800000, guid: 604ee8490eef980469800ca34e238cd5, type: 3}
+  calligraphyExpensiveYellowTattoos:
+  - {fileID: 2800000, guid: 94709cb7d583eec489d0bfd775ed53cd, type: 3}
+  - {fileID: 2800000, guid: 2233d526ca54e0e4f94d8ff11293aa3a, type: 3}
+  calligraphyCheapTattoos:
+  - {fileID: 2800000, guid: 8ef5dcaebf972ca4e8b38c952dc86f90, type: 3}
+  - {fileID: 2800000, guid: 08536b3808eb6b740ab75340c2343de9, type: 3}
+  - {fileID: 2800000, guid: 978f8d947ba0b6f4ab4218ec07d3119a, type: 3}
+  - {fileID: 2800000, guid: 970a10d839032e54fb00c10ee56981fa, type: 3}
+  - {fileID: 2800000, guid: 7dd178e0e32bb4f41974193dab169ae9, type: 3}
+  - {fileID: 2800000, guid: 37fc400aaaf17b14ba29be86cf047142, type: 3}
+  calligraphyCheapBlueTattoos:
+  - {fileID: 2800000, guid: af0d61e620f848245b59cfcd5b6f9295, type: 3}
+  - {fileID: 2800000, guid: d04bbbf95178e7549b821c13205a27fa, type: 3}
+  calligraphyCheapYellowTattoos:
+  - {fileID: 2800000, guid: b9d65dda6646d3943b11cfdad31d12cf, type: 3}
+  - {fileID: 2800000, guid: 0805d70403f68164f8600cc345bf6d99, type: 3}
+  calligraphyExpensiveColorTattooIdSequences: 090000000a000000
+  calligraphyCheapColorTattooIdSequences: 0400000005000000
+  moneyDefaultTattoo: {fileID: 2800000, guid: 5cf0c33d3e908f842aa282c4ff56f019, type: 3}
+  moneyExpensiveTattoos:
+  - {fileID: 2800000, guid: f6f0b91f20b63b94a990cff121b3b582, type: 3}
+  - {fileID: 2800000, guid: 528557f6ae81df94f8615d4c1487c4ff, type: 3}
+  - {fileID: 2800000, guid: 03f8c2b8d3c560149becc0785276af84, type: 3}
+  - {fileID: 2800000, guid: dfd329f798dbb6c4b82f2247768f5f84, type: 3}
+  - {fileID: 2800000, guid: 63765b0a5d2a61b4c91d257d66e0ee6e, type: 3}
+  - {fileID: 2800000, guid: 5a9e2dde2fc19b8429d4e86732ac8625, type: 3}
+  - {fileID: 2800000, guid: bfa9cc21e35ee5c4ab2279506abe7633, type: 3}
+  - {fileID: 2800000, guid: 4a38b1dc25ef08c48921901e9954c680, type: 3}
+  - {fileID: 2800000, guid: 35b0d21af85ff4c4ea43d8ab807b0c1a, type: 3}
+  - {fileID: 2800000, guid: 2b1596a80b026dd4eb0e0051ebf8b342, type: 3}
+  - {fileID: 2800000, guid: 22494093ee8c77d469724b3a781fa000, type: 3}
+  - {fileID: 2800000, guid: a57162dbc8893614fbab514b95849080, type: 3}
+  - {fileID: 2800000, guid: 823d19ca3ef9e8444a4c20f658722684, type: 3}
+  - {fileID: 2800000, guid: d46740b38edf40346bbe5cde6d93ade4, type: 3}
+  - {fileID: 2800000, guid: cf879395697e4ab44b63290c7adf6902, type: 3}
+  moneyExpensiveBlueTattoos:
+  - {fileID: 2800000, guid: 89f2f7e9d5523ca44ac2c6c0dc9e23ff, type: 3}
+  - {fileID: 2800000, guid: 089652930683fe74cb1b577879d37cbf, type: 3}
+  moneyExpensiveYellowTattoos:
+  - {fileID: 2800000, guid: b5149dc6303035d4b9c956b3999a64f2, type: 3}
+  - {fileID: 2800000, guid: 2cab73e6a91c28840ad5d71aa594102f, type: 3}
+  moneyCheapTattoos:
+  - {fileID: 2800000, guid: 45a2775ddbddcd1419d556a56bebda87, type: 3}
+  - {fileID: 2800000, guid: 70ed4c4ddce8c084091ed0b34802a1be, type: 3}
+  - {fileID: 2800000, guid: 992ccd20493e8de498ef7358289dd484, type: 3}
+  - {fileID: 2800000, guid: 3e08d1096c86e034897f4b5e261617ab, type: 3}
+  - {fileID: 2800000, guid: c7a7e071f7828474b97125fb590f21b1, type: 3}
+  - {fileID: 2800000, guid: dc8964cc0b9a43a4884b3446aa2993b7, type: 3}
+  moneyCheapBlueTattoos:
+  - {fileID: 2800000, guid: b24589a39483c664494cd802a6ac7f74, type: 3}
+  - {fileID: 2800000, guid: 30fa449814414e34ca6e6f3cd0bb04b0, type: 3}
+  moneyCheapYellowTattoos:
+  - {fileID: 2800000, guid: 648513dc33971984fb1fab48692844c2, type: 3}
+  - {fileID: 2800000, guid: 71fe43542b726b14dafc1b82151e3206, type: 3}
+  moneyExpensiveColorTattooIdSequences: 090000000b000000
+  moneyCheapColorTattooIdSequences: 0400000005000000
   handBurntTexture: {fileID: 2800000, guid: 08763b4448871f041b6e4b84e42e328f, type: 3}
   DefaultFlower: {fileID: 2800000, guid: 68906f73a7d7a734ba32b64c0727f9be, type: 3}
   DefaultSkull: {fileID: 2800000, guid: 51586b72977edae49a9eb93187a2cbc2, type: 3}
@@ -37670,10 +37858,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DontDestroyLoad: 0
   m_IsSingletonLogsEnabled: 0
-  hapticsIcon: {fileID: 1996186271}
   hurtScreen: {fileID: 2875735081493675973}
+  transitionScreen: {fileID: 943916262}
+  hapticsIcon: {fileID: 1996186271}
   priceTag: {fileID: 6668516392213119779}
-  scoreText: {fileID: 6663376086199890229}
+  mobileScreen: {fileID: 1961694457}
   btnNext: {fileID: 2080464153}
   LevelText: {fileID: 3464536507856245032}
   StartUI: {fileID: 1473265678204927958}
@@ -37706,13 +37895,8 @@ MonoBehaviour:
   upgradeButtons:
   - {fileID: 830830721}
   - {fileID: 1686428516}
-  haptics: {fileID: 1996186271}
   selectionMenu: {fileID: 451508828}
   selectionMenuButton: {fileID: 425760736}
-  mobileScreen: {fileID: 1961694457}
-  transitionScreen: {fileID: 943916262}
-  mobileScreenSlider: {fileID: 0}
-  isMobileActive: 0
   instaPostPage: {fileID: 845298533}
   instaGalleryPage: {fileID: 1990013023}
   influenceMeterPage: {fileID: 1804672026}
