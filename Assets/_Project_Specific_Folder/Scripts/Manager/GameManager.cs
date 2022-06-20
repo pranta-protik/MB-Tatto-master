@@ -16,6 +16,12 @@ public class HandGroup
 
 public class GameManager : Singleton<GameManager>
 {
+    public enum EGameMode
+    {
+        Complete,
+        Test
+    }
+    
     public int totalLevelNo = 50;
     public List<GameObject> levelPrefabs = new List<GameObject>();
     public List<int> likes = new List<int>();
@@ -36,10 +42,11 @@ public class GameManager : Singleton<GameManager>
     private Camera _mainCamera;
     private CameraController _cameraController;
     private TextureManager _textureManager;
-    
+    private GameObject _pathObj;
     // public GameObject Boss;
     // public GameObject PivotParent;
 
+    public EGameMode gameMode;
     [SerializeField] private int specificLevelId;
 
     public override void Start()
@@ -66,14 +73,20 @@ public class GameManager : Singleton<GameManager>
 
         LoadLevelPrefab();
 
-        GameObject pathObj = GameObject.Find("pathWAY");
-        pathCreator = pathObj.GetComponent<PathCreator>();
-        pathObj.GetComponent<RoadMeshCreator>().refresh();
-
+        if (_pathObj == null)
+        {
+            _pathObj = GameObject.Find("pathWAY");
+            pathCreator = _pathObj.GetComponent<PathCreator>();
+            _pathObj.GetComponent<RoadMeshCreator>().refresh();    
+        }
+        
         playerPathFollower.enabled = false;
 
 #if UNITY_EDITOR
-        PlaySpecificLevel(specificLevelId);
+        if (gameMode == EGameMode.Test)
+        {
+            PlaySpecificLevel(specificLevelId);    
+        }
 #endif
     }
 

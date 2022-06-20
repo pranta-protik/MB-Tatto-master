@@ -116,8 +116,7 @@ namespace ItemCollection.GameEndUnlockItem
 
         private void NextCallBack()
         {
-            UiManager.Instance.LoadSelectionMenu();
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            UiManager.Instance.ReloadSceneWithNewLevel();
         }
 
         private void AssignNextItem()

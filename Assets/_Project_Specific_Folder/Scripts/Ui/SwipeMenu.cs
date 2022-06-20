@@ -160,7 +160,7 @@ public class SwipeMenu : MonoBehaviour
     public void SelectHand()
     {
         PlayerPrefs.SetInt("SelectedHandId", _selectedCardOld.handId);
-        UiManager.Instance.Next();
+        // UiManager.Instance.Next();
     }
     
     private void DisableButton(Button button)

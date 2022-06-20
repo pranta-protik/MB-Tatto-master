@@ -2,14 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0bbd3f85-ed93-443c-811c-694e308cff41" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/Editor/GameManagerEditor.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/Editor/GameManagerEditor.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Tatto-master/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Tatto-master/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Book.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Book.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Buttons.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Buttons.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ItemCollection/GameEndUnlockItem/UnlockItemWithPercentage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ItemCollection/GameEndUnlockItem/UnlockItemWithPercentage.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TattoWall.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TattoWall.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/In game/EndDetector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/In game/EndDetector.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/InfluenceMeter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/InfluenceMeter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/SelectionMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/SelectionMenu.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Levels/106.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Levels/106.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/InstaGallery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/InstaGallery.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/Manager/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/Manager/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/ScreenshotHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/ScreenshotHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/Ui/SwipeMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/Ui/SwipeMenu.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/Ui/UiManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/Ui/UiManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/Wheel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/Wheel.cs" afterDir="false" />
     </list>
@@ -30,6 +33,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Button.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/Ui/SwipeMenu.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/Manager/TimeManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/Editor/GameManagerEditor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/InstaGallery.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -109,7 +113,8 @@
       <workItem from="1655028774007" duration="1474000" />
       <workItem from="1655031072516" duration="7312000" />
       <workItem from="1655114544203" duration="14602000" />
-      <workItem from="1655700243932" duration="23193000" />
+      <workItem from="1655700243932" duration="24177000" />
+      <workItem from="1655731326520" duration="2710000" />
     </task>
     <servers />
   </component>

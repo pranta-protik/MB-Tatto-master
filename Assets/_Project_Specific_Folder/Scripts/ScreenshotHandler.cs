@@ -55,7 +55,7 @@ public class ScreenshotHandler : MonoBehaviour
                 File.WriteAllBytes(snapshotName, byteArray);
             }).Start();
 
-            UiManager.Instance.instaPostPage.transform.GetChild(1).GetChild(0).GetComponent<RawImage>().texture = renderResult;
+            UiManager.Instance.instagramPostPage.transform.GetChild(1).GetChild(0).GetComponent<RawImage>().texture = renderResult;
             
             RenderTexture.ReleaseTemporary(renderTexture);
             _camera.targetTexture = null;

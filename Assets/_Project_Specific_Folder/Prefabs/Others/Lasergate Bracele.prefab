@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3382523725109900416}
   - component: {fileID: 654662563305439306}
   - component: {fileID: 2221472535004044492}
-  - component: {fileID: 1143885996031602143}
+  - component: {fileID: 8884117040115158286}
   m_Layer: 0
   m_Name: Lasergate Bracele
   m_TagString: Bracelet
@@ -100,7 +100,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.6559818, y: 1.9544052, z: 0.30001065}
   m_Center: {x: 0, y: 0.95217067, z: -0.00000011920932}
---- !u!114 &1143885996031602143
+--- !u!114 &8884117040115158286
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,10 +109,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1302991998960984479}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35ddd9e6c583c7543b6eb17e6b83a543, type: 3}
+  m_Script: {fileID: 11500000, guid: 36f1482c00b5801419d651459e012f3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Id: 0
+  ornamentId: 0
+  ornamentType: 1
 --- !u!1 &2221472534481640319
 GameObject:
   m_ObjectHideFlags: 0

@@ -101,7 +101,7 @@ public class InstaGallery : MonoBehaviour
                     _scrollbar.value = 0;
                     _lastPictureFrame.transform.DOScale(new Vector3(1f, 1f, 1f), 0.5f).OnComplete(() =>
                     {
-                        UiManager.Instance.isInstaGalleryPhotoUpdated = true;
+                        UiManager.Instance.isInstagramGalleryPhotoUpdated = true;
                     });
                     _isDisplayed = true;
                 }

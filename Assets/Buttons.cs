@@ -116,7 +116,7 @@ public class Buttons : MonoBehaviour
     public void SelectHand()
     {
         PlayerPrefs.SetInt("SelectedHandId", _selectedCard.handId);
-        UiManager.Instance.Next();
+        // UiManager.Instance.Next();
     }
 
     private void DisableButton(Button button)

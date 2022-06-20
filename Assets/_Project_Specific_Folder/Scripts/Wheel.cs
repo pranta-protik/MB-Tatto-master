@@ -112,10 +112,10 @@ public class Wheel : MonoBehaviour
 
     private void UpdateTotalCash()
     {
-        UiManager.Instance.shouldUpdateTotalCash = true;
-        UiManager.Instance.currentCashAmount = StorageManager.GetTotalScore();
-        UiManager.Instance.targetCashAmount = StorageManager.GetTotalScore() + StorageManager.Instance.currentLevelScore * _multiplier;
-        UiManager.Instance.incrementAmount = (UiManager.Instance.targetCashAmount - UiManager.Instance.currentCashAmount) / 1.5f;
-        StorageManager.SetTotalScore(UiManager.Instance.targetCashAmount);
+        // UiManager.Instance.shouldUpdateTotalCash = true;
+        // UiManager.Instance.currentCashAmount = StorageManager.GetTotalScore();
+        // UiManager.Instance.targetCashAmount = StorageManager.GetTotalScore() + StorageManager.Instance.currentLevelScore * _multiplier;
+        // UiManager.Instance.incrementAmount = (UiManager.Instance.targetCashAmount - UiManager.Instance.currentCashAmount) / 1.5f;
+        // StorageManager.SetTotalScore(UiManager.Instance.targetCashAmount);
     }
 }

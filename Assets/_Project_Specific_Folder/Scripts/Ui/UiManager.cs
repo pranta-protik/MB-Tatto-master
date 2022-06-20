@@ -15,6 +15,12 @@ public class UiManager : Singleton<UiManager>
     public GameObject transitionScreen;
     public TextMeshProUGUI totalScoreText;
     public GameObject unlockPanel;
+    public GameObject instagramPostPage;
+    // public GameObject tapFastPanel;
+    
+    [HideInInspector] public bool isInstagramGalleryPhotoUpdated;
+    [HideInInspector] public string followerValue;
+    
     [SerializeField] private GameObject startUI;
     [SerializeField] private GameObject hapticsIcon;
     [SerializeField] private GameObject priceTag;
@@ -23,7 +29,12 @@ public class UiManager : Singleton<UiManager>
     [SerializeField] private GameObject shop;
     [SerializeField] private TextMeshProUGUI levelNoText;
     [SerializeField] private GameObject[] upgradeButtons;
-    
+    [SerializeField] private GameObject selectionMenu;
+    [SerializeField] private float popUpScale = 5f;
+    [SerializeField] private float popUpDuration = 0.3f;
+    [SerializeField] private GameObject instagramGalleryPage;
+    [SerializeField] private GameObject influenceMeterPage;
+
     private TextMeshProUGUI _scoreText;
     private Slider _mobileScreenSlider;
     private bool _isMobileActive;
@@ -31,24 +42,8 @@ public class UiManager : Singleton<UiManager>
     private int _currentLevelText;
     private bool _isHapticsAllowed;
     private Camera _camera;
+    private string _followerValueLetter = "K";
     
-    // public GameObject tapFastPanel;
-
-    public GameObject PopUp;
-    public float popUpScale = 4.5f;
-    public float popUpDuration = 0.3f;
-
-    public bool shouldUpdateTotalCash;
-    public int targetCashAmount;
-    public float currentCashAmount;
-    public float incrementAmount;
-
-    public GameObject selectionMenu;
-
-    public GameObject instaPostPage;
-    public GameObject instaGalleryPage;
-    public GameObject influenceMeterPage;
-
     private bool _shouldUpdateLikeText;
     private float _currentLike;
     private float _startLike;
@@ -60,9 +55,6 @@ public class UiManager : Singleton<UiManager>
     private float _startFollowers;
     private int _targetFollowersIndex;
     private int _targetFollowers;
-
-    public bool isInstaGalleryPhotoUpdated;
-    public string followerValue;
     private bool _isFollowersUpdated;
 
     public override void Start()
@@ -116,22 +108,6 @@ public class UiManager : Singleton<UiManager>
         }
     }
     
-    // private void EnableShopCallBack()
-    // {
-    //     hand.gameObject.SetActive(false);
-    //     shop.SetActive(false);
-    //
-    //     if (_isHandAnimating)
-    //     {
-    //         DOTween.Kill(hand.transform);
-    //         hand.transform.localScale = new Vector3(1f, 1f, 1f);
-    //         _isHandAnimating = false;
-    //     }
-    //     _camera.transform.DOLocalRotate(new Vector3(42, 90, 0), .3f).OnComplete(() => { ShopPnael.SetActive(true); });
-    // }
-
-    
-    
     private void Update()
     {
         if (_isMobileActive)
@@ -149,10 +125,10 @@ public class UiManager : Singleton<UiManager>
             UpdateFollowersText();
         }
 
-        if (isInstaGalleryPhotoUpdated && _isFollowersUpdated)
+        if (isInstagramGalleryPhotoUpdated && _isFollowersUpdated)
         {
             Invoke(nameof(EnableInfluenceMeterScreen), 1f);
-            isInstaGalleryPhotoUpdated = false;
+            isInstagramGalleryPhotoUpdated = false;
             _isFollowersUpdated = false;
         }
     }
@@ -175,6 +151,11 @@ public class UiManager : Singleton<UiManager>
         });
     }
 
+    public void UpdateShopTimer(string timeLeftText)
+    {
+        shop.transform.GetChild(2).GetChild(1).GetComponent<TextMeshProUGUI>().SetText(timeLeftText);
+    }
+    
     #endregion
 
     #region Haptics
@@ -222,14 +203,6 @@ public class UiManager : Singleton<UiManager>
     }
 
     #endregion
-    
-    public void OnSliderClick()
-    {
-        _mobileScreenSlider.transform.GetChild(2).GetChild(0).DOKill();
-        _mobileScreenSlider.transform.GetChild(2).GetChild(0).localScale = new Vector3(1f, 1f, 1f);
-        mobileScreen.transform.GetChild(7).gameObject.SetActive(false);
-    }
-
     
     #region Gameplay changes
 
@@ -306,25 +279,17 @@ public class UiManager : Singleton<UiManager>
     }
 
     #endregion
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
-    public void TakePicture()
+    #region Camera Settings
+
+    public void OnSliderClick()
+    {
+        _mobileScreenSlider.transform.GetChild(2).GetChild(0).DOKill();
+        _mobileScreenSlider.transform.GetChild(2).GetChild(0).localScale = new Vector3(1f, 1f, 1f);
+        mobileScreen.transform.GetChild(7).gameObject.SetActive(false);
+    }
+    
+    public void OnCaptureButtonClick()
     {
         mobileScreen.transform.GetChild(3).DOKill();
         mobileScreen.transform.GetChild(3).localScale = new Vector3(1f, 1f, 1f);
@@ -343,8 +308,8 @@ public class UiManager : Singleton<UiManager>
         mobileScreen.transform.GetChild(8).GetComponent<Image>().DOColor(Color.white, 0.5f).OnComplete(() =>
         {
             mobileScreen.SetActive(false);
-            instaPostPage.SetActive(true);
-            instaPostPage.transform.GetChild(2).GetComponent<Image>().DOFade(0, 0.5f);
+            instagramPostPage.SetActive(true);
+            instagramPostPage.transform.GetChild(2).GetComponent<Image>().DOFade(0, 0.5f);
             _targetLikeIndex = PlayerPrefs.GetInt("TargetLikeIndex", 0);
             
             if (_targetLikeIndex < GameManager.Instance.likes.Count)
@@ -360,6 +325,10 @@ public class UiManager : Singleton<UiManager>
             _shouldUpdateLikeText = true;
         });
     }
+
+    #endregion
+
+    #region Instagram Like and Follower Settings
     
     private void UpdateLikeText()
     {
@@ -371,9 +340,9 @@ public class UiManager : Singleton<UiManager>
         else
         {
             _shouldUpdateLikeText = false;
-            instaPostPage.transform.GetChild(1).GetChild(2).GetChild(0).gameObject.SetActive(true);
-            instaPostPage.transform.GetChild(1).GetChild(2).GetChild(1).gameObject.SetActive(true);
-            instaPostPage.transform.GetChild(1).GetChild(2).GetChild(2).gameObject.SetActive(true);
+            instagramPostPage.transform.GetChild(1).GetChild(2).GetChild(0).gameObject.SetActive(true);
+            instagramPostPage.transform.GetChild(1).GetChild(2).GetChild(1).gameObject.SetActive(true);
+            instagramPostPage.transform.GetChild(1).GetChild(2).GetChild(2).gameObject.SetActive(true);
             PlayerPrefs.SetInt("TargetLikeIndex", _targetLikeIndex + 1);
             Invoke(nameof(EnableInstaGalleryPage), 1.5f);
         }
@@ -383,7 +352,7 @@ public class UiManager : Singleton<UiManager>
 
         if (leftValue==0)
         {
-            instaPostPage.transform.GetChild(1).GetChild(1).GetComponent<TextMeshProUGUI>().SetText(rightValue.ToString());    
+            instagramPostPage.transform.GetChild(1).GetChild(1).GetComponent<TextMeshProUGUI>().SetText(rightValue.ToString());    
         }
         else
         {
@@ -406,11 +375,9 @@ public class UiManager : Singleton<UiManager>
                 rightString = rightValue.ToString();
             }
 
-            instaPostPage.transform.GetChild(1).GetChild(1).GetComponent<TextMeshProUGUI>().SetText(leftValue + "," + rightString);
+            instagramPostPage.transform.GetChild(1).GetChild(1).GetComponent<TextMeshProUGUI>().SetText(leftValue + "," + rightString);
         }
     }
-
-    private string _followerValueLetter = "K";
     private void UpdateFollowersText()
     {
         if (_currentFollowers < _targetFollowers)
@@ -433,7 +400,7 @@ public class UiManager : Singleton<UiManager>
                 _followerValueLetter = "B";
             }
 
-            instaGalleryPage.transform.GetChild(1).GetChild(2).GetComponent<TextMeshProUGUI>()
+            instagramGalleryPage.transform.GetChild(1).GetChild(2).GetComponent<TextMeshProUGUI>()
                 .SetText(Mathf.RoundToInt(_currentFollowers) + _followerValueLetter);
         }
         else
@@ -452,21 +419,15 @@ public class UiManager : Singleton<UiManager>
                 followerValue = Random.Range(899, 999) + "M";
             }
             
-            instaGalleryPage.transform.GetChild(1).GetChild(2).GetComponent<TextMeshProUGUI>().SetText(followerValue);
+            instagramGalleryPage.transform.GetChild(1).GetChild(2).GetComponent<TextMeshProUGUI>().SetText(followerValue);
             _isFollowersUpdated = true;
         }
     }
     
-    private void EnableInfluenceMeterScreen()
-    {
-        influenceMeterPage.SetActive(true);
-        instaGalleryPage.SetActive(false);
-    }
-    
     private void EnableInstaGalleryPage()
     {
-        instaPostPage.SetActive(false);
-        instaGalleryPage.SetActive(true);
+        instagramPostPage.SetActive(false);
+        instagramGalleryPage.SetActive(true);
 
         _targetFollowersIndex = PlayerPrefs.GetInt("TargetFollowersIndex", 0);
 
@@ -481,70 +442,30 @@ public class UiManager : Singleton<UiManager>
         _shouldUpdateFollowersText = true;
     }
     
-    
-    public IEnumerator FdeDelayRoutine()
+    private void EnableInfluenceMeterScreen()
     {
-        yield return new WaitForSeconds(1f);
-    }
-    public void PopUps()
-    {
-          PopUp.SetActive(true);
-          PopUp.transform.GetChild(0).DOScale(new Vector3(popUpScale, popUpScale, popUpScale), popUpDuration);
-    }
-    public void ClosePopUps()
-    {
-        PopUp.transform.GetChild(0).DOScale(new Vector3(0f, 0f, 0f), popUpDuration).OnComplete(() =>
-        {
-            PopUp.SetActive(false);
-        });
-    }
-
-    public void UpdateShopTimer(string timeLeftText)
-    {
-        shop.transform.GetChild(2).GetChild(1).GetComponent<TextMeshProUGUI>().SetText(timeLeftText);
+        influenceMeterPage.SetActive(true);
+        instagramGalleryPage.SetActive(false);
     }
     
+    #endregion
     
-    private void NextCallBack()
+    public void ReloadSceneWithNewLevel()
     {
-        // UiManager.Instance.UnlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>()._increaseAmount = 25;
-        
-        if (GameManager.Instance.currentLevelNo <= 23)
-        {
-            unlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>().increaseAmount = 25;
-        }
-        else
-        {
-            unlockPanel.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>().increaseAmount = 10;
-        }
-
-        unlockPanel.gameObject.SetActive(true);
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
-    public void LoadSelectionMenu()
-    {
-         DOTween.KillAll();
+        DOTween.KillAll();
         
         if (_currentLevel + 1 >= GameManager.Instance.levelPrefabs.Count)
         {
             PlayerPrefs.SetInt("current_scene", 0); 
-            print("reload");
-
+            // print("reload");
         }
         else
         {
-            print("next");
+            // print("next");
             PlayerPrefs.SetInt("current_scene", _currentLevel + 1);
-
         }
         PlayerPrefs.SetInt("current_scene_text", _currentLevelText + 1);
 
         SceneManager.LoadScene("Main");
-        //   StorageManager.Instance.SetTotalScore();
-    }
-
-    public void Next()
-    {
-        SceneManager.LoadScene("Main");   
     }
 }

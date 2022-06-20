@@ -19886,7 +19886,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0b27c2330bbee44f93b5f34677ee90a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handId: 0
+  handId: 5
   positionXClampValue: 4
   mobileSpeed: 0.8
   computerSpeed: 15
@@ -19916,6 +19916,16 @@ MonoBehaviour:
   - {fileID: 1827226128182048838, guid: cc0a411143464df44becb656a912bb2d, type: 3}
   goodGateScorePopUpColor: {r: 0.5058824, g: 0.7843138, b: 0.882353, a: 1}
   badGateScorePopUpColor: {r: 0.80392164, g: 0.050980397, b: 0.07450981, a: 1}
+  rings:
+  - {fileID: 8879419425704718313}
+  - {fileID: 48936320969804993}
+  - {fileID: 6347609219488476548}
+  - {fileID: 4415770872295890855}
+  bracelets:
+  - {fileID: 2978483115674306556}
+  - {fileID: 468173554168188423}
+  - {fileID: 2228408071913110895}
+  - {fileID: 2842854647383171422}
   mainHandAnimator: {fileID: 0}
   tattooHandAnimator: {fileID: 0}
   defaultTattoo: {fileID: 0}
@@ -19927,43 +19937,6 @@ MonoBehaviour:
   cheapYellowTattoos: []
   expensiveColorTattooIdSequences: 
   cheapColorTattooIdSequences: 
-  cam: {fileID: 0}
-  LevelText: {fileID: 0}
-  ColorText: {fileID: 0}
-  SecondHand: {fileID: 0}
-  Tattos: []
-  CheapTttos: []
-  BadBlue: []
-  GoodBlue: []
-  GoodYellow: []
-  BadYellow: []
-  StiackerMat: {fileID: 2100000, guid: 3608437336ee38f4d845e8dbc8701af2, type: 2}
-  min: 0
-  max: 255
-  Default: {fileID: 2800000, guid: d2336d6b9cbf3a846b98b0c603dd70f7, type: 3}
-  IsGoodGate: 0
-  Multiplier: 0.3
-  StartTapRoutine: 0
-  Ps: {fileID: 0}
-  m_isTapping: 0
-  i: 0
-  SavedTattooNo: 0
-  LastLevel: 0
-  IsGood: 0
-  j: 2
-  m_i: 0
-  Dummy: []
-  lastGateId: 0
-  rings:
-  - {fileID: 8879419425704718313}
-  - {fileID: 48936320969804993}
-  - {fileID: 6347609219488476548}
-  - {fileID: 4415770872295890855}
-  bracelets:
-  - {fileID: 2978483115674306556}
-  - {fileID: 468173554168188423}
-  - {fileID: 2228408071913110895}
-  - {fileID: 2842854647383171422}
 --- !u!1 &3317768827076443940
 GameObject:
   m_ObjectHideFlags: 0
