@@ -54,16 +54,6 @@ public class TextureManagerEditor : Editor
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("celebrityExpensiveColorTattooIdSequences"));
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("celebrityCheapColorTattooIdSequences"));
                 
-                EditorGUILayout.PropertyField(serializedObject.FindProperty("calligraphyDefaultTattoo"));
-                EditorGUILayout.PropertyField(serializedObject.FindProperty("calligraphyExpensiveTattoos"));
-                EditorGUILayout.PropertyField(serializedObject.FindProperty("calligraphyExpensiveBlueTattoos"));
-                EditorGUILayout.PropertyField(serializedObject.FindProperty("calligraphyExpensiveYellowTattoos"));
-                EditorGUILayout.PropertyField(serializedObject.FindProperty("calligraphyCheapTattoos"));
-                EditorGUILayout.PropertyField(serializedObject.FindProperty("calligraphyCheapBlueTattoos"));
-                EditorGUILayout.PropertyField(serializedObject.FindProperty("calligraphyCheapYellowTattoos"));
-                EditorGUILayout.PropertyField(serializedObject.FindProperty("calligraphyExpensiveColorTattooIdSequences"));
-                EditorGUILayout.PropertyField(serializedObject.FindProperty("calligraphyCheapColorTattooIdSequences"));
-                
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("moneyDefaultTattoo"));
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("moneyExpensiveTattoos"));
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("moneyExpensiveBlueTattoos"));
@@ -73,6 +63,16 @@ public class TextureManagerEditor : Editor
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("moneyCheapYellowTattoos"));
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("moneyExpensiveColorTattooIdSequences"));
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("moneyCheapColorTattooIdSequences"));
+                
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("calligraphyDefaultTattoo"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("calligraphyExpensiveTattoos"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("calligraphyExpensiveBlueTattoos"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("calligraphyExpensiveYellowTattoos"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("calligraphyCheapTattoos"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("calligraphyCheapBlueTattoos"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("calligraphyCheapYellowTattoos"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("calligraphyExpensiveColorTattooIdSequences"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("calligraphyCheapColorTattooIdSequences"));
                 break;
             
             case TextureManager.ETattooClass.Flower:
@@ -123,18 +123,6 @@ public class TextureManagerEditor : Editor
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("celebrityCheapColorTattooIdSequences"));
                 break;
             
-            case TextureManager.ETattooClass.Calligraphy:
-                EditorGUILayout.PropertyField(serializedObject.FindProperty("calligraphyDefaultTattoo"));
-                EditorGUILayout.PropertyField(serializedObject.FindProperty("calligraphyExpensiveTattoos"));
-                EditorGUILayout.PropertyField(serializedObject.FindProperty("calligraphyExpensiveBlueTattoos"));
-                EditorGUILayout.PropertyField(serializedObject.FindProperty("calligraphyExpensiveYellowTattoos"));
-                EditorGUILayout.PropertyField(serializedObject.FindProperty("calligraphyCheapTattoos"));
-                EditorGUILayout.PropertyField(serializedObject.FindProperty("calligraphyCheapBlueTattoos"));
-                EditorGUILayout.PropertyField(serializedObject.FindProperty("calligraphyCheapYellowTattoos"));
-                EditorGUILayout.PropertyField(serializedObject.FindProperty("calligraphyExpensiveColorTattooIdSequences"));
-                EditorGUILayout.PropertyField(serializedObject.FindProperty("calligraphyCheapColorTattooIdSequences"));
-                break;
-            
             case TextureManager.ETattooClass.Money:
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("moneyDefaultTattoo"));
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("moneyExpensiveTattoos"));
@@ -145,6 +133,18 @@ public class TextureManagerEditor : Editor
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("moneyCheapYellowTattoos"));
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("moneyExpensiveColorTattooIdSequences"));
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("moneyCheapColorTattooIdSequences"));
+                break;
+            
+            case TextureManager.ETattooClass.Calligraphy:
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("calligraphyDefaultTattoo"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("calligraphyExpensiveTattoos"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("calligraphyExpensiveBlueTattoos"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("calligraphyExpensiveYellowTattoos"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("calligraphyCheapTattoos"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("calligraphyCheapBlueTattoos"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("calligraphyCheapYellowTattoos"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("calligraphyExpensiveColorTattooIdSequences"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("calligraphyCheapColorTattooIdSequences"));
                 break;
         }
 

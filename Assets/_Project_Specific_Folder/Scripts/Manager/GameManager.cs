@@ -2,30 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Singleton;
-using UnityEngine.SceneManagement;
 using DG.Tweening;
 using SuperCop.Scripts;
 using PathCreation.Examples;
 using System;
-using System.Globalization;
-using Facebook.Unity;
-using MoreMountains.NiceVibrations;
+using UnityEngine.Serialization;
 
 [Serializable]
-public class ItemPacks
+public class HandGroup
 {
-    public GameObject MainHand;
-    public GameObject CopyHand;
+    public GameObject mainHand;
+    public GameObject tattooHand;
 }
 public class GameManager : Singleton<GameManager>
 {
+    private int _handId;
+    [SerializeField] private List<HandGroup> handGroups = new List<HandGroup>();
+    private Collsion _mainHandCollision;
+    private Camera _mainCamera;
+    private CameraController _cameraController;
+    private TextureManager _textureManager;
 
     public Texture LastTattoTexture;
     public string TextureName;
-
-    public int HandNumber;
-    public List<ItemPacks> Hands = new List<ItemPacks>();
-
 
     [Header("Level prefabs List")]
     public List<GameObject> LevelPrefabs = new List<GameObject>();
@@ -50,9 +49,9 @@ public class GameManager : Singleton<GameManager>
     [Header("Scripts Refs")]
     public PathCreation.PathCreator pathCreator;
     public PathCreation.Examples.PathFollower p;
-    public Collsion CollsionScript;
-    public TextureManager m_textureManager;
-    public SharkAttack.CameraController cam;
+    
+    // public TextureManager m_textureManager;
+    public CameraController cam;
     [Header("Transforms")]
     public GameObject FianlCamPos;
     public Transform FinalCamPos;
@@ -68,29 +67,30 @@ public class GameManager : Singleton<GameManager>
     int SavedLevelNo;
     GameObject Path;
     public float timer = 0.0f;
-    [SerializeField] private int amarIcchaLevel;
-
+    
+    [SerializeField] private int specificLevelId;
 
     public override void Start()
     {
-#if UNITY_EDITOR
-
-        levelNo = amarIcchaLevel;
-        PlayerPrefs.SetInt("current_scene", levelNo);
-
-#endif
+        _mainCamera = Camera.main;
         
-        // First time hand enable
-        HandNumber = PlayerPrefs.GetInt("SelectedHandCardId");
-        Hands[HandNumber].MainHand.gameObject.SetActive(true);
-        Hands[HandNumber].CopyHand.gameObject.SetActive(true);
-        CollsionScript = Hands[HandNumber].MainHand.GetComponent<Collsion>();
-        // GameObject.FindGameObjectWithTag("Player").GetComponent<Collsion>();
-        if (!cam.player) cam.player = GameObject.FindGameObjectWithTag("Player");
+        if (_mainCamera!=null)
+        {
+            _cameraController = _mainCamera.GetComponent<CameraController>();    
+        }
+        
+        _handId = PlayerPrefs.GetInt("SelectedHandCardId");
+        
+        GameObject mainHandObj = handGroups[_handId].mainHand;
+        mainHandObj.SetActive(true);
+        handGroups[_handId].tattooHand.SetActive(true);
+        _mainHandCollision = mainHandObj.GetComponent<Collsion>();
+        
+        _cameraController.player = mainHandObj;
 
-
-        //   HandNumber = PlayerPrefs.GetInt("SelectedHandId");
-        // SpawnHand(HandNumber);
+        _textureManager = TextureManager.Instance;
+        
+        
         SavedLevelNo = PlayerPrefs.GetInt("current_scene_text", 0);
         UiManager.Instance.LevelText.text = (SavedLevelNo + 1).ToString();
         int currentLevel = PlayerPrefs.GetInt("current_scene");
@@ -98,6 +98,16 @@ public class GameManager : Singleton<GameManager>
         p.enabled = false;
         base.Start();
         TattooVsLevel();
+        
+#if UNITY_EDITOR
+        PlaySpecificLevel(specificLevelId);
+#endif
+    }
+    
+    private void PlaySpecificLevel(int levelId)
+    {
+        levelNo = levelId;
+        PlayerPrefs.SetInt("current_scene", levelNo);
     }
 
     private void Update()
@@ -174,7 +184,7 @@ public class GameManager : Singleton<GameManager>
     IEnumerator DelayStart()
     {
         TattoMachine.transform.GetChild(1).gameObject.SetActive(true);
-        CollsionScript.DrawDefaultTattoo();
+        // CollsionScript.DrawDefaultTattoo();
         yield return new WaitForSeconds(.5f);
         UiManager.Instance.ShowPriceTag();
         TattoMachine.transform.DOMoveZ(-0.98f, .3f);
@@ -212,99 +222,94 @@ public class GameManager : Singleton<GameManager>
         TattoSet = levelDetails.Id;
         switch (TattoSet)
         {
-            // [Header("Ref : Flower == 1 Skull == 2 PinUp == 3 Celebs == 4 Money==5  Caligraphy==6")]
-            //vehicle set
+            // [Header("Ref : Flower == 1, Skull == 2, PinUpGirl == 3, Celebrity == 4, Money==5, Calligraphy==6")]
             case 1:
-                // CollsionScript.Tattos = new Texture[15];
-                CollsionScript.defaultTattoo = m_textureManager.flowerDefaultTattoo;
-                CollsionScript.expensiveTattoos = m_textureManager.flowerExpensiveTattoos;
-                CollsionScript.cheapTattoos = m_textureManager.flowerCheapTattoos;
-                CollsionScript.expensiveBlueTattoos = m_textureManager.flowerExpensiveBlueTattoos;
-                CollsionScript.expensiveYellowTattoos = m_textureManager.flowerExpensiveYellowTattoos;
-                CollsionScript.cheapBlueTattoos = m_textureManager.flowerCheapBlueTattoos;
-                CollsionScript.cheapYellowTattoos = m_textureManager.flowerCheapYellowTattoos;
-                CollsionScript.expensiveColorTattooIdSequences = m_textureManager.flowerExpensiveColorTattooIdSequences;
-                CollsionScript.cheapColorTattooIdSequences = m_textureManager.flowerCheapColorTattooIdSequences;
+                _mainHandCollision.defaultTattoo = _textureManager.flowerDefaultTattoo;
                 
-                CollsionScript.Default = m_textureManager.DefaultFlower;
-                CollsionScript.Tattos = m_textureManager.FlowerExpensiveTattos;
+                _mainHandCollision.expensiveTattoos = _textureManager.flowerExpensiveTattoos;
+                _mainHandCollision.expensiveBlueTattoos = _textureManager.flowerExpensiveBlueTattoos;
+                _mainHandCollision.expensiveYellowTattoos = _textureManager.flowerExpensiveYellowTattoos;
+                _mainHandCollision.expensiveColorTattooIdSequences = _textureManager.flowerExpensiveColorTattooIdSequences;
                 
-                CollsionScript.CheapTttos = m_textureManager.FlowerCheapTattos;
-
-                CollsionScript.GoodBlue = m_textureManager.FlowerGoodBlue;
-                CollsionScript.BadBlue = m_textureManager.FlowerBadBlue;
-
-                CollsionScript.GoodYellow = m_textureManager.FlowerGoodYellow;
-                CollsionScript.BadYellow = m_textureManager.FlowerBadYellow;
+                _mainHandCollision.cheapTattoos = _textureManager.flowerCheapTattoos;
+                _mainHandCollision.cheapBlueTattoos = _textureManager.flowerCheapBlueTattoos;
+                _mainHandCollision.cheapYellowTattoos = _textureManager.flowerCheapYellowTattoos;
+                _mainHandCollision.cheapColorTattooIdSequences = _textureManager.flowerCheapColorTattooIdSequences;
+                
                 break;
+            
             case 2:
-                // CollsionScript.Tattos = new Texture[15];
-                CollsionScript.Default = m_textureManager.DefaultSkull;
-                CollsionScript.Tattos = m_textureManager.SkullExpensiveTattos;
-                CollsionScript.CheapTttos = m_textureManager.SkullCheapTattos;
-
-                CollsionScript.GoodBlue = m_textureManager.SkullGoodBlue;
-                CollsionScript.BadBlue = m_textureManager.SkullBadBlue;
-
-                CollsionScript.GoodYellow = m_textureManager.SkullGoodYellow;
-                CollsionScript.BadYellow = m_textureManager.SkullBadYellow;
+                _mainHandCollision.defaultTattoo = _textureManager.skullDefaultTattoo;
+                
+                _mainHandCollision.expensiveTattoos = _textureManager.skullExpensiveTattoos;
+                _mainHandCollision.expensiveBlueTattoos = _textureManager.skullExpensiveBlueTattoos;
+                _mainHandCollision.expensiveYellowTattoos = _textureManager.skullExpensiveYellowTattoos;
+                _mainHandCollision.expensiveColorTattooIdSequences = _textureManager.skullExpensiveColorTattooIdSequences;
+                
+                _mainHandCollision.cheapTattoos = _textureManager.skullCheapTattoos;
+                _mainHandCollision.cheapBlueTattoos = _textureManager.skullCheapBlueTattoos;
+                _mainHandCollision.cheapYellowTattoos = _textureManager.skullCheapYellowTattoos;
+                _mainHandCollision.cheapColorTattooIdSequences = _textureManager.skullCheapColorTattooIdSequences;
 
                 break;
+            
             case 3:
-                // CollsionScript.Tattos = new Texture[6];
-                CollsionScript.Default = m_textureManager.DefaultPinup;
-                CollsionScript.Tattos = m_textureManager.PinnupGirlExpensiveTattos;
-                CollsionScript.CheapTttos = m_textureManager.PinnupGirlCheapTattos;
-
-
-                CollsionScript.GoodBlue = m_textureManager.PinnupGirlGoodBlue;
-                CollsionScript.BadBlue = m_textureManager.PinnupGirlBadBlue;
-
-                CollsionScript.GoodYellow = m_textureManager.PinnupGirlGoodYellow;
-                CollsionScript.BadYellow = m_textureManager.PinnupGirlBadYellow;
+                _mainHandCollision.defaultTattoo = _textureManager.pinupGirlDefaultTattoo;
+                
+                _mainHandCollision.expensiveTattoos = _textureManager.pinupGirlExpensiveTattoos;
+                _mainHandCollision.expensiveBlueTattoos = _textureManager.pinupGirlExpensiveBlueTattoos;
+                _mainHandCollision.expensiveYellowTattoos = _textureManager.pinupGirlExpensiveYellowTattoos;
+                _mainHandCollision.expensiveColorTattooIdSequences = _textureManager.pinupGirlExpensiveColorTattooIdSequences;
+                
+                _mainHandCollision.cheapTattoos = _textureManager.pinupGirlCheapTattoos;
+                _mainHandCollision.cheapBlueTattoos = _textureManager.pinupGirlCheapBlueTattoos;
+                _mainHandCollision.cheapYellowTattoos = _textureManager.pinupGirlCheapYellowTattoos;
+                _mainHandCollision.cheapColorTattooIdSequences = _textureManager.pinupGirlCheapColorTattooIdSequences;
+                
                 break;
+            
             case 4:
-                // CollsionScript.Tattos = new Texture[6];
-                CollsionScript.Default = m_textureManager.DefaultCeleb;
-                CollsionScript.Tattos = m_textureManager.CelebExpensiveTattos;
-                CollsionScript.CheapTttos = m_textureManager.CelebCheapTattos;
-
-                CollsionScript.GoodBlue = m_textureManager.CelebGoodBlue;
-                CollsionScript.BadBlue = m_textureManager.CelebBadBlue;
-
-                CollsionScript.GoodYellow = m_textureManager.CelebGoodYellow;
-                CollsionScript.BadYellow = m_textureManager.CelebBadYellow;
+                _mainHandCollision.defaultTattoo = _textureManager.celebrityDefaultTattoo;
+                
+                _mainHandCollision.expensiveTattoos = _textureManager.celebrityExpensiveTattoos;
+                _mainHandCollision.expensiveBlueTattoos = _textureManager.celebrityExpensiveBlueTattoos;
+                _mainHandCollision.expensiveYellowTattoos = _textureManager.celebrityExpensiveYellowTattoos;
+                _mainHandCollision.expensiveColorTattooIdSequences = _textureManager.celebrityExpensiveColorTattooIdSequences;
+                
+                _mainHandCollision.cheapTattoos = _textureManager.celebrityCheapTattoos;
+                _mainHandCollision.cheapBlueTattoos = _textureManager.celebrityCheapBlueTattoos;
+                _mainHandCollision.cheapYellowTattoos = _textureManager.celebrityCheapYellowTattoos;
+                _mainHandCollision.cheapColorTattooIdSequences = _textureManager.celebrityCheapColorTattooIdSequences;
 
                 break;
+            
             case 5:
-                // CollsionScript.Tattos = new Texture[6];
-                CollsionScript.Default = m_textureManager.DefaultMoney;
-                CollsionScript.Tattos = m_textureManager.MoneyExpensiveTattos;
-                CollsionScript.CheapTttos = m_textureManager.MoneyCheapTattos;
-
-                CollsionScript.GoodBlue = m_textureManager.MoneyGoodBlue;
-                CollsionScript.BadBlue = m_textureManager.MoneyBadBlue;
-
-                CollsionScript.GoodYellow = m_textureManager.MoneyGoodYellow;
-                CollsionScript.BadYellow = m_textureManager.MoneyBadYellow;
+                _mainHandCollision.defaultTattoo = _textureManager.moneyDefaultTattoo;
+                
+                _mainHandCollision.expensiveTattoos = _textureManager.moneyExpensiveTattoos;
+                _mainHandCollision.expensiveBlueTattoos = _textureManager.moneyExpensiveBlueTattoos;
+                _mainHandCollision.expensiveYellowTattoos = _textureManager.moneyExpensiveYellowTattoos;
+                _mainHandCollision.expensiveColorTattooIdSequences = _textureManager.moneyExpensiveColorTattooIdSequences;
+                
+                _mainHandCollision.cheapTattoos = _textureManager.moneyCheapTattoos;
+                _mainHandCollision.cheapBlueTattoos = _textureManager.moneyCheapBlueTattoos;
+                _mainHandCollision.cheapYellowTattoos = _textureManager.moneyCheapYellowTattoos;
+                _mainHandCollision.cheapColorTattooIdSequences = _textureManager.moneyCheapColorTattooIdSequences;
 
                 break;
+            
             case 6:
-                // CollsionScript.Tattos = new Texture[6];
-                CollsionScript.Default = m_textureManager.DefaultCaligraphy;
-                CollsionScript.Tattos = m_textureManager.CaligraphyExpensiveTattos;
-                CollsionScript.CheapTttos = m_textureManager.CaligraphyCheapTattos;
-
-
-
-                CollsionScript.GoodBlue = m_textureManager.CaligraphyGoodBlue;
-                CollsionScript.BadBlue = m_textureManager.CaligraphyBadBlue;
-
-                CollsionScript.GoodYellow = m_textureManager.CaligraphyGoodYellow;
-                CollsionScript.BadYellow = m_textureManager.CaligraphyBadYellow;
-
-                break;
-            case 7:
+                _mainHandCollision.defaultTattoo = _textureManager.calligraphyDefaultTattoo;
+                
+                _mainHandCollision.expensiveTattoos = _textureManager.calligraphyExpensiveTattoos;
+                _mainHandCollision.expensiveBlueTattoos = _textureManager.calligraphyExpensiveBlueTattoos;
+                _mainHandCollision.expensiveYellowTattoos = _textureManager.calligraphyExpensiveYellowTattoos;
+                _mainHandCollision.expensiveColorTattooIdSequences = _textureManager.calligraphyExpensiveColorTattooIdSequences;
+                
+                _mainHandCollision.cheapTattoos = _textureManager.calligraphyCheapTattoos;
+                _mainHandCollision.cheapBlueTattoos = _textureManager.calligraphyCheapBlueTattoos;
+                _mainHandCollision.cheapYellowTattoos = _textureManager.calligraphyCheapYellowTattoos;
+                _mainHandCollision.cheapColorTattooIdSequences = _textureManager.calligraphyCheapColorTattooIdSequences;
 
                 break;
         }
@@ -389,21 +394,21 @@ public class GameManager : Singleton<GameManager>
 
    public void SpawnHand(int handId)
     {
-        foreach (ItemPacks hand in Hands)
+        foreach (HandGroup hand in handGroups)          
         {
-            if (hand.MainHand.GetComponent<HandController>().handId == handId)
+            if (hand.mainHand.GetComponent<HandController>().handId == handId)
             {
-                hand.MainHand.gameObject.SetActive(true);
-                hand.CopyHand.gameObject.SetActive(true);
-                CollsionScript = hand.MainHand.GetComponent<Collsion>(); 
-                // GameObject.FindGameObjectWithTag("Player").GetComponent<Collsion>();
-                cam.player = hand.MainHand.gameObject;
+                hand.mainHand.gameObject.SetActive(true);
+                hand.tattooHand.gameObject.SetActive(true);
+                // CollsionScript = hand.mainHand.GetComponent<Collsion>(); 
+                //// GameObject.FindGameObjectWithTag("Player").GetComponent<Collsion>();
+                cam.player = hand.mainHand.gameObject;
                 SetLevelDetails(currentLvlPrefab);
             }
             else
             {
-                hand.MainHand.gameObject.SetActive(false);
-                hand.CopyHand.gameObject.SetActive(false);
+                hand.mainHand.gameObject.SetActive(false);
+                hand.tattooHand.gameObject.SetActive(false);
             }
         }
         // for (int i = 0; i <Hands.Count; i++)

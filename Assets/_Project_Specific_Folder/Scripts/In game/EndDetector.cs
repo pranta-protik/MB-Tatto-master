@@ -25,10 +25,23 @@ public class EndDetector : MonoBehaviour
             GameManager.Instance.PivotParent.transform.GetChild(01).transform.parent = null;
             GameManager.Instance.PivotParent.transform.DOLocalRotate(new Vector3(-40, -20, 20f), .3f);
             
+            
+            
+            
 
-            GameManager.Instance.CollsionScript.StartTapRoutine = false;
-            GameManager.Instance.CollsionScript.mainHandAnimator.Play("g 0 0");
-            GameManager.Instance.CollsionScript.tattooHandAnimator.Play("g 0 0");
+            // GameManager.Instance.CollsionScript.StartTapRoutine = false;
+            // GameManager.Instance.CollsionScript.mainHandAnimator.Play("g 0 0");
+            // GameManager.Instance.CollsionScript.tattooHandAnimator.Play("g 0 0");
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             EndParticle.Play();
             UiManager.Instance.TapFastPanel.gameObject.SetActive(false);       
             GameManager.Instance.IsGameOver = true;
@@ -97,8 +110,32 @@ public class EndDetector : MonoBehaviour
      
         SavedTattooNo = PlayerPrefs.GetInt("SavedTattooNo");
 
-        GameManager.Instance.TextureName = GameManager.Instance.CollsionScript.StiackerMat.mainTexture.name;
-        GameManager.Instance.LastTattoTexture = GameManager.Instance.CollsionScript.StiackerMat.mainTexture;
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        // GameManager.Instance.TextureName = GameManager.Instance.CollsionScript.StiackerMat.mainTexture.name;
+        // GameManager.Instance.LastTattoTexture = GameManager.Instance.CollsionScript.StiackerMat.mainTexture;
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         PlayerPrefs.SetString("TattooFrame" + SavedTattooNo, GameManager.Instance.TextureName);
         SavedTattooNo++;
         PlayerPrefs.SetInt("SavedTattooNo" , SavedTattooNo);

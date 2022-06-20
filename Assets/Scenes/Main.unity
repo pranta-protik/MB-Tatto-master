@@ -19214,22 +19214,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DontDestroyLoad: 0
   m_IsSingletonLogsEnabled: 0
+  handGroups:
+  - mainHand: {fileID: 1331897427}
+    tattooHand: {fileID: 1741970589}
+  - mainHand: {fileID: 1521261224}
+    tattooHand: {fileID: 1687936780}
+  - mainHand: {fileID: 867627803}
+    tattooHand: {fileID: 146056923}
+  - mainHand: {fileID: 1522631570}
+    tattooHand: {fileID: 780703548}
+  - mainHand: {fileID: 2023314334}
+    tattooHand: {fileID: 2073972714}
+  - mainHand: {fileID: 1604221682}
+    tattooHand: {fileID: 1079283061}
   LastTattoTexture: {fileID: 0}
   TextureName: 
   HandNumber: 4
-  Hands:
-  - MainHand: {fileID: 1331897427}
-    CopyHand: {fileID: 1741970589}
-  - MainHand: {fileID: 1521261224}
-    CopyHand: {fileID: 1687936780}
-  - MainHand: {fileID: 867627803}
-    CopyHand: {fileID: 146056923}
-  - MainHand: {fileID: 0}
-    CopyHand: {fileID: 0}
-  - MainHand: {fileID: 2023314334}
-    CopyHand: {fileID: 2073972714}
-  - MainHand: {fileID: 1604221682}
-    CopyHand: {fileID: 1079283061}
+  Hands: []
   LevelPrefabs:
   - {fileID: 6828944569146319530, guid: 1e9203e20f9636a46a1b0a202da32413, type: 3}
   - {fileID: 6828944569146319530, guid: 10648a6f84edf224a955a5a3951cb2c5, type: 3}
@@ -19314,7 +19315,7 @@ MonoBehaviour:
   - 279M
   - 287M
   timer: 0
-  amarIcchaLevel: 5
+  specificLevelId: 0
 --- !u!1001 &1287034089
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21806,6 +21807,11 @@ GameObject:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8250017228433796812, guid: 09b96d6da0680244eb39260b77d0cfdc, type: 3}
   m_PrefabInstance: {fileID: 864663216}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1522631570 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8879839752688848452, guid: 131f9305687aee445b6a192bec00b1cc, type: 3}
+  m_PrefabInstance: {fileID: 533437453}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1523682912
 GameObject:
@@ -24614,6 +24620,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DontDestroyLoad: 0
   m_IsSingletonLogsEnabled: 0
+  handBurntTexture: {fileID: 2800000, guid: 08763b4448871f041b6e4b84e42e328f, type: 3}
   tattooClass: 0
   flowerDefaultTattoo: {fileID: 2800000, guid: 68906f73a7d7a734ba32b64c0727f9be, type: 3}
   flowerExpensiveTattoos:
@@ -24840,7 +24847,6 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 71fe43542b726b14dafc1b82151e3206, type: 3}
   moneyExpensiveColorTattooIdSequences: 090000000b000000
   moneyCheapColorTattooIdSequences: 0400000005000000
-  handBurntTexture: {fileID: 2800000, guid: 08763b4448871f041b6e4b84e42e328f, type: 3}
   DefaultFlower: {fileID: 2800000, guid: 68906f73a7d7a734ba32b64c0727f9be, type: 3}
   DefaultSkull: {fileID: 2800000, guid: 51586b72977edae49a9eb93187a2cbc2, type: 3}
   DefaultPinup: {fileID: 2800000, guid: f7a9ead41cf2ca34bb73db79adaa62ff, type: 3}

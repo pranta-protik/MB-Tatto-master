@@ -1,34 +1,21 @@
-﻿using DG.Tweening;
+﻿using System;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.Serialization;
 
-namespace SharkAttack
+public class CameraController : MonoBehaviour
 {
-    public class CameraController : MonoBehaviour
+    public GameObject player;
+    public float offset = -0.95f;
+
+    void LateUpdate()
     {
-        [SerializeField] public GameObject player;
-        public float a;
-       
-        private void Start()
-        {
-            // As fallback get it only ONCE
-
-        }
-        void LateUpdate()
-        {
-            var position = transform.position;
-            // overwrite only the X component
-            position.z = player.transform.position.z; position.x = player.transform.position.x + a;
-            // assign the new position back
-            transform.position = position;
-        }
-
-
-
-    
-        public void BlastShake()
-        {
-            transform.DOShakePosition(1f, new Vector3(100f, 50f, 0), 10, 8f, false, true);
-        }
+        Transform cameraTransform = transform;
+        Vector3 cameraPosition = cameraTransform.position;
+            
+        Vector3 playerPosition = player.transform.position;
+            
+        cameraPosition.z = playerPosition.z; 
+        cameraPosition.x = playerPosition.x + offset;
+        cameraTransform.position = cameraPosition;
     }
 }

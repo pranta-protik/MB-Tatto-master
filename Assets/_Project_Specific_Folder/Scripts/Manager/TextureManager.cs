@@ -11,8 +11,8 @@ public class TextureManager : Singleton<TextureManager>
         Skull,
         PinupGirl,
         Celebrity,
-        Calligraphy,
-        Money
+        Money,
+        Calligraphy
     }
     
     public Texture2D handBurntTexture;
@@ -64,17 +64,6 @@ public class TextureManager : Singleton<TextureManager>
     public List<int> celebrityExpensiveColorTattooIdSequences;
     public List<int> celebrityCheapColorTattooIdSequences;
     
-    [Space][Header("Calligraphy Tattoo Section")]
-    public Texture2D calligraphyDefaultTattoo;
-    public List<Texture2D> calligraphyExpensiveTattoos;
-    public List<Texture2D> calligraphyExpensiveBlueTattoos;
-    public List<Texture2D> calligraphyExpensiveYellowTattoos;
-    public List<Texture2D> calligraphyCheapTattoos;
-    public List<Texture2D> calligraphyCheapBlueTattoos;
-    public List<Texture2D> calligraphyCheapYellowTattoos;
-    public List<int> calligraphyExpensiveColorTattooIdSequences;
-    public List<int> calligraphyCheapColorTattooIdSequences;
-    
     [Space][Header("Money Tattoo Section")]
     public Texture2D moneyDefaultTattoo;
     public List<Texture2D> moneyExpensiveTattoos;
@@ -86,6 +75,17 @@ public class TextureManager : Singleton<TextureManager>
     public List<int> moneyExpensiveColorTattooIdSequences;
     public List<int> moneyCheapColorTattooIdSequences;
 
+    [Space][Header("Calligraphy Tattoo Section")]
+    public Texture2D calligraphyDefaultTattoo;
+    public List<Texture2D> calligraphyExpensiveTattoos;
+    public List<Texture2D> calligraphyExpensiveBlueTattoos;
+    public List<Texture2D> calligraphyExpensiveYellowTattoos;
+    public List<Texture2D> calligraphyCheapTattoos;
+    public List<Texture2D> calligraphyCheapBlueTattoos;
+    public List<Texture2D> calligraphyCheapYellowTattoos;
+    public List<int> calligraphyExpensiveColorTattooIdSequences;
+    public List<int> calligraphyCheapColorTattooIdSequences;
+    
     public Texture DefaultFlower, DefaultSkull, DefaultPinup , DefaultCeleb , DefaultCaligraphy , DefaultMoney;
 
     public Texture[] FlowerExpensiveTattos, FlowerCheapTattos;
