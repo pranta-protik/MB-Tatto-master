@@ -71,7 +71,7 @@ public class GameManager : Singleton<GameManager>
         GameObject mainHandObj = handGroups[_handId].mainHand;
         mainHandObj.SetActive(true);
         handGroups[_handId].tattooHand.SetActive(true);
-        _mainHandCollision = mainHandObj.GetComponent<Collsion>();
+        _mainHandCollision = mainHandObj.transform.GetChild(0).GetComponent<Collsion>();
 
         _cameraController.player = mainHandObj;
 
@@ -266,7 +266,7 @@ public class GameManager : Singleton<GameManager>
             {
                 hand.mainHand.gameObject.SetActive(true);
                 hand.tattooHand.gameObject.SetActive(true);
-                _mainHandCollision = hand.mainHand.GetComponent<Collsion>();
+                _mainHandCollision = hand.mainHand.transform.GetChild(0).GetComponent<Collsion>();
                 _cameraController.player = hand.mainHand.gameObject;
                 SetLevelDetails(currentLevelPrefab);
             }

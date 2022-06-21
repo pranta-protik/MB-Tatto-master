@@ -73,8 +73,8 @@ public class Collsion : MonoBehaviour
     {
         _camera = Camera.main;
         
-        _mainHandController = GetComponent<HandController>();
-        _tattooHandController = tattooHand.GetComponent<HandController>();
+        _mainHandController = transform.parent.GetComponent<HandController>();
+        _tattooHandController = tattooHand.transform.parent.GetComponent<HandController>();
         
         _hurtEffect = transform.GetChild(2).GetComponent<ParticleSystem>();
         _shineEffect = transform.GetChild(3).GetComponent<ParticleSystem>();
@@ -338,8 +338,8 @@ public class Collsion : MonoBehaviour
             _playerPathFollower.enabled = false;
             mainHandAnimator.Play("idle");
             tattooHandAnimator.Play("idle");
-            mainHandAnimator.transform.DOLocalMoveX(0, .2f); 
-            tattooHandAnimator.transform.DOLocalMoveX(0, .2f);
+            mainHandAnimator.transform.parent.DOLocalMoveX(0, .2f); 
+            tattooHandAnimator.transform.parent.DOLocalMoveX(0, .2f);
             _mainHandController.enabled = false;
             _tattooHandController.enabled = false;
             

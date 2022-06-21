@@ -127,7 +127,9 @@ public class UiManager : Singleton<UiManager>
 
         if (isInstagramGalleryPhotoUpdated && _isFollowersUpdated)
         {
-            Invoke(nameof(EnableInfluenceMeterScreen), 1f);
+            instagramGalleryPage.transform.GetChild(2).gameObject.SetActive(true);
+            instagramGalleryPage.transform.GetChild(2).DOScale(new Vector3(0.8f, 0.8f, 0.8f), 0.5f).SetLoops(-1, LoopType.Yoyo);
+            // Invoke(nameof(EnableInfluenceMeterScreen), 1f);
             isInstagramGalleryPhotoUpdated = false;
             _isFollowersUpdated = false;
         }
@@ -344,7 +346,7 @@ public class UiManager : Singleton<UiManager>
             instagramPostPage.transform.GetChild(1).GetChild(2).GetChild(1).gameObject.SetActive(true);
             instagramPostPage.transform.GetChild(1).GetChild(2).GetChild(2).gameObject.SetActive(true);
             PlayerPrefs.SetInt("TargetLikeIndex", _targetLikeIndex + 1);
-            Invoke(nameof(EnableInstaGalleryPage), 1.5f);
+            Invoke(nameof(EnableInstagramGalleryPage), 1.5f);
         }
 
         int leftValue = Mathf.RoundToInt(_currentLike) / 1000;
@@ -424,7 +426,7 @@ public class UiManager : Singleton<UiManager>
         }
     }
     
-    private void EnableInstaGalleryPage()
+    private void EnableInstagramGalleryPage()
     {
         instagramPostPage.SetActive(false);
         instagramGalleryPage.SetActive(true);
@@ -442,7 +444,7 @@ public class UiManager : Singleton<UiManager>
         _shouldUpdateFollowersText = true;
     }
     
-    private void EnableInfluenceMeterScreen()
+    public void EnableInfluenceMeterScreen()
     {
         influenceMeterPage.SetActive(true);
         instagramGalleryPage.SetActive(false);

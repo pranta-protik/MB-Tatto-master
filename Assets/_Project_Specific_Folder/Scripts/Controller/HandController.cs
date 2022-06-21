@@ -13,7 +13,7 @@ public class HandController : MonoBehaviour
     [SerializeField] private float mobileSpeed = 0.8f;
     [SerializeField] private float computerSpeed = 15f;
     public ERotationAxis rotationAxis;
-    [SerializeField] private float rotationDuration = 0.5f;
+    [SerializeField] private float rotationDuration = 0.3f;
 
     private float _positionX, _positionY;
     private bool _isTouching;
@@ -67,26 +67,17 @@ public class HandController : MonoBehaviour
 
         if (Input.GetAxis("Horizontal") > .1f)
         {
-            // if (_canTilt)
-            // {
-            //     transform.DOLocalRotate(new Vector3(6, -90, 25), .3f);
-            // }
+            transform.DOLocalRotate(new Vector3(6, -90, 25), .3f);
         }
 
         if (Input.GetAxis("Horizontal") < -.1f)
         {
-            // if (_canTilt)
-            // {
-            //     transform.DOLocalRotate(new Vector3(-6, -90, 25), .3f);
-            // }
+            transform.DOLocalRotate(new Vector3(-6, -90, 25), .3f);
         }
 
         if (Input.GetAxis("Horizontal") == 0)
         {
-            // if (_canTilt)
-            // {
-            //     transform.DOLocalRotate(new Vector3(0, -90, 25), .3f);
-            // }
+            transform.DOLocalRotate(new Vector3(0, -90, 25), .3f);
         }
     }
 
@@ -95,7 +86,7 @@ public class HandController : MonoBehaviour
         if (_canRotate)
         {
             _canRotate = false;
-            transform.DOBlendableRotateBy(new Vector3(0f, 360f, 0f), rotationDuration, RotateMode.FastBeyond360).OnComplete(() => { _canRotate = true; });
+            transform.GetChild(0).DOBlendableRotateBy(new Vector3(0f, 360f, 0f), rotationDuration, RotateMode.FastBeyond360).OnComplete(() => { _canRotate = true; });
         }
     }
 
@@ -104,7 +95,7 @@ public class HandController : MonoBehaviour
         if (_canRotate)
         {
             _canRotate = false;
-            transform.DOLocalRotate(new Vector3(-360f, 0f, 0f), rotationDuration, RotateMode.LocalAxisAdd).SetRelative(true)
+            transform.GetChild(0).DOLocalRotate(new Vector3(-360f, 0f, 0f), rotationDuration, RotateMode.LocalAxisAdd).SetRelative(true)
                 .OnComplete(() => { _canRotate = true; });
         }
     }

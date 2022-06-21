@@ -23,23 +23,25 @@ public class InstagramGallery : MonoBehaviour
         int totalPhotos = PlayerPrefs.GetInt("SnapshotsTaken", 0);
         transform.GetChild(1).GetChild(1).GetComponent<TextMeshProUGUI>().SetText(totalPhotos.ToString());
 
-        if (totalPhotos <= 9)
-        {
-            SpawnPictureFrames(0, totalPhotos);
-        }
-        else
-        {
-            if (totalPhotos % 9 == 1)
-            {
-                SpawnPictureFrames((totalPhotos - ((totalPhotos - 2) % 9)) - 2, totalPhotos);
-            }
-            else
-            {
-                SpawnPictureFrames((totalPhotos - ((totalPhotos - 1) % 9)) - 1, totalPhotos);
-            }
-        }
+        // if (totalPhotos <= 9)
+        // {
+        //     SpawnPictureFrames(0, totalPhotos);
+        // }
+        // else
+        // {
+        //     if (totalPhotos % 9 == 1)
+        //     {
+        //         SpawnPictureFrames((totalPhotos - ((totalPhotos - 2) % 9)) - 2, totalPhotos);
+        //     }
+        //     else
+        //     {
+        //         SpawnPictureFrames((totalPhotos - ((totalPhotos - 1) % 9)) - 1, totalPhotos);
+        //     }
+        // }
+        
+        SpawnPictureFrames(0, totalPhotos);
 
-        int blankPhotos = 9 * (((totalPhotos - 1) / 9) + 1) - totalPhotos;
+        int blankPhotos = (9 * (((totalPhotos - 1) / 9) + 1)) - totalPhotos;
         
         SpawnBlankPictureFrames(blankPhotos);
 
@@ -100,9 +102,12 @@ public class InstagramGallery : MonoBehaviour
                     _lastPictureFrame.transform.DOScale(new Vector3(1f, 1f, 1f), 0.5f).OnComplete(() =>
                     {
                         UiManager.Instance.isInstagramGalleryPhotoUpdated = true;
+                        transform.GetChild(3).gameObject.SetActive(false);
                     });
                     _isDisplayed = true;
                 }
+
+                _isScrollbarSet = false;
             }   
         }
     }
