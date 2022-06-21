@@ -112,9 +112,10 @@ public class InfluenceMeter : MonoBehaviour
         {
             PlayerPrefs.SetInt("PlayerIconYPositionIndex", _yPositionIndex);
             
-            if (playerIconYPositions[_playerIconYPositionIndex + 1].crossedOpponent != null)
+            if (playerIconYPositions[_yPositionIndex].crossedOpponent != null)
             {
-                InfluencerStatus influencerStatus = playerIconYPositions[_playerIconYPositionIndex + 1].crossedOpponent.GetComponent<InfluencerStatus>();
+                Debug.Log("Wrestling");
+                InfluencerStatus influencerStatus = playerIconYPositions[_yPositionIndex].crossedOpponent.GetComponent<InfluencerStatus>();
                 PlayerPrefs.SetInt("InfluencerStatus" + influencerStatus.influencerId, 1);
                 confettiEffect.SetActive(true);
                 influencerStatus.transform.GetChild(0).DOScale(new Vector3(1f, 1f, 1f), 0.5f).SetDelay(0.5f).OnComplete(EnableNextButton);
