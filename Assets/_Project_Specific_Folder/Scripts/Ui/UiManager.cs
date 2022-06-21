@@ -20,6 +20,7 @@ public class UiManager : Singleton<UiManager>
     
     [HideInInspector] public bool isInstagramGalleryPhotoUpdated;
     [HideInInspector] public string followerValue;
+    [HideInInspector] public bool isBadTattoo;
     
     [SerializeField] private GameObject startUI;
     [SerializeField] private GameObject hapticsIcon;
@@ -342,9 +343,14 @@ public class UiManager : Singleton<UiManager>
         else
         {
             _shouldUpdateLikeText = false;
-            instagramPostPage.transform.GetChild(1).GetChild(2).GetChild(0).gameObject.SetActive(true);
-            instagramPostPage.transform.GetChild(1).GetChild(2).GetChild(1).gameObject.SetActive(true);
-            instagramPostPage.transform.GetChild(1).GetChild(2).GetChild(2).gameObject.SetActive(true);
+            if (isBadTattoo)
+            {
+                instagramPostPage.transform.GetChild(1).GetChild(2).GetChild(1).gameObject.SetActive(true);    
+            }
+            else
+            {
+                instagramPostPage.transform.GetChild(1).GetChild(2).GetChild(0).gameObject.SetActive(true);    
+            }
             PlayerPrefs.SetInt("TargetLikeIndex", _targetLikeIndex + 1);
             Invoke(nameof(EnableInstagramGalleryPage), 1.5f);
         }

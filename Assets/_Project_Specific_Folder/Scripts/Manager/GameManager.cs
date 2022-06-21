@@ -57,6 +57,12 @@ public class GameManager : Singleton<GameManager>
 
     public override void Start()
     {
+#if UNITY_EDITOR
+        if (gameMode == EGameMode.Test)
+        {
+            PlaySpecificLevel(specificLevelId);    
+        }
+#endif
         base.Start();
 
         _mainCamera = Camera.main;
@@ -87,13 +93,6 @@ public class GameManager : Singleton<GameManager>
         }
         
         playerPathFollower.enabled = false;
-
-#if UNITY_EDITOR
-        if (gameMode == EGameMode.Test)
-        {
-            PlaySpecificLevel(specificLevelId);    
-        }
-#endif
     }
 
     private void Update()

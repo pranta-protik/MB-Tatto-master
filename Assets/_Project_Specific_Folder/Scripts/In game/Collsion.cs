@@ -217,6 +217,7 @@ public class Collsion : MonoBehaviour
             // Went through last bad gate
             if (gate.isLast)
             {
+                UiManager.Instance.isBadTattoo = true;
                 StartCoroutine(UpdateTattooTexture(cheapTattoos[gate.gateLevel]));    
             }
             else
