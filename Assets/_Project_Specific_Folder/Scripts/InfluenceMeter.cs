@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
@@ -17,22 +16,21 @@ public class InfluenceMeter : MonoBehaviour
 {
     public List<InfluenceMeterAttributes> playerIconYPositions;
     public float playerIconMoveDuration;
-
     public float meterScrollDownThreshold;
     public float meterScrollDownAmount;
     public float meterScrollDownDuration;
     public float meterIconBaseYValue;
-
     public GameObject confettiEffect;
     
     private int _playerIconYPositionIndex;
+    private int _yPositionIndex;
     private float _scrollDownThreshold;
+    private int _targetCash;
     private RectTransform _playerIcon;
     private RectTransform _meterIcon;
     private TextMeshProUGUI _followersText;
     private TextMeshProUGUI _cashText;
-    
-    private int _targetCash;
+
 
     private void Start()
     {
@@ -59,6 +57,22 @@ public class InfluenceMeter : MonoBehaviour
             _playerIcon.anchoredPosition = new Vector2(230f, playerIconYPositions[playerIconYPositions.Count - 1].playerIconYPosition);
         }
 
+        if (UiManager.Instance.isBadTattoo)
+        {
+            if (_playerIconYPositionIndex > 0)
+            {
+                _yPositionIndex = _playerIconYPositionIndex - 1;    
+            }
+            else
+            {
+                _yPositionIndex = _playerIconYPositionIndex;
+            }
+        }
+        else
+        {
+            _yPositionIndex = _playerIconYPositionIndex + 1;
+        }
+        
         _meterIcon = transform.GetChild(1).GetChild(0).GetComponent<RectTransform>();
         _meterIcon.anchoredPosition = new Vector2(0f, PlayerPrefs.GetFloat("MeterIconYValue", meterIconBaseYValue));
         
@@ -67,7 +81,7 @@ public class InfluenceMeter : MonoBehaviour
 
     private void UpdateInfluenceMeter()
     {
-        if (_playerIconYPositionIndex < playerIconYPositions.Count-1)
+        if (_yPositionIndex < playerIconYPositions.Count)
         {
             if (_playerIcon.anchoredPosition.y >= _scrollDownThreshold)
             {
@@ -94,27 +108,9 @@ public class InfluenceMeter : MonoBehaviour
 
     private void UpdatePlayerIcon()
     {
-        int yPositionIndex;
-
-        if (UiManager.Instance.isBadTattoo)
+        _playerIcon.DOAnchorPosY(playerIconYPositions[_yPositionIndex].playerIconYPosition, playerIconMoveDuration).OnComplete(() =>
         {
-            if (_playerIconYPositionIndex > 0)
-            {
-                yPositionIndex = _playerIconYPositionIndex - 1;    
-            }
-            else
-            {
-                yPositionIndex = _playerIconYPositionIndex;
-            }
-        }
-        else
-        {
-            yPositionIndex = _playerIconYPositionIndex + 1;
-        }
-        
-        _playerIcon.DOAnchorPosY(playerIconYPositions[yPositionIndex].playerIconYPosition, playerIconMoveDuration).OnComplete(() =>
-        {
-            PlayerPrefs.SetInt("PlayerIconYPositionIndex", yPositionIndex);
+            PlayerPrefs.SetInt("PlayerIconYPositionIndex", _yPositionIndex);
             
             if (playerIconYPositions[_playerIconYPositionIndex + 1].crossedOpponent != null)
             {
