@@ -466,7 +466,7 @@ public class UiManager : Singleton<UiManager>
             else
             {
                 _targetFollowersIndex = 0;
-                PlayerPrefs.SetInt("TargetFollowersIndex", _targetFollowersIndex + 1);
+                PlayerPrefs.SetInt("TargetFollowersIndex", _targetFollowersIndex);
             }
         }
         else

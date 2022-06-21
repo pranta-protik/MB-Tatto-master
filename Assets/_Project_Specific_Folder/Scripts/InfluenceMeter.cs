@@ -49,6 +49,7 @@ public class InfluenceMeter : MonoBehaviour
         
         _playerIcon = transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<RectTransform>();
         _playerIconYPositionIndex = PlayerPrefs.GetInt("PlayerIconYPositionIndex", 0);
+
         if (_playerIconYPositionIndex < playerIconYPositions.Count)
         {
             _playerIcon.anchoredPosition = new Vector2(230f, playerIconYPositions[_playerIconYPositionIndex].playerIconYPosition);    
@@ -93,9 +94,27 @@ public class InfluenceMeter : MonoBehaviour
 
     private void UpdatePlayerIcon()
     {
-        _playerIcon.DOAnchorPosY(playerIconYPositions[_playerIconYPositionIndex + 1].playerIconYPosition, playerIconMoveDuration).OnComplete(() =>
+        int yPositionIndex;
+
+        if (UiManager.Instance.isBadTattoo)
         {
-            PlayerPrefs.SetInt("PlayerIconYPositionIndex", _playerIconYPositionIndex + 1);
+            if (_playerIconYPositionIndex > 0)
+            {
+                yPositionIndex = _playerIconYPositionIndex - 1;    
+            }
+            else
+            {
+                yPositionIndex = _playerIconYPositionIndex;
+            }
+        }
+        else
+        {
+            yPositionIndex = _playerIconYPositionIndex + 1;
+        }
+        
+        _playerIcon.DOAnchorPosY(playerIconYPositions[yPositionIndex].playerIconYPosition, playerIconMoveDuration).OnComplete(() =>
+        {
+            PlayerPrefs.SetInt("PlayerIconYPositionIndex", yPositionIndex);
             
             if (playerIconYPositions[_playerIconYPositionIndex + 1].crossedOpponent != null)
             {
