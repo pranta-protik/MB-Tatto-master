@@ -12,9 +12,11 @@ public class InstagramGallery : MonoBehaviour
     private Transform _contentTransform;
     private bool _isDisplayed;
     private GameObject _lastPictureFrame;
-    private bool _isScrollbarSet;
+    private bool _isScrollbarValueSet;
+    private bool _isScrollingComplete;
+    private bool _hasScrolledToNextPage;
 
-    
+
     private IEnumerator Start()
     {
         _contentTransform = transform.GetChild(1).GetChild(0).GetChild(0).GetChild(0).GetChild(0);
@@ -23,35 +25,28 @@ public class InstagramGallery : MonoBehaviour
         int totalPhotos = PlayerPrefs.GetInt("SnapshotsTaken", 0);
         transform.GetChild(1).GetChild(1).GetComponent<TextMeshProUGUI>().SetText(totalPhotos.ToString());
 
-        // if (totalPhotos <= 9)
-        // {
-        //     SpawnPictureFrames(0, totalPhotos);
-        // }
-        // else
-        // {
-        //     if (totalPhotos % 9 == 1)
-        //     {
-        //         SpawnPictureFrames((totalPhotos - ((totalPhotos - 2) % 9)) - 2, totalPhotos);
-        //     }
-        //     else
-        //     {
-        //         SpawnPictureFrames((totalPhotos - ((totalPhotos - 1) % 9)) - 1, totalPhotos);
-        //     }
-        // }
-        
         SpawnPictureFrames(0, totalPhotos);
 
         int blankPhotos = (9 * (((totalPhotos - 1) / 9) + 1)) - totalPhotos;
-        
+
         SpawnBlankPictureFrames(blankPhotos);
 
         yield return null;
+
+        _hasScrolledToNextPage = true;
+        _isScrollingComplete = false;
         
-        if (_scrollbar.gameObject.activeSelf)
+        if (totalPhotos > 9 && totalPhotos % 9 == 1)
         {
-            _scrollbar.value = 1;   
+            _hasScrolledToNextPage = false;
+            _scrollbar.value = 1 / Mathf.Floor((float) (totalPhotos - 1) / 9);
         }
-        _isScrollbarSet = true;
+        else
+        {
+            _scrollbar.value = 0f;
+        }
+        
+        _isScrollbarValueSet = true;
     }
 
     private void SpawnPictureFrames(int startIndex, int totalPhotos)
@@ -61,7 +56,7 @@ public class InstagramGallery : MonoBehaviour
             GameObject pictureFrameObj = Instantiate(pictureFramePrefab, _contentTransform.position, Quaternion.identity, _contentTransform);
 
             string filename = $"{Application.persistentDataPath}/Snapshots/" + (i + 1) + ".png";
-            
+
             byte[] savedSnapshot = File.ReadAllBytes(filename);
             Texture2D loadedTexture = new Texture2D(720, 720, TextureFormat.ARGB32, false);
             loadedTexture.LoadImage(savedSnapshot);
@@ -77,7 +72,7 @@ public class InstagramGallery : MonoBehaviour
             }
         }
     }
-    
+
     private void SpawnBlankPictureFrames(int frameNo)
     {
         for (int j = 0; j < frameNo; j++)
@@ -85,30 +80,38 @@ public class InstagramGallery : MonoBehaviour
             Instantiate(pictureFramePrefab, _contentTransform.position, Quaternion.identity, _contentTransform);
         }
     }
-    
+
     private void Update()
     {
-        if (_isScrollbarSet)
+        if (_isScrollbarValueSet)
         {
-            if (_scrollbar.value > 0)
+            if (!_isScrollingComplete)
             {
-                _scrollbar.value -= Time.deltaTime;
-            }
-            else
-            {
-                if (!_isDisplayed)
+                if (!_hasScrolledToNextPage)
+                {
+                    _scrollbar.value -= Time.deltaTime;
+                }
+                else
                 {
                     _scrollbar.value = 0;
-                    _lastPictureFrame.transform.DOScale(new Vector3(1f, 1f, 1f), 0.5f).OnComplete(() =>
-                    {
-                        UiManager.Instance.isInstagramGalleryPhotoUpdated = true;
-                        transform.GetChild(3).gameObject.SetActive(false);
-                    });
-                    _isDisplayed = true;
                 }
-
-                _isScrollbarSet = false;
-            }   
+            
+                if (_scrollbar.value <= 0)
+                {
+                    _hasScrolledToNextPage = true;
+                
+                    if (!_isDisplayed)
+                    {
+                        _lastPictureFrame.transform.DOScale(new Vector3(1f, 1f, 1f), 0.5f).OnComplete(() =>
+                        {
+                            UiManager.Instance.isInstagramGalleryPhotoUpdated = true;
+                            transform.GetChild(3).gameObject.SetActive(false);
+                            _isScrollingComplete = true;
+                        });
+                        _isDisplayed = true;
+                    }
+                }
+            }
         }
     }
 }
