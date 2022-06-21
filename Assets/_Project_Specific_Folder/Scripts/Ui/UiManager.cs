@@ -386,6 +386,7 @@ public class UiManager : Singleton<UiManager>
             instagramPostPage.transform.GetChild(1).GetChild(1).GetComponent<TextMeshProUGUI>().SetText(leftValue + "," + rightString);
         }
     }
+    
     private void UpdateFollowersText()
     {
         if (_currentFollowers < _targetFollowers)
@@ -415,8 +416,6 @@ public class UiManager : Singleton<UiManager>
         {
             _shouldUpdateFollowersText = false;
             PlayerPrefs.SetInt("TargetFollowersIndex", _targetFollowersIndex + 1);
-
-            
             
             if (PlayerPrefs.GetInt("TargetFollowersIndex", 0) < GameManager.Instance.followers.Count)
             {
@@ -436,14 +435,14 @@ public class UiManager : Singleton<UiManager>
     {
         instagramPostPage.SetActive(false);
         instagramGalleryPage.SetActive(true);
-
+        
         _targetFollowersIndex = PlayerPrefs.GetInt("TargetFollowersIndex", 0);
 
         if (_targetFollowersIndex >= GameManager.Instance.followers.Count)
         {
             _targetFollowersIndex = GameManager.Instance.followers.Count - 1;
         }
-        
+
         _targetFollowers = Random.Range(499, 999);
         _currentFollowers = 0;
         _startFollowers = _currentFollowers;
