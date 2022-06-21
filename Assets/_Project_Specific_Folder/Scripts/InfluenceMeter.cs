@@ -114,7 +114,7 @@ public class InfluenceMeter : MonoBehaviour
             
             if (playerIconYPositions[_yPositionIndex].crossedOpponent != null)
             {
-                Debug.Log("Wrestling");
+                // Debug.Log("Wrestling");
                 InfluencerStatus influencerStatus = playerIconYPositions[_yPositionIndex].crossedOpponent.GetComponent<InfluencerStatus>();
                 PlayerPrefs.SetInt("InfluencerStatus" + influencerStatus.influencerId, 1);
                 confettiEffect.SetActive(true);
@@ -122,6 +122,8 @@ public class InfluenceMeter : MonoBehaviour
             }
             else
             {
+                // GameManager.Instance.WrestlingSetup();
+                // gameObject.SetActive(false);
                 EnableNextButton();
             }
         });   

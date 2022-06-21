@@ -52,6 +52,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private List<HandGroup> handGroups = new List<HandGroup>();
     [SerializeField] private PathFollower playerPathFollower;
     [SerializeField] private GameObject tattooGun;
+    [SerializeField] private Transform wrestlingCameraTransform;
 
     private int _handId;
     private Collsion _mainHandCollision;
@@ -59,7 +60,7 @@ public class GameManager : Singleton<GameManager>
     private CameraController _cameraController;
     private TextureManager _textureManager;
     private GameObject _pathObj;
-    // public GameObject Boss;
+    [SerializeField] private GameObject _boss;
     // public GameObject PivotParent;
 
     public EGameMode gameMode;
@@ -107,6 +108,10 @@ public class GameManager : Singleton<GameManager>
 
     private void Update()
     {
+        if (_boss == null)
+        {
+            _boss = GameObject.Find("npc_Boss");
+        }
         // if (Boss == null)
         // {
         //     Boss = GameObject.Find("npc_Boss");
@@ -301,5 +306,32 @@ public class GameManager : Singleton<GameManager>
         Camera.main.DOFieldOfView(58, 1);
         yield return new WaitForSeconds(1);
         Camera.main.DOFieldOfView(70, .5f);
+    }
+    
+    public void WrestlingSetup()
+    {
+        Transform mainHandParent = _mainHandCollision.transform.parent;
+        
+        mainHandParent.parent.DOLocalMoveX(33.07f, 0.01f);
+        
+        Transform tattooHandParent = _mainHandCollision.tattooHand.transform.parent;
+
+        mainHandParent.DOLocalMoveX(0.48f, 0.01f);
+        mainHandParent.DOLocalMoveY(5.74f, 0.01f);
+        tattooHandParent.DOLocalMoveX(0.48f, .01f);
+        tattooHandParent.DOLocalMoveY(5.74f, 0.01f);
+        
+        _cameraController.enabled = false;
+        _mainCamera.transform.DOMove(wrestlingCameraTransform.position, 0.01f).SetDelay(0.01f);
+        _mainCamera.transform.DORotate(wrestlingCameraTransform.eulerAngles, 0.01f).SetDelay(0.01f);
+        _mainCamera.fieldOfView = 90f;
+        
+        mainHandParent.DOLocalRotate(new Vector3(0, -90, 9), .01f).SetDelay(.02f);
+        tattooHandParent.DOLocalRotate(new Vector3(0, -90, 9), .01f).SetDelay(.02f);
+
+        _mainHandCollision.mainHandAnimator.Play("Wrestle");
+        _mainHandCollision.tattooHandAnimator.Play("Wrestle");
+        
+        _boss.transform.GetComponent<Animator>().enabled = true;
     }
 }

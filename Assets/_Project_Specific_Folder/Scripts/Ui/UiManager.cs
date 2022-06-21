@@ -311,6 +311,7 @@ public class UiManager : Singleton<UiManager>
         mobileScreen.transform.GetChild(8).GetComponent<Image>().DOColor(Color.white, 0.5f).OnComplete(() =>
         {
             mobileScreen.SetActive(false);
+            _isMobileActive = false;
             instagramPostPage.SetActive(true);
             instagramPostPage.transform.GetChild(2).GetComponent<Image>().DOFade(0, 0.5f);
             _targetLikeIndex = PlayerPrefs.GetInt("TargetLikeIndex", 0);
