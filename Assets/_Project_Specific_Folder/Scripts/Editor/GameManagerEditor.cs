@@ -12,6 +12,7 @@ public class GameManagerEditor : Editor
         EditorGUILayout.PropertyField(serializedObject.FindProperty("levelPrefabs"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("likes"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("followers"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("followers2"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("handGroups"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("playerPathFollower"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("tattooGun"));

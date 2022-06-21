@@ -6,6 +6,7 @@ using DG.Tweening;
 using PathCreation.Examples;
 using System;
 using PathCreation;
+using UnityEngine.Serialization;
 
 public enum ERotationAxis
 {
@@ -20,6 +21,14 @@ public class HandGroup
     public GameObject tattooHand;
 }
 
+[Serializable]
+public struct FollowerInfoSet
+{
+    public int value;
+    public string scale;
+    [Range(0, 999)] public int randomRange;
+}
+
 public class GameManager : Singleton<GameManager>
 {
     public enum EGameMode
@@ -31,7 +40,8 @@ public class GameManager : Singleton<GameManager>
     public int totalLevelNo = 50;
     public List<GameObject> levelPrefabs = new List<GameObject>();
     public List<int> likes = new List<int>();
-    public List<string> followers = new List<string>();
+    public List<FollowerInfoSet> followers = new List<FollowerInfoSet>();
+    [FormerlySerializedAs("followers")] public List<string> followers2 = new List<string>();
 
     [HideInInspector] public int currentLevelNo;
     [HideInInspector] public GameObject currentLevelPrefab;

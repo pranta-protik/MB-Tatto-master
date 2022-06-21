@@ -394,13 +394,13 @@ public class UiManager : Singleton<UiManager>
             _currentFollowers += ((_targetFollowers - _startFollowers) / 1.5f) * Time.deltaTime;
             _currentFollowers = Mathf.Clamp(_currentFollowers, 0, _targetFollowers);
 
-            string followerString = GameManager.Instance.followers[_targetFollowersIndex];
-         
-            if (followerString.EndsWith("K"))
+            FollowerInfoSet followerInfoSet = GameManager.Instance.followers[_targetFollowersIndex];
+
+            if (followerInfoSet.scale == "K")
             {
                 _followerValueLetter = "K";
             }
-            else if (followerString.EndsWith("M"))
+            else if (followerInfoSet.scale == "M")
             {
                 _followerValueLetter = "M";
             }
@@ -415,28 +415,64 @@ public class UiManager : Singleton<UiManager>
         else
         {
             _shouldUpdateFollowersText = false;
-            PlayerPrefs.SetInt("TargetFollowersIndex", _targetFollowersIndex + 1);
-            
-            if (PlayerPrefs.GetInt("TargetFollowersIndex", 0) < GameManager.Instance.followers.Count)
+            if (isBadTattoo)
             {
-                followerValue = GameManager.Instance.followers[_targetFollowersIndex];
+                instagramGalleryPage.transform.GetChild(1).GetChild(2).GetChild(0).DOKill();
+                instagramGalleryPage.transform.GetChild(1).GetChild(2).GetChild(0).gameObject.SetActive(false);    
+            }
+
+            if (PlayerPrefs.GetInt("TargetFollowersIndex", 0) <= GameManager.Instance.followers.Count)
+            {
+                int randomRange = GameManager.Instance.followers[_targetFollowersIndex].randomRange;
+                
+                int totalFollowers;
+                
+                if (isBadTattoo)
+                {
+                    totalFollowers = GameManager.Instance.followers[_targetFollowersIndex].value + Random.Range(-randomRange, 0);
+                }
+                else
+                {
+                    totalFollowers = GameManager.Instance.followers[_targetFollowersIndex].value + Random.Range(0, randomRange);
+                }
+                
+                followerValue = totalFollowers + GameManager.Instance.followers[_targetFollowersIndex].scale;
             }
             else
             {
                 followerValue = Random.Range(899, 999) + "M";
+                PlayerPrefs.SetInt("TargetFollowersIndex", GameManager.Instance.followers.Count);
             }
             
             instagramGalleryPage.transform.GetChild(1).GetChild(2).GetComponent<TextMeshProUGUI>().SetText(followerValue);
             _isFollowersUpdated = true;
         }
     }
-    
+
     private void EnableInstagramGalleryPage()
     {
         instagramPostPage.SetActive(false);
         instagramGalleryPage.SetActive(true);
-        
+
         _targetFollowersIndex = PlayerPrefs.GetInt("TargetFollowersIndex", 0);
+
+        if (isBadTattoo)
+        {
+            if (_targetFollowersIndex > 1)
+            {
+                _targetFollowersIndex -= 2;
+                PlayerPrefs.SetInt("TargetFollowersIndex", _targetFollowersIndex + 1);
+            }
+            else
+            {
+                _targetFollowersIndex = 0;
+                PlayerPrefs.SetInt("TargetFollowersIndex", _targetFollowersIndex + 1);
+            }
+        }
+        else
+        {
+            PlayerPrefs.SetInt("TargetFollowersIndex", _targetFollowersIndex + 1);
+        }
 
         if (_targetFollowersIndex >= GameManager.Instance.followers.Count)
         {
@@ -447,8 +483,16 @@ public class UiManager : Singleton<UiManager>
         _currentFollowers = 0;
         _startFollowers = _currentFollowers;
         _shouldUpdateFollowersText = true;
+
+        if (isBadTattoo)
+        {
+            instagramGalleryPage.transform.GetChild(1).GetChild(2).GetChild(0).gameObject.SetActive(true);
+            instagramGalleryPage.transform.GetChild(1).GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>().DOFade(0f, 0.3f).SetLoops(-1, LoopType.Restart);
+            instagramGalleryPage.transform.GetChild(1).GetChild(2).GetChild(0).GetComponent<RectTransform>().DOAnchorPosY(100f, 0.3f)
+                .SetLoops(-1, LoopType.Restart);
+        }
     }
-    
+
     public void EnableInfluenceMeterScreen()
     {
         influenceMeterPage.SetActive(true);
