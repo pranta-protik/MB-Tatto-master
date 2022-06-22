@@ -16564,8 +16564,6 @@ MonoBehaviour:
   playerPathFollower: {fileID: 378904803}
   tattooGun: {fileID: 709119814}
   wrestlingCameraTransform: {fileID: 2040196989}
-  _boss: {fileID: 0}
-  _fightingRing: {fileID: 0}
   gameMode: 1
   specificLevelId: 0
 --- !u!1 &1302367778
@@ -32760,6 +32758,7 @@ MonoBehaviour:
   totalScoreText: {fileID: 1937837366}
   unlockPanel: {fileID: 8886289068977303665}
   instagramPostPage: {fileID: 845298533}
+  tapFastPanel: {fileID: 1698252271999335891}
   isInstagramGalleryPhotoUpdated: 0
   followerValue: 
   isBadTattoo: 0

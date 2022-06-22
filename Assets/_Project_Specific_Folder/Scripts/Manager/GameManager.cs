@@ -5,6 +5,7 @@ using Singleton;
 using DG.Tweening;
 using PathCreation.Examples;
 using System;
+using MySDK;
 using PathCreation;
 using UnityEngine.Serialization;
 
@@ -60,9 +61,13 @@ public class GameManager : Singleton<GameManager>
     private CameraController _cameraController;
     private TextureManager _textureManager;
     private GameObject _pathObj;
-    [SerializeField] private GameObject _boss;
-    [SerializeField] private GameObject _fightingRing;
-    // public GameObject PivotParent;
+    private GameObject _boss;
+    private GameObject _fightingRing;
+    private GameObject _wrestlingPivot;
+    private bool _isWrestling;
+    private float _timeLeft;
+    private float _timerInitialValue;
+    private bool _isClicked;
 
     public EGameMode gameMode;
     [SerializeField] private int specificLevelId;
@@ -113,17 +118,61 @@ public class GameManager : Singleton<GameManager>
         {
             _boss = GameObject.Find("npc_Boss");
             _fightingRing = _boss.transform.parent.GetChild(4).gameObject;
-            WrestlingSetup();
         }
-        // if (Boss == null)
-        // {
-        //     Boss = GameObject.Find("npc_Boss");
-        // }
-        //
-        // if (PivotParent == null)
-        // {
-        //     PivotParent = GameObject.Find("Parent");
-        // }
+
+        if (_wrestlingPivot == null)
+        {
+            _wrestlingPivot = GameObject.Find("WrestlingPivot");
+        }
+
+        if (isGameOver)
+        {
+            return;
+        }
+        
+        if (Input.GetMouseButton(0))
+        {
+            if (_wrestlingPivot != null)
+            {
+                _wrestlingPivot.transform.DOKill();
+            }
+        }
+        
+        if (_isWrestling)
+        {
+            if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
+            {
+                _timeLeft = 0.4f;
+
+                if (_timerInitialValue < 1f)
+                {
+                    _timerInitialValue += 0.12f;
+
+                    _wrestlingPivot.GetComponent<Rotator>().enabled = false;
+                    _wrestlingPivot.transform.DOLocalRotate(new Vector3(_wrestlingPivot.transform.eulerAngles.x + _timerInitialValue + 16f, 0f, 0f), 0.1f);
+                    _isClicked = true;
+                }
+            }
+            else
+            {
+                if (_isClicked)
+                {
+                    _timeLeft -= Time.deltaTime;
+
+                    if (_timeLeft < 0)
+                    {
+                        _timeLeft = 0.4f;
+                        _wrestlingPivot.transform.DOLocalRotate(new Vector3(-22f, 0f, 0f), 1.5f).SetEase(Ease.InSine);
+                        _isClicked = false;
+                    }
+                }
+            }
+
+            if (_timerInitialValue > 0)
+            {
+                _timerInitialValue -= 0.0071f;
+            }
+        }
     }
 
     private void PlaySpecificLevel(int levelId)
@@ -252,8 +301,6 @@ public class GameManager : Singleton<GameManager>
     public void StartGameplay()
     {
         UiManager.Instance.ClearUIOnGameStart();
-        // PivotParent = GameObject.FindGameObjectWithTag("PivotParent");
-        // Boss = GameObject.FindGameObjectWithTag("EndIt");
         playerPathFollower.transform.DOMoveX(.1f, .5f).OnComplete(() =>
         {
             tattooGun.transform.GetComponentInChildren<Animator>().enabled = true;
@@ -313,29 +360,40 @@ public class GameManager : Singleton<GameManager>
     
     public void WrestlingSetup()
     {
-        Transform mainHandParent = _mainHandCollision.transform.parent;
-
-        mainHandParent.parent.position = new Vector3(33.07f, 0f, 0f);
+        Transform mainHandTransform = _mainHandCollision.transform.parent;
+        Transform tattooHandTransform = _mainHandCollision.tattooHand.transform.parent;
+        Transform playerTransform = mainHandTransform.parent;
         
-        Transform tattooHandParent = _mainHandCollision.tattooHand.transform.parent;
+        playerTransform.position = new Vector3(33.07f, 0f, 0f);
+        mainHandTransform.localPosition = new Vector3(0.48f, 5.74f, 3.12f);
+        tattooHandTransform.localPosition = new Vector3(0.48f, 5.74f, 3.12f);
 
-        mainHandParent.localPosition = new Vector3(0.48f, 5.74f, 3.12f);
-        tattooHandParent.localPosition = new Vector3(0.48f, 5.74f, 3.12f);
-        
         _cameraController.enabled = false;
+        
         Transform mainCameraTransform = _mainCamera.transform;
         mainCameraTransform.position = wrestlingCameraTransform.position;
         mainCameraTransform.eulerAngles = wrestlingCameraTransform.eulerAngles;
         _mainCamera.fieldOfView = 75f;
 
-        mainHandParent.localEulerAngles = new Vector3(0f, -90f, 9f);
-        tattooHandParent.localEulerAngles = new Vector3(0f, -90f, 9f);
+        mainHandTransform.localEulerAngles = new Vector3(0f, -90f, 9f);
+        tattooHandTransform.localEulerAngles = new Vector3(0f, -90f, 9f);
+        
+        Transform endTransform = _boss.transform.parent;
+        
+        mainCameraTransform.parent = endTransform;
+        
+        playerTransform.parent = _wrestlingPivot.transform;
+        _boss.transform.parent = _wrestlingPivot.transform;
         
         _mainHandCollision.mainHandAnimator.Play("Wrestle");
         _mainHandCollision.tattooHandAnimator.Play("Wrestle");
-
         _fightingRing.SetActive(true);
         _boss.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().enabled = true;
         _boss.transform.GetComponent<Animator>().enabled = true;
+        
+        endTransform.GetChild(4).GetComponent<EndDetector>().endEffect.Play();
+        _wrestlingPivot.GetComponent<Rotator>().enabled = true;
+        UiManager.Instance.tapFastPanel.SetActive(true);
+        _isWrestling = true;
     }
 }

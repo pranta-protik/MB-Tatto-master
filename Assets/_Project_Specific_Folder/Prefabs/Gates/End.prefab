@@ -2461,7 +2461,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6584894907748211669
 Transform:
   m_ObjectHideFlags: 0
@@ -2515,7 +2515,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6584894907769335102}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.471, y: -0.007, z: 0.872}
+  m_LocalPosition: {x: 0.858, y: -0.007, z: 0.872}
   m_LocalScale: {x: 0.25566, y: 0.25566, z: 0.25566}
   m_Children: []
   m_Father: {fileID: 6584894908158495147}
@@ -2595,14 +2595,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9823dd4ab3a319a4b9593d4fd7f038bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EndParticle: {fileID: 6584894906781331017}
+  endEffect: {fileID: 6584894906781331017}
   Confetti: {fileID: 3273942903325229515}
   Cam: {fileID: 5551814404551859958}
-  TattoWall: {fileID: 1640809947}
-  SavedTattooNo: 0
   End: {fileID: 6584894908158495146}
-  Book: {fileID: 3787622171575995213}
-  PageToFlipRef: {fileID: 0}
 --- !u!1 &6584894907833973776
 GameObject:
   m_ObjectHideFlags: 0
@@ -3074,7 +3070,7 @@ GameObject:
   - component: {fileID: 6584894908530618923}
   - component: {fileID: 6584894908530618924}
   m_Layer: 0
-  m_Name: Parent
+  m_Name: WrestlingPivot
   m_TagString: PivotParent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

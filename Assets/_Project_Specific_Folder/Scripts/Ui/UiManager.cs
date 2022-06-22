@@ -16,7 +16,7 @@ public class UiManager : Singleton<UiManager>
     public TextMeshProUGUI totalScoreText;
     public GameObject unlockPanel;
     public GameObject instagramPostPage;
-    // public GameObject tapFastPanel;
+    public GameObject tapFastPanel;
     
     [HideInInspector] public bool isInstagramGalleryPhotoUpdated;
     [HideInInspector] public string followerValue;
