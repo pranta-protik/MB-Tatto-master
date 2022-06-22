@@ -362,20 +362,6 @@ public class GameManager : Singleton<GameManager>
 
     #endregion
 
-
-    public void ZoomEffect()
-    {
-        StartCoroutine(CamZoomInAndOutRoutine());
-    }
-
-    private IEnumerator CamZoomInAndOutRoutine()
-    {
-
-        Camera.main.DOFieldOfView(58, 1);
-        yield return new WaitForSeconds(1);
-        Camera.main.DOFieldOfView(70, .5f);
-    }
-    
     public void WrestlingSetup()
     {
         Transform mainHandTransform = _mainHandCollision.transform.parent;

@@ -1074,7 +1074,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &244380404
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3623,7 +3623,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -15647,7 +15647,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -30611,7 +30611,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1961694458
 RectTransform:
   m_ObjectHideFlags: 0
@@ -34223,6 +34223,26 @@ PrefabInstance:
       propertyPath: tattooHand
       value: 
       objectReference: {fileID: 7832248518231674475}
+    - target: {fileID: 7179476445629626870, guid: ff5bb6af1544da04d96660e9ad6012ba, type: 3}
+      propertyPath: animationClips.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179476445629626870, guid: ff5bb6af1544da04d96660e9ad6012ba, type: 3}
+      propertyPath: animationClips.Array.data[2]
+      value: 
+      objectReference: {fileID: 1827226128182048838, guid: c8f36304281f6aa4f91f2b6d35ba85ac, type: 3}
+    - target: {fileID: 7179476445629626870, guid: ff5bb6af1544da04d96660e9ad6012ba, type: 3}
+      propertyPath: animationClips.Array.data[3]
+      value: 
+      objectReference: {fileID: 1827226128182048838, guid: 9b0b45da5cc940941adfa66e0cf46eeb, type: 3}
+    - target: {fileID: 7179476445629626870, guid: ff5bb6af1544da04d96660e9ad6012ba, type: 3}
+      propertyPath: animationClips.Array.data[4]
+      value: 
+      objectReference: {fileID: 1827226128182048838, guid: 99393eb8e65b1f44ea6fe8fde70a91bd, type: 3}
+    - target: {fileID: 7179476445629626870, guid: ff5bb6af1544da04d96660e9ad6012ba, type: 3}
+      propertyPath: animationClips.Array.data[5]
+      value: 
+      objectReference: {fileID: 1827226128182048838, guid: b5c870e396d9b7846875a79e64f2f6b5, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff5bb6af1544da04d96660e9ad6012ba, type: 3}
 --- !u!114 &1806091794744798197
@@ -36342,6 +36362,26 @@ PrefabInstance:
       propertyPath: tattooHand
       value: 
       objectReference: {fileID: 3659479601469744737}
+    - target: {fileID: 4865309119367901031, guid: 4c3dd0da40a3fb848bae1d09f915b86e, type: 3}
+      propertyPath: animationClips.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4865309119367901031, guid: 4c3dd0da40a3fb848bae1d09f915b86e, type: 3}
+      propertyPath: animationClips.Array.data[2]
+      value: 
+      objectReference: {fileID: 1827226128182048838, guid: c8f36304281f6aa4f91f2b6d35ba85ac, type: 3}
+    - target: {fileID: 4865309119367901031, guid: 4c3dd0da40a3fb848bae1d09f915b86e, type: 3}
+      propertyPath: animationClips.Array.data[3]
+      value: 
+      objectReference: {fileID: 1827226128182048838, guid: 9b0b45da5cc940941adfa66e0cf46eeb, type: 3}
+    - target: {fileID: 4865309119367901031, guid: 4c3dd0da40a3fb848bae1d09f915b86e, type: 3}
+      propertyPath: animationClips.Array.data[4]
+      value: 
+      objectReference: {fileID: 1827226128182048838, guid: 99393eb8e65b1f44ea6fe8fde70a91bd, type: 3}
+    - target: {fileID: 4865309119367901031, guid: 4c3dd0da40a3fb848bae1d09f915b86e, type: 3}
+      propertyPath: animationClips.Array.data[5]
+      value: 
+      objectReference: {fileID: 1827226128182048838, guid: b5c870e396d9b7846875a79e64f2f6b5, type: 3}
     - target: {fileID: 8039899488268246028, guid: 4c3dd0da40a3fb848bae1d09f915b86e, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -37223,6 +37263,26 @@ PrefabInstance:
       propertyPath: tattooHand
       value: 
       objectReference: {fileID: 7515832934746179071}
+    - target: {fileID: 7408318824966767444, guid: 855b4e00de35276468e05a8c3ba8d153, type: 3}
+      propertyPath: animationClips.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7408318824966767444, guid: 855b4e00de35276468e05a8c3ba8d153, type: 3}
+      propertyPath: animationClips.Array.data[2]
+      value: 
+      objectReference: {fileID: 1827226128182048838, guid: c8f36304281f6aa4f91f2b6d35ba85ac, type: 3}
+    - target: {fileID: 7408318824966767444, guid: 855b4e00de35276468e05a8c3ba8d153, type: 3}
+      propertyPath: animationClips.Array.data[3]
+      value: 
+      objectReference: {fileID: 1827226128182048838, guid: 9b0b45da5cc940941adfa66e0cf46eeb, type: 3}
+    - target: {fileID: 7408318824966767444, guid: 855b4e00de35276468e05a8c3ba8d153, type: 3}
+      propertyPath: animationClips.Array.data[4]
+      value: 
+      objectReference: {fileID: 1827226128182048838, guid: 99393eb8e65b1f44ea6fe8fde70a91bd, type: 3}
+    - target: {fileID: 7408318824966767444, guid: 855b4e00de35276468e05a8c3ba8d153, type: 3}
+      propertyPath: animationClips.Array.data[5]
+      value: 
+      objectReference: {fileID: 1827226128182048838, guid: b5c870e396d9b7846875a79e64f2f6b5, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 855b4e00de35276468e05a8c3ba8d153, type: 3}
 --- !u!4 &5093343526865378588
@@ -37712,6 +37772,26 @@ PrefabInstance:
       propertyPath: tattooHand
       value: 
       objectReference: {fileID: 3079122293006734259}
+    - target: {fileID: 3804638346214202652, guid: 9973a38941b2ccf4aba7e74a82e60588, type: 3}
+      propertyPath: animationClips.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3804638346214202652, guid: 9973a38941b2ccf4aba7e74a82e60588, type: 3}
+      propertyPath: animationClips.Array.data[2]
+      value: 
+      objectReference: {fileID: 1827226128182048838, guid: c8f36304281f6aa4f91f2b6d35ba85ac, type: 3}
+    - target: {fileID: 3804638346214202652, guid: 9973a38941b2ccf4aba7e74a82e60588, type: 3}
+      propertyPath: animationClips.Array.data[3]
+      value: 
+      objectReference: {fileID: 1827226128182048838, guid: 9b0b45da5cc940941adfa66e0cf46eeb, type: 3}
+    - target: {fileID: 3804638346214202652, guid: 9973a38941b2ccf4aba7e74a82e60588, type: 3}
+      propertyPath: animationClips.Array.data[4]
+      value: 
+      objectReference: {fileID: 1827226128182048838, guid: 99393eb8e65b1f44ea6fe8fde70a91bd, type: 3}
+    - target: {fileID: 3804638346214202652, guid: 9973a38941b2ccf4aba7e74a82e60588, type: 3}
+      propertyPath: animationClips.Array.data[5]
+      value: 
+      objectReference: {fileID: 1827226128182048838, guid: b5c870e396d9b7846875a79e64f2f6b5, type: 3}
     - target: {fileID: 5283058355887180928, guid: 9973a38941b2ccf4aba7e74a82e60588, type: 3}
       propertyPath: m_Name
       value: DefaultDogHand
@@ -49009,6 +49089,26 @@ PrefabInstance:
       propertyPath: tattooHand
       value: 
       objectReference: {fileID: 5288263670482054004}
+    - target: {fileID: 5082910058654942328, guid: 94a1d664f950a39408aed1ba5658df2c, type: 3}
+      propertyPath: animationClips.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5082910058654942328, guid: 94a1d664f950a39408aed1ba5658df2c, type: 3}
+      propertyPath: animationClips.Array.data[2]
+      value: 
+      objectReference: {fileID: 1827226128182048838, guid: c8f36304281f6aa4f91f2b6d35ba85ac, type: 3}
+    - target: {fileID: 5082910058654942328, guid: 94a1d664f950a39408aed1ba5658df2c, type: 3}
+      propertyPath: animationClips.Array.data[3]
+      value: 
+      objectReference: {fileID: 1827226128182048838, guid: 9b0b45da5cc940941adfa66e0cf46eeb, type: 3}
+    - target: {fileID: 5082910058654942328, guid: 94a1d664f950a39408aed1ba5658df2c, type: 3}
+      propertyPath: animationClips.Array.data[4]
+      value: 
+      objectReference: {fileID: 1827226128182048838, guid: 99393eb8e65b1f44ea6fe8fde70a91bd, type: 3}
+    - target: {fileID: 5082910058654942328, guid: 94a1d664f950a39408aed1ba5658df2c, type: 3}
+      propertyPath: animationClips.Array.data[5]
+      value: 
+      objectReference: {fileID: 1827226128182048838, guid: b5c870e396d9b7846875a79e64f2f6b5, type: 3}
     - target: {fileID: 6092641735767969210, guid: 94a1d664f950a39408aed1ba5658df2c, type: 3}
       propertyPath: m_Name
       value: DefaultBuffHand02
@@ -64687,6 +64787,26 @@ PrefabInstance:
       propertyPath: tattooHand
       value: 
       objectReference: {fileID: 3315578334142132464}
+    - target: {fileID: 155209435541467928, guid: 4f17130cb9af23b43832c26c8d7a2c6b, type: 3}
+      propertyPath: animationClips.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 155209435541467928, guid: 4f17130cb9af23b43832c26c8d7a2c6b, type: 3}
+      propertyPath: animationClips.Array.data[2]
+      value: 
+      objectReference: {fileID: 1827226128182048838, guid: c8f36304281f6aa4f91f2b6d35ba85ac, type: 3}
+    - target: {fileID: 155209435541467928, guid: 4f17130cb9af23b43832c26c8d7a2c6b, type: 3}
+      propertyPath: animationClips.Array.data[3]
+      value: 
+      objectReference: {fileID: 1827226128182048838, guid: 9b0b45da5cc940941adfa66e0cf46eeb, type: 3}
+    - target: {fileID: 155209435541467928, guid: 4f17130cb9af23b43832c26c8d7a2c6b, type: 3}
+      propertyPath: animationClips.Array.data[4]
+      value: 
+      objectReference: {fileID: 1827226128182048838, guid: 99393eb8e65b1f44ea6fe8fde70a91bd, type: 3}
+    - target: {fileID: 155209435541467928, guid: 4f17130cb9af23b43832c26c8d7a2c6b, type: 3}
+      propertyPath: animationClips.Array.data[5]
+      value: 
+      objectReference: {fileID: 1827226128182048838, guid: b5c870e396d9b7846875a79e64f2f6b5, type: 3}
     - target: {fileID: 2439555051829516803, guid: 4f17130cb9af23b43832c26c8d7a2c6b, type: 3}
       propertyPath: m_RootOrder
       value: 6
