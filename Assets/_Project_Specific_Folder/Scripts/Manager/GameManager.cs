@@ -190,6 +190,7 @@ public class GameManager : Singleton<GameManager>
         _wrestlingPivot.transform.DOLocalRotate(new Vector3(-40f, -20f, 20f), 0.3f);
         _mainHandCollision.mainHandAnimator.Play("g 0 0");
         _mainHandCollision.tattooHandAnimator.Play("g 0 0");
+        StartCoroutine(UiManager.Instance.CrossOpponentOnInfluenceMeter());
     }
     
     private void PlaySpecificLevel(int levelId)

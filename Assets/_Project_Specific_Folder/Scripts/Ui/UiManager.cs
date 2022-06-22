@@ -499,6 +499,12 @@ public class UiManager : Singleton<UiManager>
         influenceMeterPage.SetActive(true);
         instagramGalleryPage.SetActive(false);
     }
+
+    public IEnumerator CrossOpponentOnInfluenceMeter()
+    {
+        yield return new WaitForSeconds(2f);
+        influenceMeterPage.GetComponent<InfluenceMeter>().CrossOpponentVisual();
+    }
     
     #endregion
     

@@ -30,7 +30,7 @@ public class InfluenceMeter : MonoBehaviour
     private RectTransform _meterIcon;
     private TextMeshProUGUI _followersText;
     private TextMeshProUGUI _cashText;
-
+    private InfluencerStatus _influencerStatus;
 
     private void Start()
     {
@@ -114,21 +114,40 @@ public class InfluenceMeter : MonoBehaviour
             
             if (playerIconYPositions[_yPositionIndex].crossedOpponent != null)
             {
-                // Debug.Log("Wrestling");
-                InfluencerStatus influencerStatus = playerIconYPositions[_yPositionIndex].crossedOpponent.GetComponent<InfluencerStatus>();
-                PlayerPrefs.SetInt("InfluencerStatus" + influencerStatus.influencerId, 1);
-                confettiEffect.SetActive(true);
-                influencerStatus.transform.GetChild(0).DOScale(new Vector3(1f, 1f, 1f), 0.5f).SetDelay(0.5f).OnComplete(EnableNextButton);
+                _influencerStatus = playerIconYPositions[_yPositionIndex].crossedOpponent.GetComponent<InfluencerStatus>();
+                
+                if (PlayerPrefs.GetInt("InfluencerStatus" + _influencerStatus.influencerId, 0) == 0)
+                {
+                    transform.GetChild(0).gameObject.SetActive(false);
+                    transform.GetChild(1).gameObject.SetActive(false);
+                    transform.GetChild(2).gameObject.SetActive(false);
+                    transform.GetChild(3).gameObject.SetActive(false);
+                    GameManager.Instance.WrestlingSetup();    
+                }
+                else
+                {
+                    EnableNextButton();
+                }
             }
             else
             {
-                GameManager.Instance.WrestlingSetup();
-                gameObject.SetActive(false);
                 EnableNextButton();
             }
         });   
     }
 
+    public void CrossOpponentVisual()
+    {
+        transform.GetChild(0).gameObject.SetActive(true);
+        transform.GetChild(1).gameObject.SetActive(true);
+        transform.GetChild(2).gameObject.SetActive(true);
+        transform.GetChild(3).gameObject.SetActive(true);
+        
+        PlayerPrefs.SetInt("InfluencerStatus" + _influencerStatus.influencerId, 1);
+        confettiEffect.SetActive(true);
+        _influencerStatus.transform.GetChild(0).DOScale(new Vector3(1f, 1f, 1f), 0.5f).SetDelay(0.5f).OnComplete(EnableNextButton);
+    }
+    
     private void EnableNextButton()
     {
         transform.GetChild(4).gameObject.SetActive(true);
