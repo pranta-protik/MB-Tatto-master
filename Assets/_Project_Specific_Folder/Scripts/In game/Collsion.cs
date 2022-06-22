@@ -65,10 +65,6 @@ public class Collsion : MonoBehaviour
     private float _playerInitialSpeed;
     private Camera _camera;
 
-    // public float Multiplier;
-    // public bool StartTapRoutine;
-    // private static readonly int IsWrestling = Animator.StringToHash("isWrestling");
-    
     private void Start()
     {
         _camera = Camera.main;

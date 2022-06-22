@@ -138,7 +138,7 @@ public class GameManager : Singleton<GameManager>
             }
         }
         
-        if (_isWrestling)
+        if (_isWrestling && !isGameOver)
         {
             if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
             {
@@ -150,6 +150,8 @@ public class GameManager : Singleton<GameManager>
 
                     _wrestlingPivot.GetComponent<Rotator>().enabled = false;
                     _wrestlingPivot.transform.DOLocalRotate(new Vector3(_wrestlingPivot.transform.eulerAngles.x + _timerInitialValue + 16f, 0f, 0f), 0.1f);
+                    _mainCamera.transform.DOShakePosition(1.5f, 0.01f);
+                    _mainCamera.DOFieldOfView(55, 2f);
                     _isClicked = true;
                 }
             }
@@ -175,6 +177,21 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
+    public void FinishWrestling()
+    {
+        UiManager.Instance.tapFastPanel.SetActive(false);
+        _mainCamera.DOKill();
+        _mainCamera.transform.DOShakePosition(1f, .1f);
+        _mainCamera.DOFieldOfView(70f, 1f);
+        isGameOver = true;
+        _wrestlingPivot.transform.GetChild(1).parent = null;
+        _mainHandCollision.transform.parent.DOLocalMoveY(0.8f, 0.3f);
+        _mainHandCollision.tattooHand.transform.parent.DOLocalMoveY(0.8f, 0.3f);
+        _wrestlingPivot.transform.DOLocalRotate(new Vector3(-40f, -20f, 20f), 0.3f);
+        _mainHandCollision.mainHandAnimator.Play("g 0 0");
+        _mainHandCollision.tattooHandAnimator.Play("g 0 0");
+    }
+    
     private void PlaySpecificLevel(int levelId)
     {
         currentLevelNo = levelId;

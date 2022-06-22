@@ -1,52 +1,28 @@
+using System;
 using System.Collections;
 using UnityEngine;
-using DG.Tweening;
 using MoreMountains.NiceVibrations;
 using UnityEngine.Serialization;
 
 public class EndDetector : MonoBehaviour
 {
     [FormerlySerializedAs("EndParticle")] public ParticleSystem endEffect;
+
     public ParticleSystem Confetti;
     public GameObject Cam;
     public GameObject End;
-    
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("EndIt"))
         {
-            Camera.main.transform.DOShakePosition(1f, .1f);
-            MMVibrationManager.Haptic(HapticTypes.MediumImpact);
-            // GameManager.Instance.PivotParent.transform.GetChild(01).transform.parent = null;
-            // GameManager.Instance.PivotParent.transform.DOLocalRotate(new Vector3(-40, -20, 20f), .3f);
-            
-            
-
-            // GameManager.Instance.CollsionScript.StartTapRoutine = false;
-            // GameManager.Instance.CollsionScript.mainHandAnimator.Play("g 0 0");
-            // GameManager.Instance.CollsionScript.tattooHandAnimator.Play("g 0 0");
-            
-            
-            
+            MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
             endEffect.Play();
-            // UiManager.Instance.tapFastPanel.gameObject.SetActive(false);       
-            GameManager.Instance.isGameOver = true;
-            Cam.gameObject.SetActive(true);
-
-
-            // all shit saving
-            // GameManager.Instance.GameEnd = true;
-            // GameManager.Instance.SetTotalTime();
-            
-            // StorageManager.Instance.SetTotalScore();
-            // StorageManager.Instance.GetTotalScores();
+            GameManager.Instance.FinishWrestling();
+            // Cam.gameObject.SetActive(true);
             
             Confetti.gameObject.SetActive(true);
-
-            // Tattoo wall mechanics
-            StartCoroutine(EnableEndUi());
         }
-           
     }
     public IEnumerator EnableEndUi()
     {
