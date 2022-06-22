@@ -52,7 +52,8 @@ public class GameManager : Singleton<GameManager>
 
     [SerializeField] private List<HandGroup> handGroups = new List<HandGroup>();
     [SerializeField] private PathFollower playerPathFollower;
-    [SerializeField] private GameObject tattooGun;
+    [SerializeField] private List<GameObject> tattooGuns =  new List<GameObject>();
+    [SerializeField] private GameObject tattooEffect;
     [SerializeField] private Transform wrestlingCameraTransform;
 
     private int _handId;
@@ -68,7 +69,8 @@ public class GameManager : Singleton<GameManager>
     private float _timeLeft;
     private float _timerInitialValue;
     private bool _isClicked;
-
+    private int _currentTattooGunLevel;
+    
     public EGameMode gameMode;
     [SerializeField] private int specificLevelId;
 
@@ -77,7 +79,7 @@ public class GameManager : Singleton<GameManager>
 #if UNITY_EDITOR
         if (gameMode == EGameMode.Test)
         {
-            PlaySpecificLevel(specificLevelId);    
+            PlaySpecificLevel(specificLevelId);
         }
 #endif
         base.Start();
@@ -106,12 +108,30 @@ public class GameManager : Singleton<GameManager>
         {
             _pathObj = GameObject.Find("pathWAY");
             pathCreator = _pathObj.GetComponent<PathCreator>();
-            _pathObj.GetComponent<RoadMeshCreator>().refresh();    
+            _pathObj.GetComponent<RoadMeshCreator>().refresh();
         }
-        
+
         playerPathFollower.enabled = false;
+
+        _currentTattooGunLevel = PlayerPrefs.GetInt("CurrentTattooGunLevel", 0);
+        tattooGuns[_currentTattooGunLevel].SetActive(true);
     }
 
+    public void UpgradeTattooGun()
+    {
+        if (_currentTattooGunLevel < tattooGuns.Count - 1)
+        {
+            tattooGuns[_currentTattooGunLevel].SetActive(false);
+            _currentTattooGunLevel += 1;
+            PlayerPrefs.SetInt("CurrentTattooGunLevel", _currentTattooGunLevel);
+            tattooGuns[_currentTattooGunLevel].SetActive(true);
+        }
+        else
+        {
+            UiManager.Instance.DisableTattooGunUpgradeButton();
+        }
+    }
+    
     private void Update()
     {
         if (_boss == null)
@@ -321,20 +341,20 @@ public class GameManager : Singleton<GameManager>
         UiManager.Instance.ClearUIOnGameStart();
         playerPathFollower.transform.DOMoveX(.1f, .5f).OnComplete(() =>
         {
-            tattooGun.transform.GetComponentInChildren<Animator>().enabled = true;
+            tattooGuns[_currentTattooGunLevel].GetComponent<Animator>().enabled = true;
             StartCoroutine(DelayPlayerControlRoutine());
         });
     }
 
     IEnumerator DelayPlayerControlRoutine()
     {
-        tattooGun.transform.GetChild(1).gameObject.SetActive(true);
+        tattooEffect.SetActive(true);
         _mainHandCollision.DrawDefaultTattoo();
 
         yield return new WaitForSeconds(.5f);
 
         UiManager.Instance.ShowPriceTag();
-        tattooGun.transform.DOMoveZ(-0.98f, .3f);
+        tattooGuns[_currentTattooGunLevel].transform.parent.DOMoveZ(-0.98f, .3f);
 
         hasGameStarted = true;
         playerPathFollower.enabled = true;

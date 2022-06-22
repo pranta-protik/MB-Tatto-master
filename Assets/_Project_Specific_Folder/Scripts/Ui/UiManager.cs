@@ -25,11 +25,12 @@ public class UiManager : Singleton<UiManager>
     [SerializeField] private GameObject startUI;
     [SerializeField] private GameObject hapticsIcon;
     [SerializeField] private GameObject priceTag;
+    [SerializeField] private GameObject tattooGunUpgradeButton;
+    [SerializeField] private GameObject valueUpgradeButton;
     [SerializeField] private GameObject mobileScreen;
     [SerializeField] private GameObject selectionMenuButton;
     [SerializeField] private GameObject shop;
     [SerializeField] private TextMeshProUGUI levelNoText;
-    [SerializeField] private GameObject[] upgradeButtons;
     [SerializeField] private GameObject selectionMenu;
     [SerializeField] private float popUpScale = 5f;
     [SerializeField] private float popUpDuration = 0.3f;
@@ -94,12 +95,14 @@ public class UiManager : Singleton<UiManager>
                 selectionMenuButton.SetActive(false);
             }
 
-            if (upgradeButtons != null)
+            if (tattooGunUpgradeButton!=null)
             {
-                foreach (GameObject upgradeButton in upgradeButtons)
-                {
-                    upgradeButton.SetActive(false);
-                }
+                tattooGunUpgradeButton.SetActive(false);
+            }
+
+            if (valueUpgradeButton != null)
+            {
+                valueUpgradeButton.SetActive(false);
             }
         }
 
@@ -136,6 +139,20 @@ public class UiManager : Singleton<UiManager>
         }
     }
 
+    #region Upgrade Buttons
+
+    public void OnTattooGunUpgradeButtonClick()
+    {
+        GameManager.Instance.UpgradeTattooGun();
+    }
+
+    public void DisableTattooGunUpgradeButton()
+    {
+        tattooGunUpgradeButton.GetComponent<Button>().interactable = false;
+    }
+
+    #endregion
+    
     #region PopUps
 
     public void OnShopPopUpButtonClick()
