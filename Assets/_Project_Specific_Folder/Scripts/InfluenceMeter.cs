@@ -122,8 +122,8 @@ public class InfluenceMeter : MonoBehaviour
             }
             else
             {
-                // GameManager.Instance.WrestlingSetup();
-                // gameObject.SetActive(false);
+                GameManager.Instance.WrestlingSetup();
+                gameObject.SetActive(false);
                 EnableNextButton();
             }
         });   

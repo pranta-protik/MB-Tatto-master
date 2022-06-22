@@ -69,7 +69,7 @@ public class Collsion : MonoBehaviour
     // public bool StartTapRoutine;
     // private static readonly int IsWrestling = Animator.StringToHash("isWrestling");
     
-    private void Start()
+    private void Awake()
     {
         _camera = Camera.main;
         

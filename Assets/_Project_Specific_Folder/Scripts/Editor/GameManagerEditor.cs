@@ -16,9 +16,10 @@ public class GameManagerEditor : Editor
         EditorGUILayout.PropertyField(serializedObject.FindProperty("handGroups"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("playerPathFollower"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("tattooGun"));
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("gameMode"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("wrestlingCameraTransform"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("_boss"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("_fightingRing"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("gameMode"));
 
         if (gameManager.gameMode == GameManager.EGameMode.Test)
         {

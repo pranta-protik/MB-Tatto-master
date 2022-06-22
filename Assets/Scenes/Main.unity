@@ -16565,6 +16565,7 @@ MonoBehaviour:
   tattooGun: {fileID: 709119814}
   wrestlingCameraTransform: {fileID: 2040196989}
   _boss: {fileID: 0}
+  _fightingRing: {fileID: 0}
   gameMode: 1
   specificLevelId: 0
 --- !u!1 &1302367778
@@ -30735,14 +30736,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2040196988}
-  m_LocalRotation: {x: 0.21400158, y: -0.31533733, z: 0.07322092, w: 0.9216314}
+  m_LocalRotation: {x: 0.21067394, y: -0.3544947, z: 0.08231417, w: 0.9072896}
   m_LocalPosition: {x: 15.8, y: 18, z: -22.7}
   m_LocalScale: {x: 12.611934, y: 12.611931, z: 12.611932}
   m_Children:
   - {fileID: 922318326}
   m_Father: {fileID: 378904802}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 26.145, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 26.145, y: -42.683, z: 0}
 --- !u!1001 &2049859917
 PrefabInstance:
   m_ObjectHideFlags: 0
