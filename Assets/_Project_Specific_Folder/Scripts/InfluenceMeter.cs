@@ -118,10 +118,10 @@ public class InfluenceMeter : MonoBehaviour
                 
                 if (PlayerPrefs.GetInt("InfluencerStatus" + _influencerStatus.influencerId, 0) == 0)
                 {
-                    transform.GetChild(0).gameObject.SetActive(false);
-                    transform.GetChild(1).gameObject.SetActive(false);
-                    transform.GetChild(2).gameObject.SetActive(false);
-                    transform.GetChild(3).gameObject.SetActive(false);
+                    for (int i = 0; i < 4; i++)
+                    {
+                        transform.GetChild(i).gameObject.SetActive(false);
+                    }
                     GameManager.Instance.WrestlingSetup();    
                 }
                 else
@@ -138,10 +138,10 @@ public class InfluenceMeter : MonoBehaviour
 
     public void CrossOpponentVisual()
     {
-        transform.GetChild(0).gameObject.SetActive(true);
-        transform.GetChild(1).gameObject.SetActive(true);
-        transform.GetChild(2).gameObject.SetActive(true);
-        transform.GetChild(3).gameObject.SetActive(true);
+        for (int i = 0; i < 4; i++)
+        {
+            transform.GetChild(i).gameObject.SetActive(true);
+        }
         
         PlayerPrefs.SetInt("InfluencerStatus" + _influencerStatus.influencerId, 1);
         confettiEffect.SetActive(true);

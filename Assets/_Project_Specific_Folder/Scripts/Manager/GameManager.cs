@@ -381,27 +381,24 @@ public class GameManager : Singleton<GameManager>
         Transform mainHandTransform = _mainHandCollision.transform.parent;
         Transform tattooHandTransform = _mainHandCollision.tattooHand.transform.parent;
         Transform playerTransform = mainHandTransform.parent;
+        Transform mainCameraTransform = _mainCamera.transform;
+        Transform endTransform = _boss.transform.parent;
         
-        playerTransform.position = new Vector3(33.07f, 0f, 0f);
+        playerTransform.parent = _wrestlingPivot.transform;
+        _boss.transform.parent = _wrestlingPivot.transform;
+        mainCameraTransform.parent = endTransform;
+        
+        playerTransform.localPosition = new Vector3(1.6f, -0.28f, 0.03f);
         mainHandTransform.localPosition = new Vector3(0.48f, 5.74f, 3.12f);
         tattooHandTransform.localPosition = new Vector3(0.48f, 5.74f, 3.12f);
 
         _cameraController.enabled = false;
-        
-        Transform mainCameraTransform = _mainCamera.transform;
         mainCameraTransform.position = wrestlingCameraTransform.position;
         mainCameraTransform.eulerAngles = wrestlingCameraTransform.eulerAngles;
         _mainCamera.fieldOfView = 75f;
 
         mainHandTransform.localEulerAngles = new Vector3(0f, -90f, 9f);
         tattooHandTransform.localEulerAngles = new Vector3(0f, -90f, 9f);
-        
-        Transform endTransform = _boss.transform.parent;
-        
-        mainCameraTransform.parent = endTransform;
-        
-        playerTransform.parent = _wrestlingPivot.transform;
-        _boss.transform.parent = _wrestlingPivot.transform;
         
         _mainHandCollision.mainHandAnimator.Play("Wrestle");
         _mainHandCollision.tattooHandAnimator.Play("Wrestle");
