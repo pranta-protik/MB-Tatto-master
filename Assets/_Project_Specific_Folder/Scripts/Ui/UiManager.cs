@@ -305,7 +305,7 @@ public class UiManager : Singleton<UiManager>
         _camera.transform.GetChild(1).gameObject.SetActive(true);
         yield return new WaitForSeconds(0.1f);
         _camera.transform.GetChild(1).gameObject.SetActive(false);
-        ScreenshotHandler.TakeScreenshot_Static(720, 720);
+        ScreenshotHandler.TakeScreenshot_Static();
 
         mobileScreen.transform.GetChild(8).gameObject.SetActive(true);
         mobileScreen.transform.GetChild(8).GetComponent<Image>().DOColor(Color.white, 0.5f).OnComplete(() =>

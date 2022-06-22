@@ -2230,6 +2230,54 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 0c63af8d3b957f5458c3951e5cf98b91, type: 3}
   handCards: []
   baseUnlockCost: 35000
+--- !u!1 &461371765
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 461371767}
+  - component: {fileID: 461371766}
+  m_Layer: 6
+  m_Name: PostProcessing
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &461371766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 461371765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: f7f1a65617095b24f8251766ebb0a648, type: 2}
+  isGlobal: 1
+  blendDistance: 0
+  weight: 1
+  priority: 0
+--- !u!4 &461371767
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 461371765}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 30.75967, y: 0.5140096, z: -0.053559333}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &469680221
 GameObject:
   m_ObjectHideFlags: 0
@@ -4134,8 +4182,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 791488513}
-  m_LocalRotation: {x: 0.9879246, y: -0.000000107521, z: -0.00000022068026, w: 0.15493613}
-  m_LocalPosition: {x: 0, y: 2.37, z: 7.37}
+  m_LocalRotation: {x: 0.70260996, y: -0.06138725, z: -0.7062872, w: -0.061067775}
+  m_LocalPosition: {x: 4.48082, y: -0.51814425, z: -0.03980398}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1172234474}
@@ -15850,6 +15898,7 @@ GameObject:
   - component: {fileID: 1172234472}
   - component: {fileID: 1172234471}
   - component: {fileID: 1172234475}
+  - component: {fileID: 1172234476}
   m_Layer: 0
   m_Name: 'Main Camera '
   m_TagString: MainCamera
@@ -15950,6 +15999,68 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c39071adfae04584186e27a260504444, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _snapshotWidth: 720
+  _snapshotHeight: 720
+--- !u!114 &1172234476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1172234470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeTrigger: {fileID: 1172234474}
+  volumeLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  stopNaNPropagation: 1
+  finalBlitToCameraTarget: 0
+  antialiasingMode: 0
+  temporalAntialiasing:
+    jitterSpread: 0.75
+    sharpness: 0.25
+    stationaryBlending: 0.95
+    motionBlending: 0.85
+  subpixelMorphologicalAntialiasing:
+    quality: 2
+  fastApproximateAntialiasing:
+    fastMode: 0
+    keepAlpha: 0
+  fog:
+    enabled: 1
+    excludeSkybox: 1
+  debugLayer:
+    lightMeter:
+      width: 512
+      height: 256
+      showCurves: 1
+    histogram:
+      width: 512
+      height: 256
+      channel: 3
+    waveform:
+      exposure: 0.12
+      height: 256
+    vectorscope:
+      size: 256
+      exposure: 0.12
+    overlaySettings:
+      linearDepth: 0
+      motionColorIntensity: 4
+      motionGridSize: 64
+      colorBlindnessType: 0
+      colorBlindnessStrength: 1
+  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  m_ShowToolkit: 0
+  m_ShowCustomSorter: 0
+  breakBeforeColorGrading: 0
+  m_BeforeTransparentBundles: []
+  m_BeforeStackBundles: []
+  m_AfterStackBundles: []
 --- !u!1001 &1176613554
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20018,8 +20129,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1851455664}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.16919006, y: 0.6882471, z: -0.1700753, w: 0.68466413}
+  m_LocalPosition: {x: -3.1446881, y: 0.81747997, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1172234474}
@@ -32753,6 +32864,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DontDestroyLoad: 0
   m_IsSingletonLogsEnabled: 0
+  rawImage: {fileID: 0}
   hurtScreen: {fileID: 2875735081493675973}
   transitionScreen: {fileID: 943916262}
   totalScoreText: {fileID: 1937837366}
