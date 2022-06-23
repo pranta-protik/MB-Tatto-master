@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class InstagramGallery : MonoBehaviour
 {
     public GameObject pictureFramePrefab;
+    [SerializeField] private int picturesOnEachPage;
     private Scrollbar _scrollbar;
     private Transform _contentTransform;
     private bool _isDisplayed;
@@ -19,15 +20,15 @@ public class InstagramGallery : MonoBehaviour
 
     private IEnumerator Start()
     {
-        _contentTransform = transform.GetChild(1).GetChild(0).GetChild(0).GetChild(0).GetChild(0);
-        _scrollbar = transform.GetChild(1).GetChild(0).GetChild(0).GetChild(1).GetComponent<Scrollbar>();
+        _contentTransform = transform.GetChild(1).GetChild(5).GetChild(0).GetChild(0).GetChild(0);
+        _scrollbar = transform.GetChild(1).GetChild(5).GetChild(0).GetChild(1).GetComponent<Scrollbar>();
 
         int totalPhotos = PlayerPrefs.GetInt("SnapshotsTaken", 0);
-        transform.GetChild(1).GetChild(1).GetComponent<TextMeshProUGUI>().SetText(totalPhotos.ToString());
+        transform.GetChild(1).GetChild(3).GetChild(1).GetComponent<TextMeshProUGUI>().SetText(totalPhotos.ToString());
 
         SpawnPictureFrames(0, totalPhotos);
 
-        int blankPhotos = (9 * (((totalPhotos - 1) / 9) + 1)) - totalPhotos;
+        int blankPhotos = (picturesOnEachPage * (((totalPhotos - 1) / picturesOnEachPage) + 1)) - totalPhotos;
 
         SpawnBlankPictureFrames(blankPhotos);
 
@@ -36,10 +37,10 @@ public class InstagramGallery : MonoBehaviour
         _hasScrolledToNextPage = true;
         _isScrollingComplete = false;
         
-        if (totalPhotos > 9 && totalPhotos % 9 == 1)
+        if (totalPhotos > picturesOnEachPage && totalPhotos % picturesOnEachPage == 1)
         {
             _hasScrolledToNextPage = false;
-            _scrollbar.value = 1 / Mathf.Floor((float) (totalPhotos - 1) / 9);
+            _scrollbar.value = 1 / Mathf.Floor((float) (totalPhotos - 1) / picturesOnEachPage);
         }
         else
         {

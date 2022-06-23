@@ -427,7 +427,7 @@ public class UiManager : Singleton<UiManager>
                 _followerValueLetter = "B";
             }
 
-            instagramGalleryPage.transform.GetChild(1).GetChild(2).GetComponent<TextMeshProUGUI>()
+            instagramGalleryPage.transform.GetChild(1).GetChild(4).GetChild(1).GetComponent<TextMeshProUGUI>()
                 .SetText(Mathf.RoundToInt(_currentFollowers) + _followerValueLetter);
         }
         else
@@ -435,8 +435,8 @@ public class UiManager : Singleton<UiManager>
             _shouldUpdateFollowersText = false;
             if (isBadTattoo)
             {
-                instagramGalleryPage.transform.GetChild(1).GetChild(2).GetChild(0).DOKill();
-                instagramGalleryPage.transform.GetChild(1).GetChild(2).GetChild(0).gameObject.SetActive(false);    
+                instagramGalleryPage.transform.GetChild(1).GetChild(4).GetChild(1).GetChild(0).DOKill();
+                instagramGalleryPage.transform.GetChild(1).GetChild(4).GetChild(1).GetChild(0).gameObject.SetActive(false);    
             }
 
             if (PlayerPrefs.GetInt("TargetFollowersIndex", 0) <= GameManager.Instance.followers.Count)
@@ -462,7 +462,7 @@ public class UiManager : Singleton<UiManager>
                 PlayerPrefs.SetInt("TargetFollowersIndex", GameManager.Instance.followers.Count);
             }
             
-            instagramGalleryPage.transform.GetChild(1).GetChild(2).GetComponent<TextMeshProUGUI>().SetText(followerValue);
+            instagramGalleryPage.transform.GetChild(1).GetChild(4).GetChild(1).GetComponent<TextMeshProUGUI>().SetText(followerValue);
             _isFollowersUpdated = true;
         }
     }
@@ -504,9 +504,10 @@ public class UiManager : Singleton<UiManager>
 
         if (isBadTattoo)
         {
-            instagramGalleryPage.transform.GetChild(1).GetChild(2).GetChild(0).gameObject.SetActive(true);
-            instagramGalleryPage.transform.GetChild(1).GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>().DOFade(0f, 0.3f).SetLoops(-1, LoopType.Restart);
-            instagramGalleryPage.transform.GetChild(1).GetChild(2).GetChild(0).GetComponent<RectTransform>().DOAnchorPosY(100f, 0.3f)
+            instagramGalleryPage.transform.GetChild(1).GetChild(4).GetChild(1).GetChild(0).gameObject.SetActive(true);
+            instagramGalleryPage.transform.GetChild(1).GetChild(4).GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().DOFade(0f, 0.3f)
+                .SetLoops(-1, LoopType.Restart);
+            instagramGalleryPage.transform.GetChild(1).GetChild(4).GetChild(1).GetChild(0).GetComponent<RectTransform>().DOAnchorPosY(100f, 0.3f)
                 .SetLoops(-1, LoopType.Restart);
         }
     }
