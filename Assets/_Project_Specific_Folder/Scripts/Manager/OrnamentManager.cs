@@ -1,12 +1,18 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using Singleton;
 using UnityEngine;
 
 public class OrnamentManager : Singleton<OrnamentManager>
 {
-    public List<Sprite> flowerRingSprites;
-    public List<Sprite> flowerBraceletSprites;
-    public List<Sprite> skullRingSprites;
-    public List<Sprite> skullBraceletSprites;
+    [Serializable]
+    public struct OrnamentSpriteGroup
+    {
+        public int groupId;
+        public List<Sprite> ringSprites;
+        public List<Sprite> braceletSprites;
+    }
+
+    [Header("Ornament Sprite Section")]
+    public List<OrnamentSpriteGroup> ornamentSpriteGroups;
 }

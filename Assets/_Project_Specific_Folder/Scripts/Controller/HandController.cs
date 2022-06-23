@@ -49,7 +49,7 @@ public class HandController : MonoBehaviour
             else if (touch.phase == TouchPhase.Moved)
             {
                 float deltaX = touch.deltaPosition.x;
-                _positionX += (deltaX / (float) Screen.width) / Time.deltaTime * mobileSpeed;
+                _positionX -= (deltaX / Screen.width) / Time.deltaTime * mobileSpeed;
                 _positionX = Mathf.Clamp(_positionX, -positionXClampValue, positionXClampValue);
                 transform.localPosition = new Vector3(-_positionX, _positionY, 3.1188f);
             }

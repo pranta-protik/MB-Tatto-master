@@ -1,13 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
 using MoreMountains.NiceVibrations;
 using PathCreation.Examples;
-
+using Random = UnityEngine.Random;
 
 public class Collsion : MonoBehaviour
 {
@@ -30,22 +30,19 @@ public class Collsion : MonoBehaviour
     public Color goodGateScorePopUpColor;
     public Color badGateScorePopUpColor;
     
-    [Header("Hand Ornaments Section")]
-    public List<GameObject> rings = new List<GameObject>();
-    public List<GameObject> bracelets = new List<GameObject>();
-    
+    [Serializable]
+    public struct OrnamentGroup
+    {
+        public List<GameObject> ornamentDesigns; 
+    }
+    [Header("Hand Ornaments Section")] 
+    public List<OrnamentGroup> ringOrnamentGroups;
+    public List<OrnamentGroup> braceletOrnamentGroups;
+
     [HideInInspector] public Animator mainHandAnimator;
     [HideInInspector] public Animator tattooHandAnimator;
-    [HideInInspector] public Texture2D defaultTattoo;
-    [HideInInspector] public List<Texture2D> expensiveTattoos;
-    [HideInInspector] public List<Texture2D> cheapTattoos;
-    [HideInInspector] public List<Texture2D> expensiveBlueTattoos;
-    [HideInInspector] public List<Texture2D> expensiveYellowTattoos;
-    [HideInInspector] public List<Texture2D> cheapBlueTattoos;
-    [HideInInspector] public List<Texture2D> cheapYellowTattoos;
-    [HideInInspector] public List<int> expensiveColorTattooIdSequences;
-    [HideInInspector] public List<int> cheapColorTattooIdSequences;
-    
+    [HideInInspector] public int tattooGroupId;
+
     private HandController _tattooHandController;
     private HandController _mainHandController;
     private ParticleSystem _hurtEffect;
@@ -64,25 +61,26 @@ public class Collsion : MonoBehaviour
     private PathFollower _playerPathFollower;
     private float _playerInitialSpeed;
     private Camera _camera;
+    private TextureManager _textureManager;
 
     private void Start()
     {
         _camera = Camera.main;
-        
+
         _mainHandController = transform.parent.GetComponent<HandController>();
         _tattooHandController = tattooHand.transform.parent.GetComponent<HandController>();
-        
+
         _hurtEffect = transform.GetChild(2).GetComponent<ParticleSystem>();
         _shineEffect = transform.GetChild(3).GetComponent<ParticleSystem>();
 
         mainHandAnimator = GetComponent<Animator>();
         tattooHandAnimator = tattooHand.GetComponent<Animator>();
-        
+
         animatorOverrideController = new AnimatorOverrideController
         {
             runtimeAnimatorController = mainHandAnimator.runtimeAnimatorController
         };
-        
+
         for (int clipIndex = 0; clipIndex < animationClips.Length; clipIndex++)
         {
             _animationIndexes.Add(clipIndex);
@@ -90,6 +88,13 @@ public class Collsion : MonoBehaviour
 
         _skinnedMeshRenderer = tattooHand.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>();
         _skinnedMeshRenderer.material.DOFade(0, 0f);
+
+        _textureManager = TextureManager.Instance;
+
+        if (tattooGroupId != _textureManager.tattooGroups[tattooGroupId].groupId)
+        {
+            Debug.Log("Wrong tattoo group");
+        }
         
         ResetHandTattooStatus();
 
@@ -104,18 +109,19 @@ public class Collsion : MonoBehaviour
         _currentExpensiveTattooLevel = 0;
         _currentCheapTattooLevel = 0;
         _collectedGoodTattoosAttributes.Clear();
-        _collectedGoodTattoosAttributes.Add(new CollectedGoodTattoosAttributes(defaultTattoo, -1));
+        _collectedGoodTattoosAttributes.Add(new CollectedGoodTattoosAttributes(_textureManager.tattooGroups[tattooGroupId].defaultTattoo, -1));
     }
 
     private void OnTriggerEnter(Collider other)
     {
         #region Normal Gates
+
         if (other.gameObject.CompareTag("GoodGate"))
         {
             _hasGoneThroughGoodGate = true;
             other.GetComponent<BoxCollider>().enabled = false;
             Gates gate = other.GetComponentInParent<Gates>();
-            
+
             CommonGateEnteringEffects();
             _shineEffect.Play();
             UpdateScore(gate.gateCost, true);
@@ -128,25 +134,26 @@ public class Collsion : MonoBehaviour
             else
             {
                 _currentExpensiveTattooLevel = gate.gateLevel + 1;
-                _collectedGoodTattoosAttributes.Add(new CollectedGoodTattoosAttributes(expensiveTattoos[gate.gateLevel], gate.gateLevel));
-                StartCoroutine(UpdateTattooTexture(expensiveTattoos[gate.gateLevel]));
+                _collectedGoodTattoosAttributes.Add(
+                    new CollectedGoodTattoosAttributes(_textureManager.tattooGroups[tattooGroupId].expensiveTattoos[gate.gateLevel], gate.gateLevel));
+                StartCoroutine(UpdateTattooTexture(_textureManager.tattooGroups[tattooGroupId].expensiveTattoos[gate.gateLevel]));
             }
         }
-        
+
         if (other.gameObject.CompareTag("BadGate"))
         {
             other.GetComponent<BoxCollider>().enabled = false;
             Gates gate = other.GetComponentInParent<Gates>();
-            
+
             CommonGateEnteringEffects();
             _shineEffect.Play();
             UpdateScore(gate.gateCost, false);
-            
+
             // Went through last bad gate
             if (gate.isLast)
             {
                 UiManager.Instance.isBadTattoo = true;
-                StartCoroutine(UpdateTattooTexture(cheapTattoos[gate.gateLevel]));    
+                StartCoroutine(UpdateTattooTexture(_textureManager.tattooGroups[tattooGroupId].cheapTattoos[gate.gateLevel]));
             }
             else
             {
@@ -161,19 +168,21 @@ public class Collsion : MonoBehaviour
                     }
                     else
                     {
-                        if (_currentCheapTattooLevel < cheapTattoos.Count)
+                        if (_currentCheapTattooLevel < _textureManager.tattooGroups[tattooGroupId].cheapTattoos.Count)
                         {
                             _currentCheapTattooLevel += 1;
                         }
-                        
-                        StartCoroutine(UpdateTattooTexture(cheapTattoos[_currentCheapTattooLevel - 1]));    
+
+                        StartCoroutine(UpdateTattooTexture(_textureManager.tattooGroups[tattooGroupId].cheapTattoos[_currentCheapTattooLevel - 1]));
                     }
-                }    
+                }
             }
         }
+
         #endregion
 
         #region Color Gates
+
         if (other.gameObject.CompareTag("Blue"))
         {
             other.GetComponent<BoxCollider>().enabled = false;
@@ -181,20 +190,23 @@ public class Collsion : MonoBehaviour
 
             if (_hasGoneThroughGoodGate)
             {
-                if (expensiveColorTattooIdSequences.Contains(_currentExpensiveTattooLevel))
+                if (_textureManager.tattooGroups[tattooGroupId].expensiveColorTattooIdSequences.Contains(_currentExpensiveTattooLevel))
                 {
-                    StartCoroutine(UpdateTattooTexture(expensiveBlueTattoos[expensiveColorTattooIdSequences.IndexOf(_currentExpensiveTattooLevel)]));
+                    StartCoroutine(UpdateTattooTexture(_textureManager.tattooGroups[tattooGroupId]
+                        .expensiveBlueTattoos
+                            [_textureManager.tattooGroups[tattooGroupId].expensiveColorTattooIdSequences.IndexOf(_currentExpensiveTattooLevel)]));
                 }
             }
             else
             {
-                if (cheapColorTattooIdSequences.Contains(_currentCheapTattooLevel))
+                if (_textureManager.tattooGroups[tattooGroupId].cheapColorTattooIdSequences.Contains(_currentCheapTattooLevel))
                 {
-                    StartCoroutine(UpdateTattooTexture(cheapBlueTattoos[cheapColorTattooIdSequences.IndexOf(_currentCheapTattooLevel)]));
+                    StartCoroutine(UpdateTattooTexture(_textureManager.tattooGroups[tattooGroupId]
+                        .cheapBlueTattoos[_textureManager.tattooGroups[tattooGroupId].cheapColorTattooIdSequences.IndexOf(_currentCheapTattooLevel)]));
                 }
             }
         }
-        
+
         if (other.gameObject.CompareTag("Yellow"))
         {
             other.GetComponent<BoxCollider>().enabled = false;
@@ -202,60 +214,72 @@ public class Collsion : MonoBehaviour
 
             if (_hasGoneThroughGoodGate)
             {
-                if (expensiveColorTattooIdSequences.Contains(_currentExpensiveTattooLevel))
+                if (_textureManager.tattooGroups[tattooGroupId].expensiveColorTattooIdSequences.Contains(_currentExpensiveTattooLevel))
                 {
-                    StartCoroutine(UpdateTattooTexture(expensiveYellowTattoos[expensiveColorTattooIdSequences.IndexOf(_currentExpensiveTattooLevel)]));
+                    StartCoroutine(UpdateTattooTexture(_textureManager.tattooGroups[tattooGroupId]
+                        .expensiveYellowTattoos[_textureManager.tattooGroups[tattooGroupId].expensiveColorTattooIdSequences.IndexOf(_currentExpensiveTattooLevel)]));
                 }
             }
             else
             {
-                if (cheapColorTattooIdSequences.Contains(_currentCheapTattooLevel))
+                if (_textureManager.tattooGroups[tattooGroupId].cheapColorTattooIdSequences.Contains(_currentCheapTattooLevel))
                 {
-                    StartCoroutine(UpdateTattooTexture(cheapYellowTattoos[cheapColorTattooIdSequences.IndexOf(_currentCheapTattooLevel)]));
+                    StartCoroutine(UpdateTattooTexture(_textureManager.tattooGroups[tattooGroupId]
+                        .cheapYellowTattoos[_textureManager.tattooGroups[tattooGroupId].cheapColorTattooIdSequences.IndexOf(_currentCheapTattooLevel)]));
                 }
             }
         }
+
         #endregion
 
         #region Ornament Gates
-        if(other.gameObject.CompareTag("Ring"))
+
+        if (other.gameObject.CompareTag("Ring"))
         {
             other.GetComponent<BoxCollider>().enabled = false;
             CommonGateEnteringEffects();
-            rings[other.gameObject.GetComponent<OrnamentGate>().ornamentId].gameObject.SetActive(true);
+
+            OrnamentGate ornamentGate = other.gameObject.GetComponent<OrnamentGate>();
+
+            ringOrnamentGroups[ornamentGate.ornamentGroupId].ornamentDesigns[ornamentGate.ornamentDesignId].SetActive(true);
         }
+
         if (other.gameObject.CompareTag("Bracelet"))
         {
             other.GetComponent<BoxCollider>().enabled = false;
             CommonGateEnteringEffects();
-            bracelets[other.gameObject.GetComponent<OrnamentGate>().ornamentId].gameObject.SetActive(true);
+            OrnamentGate ornamentGate = other.gameObject.GetComponent<OrnamentGate>();
+
+            braceletOrnamentGroups[ornamentGate.ornamentGroupId].ornamentDesigns[ornamentGate.ornamentDesignId].SetActive(true);
         }
+
         #endregion
 
         #region Obstacles
+
         if (other.gameObject.CompareTag("Remove"))
         {
             other.GetComponent<BoxCollider>().enabled = false;
             CommonObstacleHitEffects();
-            
+
             _hurtEffect.Play();
-            
+
             RemoveTattoo();
             ResetHandTattooStatus();
         }
-        
+
         if (other.gameObject.CompareTag("Spike"))
         {
             other.GetComponent<BoxCollider>().enabled = false;
             ObstacleHitEffects(other.GetComponent<Obstacle>().decrementAmount);
         }
-        
+
         if (other.gameObject.CompareTag("Lava"))
         {
             other.GetComponent<BoxCollider>().enabled = false;
             ObstacleHitEffects(other.GetComponent<Obstacle>().decrementAmount);
         }
-        
+
         #endregion
 
         #region Level End Triggers
@@ -264,17 +288,17 @@ public class Collsion : MonoBehaviour
         {
             other.GetComponent<Collider>().enabled = false;
             UiManager.Instance.ClearUIOnFinishLine();
-            
+
             _playerPathFollower.enabled = false;
             mainHandAnimator.Play("idle");
             tattooHandAnimator.Play("idle");
-            mainHandAnimator.transform.parent.DOLocalMoveX(0, .2f); 
+            mainHandAnimator.transform.parent.DOLocalMoveX(0, .2f);
             tattooHandAnimator.transform.parent.DOLocalMoveX(0, .2f);
             _mainHandController.enabled = false;
             _tattooHandController.enabled = false;
-            
+
             GameObject mobileObj = other.transform.GetChild(2).gameObject;
-            
+
             mobileObj.transform.DOLocalMoveY(0.88f, 0.5f);
             mobileObj.transform.DORotate(new Vector3(-50f, 270f, 90f), 0.5f).OnComplete(() =>
             {
@@ -323,11 +347,11 @@ public class Collsion : MonoBehaviour
         mainHandAnimator.Play("Hurt");
         tattooHandAnimator.Play("Hurt");
     }
-    
+
     private void ObstacleHitEffects(int amount)
     {
         CommonObstacleHitEffects();
-            
+
         UpdateScore(amount, false);
 
         if (_hasGoneThroughGoodGate)
@@ -339,18 +363,18 @@ public class Collsion : MonoBehaviour
             if (_currentCheapTattooLevel > 1)
             {
                 _currentCheapTattooLevel -= 1;
-                 
-                StartCoroutine(UpdateTattooTexture(cheapTattoos[_currentCheapTattooLevel - 1]));
+
+                StartCoroutine(UpdateTattooTexture(_textureManager.tattooGroups[tattooGroupId].cheapTattoos[_currentCheapTattooLevel - 1]));
             }
         }
     }
-    
+
     private void UpdateScore(int cost, bool isGood)
     {
         int score = StorageManager.Instance.GetCurrentScore();
         string scoreText;
         Color color;
-        
+
         if (isGood)
         {
             score += cost;
@@ -363,10 +387,10 @@ public class Collsion : MonoBehaviour
             scoreText = "-" + cost;
             color = badGateScorePopUpColor;
         }
-        
+
         StorageManager.Instance.SetCurrentScore(score);
         UiManager.Instance.UpdatePriceTag(score);
-        
+
         scoreAnimator.transform.GetChild(0).gameObject.SetActive(true);
         scoreAnimator.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().SetText(scoreText);
         scoreAnimator.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().color = color;
@@ -380,9 +404,9 @@ public class Collsion : MonoBehaviour
         {
             CollectedGoodTattoosAttributes collectedGoodTattoosAttribute =
                 _collectedGoodTattoosAttributes[_collectedGoodTattoosAttributes.Count - 2];
-                            
+
             _currentExpensiveTattooLevel = collectedGoodTattoosAttribute.collectedGoodTattooLevel + 1;
-                            
+
             StartCoroutine(UpdateTattooTexture(collectedGoodTattoosAttribute.collectedGoodTattoo));
             _collectedGoodTattoosAttributes.Remove(collectedGoodTattoosAttribute);
         }
@@ -394,7 +418,7 @@ public class Collsion : MonoBehaviour
 
     public void DrawDefaultTattoo()
     {
-        Mpb.SetTexture(SHPropTexture, defaultTattoo);
+        Mpb.SetTexture(SHPropTexture, _textureManager.tattooGroups[tattooGroupId].defaultTattoo);
         _skinnedMeshRenderer.SetPropertyBlock(Mpb);
         _skinnedMeshRenderer.material.DOFade(1, 1.8f);
     }
@@ -402,7 +426,7 @@ public class Collsion : MonoBehaviour
     private IEnumerator UpdateTattooTexture(Texture2D tattooTexture)
     {
         yield return new WaitForSeconds(0.2f);
-        
+
         _skinnedMeshRenderer.material.DOFade(0, 0.3f).OnComplete(() =>
         {
             Mpb.SetTexture(SHPropTexture, tattooTexture);
@@ -422,7 +446,7 @@ public class Collsion : MonoBehaviour
     }
 
     #endregion
-    
+
     #region Hand Animation
 
     private IEnumerator AnimationDelayRoutine()
@@ -430,11 +454,11 @@ public class Collsion : MonoBehaviour
         yield return new WaitForSeconds(0.55f);
         PlayRandomAnimation();
     }
-    
+
     private void PlayRandomAnimation()
     {
         int index;
-        
+
         if (_animationIndexes.Count > 1)
         {
             int randomValue = Random.Range(0, _animationIndexes.Count);
@@ -450,6 +474,7 @@ public class Collsion : MonoBehaviour
                 _animationIndexes.Add(k);
             }
         }
+
         animatorOverrideController["Take 001"] = animationClips[index];
         mainHandAnimator.runtimeAnimatorController = animatorOverrideController;
         tattooHandAnimator.runtimeAnimatorController = animatorOverrideController;
@@ -464,5 +489,6 @@ public class Collsion : MonoBehaviour
         yield return new WaitForSeconds(_playerPathFollower.speedDecrementDuration);
         _playerPathFollower.maxSpeed = _playerInitialSpeed;
     }
+
     #endregion
 }
