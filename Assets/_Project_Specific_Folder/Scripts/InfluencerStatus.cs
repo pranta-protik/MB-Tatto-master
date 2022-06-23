@@ -6,6 +6,7 @@ using UnityEngine;
 public class InfluencerStatus : MonoBehaviour
 {
     public int influencerId;
+    public int influencerHandId;
 
     private void Start()
     {

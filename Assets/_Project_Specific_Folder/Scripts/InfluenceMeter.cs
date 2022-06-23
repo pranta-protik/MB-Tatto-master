@@ -118,11 +118,11 @@ public class InfluenceMeter : MonoBehaviour
                 
                 if (PlayerPrefs.GetInt("InfluencerStatus" + _influencerStatus.influencerId, 0) == 0)
                 {
-                    for (int i = 0; i < 4; i++)
+                    transform.GetChild(4).gameObject.SetActive(true);
+                    transform.GetChild(4).DOScale(new Vector3(1.5f, 1.5f, 1.5f), 0.3f).OnComplete(() =>
                     {
-                        transform.GetChild(i).gameObject.SetActive(false);
-                    }
-                    GameManager.Instance.WrestlingSetup();    
+                        Invoke(nameof(StartWrestling), 0.7f);
+                    });
                 }
                 else
                 {
@@ -136,6 +136,15 @@ public class InfluenceMeter : MonoBehaviour
         });   
     }
 
+    private void StartWrestling()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            transform.GetChild(i).gameObject.SetActive(false);
+        }
+        GameManager.Instance.WrestlingSetup(_influencerStatus.influencerHandId);   
+    }
+    
     public void CrossOpponentVisual()
     {
         for (int i = 0; i < 4; i++)
@@ -150,14 +159,14 @@ public class InfluenceMeter : MonoBehaviour
     
     private void EnableNextButton()
     {
-        transform.GetChild(4).gameObject.SetActive(true);
-        transform.GetChild(4).DOScale(new Vector3(0.8f, 0.8f, 0.8f), 0.5f).SetLoops(-1, LoopType.Yoyo);
+        transform.GetChild(5).gameObject.SetActive(true);
+        transform.GetChild(5).DOScale(new Vector3(0.8f, 0.8f, 0.8f), 0.5f).SetLoops(-1, LoopType.Yoyo);
     }
     
     public void EnableUnlockScreen()
     {
-        transform.GetChild(5).gameObject.SetActive(true);
-        transform.GetChild(5).GetComponent<Image>().DOFade(1f, 0.5f).OnComplete(() =>
+        transform.GetChild(6).gameObject.SetActive(true);
+        transform.GetChild(6).GetComponent<Image>().DOFade(1f, 0.5f).OnComplete(() =>
         {
             UiManager.Instance.unlockPanel.SetActive(true);
             gameObject.SetActive(false); 

@@ -62,7 +62,8 @@ public class GameManager : Singleton<GameManager>
     private CameraController _cameraController;
     private TextureManager _textureManager;
     private GameObject _pathObj;
-    private GameObject _boss;
+    private GameObject _bossParent;
+    private GameObject _currentBoss;
     private GameObject _fightingRing;
     private GameObject _wrestlingPivot;
     private bool _isWrestling;
@@ -134,10 +135,10 @@ public class GameManager : Singleton<GameManager>
     
     private void Update()
     {
-        if (_boss == null)
+        if (_bossParent == null)
         {
-            _boss = GameObject.Find("npc_Boss");
-            _fightingRing = _boss.transform.parent.GetChild(4).gameObject;
+            _bossParent = GameObject.Find("Bosses");
+            _fightingRing = _bossParent.transform.parent.GetChild(4).gameObject;
         }
 
         if (_wrestlingPivot == null)
@@ -285,16 +286,18 @@ public class GameManager : Singleton<GameManager>
 
     #endregion
 
-    public void WrestlingSetup()
+    public void WrestlingSetup(int bossHandId)
     {
+        _currentBoss = _bossParent.transform.GetChild(bossHandId).gameObject;
+        
         Transform mainHandTransform = _mainHandCollision.transform.parent;
         Transform tattooHandTransform = _mainHandCollision.tattooHand.transform.parent;
         Transform playerTransform = mainHandTransform.parent;
         Transform mainCameraTransform = _mainCamera.transform;
-        Transform endTransform = _boss.transform.parent;
+        Transform endTransform = _bossParent.transform.parent;
         
         playerTransform.parent = _wrestlingPivot.transform;
-        _boss.transform.parent = _wrestlingPivot.transform;
+        _currentBoss.transform.parent = _wrestlingPivot.transform;
         mainCameraTransform.parent = endTransform;
         
         playerTransform.localPosition = new Vector3(1.6f, -0.28f, 0.03f);
@@ -312,10 +315,12 @@ public class GameManager : Singleton<GameManager>
         _mainHandCollision.mainHandAnimator.Play("Wrestle");
         _mainHandCollision.tattooHandAnimator.Play("Wrestle");
         _fightingRing.SetActive(true);
-        _boss.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().enabled = true;
-        _boss.transform.GetComponent<Animator>().enabled = true;
-        
-        endTransform.GetChild(4).GetComponent<EndDetector>().endEffect.Play();
+        _currentBoss.SetActive(true);
+        _currentBoss.transform.GetComponent<Animator>().enabled = true;
+
+        endTransform.GetChild(5).GetComponent<EndDetector>().endEffect = _currentBoss.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetChild(0)
+            .GetChild(1).GetComponent<ParticleSystem>();
+        endTransform.GetChild(5).GetComponent<EndDetector>().endEffect.Play();
         _wrestlingPivot.GetComponent<Rotator>().enabled = true;
         UiManager.Instance.tapFastPanel.SetActive(true);
         _isWrestling = true;
