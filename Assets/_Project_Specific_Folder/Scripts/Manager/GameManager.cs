@@ -53,6 +53,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private List<HandGroup> handGroups = new List<HandGroup>();
     [SerializeField] private PathFollower playerPathFollower;
     [SerializeField] private List<GameObject> tattooGuns =  new List<GameObject>();
+    [SerializeField] private GameObject tattooGunSpawnEffect;
     [SerializeField] private GameObject tattooEffect;
     [SerializeField] private Transform wrestlingCameraTransform;
 
@@ -115,6 +116,12 @@ public class GameManager : Singleton<GameManager>
         playerPathFollower.enabled = false;
 
         _currentTattooGunLevel = PlayerPrefs.GetInt("CurrentTattooGunLevel", 0);
+        
+        if (_currentTattooGunLevel == tattooGuns.Count-1)
+        {
+            UiManager.Instance.DisableTattooGunUpgradeButton();
+        }
+        
         tattooGuns[_currentTattooGunLevel].SetActive(true);
     }
 
@@ -123,16 +130,20 @@ public class GameManager : Singleton<GameManager>
         if (_currentTattooGunLevel < tattooGuns.Count - 1)
         {
             tattooGuns[_currentTattooGunLevel].SetActive(false);
+            
             _currentTattooGunLevel += 1;
+
+            if (_currentTattooGunLevel == tattooGuns.Count - 1)
+            {
+                UiManager.Instance.DisableTattooGunUpgradeButton();
+            }
+
             PlayerPrefs.SetInt("CurrentTattooGunLevel", _currentTattooGunLevel);
             tattooGuns[_currentTattooGunLevel].SetActive(true);
-        }
-        else
-        {
-            UiManager.Instance.DisableTattooGunUpgradeButton();
+            tattooGunSpawnEffect.GetComponent<ParticleSystem>().Play();
         }
     }
-    
+
     private void Update()
     {
         if (_bossParent == null)
