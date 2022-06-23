@@ -142,6 +142,9 @@ public class InfluenceMeter : MonoBehaviour
         {
             transform.GetChild(i).gameObject.SetActive(false);
         }
+
+        transform.GetChild(5).GetChild(1).GetComponent<Image>().sprite = _influencerStatus.influencerIcon;
+        transform.GetChild(5).gameObject.SetActive(true);
         GameManager.Instance.WrestlingSetup(_influencerStatus.influencerHandId);   
     }
     
@@ -152,6 +155,8 @@ public class InfluenceMeter : MonoBehaviour
             transform.GetChild(i).gameObject.SetActive(true);
         }
         
+        transform.GetChild(5).gameObject.SetActive(false);
+        
         PlayerPrefs.SetInt("InfluencerStatus" + _influencerStatus.influencerId, 1);
         confettiEffect.SetActive(true);
         _influencerStatus.transform.GetChild(0).DOScale(new Vector3(1f, 1f, 1f), 0.5f).SetDelay(0.5f).OnComplete(EnableNextButton);
@@ -159,14 +164,14 @@ public class InfluenceMeter : MonoBehaviour
     
     private void EnableNextButton()
     {
-        transform.GetChild(5).gameObject.SetActive(true);
-        transform.GetChild(5).DOScale(new Vector3(0.8f, 0.8f, 0.8f), 0.5f).SetLoops(-1, LoopType.Yoyo);
+        transform.GetChild(6).gameObject.SetActive(true);
+        transform.GetChild(6).DOScale(new Vector3(0.8f, 0.8f, 0.8f), 0.5f).SetLoops(-1, LoopType.Yoyo);
     }
     
     public void EnableUnlockScreen()
     {
-        transform.GetChild(6).gameObject.SetActive(true);
-        transform.GetChild(6).GetComponent<Image>().DOFade(1f, 0.5f).OnComplete(() =>
+        transform.GetChild(7).gameObject.SetActive(true);
+        transform.GetChild(7).GetComponent<Image>().DOFade(1f, 0.5f).OnComplete(() =>
         {
             UiManager.Instance.unlockPanel.SetActive(true);
             gameObject.SetActive(false); 

@@ -7,6 +7,7 @@ public class InfluencerStatus : MonoBehaviour
 {
     public int influencerId;
     public int influencerHandId;
+    public Sprite influencerIcon;
 
     private void Start()
     {
