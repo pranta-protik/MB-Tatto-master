@@ -13,7 +13,7 @@ public class UiManager : Singleton<UiManager>
 {
     public GameObject hurtScreen;
     public GameObject transitionScreen;
-    public TextMeshProUGUI totalScoreText;
+    
     public GameObject unlockPanel;
     public GameObject instagramPostPage;
     public GameObject tapFastPanel;
@@ -24,9 +24,11 @@ public class UiManager : Singleton<UiManager>
     
     [SerializeField] private GameObject startUI;
     [SerializeField] private GameObject hapticsIcon;
+    [SerializeField] private TextMeshProUGUI totalScoreText;
     [SerializeField] private GameObject priceTag;
     [SerializeField] private GameObject tattooGunUpgradeButton;
     [SerializeField] private GameObject valueUpgradeButton;
+    [SerializeField] private GameObject valueUpgradeIncrementEffect;
     [SerializeField] private GameObject mobileScreen;
     [SerializeField] private GameObject selectionMenuButton;
     [SerializeField] private GameObject shop;
@@ -68,6 +70,7 @@ public class UiManager : Singleton<UiManager>
         if (priceTag!=null)
         {
             _scoreText = priceTag.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+            _scoreText.SetText(PlayerPrefs.GetInt("BaseScore", 0).ToString());
         }
         
         if (mobileScreen != null)
@@ -83,7 +86,7 @@ public class UiManager : Singleton<UiManager>
             levelNoText.SetText((_currentLevelText + 1).ToString());            
         }
         
-        if (_currentLevelText == -1)
+        if (_currentLevelText == 0)
         {
             if (shop != null)
             {
@@ -108,10 +111,10 @@ public class UiManager : Singleton<UiManager>
 
         if (totalScoreText!= null)
         {
-            totalScoreText.SetText("$" + StorageManager.GetTotalScore());
+            UpdateTotalScoreText(StorageManager.GetTotalScore());
         }
     }
-    
+
     private void Update()
     {
         if (_isMobileActive)
@@ -138,7 +141,12 @@ public class UiManager : Singleton<UiManager>
             _isFollowersUpdated = false;
         }
     }
-
+    
+    public void UpdateTotalScoreText(int totalScore)
+    {
+        totalScoreText.SetText("$" + totalScore);
+    }
+    
     #region Upgrade Buttons
 
     public void OnTattooGunUpgradeButtonClick()
@@ -151,6 +159,33 @@ public class UiManager : Singleton<UiManager>
         tattooGunUpgradeButton.GetComponent<Button>().interactable = false;
     }
 
+    public void OnValueUpgradeButtonClick()
+    {
+        GameManager.Instance.UpgradeBaseValue();
+    }
+
+    public void EnableValueUpgradeButton()
+    {
+        valueUpgradeButton.GetComponent<Button>().interactable = true;
+    }
+    
+    public void DisableValueUpgradeButton()
+    {
+        valueUpgradeButton.GetComponent<Button>().interactable = false;
+    }
+
+    public void ValueUpgradeEffect(int value)
+    {
+        GameObject incrementTextObj =
+            Instantiate(valueUpgradeIncrementEffect, priceTag.transform.GetChild(1).position, priceTag.transform.GetChild(1).rotation, priceTag.transform);
+        incrementTextObj.GetComponent<TextMeshProUGUI>().SetText("+" + value);
+        incrementTextObj.GetComponent<TextMeshProUGUI>().DOFade(0, 1f);
+        incrementTextObj.GetComponent<RectTransform>().DOAnchorPosY(130f, 1f).OnComplete(() =>
+        {
+            Destroy(incrementTextObj);
+        });
+    }
+    
     #endregion
     
     #region PopUps
@@ -286,7 +321,7 @@ public class UiManager : Singleton<UiManager>
         _isMobileActive = true;
     }
     
-    public void ShowPriceTag()
+    public void MovePriceTag()
     {
         priceTag.GetComponent<RectTransform>().DOAnchorPos(new Vector2(-126f, -70f), 0.5f);
     }

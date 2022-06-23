@@ -7,8 +7,12 @@ public class StorageManager : Singleton<StorageManager>
     public static void SetTotalScore(int score) => PlayerPrefs.SetInt("LifeTimeScore", score);
     
     [HideInInspector] public int currentLevelScore;
-    [HideInInspector] public int currentLevel;
-    [HideInInspector] public int currentLevelText;
+
+    public override void Start()
+    {
+        base.Start();
+        SetCurrentScore(PlayerPrefs.GetInt("BaseScore", 0));
+    }
 
     public int GetCurrentScore()
     {

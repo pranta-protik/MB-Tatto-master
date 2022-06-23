@@ -5,6 +5,6 @@ using UnityEngine.Serialization;
 
 public class Leveldetails : MonoBehaviour
 {
-    [FormerlySerializedAs("Id")] [Header("Ref : Flower == 1 Skull == 2 PinUp == 3 Celebs == 4 Money==5  Calligraphy==6")]
+    [FormerlySerializedAs("Id")] [Header("Ref : Flower == 0 Skull == 1 PinUp == 2 Celebs == 3 Money==4  Calligraphy==5")]
     public int tattooId;
 }

@@ -56,7 +56,9 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private GameObject tattooGunSpawnEffect;
     [SerializeField] private GameObject tattooEffect;
     [SerializeField] private Transform wrestlingCameraTransform;
-
+    [SerializeField] private int requiredScoreForValueUpgrade;
+    [SerializeField] private int upgradeAmount;
+    
     private int _handId;
     private Collsion _mainHandCollision;
     private Camera _mainCamera;
@@ -67,6 +69,7 @@ public class GameManager : Singleton<GameManager>
     private GameObject _currentBoss;
     private GameObject _fightingRing;
     private GameObject _wrestlingPivot;
+    private Leveldetails _levelDetails;
     private bool _isWrestling;
     private float _timeLeft;
     private float _timerInitialValue;
@@ -115,33 +118,13 @@ public class GameManager : Singleton<GameManager>
 
         playerPathFollower.enabled = false;
 
+        CheckValueUpgradeButtonStatus();
+        
         _currentTattooGunLevel = PlayerPrefs.GetInt("CurrentTattooGunLevel", 0);
         
-        if (_currentTattooGunLevel == tattooGuns.Count-1)
-        {
-            UiManager.Instance.DisableTattooGunUpgradeButton();
-        }
+        CheckTattooGunUpgradeButtonStatus();
         
         tattooGuns[_currentTattooGunLevel].SetActive(true);
-    }
-
-    public void UpgradeTattooGun()
-    {
-        if (_currentTattooGunLevel < tattooGuns.Count - 1)
-        {
-            tattooGuns[_currentTattooGunLevel].SetActive(false);
-            
-            _currentTattooGunLevel += 1;
-
-            if (_currentTattooGunLevel == tattooGuns.Count - 1)
-            {
-                UiManager.Instance.DisableTattooGunUpgradeButton();
-            }
-
-            PlayerPrefs.SetInt("CurrentTattooGunLevel", _currentTattooGunLevel);
-            tattooGuns[_currentTattooGunLevel].SetActive(true);
-            tattooGunSpawnEffect.GetComponent<ParticleSystem>().Play();
-        }
     }
 
     private void Update()
@@ -209,6 +192,62 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
+    #region Upgrade Buttons Functionality
+
+    public void UpgradeTattooGun()
+    {
+        if (_currentTattooGunLevel < tattooGuns.Count - 1)
+        {
+            tattooGuns[_currentTattooGunLevel].SetActive(false);
+            
+            _currentTattooGunLevel += 1;
+
+            CheckTattooGunUpgradeButtonStatus();
+
+            int currentTattooLevel = PlayerPrefs.GetInt("CurrentTattooTypeLevel" + _levelDetails.tattooId, 0);
+            
+            PlayerPrefs.SetInt("CurrentTattooTypeLevel" + _levelDetails.tattooId, currentTattooLevel + 1);
+            
+            PlayerPrefs.SetInt("CurrentTattooGunLevel", _currentTattooGunLevel);
+            tattooGuns[_currentTattooGunLevel].SetActive(true);
+            tattooGunSpawnEffect.GetComponent<ParticleSystem>().Play();
+        }
+    }
+
+    public void UpgradeBaseValue()
+    {
+        int lastBaseScore = PlayerPrefs.GetInt("BaseScore", 0);
+        PlayerPrefs.SetInt("BaseScore", lastBaseScore + upgradeAmount);
+        UiManager.Instance.UpdatePriceTag(lastBaseScore + upgradeAmount);
+        StorageManager.Instance.SetCurrentScore(lastBaseScore + upgradeAmount);
+        StorageManager.SetTotalScore(StorageManager.GetTotalScore() - requiredScoreForValueUpgrade);
+        UiManager.Instance.UpdateTotalScoreText(StorageManager.GetTotalScore());
+        UiManager.Instance.ValueUpgradeEffect(upgradeAmount);
+        CheckValueUpgradeButtonStatus();
+    }
+    
+    private void CheckValueUpgradeButtonStatus()
+    {
+        if (requiredScoreForValueUpgrade <= StorageManager.GetTotalScore())
+        {
+            UiManager.Instance.EnableValueUpgradeButton();
+        }
+        else
+        {
+            UiManager.Instance.DisableValueUpgradeButton();
+        }
+    }
+
+    private void CheckTattooGunUpgradeButtonStatus()
+    {
+        if (_currentTattooGunLevel == tattooGuns.Count - 1)
+        {
+            UiManager.Instance.DisableTattooGunUpgradeButton();
+        }
+    }
+
+    #endregion
+    
     public void FinishWrestling()
     {
         UiManager.Instance.tapFastPanel.SetActive(false);
@@ -243,8 +282,8 @@ public class GameManager : Singleton<GameManager>
 
     private void SetLevelDetails(GameObject levelPrefab)
     {
-        Leveldetails levelDetails = levelPrefab.GetComponent<Leveldetails>();
-        _mainHandCollision.tattooGroupId = levelDetails.tattooId;
+        _levelDetails = levelPrefab.GetComponent<Leveldetails>();
+        _mainHandCollision.tattooGroupId = _levelDetails.tattooId;
     }
 
     #endregion
@@ -254,6 +293,8 @@ public class GameManager : Singleton<GameManager>
     public void StartGameplay()
     {
         UiManager.Instance.ClearUIOnGameStart();
+        UiManager.Instance.MovePriceTag();
+        
         playerPathFollower.transform.DOMoveX(.1f, .5f).OnComplete(() =>
         {
             tattooGuns[_currentTattooGunLevel].GetComponent<Animator>().enabled = true;
@@ -267,8 +308,7 @@ public class GameManager : Singleton<GameManager>
         _mainHandCollision.DrawDefaultTattoo();
 
         yield return new WaitForSeconds(.5f);
-
-        UiManager.Instance.ShowPriceTag();
+        
         tattooGuns[_currentTattooGunLevel].transform.parent.DOMoveZ(-0.98f, .3f);
 
         hasGameStarted = true;

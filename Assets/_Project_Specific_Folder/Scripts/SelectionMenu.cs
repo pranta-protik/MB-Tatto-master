@@ -71,7 +71,7 @@ public class SelectionMenu : MonoBehaviour
     public void OnUnlockButtonClick()
     {
         StorageManager.SetTotalScore(StorageManager.GetTotalScore() - (baseUnlockCost * _multiplier));
-        UiManager.Instance.totalScoreText.SetText("$" + StorageManager.GetTotalScore());
+        UiManager.Instance.UpdateTotalScoreText(StorageManager.GetTotalScore());
 
         PlayerPrefs.SetInt("LastMultiplier", _multiplier + 1);
 

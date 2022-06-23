@@ -1387,6 +1387,41 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8564243557427657443, guid: b41cc5b438ed9d3468d89f1fc66c85a1, type: 3}
   m_PrefabInstance: {fileID: 8564243557709155281}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &300217830
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 300217831}
+  m_Layer: 5
+  m_Name: IncrementTextSpawnPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &300217831
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300217830}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6668516392213119778}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 15, y: 20}
+  m_SizeDelta: {x: 180, y: 60}
+  m_Pivot: {x: 1, y: 1}
 --- !u!1 &309453828 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8031478534288428163, guid: 855b4e00de35276468e05a8c3ba8d153, type: 3}
@@ -2032,7 +2067,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   endOfPathInstruction: 2
   distanceTravelled: 3.7
-  maxSpeed: 5
+  maxSpeed: 2
   increaseMultiplier: 4
   speedDecrementFactor: 3
   speedDecrementDuration: 0.6
@@ -9446,99 +9481,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 824647420}
   m_CullTransparentMesh: 1
---- !u!1 &830830721
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 830830750}
-  - component: {fileID: 830830748}
-  - component: {fileID: 830830751}
-  - component: {fileID: 830830749}
-  m_Layer: 5
-  m_Name: ValueUpgrade
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!222 &830830748
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 830830721}
-  m_CullTransparentMesh: 1
---- !u!114 &830830749
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 830830721}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 4
-    callback:
-      m_PersistentCalls:
-        m_Calls: []
---- !u!224 &830830750
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 830830721}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2126399, y: 1.2126399, z: 1.2126399}
-  m_Children: []
-  m_Father: {fileID: 1687032262230919136}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -330.71, y: 100}
-  m_SizeDelta: {x: 243, y: 327}
-  m_Pivot: {x: 0, y: 0}
---- !u!114 &830830751
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 830830721}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a2d75a83547e10b44b4a442a844898e7, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &834215520
 GameObject:
   m_ObjectHideFlags: 0
@@ -17278,7 +17220,9 @@ MonoBehaviour:
   tattooGunSpawnEffect: {fileID: 8341546542858578954}
   tattooEffect: {fileID: 996338768}
   wrestlingCameraTransform: {fileID: 2040196989}
-  gameMode: 1
+  requiredScoreForValueUpgrade: 0
+  upgradeAmount: 25
+  gameMode: 0
   specificLevelId: 0
 --- !u!1 &1302367778
 GameObject:
@@ -21305,8 +21249,6 @@ MonoBehaviour:
   DontDestroyLoad: 0
   m_IsSingletonLogsEnabled: 0
   currentLevelScore: 0
-  currentLevel: 0
-  currentLevelText: 0
 --- !u!4 &1856887683
 Transform:
   m_ObjectHideFlags: 0
@@ -21490,7 +21432,11 @@ MonoBehaviour:
   handBurntTexture: {fileID: 2800000, guid: 08763b4448871f041b6e4b84e42e328f, type: 3}
   tattooGroups:
   - groupId: 0
-    defaultTattoo: {fileID: 2800000, guid: 68906f73a7d7a734ba32b64c0727f9be, type: 3}
+    defaultTattoos:
+    - {fileID: 2800000, guid: 68906f73a7d7a734ba32b64c0727f9be, type: 3}
+    - {fileID: 2800000, guid: 857e1a0d1016c8748a5faeaccd9ff01f, type: 3}
+    - {fileID: 2800000, guid: 3e03474741fccd84c92fb71c026ad6f9, type: 3}
+    - {fileID: 2800000, guid: c8a681c5fe9514e4e8f15db52cbb63f7, type: 3}
     expensiveTattoos:
     - {fileID: 2800000, guid: 7684830d85a3b8642af02ec75969e33d, type: 3}
     - {fileID: 2800000, guid: 0e450ae456587c34cbcab57c5d568fe6, type: 3}
@@ -21529,7 +21475,11 @@ MonoBehaviour:
     expensiveColorTattooIdSequences: 0a0000000b000000
     cheapColorTattooIdSequences: 0400000005000000
   - groupId: 1
-    defaultTattoo: {fileID: 2800000, guid: 51586b72977edae49a9eb93187a2cbc2, type: 3}
+    defaultTattoos:
+    - {fileID: 2800000, guid: 51586b72977edae49a9eb93187a2cbc2, type: 3}
+    - {fileID: 2800000, guid: ebd0433fbfa997e449bcf70862c13682, type: 3}
+    - {fileID: 2800000, guid: b6600b419fb0faa4896c8516ed179f6b, type: 3}
+    - {fileID: 2800000, guid: e561c5f3c6fc1df4abc8247b05b94517, type: 3}
     expensiveTattoos:
     - {fileID: 2800000, guid: fe5f278dc00ff154a88bef10ac7b31e6, type: 3}
     - {fileID: 2800000, guid: 59c5f6181c7ddad40be096efe8c999fb, type: 3}
@@ -21568,7 +21518,11 @@ MonoBehaviour:
     expensiveColorTattooIdSequences: 090000000b000000
     cheapColorTattooIdSequences: 0400000005000000
   - groupId: 2
-    defaultTattoo: {fileID: 2800000, guid: f7a9ead41cf2ca34bb73db79adaa62ff, type: 3}
+    defaultTattoos:
+    - {fileID: 2800000, guid: f7a9ead41cf2ca34bb73db79adaa62ff, type: 3}
+    - {fileID: 2800000, guid: 7057de97dbc2e564fb7a55959b457b58, type: 3}
+    - {fileID: 2800000, guid: 1b67ed2c80aa49a41996d496fdd83261, type: 3}
+    - {fileID: 2800000, guid: a329896198826074681004bf359f79dc, type: 3}
     expensiveTattoos:
     - {fileID: 2800000, guid: 13ca252e634bccc4fa889bd433233e3d, type: 3}
     - {fileID: 2800000, guid: 2e89ffe8f21cd7d49b138727ea3b94b5, type: 3}
@@ -21607,7 +21561,11 @@ MonoBehaviour:
     expensiveColorTattooIdSequences: 0a0000000b000000
     cheapColorTattooIdSequences: 0400000005000000
   - groupId: 3
-    defaultTattoo: {fileID: 2800000, guid: cd093bbab07bf5b42ad4d9dffc6c8d2f, type: 3}
+    defaultTattoos:
+    - {fileID: 2800000, guid: cd093bbab07bf5b42ad4d9dffc6c8d2f, type: 3}
+    - {fileID: 2800000, guid: fc7e3daa55874364498289953eed4d31, type: 3}
+    - {fileID: 2800000, guid: 76aac450654bfcd4991eae531657da11, type: 3}
+    - {fileID: 2800000, guid: 72eeec0677202ac4caa85fe613c81980, type: 3}
     expensiveTattoos:
     - {fileID: 2800000, guid: badf792ee2054dc41b54f3c276fb329d, type: 3}
     - {fileID: 2800000, guid: 0e03ce2e8383e23439b7ae8f87e21c4e, type: 3}
@@ -21643,7 +21601,11 @@ MonoBehaviour:
     expensiveColorTattooIdSequences: 080000000b000000
     cheapColorTattooIdSequences: 04000000
   - groupId: 4
-    defaultTattoo: {fileID: 2800000, guid: 5cf0c33d3e908f842aa282c4ff56f019, type: 3}
+    defaultTattoos:
+    - {fileID: 2800000, guid: 5cf0c33d3e908f842aa282c4ff56f019, type: 3}
+    - {fileID: 2800000, guid: 685d9a0aa7930f54ab65764fe1e081c9, type: 3}
+    - {fileID: 2800000, guid: 5120b0849c95adf45a559fe547438450, type: 3}
+    - {fileID: 2800000, guid: 96a8741c63aeb8b45a2d8bcc7f6686f4, type: 3}
     expensiveTattoos:
     - {fileID: 2800000, guid: f6f0b91f20b63b94a990cff121b3b582, type: 3}
     - {fileID: 2800000, guid: 528557f6ae81df94f8615d4c1487c4ff, type: 3}
@@ -21682,7 +21644,11 @@ MonoBehaviour:
     expensiveColorTattooIdSequences: 090000000b000000
     cheapColorTattooIdSequences: 0400000005000000
   - groupId: 5
-    defaultTattoo: {fileID: 2800000, guid: 1f836455c51e20a498b9e0d6be2f7809, type: 3}
+    defaultTattoos:
+    - {fileID: 2800000, guid: 1f836455c51e20a498b9e0d6be2f7809, type: 3}
+    - {fileID: 2800000, guid: 907636d5ec0fd024eac347c1da196fc0, type: 3}
+    - {fileID: 2800000, guid: 93138951424f9e34fa0a5633d693ee83, type: 3}
+    - {fileID: 2800000, guid: 5750a5fc4a272ce46ae6e22cf3f0f084, type: 3}
     expensiveTattoos:
     - {fileID: 2800000, guid: b6fd91880c20fb64ab336a520692875b, type: 3}
     - {fileID: 2800000, guid: 02e39ea461d07b6479e9c61453a65110, type: 3}
@@ -32367,6 +32333,138 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2054012433}
   m_CullTransparentMesh: 1
+--- !u!1 &2059400185
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2059400186}
+  - component: {fileID: 2059400189}
+  - component: {fileID: 2059400188}
+  - component: {fileID: 2059400187}
+  m_Layer: 5
+  m_Name: ValueUpgradeButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2059400186
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059400185}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.2126399, y: 1.2126399, z: 1.2126399}
+  m_Children: []
+  m_Father: {fileID: 1687032262230919136}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: -330.71, y: 100}
+  m_SizeDelta: {x: 243, y: 327}
+  m_Pivot: {x: 0, y: 0}
+--- !u!114 &2059400187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059400185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 2059400188}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1537974755608313231}
+        m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
+        m_MethodName: OnValueUpgradeButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2059400188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059400185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: a2d75a83547e10b44b4a442a844898e7, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &2059400189
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059400185}
+  m_CullTransparentMesh: 1
 --- !u!1 &2065474232
 GameObject:
   m_ObjectHideFlags: 0
@@ -33366,7 +33464,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 126, y: -200}
+  m_AnchoredPosition: {x: 126, y: -125}
   m_SizeDelta: {x: 307.7, y: 137.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &648829991650579159
@@ -38948,7 +39046,6 @@ MonoBehaviour:
   m_IsSingletonLogsEnabled: 0
   hurtScreen: {fileID: 2875735081493675973}
   transitionScreen: {fileID: 943916262}
-  totalScoreText: {fileID: 1937837366}
   unlockPanel: {fileID: 8886289068977303665}
   instagramPostPage: {fileID: 845298533}
   tapFastPanel: {fileID: 1698252271999335891}
@@ -38957,9 +39054,11 @@ MonoBehaviour:
   isBadTattoo: 0
   startUI: {fileID: 1473265678204927958}
   hapticsIcon: {fileID: 1996186271}
+  totalScoreText: {fileID: 1937837366}
   priceTag: {fileID: 6668516392213119779}
   tattooGunUpgradeButton: {fileID: 343490213}
-  valueUpgradeButton: {fileID: 0}
+  valueUpgradeButton: {fileID: 2059400185}
+  valueUpgradeIncrementEffect: {fileID: 8370416646854717847, guid: 8e75622e07fb6b344ba958afd4a36d7f, type: 3}
   mobileScreen: {fileID: 1961694457}
   selectionMenuButton: {fileID: 425760740}
   shop: {fileID: 167094096}
@@ -39113,7 +39212,7 @@ RectTransform:
   m_Children:
   - {fileID: 1686840805502993908}
   m_Father: {fileID: 5443246868219738669}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -39163,7 +39262,7 @@ RectTransform:
   - {fileID: 1687304384213461234}
   - {fileID: 8908567503635817008}
   - {fileID: 412932318}
-  - {fileID: 830830750}
+  - {fileID: 2059400186}
   - {fileID: 343490214}
   - {fileID: 1438615508}
   m_Father: {fileID: 1686840805502993908}
@@ -43891,8 +43990,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 6668516392213119778}
   - {fileID: 1686618580844796446}
+  - {fileID: 6668516392213119778}
   - {fileID: 1996186272}
   - {fileID: 425760741}
   - {fileID: 167094097}
@@ -45133,12 +45232,13 @@ RectTransform:
   m_LocalScale: {x: 1.31, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 2853696327815000338}
+  - {fileID: 300217831}
   m_Father: {fileID: 5443246868219738669}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 15}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 149, y: 140}
+  m_AnchoredPosition: {x: -134, y: -175}
   m_SizeDelta: {x: 350, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6668516392213119779
@@ -55841,7 +55941,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -21, y: -200}
+  m_AnchoredPosition: {x: -21, y: -125}
   m_SizeDelta: {x: 307.7, y: 137.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &7725445209035578108

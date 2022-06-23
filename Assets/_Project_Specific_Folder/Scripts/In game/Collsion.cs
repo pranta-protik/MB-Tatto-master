@@ -62,6 +62,7 @@ public class Collsion : MonoBehaviour
     private float _playerInitialSpeed;
     private Camera _camera;
     private TextureManager _textureManager;
+    private int _defaultTattooId;
 
     private void Start()
     {
@@ -109,7 +110,8 @@ public class Collsion : MonoBehaviour
         _currentExpensiveTattooLevel = 0;
         _currentCheapTattooLevel = 0;
         _collectedGoodTattoosAttributes.Clear();
-        _collectedGoodTattoosAttributes.Add(new CollectedGoodTattoosAttributes(_textureManager.tattooGroups[tattooGroupId].defaultTattoo, -1));
+        _collectedGoodTattoosAttributes.Add(
+            new CollectedGoodTattoosAttributes(_textureManager.tattooGroups[tattooGroupId].defaultTattoos[GetCurrentDefaultTattooId()], -1));
     }
 
     private void OnTriggerEnter(Collider other)
@@ -418,7 +420,7 @@ public class Collsion : MonoBehaviour
 
     public void DrawDefaultTattoo()
     {
-        Mpb.SetTexture(SHPropTexture, _textureManager.tattooGroups[tattooGroupId].defaultTattoo);
+        Mpb.SetTexture(SHPropTexture, _textureManager.tattooGroups[tattooGroupId].defaultTattoos[GetCurrentDefaultTattooId()]);
         _skinnedMeshRenderer.SetPropertyBlock(Mpb);
         _skinnedMeshRenderer.material.DOFade(1, 1.8f);
     }
@@ -443,6 +445,18 @@ public class Collsion : MonoBehaviour
             _skinnedMeshRenderer.SetPropertyBlock(Mpb);
             _skinnedMeshRenderer.material.DOFade(1, 0.5f);
         });
+    }
+
+    private int GetCurrentDefaultTattooId()
+    {
+        int defaultTattooId = PlayerPrefs.GetInt("CurrentTattooTypeLevel" + tattooGroupId, 0);
+
+        if (defaultTattooId >= _textureManager.tattooGroups[tattooGroupId].defaultTattoos.Count)
+        {
+            defaultTattooId = _textureManager.tattooGroups[tattooGroupId].defaultTattoos.Count - 1;
+        }
+
+        return defaultTattooId;
     }
 
     #endregion
