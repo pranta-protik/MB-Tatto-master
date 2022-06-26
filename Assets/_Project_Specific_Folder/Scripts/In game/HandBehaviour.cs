@@ -27,6 +27,7 @@ public class HandBehaviour : MonoBehaviour
     public Animator scoreAnimator;
     public AnimatorOverrideController animatorOverrideController;
     public AnimationClip[] animationClips;
+    public AnimationClip[] poseAnimationClips;
     public Color goodGateScorePopUpColor;
     public Color badGateScorePopUpColor;
     
@@ -63,6 +64,7 @@ public class HandBehaviour : MonoBehaviour
     private Camera _camera;
     private TextureManager _textureManager;
     private int _defaultTattooId;
+    private static readonly int IsPosing = Animator.StringToHash("isPosing");
 
     private void Start()
     {
@@ -494,6 +496,21 @@ public class HandBehaviour : MonoBehaviour
         tattooHandAnimator.runtimeAnimatorController = animatorOverrideController;
         mainHandAnimator.SetTrigger(Gesture);
         tattooHandAnimator.SetTrigger(Gesture);
+    }
+
+    public void PlayPoseAnimation(int index)
+    {
+        animatorOverrideController["FingerPose"] = poseAnimationClips[index];
+        mainHandAnimator.runtimeAnimatorController = animatorOverrideController;
+        tattooHandAnimator.runtimeAnimatorController = animatorOverrideController;
+        mainHandAnimator.Play("FingerPose", -1, 0f);
+        tattooHandAnimator.Play("FingerPose", -1, 0f);
+    }
+
+    public void ResetPose()
+    {
+        mainHandAnimator.Play("idle");
+        tattooHandAnimator.Play("idle");
     }
 
     private IEnumerator SpeedSlowDownRoutine()
