@@ -1,41 +1,31 @@
+using Singleton;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 
-public class PostProcessHandler : MonoBehaviour
+public class PostProcessHandler : Singleton<PostProcessHandler>
 {
     [SerializeField] private PostProcessProfile _postProcessProfile;
-    
-    private bool _isGrayscale;
-    
-    private void Start()
+
+    public override void Start()
     {
         _postProcessProfile = GetComponent<PostProcessVolume>().profile;
     }
 
     public void AddGrayscaleEffect()
     {
-        if (_isGrayscale)
-        {
-            _isGrayscale = false;
-            RemoveGrayscaleEffect();
-        }
-        else
-        {
-            _isGrayscale = true;
-            _postProcessProfile.AddSettings<ColorGrading>();
-            ColorGrading colorGrading = _postProcessProfile.GetSetting<ColorGrading>();
+        _postProcessProfile.AddSettings<ColorGrading>();
+        ColorGrading colorGrading = _postProcessProfile.GetSetting<ColorGrading>();
         
-            // Grading Mode
-            colorGrading.gradingMode.overrideState = true;
-            colorGrading.gradingMode.value = GradingMode.LowDefinitionRange;
+        // Grading Mode
+        colorGrading.gradingMode.overrideState = true;
+        colorGrading.gradingMode.value = GradingMode.LowDefinitionRange;
         
-            // Saturation
-            colorGrading.saturation.overrideState = true;
-            colorGrading.saturation.value = -100;
-        }
+        // Saturation
+        colorGrading.saturation.overrideState = true;
+        colorGrading.saturation.value = -100;
     }
 
-    private void RemoveGrayscaleEffect()
+    public void RemoveGrayscaleEffect()
     {
         _postProcessProfile.RemoveSettings<ColorGrading>();
     }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using DG.Tweening;
 using UnityEngine;
@@ -8,18 +9,27 @@ using UnityEngine.UI;
 public class MobileScreen : MonoBehaviour
 {
     private Camera _camera;
+    private GameObject _captureButton;
+    private GameObject _videoButton;
+    private Image _foregroundImage;
+    private RawImage _lastCapturedImage;
     private bool _isMobileActive;
     private Slider _mobileScreenSlider;
     private bool _isPosing;
+    private bool _isFilterActive;
 
     private void Start()
     {
         _camera = Camera.main;
-        _mobileScreenSlider = transform.GetChild(4).GetComponent<Slider>();
-        
-        transform.GetChild(8).GetComponent<Image>().DOFade(0f, 0.5f).OnComplete(() =>
+        _captureButton = transform.GetChild(3).gameObject;
+        _videoButton = transform.GetChild(4).gameObject;
+        _mobileScreenSlider = transform.GetChild(5).GetComponent<Slider>();
+        _foregroundImage = transform.GetChild(9).GetComponent<Image>();
+        _lastCapturedImage = transform.GetChild(2).GetChild(0).GetComponent<RawImage>();
+
+        _foregroundImage.DOFade(0f, 0.5f).OnComplete(() =>
         {
-            transform.GetChild(8).gameObject.SetActive(false);
+            _foregroundImage.gameObject.SetActive(false);
         });
         
         int lastSnapshotNo = PlayerPrefs.GetInt("SnapshotsTaken", 0);
@@ -32,15 +42,15 @@ public class MobileScreen : MonoBehaviour
             Texture2D loadedTexture = new Texture2D(720, 720, TextureFormat.ARGB32, false);
             loadedTexture.LoadImage(savedSnapshot);
 
-            transform.GetChild(2).GetChild(0).GetComponent<RawImage>().texture = loadedTexture;
+            _lastCapturedImage.texture = loadedTexture;
         }
         else
         {
-            transform.GetChild(2).GetChild(0).gameObject.SetActive(false);
+            _lastCapturedImage.gameObject.SetActive(false);
         }
 
-        transform.GetChild(3).DOScale(new Vector3(1.15f, 1.15f, 1.15f), 0.5f).SetLoops(-1, LoopType.Yoyo);
-        transform.GetChild(7).GetComponent<RectTransform>().DOAnchorPosY(340, 1f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
+        _captureButton.transform.DOScale(new Vector3(1.15f, 1.15f, 1.15f), 0.5f).SetLoops(-1, LoopType.Yoyo);
+        transform.GetChild(8).GetComponent<RectTransform>().DOAnchorPosY(340, 1f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
         _mobileScreenSlider.transform.GetChild(2).GetChild(0).DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.5f).SetLoops(-1, LoopType.Yoyo);
 
         _isMobileActive = true;
@@ -58,14 +68,14 @@ public class MobileScreen : MonoBehaviour
     {
         _mobileScreenSlider.transform.GetChild(2).GetChild(0).DOKill();
         _mobileScreenSlider.transform.GetChild(2).GetChild(0).localScale = new Vector3(1f, 1f, 1f);
-        transform.GetChild(7).gameObject.SetActive(false);
+        transform.GetChild(8).gameObject.SetActive(false);
     }
     
     public void OnCaptureButtonClick()
     {
-        transform.GetChild(3).DOKill();
-        transform.GetChild(3).localScale = new Vector3(1f, 1f, 1f);
-        transform.GetChild(3).GetComponent<Button>().interactable = false;
+        _captureButton.transform.DOKill();
+        _captureButton.transform.localScale = new Vector3(1f, 1f, 1f);
+        _captureButton.transform.GetComponent<Button>().interactable = false;
         StartCoroutine(CameraFlashEffect());
     }
     
@@ -76,14 +86,81 @@ public class MobileScreen : MonoBehaviour
         _camera.transform.GetChild(1).gameObject.SetActive(false);
         ScreenshotHandler.TakeScreenshot_Static();
 
-        transform.GetChild(8).gameObject.SetActive(true);
-        transform.GetChild(8).GetComponent<Image>().DOColor(Color.white, 0.5f).OnComplete(() =>
+        _foregroundImage.gameObject.SetActive(true);
+        _foregroundImage.DOColor(Color.white, 0.5f).OnComplete(() =>
         {
             gameObject.SetActive(false);
             _isMobileActive = false;
             UiManager.Instance.EnableInstagramPostPage();
         });
     }
+
+    #region Filter
+
+    public void Filter1Effect()
+    {
+        if (_isFilterActive)
+        {
+            _isFilterActive = false;
+            PostProcessHandler.Instance.AddGrayscaleEffect();
+        }
+        else
+        {
+            _isFilterActive = true;
+            PostProcessHandler.Instance.RemoveGrayscaleEffect();
+        }
+    }
+
+    public void Filter2Effect()
+    {
+        if (_isFilterActive)
+        {
+            _isFilterActive = false;
+            _captureButton.SetActive(false);
+            _videoButton.SetActive(true);
+            PostProcessHandler.Instance.AddGrayscaleEffect();    
+        }
+        else
+        {
+            _isFilterActive = true;
+            _captureButton.SetActive(true);
+            _videoButton.SetActive(false);
+            PostProcessHandler.Instance.RemoveGrayscaleEffect();
+        }
+        
+    }
+    
+    public void Filter3Effect()
+    {
+        if (_isFilterActive)
+        {
+            _isFilterActive = false;
+            PostProcessHandler.Instance.AddGrayscaleEffect();
+        }
+        else
+        {
+            _isFilterActive = true;
+            PostProcessHandler.Instance.RemoveGrayscaleEffect();
+        }
+    }
+    
+    public void Filter4Effect()
+    {
+        if (_isFilterActive)
+        {
+            _isFilterActive = false;
+            PostProcessHandler.Instance.AddGrayscaleEffect();
+        }
+        else
+        {
+            _isFilterActive = true;
+            PostProcessHandler.Instance.RemoveGrayscaleEffect();
+        }
+    }
+
+    #endregion
+    
+    #region Hand Pose
     
     public void PlayFingerPose()
     {
@@ -140,4 +217,6 @@ public class MobileScreen : MonoBehaviour
             GameManager.Instance.PlayPoseAnimation(3);   
         }
     }
+    
+    #endregion
 }
