@@ -64,7 +64,6 @@ public class HandBehaviour : MonoBehaviour
     private Camera _camera;
     private TextureManager _textureManager;
     private int _defaultTattooId;
-    private static readonly int IsPosing = Animator.StringToHash("isPosing");
 
     private void Start()
     {
