@@ -134,11 +134,9 @@ public class UiManager : Singleton<UiManager>
 
         if (isInstagramGalleryPhotoUpdated && _isFollowersUpdated)
         {
-            instagramGalleryPage.transform.GetChild(2).gameObject.SetActive(true);
-            instagramGalleryPage.transform.GetChild(2).DOScale(new Vector3(0.8f, 0.8f, 0.8f), 0.5f).SetLoops(-1, LoopType.Yoyo);
-            // Invoke(nameof(EnableInfluenceMeterScreen), 1f);
             isInstagramGalleryPhotoUpdated = false;
             _isFollowersUpdated = false;
+            Invoke(nameof(EnableInfluenceMeterScreen), 1.5f);
         }
     }
     
@@ -320,7 +318,7 @@ public class UiManager : Singleton<UiManager>
 
         _isMobileActive = true;
     }
-    
+
     public void MovePriceTag()
     {
         priceTag.GetComponent<RectTransform>().DOAnchorPos(new Vector2(-126f, -70f), 0.5f);
@@ -380,6 +378,26 @@ public class UiManager : Singleton<UiManager>
             _startLike = _currentLike;
             _shouldUpdateLikeText = true;
         });
+    }
+
+    public void PlayFingerPose()
+    {
+        GameManager.Instance.PlayPoseAnimation(0);
+    }
+
+    public void PlayHopePose()
+    {
+        GameManager.Instance.PlayPoseAnimation(1);
+    }
+
+    public void PlayPeacePose()
+    {
+        GameManager.Instance.PlayPoseAnimation(2);
+    }
+
+    public void PlayRockPose()
+    {
+        GameManager.Instance.PlayPoseAnimation(3);
     }
 
     #endregion
@@ -462,16 +480,18 @@ public class UiManager : Singleton<UiManager>
                 _followerValueLetter = "B";
             }
 
-            instagramGalleryPage.transform.GetChild(1).GetChild(4).GetChild(1).GetComponent<TextMeshProUGUI>()
+            instagramGalleryPage.transform.GetChild(4).GetChild(1).GetComponent<TextMeshProUGUI>()
                 .SetText(Mathf.RoundToInt(_currentFollowers) + _followerValueLetter);
         }
         else
         {
             _shouldUpdateFollowersText = false;
+            
             if (isBadTattoo)
             {
-                instagramGalleryPage.transform.GetChild(1).GetChild(4).GetChild(1).GetChild(0).DOKill();
-                instagramGalleryPage.transform.GetChild(1).GetChild(4).GetChild(1).GetChild(0).gameObject.SetActive(false);    
+                Transform followerDropTextTransform = instagramGalleryPage.transform.GetChild(4).GetChild(1).GetChild(0);
+                followerDropTextTransform.DOKill();
+                followerDropTextTransform.gameObject.SetActive(false);
             }
 
             if (PlayerPrefs.GetInt("TargetFollowersIndex", 0) <= GameManager.Instance.followers.Count)
@@ -497,7 +517,7 @@ public class UiManager : Singleton<UiManager>
                 PlayerPrefs.SetInt("TargetFollowersIndex", GameManager.Instance.followers.Count);
             }
             
-            instagramGalleryPage.transform.GetChild(1).GetChild(4).GetChild(1).GetComponent<TextMeshProUGUI>().SetText(followerValue);
+            instagramGalleryPage.transform.GetChild(4).GetChild(1).GetComponent<TextMeshProUGUI>().SetText(followerValue);
             _isFollowersUpdated = true;
         }
     }
@@ -539,11 +559,10 @@ public class UiManager : Singleton<UiManager>
 
         if (isBadTattoo)
         {
-            instagramGalleryPage.transform.GetChild(1).GetChild(4).GetChild(1).GetChild(0).gameObject.SetActive(true);
-            instagramGalleryPage.transform.GetChild(1).GetChild(4).GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().DOFade(0f, 0.3f)
-                .SetLoops(-1, LoopType.Restart);
-            instagramGalleryPage.transform.GetChild(1).GetChild(4).GetChild(1).GetChild(0).GetComponent<RectTransform>().DOAnchorPosY(100f, 0.3f)
-                .SetLoops(-1, LoopType.Restart);
+            Transform followerDropTextTransform = instagramGalleryPage.transform.GetChild(4).GetChild(1).GetChild(0);
+            followerDropTextTransform.gameObject.SetActive(true);
+            followerDropTextTransform.GetComponent<TextMeshProUGUI>().DOFade(0f, 0.3f).SetLoops(-1, LoopType.Restart);
+            followerDropTextTransform.GetComponent<RectTransform>().DOAnchorPosY(100f, 0.3f).SetLoops(-1, LoopType.Restart);
         }
     }
 

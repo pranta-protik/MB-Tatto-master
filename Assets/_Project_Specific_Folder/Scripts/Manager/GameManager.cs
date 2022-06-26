@@ -42,7 +42,6 @@ public class GameManager : Singleton<GameManager>
     public List<GameObject> levelPrefabs = new List<GameObject>();
     public List<int> likes = new List<int>();
     public List<FollowerInfoSet> followers = new List<FollowerInfoSet>();
-    [FormerlySerializedAs("followers")] public List<string> followers2 = new List<string>();
 
     [HideInInspector] public int currentLevelNo;
     [HideInInspector] public GameObject currentLevelPrefab;
@@ -63,7 +62,6 @@ public class GameManager : Singleton<GameManager>
     private HandBehaviour _mainHandCollision;
     private Camera _mainCamera;
     private CameraController _cameraController;
-    private TextureManager _textureManager;
     private GameObject _pathObj;
     private GameObject _bossParent;
     private GameObject _currentBoss;
@@ -105,8 +103,6 @@ public class GameManager : Singleton<GameManager>
 
         _cameraController.player = mainHandObj;
 
-        _textureManager = TextureManager.Instance;
-
         LoadLevelPrefab();
 
         if (_pathObj == null)
@@ -132,7 +128,7 @@ public class GameManager : Singleton<GameManager>
         if (_bossParent == null)
         {
             _bossParent = GameObject.Find("Bosses");
-            _fightingRing = _bossParent.transform.parent.GetChild(4).gameObject;
+            _fightingRing = _bossParent.transform.parent.GetChild(3).gameObject;
         }
 
         if (_wrestlingPivot == null)
@@ -191,7 +187,12 @@ public class GameManager : Singleton<GameManager>
             }
         }
     }
-
+    
+    public void PlayPoseAnimation(int index)
+    {
+        _mainHandCollision.PlayPoseAnimation(index);
+    }
+    
     #region Upgrade Buttons Functionality
 
     public void UpgradeTattooGun()
@@ -259,8 +260,8 @@ public class GameManager : Singleton<GameManager>
         _mainHandCollision.transform.parent.DOLocalMoveY(0.8f, 0.3f);
         _mainHandCollision.tattooHand.transform.parent.DOLocalMoveY(0.8f, 0.3f);
         _wrestlingPivot.transform.DOLocalRotate(new Vector3(-40f, -20f, 20f), 0.3f);
-        _mainHandCollision.mainHandAnimator.Play("g 0 0");
-        _mainHandCollision.tattooHandAnimator.Play("g 0 0");
+        _mainHandCollision.mainHandAnimator.Play("gesture04");
+        _mainHandCollision.tattooHandAnimator.Play("gesture04");
         StartCoroutine(UiManager.Instance.CrossOpponentOnInfluenceMeter());
     }
     
@@ -369,9 +370,9 @@ public class GameManager : Singleton<GameManager>
         _currentBoss.SetActive(true);
         _currentBoss.transform.GetComponent<Animator>().enabled = true;
 
-        endTransform.GetChild(5).GetComponent<EndDetector>().endEffect = _currentBoss.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetChild(0)
+        endTransform.GetChild(4).GetComponent<EndDetector>().endEffect = _currentBoss.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetChild(0)
             .GetChild(1).GetComponent<ParticleSystem>();
-        endTransform.GetChild(5).GetComponent<EndDetector>().endEffect.Play();
+        endTransform.GetChild(4).GetComponent<EndDetector>().endEffect.Play();
         _wrestlingPivot.GetComponent<Rotator>().enabled = true;
         UiManager.Instance.tapFastPanel.SetActive(true);
         _isWrestling = true;

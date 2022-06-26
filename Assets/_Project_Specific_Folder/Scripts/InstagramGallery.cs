@@ -10,9 +10,10 @@ public class InstagramGallery : MonoBehaviour
     public GameObject pictureFramePrefab;
     [SerializeField] private int picturesOnEachPage;
     private Scrollbar _scrollbar;
-    private Transform _contentTransform;
+    private Transform _scrollViewContentTransform;
     private bool _isDisplayed;
     private GameObject _lastPictureFrame;
+    private TextMeshProUGUI _postsText;
     private bool _isScrollbarValueSet;
     private bool _isScrollingComplete;
     private bool _hasScrolledToNextPage;
@@ -20,11 +21,12 @@ public class InstagramGallery : MonoBehaviour
 
     private IEnumerator Start()
     {
-        _contentTransform = transform.GetChild(1).GetChild(5).GetChild(0).GetChild(0).GetChild(0);
-        _scrollbar = transform.GetChild(1).GetChild(5).GetChild(0).GetChild(1).GetComponent<Scrollbar>();
+        _scrollViewContentTransform = transform.GetChild(5).GetChild(0).GetChild(0).GetChild(0);
+        _scrollbar = transform.GetChild(5).GetChild(0).GetChild(1).GetComponent<Scrollbar>();
+        _postsText = transform.GetChild(3).GetChild(1).GetComponent<TextMeshProUGUI>();
 
         int totalPhotos = PlayerPrefs.GetInt("SnapshotsTaken", 0);
-        transform.GetChild(1).GetChild(3).GetChild(1).GetComponent<TextMeshProUGUI>().SetText(totalPhotos.ToString());
+        _postsText.SetText(totalPhotos.ToString());
 
         SpawnPictureFrames(0, totalPhotos);
 
@@ -54,7 +56,7 @@ public class InstagramGallery : MonoBehaviour
     {
         for (int i = startIndex; i < totalPhotos; i++)
         {
-            GameObject pictureFrameObj = Instantiate(pictureFramePrefab, _contentTransform.position, Quaternion.identity, _contentTransform);
+            GameObject pictureFrameObj = Instantiate(pictureFramePrefab, _scrollViewContentTransform.position, Quaternion.identity, _scrollViewContentTransform);
 
             string filename = $"{Application.persistentDataPath}/Snapshots/" + (i + 1) + ".png";
 
@@ -78,7 +80,7 @@ public class InstagramGallery : MonoBehaviour
     {
         for (int j = 0; j < frameNo; j++)
         {
-            Instantiate(pictureFramePrefab, _contentTransform.position, Quaternion.identity, _contentTransform);
+            Instantiate(pictureFramePrefab, _scrollViewContentTransform.position, Quaternion.identity, _scrollViewContentTransform);
         }
     }
 
@@ -106,7 +108,6 @@ public class InstagramGallery : MonoBehaviour
                         _lastPictureFrame.transform.DOScale(new Vector3(1f, 1f, 1f), 0.5f).OnComplete(() =>
                         {
                             UiManager.Instance.isInstagramGalleryPhotoUpdated = true;
-                            transform.GetChild(3).gameObject.SetActive(false);
                             _isScrollingComplete = true;
                         });
                         _isDisplayed = true;
