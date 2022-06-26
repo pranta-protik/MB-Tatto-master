@@ -1,9 +1,13 @@
 ﻿using UnityEngine;
+using HomaGames.HomaBelly;
+using HomaGames.HomaConsole.Core.Attributes;
 
 public class CameraController : MonoBehaviour
 {
     public GameObject player;
-    public float offset = -0.95f;
+
+    [DebuggableField("Camera", CustomName = "offsetX", LayoutOption = LayoutOption.Slider, Min = -0.95f, Max = 1.5f)]
+    public float offsetX = -0.95f;
 
     void LateUpdate()
     {
@@ -12,8 +16,8 @@ public class CameraController : MonoBehaviour
             
         Vector3 playerPosition = player.transform.position;
             
-        cameraPosition.z = playerPosition.z; 
-        cameraPosition.x = playerPosition.x + offset;
+        cameraPosition.z = playerPosition.z ; 
+        cameraPosition.x = playerPosition.x + offsetX;
         cameraTransform.position = cameraPosition;
     }
 }
