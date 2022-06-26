@@ -40,8 +40,6 @@ public class UiManager : Singleton<UiManager>
     [SerializeField] private GameObject influenceMeterPage;
 
     private TextMeshProUGUI _scoreText;
-    private Slider _mobileScreenSlider;
-    private bool _isMobileActive;
     private int _currentLevel;
     private int _currentLevelText;
     private bool _isHapticsAllowed;
@@ -73,10 +71,7 @@ public class UiManager : Singleton<UiManager>
             _scoreText.SetText(PlayerPrefs.GetInt("BaseScore", 0).ToString());
         }
         
-        if (mobileScreen != null)
-        {
-            _mobileScreenSlider = mobileScreen.transform.GetChild(4).GetComponent<Slider>();
-        }
+        
         
         _currentLevel = PlayerPrefs.GetInt("current_scene", 0);
         _currentLevelText = PlayerPrefs.GetInt("current_scene_text", 0);
@@ -117,11 +112,6 @@ public class UiManager : Singleton<UiManager>
 
     private void Update()
     {
-        if (_isMobileActive)
-        {
-            _camera.fieldOfView = _mobileScreenSlider.minValue + (_mobileScreenSlider.maxValue - _mobileScreenSlider.value);   
-        }
-
         if (_shouldUpdateLikeText)
         {
             UpdateLikeText();
@@ -290,33 +280,6 @@ public class UiManager : Singleton<UiManager>
     {
         mobileScreen.SetActive(true);
         transitionScreen.SetActive(false);
-        mobileScreen.transform.GetChild(8).GetComponent<Image>().DOFade(0f, 0.5f).OnComplete(() =>
-        {
-            mobileScreen.transform.GetChild(8).gameObject.SetActive(false);
-        });
-        
-        int lastSnapshotNo = PlayerPrefs.GetInt("SnapshotsTaken", 0);
-
-        if (lastSnapshotNo > 0)
-        {
-            string filename = $"{Application.persistentDataPath}/Snapshots/" + lastSnapshotNo + ".png";
-
-            byte[] savedSnapshot = File.ReadAllBytes(filename);
-            Texture2D loadedTexture = new Texture2D(720, 720, TextureFormat.ARGB32, false);
-            loadedTexture.LoadImage(savedSnapshot);
-
-            mobileScreen.transform.GetChild(2).GetChild(0).GetComponent<RawImage>().texture = loadedTexture;
-        }
-        else
-        {
-            mobileScreen.transform.GetChild(2).GetChild(0).gameObject.SetActive(false);
-        }
-
-        mobileScreen.transform.GetChild(3).DOScale(new Vector3(1.15f, 1.15f, 1.15f), 0.5f).SetLoops(-1, LoopType.Yoyo);
-        _mobileScreenSlider.transform.GetChild(2).GetChild(0).DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.5f).SetLoops(-1, LoopType.Yoyo);
-        mobileScreen.transform.GetChild(7).GetComponent<RectTransform>().DOAnchorPosY(340, 1f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
-
-        _isMobileActive = true;
     }
 
     public void MovePriceTag()
@@ -334,71 +297,8 @@ public class UiManager : Singleton<UiManager>
     #endregion
 
     #region Camera Settings
-
-    public void OnSliderClick()
-    {
-        _mobileScreenSlider.transform.GetChild(2).GetChild(0).DOKill();
-        _mobileScreenSlider.transform.GetChild(2).GetChild(0).localScale = new Vector3(1f, 1f, 1f);
-        mobileScreen.transform.GetChild(7).gameObject.SetActive(false);
-    }
     
-    public void OnCaptureButtonClick()
-    {
-        mobileScreen.transform.GetChild(3).DOKill();
-        mobileScreen.transform.GetChild(3).localScale = new Vector3(1f, 1f, 1f);
-        mobileScreen.transform.GetChild(3).GetComponent<Button>().interactable = false;
-        StartCoroutine(CameraFlashEffect());
-    }
     
-    IEnumerator CameraFlashEffect()
-    {
-        _camera.transform.GetChild(1).gameObject.SetActive(true);
-        yield return new WaitForSeconds(0.1f);
-        _camera.transform.GetChild(1).gameObject.SetActive(false);
-        ScreenshotHandler.TakeScreenshot_Static();
-
-        mobileScreen.transform.GetChild(8).gameObject.SetActive(true);
-        mobileScreen.transform.GetChild(8).GetComponent<Image>().DOColor(Color.white, 0.5f).OnComplete(() =>
-        {
-            mobileScreen.SetActive(false);
-            _isMobileActive = false;
-            instagramPostPage.SetActive(true);
-            instagramPostPage.transform.GetChild(2).GetComponent<Image>().DOFade(0, 0.5f);
-            _targetLikeIndex = PlayerPrefs.GetInt("TargetLikeIndex", 0);
-            
-            if (_targetLikeIndex < GameManager.Instance.likes.Count)
-            {
-                _targetLike = GameManager.Instance.likes[_targetLikeIndex];   
-            }
-            else
-            {
-                _targetLike = GameManager.Instance.likes[GameManager.Instance.likes.Count - 1] + Random.Range(-100, 100);
-            }
-            _currentLike = 0;
-            _startLike = _currentLike;
-            _shouldUpdateLikeText = true;
-        });
-    }
-
-    public void PlayFingerPose()
-    {
-        GameManager.Instance.PlayPoseAnimation(0);
-    }
-
-    public void PlayHopePose()
-    {
-        GameManager.Instance.PlayPoseAnimation(1);
-    }
-
-    public void PlayPeacePose()
-    {
-        GameManager.Instance.PlayPoseAnimation(2);
-    }
-
-    public void PlayRockPose()
-    {
-        GameManager.Instance.PlayPoseAnimation(3);
-    }
 
     #endregion
 
@@ -522,6 +422,25 @@ public class UiManager : Singleton<UiManager>
         }
     }
 
+    public void EnableInstagramPostPage()
+    {
+        instagramPostPage.SetActive(true);
+        instagramPostPage.transform.GetChild(2).GetComponent<Image>().DOFade(0, 0.5f);
+        _targetLikeIndex = PlayerPrefs.GetInt("TargetLikeIndex", 0);
+            
+        if (_targetLikeIndex < GameManager.Instance.likes.Count)
+        {
+            _targetLike = GameManager.Instance.likes[_targetLikeIndex];   
+        }
+        else
+        {
+            _targetLike = GameManager.Instance.likes[GameManager.Instance.likes.Count - 1] + Random.Range(-100, 100);
+        }
+        _currentLike = 0;
+        _startLike = _currentLike;
+        _shouldUpdateLikeText = true;
+    }
+    
     private void EnableInstagramGalleryPage()
     {
         instagramPostPage.SetActive(false);

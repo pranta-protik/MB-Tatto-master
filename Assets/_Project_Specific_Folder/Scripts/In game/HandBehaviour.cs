@@ -507,6 +507,12 @@ public class HandBehaviour : MonoBehaviour
         tattooHandAnimator.Play("FingerPose", -1, 0f);
     }
 
+    public void ResetPose()
+    {
+        mainHandAnimator.Play("idle");
+        tattooHandAnimator.Play("idle");
+    }
+
     private IEnumerator SpeedSlowDownRoutine()
     {
         _playerPathFollower.maxSpeed = _playerInitialSpeed / _playerPathFollower.speedDecrementFactor;

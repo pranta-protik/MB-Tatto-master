@@ -192,7 +192,12 @@ public class GameManager : Singleton<GameManager>
     {
         _mainHandCollision.PlayPoseAnimation(index);
     }
-    
+
+    public void ResetPose()
+    {
+        _mainHandCollision.ResetPose();
+    }
+
     #region Upgrade Buttons Functionality
 
     public void UpgradeTattooGun()
