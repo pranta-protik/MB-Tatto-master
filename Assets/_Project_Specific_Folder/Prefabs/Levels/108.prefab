@@ -588,7 +588,6 @@ GameObject:
   - component: {fileID: 6828944571194311446}
   - component: {fileID: 6828944571194311441}
   - component: {fileID: 6828944571194311444}
-  - component: {fileID: 448958229449924050}
   m_Layer: 0
   m_Name: Road Mesh Holder
   m_TagString: Untagged
@@ -675,18 +674,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &448958229449924050
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6828944571194311440}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52070c579a71ce4469f18b0ef5de9e83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6876653224749115342
 GameObject:
   m_ObjectHideFlags: 0
@@ -1540,6 +1527,10 @@ PrefabInstance:
     - target: {fileID: 2669281649618598170, guid: f7925ce6c73f39048a2b9f0e3e8d8069, type: 3}
       propertyPath: m_Name
       value: PlayerPath
+      objectReference: {fileID: 0}
+    - target: {fileID: 2669281649618598171, guid: f7925ce6c73f39048a2b9f0e3e8d8069, type: 3}
+      propertyPath: meshHolder
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2669281649618598172, guid: f7925ce6c73f39048a2b9f0e3e8d8069, type: 3}
       propertyPath: editorData._bezierPath.points.Array.data[1].x
