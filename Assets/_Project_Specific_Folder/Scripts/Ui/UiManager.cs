@@ -27,7 +27,9 @@ public class UiManager : Singleton<UiManager>
     [SerializeField] private TextMeshProUGUI totalScoreText;
     [SerializeField] private GameObject priceTag;
     [SerializeField] private GameObject tattooGunUpgradeButton;
+    [SerializeField] private GameObject watchAdTattooGunUpgradeButton;
     [SerializeField] private GameObject valueUpgradeButton;
+    [SerializeField] private GameObject watchAdValueUpgradeButton;
     [SerializeField] private GameObject valueUpgradeIncrementEffect;
     [SerializeField] private GameObject mobileScreen;
     [SerializeField] private GameObject selectionMenuButton;
@@ -70,8 +72,6 @@ public class UiManager : Singleton<UiManager>
             _scoreText = priceTag.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
             _scoreText.SetText(PlayerPrefs.GetInt("BaseScore", 0).ToString());
         }
-        
-        
         
         _currentLevel = PlayerPrefs.GetInt("current_scene", 0);
         _currentLevelText = PlayerPrefs.GetInt("current_scene_text", 0);

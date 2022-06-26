@@ -10,7 +10,7 @@ public class MobileScreen : MonoBehaviour
 {
     private Camera _camera;
     private GameObject _captureButton;
-    private GameObject _videoButton;
+    private GameObject _watchAdButton;
     private Image _foregroundImage;
     private RawImage _lastCapturedImage;
     private bool _isMobileActive;
@@ -23,7 +23,7 @@ public class MobileScreen : MonoBehaviour
     {
         _camera = Camera.main;
         _captureButton = transform.GetChild(3).gameObject;
-        _videoButton = transform.GetChild(4).gameObject;
+        _watchAdButton = transform.GetChild(4).gameObject;
         _mobileScreenSlider = transform.GetChild(5).GetComponent<Slider>();
         _foregroundImage = transform.GetChild(9).GetComponent<Image>();
         _lastCapturedImage = transform.GetChild(2).GetChild(0).GetComponent<RawImage>();
@@ -51,7 +51,7 @@ public class MobileScreen : MonoBehaviour
         }
 
         _captureButton.transform.DOScale(new Vector3(1.15f, 1.15f, 1.15f), 0.5f).SetLoops(-1, LoopType.Yoyo);
-        _videoButton.transform.DOScale(new Vector3(1.15f, 1.15f, 1.15f), 0.5f).SetLoops(-1, LoopType.Yoyo);
+        _watchAdButton.transform.DOScale(new Vector3(1.15f, 1.15f, 1.15f), 0.5f).SetLoops(-1, LoopType.Yoyo);
         transform.GetChild(8).GetComponent<RectTransform>().DOAnchorPosY(340, 1f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
         _mobileScreenSlider.transform.GetChild(2).GetChild(0).DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.5f).SetLoops(-1, LoopType.Yoyo);
 
@@ -102,7 +102,7 @@ public class MobileScreen : MonoBehaviour
     public void WatchAd()
     {
         PlayerPrefs.SetInt("AdWatched" + _currentFilterButtonId, 1);
-        _videoButton.SetActive(false);
+        _watchAdButton.SetActive(false);
         _captureButton.SetActive(true);
         OnCaptureButtonClick();
     }
@@ -116,13 +116,13 @@ public class MobileScreen : MonoBehaviour
         {
             _isFilterActive = true;
             _captureButton.SetActive(true);
-            _videoButton.SetActive(false);
+            _watchAdButton.SetActive(false);
         }
         else
         {
             _isFilterActive = false;
             _captureButton.SetActive(true);
-            _videoButton.SetActive(false);
+            _watchAdButton.SetActive(false);
         }
     }
 
@@ -137,19 +137,19 @@ public class MobileScreen : MonoBehaviour
             if (PlayerPrefs.GetInt("AdWatched" + _currentFilterButtonId, 0) == 0)
             {
                 _captureButton.SetActive(false);
-                _videoButton.SetActive(true);    
+                _watchAdButton.SetActive(true);    
             }
             else
             {
                 _captureButton.SetActive(true);
-                _videoButton.SetActive(false);    
+                _watchAdButton.SetActive(false);    
             }
         }
         else
         {
             _isFilterActive = false;
             _captureButton.SetActive(true);
-            _videoButton.SetActive(false);
+            _watchAdButton.SetActive(false);
         }
     }
     
@@ -164,19 +164,19 @@ public class MobileScreen : MonoBehaviour
             if (PlayerPrefs.GetInt("AdWatched" + _currentFilterButtonId, 0) == 0)
             {
                 _captureButton.SetActive(false);
-                _videoButton.SetActive(true);    
+                _watchAdButton.SetActive(true);    
             }
             else
             {
                 _captureButton.SetActive(true);
-                _videoButton.SetActive(false);    
+                _watchAdButton.SetActive(false);    
             }
         }
         else
         {
             _isFilterActive = false;
             _captureButton.SetActive(true);
-            _videoButton.SetActive(false);
+            _watchAdButton.SetActive(false);
         }
     }
     
@@ -191,19 +191,19 @@ public class MobileScreen : MonoBehaviour
             if (PlayerPrefs.GetInt("AdWatched" + _currentFilterButtonId, 0) == 0)
             {
                 _captureButton.SetActive(false);
-                _videoButton.SetActive(true);    
+                _watchAdButton.SetActive(true);    
             }
             else
             {
                 _captureButton.SetActive(true);
-                _videoButton.SetActive(false);    
+                _watchAdButton.SetActive(false);    
             }
         }
         else
         {
             _isFilterActive = false;
             _captureButton.SetActive(true);
-            _videoButton.SetActive(false);
+            _watchAdButton.SetActive(false);
         }
     }
 
