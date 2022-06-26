@@ -499,7 +499,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &120711280
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20809,7 +20809,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1563558850
 RectTransform:
   m_ObjectHideFlags: 0
@@ -40834,7 +40834,9 @@ MonoBehaviour:
   totalScoreText: {fileID: 1937837366}
   priceTag: {fileID: 6668516392213119779}
   tattooGunUpgradeButton: {fileID: 343490213}
+  watchAdTattooGunUpgradeButton: {fileID: 120711279}
   valueUpgradeButton: {fileID: 2059400185}
+  watchAdValueUpgradeButton: {fileID: 1563558849}
   valueUpgradeIncrementEffect: {fileID: 8370416646854717847, guid: 8e75622e07fb6b344ba958afd4a36d7f, type: 3}
   mobileScreen: {fileID: 1961694457}
   selectionMenuButton: {fileID: 425760740}
