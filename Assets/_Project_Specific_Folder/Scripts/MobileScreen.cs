@@ -17,6 +17,7 @@ public class MobileScreen : MonoBehaviour
     private Slider _mobileScreenSlider;
     private bool _isPosing;
     private bool _isFilterActive;
+    [SerializeField] private int _currentFilterButtonId;
 
     private void Start()
     {
@@ -50,6 +51,7 @@ public class MobileScreen : MonoBehaviour
         }
 
         _captureButton.transform.DOScale(new Vector3(1.15f, 1.15f, 1.15f), 0.5f).SetLoops(-1, LoopType.Yoyo);
+        _videoButton.transform.DOScale(new Vector3(1.15f, 1.15f, 1.15f), 0.5f).SetLoops(-1, LoopType.Yoyo);
         transform.GetChild(8).GetComponent<RectTransform>().DOAnchorPosY(340, 1f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
         _mobileScreenSlider.transform.GetChild(2).GetChild(0).DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.5f).SetLoops(-1, LoopType.Yoyo);
 
@@ -78,7 +80,7 @@ public class MobileScreen : MonoBehaviour
         _captureButton.transform.GetComponent<Button>().interactable = false;
         StartCoroutine(CameraFlashEffect());
     }
-    
+
     IEnumerator CameraFlashEffect()
     {
         _camera.transform.GetChild(1).gameObject.SetActive(true);
@@ -97,64 +99,111 @@ public class MobileScreen : MonoBehaviour
 
     #region Filter
 
-    public void Filter1Effect()
+    public void WatchAd()
     {
-        if (_isFilterActive)
-        {
-            _isFilterActive = false;
-            PostProcessHandler.Instance.AddGrayscaleEffect();
-        }
-        else
-        {
-            _isFilterActive = true;
-            PostProcessHandler.Instance.RemoveGrayscaleEffect();
-        }
+        PlayerPrefs.SetInt("AdWatched" + _currentFilterButtonId, 1);
+        _videoButton.SetActive(false);
+        _captureButton.SetActive(true);
+        OnCaptureButtonClick();
     }
-
-    public void Filter2Effect()
+    
+    public void Filter1Effect(GameObject filterButtonObj)
     {
-        if (_isFilterActive)
-        {
-            _isFilterActive = false;
-            _captureButton.SetActive(false);
-            _videoButton.SetActive(true);
-            PostProcessHandler.Instance.AddGrayscaleEffect();    
-        }
-        else
+        FilterButton filterButton = filterButtonObj.GetComponent<FilterButton>();
+        _currentFilterButtonId = filterButton.buttonId;
+        
+        if (!_isFilterActive)
         {
             _isFilterActive = true;
             _captureButton.SetActive(true);
             _videoButton.SetActive(false);
-            PostProcessHandler.Instance.RemoveGrayscaleEffect();
         }
+        else
+        {
+            _isFilterActive = false;
+            _captureButton.SetActive(true);
+            _videoButton.SetActive(false);
+        }
+    }
+
+    public void Filter2Effect(GameObject filterButtonObj)
+    {
+        FilterButton filterButton = filterButtonObj.GetComponent<FilterButton>();
+        _currentFilterButtonId = filterButton.buttonId;
         
-    }
-    
-    public void Filter3Effect()
-    {
-        if (_isFilterActive)
+        if (!_isFilterActive)
         {
-            _isFilterActive = false;
-            PostProcessHandler.Instance.AddGrayscaleEffect();
+            _isFilterActive = true;
+            if (PlayerPrefs.GetInt("AdWatched" + _currentFilterButtonId, 0) == 0)
+            {
+                _captureButton.SetActive(false);
+                _videoButton.SetActive(true);    
+            }
+            else
+            {
+                _captureButton.SetActive(true);
+                _videoButton.SetActive(false);    
+            }
         }
         else
         {
-            _isFilterActive = true;
-            PostProcessHandler.Instance.RemoveGrayscaleEffect();
+            _isFilterActive = false;
+            _captureButton.SetActive(true);
+            _videoButton.SetActive(false);
         }
     }
     
-    public void Filter4Effect()
+    public void Filter3Effect(GameObject filterButtonObj)
     {
-        if (_isFilterActive)
+        FilterButton filterButton = filterButtonObj.GetComponent<FilterButton>();
+        _currentFilterButtonId = filterButton.buttonId;
+        
+        if (!_isFilterActive)
         {
-            _isFilterActive = false;
-            PostProcessHandler.Instance.AddGrayscaleEffect();
+            _isFilterActive = true;
+            if (PlayerPrefs.GetInt("AdWatched" + _currentFilterButtonId, 0) == 0)
+            {
+                _captureButton.SetActive(false);
+                _videoButton.SetActive(true);    
+            }
+            else
+            {
+                _captureButton.SetActive(true);
+                _videoButton.SetActive(false);    
+            }
         }
         else
         {
+            _isFilterActive = false;
+            _captureButton.SetActive(true);
+            _videoButton.SetActive(false);
+        }
+    }
+    
+    public void Filter4Effect(GameObject filterButtonObj)
+    {
+        FilterButton filterButton = filterButtonObj.GetComponent<FilterButton>();
+        _currentFilterButtonId = filterButton.buttonId;
+        
+        if (!_isFilterActive)
+        {
             _isFilterActive = true;
-            PostProcessHandler.Instance.RemoveGrayscaleEffect();
+            if (PlayerPrefs.GetInt("AdWatched" + _currentFilterButtonId, 0) == 0)
+            {
+                _captureButton.SetActive(false);
+                _videoButton.SetActive(true);    
+            }
+            else
+            {
+                _captureButton.SetActive(true);
+                _videoButton.SetActive(false);    
+            }
+        }
+        else
+        {
+            _isFilterActive = false;
+            _captureButton.SetActive(true);
+            _videoButton.SetActive(false);
         }
     }
 

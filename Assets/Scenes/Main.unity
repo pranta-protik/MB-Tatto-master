@@ -3105,8 +3105,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b145386da90f774488a3dc15e4885c00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DontDestroyLoad: 0
-  m_IsSingletonLogsEnabled: 0
   _postProcessProfile: {fileID: 0}
 --- !u!1 &469680221
 GameObject:
@@ -3944,7 +3942,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1961694459}
         m_TargetAssemblyTypeName: MobileScreen, Assembly-CSharp
-        m_MethodName: OnCaptureButtonClick
+        m_MethodName: WatchAd
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10217,6 +10215,7 @@ GameObject:
   - component: {fileID: 860700189}
   - component: {fileID: 860700188}
   - component: {fileID: 860700187}
+  - component: {fileID: 860700190}
   m_Layer: 5
   m_Name: FilterButton3
   m_TagString: Untagged
@@ -10290,6 +10289,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1961694459}
         m_TargetAssemblyTypeName: MobileScreen, Assembly-CSharp
         m_MethodName: Filter3Effect
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 860700185}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 461371768}
+        m_TargetAssemblyTypeName: PostProcessHandler, Assembly-CSharp
+        m_MethodName: AddGrayscaleEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10337,6 +10348,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 860700185}
   m_CullTransparentMesh: 1
+--- !u!114 &860700190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860700185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42c88b6b06bd5e544b983d97a83e9acd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonId: 2
 --- !u!1 &863561946
 GameObject:
   m_ObjectHideFlags: 0
@@ -17028,7 +17052,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  offset: -0.95
+  offsetX: -0.95
 --- !u!81 &1172234472
 AudioListener:
   m_ObjectHideFlags: 0
@@ -20208,6 +20232,7 @@ GameObject:
   - component: {fileID: 1585907022}
   - component: {fileID: 1585907021}
   - component: {fileID: 1585907020}
+  - component: {fileID: 1585907023}
   m_Layer: 5
   m_Name: FilterButton2
   m_TagString: Untagged
@@ -20281,6 +20306,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1961694459}
         m_TargetAssemblyTypeName: MobileScreen, Assembly-CSharp
         m_MethodName: Filter2Effect
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1585907018}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 461371768}
+        m_TargetAssemblyTypeName: PostProcessHandler, Assembly-CSharp
+        m_MethodName: AddGrayscaleEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -20328,6 +20365,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1585907018}
   m_CullTransparentMesh: 1
+--- !u!114 &1585907023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585907018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42c88b6b06bd5e544b983d97a83e9acd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonId: 1
 --- !u!1 &1607104008
 GameObject:
   m_ObjectHideFlags: 0
@@ -21638,6 +21688,7 @@ GameObject:
   - component: {fileID: 1796435198}
   - component: {fileID: 1796435197}
   - component: {fileID: 1796435196}
+  - component: {fileID: 1796435199}
   m_Layer: 5
   m_Name: FilterButton1
   m_TagString: Untagged
@@ -21711,6 +21762,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1961694459}
         m_TargetAssemblyTypeName: MobileScreen, Assembly-CSharp
         m_MethodName: Filter1Effect
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1796435194}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 461371768}
+        m_TargetAssemblyTypeName: PostProcessHandler, Assembly-CSharp
+        m_MethodName: AddGrayscaleEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -21758,6 +21821,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1796435194}
   m_CullTransparentMesh: 1
+--- !u!114 &1796435199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1796435194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42c88b6b06bd5e544b983d97a83e9acd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonId: 0
 --- !u!1 &1804672026
 GameObject:
   m_ObjectHideFlags: 0
@@ -22630,6 +22706,7 @@ GameObject:
   - component: {fileID: 1891935535}
   - component: {fileID: 1891935534}
   - component: {fileID: 1891935533}
+  - component: {fileID: 1891935536}
   m_Layer: 5
   m_Name: FilterButton4
   m_TagString: Untagged
@@ -22703,6 +22780,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1961694459}
         m_TargetAssemblyTypeName: MobileScreen, Assembly-CSharp
         m_MethodName: Filter4Effect
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1891935531}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 461371768}
+        m_TargetAssemblyTypeName: PostProcessHandler, Assembly-CSharp
+        m_MethodName: AddGrayscaleEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -22750,6 +22839,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1891935531}
   m_CullTransparentMesh: 1
+--- !u!114 &1891935536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1891935531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42c88b6b06bd5e544b983d97a83e9acd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonId: 3
 --- !u!1 &1929628747 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1120153498243299608, guid: 4f17130cb9af23b43832c26c8d7a2c6b, type: 3}
@@ -32464,6 +32566,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e1d111a47ed61d48b73c900fef21ae0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _currentFilterButtonId: 0
 --- !u!1 &1964492270 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1192801708876350593, guid: ff5bb6af1544da04d96660e9ad6012ba, type: 3}
