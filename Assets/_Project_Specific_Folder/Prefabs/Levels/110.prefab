@@ -639,7 +639,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6828944571194311440}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
@@ -2379,6 +2379,10 @@ PrefabInstance:
       value: 90
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: ad79f1545cb91134791e84b379360b92, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: ad79f1545cb91134791e84b379360b92, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 59a75182a6805604f951917de3d7ad16, type: 2}
@@ -2459,6 +2463,10 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: ad79f1545cb91134791e84b379360b92, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: ad79f1545cb91134791e84b379360b92, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: ad79f1545cb91134791e84b379360b92, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -2887,6 +2895,10 @@ PrefabInstance:
       value: 90
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: ad79f1545cb91134791e84b379360b92, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: ad79f1545cb91134791e84b379360b92, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 59a75182a6805604f951917de3d7ad16, type: 2}
@@ -2967,6 +2979,10 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: ad79f1545cb91134791e84b379360b92, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: ad79f1545cb91134791e84b379360b92, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: ad79f1545cb91134791e84b379360b92, type: 3}
       propertyPath: m_Materials.Array.data[0]
