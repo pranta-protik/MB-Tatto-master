@@ -9,7 +9,6 @@ public class TextureManager : Singleton<TextureManager>
     public struct TattooGroup
     {
         public int groupId;
-        // public Texture2D defaultTattoo;
         public List<Texture2D> defaultTattoos;
         public List<Texture2D> expensiveTattoos;
         public List<Texture2D> expensiveBlueTattoos;

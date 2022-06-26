@@ -2,15 +2,555 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0bbd3f85-ed93-443c-811c-694e308cff41" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Epic Toon FX/Materials/Confetti.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Epic Toon FX/Materials/Confetti/confetti.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Epic Toon FX/Materials/Confetti/confetti.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Epic Toon FX/Prefabs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Epic Toon FX/Prefabs/Environment.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Epic Toon FX/Prefabs/Environment/Confetti.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Epic Toon FX/Prefabs/Environment/Confetti/Blast.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Epic Toon FX/Prefabs/Environment/Confetti/Blast/ConfettiBlastRainbow.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Epic Toon FX/Prefabs/Environment/Confetti/Blast/ConfettiBlastRainbow.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Epic Toon FX/Textures/confetti.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Epic Toon FX/Textures/confetti.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Animation.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Animation/Lightmovement.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Animation/Lightmovement.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Materials.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Materials/demo-config.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Materials/demo-config.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Materials/demo-ease-cubic.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Materials/demo-ease-cubic.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Materials/demo-ease-linear.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Materials/demo-ease-linear.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Materials/demo-ease-smooth.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Materials/demo-ease-smooth.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Materials/demo-manual.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Materials/demo-manual.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Materials/demo-sprite-additive.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Materials/demo-sprite-additive.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Materials/demo-sprite-alpha.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Materials/demo-sprite-alpha.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Materials/demo-sprite-emission.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Materials/demo-sprite-emission.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Materials/demo-textures-slow.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Materials/demo-textures-slow.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Materials/demo-textures-sprite-diffuse.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Materials/demo-textures-sprite-diffuse.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Scenes.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Scenes/Examples.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Scenes/Examples.unity.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Scripts.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Scripts/ManualControls.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Scripts/ManualControls.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Scripts/MaterialChanger.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Scripts/MaterialChanger.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Scripts/PageSwitcher.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Scripts/PageSwitcher.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Scripts/TextureSwitcher.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Scripts/TextureSwitcher.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Sprites.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Sprites/Sharkbomb_w200.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Sprites/Sharkbomb_w200.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Sprites/boar.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Sprites/boar.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Sprites/btn_next.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Sprites/btn_next.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Sprites/capybara.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Sprites/capybara.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Sprites/deer.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Sprites/deer.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Sprites/example-button.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Sprites/example-button.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Sprites/example-button_ramp.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Sprites/example-button_ramp.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Sprites/fox.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Sprites/fox.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Sprites/graph-cubic.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Sprites/graph-cubic.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Sprites/graph-linear.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Sprites/graph-linear.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Sprites/graph-smooth.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Examples/Sprites/graph-smooth.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Manual.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Manual.pdf.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Materials.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Materials/Editor.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Materials/Editor/ShineShaderMaterialInspector.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Materials/Editor/ShineShaderMaterialInspector.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Materials/SpriteDefault-Shine-BlendAdditive.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Materials/SpriteDefault-Shine-BlendAdditive.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Materials/SpriteDefault-Shine-BlendAlpha.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Materials/SpriteDefault-Shine-BlendAlpha.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Materials/SpriteDefault-Shine-Standalone.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Materials/SpriteDefault-Shine-Standalone.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Materials/SpriteDefault-ShineManual-BlendAdditive.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Materials/SpriteDefault-ShineManual-BlendAdditive.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Materials/SpriteDefault-ShineManual-BlendAlpha.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Materials/SpriteDefault-ShineManual-BlendAlpha.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Materials/SpriteDefault-ShineManual-Standalone.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Materials/SpriteDefault-ShineManual-Standalone.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Materials/SpriteDiffuse-Shine-Emission.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Materials/SpriteDiffuse-Shine-Emission.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Materials/SpriteDiffuse-ShineManual-Emission.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Materials/SpriteDiffuse-ShineManual-Emission.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Materials/UI-Shine-BlendAddtive.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Materials/UI-Shine-BlendAddtive.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Materials/UI-Shine-BlendAlpha.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Materials/UI-Shine-BlendAlpha.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Materials/UI-Shine-Standalone.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Materials/UI-Shine-Standalone.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Materials/UI-ShineManual-BlendAddtive.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Materials/UI-ShineManual-BlendAddtive.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Materials/UI-ShineManual-BlendAlpha.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Materials/UI-ShineManual-BlendAlpha.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Materials/UI-ShineManual-Standalone.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Materials/UI-ShineManual-Standalone.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Scripts.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Scripts/ShineControl.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Scripts/ShineControl.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Shaders.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Shaders/ShineShader.cginc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Shaders/ShineShader.cginc.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Shaders/SpritesDefault-Shine-BlendAdditive.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Shaders/SpritesDefault-Shine-BlendAdditive.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Shaders/SpritesDefault-Shine-BlendAlpha.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Shaders/SpritesDefault-Shine-BlendAlpha.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Shaders/SpritesDefault-Shine-Standalone.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Shaders/SpritesDefault-Shine-Standalone.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Shaders/SpritesDefault-ShineManual-BlendAdditive.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Shaders/SpritesDefault-ShineManual-BlendAdditive.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Shaders/SpritesDefault-ShineManual-BlendAlpha.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Shaders/SpritesDefault-ShineManual-BlendAlpha.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Shaders/SpritesDefault-ShineManual-Standalone.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Shaders/SpritesDefault-ShineManual-Standalone.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Shaders/SpritesDiffuse-Shine-Emission.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Shaders/SpritesDiffuse-Shine-Emission.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Shaders/SpritesDiffuse-ShineManual-Emission.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Shaders/SpritesDiffuse-ShineManual-Emission.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Shaders/UI-Shine-BlendAdditive.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Shaders/UI-Shine-BlendAdditive.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Shaders/UI-Shine-BlendAlpha.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Shaders/UI-Shine-BlendAlpha.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Shaders/UI-Shine-Standalone.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Shaders/UI-Shine-Standalone.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Shaders/UI-ShineManual-BlendAdditive.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Shaders/UI-ShineManual-BlendAdditive.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Shaders/UI-ShineManual-BlendAlpha.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Shaders/UI-ShineManual-BlendAlpha.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Shaders/UI-ShineManual-Standalone.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Shaders/UI-ShineManual-Standalone.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Textures.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Textures/shineramp-diag-bevel.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Textures/shineramp-diag-bevel.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Textures/shineramp-diag-bulge.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Textures/shineramp-diag-bulge.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Textures/shineramp-diag-cracks.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Textures/shineramp-diag-cracks.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Textures/shineramp-diag-masked.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Textures/shineramp-diag-masked.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Textures/shineramp-diag-mirror.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Textures/shineramp-diag-mirror.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Textures/shineramp-diag-rough.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Textures/shineramp-diag-rough.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Textures/shineramp-diag-streaks.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Textures/shineramp-diag-streaks.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Textures/shineramp-diag.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Textures/shineramp-diag.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Textures/shineramp-horz.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Textures/shineramp-horz.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Textures/shineramp-radi-spiral.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Textures/shineramp-radi-spiral.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Textures/shineramp-radi.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/Textures/shineramp-radi.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/license.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/3rd Party/Sharklib/ShineShader/license.txt.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Fonts.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Fonts/Baloo-Regular SDF 2.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Fonts/Baloo-Regular SDF 2.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Steven.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Steven/Main Steven Test.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Steven/Main Steven Test.unity.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Steven/S Main 2.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Steven/S Main 2.unity.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Steven/S Main 3.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Steven/S Main 3.unity.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Animation/AnimatorOverrideController.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Animation/AnimatorOverrideController/HandAnimatorOverrideController.overrideController" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Animation/AnimatorOverrideController/HandAnimatorOverrideController.overrideController.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Tatto-master/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Tatto-master/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/ui/Hand.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/ui/Hand.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/ui/Image 1.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/ui/Image 1.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/ui/tap fast.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/ui/tap fast.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Book.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Book.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Book.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Book/09 - Default.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Book/09 - Default.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Book/Arrow 1.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Book/Arrow 1.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Book/Arrow.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Book/Arrow.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Book/Book.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Book/Book.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Book/Book.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Book/Book.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Book/Book_Page.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Book/Book_Page.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Book/Book_Page_2.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Book/Book_Page_2.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Book/DefaultMaterial_Base_Color 1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Book/DefaultMaterial_Base_Color 1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Book/DefaultMaterial_Base_Color 2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Book/DefaultMaterial_Base_Color 2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Book/DefaultMaterial_Base_Color 3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Book/DefaultMaterial_Base_Color 3.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Book/DefaultMaterial_Base_Color.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Book/DefaultMaterial_Base_Color.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Book/DefaultMaterial_Normal_OpenGL 1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Book/DefaultMaterial_Normal_OpenGL 1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Book/DefaultMaterial_Normal_OpenGL.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Book/DefaultMaterial_Normal_OpenGL.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Book/Frame01_Material _0_BaseColor.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Book/Frame01_Material _0_BaseColor.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Book/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Book/Materials/Arrow.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Book/Materials/Arrow.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Book/Materials/Frame01_Material _0_BaseColor.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Book/Materials/Frame01_Material _0_BaseColor.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Bracelet.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Bracelet.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ButtonCard.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ButtonCard.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Buttons.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Buttons.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Confetti.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Confetti/confetti.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Confetti/confetti.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Prefabs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Prefabs/Environment.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Prefabs/Environment/Confetti.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Prefabs/Environment/Confetti/Blast.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Prefabs/Environment/Confetti/Blast/ConfettiBlastRainbow.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Prefabs/Environment/Confetti/Blast/ConfettiBlastRainbow.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Textures.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Textures/confetti.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Textures/confetti.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hands/Player/player_Hand.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Hands/Player/player_Hand.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hands/Player/player_Hand@fingersnap.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hands/Player/player_Hand@fingersnap.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hands/Player/player_Hand@gesture01.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hands/Player/player_Hand@gesture01.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hands/Player/player_Hand@gesture02.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hands/Player/player_Hand@gesture02.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hands/Player/player_Hand@gesture03.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hands/Player/player_Hand@gesture03.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hands/Player/player_Hand@gesture04.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hands/Player/player_Hand@gesture04.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hands/Player/player_Hand@gesture05.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hands/Player/player_Hand@gesture05.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hands/Player/player_Hand@peace.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hands/Player/player_Hand@peace.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Ring.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Ring.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Steven Test.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Steven Test.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/S Main 2.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/S Main 2.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/S Main 3.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/S Main 3.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/S Main.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/S Main.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/S1 1.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/S1 1.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SelectionMenu.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SelectionMenu.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SelectionMenu.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SelectionMenu/LightingData.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SelectionMenu/LightingData.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SelectionMenu/ReflectionProbe-0.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SelectionMenu/ReflectionProbe-0.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Straight.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Straight.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/V2_1.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/V2_1.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/V2_2.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/V2_2.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/V4_1.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/V4_1.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Video 1.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Video 1.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/video2.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/video2.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/video3.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/video3.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Animation.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Animation/Lightmovement.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Animation/Lightmovement.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Materials/demo-config.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Materials/demo-config.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Materials/demo-ease-cubic.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Materials/demo-ease-cubic.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Materials/demo-ease-linear.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Materials/demo-ease-linear.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Materials/demo-ease-smooth.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Materials/demo-ease-smooth.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Materials/demo-manual.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Materials/demo-manual.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Materials/demo-sprite-additive.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Materials/demo-sprite-additive.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Materials/demo-sprite-alpha.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Materials/demo-sprite-alpha.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Materials/demo-sprite-emission.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Materials/demo-sprite-emission.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Materials/demo-textures-slow.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Materials/demo-textures-slow.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Materials/demo-textures-sprite-diffuse.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Materials/demo-textures-sprite-diffuse.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Scenes.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Scenes/Examples.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Scenes/Examples.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Scripts/ManualControls.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Scripts/ManualControls.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Scripts/MaterialChanger.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Scripts/MaterialChanger.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Scripts/PageSwitcher.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Scripts/PageSwitcher.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Scripts/TextureSwitcher.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Scripts/TextureSwitcher.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Sprites.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Sprites/Sharkbomb_w200.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Sprites/Sharkbomb_w200.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Sprites/boar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Sprites/boar.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Sprites/btn_next.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Sprites/btn_next.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Sprites/capybara.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Sprites/capybara.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Sprites/deer.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Sprites/deer.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Sprites/example-button.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Sprites/example-button.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Sprites/example-button_ramp.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Sprites/example-button_ramp.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Sprites/fox.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Sprites/fox.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Sprites/graph-cubic.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Sprites/graph-cubic.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Sprites/graph-linear.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Sprites/graph-linear.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Sprites/graph-smooth.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Examples/Sprites/graph-smooth.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Manual.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Manual.pdf.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Materials/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Materials/Editor/ShineShaderMaterialInspector.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Materials/Editor/ShineShaderMaterialInspector.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Materials/SpriteDefault-Shine-BlendAdditive.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Materials/SpriteDefault-Shine-BlendAdditive.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Materials/SpriteDefault-Shine-BlendAlpha.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Materials/SpriteDefault-Shine-BlendAlpha.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Materials/SpriteDefault-Shine-Standalone.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Materials/SpriteDefault-Shine-Standalone.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Materials/SpriteDefault-ShineManual-BlendAdditive.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Materials/SpriteDefault-ShineManual-BlendAdditive.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Materials/SpriteDefault-ShineManual-BlendAlpha.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Materials/SpriteDefault-ShineManual-BlendAlpha.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Materials/SpriteDefault-ShineManual-Standalone.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Materials/SpriteDefault-ShineManual-Standalone.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Materials/SpriteDiffuse-Shine-Emission.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Materials/SpriteDiffuse-Shine-Emission.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Materials/SpriteDiffuse-ShineManual-Emission.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Materials/SpriteDiffuse-ShineManual-Emission.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Materials/UI-Shine-BlendAddtive.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Materials/UI-Shine-BlendAddtive.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Materials/UI-Shine-BlendAlpha.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Materials/UI-Shine-BlendAlpha.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Materials/UI-Shine-Standalone.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Materials/UI-Shine-Standalone.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Materials/UI-ShineManual-BlendAddtive.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Materials/UI-ShineManual-BlendAddtive.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Materials/UI-ShineManual-BlendAlpha.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Materials/UI-ShineManual-BlendAlpha.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Materials/UI-ShineManual-Standalone.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Materials/UI-ShineManual-Standalone.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Scripts/ShineControl.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Scripts/ShineControl.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Shaders.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Shaders/ShineShader.cginc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Shaders/ShineShader.cginc.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Shaders/SpritesDefault-Shine-BlendAdditive.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Shaders/SpritesDefault-Shine-BlendAdditive.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Shaders/SpritesDefault-Shine-BlendAlpha.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Shaders/SpritesDefault-Shine-BlendAlpha.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Shaders/SpritesDefault-Shine-Standalone.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Shaders/SpritesDefault-Shine-Standalone.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Shaders/SpritesDefault-ShineManual-BlendAdditive.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Shaders/SpritesDefault-ShineManual-BlendAdditive.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Shaders/SpritesDefault-ShineManual-BlendAlpha.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Shaders/SpritesDefault-ShineManual-BlendAlpha.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Shaders/SpritesDefault-ShineManual-Standalone.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Shaders/SpritesDefault-ShineManual-Standalone.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Shaders/SpritesDiffuse-Shine-Emission.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Shaders/SpritesDiffuse-Shine-Emission.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Shaders/SpritesDiffuse-ShineManual-Emission.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Shaders/SpritesDiffuse-ShineManual-Emission.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Shaders/UI-Shine-BlendAdditive.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Shaders/UI-Shine-BlendAdditive.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Shaders/UI-Shine-BlendAlpha.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Shaders/UI-Shine-BlendAlpha.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Shaders/UI-Shine-Standalone.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Shaders/UI-Shine-Standalone.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Shaders/UI-ShineManual-BlendAdditive.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Shaders/UI-ShineManual-BlendAdditive.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Shaders/UI-ShineManual-BlendAlpha.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Shaders/UI-ShineManual-BlendAlpha.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Shaders/UI-ShineManual-Standalone.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Shaders/UI-ShineManual-Standalone.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Textures.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Textures/shineramp-diag-bevel.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Textures/shineramp-diag-bevel.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Textures/shineramp-diag-bulge.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Textures/shineramp-diag-bulge.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Textures/shineramp-diag-cracks.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Textures/shineramp-diag-cracks.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Textures/shineramp-diag-masked.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Textures/shineramp-diag-masked.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Textures/shineramp-diag-mirror.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Textures/shineramp-diag-mirror.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Textures/shineramp-diag-rough.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Textures/shineramp-diag-rough.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Textures/shineramp-diag-streaks.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Textures/shineramp-diag-streaks.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Textures/shineramp-diag.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Textures/shineramp-diag.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Textures/shineramp-horz.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Textures/shineramp-horz.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Textures/shineramp-radi-spiral.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Textures/shineramp-radi-spiral.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Textures/shineramp-radi.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/Textures/shineramp-radi.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/license.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sharklib/ShineShader/license.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shine.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shine.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TattoWall.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TattoWall.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI 1.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI 1.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Animation/Cube.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Animation/Cube.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Animation/Hand.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Animation/Hand.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Animation/HandAnimatorOverrideController.overrideController" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Animation/HandAnimatorOverrideController.overrideController.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Animation/Image.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Animation/Image.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Animation/OverRideController.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Animation/OverRideController/HandGestureController.overrideController" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Animation/OverRideController/HandGestureController.overrideController.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Animation/PopUp.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Animation/PopUp.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Animation/Red fade.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Animation/Red fade.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Animation/fadein.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Animation/fadein.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Animation/player_Hand 1.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Animation/player_Hand 1.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Animation/player_Hand 2.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Animation/player_Hand 2.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Animation/player_Hand 3.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Animation/player_Hand 3.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Animation/player_Hand.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Animation/player_Hand.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Models/Hands.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Models/Hands/player_BuffHand.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Models/Hands/player_BuffHand.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Models/Hands/player_BuffHand02.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Models/Hands/player_BuffHand02.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Models/Hands/player_Dog.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Models/Hands/player_Dog.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Models/Hands/player_FemHand.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Models/Hands/player_FemHand.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Models/Hands/player_FemHand02.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Models/Hands/player_FemHand02.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Models/Hands/player_Hand.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Models/Hands/player_Hand.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Models/Hands/player_Hulk.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Models/Hands/player_Hulk.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Models/Hands/player_Hulk_old.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Models/Hands/player_Hulk_old.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Models/Player/player_Hand.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Models/Player/player_Hand.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Models/Player/player_Hand@gesture01.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Models/Player/player_Hand@gesture01.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Models/Player/player_Hand@gesture02 1.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Models/Player/player_Hand@gesture02 1.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Models/Player/player_Hand@gesture02.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Models/Player/player_Hand@gesture02.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Models/Player/player_Hand@gesture03.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Models/Player/player_Hand@gesture03.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Models/player_BuffHand (1).fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Models/player_BuffHand (1).fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Models/player_FemHand (1).fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Models/player_FemHand (1).fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Models/player_Hand 1.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Models/player_Hand 1.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Models/player_Hand.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Models/player_Hand.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Models/player_Hand@idle.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Models/player_Hand@idle.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Models/prop_Goldbar (1).fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Art/3D/Models/prop_Goldbar (1).fbx.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Gates/End.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Gates/End.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Gates/Gate Normal reversed .prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Gates/Gate Normal reversed .prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Gates/Gate Normal.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Gates/Gate Normal.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Gates/Lasergate Blue.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Gates/Lasergate Blue.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Gates/Lasergate Yellow.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Gates/Lasergate Yellow.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Gates/Moving Good gate.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Gates/Moving Good gate.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Gates/Moving bad Gate.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Gates/Moving bad Gate.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Gates/prop_Laserwall.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Gates/prop_Laserwall.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Hands/DefaultBuffHand.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Hands/DefaultBuffHand.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Hands/DefaultBuffHand02.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Hands/DefaultBuffHand02.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Hands/DefaultDogHand.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Hands/DefaultDogHand.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Hands/DefaultFemHand02.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Hands/DefaultFemHand02.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Hands/DefaultHand.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Hands/DefaultHand.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Hands/DefaultHulkHand.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Hands/DefaultHulkHand.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Hands/player_BuffHand (1).prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Hands/player_BuffHand (1).prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Hands/player_BuffHand.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Hands/player_BuffHand.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Hands/player_BuffHand02 (1).prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Hands/player_BuffHand02 (1).prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Hands/player_BuffHand02.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Hands/player_BuffHand02.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Hands/player_Dog (1).prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Hands/player_Dog (1).prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Hands/player_Dog.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Hands/player_Dog.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Hands/player_FemHand (1).prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Hands/player_FemHand (1).prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Hands/player_FemHand.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Hands/player_FemHand.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Hands/player_FemHand02 (1).prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Hands/player_FemHand02 (1).prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Hands/player_FemHand02.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Hands/player_FemHand02.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Hands/player_Hand (1).prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Hands/player_Hand (1).prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Hands/player_Hand.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Hands/player_Hand.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Hands/player_Hulk (1).prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Hands/player_Hulk (1).prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Hands/player_Hulk.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Hands/player_Hulk.prefab.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Levels/101.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Levels/101.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Levels/102.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Levels/102.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Levels/103.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Levels/103.prefab" afterDir="false" />
@@ -35,11 +575,18 @@
       <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Levels/122.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Levels/122.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Levels/123.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Levels/123.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Levels/124.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Levels/124.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Obsticles/Lava.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Obsticles/Lava.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Obsticles/Spike.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Obsticles/Spike.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Others/Lasergate Bracele.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Others/Lasergate Bracele.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Others/Lasergate Ring.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Prefabs/Others/Lasergate Ring.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TimelineSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TimelineSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/Editor/ButtonCardEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/Editor/ButtonCardEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/In game/Collsion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/In game/HandBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/In game/Collsion.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/In game/HandBehaviour.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/Leveldetails.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/Leveldetails.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/Manager/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/Manager/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/Manager/TextureManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/Manager/TextureManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/SelectionMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project_Specific_Folder/Scripts/SelectionMenu.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/font.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/font/Baloo-Regular SDF 2.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/font/Baloo-Regular SDF 2.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/handSlide.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/handSlide.anim" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,6 +694,7 @@
       <workItem from="1655983848411" duration="727000" />
       <workItem from="1655987265007" duration="13796000" />
       <workItem from="1656232175263" duration="281000" />
+      <workItem from="1656239891803" duration="5270000" />
     </task>
     <servers />
   </component>

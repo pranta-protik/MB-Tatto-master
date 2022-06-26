@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8799766815936216436}
   - component: {fileID: 6829348188527063155}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: ScoreText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15886,7 +15886,7 @@ GameObject:
   - component: {fileID: 7179476445906840043}
   - component: {fileID: 7179476445906840042}
   m_Layer: 0
-  m_Name: Image
+  m_Name: ScoreImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16233,27 +16233,11 @@ MonoBehaviour:
   - {fileID: 1827226128182048838, guid: b5c870e396d9b7846875a79e64f2f6b5, type: 3}
   goodGateScorePopUpColor: {r: 0.5058824, g: 0.7843138, b: 0.882353, a: 1}
   badGateScorePopUpColor: {r: 0.80392164, g: 0.050980397, b: 0.07450981, a: 1}
-  rings:
-  - {fileID: 981093207034801233}
-  - {fileID: 3900658159994257702}
-  - {fileID: 8316884351086483895}
-  - {fileID: 1192801708876350593}
-  bracelets:
-  - {fileID: 6710352534149398173}
-  - {fileID: 5437142312845972619}
-  - {fileID: 8387702932491465981}
-  - {fileID: 6753467005542850097}
+  ringOrnamentGroups: []
+  braceletOrnamentGroups: []
   mainHandAnimator: {fileID: 0}
   tattooHandAnimator: {fileID: 0}
-  defaultTattoo: {fileID: 0}
-  expensiveTattoos: []
-  cheapTattoos: []
-  expensiveBlueTattoos: []
-  expensiveYellowTattoos: []
-  cheapBlueTattoos: []
-  cheapYellowTattoos: []
-  expensiveColorTattooIdSequences: 
-  cheapColorTattooIdSequences: 
+  tattooGroupId: 0
 --- !u!1 &8280008831394471220
 GameObject:
   m_ObjectHideFlags: 0

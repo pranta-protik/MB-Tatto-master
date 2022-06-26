@@ -60,7 +60,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private int upgradeAmount;
     
     private int _handId;
-    private Collsion _mainHandCollision;
+    private HandBehaviour _mainHandCollision;
     private Camera _mainCamera;
     private CameraController _cameraController;
     private TextureManager _textureManager;
@@ -101,7 +101,7 @@ public class GameManager : Singleton<GameManager>
         GameObject mainHandObj = handGroups[_handId].mainHand;
         mainHandObj.SetActive(true);
         handGroups[_handId].tattooHand.SetActive(true);
-        _mainHandCollision = mainHandObj.transform.GetChild(0).GetComponent<Collsion>();
+        _mainHandCollision = mainHandObj.transform.GetChild(0).GetComponent<HandBehaviour>();
 
         _cameraController.player = mainHandObj;
 
@@ -111,7 +111,7 @@ public class GameManager : Singleton<GameManager>
 
         if (_pathObj == null)
         {
-            _pathObj = GameObject.Find("pathWAY");
+            _pathObj = GameObject.Find("PlayerPath");
             pathCreator = _pathObj.GetComponent<PathCreator>();
             _pathObj.GetComponent<RoadMeshCreator>().refresh();
         }
@@ -323,7 +323,7 @@ public class GameManager : Singleton<GameManager>
             {
                 hand.mainHand.gameObject.SetActive(true);
                 hand.tattooHand.gameObject.SetActive(true);
-                _mainHandCollision = hand.mainHand.transform.GetChild(0).GetComponent<Collsion>();
+                _mainHandCollision = hand.mainHand.transform.GetChild(0).GetComponent<HandBehaviour>();
                 _cameraController.player = hand.mainHand.gameObject;
                 SetLevelDetails(currentLevelPrefab);
             }

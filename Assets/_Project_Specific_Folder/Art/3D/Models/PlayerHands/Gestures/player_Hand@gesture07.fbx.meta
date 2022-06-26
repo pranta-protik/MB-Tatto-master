@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: baf1d7eddde11fc4e881989ed140723f
+guid: b5c870e396d9b7846875a79e64f2f6b5
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: Take 001
+    second: gesture07
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -33,7 +33,36 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: gesture07
+      takeName: Take 001
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []
@@ -75,16 +104,7 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  referencedClips:
-  - 80cf1c1d69a39af48a08d802609e309f
-  - edad063d003ff5a46ae2100517ba3dcc
-  - cc0a411143464df44becb656a912bb2d
-  - 3031ac22069910a49ac64e110312cba3
-  - 1b5dce98354509f4bbb145490d8ee29f
-  - 14ae578f9f20d7747a15c4f2a6d2634b
-  - 49d372e2366968b4fb2d43e500243feb
-  - 7296efe5a39bfdd48b73503c5ce5123c
-  - 7611a6a339c3a94418458a49d585dcf1
+  referencedClips: []
   importAnimation: 1
   humanDescription:
     serializedVersion: 3

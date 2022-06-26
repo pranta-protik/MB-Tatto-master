@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 679122721494051238}
-  - component: {fileID: 155209435541467929}
-  - component: {fileID: 155209435541467928}
   - component: {fileID: 155209435541467934}
   - component: {fileID: 155209435541467933}
+  - component: {fileID: 155209435541467929}
+  - component: {fileID: 155209435541467928}
   m_Layer: 0
   m_Name: player_BuffHand
   m_TagString: Player
@@ -38,6 +38,35 @@ Transform:
   m_Father: {fileID: 2439555051829516803}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &155209435541467934
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155209435541467932}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.48154965, y: 0.9999999, z: 0.32693407}
+  m_Center: {x: 0.25922528, y: 0.0000000011549187, z: -0.004350999}
+--- !u!54 &155209435541467933
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155209435541467932}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!95 &155209435541467929
 Animator:
   serializedVersion: 3
@@ -82,56 +111,11 @@ MonoBehaviour:
   - {fileID: 1827226128182048838, guid: b5c870e396d9b7846875a79e64f2f6b5, type: 3}
   goodGateScorePopUpColor: {r: 0.5058824, g: 0.7843138, b: 0.882353, a: 1}
   badGateScorePopUpColor: {r: 0.80392164, g: 0.050980397, b: 0.07450981, a: 1}
-  rings:
-  - {fileID: 4698656485602497377}
-  - {fileID: 560440688082981136}
-  - {fileID: 1120153498243299608}
-  - {fileID: 628626684280377741}
-  bracelets:
-  - {fileID: 2997389671356909164}
-  - {fileID: 7493684898749240018}
-  - {fileID: 8391226939831819661}
-  - {fileID: 2970858928144934011}
+  ringOrnamentGroups: []
+  braceletOrnamentGroups: []
   mainHandAnimator: {fileID: 0}
   tattooHandAnimator: {fileID: 0}
-  defaultTattoo: {fileID: 0}
-  expensiveTattoos: []
-  cheapTattoos: []
-  expensiveBlueTattoos: []
-  expensiveYellowTattoos: []
-  cheapBlueTattoos: []
-  cheapYellowTattoos: []
-  expensiveColorTattooIdSequences: 
-  cheapColorTattooIdSequences: 
---- !u!65 &155209435541467934
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 155209435541467932}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.48154965, y: 0.9999999, z: 0.32693407}
-  m_Center: {x: 0.25922528, y: 0.0000000011549187, z: -0.004350999}
---- !u!54 &155209435541467933
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 155209435541467932}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  tattooGroupId: 0
 --- !u!1 &245095420257190509
 GameObject:
   m_ObjectHideFlags: 0
@@ -1413,7 +1397,7 @@ GameObject:
   - component: {fileID: 5918443708328369369}
   - component: {fileID: 5918443708328369368}
   m_Layer: 0
-  m_Name: Image
+  m_Name: ScoreImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1508,7 +1492,7 @@ GameObject:
   - component: {fileID: 5918443708542500513}
   - component: {fileID: 5918443708542500512}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: ScoreText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
