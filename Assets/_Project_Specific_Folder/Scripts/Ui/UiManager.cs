@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 using HomaGames.HomaBelly;
 using HomaGames.HomaConsole.Core.Attributes;
+using UnityEngine.Serialization;
 
 public class UiManager : Singleton<UiManager>
 {
@@ -18,7 +19,8 @@ public class UiManager : Singleton<UiManager>
     public GameObject unlockPanel;
     public GameObject instagramPostPage;
     public GameObject tapFastPanel;
-
+    [FormerlySerializedAs("tattooGunUpgradeButton")] public GameObject coolnessUpgradeButton;
+    public GameObject valueUpgradeButton;
 
     [HideInInspector] public bool isInstagramGalleryPhotoUpdated;
     [HideInInspector] public string followerValue;
@@ -28,8 +30,6 @@ public class UiManager : Singleton<UiManager>
     [SerializeField] private GameObject hapticsIcon;
     [SerializeField] private TextMeshProUGUI totalScoreText;
     [SerializeField] private GameObject priceTag;
-    [SerializeField] private GameObject tattooGunUpgradeButton;
-    [SerializeField] private GameObject valueUpgradeButton;
     [SerializeField] private GameObject valueUpgradeIncrementEffect;
     [SerializeField] private GameObject mobileScreen;
     [SerializeField] private GameObject selectionMenuButton;
@@ -93,9 +93,9 @@ public class UiManager : Singleton<UiManager>
                 selectionMenuButton.SetActive(false);
             }
 
-            if (tattooGunUpgradeButton!=null)
+            if (coolnessUpgradeButton!=null)
             {
-                tattooGunUpgradeButton.SetActive(false);
+                coolnessUpgradeButton.SetActive(false);
             }
 
             if (valueUpgradeButton != null)

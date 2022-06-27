@@ -240,6 +240,8 @@ public class GameManager : Singleton<GameManager>
 
         int currentTattooLevel = PlayerPrefs.GetInt("CurrentTattooTypeLevel" + _levelDetails.tattooId, 0);
         PlayerPrefs.SetInt("CurrentTattooTypeLevel" + _levelDetails.tattooId, currentTattooLevel + 1);
+        
+        _mainHandBehaviour.ResetHandTattooStatus();
     }
 
     #endregion

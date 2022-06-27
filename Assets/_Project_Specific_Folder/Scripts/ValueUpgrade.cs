@@ -51,15 +51,18 @@ public class ValueUpgrade : MonoBehaviour
         }
     }
     
-    private void CheckValueUpgradeButtonAvailability()
+    public void CheckValueUpgradeButtonAvailability()
     {
-        if (StorageManager.GetTotalScore() >= requiredScoreForValueUpgrade)
+        if (!_isAdEnabled)
         {
-            _button.interactable = true;
-        }
-        else
-        {
-            _button.interactable = false;
+            if (StorageManager.GetTotalScore() >= requiredScoreForValueUpgrade)
+            {
+                _button.interactable = true;
+            }
+            else
+            {
+                _button.interactable = false;
+            }   
         }
     }
     
@@ -81,8 +84,10 @@ public class ValueUpgrade : MonoBehaviour
                 UiManager.Instance.UpdateTotalScoreText(StorageManager.GetTotalScore());
                 
                 ValueUpgradeButtonEffects(priceTagTotalScore);
+                CheckValueUpgradeButtonTypeStatus();
             }
             CheckValueUpgradeButtonAvailability();
+            UiManager.Instance.coolnessUpgradeButton.GetComponent<CoolnessUpgrade>().CheckCoolnessUpgradeButtonAvailability();
         }
         else
         {
@@ -93,8 +98,8 @@ public class ValueUpgrade : MonoBehaviour
             UiManager.Instance.ValueUpgradeEffect(currentUpgradeAmount);
 
             ValueUpgradeButtonEffects(priceTagTotalScore);
+            CheckValueUpgradeButtonTypeStatus();
         }
-        CheckValueUpgradeButtonTypeStatus();
     }
 
     private void ValueUpgradeButtonEffects(int totalScore)

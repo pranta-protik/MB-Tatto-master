@@ -63,8 +63,7 @@ public class HandBehaviour : MonoBehaviour
     private float _playerInitialSpeed;
     private Camera _camera;
     private TextureManager _textureManager;
-    private int _defaultTattooId;
- 
+
     private void Start()
     {
         _camera = Camera.main;
@@ -104,7 +103,7 @@ public class HandBehaviour : MonoBehaviour
         _playerInitialSpeed = _playerPathFollower.maxSpeed;
     }
 
-    private void ResetHandTattooStatus()
+    public void ResetHandTattooStatus()
     {
         _hasGoneThroughGoodGate = false;
         _shouldChangeTattoo = false;

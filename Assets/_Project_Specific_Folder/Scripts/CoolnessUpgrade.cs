@@ -60,15 +60,18 @@ public class CoolnessUpgrade : MonoBehaviour
         }
     }
 
-    private void CheckCoolnessUpgradeButtonAvailability()
+    public void CheckCoolnessUpgradeButtonAvailability()
     {
-        if (StorageManager.GetTotalScore() >= requiredScoreForCoolnessUpgrade)
+        if (!_isAdEnabled)
         {
-            _button.interactable = true;
-        }
-        else
-        {
-            _button.interactable = false;
+            if (StorageManager.GetTotalScore() >= requiredScoreForCoolnessUpgrade)
+            {
+                _button.interactable = true;
+            }
+            else
+            {
+                _button.interactable = false;
+            }
         }
     }
 
@@ -96,17 +99,18 @@ public class CoolnessUpgrade : MonoBehaviour
                     UiManager.Instance.UpdateTotalScoreText(StorageManager.GetTotalScore());
                     
                     CoolnessUpgradeButtonEffects(currentCoolnessLevel);
+                    CheckCoolnessUpgradeButtonTypeStatus();
                 }
-                CheckCoolnessUpgradeButtonAvailability();    
+                CheckCoolnessUpgradeButtonAvailability();
+                UiManager.Instance.valueUpgradeButton.GetComponent<ValueUpgrade>().CheckValueUpgradeButtonAvailability();
             }
             else
             {
                 Debug.Log("Ad Watched");
                 
                 CoolnessUpgradeButtonEffects(currentCoolnessLevel);
+                CheckCoolnessUpgradeButtonTypeStatus();   
             }
-            
-            CheckCoolnessUpgradeButtonTypeStatus();
         }
     }
 
