@@ -8,6 +8,7 @@ using System;
 using MySDK;
 using PathCreation;
 using HomaGames.HomaBelly;
+using UnityEngine.Serialization;
 
 public enum ERotationAxis
 {
@@ -44,6 +45,7 @@ public class GameManager : Singleton<GameManager>
     public List<GameObject> levelPrefabs = new List<GameObject>();
     public List<int> likes = new List<int>();
     public List<FollowerInfoSet> followers = new List<FollowerInfoSet>();
+    
 
     [HideInInspector] public int currentLevelNo;
     [HideInInspector] public GameObject currentLevelPrefab;
@@ -57,9 +59,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private GameObject tattooGunSpawnEffect;
     [SerializeField] private GameObject tattooEffect;
     [SerializeField] private Transform wrestlingCameraTransform;
-    [SerializeField] private int requiredScoreForValueUpgrade;
-    [SerializeField] private int upgradeAmount;
-    
+
     private int _handId;
     private GameObject _groundFog;
     private HandBehaviour _mainHandBehaviour;
@@ -121,8 +121,6 @@ public class GameManager : Singleton<GameManager>
 
         playerPathFollower.enabled = false;
 
-        CheckValueUpgradeButtonStatus();
-        
         _currentTattooGunLevel = PlayerPrefs.GetInt("CurrentTattooGunLevel", 0);
         
         CheckTattooGunUpgradeButtonStatus();
@@ -252,30 +250,7 @@ public class GameManager : Singleton<GameManager>
             tattooGunSpawnEffect.GetComponent<ParticleSystem>().Play();
         }
     }
-
-    public void UpgradeBaseValue()
-    {
-        int lastBaseScore = PlayerPrefs.GetInt("BaseScore", 0);
-        PlayerPrefs.SetInt("BaseScore", lastBaseScore + upgradeAmount);
-        UiManager.Instance.UpdatePriceTag(lastBaseScore + upgradeAmount);
-        StorageManager.Instance.SetCurrentScore(lastBaseScore + upgradeAmount);
-        StorageManager.SetTotalScore(StorageManager.GetTotalScore() - requiredScoreForValueUpgrade);
-        UiManager.Instance.UpdateTotalScoreText(StorageManager.GetTotalScore());
-        UiManager.Instance.ValueUpgradeEffect(upgradeAmount);
-        CheckValueUpgradeButtonStatus();
-    }
     
-    private void CheckValueUpgradeButtonStatus()
-    {
-        if (requiredScoreForValueUpgrade <= StorageManager.GetTotalScore())
-        {
-            UiManager.Instance.EnableValueUpgradeButton();
-        }
-        else
-        {
-            UiManager.Instance.DisableValueUpgradeButton();
-        }
-    }
 
     private void CheckTattooGunUpgradeButtonStatus()
     {

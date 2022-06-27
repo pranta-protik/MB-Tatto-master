@@ -73,7 +73,7 @@ public class UiManager : Singleton<UiManager>
         if (priceTag!=null)
         {
             _scoreText = priceTag.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-            _scoreText.SetText(PlayerPrefs.GetInt("BaseScore", 0).ToString());
+            _scoreText.SetText(PlayerPrefs.GetInt("PriceTagBaseScore", 0).ToString());
         }
         
         _currentLevel = PlayerPrefs.GetInt("current_scene", 0);
@@ -150,21 +150,6 @@ public class UiManager : Singleton<UiManager>
         tattooGunUpgradeButton.GetComponent<Button>().interactable = false;
     }
 
-    public void OnValueUpgradeButtonClick()
-    {
-        GameManager.Instance.UpgradeBaseValue();
-    }
-
-    public void EnableValueUpgradeButton()
-    {
-        valueUpgradeButton.GetComponent<Button>().interactable = true;
-    }
-    
-    public void DisableValueUpgradeButton()
-    {
-        valueUpgradeButton.GetComponent<Button>().interactable = false;
-    }
-
     public void ValueUpgradeEffect(int value)
     {
         GameObject incrementTextObj =
@@ -227,8 +212,11 @@ public class UiManager : Singleton<UiManager>
 
     public void OnSelectionMenuButtonClick()
     {
+        // Debug mode
+        UAManager.Instance.IsEndReached = true;
+        
         levelNoText.transform.parent.gameObject.SetActive(false);
-        shop.SetActive(false);
+        // shop.SetActive(false);
         selectionMenuButton.gameObject.SetActive(false);
         _camera.transform.DOLocalRotate(new Vector3(42, 90, 0), .3f).OnComplete(() =>
         {
@@ -239,11 +227,14 @@ public class UiManager : Singleton<UiManager>
     
     public void OnCloseSelectionMenuButtonClick()
     {
+        // Debug mode
+        UAManager.Instance.IsEndReached = false;
+        
         selectionMenu.SetActive(false);
         _camera.transform.DOLocalRotate(new Vector3(27.761f, 90, 0), .3f).OnComplete(() =>
         {
             levelNoText.transform.parent.gameObject.SetActive(true);
-            shop.SetActive(true);
+            // shop.SetActive(true);
             selectionMenuButton.gameObject.SetActive(true);
         });
     }
@@ -298,13 +289,7 @@ public class UiManager : Singleton<UiManager>
     }
 
     #endregion
-
-    #region Camera Settings
     
-    
-
-    #endregion
-
     #region Instagram Like and Follower Settings
     
     private void UpdateLikeText()
@@ -520,12 +505,10 @@ public class UiManager : Singleton<UiManager>
 
         SceneManager.LoadScene("Main");
 
-        /// Invoke this every time player successfully completes current level, the one tracked
-        /// with DefaultAnalytics.LevelStarted() method
-        /// </summary>
+        // Invoke this every time player successfully completes current level
         DefaultAnalytics.LevelCompleted();
-
     }
+    
     [DebuggableAction("Restart Game")]
     public void Reset()
     {

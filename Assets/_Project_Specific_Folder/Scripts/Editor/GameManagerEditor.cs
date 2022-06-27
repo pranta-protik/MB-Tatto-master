@@ -18,7 +18,8 @@ public class GameManagerEditor : Editor
         EditorGUILayout.PropertyField(serializedObject.FindProperty("tattooGunSpawnEffect"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("tattooEffect"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("requiredScoreForValueUpgrade"));
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("upgradeAmount"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("baseUpgradeAmount"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("startingLevelForUpgradeValueWatchingAd"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("wrestlingCameraTransform"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("gameMode"));
 
