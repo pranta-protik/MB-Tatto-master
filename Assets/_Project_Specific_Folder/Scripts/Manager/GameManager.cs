@@ -59,7 +59,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private int upgradeAmount;
     
     private int _handId;
-    private HandBehaviour _mainHandCollision;
+    private HandBehaviour _mainHandBehaviour;
     private Camera _mainCamera;
     private CameraController _cameraController;
     private GameObject _pathObj;
@@ -99,7 +99,7 @@ public class GameManager : Singleton<GameManager>
         GameObject mainHandObj = handGroups[_handId].mainHand;
         mainHandObj.SetActive(true);
         handGroups[_handId].tattooHand.SetActive(true);
-        _mainHandCollision = mainHandObj.transform.GetChild(0).GetComponent<HandBehaviour>();
+        _mainHandBehaviour = mainHandObj.transform.GetChild(0).GetComponent<HandBehaviour>();
 
         _cameraController.player = mainHandObj;
 
@@ -190,12 +190,12 @@ public class GameManager : Singleton<GameManager>
     
     public void PlayPoseAnimation(int index)
     {
-        _mainHandCollision.PlayPoseAnimation(index);
+        _mainHandBehaviour.PlayPoseAnimation(index);
     }
 
     public void ResetPose()
     {
-        _mainHandCollision.ResetPose();
+        _mainHandBehaviour.ResetPose();
     }
 
     #region Upgrade Buttons Functionality
@@ -262,11 +262,11 @@ public class GameManager : Singleton<GameManager>
         _mainCamera.DOFieldOfView(70f, 1f);
         isGameOver = true;
         _wrestlingPivot.transform.GetChild(1).parent = null;
-        _mainHandCollision.transform.parent.DOLocalMoveY(0.8f, 0.3f);
-        _mainHandCollision.tattooHand.transform.parent.DOLocalMoveY(0.8f, 0.3f);
+        _mainHandBehaviour.transform.parent.DOLocalMoveY(0.8f, 0.3f);
+        _mainHandBehaviour.tattooHand.transform.parent.DOLocalMoveY(0.8f, 0.3f);
         _wrestlingPivot.transform.DOLocalRotate(new Vector3(-40f, -20f, 20f), 0.3f);
-        _mainHandCollision.mainHandAnimator.Play("gesture04");
-        _mainHandCollision.tattooHandAnimator.Play("gesture04");
+        _mainHandBehaviour.mainHandAnimator.Play("gesture04");
+        _mainHandBehaviour.tattooHandAnimator.Play("gesture04");
         StartCoroutine(UiManager.Instance.CrossOpponentOnInfluenceMeter());
     }
     
@@ -289,7 +289,7 @@ public class GameManager : Singleton<GameManager>
     private void SetLevelDetails(GameObject levelPrefab)
     {
         _levelDetails = levelPrefab.GetComponent<Leveldetails>();
-        _mainHandCollision.tattooGroupId = _levelDetails.tattooId;
+        _mainHandBehaviour.tattooGroupId = _levelDetails.tattooId;
     }
 
     #endregion
@@ -311,7 +311,7 @@ public class GameManager : Singleton<GameManager>
     IEnumerator DelayPlayerControlRoutine()
     {
         tattooEffect.SetActive(true);
-        _mainHandCollision.DrawDefaultTattoo();
+        _mainHandBehaviour.DrawDefaultTattoo();
 
         yield return new WaitForSeconds(.5f);
         
@@ -329,7 +329,7 @@ public class GameManager : Singleton<GameManager>
             {
                 hand.mainHand.gameObject.SetActive(true);
                 hand.tattooHand.gameObject.SetActive(true);
-                _mainHandCollision = hand.mainHand.transform.GetChild(0).GetComponent<HandBehaviour>();
+                _mainHandBehaviour = hand.mainHand.transform.GetChild(0).GetComponent<HandBehaviour>();
                 _cameraController.player = hand.mainHand.gameObject;
                 SetLevelDetails(currentLevelPrefab);
             }
@@ -347,8 +347,8 @@ public class GameManager : Singleton<GameManager>
     {
         _currentBoss = _bossParent.transform.GetChild(bossHandId).gameObject;
         
-        Transform mainHandTransform = _mainHandCollision.transform.parent;
-        Transform tattooHandTransform = _mainHandCollision.tattooHand.transform.parent;
+        Transform mainHandTransform = _mainHandBehaviour.transform.parent;
+        Transform tattooHandTransform = _mainHandBehaviour.tattooHand.transform.parent;
         Transform playerTransform = mainHandTransform.parent;
         Transform mainCameraTransform = _mainCamera.transform;
         Transform endTransform = _bossParent.transform.parent;
@@ -369,8 +369,8 @@ public class GameManager : Singleton<GameManager>
         mainHandTransform.localEulerAngles = new Vector3(0f, -90f, 9f);
         tattooHandTransform.localEulerAngles = new Vector3(0f, -90f, 9f);
         
-        _mainHandCollision.mainHandAnimator.Play("Wrestle");
-        _mainHandCollision.tattooHandAnimator.Play("Wrestle");
+        _mainHandBehaviour.mainHandAnimator.Play("Wrestle");
+        _mainHandBehaviour.tattooHandAnimator.Play("Wrestle");
         _fightingRing.SetActive(true);
         _currentBoss.SetActive(true);
         _currentBoss.transform.GetComponent<Animator>().enabled = true;

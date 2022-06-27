@@ -48,7 +48,7 @@ public class FilterManager : MonoBehaviour
     {
         SetCurrentFilterId(currentFilterObj);
         
-        if (PlayerPrefs.GetInt("AdWatched" + currentFilterButtonId, 0) == 0)
+        if (PlayerPrefs.GetInt("FilterAdWatched" + currentFilterButtonId, 0) == 0)
         {
             EnableWatchAdButton();
         }

@@ -99,69 +99,9 @@ public class MobileScreen : MonoBehaviour
     
     public void OnWatchAdButtonClick()
     {
-        PlayerPrefs.SetInt("AdWatched" + _filterManager.currentFilterButtonId, 1);
+        PlayerPrefs.SetInt("FilterAdWatched" + _filterManager.currentFilterButtonId, 1);
         _captureButton.SetActive(true);
         _watchAdButton.SetActive(false);
         OnCaptureButtonClick();
     }
-
-    #region Hand Pose
-    
-    public void PlayFingerPose()
-    {
-        if (_isPosing)
-        {
-            _isPosing = false;
-            GameManager.Instance.ResetPose();
-        }
-        else
-        {
-            _isPosing = true;
-            GameManager.Instance.PlayPoseAnimation(0);   
-        }
-    }
-
-    public void PlayHopePose()
-    {
-        if (_isPosing)
-        {
-            _isPosing = false;
-            GameManager.Instance.ResetPose();
-        }
-        else
-        {
-            _isPosing = true;
-            GameManager.Instance.PlayPoseAnimation(1);   
-        }
-    }
-
-    public void PlayPeacePose()
-    {
-        if (_isPosing)
-        {
-            _isPosing = false;
-            GameManager.Instance.ResetPose();
-        }
-        else
-        {
-            _isPosing = true;
-            GameManager.Instance.PlayPoseAnimation(2);
-        }
-    }
-
-    public void PlayRockPose()
-    {
-        if (_isPosing)
-        {
-            _isPosing = false;
-            GameManager.Instance.ResetPose();
-        }
-        else
-        {
-            _isPosing = true;
-            GameManager.Instance.PlayPoseAnimation(3);   
-        }
-    }
-    
-    #endregion
 }
