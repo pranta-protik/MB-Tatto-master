@@ -697,13 +697,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1961694459}
-        m_TargetAssemblyTypeName: MobileScreen, Assembly-CSharp
-        m_MethodName: PlayRockPose
-        m_Mode: 1
+      - m_Target: {fileID: 538428011}
+        m_TargetAssemblyTypeName: PoseManager, Assembly-CSharp
+        m_MethodName: SetPose
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 137153362}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -759,7 +759,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd7e01c6384c6314db26344eadfa9e39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonId: 0
+  buttonId: 4
+  animationId: 3
+  watchAdRequired: 1
+  normalIcon: {fileID: 21300000, guid: 8fcdc54a47e1fc741aeb936d39226bcc, type: 3}
+  watchAdIcon: {fileID: 21300000, guid: cde5194d4162b8146aa89e0d0b0f5fc0, type: 3}
+  buttonImage: {fileID: 0}
 --- !u!1 &155653126 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8457591635159716368, guid: 9973a38941b2ccf4aba7e74a82e60588, type: 3}
@@ -1403,13 +1408,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1961694459}
-        m_TargetAssemblyTypeName: MobileScreen, Assembly-CSharp
-        m_MethodName: PlayHopePose
-        m_Mode: 1
+      - m_Target: {fileID: 538428011}
+        m_TargetAssemblyTypeName: PoseManager, Assembly-CSharp
+        m_MethodName: SetPose
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 219203643}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1465,7 +1470,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd7e01c6384c6314db26344eadfa9e39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonId: 0
+  buttonId: 2
+  animationId: 1
+  watchAdRequired: 1
+  normalIcon: {fileID: 21300000, guid: bd204805ea846f84eadd11ea260c29f2, type: 3}
+  watchAdIcon: {fileID: 21300000, guid: cde5194d4162b8146aa89e0d0b0f5fc0, type: 3}
+  buttonImage: {fileID: 0}
 --- !u!1 &220285330 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7507606636898521305, guid: 4c3dd0da40a3fb848bae1d09f915b86e, type: 3}
@@ -3327,13 +3337,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1961694459}
-        m_TargetAssemblyTypeName: MobileScreen, Assembly-CSharp
-        m_MethodName: PlayPeacePose
-        m_Mode: 1
+      - m_Target: {fileID: 538428011}
+        m_TargetAssemblyTypeName: PoseManager, Assembly-CSharp
+        m_MethodName: SetPose
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 419723753}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3389,7 +3399,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd7e01c6384c6314db26344eadfa9e39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonId: 0
+  buttonId: 3
+  animationId: 2
+  watchAdRequired: 1
+  normalIcon: {fileID: 21300000, guid: 40d95abbaf96e7b4ebddb64cf19eff1f, type: 3}
+  watchAdIcon: {fileID: 21300000, guid: cde5194d4162b8146aa89e0d0b0f5fc0, type: 3}
+  buttonImage: {fileID: 0}
 --- !u!114 &425760736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4108,6 +4123,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 538428010}
+  - component: {fileID: 538428011}
   m_Layer: 5
   m_Name: PoseScreen
   m_TagString: Untagged
@@ -4140,6 +4156,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 810}
   m_SizeDelta: {x: 0, y: 1620}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &538428011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 538428009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80534a44f250b2346bf189774ed9cb4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentPoseButtonId: 0
 --- !u!1 &543687792
 GameObject:
   m_ObjectHideFlags: 0
@@ -4996,7 +5025,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -16853,13 +16882,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1961694459}
-        m_TargetAssemblyTypeName: MobileScreen, Assembly-CSharp
-        m_MethodName: PlayFingerPose
-        m_Mode: 1
+      - m_Target: {fileID: 538428011}
+        m_TargetAssemblyTypeName: PoseManager, Assembly-CSharp
+        m_MethodName: SetPose
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 976841053}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -16915,7 +16944,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd7e01c6384c6314db26344eadfa9e39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonId: 0
+  buttonId: 1
+  animationId: 0
+  watchAdRequired: 0
+  normalIcon: {fileID: 21300000, guid: 5c6630c703a0bd049b8268f7481172e2, type: 3}
+  watchAdIcon: {fileID: 21300000, guid: cde5194d4162b8146aa89e0d0b0f5fc0, type: 3}
+  buttonImage: {fileID: 0}
 --- !u!1 &979487805
 GameObject:
   m_ObjectHideFlags: 0
@@ -17280,7 +17314,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -17877,6 +17911,8 @@ MonoBehaviour:
   offsetZ: 0
   targetRotation: {x: 27.761, y: 90.299, z: 0}
   smoothTimeLook: 3
+  InitialY: 0
+  InitialZ: 0
 --- !u!81 &1172234472
 AudioListener:
   m_ObjectHideFlags: 0
@@ -22119,6 +22155,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonId: 0
+  animationId: 0
+  watchAdRequired: 0
+  normalIcon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  watchAdIcon: {fileID: 21300000, guid: cde5194d4162b8146aa89e0d0b0f5fc0, type: 3}
+  buttonImage: {fileID: 0}
 --- !u!114 &1677870734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22163,9 +22204,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1961694459}
-        m_TargetAssemblyTypeName: MobileScreen, Assembly-CSharp
-        m_MethodName: PlayFingerPose
+      - m_Target: {fileID: 538428011}
+        m_TargetAssemblyTypeName: PoseManager, Assembly-CSharp
+        m_MethodName: ResetPose
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -33891,7 +33932,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1961694458
 RectTransform:
   m_ObjectHideFlags: 0

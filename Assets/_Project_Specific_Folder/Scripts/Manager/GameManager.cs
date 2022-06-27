@@ -7,7 +7,6 @@ using PathCreation.Examples;
 using System;
 using MySDK;
 using PathCreation;
-using UnityEngine.Serialization;
 using HomaGames.HomaBelly;
 
 public enum ERotationAxis
@@ -62,12 +61,8 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private int upgradeAmount;
     
     private int _handId;
-
     private GameObject _groundFog;
- 
-
     private HandBehaviour _mainHandBehaviour;
-
     private Camera _mainCamera;
     private CameraController _cameraController;
     private GameObject _pathObj;
@@ -84,16 +79,12 @@ public class GameManager : Singleton<GameManager>
     
     public EGameMode gameMode;
     [SerializeField] private int specificLevelId;
-
-
-
+    
     public override void Start()
     {
         //Main Menu screen is loaded
-       
         DefaultAnalytics.MainMenuLoaded();
-
-
+        
 #if UNITY_EDITOR
         if (gameMode == EGameMode.Test)
         {
@@ -140,7 +131,14 @@ public class GameManager : Singleton<GameManager>
 
         // Setting Default
         UAManager.Instance.SkyColor = new Color32(184, 190,255,255);
-        _groundFog.GetComponent<Renderer>().material.SetColor("_HeightFogColor", new Color(121, 132, 255, 255));
+        if (_groundFog != null)
+        {
+            _groundFog.GetComponent<Renderer>().material.SetColor("_HeightFogColor", new Color(121, 132, 255, 255));   
+        }
+        else
+        {
+            Debug.Log("Ground Fog Not Found");
+        }
         UAManager.Instance.HandId = PlayerPrefs.GetInt("SelectedHandCardId", 0);
     }
 
@@ -151,7 +149,14 @@ public class GameManager : Singleton<GameManager>
         // For Homa UA 
         RenderSettings.skybox.SetColor("_SkyColor2", UAManager.Instance. SkyColor);
         // For Homa UA 
-        _groundFog.GetComponent<Renderer>().material.SetColor("_HeightFogColor", UAManager.Instance.HeightFogColor);
+        if (_groundFog != null)
+        {
+            _groundFog.GetComponent<Renderer>().material.SetColor("_HeightFogColor", UAManager.Instance.HeightFogColor);   
+        }
+        else
+        {
+            Debug.Log("Ground Fog Not Found");
+        }
 
         if (_bossParent == null)
         {

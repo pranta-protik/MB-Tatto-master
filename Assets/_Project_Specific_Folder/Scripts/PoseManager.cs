@@ -2,41 +2,56 @@ using UnityEngine;
 
 public class PoseManager : MonoBehaviour
 {
-    public int currentPoseButtonId;
-
-    public void HandPose1(GameObject poseButtonObj)
+    [SerializeField] private int _currentPoseButtonId;
+    private PoseButton _poseButton;
+    
+    private void WatchAd()
     {
-        SetCurrentPoseButtonId(poseButtonObj);
+        Debug.Log("Ad Watched");
+        PlayerPrefs.SetInt("PoseAdWatched" + _currentPoseButtonId, 1);
+        _poseButton.buttonImage.sprite = _poseButton.normalIcon; 
+        GameManager.Instance.PlayPoseAnimation(_poseButton.animationId);
+    }
+
+    public void ResetPose()
+    {
         GameManager.Instance.ResetPose();
     }
 
-    public void HandPose2(GameObject poseButtonObj)
+    public void SetPose(GameObject poseButtonObj)
     {
         SetCurrentPoseButtonId(poseButtonObj);
-        GameManager.Instance.PlayPoseAnimation(0);
-    }
-    
-    public void HandPose3(GameObject poseButtonObj)
-    {
-        SetCurrentPoseButtonId(poseButtonObj);
-        GameManager.Instance.PlayPoseAnimation(1);
-    }
-    
-    public void HandPose4(GameObject poseButtonObj)
-    {
-        SetCurrentPoseButtonId(poseButtonObj);
-        GameManager.Instance.PlayPoseAnimation(2);
-    }
-    
-    public void HandPose5(GameObject poseButtonObj)
-    {
-        SetCurrentPoseButtonId(poseButtonObj);
-        GameManager.Instance.PlayPoseAnimation(3);
+        
+        if (_poseButton.watchAdRequired)
+        {
+            WatchAdPoseButton(_poseButton.animationId);
+        }
+        else
+        {
+            NormalPoseButton(_poseButton.animationId);
+        }
     }
 
     private void SetCurrentPoseButtonId(GameObject currentPoseButtonObj)
     {
-        PoseButton poseButton = currentPoseButtonObj.GetComponent<PoseButton>();
-        currentPoseButtonId = poseButton.buttonId;
+        _poseButton = currentPoseButtonObj.GetComponent<PoseButton>();
+        _currentPoseButtonId = _poseButton.buttonId;
+    }
+
+    private void NormalPoseButton(int animationIndex)
+    {
+        GameManager.Instance.PlayPoseAnimation(animationIndex);
+    }
+    
+    private void WatchAdPoseButton(int animationIndex)
+    {
+        if (PlayerPrefs.GetInt("PoseAdWatched" + _currentPoseButtonId, 0) == 0)
+        {
+            WatchAd();
+        }
+        else
+        {
+            GameManager.Instance.PlayPoseAnimation(animationIndex);
+        }
     }
 }

@@ -99,6 +99,7 @@ public class MobileScreen : MonoBehaviour
     
     public void OnWatchAdButtonClick()
     {
+        Debug.Log("Ad Watched");
         PlayerPrefs.SetInt("FilterAdWatched" + _filterManager.currentFilterButtonId, 1);
         _captureButton.SetActive(true);
         _watchAdButton.SetActive(false);
