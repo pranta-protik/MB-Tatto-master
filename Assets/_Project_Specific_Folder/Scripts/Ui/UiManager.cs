@@ -140,16 +140,6 @@ public class UiManager : Singleton<UiManager>
     
     #region Upgrade Buttons
 
-    public void OnTattooGunUpgradeButtonClick()
-    {
-        GameManager.Instance.UpgradeTattooGun();
-    }
-
-    public void DisableTattooGunUpgradeButton()
-    {
-        tattooGunUpgradeButton.GetComponent<Button>().interactable = false;
-    }
-
     public void ValueUpgradeEffect(int value)
     {
         GameObject incrementTextObj =

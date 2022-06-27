@@ -7,6 +7,7 @@ public class ValueUpgrade : MonoBehaviour
     [SerializeField] private Sprite normalValueUpgradeIcon;
     [SerializeField] private Sprite watchAdValueUpgradeIcon;
     [SerializeField] private int baseUpgradeAmount;
+    [SerializeField] [Range(1, 5)] private int upgradeMultiplier;
     [SerializeField] private int requiredScoreForValueUpgrade;
     [SerializeField] private int startingLevelForUpgradeValueWatchingAd;
     
@@ -101,7 +102,7 @@ public class ValueUpgrade : MonoBehaviour
         PlayerPrefs.SetInt("PriceTagBaseScore", totalScore);
         
         int lastUpgradeAmount = PlayerPrefs.GetInt("ValueUpgradeAmount", baseUpgradeAmount);
-        int nextUpgradeAmount = lastUpgradeAmount * 2;
+        int nextUpgradeAmount = lastUpgradeAmount * upgradeMultiplier;
             
         PlayerPrefs.SetInt("ValueUpgradeAmount", nextUpgradeAmount);
         _levelText.SetText("$" + nextUpgradeAmount);
