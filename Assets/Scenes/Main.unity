@@ -2620,7 +2620,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   endOfPathInstruction: 2
   distanceTravelled: 3.7
-  maxSpeed: 5
+  maxSpeed: 2
   increaseMultiplier: 4
   speedDecrementFactor: 3
   speedDecrementDuration: 0.6
@@ -40809,6 +40809,8 @@ MonoBehaviour:
   unlockPanel: {fileID: 8886289068977303665}
   instagramPostPage: {fileID: 845298533}
   tapFastPanel: {fileID: 1698252271999335891}
+  coolnessUpgradeButton: {fileID: 343490213}
+  valueUpgradeButton: {fileID: 2059400185}
   isInstagramGalleryPhotoUpdated: 0
   followerValue: 
   isBadTattoo: 0
@@ -40816,8 +40818,6 @@ MonoBehaviour:
   hapticsIcon: {fileID: 1996186271}
   totalScoreText: {fileID: 1937837366}
   priceTag: {fileID: 6668516392213119779}
-  tattooGunUpgradeButton: {fileID: 343490213}
-  valueUpgradeButton: {fileID: 2059400185}
   valueUpgradeIncrementEffect: {fileID: 8370416646854717847, guid: 8e75622e07fb6b344ba958afd4a36d7f, type: 3}
   mobileScreen: {fileID: 1961694457}
   selectionMenuButton: {fileID: 425760740}
