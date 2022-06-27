@@ -15,15 +15,15 @@ public class MobileScreen : MonoBehaviour
     private RawImage _lastCapturedImage;
     private bool _isMobileActive;
     private Slider _mobileScreenSlider;
+    private FilterManager _filterManager;
     private bool _isPosing;
-    private bool _isFilterActive;
-    [SerializeField] private int _currentFilterButtonId;
 
     private void Start()
     {
         _camera = Camera.main;
         _captureButton = transform.GetChild(3).gameObject;
         _watchAdButton = transform.GetChild(4).gameObject;
+        _filterManager = transform.GetChild(2).GetChild(5).GetComponent<FilterManager>();
         _mobileScreenSlider = transform.GetChild(5).GetComponent<Slider>();
         _foregroundImage = transform.GetChild(9).GetComponent<Image>();
         _lastCapturedImage = transform.GetChild(2).GetChild(0).GetComponent<RawImage>();
@@ -96,176 +96,12 @@ public class MobileScreen : MonoBehaviour
             UiManager.Instance.EnableInstagramPostPage();
         });
     }
-
-    #region Filter
-
-    public void WatchAd()
+    
+    public void OnWatchAdButtonClick()
     {
-        PlayerPrefs.SetInt("AdWatched" + _currentFilterButtonId, 1);
-        _watchAdButton.SetActive(false);
+        PlayerPrefs.SetInt("FilterAdWatched" + _filterManager.currentFilterButtonId, 1);
         _captureButton.SetActive(true);
+        _watchAdButton.SetActive(false);
         OnCaptureButtonClick();
     }
-    
-    public void Filter1Effect(GameObject filterButtonObj)
-    {
-        FilterButton filterButton = filterButtonObj.GetComponent<FilterButton>();
-        _currentFilterButtonId = filterButton.buttonId;
-        
-        if (!_isFilterActive)
-        {
-            _isFilterActive = true;
-            _captureButton.SetActive(true);
-            _watchAdButton.SetActive(false);
-        }
-        else
-        {
-            _isFilterActive = false;
-            _captureButton.SetActive(true);
-            _watchAdButton.SetActive(false);
-        }
-    }
-
-    public void Filter2Effect(GameObject filterButtonObj)
-    {
-        FilterButton filterButton = filterButtonObj.GetComponent<FilterButton>();
-        _currentFilterButtonId = filterButton.buttonId;
-        
-        if (!_isFilterActive)
-        {
-            _isFilterActive = true;
-            if (PlayerPrefs.GetInt("AdWatched" + _currentFilterButtonId, 0) == 0)
-            {
-                _captureButton.SetActive(false);
-                _watchAdButton.SetActive(true);    
-            }
-            else
-            {
-                _captureButton.SetActive(true);
-                _watchAdButton.SetActive(false);    
-            }
-        }
-        else
-        {
-            _isFilterActive = false;
-            _captureButton.SetActive(true);
-            _watchAdButton.SetActive(false);
-        }
-    }
-    
-    public void Filter3Effect(GameObject filterButtonObj)
-    {
-        FilterButton filterButton = filterButtonObj.GetComponent<FilterButton>();
-        _currentFilterButtonId = filterButton.buttonId;
-        
-        if (!_isFilterActive)
-        {
-            _isFilterActive = true;
-            if (PlayerPrefs.GetInt("AdWatched" + _currentFilterButtonId, 0) == 0)
-            {
-                _captureButton.SetActive(false);
-                _watchAdButton.SetActive(true);    
-            }
-            else
-            {
-                _captureButton.SetActive(true);
-                _watchAdButton.SetActive(false);    
-            }
-        }
-        else
-        {
-            _isFilterActive = false;
-            _captureButton.SetActive(true);
-            _watchAdButton.SetActive(false);
-        }
-    }
-    
-    public void Filter4Effect(GameObject filterButtonObj)
-    {
-        FilterButton filterButton = filterButtonObj.GetComponent<FilterButton>();
-        _currentFilterButtonId = filterButton.buttonId;
-        
-        if (!_isFilterActive)
-        {
-            _isFilterActive = true;
-            if (PlayerPrefs.GetInt("AdWatched" + _currentFilterButtonId, 0) == 0)
-            {
-                _captureButton.SetActive(false);
-                _watchAdButton.SetActive(true);    
-            }
-            else
-            {
-                _captureButton.SetActive(true);
-                _watchAdButton.SetActive(false);    
-            }
-        }
-        else
-        {
-            _isFilterActive = false;
-            _captureButton.SetActive(true);
-            _watchAdButton.SetActive(false);
-        }
-    }
-
-    #endregion
-    
-    #region Hand Pose
-    
-    public void PlayFingerPose()
-    {
-        if (_isPosing)
-        {
-            _isPosing = false;
-            GameManager.Instance.ResetPose();
-        }
-        else
-        {
-            _isPosing = true;
-            GameManager.Instance.PlayPoseAnimation(0);   
-        }
-    }
-
-    public void PlayHopePose()
-    {
-        if (_isPosing)
-        {
-            _isPosing = false;
-            GameManager.Instance.ResetPose();
-        }
-        else
-        {
-            _isPosing = true;
-            GameManager.Instance.PlayPoseAnimation(1);   
-        }
-    }
-
-    public void PlayPeacePose()
-    {
-        if (_isPosing)
-        {
-            _isPosing = false;
-            GameManager.Instance.ResetPose();
-        }
-        else
-        {
-            _isPosing = true;
-            GameManager.Instance.PlayPoseAnimation(2);
-        }
-    }
-
-    public void PlayRockPose()
-    {
-        if (_isPosing)
-        {
-            _isPosing = false;
-            GameManager.Instance.ResetPose();
-        }
-        else
-        {
-            _isPosing = true;
-            GameManager.Instance.PlayPoseAnimation(3);   
-        }
-    }
-    
-    #endregion
 }
