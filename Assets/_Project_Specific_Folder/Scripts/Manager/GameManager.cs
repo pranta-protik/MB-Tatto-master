@@ -8,6 +8,7 @@ using System;
 using MySDK;
 using PathCreation;
 using UnityEngine.Serialization;
+using HomaGames.HomaBelly;
 
 public enum ERotationAxis
 {
@@ -32,6 +33,7 @@ public struct FollowerInfoSet
 
 public class GameManager : Singleton<GameManager>
 {
+
     public enum EGameMode
     {
         Complete,
@@ -39,6 +41,7 @@ public class GameManager : Singleton<GameManager>
     }
 
     public int totalLevelNo = 50;
+
     public List<GameObject> levelPrefabs = new List<GameObject>();
     public List<int> likes = new List<int>();
     public List<FollowerInfoSet> followers = new List<FollowerInfoSet>();
@@ -59,6 +62,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private int upgradeAmount;
     
     private int _handId;
+    private GameObject _groundFog;
     private HandBehaviour _mainHandCollision;
     private Camera _mainCamera;
     private CameraController _cameraController;
@@ -77,8 +81,15 @@ public class GameManager : Singleton<GameManager>
     public EGameMode gameMode;
     [SerializeField] private int specificLevelId;
 
+
+
     public override void Start()
     {
+        //Main Menu screen is loaded
+       
+        DefaultAnalytics.MainMenuLoaded();
+
+
 #if UNITY_EDITOR
         if (gameMode == EGameMode.Test)
         {
@@ -111,6 +122,7 @@ public class GameManager : Singleton<GameManager>
             pathCreator = _pathObj.GetComponent<PathCreator>();
             _pathObj.GetComponent<RoadMeshCreator>().refresh();
         }
+        _groundFog = GameObject.FindGameObjectWithTag("Environment");
 
         playerPathFollower.enabled = false;
 
@@ -121,10 +133,22 @@ public class GameManager : Singleton<GameManager>
         CheckTattooGunUpgradeButtonStatus();
         
         tattooGuns[_currentTattooGunLevel].SetActive(true);
+
+        // Setting Default
+        UAManager.Instance.SkyColor = new Color32(184, 190,255,255);
+        _groundFog.GetComponent<Renderer>().material.SetColor("_HeightFogColor", new Color(121, 132, 255, 255));
+        UAManager.Instance.HandId = PlayerPrefs.GetInt("SelectedHandCardId", 0);
     }
 
     private void Update()
     {
+        // For Homa UA 
+        SpawnHand(UAManager.Instance.HandId);
+        // For Homa UA 
+        RenderSettings.skybox.SetColor("_SkyColor2", UAManager.Instance. SkyColor);
+        // For Homa UA 
+        _groundFog.GetComponent<Renderer>().material.SetColor("_HeightFogColor", UAManager.Instance.HeightFogColor);
+
         if (_bossParent == null)
         {
             _bossParent = GameObject.Find("Bosses");
@@ -298,6 +322,11 @@ public class GameManager : Singleton<GameManager>
 
     public void StartGameplay()
     {
+        // Invoke this method everytime the user starts the gameplay at any level
+        DefaultAnalytics.GameplayStarted();
+        // Invoke this every time player starts the level. Levels should start at 1
+        DefaultAnalytics.LevelStarted(PlayerPrefs.GetInt("current_scene_text"+1));
+
         UiManager.Instance.ClearUIOnGameStart();
         UiManager.Instance.MovePriceTag();
         

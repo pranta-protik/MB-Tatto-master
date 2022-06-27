@@ -64,7 +64,7 @@ public class HandBehaviour : MonoBehaviour
     private Camera _camera;
     private TextureManager _textureManager;
     private int _defaultTattooId;
-
+ 
     private void Start()
     {
         _camera = Camera.main;
@@ -289,6 +289,11 @@ public class HandBehaviour : MonoBehaviour
 
         if (other.gameObject.CompareTag("FinishLine"))
         {
+            // For Homa UA 
+            UAManager.Instance.IsEndReached = true;
+            // For Homa UA 
+            _camera.GetComponent<CameraController>().ResetCamPosYZ();
+
             other.GetComponent<Collider>().enabled = false;
             UiManager.Instance.ClearUIOnFinishLine();
 

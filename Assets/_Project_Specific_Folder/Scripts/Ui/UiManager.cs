@@ -8,6 +8,8 @@ using MoreMountains.NiceVibrations;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
+using HomaGames.HomaBelly;
+using HomaGames.HomaConsole.Core.Attributes;
 
 public class UiManager : Singleton<UiManager>
 {
@@ -17,7 +19,8 @@ public class UiManager : Singleton<UiManager>
     public GameObject unlockPanel;
     public GameObject instagramPostPage;
     public GameObject tapFastPanel;
-    
+
+
     [HideInInspector] public bool isInstagramGalleryPhotoUpdated;
     [HideInInspector] public string followerValue;
     [HideInInspector] public bool isBadTattoo;
@@ -515,6 +518,17 @@ public class UiManager : Singleton<UiManager>
         }
         PlayerPrefs.SetInt("current_scene_text", _currentLevelText + 1);
 
+        SceneManager.LoadScene("Main");
+
+        /// Invoke this every time player successfully completes current level, the one tracked
+        /// with DefaultAnalytics.LevelStarted() method
+        /// </summary>
+        DefaultAnalytics.LevelCompleted();
+
+    }
+    [DebuggableAction("Restart Game")]
+    public void Reset()
+    {
         SceneManager.LoadScene("Main");
     }
 }
