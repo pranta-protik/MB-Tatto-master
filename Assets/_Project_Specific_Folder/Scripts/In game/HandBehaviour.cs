@@ -292,7 +292,7 @@ public class HandBehaviour : MonoBehaviour
             // For Homa UA 
             UAManager.Instance.IsEndReached = true;
             // For Homa UA 
-            _camera.GetComponent<CameraController>().ResetCamPosYZ();
+            // _camera.GetComponent<CameraController>().ResetCamPosYZ();
 
             other.GetComponent<Collider>().enabled = false;
             UiManager.Instance.ClearUIOnFinishLine();

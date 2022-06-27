@@ -21,27 +21,30 @@ public class CameraController : MonoBehaviour
     public float InitialY, InitialZ;
     private void Start()
     {
-        InitialY = transform.position.y;
-        InitialZ = transform.position.z;
+        // InitialY = transform.position.y;
+        // InitialZ = transform.position.z;
     }
 
     void LateUpdate()
     {
-        if (UAManager.Instance.IsEndReached)
-            return;
-
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(targetRotation), smoothTimeLook * Time.deltaTime);      
+        if (!UAManager.Instance.IsEndReached)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(targetRotation), smoothTimeLook * Time.deltaTime);    
+        }
+        
         Transform cameraTransform = transform;
         Vector3 cameraPosition = cameraTransform.position;         
         Vector3 playerPosition = player.transform.position;
+        
         cameraPosition.y = playerPosition.y + offsetY;
         cameraPosition.z = playerPosition.z + offsetZ;
         cameraPosition.x = playerPosition.x + offsetX;
+        
         cameraTransform.position = cameraPosition;
     }
 
-    public void ResetCamPosYZ()
-    {
-        transform.position = new Vector3(transform.position.x, InitialY, InitialZ);
-    }
+    // public void ResetCamPosYZ()
+    // {
+    //     // transform.position = new Vector3(transform.position.x, InitialY, InitialZ);
+    // }
 }

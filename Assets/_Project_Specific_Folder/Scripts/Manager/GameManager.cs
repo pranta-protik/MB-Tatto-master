@@ -8,7 +8,6 @@ using System;
 using MySDK;
 using PathCreation;
 using HomaGames.HomaBelly;
-using UnityEngine.Serialization;
 
 public enum ERotationAxis
 {
@@ -140,7 +139,7 @@ public class GameManager : Singleton<GameManager>
     private void Update()
     {
         // For Homa UA 
-        SpawnHand(UAManager.Instance.HandId);
+        // SpawnHand(UAManager.Instance.HandId);
         // For Homa UA 
         RenderSettings.skybox.SetColor("_SkyColor2", UAManager.Instance. SkyColor);
         // For Homa UA 
@@ -297,7 +296,7 @@ public class GameManager : Singleton<GameManager>
         UiManager.Instance.ClearUIOnGameStart();
         UiManager.Instance.MovePriceTag();
         
-        playerPathFollower.transform.DOMoveX(.1f, .5f).OnComplete(() =>
+        playerPathFollower.transform.DOMoveX(-0.55f, .5f).OnComplete(() =>
         {
             tattooGuns[currentTattooGunLevel].GetComponent<Animator>().enabled = true;
             StartCoroutine(DelayPlayerControlRoutine());

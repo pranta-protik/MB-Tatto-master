@@ -41,6 +41,5 @@ public class LevelManager : MonoBehaviour
     public static void LoadLevelCount()
     {
         PlayerPrefs.GetInt("current_scene");
-
     }
 }

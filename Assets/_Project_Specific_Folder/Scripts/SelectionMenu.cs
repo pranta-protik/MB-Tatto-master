@@ -8,21 +8,32 @@ using Random = UnityEngine.Random;
 
 public class SelectionMenu : MonoBehaviour
 {
-    public GameObject handCardPrefab;
-    public List<Sprite> handCardTextures = new List<Sprite>();
+    [SerializeField] private GameObject handCardPrefab;
+    [SerializeField] private List<Sprite> handCardTextures = new List<Sprite>();
     public List<GameObject> handCards = new List<GameObject>();
-    public int baseUnlockCost;
-    private int _multiplier;
+    [SerializeField] private Sprite normalUnlockButtonIcon;
+    [SerializeField] private Sprite watchAdUnlockButtonIcon;
+    [SerializeField] private int startingAmountForUnlockHandWatchingAd;
+    [SerializeField] private int baseUnlockCost;
+    [SerializeField] [Range(1, 5)] private int multiplier;
+    
+    private Image _unlockButtonImage;
+    private TextMeshProUGUI _costText;
     private GameObject _unlockButton;
     private int _totalCards;
+    private bool _isAdEnabled;
+    
     private void Awake()
     {
         _unlockButton = transform.GetChild(3).gameObject;
+        _unlockButtonImage = _unlockButton.GetComponent<Image>();
+        _costText = _unlockButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
 
         Vector3 spawnPosition = transform.GetChild(2).GetChild(0).position;
         Vector2 anchoredSpawnPosition = transform.GetChild(2).GetChild(0).GetComponent<RectTransform>().anchoredPosition;
 
         _totalCards = handCardTextures.Count;
+        
         for (int i = 0; i < _totalCards; i++)
         {
             GameObject handCard = Instantiate(handCardPrefab, spawnPosition, Quaternion.identity, transform.GetChild(2));
@@ -37,43 +48,97 @@ public class SelectionMenu : MonoBehaviour
         }
     }
 
-    public void CheckUnlockButtonAvailability()
+    public void CheckUnlockButtonTypeStatus()
     {
-        _multiplier = PlayerPrefs.GetInt("LastMultiplier", 1);
-        
-        _unlockButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText("$" + baseUnlockCost * _multiplier);
-        
-        if (StorageManager.GetTotalScore() >= baseUnlockCost * _multiplier)
+        if (PlayerPrefs.GetInt("UnlockAmount", 1) >= startingAmountForUnlockHandWatchingAd)
         {
-            EnableButton(_unlockButton.GetComponent<Button>());
+            _isAdEnabled = true;
+            _unlockButtonImage.sprite = watchAdUnlockButtonIcon;
+            _costText.gameObject.SetActive(false);
         }
         else
         {
-            DisableButton(_unlockButton.GetComponent<Button>());
+            _isAdEnabled = false;
+            _unlockButtonImage.sprite = normalUnlockButtonIcon;
+            _costText.gameObject.SetActive(true);
+            _costText.SetText("$" + PlayerPrefs.GetInt("UnlockCost", baseUnlockCost));
+        }
+    }
+    
+    public void CheckUnlockButtonAvailability()
+    {
+        if (!_isAdEnabled)
+        {
+            if (StorageManager.GetTotalScore() >= PlayerPrefs.GetInt("UnlockCost", baseUnlockCost))
+            {
+                EnableButton();
+            }
+            else
+            {
+                DisableButton();
+            }    
         }
     }
 
-    private void DisableButton(Button button)
+    private void DisableButton()
     {
+        Button button = _unlockButton.GetComponent<Button>();
         button.interactable = false;
         button.image.DOFade(0.5f, 0.1f);
         _unlockButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().DOFade(0.3f, 0.1f);
     }
 
-    private void EnableButton(Button button)
+    private void EnableButton()
     {
+        Button button = _unlockButton.GetComponent<Button>();
         button.interactable = true;
         button.image.DOFade(1f, 0.1f);
         _unlockButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().DOFade(1f, 0.1f);
     }
 
+    private void HideButton()
+    {
+        _unlockButton.SetActive(false);
+    }
+
+    private void ShowButton()
+    {
+        _unlockButton.SetActive(true);
+    }
+
     public void OnUnlockButtonClick()
     {
-        StorageManager.SetTotalScore(StorageManager.GetTotalScore() - (baseUnlockCost * _multiplier));
-        UiManager.Instance.UpdateTotalScoreText(StorageManager.GetTotalScore());
+        if (!_isAdEnabled)
+        {
+            int currentUnlockCost = PlayerPrefs.GetInt("UnlockCost", baseUnlockCost);
+            
+            if (StorageManager.GetTotalScore() >= currentUnlockCost)
+            {
+                StorageManager.SetTotalScore(StorageManager.GetTotalScore() - currentUnlockCost);
+                UiManager.Instance.UpdateTotalScoreText(StorageManager.GetTotalScore());
+                
+                int nextUnlockCost = currentUnlockCost * multiplier;
+                PlayerPrefs.SetInt("UnlockCost", nextUnlockCost);
 
-        PlayerPrefs.SetInt("LastMultiplier", _multiplier + 1);
+                UnlockButtonEffects();
+                CheckUnlockButtonTypeStatus();
+            }
+            CheckUnlockButtonAvailability();
+        }
+        else
+        {
+            Debug.Log("Ad Watched");
+            
+            UnlockButtonEffects();
+            CheckUnlockButtonTypeStatus();
+        }
+    }
 
+    private void UnlockButtonEffects()
+    {
+        int currentUnlockAmount = PlayerPrefs.GetInt("UnlockAmount", 1);
+        PlayerPrefs.SetInt("UnlockAmount", currentUnlockAmount + 1);
+        
         List<int> randomHandIds = new List<int>();
 
         foreach (GameObject card in handCards)
@@ -85,8 +150,7 @@ public class SelectionMenu : MonoBehaviour
 
             card.GetComponent<HandCard>().selectionImage.SetActive(false);
         }
-        
-        DisableButton(_unlockButton.GetComponent<Button>());
+        HideButton();
         StartCoroutine(RandomizeVisualEffect(randomHandIds));
     }
 
@@ -118,9 +182,11 @@ public class SelectionMenu : MonoBehaviour
 
         if (randomHandIds.Count <= 1)
         {
-            _unlockButton.SetActive(false);
+            HideButton();
         }
-
-        CheckUnlockButtonAvailability();
+        else
+        {
+            ShowButton();    
+        }
     }
 }

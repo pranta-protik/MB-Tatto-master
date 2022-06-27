@@ -1,5 +1,4 @@
 using System.Collections;
-using System.IO;
 using UnityEngine;
 using Singleton;
 using TMPro;
@@ -30,9 +29,7 @@ public class UiManager : Singleton<UiManager>
     [SerializeField] private TextMeshProUGUI totalScoreText;
     [SerializeField] private GameObject priceTag;
     [SerializeField] private GameObject tattooGunUpgradeButton;
-    [SerializeField] private GameObject watchAdTattooGunUpgradeButton;
     [SerializeField] private GameObject valueUpgradeButton;
-    [SerializeField] private GameObject watchAdValueUpgradeButton;
     [SerializeField] private GameObject valueUpgradeIncrementEffect;
     [SerializeField] private GameObject mobileScreen;
     [SerializeField] private GameObject selectionMenuButton;
@@ -211,6 +208,7 @@ public class UiManager : Singleton<UiManager>
         _camera.transform.DOLocalRotate(new Vector3(42, 90, 0), .3f).OnComplete(() =>
         {
             selectionMenu.SetActive(true);
+            selectionMenu.GetComponent<SelectionMenu>().CheckUnlockButtonTypeStatus();
             selectionMenu.GetComponent<SelectionMenu>().CheckUnlockButtonAvailability();
         });
     }
