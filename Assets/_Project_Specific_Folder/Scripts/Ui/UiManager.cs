@@ -9,7 +9,6 @@ using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 using HomaGames.HomaBelly;
 using HomaGames.HomaConsole.Core.Attributes;
-using UnityEngine.Serialization;
 
 public class UiManager : Singleton<UiManager>
 {
@@ -42,8 +41,8 @@ public class UiManager : Singleton<UiManager>
     [SerializeField] private GameObject influenceMeterPage;
 
     private TextMeshProUGUI _scoreText;
-    private int _currentLevel;
-    private int _currentLevelText;
+    [SerializeField] private int _currentLevel;
+    [SerializeField] private int _currentLevelText;
     private bool _isHapticsAllowed;
     private Camera _camera;
     private string _followerValueLetter = "K";
@@ -478,29 +477,36 @@ public class UiManager : Singleton<UiManager>
     }
     
     #endregion
-    
+
     public void ReloadSceneWithNewLevel()
     {
         DOTween.KillAll();
+
+        // Progression Events
+        // Level Completed Event
+        DefaultAnalytics.LevelCompleted();
+        
+        string levelId = (PlayerPrefs.GetInt("current_scene_text", 0) + 1).ToString();
+        float levelDuration = Time.time - PlayerPrefs.GetFloat("LevelStartTime", 0);
+
+        // Level Events
+        // Level Duration Event
+        HomaBelly.Instance.TrackDesignEvent("Levels:Duration:" + levelId, levelDuration);
         
         if (_currentLevel + 1 >= GameManager.Instance.levelPrefabs.Count)
         {
-            PlayerPrefs.SetInt("current_scene", 0); 
-            // print("reload");
+            PlayerPrefs.SetInt("current_scene", 0);
         }
         else
         {
-            // print("next");
             PlayerPrefs.SetInt("current_scene", _currentLevel + 1);
         }
+
         PlayerPrefs.SetInt("current_scene_text", _currentLevelText + 1);
 
         SceneManager.LoadScene("Main");
-
-        // Invoke this every time player successfully completes current level
-        DefaultAnalytics.LevelCompleted();
     }
-    
+
     [DebuggableAction("Restart Game")]
     public void Reset()
     {

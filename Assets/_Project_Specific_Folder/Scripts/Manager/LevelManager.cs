@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
-using Singleton;
 using UnityEngine.SceneManagement;
 using GameAnalyticsSDK;
+using HomaGames.HomaBelly;
 
 public class LevelManager : MonoBehaviour
 {
@@ -21,6 +20,10 @@ public class LevelManager : MonoBehaviour
             gameOpenCount = 0;
             SceneManager.LoadScene("Splash");
             PlayerPrefs.SetInt("Played", 1);
+            
+            // Session
+            // Game Launched Event
+            HomaBelly.Instance.TrackDesignEvent("GameLaunched");
         }
         else
         {
@@ -30,6 +33,15 @@ public class LevelManager : MonoBehaviour
 
         gameOpenCount += 1;
         PlayerPrefs.SetInt("GameOpenCount", gameOpenCount);
+        
+        PlayerPrefs.SetFloat("StartTime", Time.time);
+        
+        // Session
+        // Session Started Event
+        if (gameOpenCount < 100)
+        {
+            HomaBelly.Instance.TrackDesignEvent("Session:"+gameOpenCount+":Started", Time.time);    
+        }
     }
     
     private static void LoadLastScene()

@@ -16,7 +16,6 @@ public class MobileScreen : MonoBehaviour
     private bool _isMobileActive;
     private Slider _mobileScreenSlider;
     private FilterManager _filterManager;
-    private bool _isPosing;
 
     private void Start()
     {

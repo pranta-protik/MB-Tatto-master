@@ -140,18 +140,10 @@ public class GameManager : Singleton<GameManager>
     {
         // For Homa UA 
         // SpawnHand(UAManager.Instance.HandId);
+        
         // For Homa UA 
         RenderSettings.skybox.SetColor("_SkyColor2", UAManager.Instance. SkyColor);
-        // For Homa UA 
-        if (_groundFog != null)
-        {
-            _groundFog.GetComponent<Renderer>().material.SetColor("_HeightFogColor", UAManager.Instance.HeightFogColor);   
-        }
-        else
-        {
-            Debug.Log("Ground Fog Not Found");
-        }
-
+        
         if (_bossParent == null)
         {
             _bossParent = GameObject.Find("Bosses");
@@ -275,6 +267,13 @@ public class GameManager : Singleton<GameManager>
         currentLevelNo = PlayerPrefs.GetInt("current_scene", 0);
         currentLevelPrefab = Instantiate(LevelPrefabManager.Instance.GetCurrentLevelPrefab());
 
+        string levelId = (PlayerPrefs.GetInt("current_scene_text", 0) + 1).ToString();
+        float duration = Time.time - PlayerPrefs.GetFloat("StartTime", 0);
+        
+        // Level Events
+        // Level Reached Event
+        HomaBelly.Instance.TrackDesignEvent("Levels:Reached:" + levelId, duration);
+
         SetLevelDetails(currentLevelPrefab);
     }
 
@@ -292,9 +291,17 @@ public class GameManager : Singleton<GameManager>
     {
         // Invoke this method everytime the user starts the gameplay at any level
         DefaultAnalytics.GameplayStarted();
+        
         // Invoke this every time player starts the level. Levels should start at 1
-        DefaultAnalytics.LevelStarted(PlayerPrefs.GetInt("current_scene_text"+1));
+        
+        string levelId = (PlayerPrefs.GetInt("current_scene_text", 0) + 1).ToString();
+        
+        // Progression events
+        // Level Start Event
+        DefaultAnalytics.LevelStarted(levelId);
 
+        PlayerPrefs.SetFloat("LevelStartTime", Time.time);
+        
         UiManager.Instance.ClearUIOnGameStart();
         UiManager.Instance.MovePriceTag();
         
@@ -378,5 +385,17 @@ public class GameManager : Singleton<GameManager>
         _wrestlingPivot.GetComponent<Rotator>().enabled = true;
         UiManager.Instance.tapFastPanel.SetActive(true);
         _isWrestling = true;
+    }
+
+    private void OnApplicationPause(bool pauseStatus)
+    {
+        float duration = Time.time - PlayerPrefs.GetFloat("StartTime", 0);
+        
+        // Session
+        // Session Player Event
+        if (PlayerPrefs.GetInt("GameOpenCount", 0) < 100)
+        {
+            HomaBelly.Instance.TrackDesignEvent("Session:"+PlayerPrefs.GetInt("GameOpenCount", 0)+":Played", duration);
+        }
     }
 }
