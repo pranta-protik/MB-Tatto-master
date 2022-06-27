@@ -2207,6 +2207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalCoolnessUpgradeIcon: {fileID: 21300000, guid: 5a8d705b2d8036a4898322fec59489f5, type: 3}
   watchAdCoolnessUpgradeIcon: {fileID: 21300000, guid: 96884eb389ef76048ab10e6eada31825, type: 3}
+  maxedOutCoolnessUpgradeIcon: {fileID: 21300000, guid: 20a9908678ea62f4ca61a4ab16a7a16d, type: 3}
   requiredScoreForCoolnessUpgrade: 500
   startingLevelForUpgradeCoolnessWatchingAd: 3
 --- !u!1001 &347989936
@@ -41699,7 +41700,7 @@ PrefabInstance:
     - target: {fileID: 7179476445629626870, guid: ff5bb6af1544da04d96660e9ad6012ba, type: 3}
       propertyPath: poseAnimationClips.Array.data[0]
       value: 
-      objectReference: {fileID: 1827226128182048838, guid: 95e47db57bcc6824eac820403e041a6a, type: 3}
+      objectReference: {fileID: 1827226128182048838, guid: a24b0748c44d13448b2de6dbfe8d662d, type: 3}
     - target: {fileID: 7179476445629626870, guid: ff5bb6af1544da04d96660e9ad6012ba, type: 3}
       propertyPath: poseAnimationClips.Array.data[1]
       value: 
