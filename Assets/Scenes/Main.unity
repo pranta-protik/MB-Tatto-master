@@ -640,16 +640,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 137153362}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 352690121}
-  m_RootOrder: 3
+  m_Father: {fileID: 538428010}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 640}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 100, y: 270}
   m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &137153364
@@ -1332,16 +1332,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 219203643}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 352690121}
-  m_RootOrder: 1
+  m_Father: {fileID: 538428010}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 280}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 100, y: -90}
   m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &219203645
@@ -1661,6 +1661,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 244380404}
+  - component: {fileID: 244380405}
   m_Layer: 5
   m_Name: FilterScreen
   m_TagString: Untagged
@@ -1680,6 +1681,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1680893531}
+  - {fileID: 543687793}
+  - {fileID: 1796435195}
+  - {fileID: 1585907019}
+  - {fileID: 860700186}
+  - {fileID: 1891935532}
   m_Father: {fileID: 1779540459}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1688,6 +1694,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 810}
   m_SizeDelta: {x: 0, y: 1620}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &244380405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 244380403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c4f19c2204f53345904631b4bfdae2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mobileScreen: {fileID: 1961694459}
+  currentFilterButtonId: 0
 --- !u!1 &246463416 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7493684898749240018, guid: 4f17130cb9af23b43832c26c8d7a2c6b, type: 3}
@@ -2491,11 +2511,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 976841054}
-  - {fileID: 219203644}
-  - {fileID: 419723754}
-  - {fileID: 137153363}
+  m_Children: []
   m_Father: {fileID: 538428010}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3226,16 +3242,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 419723753}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 352690121}
-  m_RootOrder: 2
+  m_Father: {fileID: 538428010}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 460}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 100, y: 90}
   m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &419723755
@@ -3642,7 +3658,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b145386da90f774488a3dc15e4885c00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _postProcessProfile: {fileID: 0}
 --- !u!1 &469680221
 GameObject:
   m_ObjectHideFlags: 0
@@ -4070,6 +4085,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 352690121}
+  - {fileID: 976841054}
+  - {fileID: 219203644}
+  - {fileID: 419723754}
+  - {fileID: 137153363}
   m_Father: {fileID: 1779540459}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4078,6 +4097,164 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 810}
   m_SizeDelta: {x: 0, y: 1620}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &543687792
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 543687793}
+  - component: {fileID: 543687797}
+  - component: {fileID: 543687796}
+  - component: {fileID: 543687795}
+  - component: {fileID: 543687794}
+  m_Layer: 5
+  m_Name: FilterButton1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &543687793
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543687792}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 244380404}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 85, y: -580}
+  m_SizeDelta: {x: 130, y: 130}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &543687794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543687792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42c88b6b06bd5e544b983d97a83e9acd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonId: 0
+--- !u!114 &543687795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543687792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 543687796}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 244380405}
+        m_TargetAssemblyTypeName: FilterManager, Assembly-CSharp
+        m_MethodName: FilterEffect1
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 543687792}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 461371768}
+        m_TargetAssemblyTypeName: PostProcessHandler, Assembly-CSharp
+        m_MethodName: RemoveAllFilters
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &543687796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543687792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &543687797
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543687792}
+  m_CullTransparentMesh: 1
 --- !u!1 &559905949
 GameObject:
   m_ObjectHideFlags: 0
@@ -4479,7 +4656,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1961694459}
         m_TargetAssemblyTypeName: MobileScreen, Assembly-CSharp
-        m_MethodName: WatchAd
+        m_MethodName: OnWatchAdButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10754,7 +10931,7 @@ GameObject:
   - component: {fileID: 860700187}
   - component: {fileID: 860700190}
   m_Layer: 5
-  m_Name: FilterButton3
+  m_Name: FilterButton4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10767,17 +10944,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 860700185}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1680893531}
-  m_RootOrder: 2
+  m_Father: {fileID: 244380404}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 460, y: 0}
-  m_SizeDelta: {x: 160, y: 160}
+  m_AnchoredPosition: {x: 525, y: -580}
+  m_SizeDelta: {x: 130, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &860700187
 MonoBehaviour:
@@ -10823,9 +11000,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1961694459}
-        m_TargetAssemblyTypeName: MobileScreen, Assembly-CSharp
-        m_MethodName: Filter3Effect
+      - m_Target: {fileID: 244380405}
+        m_TargetAssemblyTypeName: FilterManager, Assembly-CSharp
+        m_MethodName: FilterEffect4
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 860700185}
@@ -10837,7 +11014,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 461371768}
         m_TargetAssemblyTypeName: PostProcessHandler, Assembly-CSharp
-        m_MethodName: AddGrayscaleEffect
+        m_MethodName: AddGrayscaleFilter
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16527,16 +16704,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 976841053}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 352690121}
-  m_RootOrder: 0
+  m_Father: {fileID: 538428010}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 100}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 100, y: -269.99994}
   m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &976841055
@@ -21038,7 +21215,7 @@ GameObject:
   - component: {fileID: 1585907020}
   - component: {fileID: 1585907023}
   m_Layer: 5
-  m_Name: FilterButton2
+  m_Name: FilterButton3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21051,17 +21228,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1585907018}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1680893531}
-  m_RootOrder: 1
+  m_Father: {fileID: 244380404}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 280, y: 0}
-  m_SizeDelta: {x: 160, y: 160}
+  m_AnchoredPosition: {x: 375, y: -580}
+  m_SizeDelta: {x: 130, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1585907020
 MonoBehaviour:
@@ -21107,9 +21284,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1961694459}
-        m_TargetAssemblyTypeName: MobileScreen, Assembly-CSharp
-        m_MethodName: Filter2Effect
+      - m_Target: {fileID: 244380405}
+        m_TargetAssemblyTypeName: FilterManager, Assembly-CSharp
+        m_MethodName: FilterEffect3
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1585907018}
@@ -21121,7 +21298,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 461371768}
         m_TargetAssemblyTypeName: PostProcessHandler, Assembly-CSharp
-        m_MethodName: AddGrayscaleEffect
+        m_MethodName: AddGrayscaleFilter
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -21808,18 +21985,14 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1796435195}
-  - {fileID: 1585907019}
-  - {fileID: 860700186}
-  - {fileID: 1891935532}
+  m_Children: []
   m_Father: {fileID: 244380404}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 400}
-  m_SizeDelta: {x: 0, y: 200}
+  m_AnchoredPosition: {x: 0, y: 380}
+  m_SizeDelta: {x: 0, y: 170}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1680893532
 MonoBehaviour:
@@ -22494,7 +22667,7 @@ GameObject:
   - component: {fileID: 1796435196}
   - component: {fileID: 1796435199}
   m_Layer: 5
-  m_Name: FilterButton1
+  m_Name: FilterButton2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22507,17 +22680,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1796435194}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1680893531}
-  m_RootOrder: 0
+  m_Father: {fileID: 244380404}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 100, y: 0}
-  m_SizeDelta: {x: 160, y: 160}
+  m_AnchoredPosition: {x: 230, y: -580}
+  m_SizeDelta: {x: 130, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1796435196
 MonoBehaviour:
@@ -22563,9 +22736,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1961694459}
-        m_TargetAssemblyTypeName: MobileScreen, Assembly-CSharp
-        m_MethodName: Filter1Effect
+      - m_Target: {fileID: 244380405}
+        m_TargetAssemblyTypeName: FilterManager, Assembly-CSharp
+        m_MethodName: FilterEffect2
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1796435194}
@@ -22577,7 +22750,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 461371768}
         m_TargetAssemblyTypeName: PostProcessHandler, Assembly-CSharp
-        m_MethodName: AddGrayscaleEffect
+        m_MethodName: AddGrayscaleFilter
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -23646,7 +23819,7 @@ GameObject:
   - component: {fileID: 1891935533}
   - component: {fileID: 1891935536}
   m_Layer: 5
-  m_Name: FilterButton4
+  m_Name: FilterButton5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23659,17 +23832,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1891935531}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1680893531}
-  m_RootOrder: 3
+  m_Father: {fileID: 244380404}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 640, y: 0}
-  m_SizeDelta: {x: 160, y: 160}
+  m_AnchoredPosition: {x: 670, y: -580}
+  m_SizeDelta: {x: 130, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1891935533
 MonoBehaviour:
@@ -23715,9 +23888,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1961694459}
-        m_TargetAssemblyTypeName: MobileScreen, Assembly-CSharp
-        m_MethodName: Filter4Effect
+      - m_Target: {fileID: 244380405}
+        m_TargetAssemblyTypeName: FilterManager, Assembly-CSharp
+        m_MethodName: FilterEffect5
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1891935531}
@@ -23729,7 +23902,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 461371768}
         m_TargetAssemblyTypeName: PostProcessHandler, Assembly-CSharp
-        m_MethodName: AddGrayscaleEffect
+        m_MethodName: AddGrayscaleFilter
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -33504,7 +33677,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e1d111a47ed61d48b73c900fef21ae0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentFilterButtonId: 0
 --- !u!1 &1964492270 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1192801708876350593, guid: ff5bb6af1544da04d96660e9ad6012ba, type: 3}
