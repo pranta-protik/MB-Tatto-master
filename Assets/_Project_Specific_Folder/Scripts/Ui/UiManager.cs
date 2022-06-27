@@ -19,7 +19,7 @@ public class UiManager : Singleton<UiManager>
     public GameObject unlockPanel;
     public GameObject instagramPostPage;
     public GameObject tapFastPanel;
-    [FormerlySerializedAs("tattooGunUpgradeButton")] public GameObject coolnessUpgradeButton;
+    public GameObject coolnessUpgradeButton;
     public GameObject valueUpgradeButton;
 
     [HideInInspector] public bool isInstagramGalleryPhotoUpdated;
@@ -203,7 +203,9 @@ public class UiManager : Singleton<UiManager>
         UAManager.Instance.IsEndReached = true;
         
         levelNoText.transform.parent.gameObject.SetActive(false);
+        
         // shop.SetActive(false);
+        priceTag.SetActive(false);
         selectionMenuButton.gameObject.SetActive(false);
         _camera.transform.DOLocalRotate(new Vector3(42, 90, 0), .3f).OnComplete(() =>
         {
@@ -222,7 +224,9 @@ public class UiManager : Singleton<UiManager>
         _camera.transform.DOLocalRotate(new Vector3(27.761f, 90, 0), .3f).OnComplete(() =>
         {
             levelNoText.transform.parent.gameObject.SetActive(true);
+            
             // shop.SetActive(true);
+            priceTag.SetActive(true);
             selectionMenuButton.gameObject.SetActive(true);
         });
     }

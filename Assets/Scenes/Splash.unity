@@ -454,27 +454,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a3db9f14b88e664e8065638bd96f52a, type: 3}
---- !u!114 &63748029 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1698252271767810155, guid: 3a3db9f14b88e664e8065638bd96f52a, type: 3}
-  m_PrefabInstance: {fileID: 63748028}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &63748030 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1698252272477295242, guid: 3a3db9f14b88e664e8065638bd96f52a, type: 3}
-  m_PrefabInstance: {fileID: 63748028}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &63748031 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1698252273723003586, guid: 3a3db9f14b88e664e8065638bd96f52a, type: 3}
-  m_PrefabInstance: {fileID: 63748028}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &63748032 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1698252273723003585, guid: 3a3db9f14b88e664e8065638bd96f52a, type: 3}
@@ -1544,8 +1523,8 @@ MonoBehaviour:
     unLockSprite: {fileID: 21300000, guid: 91e1adfd63b2a734c8af1cb763777a36, type: 3}
   - lockSprite: {fileID: 21300000, guid: 58e6fe957f54cf24d9d42162d8e711cc, type: 3}
     unLockSprite: {fileID: 21300000, guid: 151cf30a1d7d27a48a3d90d919bb106c, type: 3}
-  _increaseAmount: 33
-  _duration: 2
+  increaseAmount: 25
+  duration: 2
 --- !u!114 &446371456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1584,19 +1563,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 446371470}
   m_CullTransparentMesh: 1
---- !u!114 &446371458
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 446371470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af353cd6d48af9342bdbf57e0b304d0d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startSpinning: 0
 --- !u!1 &446371470
 GameObject:
   m_ObjectHideFlags: 0
@@ -1608,7 +1574,6 @@ GameObject:
   - component: {fileID: 446371471}
   - component: {fileID: 446371457}
   - component: {fileID: 446371456}
-  - component: {fileID: 446371458}
   m_Layer: 5
   m_Name: Wheel
   m_TagString: Untagged
@@ -1899,7 +1864,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4505296937795983361}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Buttons, Assembly-CSharp
         m_MethodName: BuyCard
         m_Mode: 1
@@ -3536,19 +3501,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1210135821}
   m_CullTransparentMesh: 1
---- !u!114 &1210135809
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1210135821}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 035c37eb78e60f24fa10d1c262217a76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Parcentage: {fileID: 2126116760}
 --- !u!1 &1210135821
 GameObject:
   m_ObjectHideFlags: 0
@@ -3560,7 +3512,6 @@ GameObject:
   - component: {fileID: 1210135822}
   - component: {fileID: 1210135808}
   - component: {fileID: 1210135823}
-  - component: {fileID: 1210135809}
   m_Layer: 5
   m_Name: Tatto having people
   m_TagString: Untagged
@@ -7633,39 +7584,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DontDestroyLoad: 0
   m_IsSingletonLogsEnabled: 0
-  btnNext: {fileID: 83186495}
-  hand: {fileID: 0}
-  LevelText: {fileID: 3464536509343915790}
-  StartUI: {fileID: 1473265679155720688}
-  EndUi: {fileID: 5129942751260017032}
-  CompleteUI: {fileID: 7530967020836445782}
-  FadeIn: {fileID: 2875735083505627619}
-  UnlockPanel: {fileID: 8886289070173470295}
-  ShopPnael: {fileID: 1006235911}
-  TapFastPanel: {fileID: 63748031}
-  decisionScreen: {fileID: 1154344110}
-  cashCounter: {fileID: 1674540886}
-  spinnerScreen: {fileID: 828850452}
-  cashPile: {fileID: 723891274}
+  hurtScreen: {fileID: 0}
+  transitionScreen: {fileID: 0}
+  unlockPanel: {fileID: 0}
+  instagramPostPage: {fileID: 0}
+  tapFastPanel: {fileID: 0}
+  coolnessUpgradeButton: {fileID: 0}
+  valueUpgradeButton: {fileID: 0}
+  isInstagramGalleryPhotoUpdated: 0
+  followerValue: 
+  isBadTattoo: 0
+  startUI: {fileID: 0}
+  hapticsIcon: {fileID: 0}
+  totalScoreText: {fileID: 0}
   priceTag: {fileID: 6668516391534955781}
-  fillbarTimer: {fileID: 63748030}
-  Timer: {fileID: 63748029}
-  timerInitvalue: 0
-  TotalText: {fileID: 192217872}
-  PointText: {fileID: 6663376087935024915}
-  NormalCoin: {fileID: 0}
-  HapticsAllowed: 0
-  enable: {fileID: 0}
-  disable: {fileID: 922111484}
+  valueUpgradeIncrementEffect: {fileID: 0}
+  mobileScreen: {fileID: 0}
+  selectionMenuButton: {fileID: 0}
   shop: {fileID: 1895934326}
-  PopUp: {fileID: 1877947144}
+  levelNoText: {fileID: 0}
+  selectionMenu: {fileID: 0}
   popUpScale: 5
   popUpDuration: 0.3
-  currentLevelText: 0
-  shouldUpdateTotalCash: 0
-  targetCashAmount: 0
-  currentCashAmount: 0
-  incrementAmount: 0
+  instagramGalleryPage: {fileID: 0}
+  influenceMeterPage: {fileID: 0}
 --- !u!114 &1577174985317205378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8280,14 +8222,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1698252273474417653}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1698252272228709310}
   - {fileID: 1698252272550186382}
-  m_Father: {fileID: 5443219696064796677}
-  m_RootOrder: 1
+  m_Father: {fileID: 5443246866995786763}
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -10823,7 +10765,6 @@ GameObject:
   - component: {fileID: 4505296937795983367}
   - component: {fileID: 4505296937795983365}
   - component: {fileID: 4505296937795983366}
-  - component: {fileID: 4505296937795983361}
   m_Layer: 5
   m_Name: Shop Panel
   m_TagString: Untagged
@@ -10831,45 +10772,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &4505296937795983361
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4505296937795983360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b95b931909b913e4cbf80c36ff0590ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SelectedId: 0
-  CloseShop: {fileID: 1793567917}
-  Buttonss:
-  - {fileID: 3316587106392230110, guid: 7f677cf32311e4f48baf8cf9b2a4b736, type: 3}
-  - {fileID: 3316587106392230110, guid: ef32ce3fa99949e4ba827eb546d593b0, type: 3}
-  - {fileID: 3316587106392230110, guid: 9f53ad4608a204d4b9df378d196eed68, type: 3}
-  - {fileID: 3316587106392230110, guid: fa90de5adc613c94d942afffdb03beca, type: 3}
-  - {fileID: 3316587106392230110, guid: 8d7286f6d25df3442aae3f318fd07cb3, type: 3}
-  - {fileID: 3316587106392230110, guid: 4b042080587b21b48b8ac5f5ca027ca9, type: 3}
-  SpawnedButtons: []
-  Positions:
-  - {fileID: 1950333614}
-  - {fileID: 1773000501}
-  - {fileID: 169284127}
-  - {fileID: 1287016786}
-  - {fileID: 2020008761}
-  - {fileID: 1079757447}
-  Parent: {fileID: 4505296937795983360}
-  handCards: []
-  scrollbar: {fileID: 0}
-  levelNoText: {fileID: 0}
-  startButton: {fileID: 1934607144}
-  actionButton: {fileID: 560058035}
-  buttonDisabledAlpha: 0.5
-  unlockInfoText: {fileID: 1902401746}
-  scoreText: {fileID: 192217872}
-  _selectedCard: {fileID: 0}
 --- !u!222 &4505296937795983365
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11827,7 +11729,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 5443246866995786763}
-  - {fileID: 1698252273474417654}
   m_Father: {fileID: 6709366680101106943}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11863,6 +11764,7 @@ RectTransform:
   - {fileID: 1877947147}
   - {fileID: 1006235928}
   - {fileID: 8238653689303485629}
+  - {fileID: 1698252273474417654}
   m_Father: {fileID: 5443219696064796677}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -52,7 +52,7 @@ public class MobileScreen : MonoBehaviour
 
         _captureButton.transform.DOScale(new Vector3(1.15f, 1.15f, 1.15f), 0.5f).SetLoops(-1, LoopType.Yoyo);
         _watchAdButton.transform.DOScale(new Vector3(1.15f, 1.15f, 1.15f), 0.5f).SetLoops(-1, LoopType.Yoyo);
-        transform.GetChild(8).GetComponent<RectTransform>().DOAnchorPosY(340, 1f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
+        transform.GetChild(8).GetComponent<RectTransform>().DOAnchorPosY(545f, 1f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
         _mobileScreenSlider.transform.GetChild(2).GetChild(0).DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.5f).SetLoops(-1, LoopType.Yoyo);
 
         _isMobileActive = true;
