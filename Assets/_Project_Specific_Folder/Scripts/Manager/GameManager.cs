@@ -36,7 +36,8 @@ public class GameManager : Singleton<GameManager>
     public enum EGameMode
     {
         Complete,
-        Test
+        Test , 
+        UA
     }
 
     public int totalLevelNo = 50;
@@ -89,7 +90,8 @@ public class GameManager : Singleton<GameManager>
         {
             PlaySpecificLevel(specificLevelId);
         }
-#endif
+#endif     
+    
         base.Start();
 
         _mainCamera = Camera.main;
@@ -124,7 +126,8 @@ public class GameManager : Singleton<GameManager>
         tattooGuns[currentTattooGunLevel].SetActive(true);
 
         // Setting Default
-        UAManager.Instance.SkyColor = new Color32(184, 190,255,255);
+        UAManager.Instance.SkyColor = new Color32(170, 177,255,255);
+        UAManager.Instance.BottomColor = new Color32(0, 51, 255, 255);
         if (_groundFog != null)
         {
             _groundFog.GetComponent<Renderer>().material.SetColor("_HeightFogColor", new Color(121, 132, 255, 255));   
@@ -143,7 +146,11 @@ public class GameManager : Singleton<GameManager>
         
         // For Homa UA 
         RenderSettings.skybox.SetColor("_SkyColor2", UAManager.Instance. SkyColor);
-        
+        RenderSettings.skybox.SetColor("_SkyColor3", UAManager.Instance.BottomColor);
+        GameObject g = handGroups[_handId].mainHand.GetComponentInChildren<SkinnedMeshRenderer>().gameObject;
+        g.GetComponent<Renderer>().material.SetColor("_Color",UAManager.Instance.hnadColor);
+       
+
         if (_bossParent == null)
         {
             _bossParent = GameObject.Find("Bosses");
@@ -254,7 +261,7 @@ public class GameManager : Singleton<GameManager>
         StartCoroutine(UiManager.Instance.CrossOpponentOnInfluenceMeter());
     }
     
-    private void PlaySpecificLevel(int levelId)
+    public void PlaySpecificLevel(int levelId)
     {
         currentLevelNo = levelId;
         PlayerPrefs.SetInt("current_scene", currentLevelNo);
@@ -280,7 +287,12 @@ public class GameManager : Singleton<GameManager>
     private void SetLevelDetails(GameObject levelPrefab)
     {
         _levelDetails = levelPrefab.GetComponent<Leveldetails>();
+
         _mainHandBehaviour.tattooGroupId = _levelDetails.tattooId;
+    }
+    public void UASetTattoo(int id)
+    {
+        _mainHandBehaviour.tattooGroupId = id;
     }
 
     #endregion

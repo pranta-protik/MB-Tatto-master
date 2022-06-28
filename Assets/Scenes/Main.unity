@@ -4061,7 +4061,7 @@ MonoBehaviour:
   normalUnlockButtonIcon: {fileID: 21300000, guid: 2a444da6b2523a1459e33d77665be322, type: 3}
   watchAdUnlockButtonIcon: {fileID: 21300000, guid: d0df3991a4ff52c408752a020c6c391a, type: 3}
   startingAmountForUnlockHandWatchingAd: 2
-  baseUnlockCost: 5000
+  baseUnlockCost: 0
   multiplier: 2
 --- !u!1 &461371765
 GameObject:
@@ -12827,9 +12827,17 @@ MonoBehaviour:
   DontDestroyLoad: 0
   m_IsSingletonLogsEnabled: 0
   SkyColor: {r: 0.72156864, g: 0.74509805, b: 1, a: 1}
+  BottomColor: {r: 0, g: 0.2, b: 1, a: 1}
   HeightFogColor: {r: 0.4745098, g: 0.5176471, b: 1, a: 1}
   HandId: 0
+  hnadColor: {r: 1, g: 1, b: 1, a: 0}
+  LevelNo: 0
+  eTattooType: 0
+  EnableWater: 0
   IsEndReached: 0
+  RoadColor: {r: 1, g: 1, b: 1, a: 0}
+  water: {fileID: 2672936480195419399, guid: aa83136e616559742b16e6a832201030, type: 3}
+  m_Roads: []
 --- !u!4 &898310883
 Transform:
   m_ObjectHideFlags: 0
@@ -21441,7 +21449,7 @@ MonoBehaviour:
   tattooGunSpawnEffect: {fileID: 8341546542858578954}
   tattooEffect: {fileID: 996338768}
   wrestlingCameraTransform: {fileID: 2040196989}
-  gameMode: 0
+  gameMode: 2
   specificLevelId: 2
 --- !u!1 &1302367778
 GameObject:

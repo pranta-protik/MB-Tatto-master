@@ -82,7 +82,7 @@ public class UiManager : Singleton<UiManager>
             levelNoText.SetText((_currentLevelText + 1).ToString());            
         }
         
-        if (_currentLevelText == 0)
+        if (_currentLevelText == -1)
         {
             if (shop != null)
             {
