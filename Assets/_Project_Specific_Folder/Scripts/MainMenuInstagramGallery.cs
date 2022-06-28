@@ -42,7 +42,7 @@ public class MainMenuInstagramGallery : MonoBehaviour
 
     private void SpawnPictureFrames(int startIndex, int totalPhotos)
     {
-        for (int i = startIndex; i < totalPhotos; i++)
+        for (int i = totalPhotos-1; i >= startIndex; i--)
         {
             GameObject pictureFrameObj = Instantiate(pictureFramePrefab, _scrollViewContentTransform.position, Quaternion.identity, _scrollViewContentTransform);
 

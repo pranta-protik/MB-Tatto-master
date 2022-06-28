@@ -9,21 +9,15 @@ public class InstagramGallery : MonoBehaviour
 {
     public GameObject pictureFramePrefab;
     [SerializeField] private int picturesOnEachPage;
-    private Scrollbar _scrollbar;
     private Transform _scrollViewContentTransform;
     private bool _isDisplayed;
     private GameObject _lastPictureFrame;
     private TMP_Text _postsText;
     private TMP_Text _usernameText;
-    private bool _isScrollbarValueSet;
-    private bool _isScrollingComplete;
-    private bool _hasScrolledToNextPage;
 
-
-    private IEnumerator Start()
+    private void Start()
     {
         _scrollViewContentTransform = transform.GetChild(5).GetChild(0).GetChild(0).GetChild(0);
-        _scrollbar = transform.GetChild(5).GetChild(0).GetChild(1).GetComponent<Scrollbar>();
         _postsText = transform.GetChild(3).GetChild(1).GetComponent<TMP_Text>();
         _usernameText = transform.GetChild(2).GetComponent<TMP_Text>();
 
@@ -32,35 +26,29 @@ public class InstagramGallery : MonoBehaviour
         
         _usernameText.SetText(PlayerPrefs.GetString("Username"));
 
-        SpawnPictureFrames(0, totalPhotos);
-
-        int blankPhotos = (picturesOnEachPage * (((totalPhotos - 1) / picturesOnEachPage) + 1)) - totalPhotos;
-
-        SpawnBlankPictureFrames(blankPhotos);
-
-        yield return null;
-
-        _hasScrolledToNextPage = true;
-        _isScrollingComplete = false;
-        
-        if (totalPhotos > picturesOnEachPage && totalPhotos % picturesOnEachPage == 1)
+        if (totalPhotos <= picturesOnEachPage)
         {
-            _hasScrolledToNextPage = false;
-            _scrollbar.value = 1 / Mathf.Floor((float) (totalPhotos - 1) / picturesOnEachPage);
+            SpawnPictureFrames(0, totalPhotos);    
         }
         else
         {
-            _scrollbar.value = 0f;
+            SpawnPictureFrames(totalPhotos - picturesOnEachPage, totalPhotos);
         }
-        
-        _isScrollbarValueSet = true;
+
+        if (totalPhotos < picturesOnEachPage)
+        {
+            int blankPhotos = picturesOnEachPage - totalPhotos;
+
+            SpawnBlankPictureFrames(blankPhotos);   
+        }
     }
 
     private void SpawnPictureFrames(int startIndex, int totalPhotos)
     {
-        for (int i = startIndex; i < totalPhotos; i++)
+        for (int i = totalPhotos - 1; i >= startIndex; i--)
         {
-            GameObject pictureFrameObj = Instantiate(pictureFramePrefab, _scrollViewContentTransform.position, Quaternion.identity, _scrollViewContentTransform);
+            GameObject pictureFrameObj =
+                Instantiate(pictureFramePrefab, _scrollViewContentTransform.position, Quaternion.identity, _scrollViewContentTransform);
 
             string filename = $"{Application.persistentDataPath}/Snapshots/" + (i + 1) + ".png";
 
@@ -90,34 +78,13 @@ public class InstagramGallery : MonoBehaviour
 
     private void Update()
     {
-        if (_isScrollbarValueSet)
+        if (!_isDisplayed)
         {
-            if (!_isScrollingComplete)
+            _lastPictureFrame.transform.DOScale(new Vector3(1f, 1f, 1f), 0.5f).OnComplete(() =>
             {
-                if (!_hasScrolledToNextPage)
-                {
-                    _scrollbar.value -= Time.deltaTime;
-                }
-                else
-                {
-                    _scrollbar.value = 0;
-                }
-            
-                if (_scrollbar.value <= 0)
-                {
-                    _hasScrolledToNextPage = true;
-                
-                    if (!_isDisplayed)
-                    {
-                        _lastPictureFrame.transform.DOScale(new Vector3(1f, 1f, 1f), 0.5f).OnComplete(() =>
-                        {
-                            UiManager.Instance.isInstagramGalleryPhotoUpdated = true;
-                            _isScrollingComplete = true;
-                        });
-                        _isDisplayed = true;
-                    }
-                }
-            }
+                UiManager.Instance.isInstagramGalleryPhotoUpdated = true;
+            });
+            _isDisplayed = true;
         }
     }
 }
