@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
@@ -7,22 +5,21 @@ public class HandController : MonoBehaviour
 {
     public int handId;
 
-    [Header("Control & Movement")] [SerializeField]
-    private float positionXClampValue = 4f;
-
+    [Header("Control & Movement")]
     [SerializeField] private float mobileSpeed = 0.8f;
     [SerializeField] private float computerSpeed = 15f;
+    [SerializeField] private float positionX;
+    [SerializeField] private  float positionY = 3.1549f;
+    [SerializeField] private float positionXClampValue = 4f;
+    
     public ERotationAxis rotationAxis;
     [SerializeField] private float rotationDuration = 0.3f;
-
-    private float _positionX, _positionY;
+    
     private bool _isTouching;
     private bool _canRotate;
 
     void Start()
     {
-        _positionX = 0f;
-        _positionY = 3.1549f;
         _canRotate = true;
     }
 
@@ -49,9 +46,9 @@ public class HandController : MonoBehaviour
             else if (touch.phase == TouchPhase.Moved)
             {
                 float deltaX = touch.deltaPosition.x;
-                _positionX -= (deltaX / Screen.width) / Time.deltaTime * mobileSpeed;
-                _positionX = Mathf.Clamp(_positionX, -positionXClampValue, positionXClampValue);
-                transform.localPosition = new Vector3(-_positionX, _positionY, 3.1188f);
+                positionX -= (deltaX / Screen.width) / Time.deltaTime * mobileSpeed;
+                positionX = Mathf.Clamp(positionX, -positionXClampValue, positionXClampValue);
+                transform.localPosition = new Vector3(-positionX, positionY, 3.1188f);
             }
             else if (touch.phase == TouchPhase.Ended)
             {

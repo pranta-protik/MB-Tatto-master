@@ -6,7 +6,6 @@ using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
 using MoreMountains.NiceVibrations;
-using PathCreation.Examples;
 using Random = UnityEngine.Random;
 
 public class HandBehaviour : MonoBehaviour
@@ -59,7 +58,7 @@ public class HandBehaviour : MonoBehaviour
     [SerializeField] private List<CollectedGoodTattoosAttributes> _collectedGoodTattoosAttributes = new List<CollectedGoodTattoosAttributes>();
     private int _currentExpensiveTattooLevel;
     private int _currentCheapTattooLevel;
-    private PathFollower _playerPathFollower;
+    private PlayerPathFollower _playerPathFollower;
     private float _playerInitialSpeed;
     private Camera _camera;
     private TextureManager _textureManager;
@@ -99,7 +98,7 @@ public class HandBehaviour : MonoBehaviour
         
         ResetHandTattooStatus();
 
-        _playerPathFollower = GetComponentInParent<PathFollower>();
+        _playerPathFollower = GetComponentInParent<PlayerPathFollower>();
         _playerInitialSpeed = _playerPathFollower.maxSpeed;
     }
 
@@ -131,6 +130,7 @@ public class HandBehaviour : MonoBehaviour
             // Went through special good gates
             if (gate.isSpecial)
             {
+                GateRotationEffect();
                 UiManager.Instance.PriceTagScaleEffect();
             }
             else
@@ -177,6 +177,10 @@ public class HandBehaviour : MonoBehaviour
 
                         StartCoroutine(UpdateTattooTexture(_textureManager.tattooGroups[tattooGroupId].cheapTattoos[_currentCheapTattooLevel - 1]));
                     }
+                }
+                else
+                {
+                    GateRotationEffect();
                 }
             }
         }
@@ -332,6 +336,11 @@ public class HandBehaviour : MonoBehaviour
     private void CommonGateEnteringEffects()
     {
         MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+        StartCoroutine(AnimationDelayRoutine());
+    }
+
+    private void GateRotationEffect()
+    {
         if (_mainHandController.rotationAxis == ERotationAxis.X)
         {
             _mainHandController.RotateHandAlongXAxis();
@@ -342,8 +351,6 @@ public class HandBehaviour : MonoBehaviour
             _mainHandController.RotateHandAlongYAxis();
             _tattooHandController.RotateHandAlongYAxis();
         }
-
-        StartCoroutine(AnimationDelayRoutine());
     }
 
     private void CommonObstacleHitEffects()

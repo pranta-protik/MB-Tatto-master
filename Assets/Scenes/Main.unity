@@ -2616,7 +2616,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 378904801}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33aabe1a2dec93349b06e6e5dc51bc06, type: 3}
+  m_Script: {fileID: 11500000, guid: 55b1b30516a934a4688032223a260f94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   endOfPathInstruction: 2
@@ -23205,7 +23205,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1851455664}
   m_LocalRotation: {x: 0.16919006, y: 0.6882471, z: -0.1700753, w: 0.68466413}
-  m_LocalPosition: {x: -3.1446881, y: 0.81747997, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1172234474}
@@ -40963,6 +40963,8 @@ MonoBehaviour:
   popUpDuration: 0.3
   instagramGalleryPage: {fileID: 1990013023}
   influenceMeterPage: {fileID: 1804672026}
+  _currentLevel: 0
+  _currentLevelText: 0
 --- !u!23 &1584245823019258990
 MeshRenderer:
   m_ObjectHideFlags: 0

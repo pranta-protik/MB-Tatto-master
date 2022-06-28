@@ -54,7 +54,7 @@ public class GameManager : Singleton<GameManager>
     public int currentTattooGunLevel;
 
     [SerializeField] private List<HandGroup> handGroups = new List<HandGroup>();
-    [SerializeField] private PathFollower playerPathFollower;
+    [SerializeField] private PlayerPathFollower playerPathFollower;
     [SerializeField] private List<GameObject> tattooGuns =  new List<GameObject>();
     [SerializeField] private GameObject tattooGunSpawnEffect;
     [SerializeField] private GameObject tattooEffect;
