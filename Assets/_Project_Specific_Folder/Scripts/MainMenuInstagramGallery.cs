@@ -1,5 +1,5 @@
+using System;
 using System.IO;
-using Sirenix.Utilities;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -81,7 +81,7 @@ public class MainMenuInstagramGallery : MonoBehaviour
     {
         string newUsername = _usernameInputField.text;
         
-        if (!newUsername.IsNullOrWhitespace())
+        if (!String.IsNullOrWhiteSpace(newUsername))
         {
             PlayerPrefs.SetString("Username", newUsername);
         }
