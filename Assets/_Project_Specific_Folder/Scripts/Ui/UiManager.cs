@@ -315,14 +315,18 @@ public class UiManager : Singleton<UiManager>
         else
         {
             _shouldUpdateLikeText = false;
+            
+            Transform postEmojiParent = instagramPostPage.transform.GetChild(1).GetChild(3);
+            
             if (isBadTattoo)
             {
-                instagramPostPage.transform.GetChild(1).GetChild(2).GetChild(1).gameObject.SetActive(true);    
+                postEmojiParent.GetChild(1).gameObject.SetActive(true);    
             }
             else
             {
-                instagramPostPage.transform.GetChild(1).GetChild(2).GetChild(0).gameObject.SetActive(true);    
+                postEmojiParent.GetChild(0).gameObject.SetActive(true);    
             }
+            
             PlayerPrefs.SetInt("TargetLikeIndex", _targetLikeIndex + 1);
             Invoke(nameof(EnableInstagramGalleryPage), 1.5f);
         }
@@ -330,9 +334,11 @@ public class UiManager : Singleton<UiManager>
         int leftValue = Mathf.RoundToInt(_currentLike) / 1000;
         int rightValue = Mathf.RoundToInt(_currentLike) % 1000;
 
+        TMP_Text likeText = instagramPostPage.transform.GetChild(1).GetChild(2).GetComponent<TMP_Text>();
+        
         if (leftValue==0)
         {
-            instagramPostPage.transform.GetChild(1).GetChild(1).GetComponent<TextMeshProUGUI>().SetText(rightValue.ToString());    
+            likeText.SetText(rightValue.ToString());    
         }
         else
         {
@@ -355,7 +361,7 @@ public class UiManager : Singleton<UiManager>
                 rightString = rightValue.ToString();
             }
 
-            instagramPostPage.transform.GetChild(1).GetChild(1).GetComponent<TextMeshProUGUI>().SetText(leftValue + "," + rightString);
+            likeText.SetText(leftValue + "," + rightString);
         }
     }
     
@@ -429,6 +435,7 @@ public class UiManager : Singleton<UiManager>
     public void EnableInstagramPostPage()
     {
         instagramPostPage.SetActive(true);
+        instagramPostPage.transform.GetChild(1).GetChild(0).GetComponent<TMP_Text>().SetText(PlayerPrefs.GetString("Username"));
         instagramPostPage.transform.GetChild(2).GetComponent<Image>().DOFade(0, 0.5f);
         _targetLikeIndex = PlayerPrefs.GetInt("TargetLikeIndex", 0);
             

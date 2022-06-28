@@ -28,8 +28,9 @@ public class InfluenceMeter : MonoBehaviour
     private int _targetCash;
     private RectTransform _playerIcon;
     private RectTransform _meterIcon;
-    private TextMeshProUGUI _followersText;
-    private TextMeshProUGUI _cashText;
+    private TMP_Text _followersText;
+    private TMP_Text _usernameText;
+    private TMP_Text _cashText;
     private InfluencerStatus _influencerStatus;
     private GameObject _fightBanner;
     private GameObject _fightIcon;
@@ -44,14 +45,19 @@ public class InfluenceMeter : MonoBehaviour
         _foregroundScreen = transform.GetChild(7).gameObject;
         
         _targetCash = StorageManager.Instance.currentLevelScore < 0 ? 500 : StorageManager.Instance.currentLevelScore;
-        _cashText = transform.GetChild(3).GetComponent<TextMeshProUGUI>();
+        _cashText = transform.GetChild(3).GetComponent<TMP_Text>();
         _cashText.SetText("$" + _targetCash);
         
         StorageManager.SetTotalScore(StorageManager.GetTotalScore() + _targetCash);
 
-        _followersText = transform.GetChild(1).GetChild(0).GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>();
+        Transform playerIconTransform = transform.GetChild(1).GetChild(0).GetChild(0);
+        
+        _followersText = playerIconTransform.GetChild(2).GetComponent<TMP_Text>();
         _followersText.SetText(UiManager.Instance.followerValue);
 
+        _usernameText = playerIconTransform.GetChild(1).GetComponent<TMP_Text>();
+        _usernameText.SetText(PlayerPrefs.GetString("Username"));
+        
         _scrollDownThreshold = PlayerPrefs.GetFloat("ScrollDownThreshold", meterScrollDownThreshold);
         
         _playerIcon = transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<RectTransform>();

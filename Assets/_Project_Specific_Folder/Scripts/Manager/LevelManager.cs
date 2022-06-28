@@ -6,8 +6,9 @@ using HomaGames.HomaBelly;
 
 public class LevelManager : MonoBehaviour
 {
+    [SerializeField] private string defaultUsername;
     // Start is called before the first frame update
-    public int gameOpenCount;
+    private int _gameOpenCount;
     
     private void Awake()
     { 
@@ -17,9 +18,10 @@ public class LevelManager : MonoBehaviour
         if (PlayerPrefs.GetInt("Played", 0) == 0)
         {
             PlayerPrefs.SetInt("SavedTattooNo", 0);
-            gameOpenCount = 0;
+            _gameOpenCount = 0;
             SceneManager.LoadScene("Splash");
             PlayerPrefs.SetInt("Played", 1);
+            PlayerPrefs.SetString("Username", defaultUsername);
             
             // Session
             // Game Launched Event
@@ -27,20 +29,20 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
-            gameOpenCount = PlayerPrefs.GetInt("GameOpenCount");
+            _gameOpenCount = PlayerPrefs.GetInt("GameOpenCount");
             LoadLastScene();
         }
 
-        gameOpenCount += 1;
-        PlayerPrefs.SetInt("GameOpenCount", gameOpenCount);
+        _gameOpenCount += 1;
+        PlayerPrefs.SetInt("GameOpenCount", _gameOpenCount);
         
         PlayerPrefs.SetFloat("StartTime", Time.time);
         
         // Session
         // Session Started Event
-        if (gameOpenCount < 100)
+        if (_gameOpenCount < 100)
         {
-            HomaBelly.Instance.TrackDesignEvent("Session:"+gameOpenCount+":Started", Time.time);    
+            HomaBelly.Instance.TrackDesignEvent("Session:"+_gameOpenCount+":Started", Time.time);    
         }
     }
     

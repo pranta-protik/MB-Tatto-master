@@ -13,7 +13,8 @@ public class InstagramGallery : MonoBehaviour
     private Transform _scrollViewContentTransform;
     private bool _isDisplayed;
     private GameObject _lastPictureFrame;
-    private TextMeshProUGUI _postsText;
+    private TMP_Text _postsText;
+    private TMP_Text _usernameText;
     private bool _isScrollbarValueSet;
     private bool _isScrollingComplete;
     private bool _hasScrolledToNextPage;
@@ -23,10 +24,13 @@ public class InstagramGallery : MonoBehaviour
     {
         _scrollViewContentTransform = transform.GetChild(5).GetChild(0).GetChild(0).GetChild(0);
         _scrollbar = transform.GetChild(5).GetChild(0).GetChild(1).GetComponent<Scrollbar>();
-        _postsText = transform.GetChild(3).GetChild(1).GetComponent<TextMeshProUGUI>();
+        _postsText = transform.GetChild(3).GetChild(1).GetComponent<TMP_Text>();
+        _usernameText = transform.GetChild(2).GetComponent<TMP_Text>();
 
         int totalPhotos = PlayerPrefs.GetInt("SnapshotsTaken", 0);
         _postsText.SetText(totalPhotos.ToString());
+        
+        _usernameText.SetText(PlayerPrefs.GetString("Username"));
 
         SpawnPictureFrames(0, totalPhotos);
 

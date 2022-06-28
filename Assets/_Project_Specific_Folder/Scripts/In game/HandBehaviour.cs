@@ -120,11 +120,12 @@ public class HandBehaviour : MonoBehaviour
         if (other.gameObject.CompareTag("GoodGate"))
         {
             _hasGoneThroughGoodGate = true;
+            
+            MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
             other.GetComponent<BoxCollider>().enabled = false;
+            
             Gates gate = other.GetComponentInParent<Gates>();
-
-            CommonGateEnteringEffects();
-            _shineEffect.Play();
+            
             UpdateScore(gate.gateCost, true);
 
             // Went through special good gates
@@ -135,6 +136,9 @@ public class HandBehaviour : MonoBehaviour
             }
             else
             {
+                _shineEffect.Play();
+                GateGestureEffect();
+                
                 _currentExpensiveTattooLevel = gate.gateLevel + 1;
                 _collectedGoodTattoosAttributes.Add(
                     new CollectedGoodTattoosAttributes(_textureManager.tattooGroups[tattooGroupId].expensiveTattoos[gate.gateLevel], gate.gateLevel));
@@ -144,16 +148,19 @@ public class HandBehaviour : MonoBehaviour
 
         if (other.gameObject.CompareTag("BadGate"))
         {
+            MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
             other.GetComponent<BoxCollider>().enabled = false;
+            
             Gates gate = other.GetComponentInParent<Gates>();
-
-            CommonGateEnteringEffects();
-            _shineEffect.Play();
+            
             UpdateScore(gate.gateCost, false);
 
             // Went through last bad gate
             if (gate.isLast)
             {
+                _shineEffect.Play();
+                GateGestureEffect();
+                
                 UiManager.Instance.isBadTattoo = true;
                 StartCoroutine(UpdateTattooTexture(_textureManager.tattooGroups[tattooGroupId].cheapTattoos[gate.gateLevel]));
             }
@@ -163,6 +170,9 @@ public class HandBehaviour : MonoBehaviour
 
                 if (_shouldChangeTattoo)
                 {
+                    _shineEffect.Play();
+                    GateGestureEffect();
+                    
                     // Went through bad gate after visiting good gates
                     if (_hasGoneThroughGoodGate)
                     {
@@ -191,8 +201,11 @@ public class HandBehaviour : MonoBehaviour
 
         if (other.gameObject.CompareTag("Blue"))
         {
+            MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
             other.GetComponent<BoxCollider>().enabled = false;
-            CommonGateEnteringEffects();
+            
+            _shineEffect.Play();
+            GateGestureEffect();
 
             if (_hasGoneThroughGoodGate)
             {
@@ -215,8 +228,11 @@ public class HandBehaviour : MonoBehaviour
 
         if (other.gameObject.CompareTag("Yellow"))
         {
+            MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
             other.GetComponent<BoxCollider>().enabled = false;
-            CommonGateEnteringEffects();
+            
+            _shineEffect.Play();
+            GateGestureEffect();
 
             if (_hasGoneThroughGoodGate)
             {
@@ -242,9 +258,11 @@ public class HandBehaviour : MonoBehaviour
 
         if (other.gameObject.CompareTag("Ring"))
         {
+            MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
             other.GetComponent<BoxCollider>().enabled = false;
-            CommonGateEnteringEffects();
-
+            
+            GateGestureEffect();
+            
             OrnamentGate ornamentGate = other.gameObject.GetComponent<OrnamentGate>();
 
             ringOrnamentGroups[ornamentGate.ornamentGroupId].ornamentDesigns[ornamentGate.ornamentDesignId].SetActive(true);
@@ -252,8 +270,11 @@ public class HandBehaviour : MonoBehaviour
 
         if (other.gameObject.CompareTag("Bracelet"))
         {
+            MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
             other.GetComponent<BoxCollider>().enabled = false;
-            CommonGateEnteringEffects();
+
+            GateGestureEffect();
+            
             OrnamentGate ornamentGate = other.gameObject.GetComponent<OrnamentGate>();
 
             braceletOrnamentGroups[ornamentGate.ornamentGroupId].ornamentDesigns[ornamentGate.ornamentDesignId].SetActive(true);
@@ -333,12 +354,11 @@ public class HandBehaviour : MonoBehaviour
 
     #region Gate Effects
 
-    private void CommonGateEnteringEffects()
+    private void GateGestureEffect()
     {
-        MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
         StartCoroutine(AnimationDelayRoutine());
     }
-
+    
     private void GateRotationEffect()
     {
         if (_mainHandController.rotationAxis == ERotationAxis.X)
