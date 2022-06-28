@@ -1,3 +1,4 @@
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -67,10 +68,16 @@ public class CoolnessUpgrade : MonoBehaviour
             if (StorageManager.GetTotalScore() >= requiredScoreForCoolnessUpgrade)
             {
                 _button.interactable = true;
+                _button.image.DOFade(1f, 0.1f);
+                _button.transform.GetChild(0).GetComponent<TMP_Text>().DOFade(1f, 0.1f);
+                _button.transform.GetChild(1).GetComponent<TMP_Text>().DOFade(1f, 0.1f);
             }
             else
             {
                 _button.interactable = false;
+                _button.image.DOFade(0.5f, 0.1f);
+                _button.transform.GetChild(0).GetComponent<TMP_Text>().DOFade(0.3f, 0.1f);
+                _button.transform.GetChild(1).GetComponent<TMP_Text>().DOFade(0.3f, 0.1f);
             }
         }
     }
