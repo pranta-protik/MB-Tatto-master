@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class InfluencerStatus : MonoBehaviour
@@ -13,7 +10,10 @@ public class InfluencerStatus : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("InfluencerStatus" + influencerId, 0) == 1)
         {
-            transform.GetChild(0).localScale = new Vector3(1f, 1f, 1f);
+            if (PlayerPrefs.GetInt("InfluncerFightStatus" + influencerId, 0) == 1)
+            {
+                transform.GetChild(0).localScale = new Vector3(1f, 1f, 1f);
+            }
         }
     }
 }

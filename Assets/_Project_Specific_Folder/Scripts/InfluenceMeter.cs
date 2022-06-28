@@ -31,9 +31,18 @@ public class InfluenceMeter : MonoBehaviour
     private TextMeshProUGUI _followersText;
     private TextMeshProUGUI _cashText;
     private InfluencerStatus _influencerStatus;
+    private GameObject _fightBanner;
+    private GameObject _fightIcon;
+    private GameObject _nextButton;
+    private GameObject _foregroundScreen;
 
     private void Start()
     {
+        _fightBanner = transform.GetChild(4).gameObject;
+        _fightIcon = transform.GetChild(5).gameObject;
+        _nextButton = transform.GetChild(6).gameObject;
+        _foregroundScreen = transform.GetChild(7).gameObject;
+        
         _targetCash = StorageManager.Instance.currentLevelScore < 0 ? 500 : StorageManager.Instance.currentLevelScore;
         _cashText = transform.GetChild(3).GetComponent<TextMeshProUGUI>();
         _cashText.SetText("$" + _targetCash);
@@ -118,10 +127,21 @@ public class InfluenceMeter : MonoBehaviour
                 
                 if (PlayerPrefs.GetInt("InfluencerStatus" + _influencerStatus.influencerId, 0) == 0)
                 {
-                    transform.GetChild(4).gameObject.SetActive(true);
-                    transform.GetChild(4).DOScale(new Vector3(1.5f, 1.5f, 1.5f), 0.3f).OnComplete(() =>
+                    if (PlayerPrefs.GetInt("FirstFight", 1) == 1)
                     {
-                        Invoke(nameof(StartWrestling), 0.7f);
+                        _fightBanner.transform.GetChild(1).gameObject.SetActive(false);
+                        _fightBanner.transform.GetChild(2).gameObject.SetActive(false);
+                    }
+                    
+                    _fightBanner.SetActive(true);
+                    
+                    _fightBanner.transform.GetChild(0).DOScale(new Vector3(1.5f, 1.5f, 1.5f), 0.3f).OnComplete(() =>
+                    {
+                        if (PlayerPrefs.GetInt("FirstFight", 1) == 1)
+                        {
+                            Invoke(nameof(StartWrestling), 0.7f);  
+                            PlayerPrefs.SetInt("FirstFight", 0);
+                        }
                     });
                 }
                 else
@@ -136,6 +156,22 @@ public class InfluenceMeter : MonoBehaviour
         });   
     }
 
+    public void OnWatchAdButtonClick()
+    {
+        Debug.Log("Ad Watched");
+        Invoke(nameof(StartWrestling), 0.7f);
+    }
+
+    public void OnSkipButtonClick()
+    {
+        _fightBanner.SetActive(false);
+        
+        PlayerPrefs.SetInt("InfluencerStatus" + _influencerStatus.influencerId, 1);
+        PlayerPrefs.SetInt("InfluncerFightStatus" + _influencerStatus.influencerId, 0);
+        
+        EnableNextButton();
+    }
+    
     private void StartWrestling()
     {
         for (int i = 0; i < 5; i++)
@@ -143,9 +179,11 @@ public class InfluenceMeter : MonoBehaviour
             transform.GetChild(i).gameObject.SetActive(false);
         }
 
-        transform.GetChild(5).GetChild(1).GetComponent<Image>().sprite = _influencerStatus.influencerIcon;
-        transform.GetChild(5).gameObject.SetActive(true);
+        _fightIcon.transform.GetChild(1).GetComponent<Image>().sprite = _influencerStatus.influencerIcon;
+        _fightIcon.SetActive(true);
+        
         GameManager.Instance.WrestlingSetup(_influencerStatus.influencerHandId);   
+        PlayerPrefs.SetInt("InfluncerFightStatus" + _influencerStatus.influencerId, 1);
     }
     
     public void CrossOpponentVisual()
@@ -155,7 +193,7 @@ public class InfluenceMeter : MonoBehaviour
             transform.GetChild(i).gameObject.SetActive(true);
         }
         
-        transform.GetChild(5).gameObject.SetActive(false);
+        _fightIcon.SetActive(false);
         
         PlayerPrefs.SetInt("InfluencerStatus" + _influencerStatus.influencerId, 1);
         confettiEffect.SetActive(true);
@@ -164,14 +202,14 @@ public class InfluenceMeter : MonoBehaviour
     
     private void EnableNextButton()
     {
-        transform.GetChild(6).gameObject.SetActive(true);
-        transform.GetChild(6).DOScale(new Vector3(0.8f, 0.8f, 0.8f), 0.5f).SetLoops(-1, LoopType.Yoyo);
+        _nextButton.SetActive(true);
+        _nextButton.transform.DOScale(new Vector3(0.8f, 0.8f, 0.8f), 0.5f).SetLoops(-1, LoopType.Yoyo);
     }
     
     public void EnableUnlockScreen()
     {
-        transform.GetChild(7).gameObject.SetActive(true);
-        transform.GetChild(7).GetComponent<Image>().DOFade(1f, 0.5f).OnComplete(() =>
+        _foregroundScreen.SetActive(true);
+        _foregroundScreen.GetComponent<Image>().DOFade(1f, 0.5f).OnComplete(() =>
         {
             UiManager.Instance.unlockPanel.SetActive(true);
             gameObject.SetActive(false); 

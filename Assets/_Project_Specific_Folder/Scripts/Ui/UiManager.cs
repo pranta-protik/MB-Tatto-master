@@ -32,9 +32,11 @@ public class UiManager : Singleton<UiManager>
     [SerializeField] private GameObject valueUpgradeIncrementEffect;
     [SerializeField] private GameObject mobileScreen;
     [SerializeField] private GameObject selectionMenuButton;
+    [SerializeField] private GameObject instagramGalleryButton;
     [SerializeField] private GameObject shop;
     [SerializeField] private TextMeshProUGUI levelNoText;
     [SerializeField] private GameObject selectionMenu;
+    [SerializeField] private GameObject mainMenuInstagramGallery;
     [SerializeField] private float popUpScale = 5f;
     [SerializeField] private float popUpDuration = 0.3f;
     [SerializeField] private GameObject instagramGalleryPage;
@@ -90,6 +92,11 @@ public class UiManager : Singleton<UiManager>
             if (selectionMenuButton != null)
             {
                 selectionMenuButton.SetActive(false);
+            }
+
+            if (instagramGalleryButton != null)
+            {
+                instagramGalleryButton.SetActive(false);
             }
 
             if (coolnessUpgradeButton!=null)
@@ -194,8 +201,18 @@ public class UiManager : Singleton<UiManager>
 
     #endregion
 
-    #region SelectionMenu
+    #region MainMenu Buttons
 
+    public void OnInstagramGalleryButtonClick()
+    {
+        mainMenuInstagramGallery.SetActive(true);
+    }
+
+    public void OnInstagramGalleryCloseButtonClick()
+    {
+        mainMenuInstagramGallery.SetActive(false);
+    }
+    
     public void OnSelectionMenuButtonClick()
     {
         // Debug mode
@@ -205,7 +222,9 @@ public class UiManager : Singleton<UiManager>
         
         // shop.SetActive(false);
         priceTag.SetActive(false);
-        selectionMenuButton.gameObject.SetActive(false);
+        selectionMenuButton.SetActive(false);
+        instagramGalleryButton.SetActive(false);
+        
         _camera.transform.DOLocalRotate(new Vector3(42, 90, 0), .3f).OnComplete(() =>
         {
             selectionMenu.SetActive(true);
@@ -220,13 +239,15 @@ public class UiManager : Singleton<UiManager>
         UAManager.Instance.IsEndReached = false;
         
         selectionMenu.SetActive(false);
+        
         _camera.transform.DOLocalRotate(new Vector3(27.761f, 90, 0), .3f).OnComplete(() =>
         {
             levelNoText.transform.parent.gameObject.SetActive(true);
             
             // shop.SetActive(true);
             priceTag.SetActive(true);
-            selectionMenuButton.gameObject.SetActive(true);
+            selectionMenuButton.SetActive(true);
+            instagramGalleryButton.SetActive(true);
         });
     }
 
@@ -236,12 +257,13 @@ public class UiManager : Singleton<UiManager>
 
     public void ClearUIOnGameStart()
     {
-        selectionMenuButton.SetActive(false);
-        shop.SetActive(false);
         levelNoText.transform.parent.gameObject.SetActive(false);
+        selectionMenuButton.SetActive(false);
+        instagramGalleryButton.SetActive(false);
+        shop.SetActive(false);
         startUI.SetActive(false);
     }
-    
+
     public void PriceTagScaleEffect()
     {
         priceTag.transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.3f).SetLoops(4, LoopType.Yoyo);
@@ -339,6 +361,8 @@ public class UiManager : Singleton<UiManager>
     
     private void UpdateFollowersText()
     {
+        TextMeshProUGUI followersText = instagramGalleryPage.transform.GetChild(4).GetChild(1).GetComponent<TextMeshProUGUI>();
+        
         if (_currentFollowers < _targetFollowers)
         {
             _currentFollowers += ((_targetFollowers - _startFollowers) / 1.5f) * Time.deltaTime;
@@ -359,8 +383,7 @@ public class UiManager : Singleton<UiManager>
                 _followerValueLetter = "B";
             }
 
-            instagramGalleryPage.transform.GetChild(4).GetChild(1).GetComponent<TextMeshProUGUI>()
-                .SetText(Mathf.RoundToInt(_currentFollowers) + _followerValueLetter);
+            followersText.SetText(Mathf.RoundToInt(_currentFollowers) + _followerValueLetter);
         }
         else
         {
@@ -396,7 +419,9 @@ public class UiManager : Singleton<UiManager>
                 PlayerPrefs.SetInt("TargetFollowersIndex", GameManager.Instance.followers.Count);
             }
             
-            instagramGalleryPage.transform.GetChild(4).GetChild(1).GetComponent<TextMeshProUGUI>().SetText(followerValue);
+            PlayerPrefs.SetString("CurrentFollowers", followerValue);
+            
+            followersText.SetText(followerValue);
             _isFollowersUpdated = true;
         }
     }
