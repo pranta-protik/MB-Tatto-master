@@ -1,19 +1,9 @@
 fileFormatVersion: 2
-guid: 6d14acda83fea9143afa54317bb5e08f
+guid: 23582775266afb945bb666aa81dee83e
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Hand
-    second: {fileID: 2100000, guid: 4c55d0492545b47498bac59e2735d4b6, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: TattooGun
-    second: {fileID: 2100000, guid: 09572ae47a2d4324a8c7254f4c3771df, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -45,7 +35,7 @@ ModelImporter:
   meshes:
     lODScreenPercentages: []
     globalScale: 1
-    meshCompression: 0
+    meshCompression: 3
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
