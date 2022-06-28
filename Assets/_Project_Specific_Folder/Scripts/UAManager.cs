@@ -23,9 +23,11 @@ public class UAManager : Singleton<UAManager>
     public Color SkyColor , BottomColor;
     [DebuggableField("General/SkyBox", Order = 10)]
     public Color HeightFogColor;
-    [DebuggableField("Character Change", CustomName = "Hand Change")]
+   // [DebuggableField("General/Pillar", Order = 10)]
+   // public Color PillarColor;
+    [DebuggableField("Character/Character Change", Order = 1)]
     public int HandId;
-    [DebuggableField("Hand Color", CustomName = "Hand Color")]
+    [DebuggableField("Character/Hand Color", Order = 1)]
     public Color hnadColor;
     [DebuggableField("Level No", CustomName = "Level No")]
     public int LevelNo;

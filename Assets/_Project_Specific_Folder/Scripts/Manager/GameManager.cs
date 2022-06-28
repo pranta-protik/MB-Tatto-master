@@ -62,7 +62,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private Transform wrestlingCameraTransform;
 
     private int _handId;
-    private GameObject _groundFog;
+    private GameObject _groundFog , _pillar;
     private HandBehaviour _mainHandBehaviour;
     private Camera _mainCamera;
     private CameraController _cameraController;
@@ -118,7 +118,7 @@ public class GameManager : Singleton<GameManager>
             pathCreator = _pathObj.GetComponent<PathCreator>();
             _pathObj.GetComponent<RoadMeshCreator>().refresh();
         }
-        _groundFog = GameObject.FindGameObjectWithTag("Environment");
+        _groundFog = GameObject.Find("Env");
 
         playerPathFollower.enabled = false;
 
@@ -130,12 +130,15 @@ public class GameManager : Singleton<GameManager>
         UAManager.Instance.BottomColor = new Color32(0, 51, 255, 255);
         if (_groundFog != null)
         {
-            _groundFog.GetComponent<Renderer>().material.SetColor("_HeightFogColor", new Color(121, 132, 255, 255));   
+            _groundFog.transform.GetChild(0).GetComponent<Renderer>().material.SetColor("_HeightFogColor", new Color(121, 132, 255, 255));
+           // _groundFog.transform.GetChild(01).GetComponent<Renderer>().material.SetColor("_Color", new Color(145, 190, 255, 255));
         }
         else
         {
             Debug.Log("Ground Fog Not Found");
         }
+    
+   
         UAManager.Instance.HandId = PlayerPrefs.GetInt("SelectedHandCardId", 0);
     }
 
@@ -149,8 +152,8 @@ public class GameManager : Singleton<GameManager>
         RenderSettings.skybox.SetColor("_SkyColor3", UAManager.Instance.BottomColor);
         GameObject g = handGroups[_handId].mainHand.GetComponentInChildren<SkinnedMeshRenderer>().gameObject;
         g.GetComponent<Renderer>().material.SetColor("_Color",UAManager.Instance.hnadColor);
-       
-
+        _groundFog.transform.GetChild(0).GetComponent<Renderer>().material.SetColor("_HeightFogColor", UAManager.Instance.HeightFogColor);
+      
         if (_bossParent == null)
         {
             _bossParent = GameObject.Find("Bosses");
