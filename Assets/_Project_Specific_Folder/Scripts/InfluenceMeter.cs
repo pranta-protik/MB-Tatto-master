@@ -204,9 +204,17 @@ public class InfluenceMeter : MonoBehaviour
         
         PlayerPrefs.SetInt("InfluencerStatus" + _influencerStatus.influencerId, 1);
         confettiEffect.SetActive(true);
-        _influencerStatus.transform.GetChild(0).DOScale(new Vector3(1f, 1f, 1f), 0.5f).SetDelay(0.5f).OnComplete(EnableNextButton);
+
+        Transform followerDropTextTransform = _influencerStatus.transform.GetChild(2).GetChild(0);
+        followerDropTextTransform.gameObject.SetActive(true);
+        followerDropTextTransform.GetComponent<TMP_Text>().DOFade(0f, 0.3f).SetLoops(-1, LoopType.Restart);
+        followerDropTextTransform.GetComponent<RectTransform>().DOAnchorPosY(130f, 0.3f).SetLoops(-1, LoopType.Restart);
+        
+        StartCoroutine(_influencerStatus.DecreaseFollowers());
+        
+        Invoke(nameof(EnableNextButton), 2.5f);
     }
-    
+
     private void EnableNextButton()
     {
         _nextButton.SetActive(true);

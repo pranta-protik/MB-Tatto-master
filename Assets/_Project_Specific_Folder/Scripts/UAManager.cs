@@ -50,7 +50,6 @@ public class UAManager : Singleton<UAManager>
     public Color PathBorder;
 
     public GameObject water;
-
     private GameObject _waterObj;
     public List<GameObject> m_Roads = new List<GameObject>();
     public List<GameObject> PathBorders = new List<GameObject>();
@@ -58,6 +57,7 @@ public class UAManager : Singleton<UAManager>
     public GameObject priceTag;
     private Material[] _roadMaterials;
     public GameObject _groundFog, _pillar;
+    public string defaultUsername;
     public bool EnableUA;
     
     private static readonly int FogColor = Shader.PropertyToID("_HeightFogColor");
@@ -144,6 +144,19 @@ public class UAManager : Singleton<UAManager>
         SceneManager.LoadScene("Main");
     }
 
+    [DebuggableAction("Clear Game Data")]
+    public void ClearGameData()
+    {
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.SetInt("SavedTattooNo", 0);
+        PlayerPrefs.SetInt("Played", 1);
+        PlayerPrefs.SetString("Username", defaultUsername);
+        PlayerPrefs.SetInt("GameOpenCount", 1);
+        PlayerPrefs.SetFloat("StartTime", Time.time);
+        
+        ResetGame();
+    }
+    
     [DebuggableAction(("UI/Hide UI"))]
     public void Yes()
     {

@@ -367,7 +367,7 @@ public class UiManager : Singleton<UiManager>
     
     private void UpdateFollowersText()
     {
-        TextMeshProUGUI followersText = instagramGalleryPage.transform.GetChild(4).GetChild(1).GetComponent<TextMeshProUGUI>();
+        TMP_Text followersText = instagramGalleryPage.transform.GetChild(4).GetChild(1).GetComponent<TMP_Text>();
         
         if (_currentFollowers < _targetFollowers)
         {
@@ -491,7 +491,7 @@ public class UiManager : Singleton<UiManager>
         {
             Transform followerDropTextTransform = instagramGalleryPage.transform.GetChild(4).GetChild(1).GetChild(0);
             followerDropTextTransform.gameObject.SetActive(true);
-            followerDropTextTransform.GetComponent<TextMeshProUGUI>().DOFade(0f, 0.3f).SetLoops(-1, LoopType.Restart);
+            followerDropTextTransform.GetComponent<TMP_Text>().DOFade(0f, 0.3f).SetLoops(-1, LoopType.Restart);
             followerDropTextTransform.GetComponent<RectTransform>().DOAnchorPosY(100f, 0.3f).SetLoops(-1, LoopType.Restart);
         }
     }
@@ -529,10 +529,10 @@ public class UiManager : Singleton<UiManager>
         if (levelId >= 3)
         {
             // Check if ad is available
-            if(HomaBelly.Instance.IsInterstitialAvailable())
-            {
-                HomaBelly.Instance.ShowInterstitial("Level End Ad");    
-            }
+            // if(HomaBelly.Instance.IsInterstitialAvailable())
+            // {
+            //     HomaBelly.Instance.ShowInterstitial("Level End Ad");    
+            // }
         }
 
         if (_currentLevel + 1 >= GameManager.Instance.levelPrefabs.Count)

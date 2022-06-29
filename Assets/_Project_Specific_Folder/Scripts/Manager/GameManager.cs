@@ -134,7 +134,7 @@ public class GameManager : Singleton<GameManager>
 
     private void OnBannerAdLoadedEvent(string obj)
     {
-        HomaBelly.Instance.ShowBanner();
+        // HomaBelly.Instance.ShowBanner();
     }
 
     private void Update()

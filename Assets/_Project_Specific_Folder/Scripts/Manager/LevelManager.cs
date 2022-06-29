@@ -49,7 +49,6 @@ public class LevelManager : MonoBehaviour
     private static void LoadLastScene()
     {
         SceneManager.LoadScene("Main");
-
     }
 
     public static void LoadLevelCount()
