@@ -18,6 +18,13 @@ public class GameManagerEditor : Editor
         EditorGUILayout.PropertyField(serializedObject.FindProperty("tattooGunSpawnEffect"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("tattooEffect"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("wrestlingCameraTransform"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("isAdEnabled"));
+
+        if (gameManager.isAdEnabled)
+        {
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("interstitialAdStartLevel"));
+        }
+
         EditorGUILayout.PropertyField(serializedObject.FindProperty("gameMode"));
 
         if (gameManager.gameMode == GameManager.EGameMode.Test)

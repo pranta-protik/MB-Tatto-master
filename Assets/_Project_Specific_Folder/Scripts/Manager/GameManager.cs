@@ -33,37 +33,36 @@ public struct FollowerInfoSet
 
 public class GameManager : Singleton<GameManager>
 {
-
     public enum EGameMode
     {
         Complete,
-        Test , 
-        UA
+        Test
     }
 
     public int totalLevelNo = 50;
-
+    public bool isAdEnabled;
+    public int interstitialAdStartLevel;
+    public EGameMode gameMode;
+    public int currentTattooGunLevel;
     public List<GameObject> levelPrefabs = new List<GameObject>();
     public List<int> likes = new List<int>();
     public List<FollowerInfoSet> followers = new List<FollowerInfoSet>();
+    public List<HandGroup> handGroups = new List<HandGroup>();
+    public PlayerPathFollower playerPathFollower;
     
-
     [HideInInspector] public int currentLevelNo;
     [HideInInspector] public GameObject currentLevelPrefab;
     [HideInInspector] public PathCreator pathCreator;
     [HideInInspector] public bool hasGameStarted;
     [HideInInspector] public bool isGameOver;
-    public int currentTattooGunLevel;
-
-    [SerializeField] public List<HandGroup> handGroups = new List<HandGroup>();
-    [SerializeField] public PlayerPathFollower playerPathFollower;
+    
     [SerializeField] private List<GameObject> tattooGuns =  new List<GameObject>();
     [SerializeField] private GameObject tattooGunSpawnEffect;
     [SerializeField] private GameObject tattooEffect;
     [SerializeField] private Transform wrestlingCameraTransform;
-
+    [SerializeField] private int specificLevelId;
+    
     private int _handId;
-
     private HandBehaviour _mainHandBehaviour;
     private Camera _mainCamera;
     private CameraController _cameraController;
@@ -77,9 +76,6 @@ public class GameManager : Singleton<GameManager>
     private float _timeLeft;
     private float _timerInitialValue;
     private bool _isClicked;
-
-    public EGameMode gameMode;
-    [SerializeField] private int specificLevelId;
     
     public override void Start()
     {
@@ -128,13 +124,16 @@ public class GameManager : Singleton<GameManager>
         UAManager.Instance.handId = PlayerPrefs.GetInt("SelectedHandCardId", 0);
         
         // Banner Ad
-        Events.onBannerAdLoadedEvent+= OnBannerAdLoadedEvent;
-        HomaBelly.Instance.LoadBanner();
+        if (isAdEnabled)
+        {
+            Events.onBannerAdLoadedEvent+= OnBannerAdLoadedEvent;
+            HomaBelly.Instance.LoadBanner();    
+        }
     }
 
     private void OnBannerAdLoadedEvent(string obj)
     {
-        // HomaBelly.Instance.ShowBanner();
+        HomaBelly.Instance.ShowBanner();
     }
 
     private void Update()

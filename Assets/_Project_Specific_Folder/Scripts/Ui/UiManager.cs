@@ -526,13 +526,13 @@ public class UiManager : Singleton<UiManager>
         HomaBelly.Instance.TrackDesignEvent("Levels:Duration:" + levelId, levelDuration);
         
         // Interstitial Ad
-        if (levelId >= 3)
+        if (levelId >= GameManager.Instance.interstitialAdStartLevel)
         {
             // Check if ad is available
-            // if(HomaBelly.Instance.IsInterstitialAvailable())
-            // {
-            //     HomaBelly.Instance.ShowInterstitial("Level End Ad");    
-            // }
+            if(HomaBelly.Instance.IsInterstitialAvailable() && GameManager.Instance.isAdEnabled)
+            {
+                HomaBelly.Instance.ShowInterstitial("Level End Ad");    
+            }
         }
 
         if (_currentLevel + 1 >= GameManager.Instance.levelPrefabs.Count)
