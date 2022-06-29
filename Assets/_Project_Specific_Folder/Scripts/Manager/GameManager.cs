@@ -126,6 +126,15 @@ public class GameManager : Singleton<GameManager>
         tattooGuns[currentTattooGunLevel].SetActive(true);
         
         UAManager.Instance.handId = PlayerPrefs.GetInt("SelectedHandCardId", 0);
+        
+        // Banner Ad
+        Events.onBannerAdLoadedEvent+= OnBannerAdLoadedEvent;
+        HomaBelly.Instance.LoadBanner();
+    }
+
+    private void OnBannerAdLoadedEvent(string obj)
+    {
+        HomaBelly.Instance.ShowBanner();
     }
 
     private void Update()

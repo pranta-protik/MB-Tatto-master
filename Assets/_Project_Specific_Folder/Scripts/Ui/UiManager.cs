@@ -82,7 +82,7 @@ public class UiManager : Singleton<UiManager>
             levelNoText.SetText((_currentLevelText + 1).ToString());            
         }
         
-        if (_currentLevelText == -1)
+        if (_currentLevelText == 0 && !UAManager.Instance.EnableUA)
         {
             if (shop != null)
             {
@@ -518,13 +518,23 @@ public class UiManager : Singleton<UiManager>
         // Level Completed Event
         DefaultAnalytics.LevelCompleted();
         
-        string levelId = (PlayerPrefs.GetInt("current_scene_text", 0) + 1).ToString();
+        int levelId = (PlayerPrefs.GetInt("current_scene_text", 0) + 1);
         float levelDuration = Time.time - PlayerPrefs.GetFloat("LevelStartTime", 0);
 
         // Level Events
         // Level Duration Event
         HomaBelly.Instance.TrackDesignEvent("Levels:Duration:" + levelId, levelDuration);
         
+        // Interstitial Ad
+        if (levelId >= 3)
+        {
+            // Check if ad is available
+            if(HomaBelly.Instance.IsInterstitialAvailable())
+            {
+                HomaBelly.Instance.ShowInterstitial("Level End Ad");    
+            }
+        }
+
         if (_currentLevel + 1 >= GameManager.Instance.levelPrefabs.Count)
         {
             PlayerPrefs.SetInt("current_scene", 0);
