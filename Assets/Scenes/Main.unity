@@ -1068,7 +1068,7 @@ GameObject:
   - component: {fileID: 137153364}
   - component: {fileID: 137153367}
   m_Layer: 5
-  m_Name: PoseButton5
+  m_Name: PoseButton4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2217,7 +2217,7 @@ GameObject:
   - component: {fileID: 219203645}
   - component: {fileID: 219203648}
   m_Layer: 5
-  m_Name: PoseButton3
+  m_Name: PoseButton2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3770,7 +3770,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   endOfPathInstruction: 2
   distanceTravelled: 3.7
-  maxSpeed: 2.5
+  maxSpeed: 5
   increaseMultiplier: 4
   speedDecrementFactor: 3
   speedDecrementDuration: 0.6
@@ -4169,7 +4169,7 @@ GameObject:
   - component: {fileID: 419723755}
   - component: {fileID: 419723758}
   m_Layer: 5
-  m_Name: PoseButton4
+  m_Name: PoseButton3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5638,7 +5638,7 @@ GameObject:
   - component: {fileID: 543687795}
   - component: {fileID: 543687794}
   m_Layer: 5
-  m_Name: FilterButton1
+  m_Name: FilterButtonDefault
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5660,8 +5660,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -294, y: 80}
-  m_SizeDelta: {x: 130, y: 130}
+  m_AnchoredPosition: {x: -330, y: 80}
+  m_SizeDelta: {x: 140, y: 140}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &543687794
 MonoBehaviour:
@@ -5764,7 +5764,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 8887833401a20b944b5e9b6da4ad9f8d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6186,7 +6186,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 178}
+  m_AnchoredPosition: {x: 0, y: 180}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &604619222
@@ -6747,7 +6747,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -12971,7 +12971,7 @@ GameObject:
   - component: {fileID: 860700187}
   - component: {fileID: 860700190}
   m_Layer: 5
-  m_Name: FilterButton4
+  m_Name: FilterButton3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12993,8 +12993,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 146, y: 80}
-  m_SizeDelta: {x: 130, y: 130}
+  m_AnchoredPosition: {x: 165, y: 80}
+  m_SizeDelta: {x: 140, y: 140}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &860700187
 MonoBehaviour:
@@ -19388,7 +19388,7 @@ GameObject:
   - component: {fileID: 976841055}
   - component: {fileID: 976841058}
   m_Layer: 5
-  m_Name: PoseButton2
+  m_Name: PoseButton1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20023,7 +20023,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -21352,7 +21352,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 100
   field of view: 58
   orthographic: 0
   orthographic size: 5
@@ -24921,7 +24921,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Enter text...
+  m_text: Enter username...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9764b6c67f9977c4693394f44832eb3b, type: 2}
   m_sharedMaterial: {fileID: 8646366750839733863, guid: 9764b6c67f9977c4693394f44832eb3b, type: 2}
@@ -25148,7 +25148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6226415, g: 0.6226415, b: 0.6226415, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -25750,7 +25750,7 @@ GameObject:
   - component: {fileID: 1585907020}
   - component: {fileID: 1585907023}
   m_Layer: 5
-  m_Name: FilterButton3
+  m_Name: FilterButton2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25772,8 +25772,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -4, y: 80}
-  m_SizeDelta: {x: 130, y: 130}
+  m_AnchoredPosition: {x: 0, y: 80}
+  m_SizeDelta: {x: 140, y: 140}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1585907020
 MonoBehaviour:
@@ -26584,7 +26584,7 @@ GameObject:
   - component: {fileID: 1677870734}
   - component: {fileID: 1677870733}
   m_Layer: 5
-  m_Name: PoseButton1
+  m_Name: PoseButtonDefault
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26624,7 +26624,7 @@ MonoBehaviour:
   buttonId: 0
   animationId: 0
   watchAdRequired: 0
-  normalIcon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  normalIcon: {fileID: 21300000, guid: b2bc2fe1de5b00548a52f244cadfc6a4, type: 3}
   watchAdIcon: {fileID: 21300000, guid: cde5194d4162b8146aa89e0d0b0f5fc0, type: 3}
   buttonImage: {fileID: 0}
 --- !u!114 &1677870734
@@ -26703,7 +26703,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: b2bc2fe1de5b00548a52f244cadfc6a4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -27683,7 +27683,7 @@ GameObject:
   - component: {fileID: 1796435196}
   - component: {fileID: 1796435199}
   m_Layer: 5
-  m_Name: FilterButton2
+  m_Name: FilterButton1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27705,8 +27705,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -149, y: 80}
-  m_SizeDelta: {x: 130, y: 130}
+  m_AnchoredPosition: {x: -165, y: 80}
+  m_SizeDelta: {x: 140, y: 140}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1796435196
 MonoBehaviour:
@@ -29045,7 +29045,7 @@ GameObject:
   - component: {fileID: 1891935533}
   - component: {fileID: 1891935536}
   m_Layer: 5
-  m_Name: FilterButton5
+  m_Name: FilterButton4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29067,8 +29067,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 291, y: 80}
-  m_SizeDelta: {x: 130, y: 130}
+  m_AnchoredPosition: {x: 330, y: 80}
+  m_SizeDelta: {x: 140, y: 140}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1891935533
 MonoBehaviour:
@@ -38938,7 +38938,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1961694458
 RectTransform:
   m_ObjectHideFlags: 0
@@ -46754,7 +46754,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 049f38601e42b2e4391f127fa416dd10, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8ebf8cb1f22aa294d9cfb5f804f536ed, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -46801,7 +46801,7 @@ RectTransform:
   m_GameObject: {fileID: 1698252273406230610}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children: []
   m_Father: {fileID: 1698252273177935256}
   m_RootOrder: 0
@@ -46809,7 +46809,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0, y: 553}
-  m_SizeDelta: {x: 307.6823, y: 87.779785}
+  m_SizeDelta: {x: 219, y: 56}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1712197105862343659
 GameObject:
@@ -50087,7 +50087,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 150
   field of view: 60
   orthographic: 1
   orthographic size: 10

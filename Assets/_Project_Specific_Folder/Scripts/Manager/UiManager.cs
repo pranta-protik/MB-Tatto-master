@@ -518,22 +518,12 @@ public class UiManager : Singleton<UiManager>
         // Level Completed Event
         DefaultAnalytics.LevelCompleted();
         
-        int levelId = (PlayerPrefs.GetInt("current_scene_text", 0) + 1);
+        string levelId = (PlayerPrefs.GetInt("current_scene_text", 0) + 1).ToString();
         float levelDuration = Time.time - PlayerPrefs.GetFloat("LevelStartTime", 0);
 
         // Level Events
         // Level Duration Event
         HomaBelly.Instance.TrackDesignEvent("Levels:Duration:" + levelId, levelDuration);
-        
-        // Interstitial Ad
-        if (levelId >= GameManager.Instance.interstitialAdStartLevel)
-        {
-            // Check if ad is available
-            if(HomaBelly.Instance.IsInterstitialAvailable() && GameManager.Instance.isAdEnabled)
-            {
-                HomaBelly.Instance.ShowInterstitial("Level End Ad");    
-            }
-        }
 
         if (_currentLevel + 1 >= GameManager.Instance.levelPrefabs.Count)
         {
