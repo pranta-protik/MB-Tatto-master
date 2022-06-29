@@ -134,21 +134,14 @@ public class InfluenceMeter : MonoBehaviour
                 
                 if (PlayerPrefs.GetInt("InfluencerStatus" + _influencerStatus.influencerId, 0) == 0)
                 {
-                    if (PlayerPrefs.GetInt("FirstFight", 1) == 1)
-                    {
-                        _fightBanner.transform.GetChild(1).gameObject.SetActive(false);
-                        _fightBanner.transform.GetChild(2).gameObject.SetActive(false);
-                    }
-                    
+                    _fightBanner.transform.GetChild(1).gameObject.SetActive(false);
+                    _fightBanner.transform.GetChild(2).gameObject.SetActive(false);
+                 
                     _fightBanner.SetActive(true);
                     
                     _fightBanner.transform.GetChild(0).DOScale(new Vector3(1.5f, 1.5f, 1.5f), 0.3f).OnComplete(() =>
                     {
-                        if (PlayerPrefs.GetInt("FirstFight", 1) == 1)
-                        {
-                            Invoke(nameof(StartWrestling), 0.7f);  
-                            PlayerPrefs.SetInt("FirstFight", 0);
-                        }
+                        Invoke(nameof(StartWrestling), 0.7f);
                     });
                 }
                 else
@@ -166,12 +159,23 @@ public class InfluenceMeter : MonoBehaviour
     public void OnWatchAdButtonClick()
     {
         Debug.Log("Ad Watched");
-        Invoke(nameof(StartWrestling), 0.7f);
+        
+        _fightBanner.SetActive(false);
+        
+        GameManager.Instance.isWrestling = true;
+        PlayerPrefs.SetInt("InfluncerFightStatus" + _influencerStatus.influencerId, 1);
     }
 
     public void OnSkipButtonClick()
     {
+        for (int i = 0; i < 4; i++)
+        {
+            transform.GetChild(i).gameObject.SetActive(true);
+        }
+        
         _fightBanner.SetActive(false);
+        _fightIcon.SetActive(false);
+        UiManager.Instance.tapFastPanel.SetActive(false);
         
         PlayerPrefs.SetInt("InfluencerStatus" + _influencerStatus.influencerId, 1);
         PlayerPrefs.SetInt("InfluncerFightStatus" + _influencerStatus.influencerId, 0);
@@ -181,7 +185,7 @@ public class InfluenceMeter : MonoBehaviour
     
     private void StartWrestling()
     {
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 4; i++)
         {
             transform.GetChild(i).gameObject.SetActive(false);
         }
@@ -189,8 +193,23 @@ public class InfluenceMeter : MonoBehaviour
         _fightIcon.transform.GetChild(1).GetComponent<Image>().sprite = _influencerStatus.influencerIcon;
         _fightIcon.SetActive(true);
         
-        GameManager.Instance.WrestlingSetup(_influencerStatus.influencerHandId);   
-        PlayerPrefs.SetInt("InfluncerFightStatus" + _influencerStatus.influencerId, 1);
+        GameManager.Instance.WrestlingSetup(_influencerStatus.influencerHandId);
+        
+        if (PlayerPrefs.GetInt("FirstFight", 1) == 1)
+        {
+            _fightBanner.SetActive(false);
+            GameManager.Instance.isWrestling = true;
+            
+            PlayerPrefs.SetInt("FirstFight", 0);
+            PlayerPrefs.SetInt("InfluncerFightStatus" + _influencerStatus.influencerId, 1);
+        }
+        else
+        {
+            _fightBanner.transform.GetChild(1).gameObject.SetActive(true);
+            _fightBanner.transform.GetChild(2).gameObject.SetActive(true);
+            
+            GameManager.Instance.isWrestling = false;
+        }
     }
     
     public void CrossOpponentVisual()

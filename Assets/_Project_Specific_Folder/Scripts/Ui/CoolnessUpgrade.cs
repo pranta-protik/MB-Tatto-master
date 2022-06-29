@@ -123,13 +123,14 @@ public class CoolnessUpgrade : MonoBehaviour
 
     private void CoolnessUpgradeButtonEffects(int coolnessLevel)
     {
-        if (coolnessLevel<GameManager.Instance.GetTotalTattooGunAmount())
+        if (coolnessLevel <= GameManager.Instance.GetTotalTattooGunAmount())
         {
-            GameManager.Instance.currentTattooGunLevel = coolnessLevel - 1;    
+            GameManager.Instance.currentTattooGunLevel = coolnessLevel - 1;
         }
         else
         {
             GameManager.Instance.currentTattooGunLevel = (coolnessLevel - 1) % GameManager.Instance.GetTotalTattooGunAmount();
+            GameManager.Instance.isGoldenTattooGunActivated = true;
         }
         
         GameManager.Instance.UpgradeTattooGun();
