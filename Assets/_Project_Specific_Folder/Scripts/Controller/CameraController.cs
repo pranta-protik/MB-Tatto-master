@@ -27,7 +27,7 @@ public class CameraController : MonoBehaviour
 
     void LateUpdate()
     {
-        if (!UAManager.Instance.IsEndReached)
+        if (!UAManager.Instance.isEndReached)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(targetRotation), smoothTimeLook * Time.deltaTime);    
         }

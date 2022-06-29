@@ -4061,7 +4061,7 @@ MonoBehaviour:
   normalUnlockButtonIcon: {fileID: 21300000, guid: 2a444da6b2523a1459e33d77665be322, type: 3}
   watchAdUnlockButtonIcon: {fileID: 21300000, guid: d0df3991a4ff52c408752a020c6c391a, type: 3}
   startingAmountForUnlockHandWatchingAd: 2
-  baseUnlockCost: 0
+  baseUnlockCost: 5000
   multiplier: 2
 --- !u!1 &461371765
 GameObject:
@@ -12844,7 +12844,7 @@ MonoBehaviour:
   priceTag: {fileID: 6668516392213119779}
   _groundFog: {fileID: 0}
   _pillar: {fileID: 0}
-  EnableUA: 0
+  EnableUA: 1
 --- !u!4 &898310883
 Transform:
   m_ObjectHideFlags: 0
@@ -21531,7 +21531,7 @@ MonoBehaviour:
   tattooGunSpawnEffect: {fileID: 8341546542858578954}
   tattooEffect: {fileID: 996338768}
   wrestlingCameraTransform: {fileID: 2040196989}
-  gameMode: 2
+  gameMode: 0
   specificLevelId: 2
 --- !u!1 &1302367778
 GameObject:

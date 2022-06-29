@@ -113,6 +113,15 @@ public class HandBehaviour : MonoBehaviour
             new CollectedGoodTattoosAttributes(_textureManager.tattooGroups[tattooGroupId].defaultTattoos[GetCurrentDefaultTattooId()], -1));
     }
 
+    public void UAResetHandTattooStatus()
+    {
+        if (_collectedGoodTattoosAttributes.Count>0)
+        {
+            _collectedGoodTattoosAttributes[0] =
+                new CollectedGoodTattoosAttributes(_textureManager.tattooGroups[tattooGroupId].defaultTattoos[GetCurrentDefaultTattooId()], -1);
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         #region Normal Gates
@@ -314,7 +323,7 @@ public class HandBehaviour : MonoBehaviour
         if (other.gameObject.CompareTag("FinishLine"))
         {
             // For Homa UA 
-            UAManager.Instance.IsEndReached = true;
+            UAManager.Instance.isEndReached = true;
             // For Homa UA 
             // _camera.GetComponent<CameraController>().ResetCamPosYZ();
 

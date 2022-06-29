@@ -216,7 +216,7 @@ public class UiManager : Singleton<UiManager>
     public void OnSelectionMenuButtonClick()
     {
         // Debug mode
-        UAManager.Instance.IsEndReached = true;
+        UAManager.Instance.isEndReached = true;
         
         levelNoText.transform.parent.gameObject.SetActive(false);
         
@@ -236,7 +236,7 @@ public class UiManager : Singleton<UiManager>
     public void OnCloseSelectionMenuButtonClick()
     {
         // Debug mode
-        UAManager.Instance.IsEndReached = false;
+        UAManager.Instance.isEndReached = false;
         
         selectionMenu.SetActive(false);
         

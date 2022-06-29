@@ -119,17 +119,13 @@ public class GameManager : Singleton<GameManager>
             pathCreator = _pathObj.GetComponent<PathCreator>();
             _pathObj.GetComponent<RoadMeshCreator>().refresh();
         }
-     
-
+        
         playerPathFollower.enabled = false;
 
         currentTattooGunLevel = PlayerPrefs.GetInt("CoolnessUpgradeLevel", 1) - 1;
         tattooGuns[currentTattooGunLevel].SetActive(true);
-
-
-    
-   
-        UAManager.Instance.HandId = PlayerPrefs.GetInt("SelectedHandCardId", 0);
+        
+        UAManager.Instance.handId = PlayerPrefs.GetInt("SelectedHandCardId", 0);
     }
 
     private void Update()
@@ -273,10 +269,11 @@ public class GameManager : Singleton<GameManager>
 
         _mainHandBehaviour.tattooGroupId = _levelDetails.tattooId;
     }
+    
     public void UASetTattoo(int id)
     {
         _mainHandBehaviour.tattooGroupId = id;
-        
+        _mainHandBehaviour.UAResetHandTattooStatus();
     }
 
     #endregion
@@ -333,6 +330,25 @@ public class GameManager : Singleton<GameManager>
                 _mainHandBehaviour = hand.mainHand.transform.GetChild(0).GetComponent<HandBehaviour>();
                 _cameraController.player = hand.mainHand.gameObject;
                 SetLevelDetails(currentLevelPrefab);
+            }
+            else
+            {
+                hand.mainHand.gameObject.SetActive(false);
+                hand.tattooHand.gameObject.SetActive(false);
+            }
+        }
+    }
+    
+    public void UASpawnHand(int id)
+    {
+        foreach (HandGroup hand in handGroups)
+        {
+            if (hand.mainHand.GetComponent<HandController>().handId == id)
+            {
+                hand.mainHand.gameObject.SetActive(true);
+                hand.tattooHand.gameObject.SetActive(true);
+                _mainHandBehaviour = hand.mainHand.transform.GetChild(0).GetComponent<HandBehaviour>();
+                _cameraController.player = hand.mainHand.gameObject;
             }
             else
             {
