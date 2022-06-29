@@ -3358,7 +3358,7 @@ MonoBehaviour:
   normalCoolnessUpgradeIcon: {fileID: 21300000, guid: 5a8d705b2d8036a4898322fec59489f5, type: 3}
   watchAdCoolnessUpgradeIcon: {fileID: 21300000, guid: 96884eb389ef76048ab10e6eada31825, type: 3}
   maxedOutCoolnessUpgradeIcon: {fileID: 21300000, guid: 20a9908678ea62f4ca61a4ab16a7a16d, type: 3}
-  requiredScoreForCoolnessUpgrade: 500
+  requiredScoreForCoolnessUpgrade: 1000
   startingLevelForUpgradeCoolnessWatchingAd: 3
 --- !u!1001 &347989936
 PrefabInstance:
@@ -22564,6 +22564,7 @@ MonoBehaviour:
   goldenTattooGunMaterialMetallic: 0.246
   tattooGunSpawnEffect: {fileID: 8341546542858578954}
   tattooEffect: {fileID: 996338768}
+  postProcessHandler: {fileID: 461371768}
 --- !u!1 &1302367778
 GameObject:
   m_ObjectHideFlags: 0
@@ -46806,14 +46807,14 @@ RectTransform:
   m_GameObject: {fileID: 1698252273406230610}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 1.7, y: 1.7, z: 1.7}
   m_Children: []
   m_Father: {fileID: 1698252273177935256}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 553}
+  m_AnchoredPosition: {x: 0, y: 400}
   m_SizeDelta: {x: 219, y: 56}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1712197105862343659

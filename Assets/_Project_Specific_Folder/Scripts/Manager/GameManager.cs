@@ -41,6 +41,7 @@ public class GameManager : Singleton<GameManager>
     }
 
     public int totalLevelNo = 50;
+    [Header("Ad Section")]
     public bool isAdEnabled;
     public int interstitialAdStartLevel;
     public EGameMode gameMode;
@@ -61,6 +62,7 @@ public class GameManager : Singleton<GameManager>
     
     [SerializeField] private Transform wrestlingCameraTransform;
     [SerializeField] private int specificLevelId;
+    
     [Header("Tattoo Gun Section")]
     [SerializeField] private List<GameObject> tattooGuns =  new List<GameObject>();
     [SerializeField] private Color goldenTattooGunMaterialColor;
@@ -68,6 +70,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private float goldenTattooGunMaterialMetallic;
     [SerializeField] private GameObject tattooGunSpawnEffect;
     [SerializeField] private GameObject tattooEffect;
+    [SerializeField] private PostProcessHandler postProcessHandler;
     
     private static readonly int SHPropSmoothness = Shader.PropertyToID("_Glossiness");
     private static readonly int SHPropMetallic = Shader.PropertyToID("_Metallic");
@@ -411,6 +414,8 @@ public class GameManager : Singleton<GameManager>
 
     public void WrestlingSetup(int bossHandId)
     {
+        postProcessHandler.RemoveAllEffects();
+        
         _currentBoss = _bossParent.transform.GetChild(bossHandId).gameObject;
         
         Transform mainHandTransform = _mainHandBehaviour.transform.parent;

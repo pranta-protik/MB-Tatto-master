@@ -15,6 +15,7 @@ public class GameManagerEditor : Editor
         EditorGUILayout.PropertyField(serializedObject.FindProperty("handGroups"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("playerPathFollower"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("wrestlingCameraTransform"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("postProcessHandler"));
         
         EditorGUILayout.PropertyField(serializedObject.FindProperty("tattooGuns"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("goldenTattooGunMaterialColor"));
