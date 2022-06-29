@@ -34,7 +34,7 @@ public class CoolnessUpgrade : MonoBehaviour
             CheckCoolnessUpgradeButtonAvailability();
         }
         
-        if (PlayerPrefs.GetInt("CoolnessUpgradeLevel", 1) == GameManager.Instance.GetTotalTattooGunAmount())
+        if (PlayerPrefs.GetInt("CoolnessUpgradeLevel", 1) == GameManager.Instance.GetTotalTattooGunAmount() * 2)
         {
             _isMaxedOut = true;
             DisableCoolnessUpgradeButton();
@@ -93,7 +93,7 @@ public class CoolnessUpgrade : MonoBehaviour
     {
         int currentCoolnessLevel = PlayerPrefs.GetInt("CoolnessUpgradeLevel", 1);
         
-        if (currentCoolnessLevel < GameManager.Instance.GetTotalTattooGunAmount())
+        if (currentCoolnessLevel < GameManager.Instance.GetTotalTattooGunAmount() * 2)
         {
             currentCoolnessLevel += 1;
 
@@ -123,14 +123,22 @@ public class CoolnessUpgrade : MonoBehaviour
 
     private void CoolnessUpgradeButtonEffects(int coolnessLevel)
     {
-        GameManager.Instance.currentTattooGunLevel = coolnessLevel - 1;
+        if (coolnessLevel<GameManager.Instance.GetTotalTattooGunAmount())
+        {
+            GameManager.Instance.currentTattooGunLevel = coolnessLevel - 1;    
+        }
+        else
+        {
+            GameManager.Instance.currentTattooGunLevel = (coolnessLevel - 1) % GameManager.Instance.GetTotalTattooGunAmount();
+        }
+        
         GameManager.Instance.UpgradeTattooGun();
 
         PlayerPrefs.SetInt("CoolnessUpgradeLevel", coolnessLevel);
 
         _levelText.SetText("Stage " + coolnessLevel);
 
-        if (coolnessLevel == GameManager.Instance.GetTotalTattooGunAmount())
+        if (coolnessLevel == GameManager.Instance.GetTotalTattooGunAmount() * 2)
         {
             _isMaxedOut = true;
             DisableCoolnessUpgradeButton();

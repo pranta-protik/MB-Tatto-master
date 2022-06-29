@@ -76,7 +76,7 @@ public class GameManager : Singleton<GameManager>
     private float _timeLeft;
     private float _timerInitialValue;
     private bool _isClicked;
-    
+
     public override void Start()
     {
         //Main Menu screen is loaded
@@ -119,8 +119,14 @@ public class GameManager : Singleton<GameManager>
         playerPathFollower.enabled = false;
 
         currentTattooGunLevel = PlayerPrefs.GetInt("CoolnessUpgradeLevel", 1) - 1;
+
+        if (currentTattooGunLevel >= GetTotalTattooGunAmount())
+        {
+            currentTattooGunLevel %= GetTotalTattooGunAmount();
+        }
+
         tattooGuns[currentTattooGunLevel].SetActive(true);
-        
+
         UAManager.Instance.handId = PlayerPrefs.GetInt("SelectedHandCardId", 0);
         
         // Banner Ad
@@ -220,8 +226,11 @@ public class GameManager : Singleton<GameManager>
 
     public void UpgradeTattooGun()
     {
-        tattooGuns[currentTattooGunLevel - 1].SetActive(false);
+        Debug.Log(currentTattooGunLevel);
+
+        tattooGuns[currentTattooGunLevel == 0 ? GetTotalTattooGunAmount() - 1 : currentTattooGunLevel - 1].SetActive(false);
         tattooGuns[currentTattooGunLevel].SetActive(true);
+
         tattooGunSpawnEffect.GetComponent<ParticleSystem>().Play();
 
         int currentTattooLevel = PlayerPrefs.GetInt("CurrentTattooTypeLevel" + _levelDetails.tattooId, 0);
