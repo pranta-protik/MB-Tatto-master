@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using DG.Tweening;
+using GameAnalyticsSDK;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -214,6 +215,7 @@ public class InfluenceMeter : MonoBehaviour
     
     public void EnableUnlockScreen()
     {
+         GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Completed");
         _foregroundScreen.SetActive(true);
         _foregroundScreen.GetComponent<Image>().DOFade(1f, 0.5f).OnComplete(() =>
         {

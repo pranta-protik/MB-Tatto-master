@@ -8,6 +8,7 @@ using System;
 using MySDK;
 using PathCreation;
 using HomaGames.HomaBelly;
+using GameAnalyticsSDK;
 
 public enum ERotationAxis
 {
@@ -54,15 +55,15 @@ public class GameManager : Singleton<GameManager>
     [HideInInspector] public bool isGameOver;
     public int currentTattooGunLevel;
 
-    [SerializeField] private List<HandGroup> handGroups = new List<HandGroup>();
-    [SerializeField] private PlayerPathFollower playerPathFollower;
+    [SerializeField] public List<HandGroup> handGroups = new List<HandGroup>();
+    [SerializeField] public PlayerPathFollower playerPathFollower;
     [SerializeField] private List<GameObject> tattooGuns =  new List<GameObject>();
     [SerializeField] private GameObject tattooGunSpawnEffect;
     [SerializeField] private GameObject tattooEffect;
     [SerializeField] private Transform wrestlingCameraTransform;
 
     private int _handId;
-    private GameObject _groundFog , _pillar;
+
     private HandBehaviour _mainHandBehaviour;
     private Camera _mainCamera;
     private CameraController _cameraController;
@@ -118,42 +119,21 @@ public class GameManager : Singleton<GameManager>
             pathCreator = _pathObj.GetComponent<PathCreator>();
             _pathObj.GetComponent<RoadMeshCreator>().refresh();
         }
-        _groundFog = GameObject.Find("Env");
+     
 
         playerPathFollower.enabled = false;
 
         currentTattooGunLevel = PlayerPrefs.GetInt("CoolnessUpgradeLevel", 1) - 1;
         tattooGuns[currentTattooGunLevel].SetActive(true);
 
-        // Setting Default
-        UAManager.Instance.SkyColor = new Color32(170, 177,255,255);
-        UAManager.Instance.BottomColor = new Color32(0, 51, 255, 255);
-        if (_groundFog != null)
-        {
-            _groundFog.transform.GetChild(0).GetComponent<Renderer>().material.SetColor("_HeightFogColor", new Color(121, 132, 255, 255));
-           // _groundFog.transform.GetChild(01).GetComponent<Renderer>().material.SetColor("_Color", new Color(145, 190, 255, 255));
-        }
-        else
-        {
-            Debug.Log("Ground Fog Not Found");
-        }
+
     
    
         UAManager.Instance.HandId = PlayerPrefs.GetInt("SelectedHandCardId", 0);
     }
 
     private void Update()
-    {
-        // For Homa UA 
-        // SpawnHand(UAManager.Instance.HandId);
-        
-        // For Homa UA 
-        RenderSettings.skybox.SetColor("_SkyColor2", UAManager.Instance. SkyColor);
-        RenderSettings.skybox.SetColor("_SkyColor3", UAManager.Instance.BottomColor);
-        GameObject g = handGroups[_handId].mainHand.GetComponentInChildren<SkinnedMeshRenderer>().gameObject;
-        g.GetComponent<Renderer>().material.SetColor("_Color",UAManager.Instance.hnadColor);
-        _groundFog.transform.GetChild(0).GetComponent<Renderer>().material.SetColor("_HeightFogColor", UAManager.Instance.HeightFogColor);
-      
+    {  
         if (_bossParent == null)
         {
             _bossParent = GameObject.Find("Bosses");
@@ -296,6 +276,7 @@ public class GameManager : Singleton<GameManager>
     public void UASetTattoo(int id)
     {
         _mainHandBehaviour.tattooGroupId = id;
+        
     }
 
     #endregion
@@ -304,6 +285,7 @@ public class GameManager : Singleton<GameManager>
 
     public void StartGameplay()
     {
+         GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "Game Start");
         // Invoke this method everytime the user starts the gameplay at any level
         DefaultAnalytics.GameplayStarted();
         

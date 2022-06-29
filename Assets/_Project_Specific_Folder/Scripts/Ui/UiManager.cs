@@ -539,9 +539,5 @@ public class UiManager : Singleton<UiManager>
         SceneManager.LoadScene("Main");
     }
 
-    [DebuggableAction("Restart Game")]
-    public void Reset()
-    {
-        SceneManager.LoadScene("Main");
-    }
+
 }
