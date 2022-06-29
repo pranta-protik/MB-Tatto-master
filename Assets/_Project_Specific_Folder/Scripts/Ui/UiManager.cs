@@ -436,7 +436,7 @@ public class UiManager : Singleton<UiManager>
     {
         instagramPostPage.SetActive(true);
         instagramPostPage.transform.GetChild(1).GetChild(0).GetComponent<TMP_Text>().SetText(PlayerPrefs.GetString("Username"));
-        instagramPostPage.transform.GetChild(2).GetComponent<Image>().DOFade(0, 0.5f);
+        instagramPostPage.transform.GetChild(3).GetComponent<Image>().DOFade(0, 0.5f);
         _targetLikeIndex = PlayerPrefs.GetInt("TargetLikeIndex", 0);
             
         if (_targetLikeIndex < GameManager.Instance.likes.Count)
