@@ -12829,11 +12829,11 @@ MonoBehaviour:
   SkyColor: {r: 0.72156864, g: 0.74509805, b: 1, a: 1}
   BottomColor: {r: 0, g: 0.2, b: 1, a: 1}
   HeightFogColor: {r: 0.4745098, g: 0.5176471, b: 1, a: 1}
-  HandId: 0
-  hnadColor: {r: 1, g: 1, b: 1, a: 0}
-  LevelNo: 0
+  handId: 0
+  handColor: {r: 1, g: 1, b: 1, a: 0}
+  levelNo: 0
   eTattooType: 0
-  IsEndReached: 0
+  isEndReached: 0
   RoadColor: {r: 1, g: 1, b: 1, a: 0}
   GetaColor: {r: 1, g: 1, b: 1, a: 1}
   PathBorder: {r: 0.67058825, g: 0.67058825, b: 0.67058825, a: 0}
@@ -26497,8 +26497,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 58.015137}
-  m_SizeDelta: {x: 0, y: -116.03}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1804672028
 MonoBehaviour:

@@ -87,11 +87,11 @@ public class UAManager : Singleton<UAManager>
     {
         if (EnableUA)
         {
-            RenderSettings.skybox.SetColor(SkyColor2, UAManager.Instance.SkyColor);
-            RenderSettings.skybox.SetColor(SkyColor3, UAManager.Instance.BottomColor);
+            RenderSettings.skybox.SetColor(SkyColor2, SkyColor);
+            RenderSettings.skybox.SetColor(SkyColor3, BottomColor);
             GameObject hand = GameManager.Instance.handGroups[PlayerPrefs.GetInt("SelectedHandCardId")].mainHand.GetComponentInChildren<SkinnedMeshRenderer>()
                 .gameObject;
-            hand.GetComponent<Renderer>().material.SetColor(MainColor, UAManager.Instance.handColor);
+            hand.GetComponent<Renderer>().material.SetColor(MainColor, handColor);
             GameObject.Find("Env").gameObject.transform.GetChild(0).GetComponent<Renderer>().material.SetColor(FogColor, HeightFogColor);
 
             GameManager.Instance.UASpawnHand(handId);
