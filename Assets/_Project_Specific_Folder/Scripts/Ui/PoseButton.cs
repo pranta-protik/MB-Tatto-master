@@ -1,11 +1,12 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class PoseButton : MonoBehaviour
 {
     public int buttonId;
     public int animationId;
-    public bool watchAdRequired;
+    [FormerlySerializedAs("watchAdRequired")] public bool isWatchAdRequired;
     public Sprite normalIcon;
     public Sprite watchAdIcon;
     
@@ -15,7 +16,7 @@ public class PoseButton : MonoBehaviour
     {
         buttonImage = transform.GetComponent<Image>();
         
-        if (watchAdRequired)
+        if (isWatchAdRequired)
         {
             if (PlayerPrefs.GetInt("PoseAdWatched" + buttonId, 0) == 0)
             {

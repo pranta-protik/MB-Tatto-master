@@ -22,7 +22,7 @@ public class PoseManager : MonoBehaviour
     {
         SetCurrentPoseButtonId(poseButtonObj);
         
-        if (_poseButton.watchAdRequired)
+        if (_poseButton.isWatchAdRequired)
         {
             WatchAdPoseButton(_poseButton.animationId);
         }

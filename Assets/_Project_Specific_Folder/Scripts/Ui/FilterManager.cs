@@ -4,8 +4,10 @@ public class FilterManager : MonoBehaviour
 {
     [SerializeField] private MobileScreen mobileScreen;
     public int currentFilterButtonId;
+    
     private GameObject _captureButton;
     private GameObject _watchAdButton;
+    private FilterButton _filterButton;
 
     private void Start()
     {
@@ -13,41 +15,38 @@ public class FilterManager : MonoBehaviour
         _watchAdButton = mobileScreen.transform.GetChild(4).gameObject;
     }
 
-    public void FilterEffect1(GameObject filterButtonObj)
+    public void ResetFilter()
     {
-        NormalFilterEffect(filterButtonObj);
-    }
-
-    public void FilterEffect2(GameObject filterButtonObj)
-    {
-        NormalFilterEffect(filterButtonObj);
-    }
-
-    public void FilterEffect3(GameObject filterButtonObj)
-    {
-        WatchAdFilterEffect(filterButtonObj);
-    }
-    
-    public void FilterEffect4(GameObject filterButtonObj)
-    {
-        WatchAdFilterEffect(filterButtonObj);
-    }
-    
-    public void FilterEffect5(GameObject filterButtonObj)
-    {
-        WatchAdFilterEffect(filterButtonObj);
-    }
-    
-    private void NormalFilterEffect(GameObject currentFilterObj)
-    {
-        SetCurrentFilterId(currentFilterObj);
         EnableCaptureButton();
     }
 
-    private void WatchAdFilterEffect(GameObject currentFilterObj)
+    public void SetFilter(GameObject filterButtonObj)
     {
-        SetCurrentFilterId(currentFilterObj);
-        
+        SetCurrentFilterId(filterButtonObj);
+
+        if (_filterButton.isWatchAdRequired)
+        {
+            WatchAdFilterEffect();
+        }
+        else
+        {
+            NormalFilterButton();
+        }
+    }
+
+    private void SetCurrentFilterId(GameObject currentFilterObj)
+    {
+        _filterButton = currentFilterObj.GetComponent<FilterButton>();
+        currentFilterButtonId = _filterButton.buttonId;
+    }
+    
+    private void NormalFilterButton()
+    {
+        EnableCaptureButton();
+    }
+    
+    private void WatchAdFilterEffect()
+    {
         if (PlayerPrefs.GetInt("FilterAdWatched" + currentFilterButtonId, 0) == 0)
         {
             EnableWatchAdButton();
@@ -56,12 +55,6 @@ public class FilterManager : MonoBehaviour
         {
             EnableCaptureButton();
         }
-    }
-    
-    private void SetCurrentFilterId(GameObject currentFilterObj)
-    {
-        FilterButton filterButton = currentFilterObj.GetComponent<FilterButton>();
-        currentFilterButtonId = filterButton.buttonId;
     }
     
     private void EnableCaptureButton()
