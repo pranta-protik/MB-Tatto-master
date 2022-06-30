@@ -3358,7 +3358,7 @@ MonoBehaviour:
   normalCoolnessUpgradeIcon: {fileID: 21300000, guid: 5a8d705b2d8036a4898322fec59489f5, type: 3}
   watchAdCoolnessUpgradeIcon: {fileID: 21300000, guid: 96884eb389ef76048ab10e6eada31825, type: 3}
   maxedOutCoolnessUpgradeIcon: {fileID: 21300000, guid: 20a9908678ea62f4ca61a4ab16a7a16d, type: 3}
-  requiredScoreForCoolnessUpgrade: 0
+  requiredScoreForCoolnessUpgrade: 1000
   startingLevelForUpgradeCoolnessWatchingAd: 3
 --- !u!1001 &347989936
 PrefabInstance:
@@ -4637,7 +4637,7 @@ MonoBehaviour:
   normalUnlockButtonIcon: {fileID: 21300000, guid: 2a444da6b2523a1459e33d77665be322, type: 3}
   watchAdUnlockButtonIcon: {fileID: 21300000, guid: d0df3991a4ff52c408752a020c6c391a, type: 3}
   startingAmountForUnlockHandWatchingAd: 2
-  baseUnlockCost: 0
+  baseUnlockCost: 5000
   multiplier: 2
 --- !u!1 &461371765
 GameObject:
@@ -27893,7 +27893,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1804672027
 RectTransform:
   m_ObjectHideFlags: 0
@@ -40385,7 +40385,7 @@ MonoBehaviour:
   watchAdValueUpgradeIcon: {fileID: 21300000, guid: d6c039c32fe7a1f498ac2e0a7a60ff8e, type: 3}
   baseUpgradeAmount: 250
   upgradeMultiplier: 2
-  requiredScoreForValueUpgrade: 0
+  requiredScoreForValueUpgrade: 100
   startingLevelForUpgradeValueWatchingAd: 3
 --- !u!1 &2065474232
 GameObject:

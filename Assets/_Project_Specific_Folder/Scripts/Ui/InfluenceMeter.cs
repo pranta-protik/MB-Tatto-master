@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using GameAnalyticsSDK;
+using HomaGames.HomaBelly;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -158,14 +159,28 @@ public class InfluenceMeter : MonoBehaviour
 
     public void OnWatchAdButtonClick()
     {
-        Debug.Log("Ad Watched");
-        
+        // Subscribe to Rewarded Video Ads
+        Events.onRewardedVideoAdRewardedEvent += OnRewardedVideoAdRewardedEvent;
+                
+        // Show Ad
+        if (HomaBelly.Instance.IsRewardedVideoAdAvailable())
+        {
+            HomaBelly.Instance.ShowRewardedVideoAd("Coolness Upgrade");
+        }
+    }
+
+    // Collect Ad Rewards
+    private void OnRewardedVideoAdRewardedEvent(VideoAdReward obj)
+    {
         _fightBanner.SetActive(false);
         
         GameManager.Instance.isWrestling = true;
         PlayerPrefs.SetInt("InfluncerFightStatus" + _influencerStatus.influencerId, 1);
+        
+        // Unsubscribe to Rewarded Video Ads
+        Events.onRewardedVideoAdRewardedEvent -= OnRewardedVideoAdRewardedEvent;
     }
-
+    
     public void OnSkipButtonClick()
     {
         for (int i = 0; i < 4; i++)
