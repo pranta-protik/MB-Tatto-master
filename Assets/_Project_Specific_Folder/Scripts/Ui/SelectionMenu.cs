@@ -56,6 +56,10 @@ public class SelectionMenu : MonoBehaviour
             _isAdEnabled = true;
             _unlockButtonImage.sprite = watchAdUnlockButtonIcon;
             _costText.gameObject.SetActive(false);
+            
+            // Rewarded Videos
+            // Rewarded Suggested Event
+            HomaBelly.Instance.TrackDesignEvent("rewarded:" + "suggested" + ":" + PlacementName.UnlockNewHand);
         }
         else
         {
@@ -136,7 +140,7 @@ public class SelectionMenu : MonoBehaviour
             // Show Ad
             if (HomaBelly.Instance.IsRewardedVideoAdAvailable())
             {
-                HomaBelly.Instance.ShowRewardedVideoAd("Unlock New Hand");   
+                HomaBelly.Instance.ShowRewardedVideoAd(PlacementName.UnlockNewHand);   
             }
         }
     }
@@ -146,6 +150,10 @@ public class SelectionMenu : MonoBehaviour
     {
         UnlockButtonEffects();
         CheckUnlockButtonTypeStatus();
+        
+        // Rewarded Videos
+        // Rewarded Claimed Event
+        HomaBelly.Instance.TrackDesignEvent("rewarded:" + "taken" + ":" + PlacementName.UnlockNewHand);
         
         // Unsubscribe to Rewarded Video Ads
         Events.onRewardedVideoAdRewardedEvent -= OnRewardedVideoAdRewardedEvent;

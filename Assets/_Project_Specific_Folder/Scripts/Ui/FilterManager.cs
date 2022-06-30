@@ -1,3 +1,4 @@
+using HomaGames.HomaBelly;
 using UnityEngine;
 
 public class FilterManager : MonoBehaviour
@@ -26,7 +27,7 @@ public class FilterManager : MonoBehaviour
 
         if (_filterButton.isWatchAdRequired)
         {
-            WatchAdFilterEffect();
+            WatchAdFilterButton();
         }
         else
         {
@@ -45,11 +46,15 @@ public class FilterManager : MonoBehaviour
         EnableCaptureButton();
     }
     
-    private void WatchAdFilterEffect()
+    private void WatchAdFilterButton()
     {
         if (PlayerPrefs.GetInt("FilterAdWatched" + currentFilterButtonId, 0) == 0)
         {
             EnableWatchAdButton();
+            
+            // Rewarded Videos
+            // Rewarded Suggested Event
+            HomaBelly.Instance.TrackDesignEvent("rewarded:" + "suggested" + ":" + PlacementName.UnlockFilter);
         }
         else
         {

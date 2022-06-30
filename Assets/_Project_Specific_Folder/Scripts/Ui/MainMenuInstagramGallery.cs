@@ -76,7 +76,7 @@ public class MainMenuInstagramGallery : MonoBehaviour
         // Show Ad
         if (HomaBelly.Instance.IsRewardedVideoAdAvailable())
         {
-            HomaBelly.Instance.ShowRewardedVideoAd("Update Username");
+            HomaBelly.Instance.ShowRewardedVideoAd(PlacementName.UpdateUsername);
         }
     }
 
@@ -84,6 +84,10 @@ public class MainMenuInstagramGallery : MonoBehaviour
     private void OnRewardedVideoAdRewardedEvent(VideoAdReward obj)
     {
         _changeUsernamePanel.SetActive(true);
+        
+        // Rewarded Videos
+        // Rewarded Claimed Event
+        HomaBelly.Instance.TrackDesignEvent("rewarded:" + "taken" + ":" + PlacementName.UpdateUsername);
         
         // Unsubscribe to Rewarded Video Ads
         Events.onRewardedVideoAdRewardedEvent -= OnRewardedVideoAdRewardedEvent;

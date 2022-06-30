@@ -14,7 +14,7 @@ public class PoseManager : MonoBehaviour
         // Show Ad
         if (HomaBelly.Instance.IsRewardedVideoAdAvailable())
         {
-            HomaBelly.Instance.ShowRewardedVideoAd("Unlock Filter");   
+            HomaBelly.Instance.ShowRewardedVideoAd(PlacementName.UnlockPose);   
         }
     }
     
@@ -24,6 +24,10 @@ public class PoseManager : MonoBehaviour
         PlayerPrefs.SetInt("PoseAdWatched" + _currentPoseButtonId, 1);
         _poseButton.buttonImage.sprite = _poseButton.normalIcon; 
         GameManager.Instance.PlayPoseAnimation(_poseButton.animationId);
+        
+        // Rewarded Videos
+        // Rewarded Claimed Event
+        HomaBelly.Instance.TrackDesignEvent("rewarded:" + "taken" + ":" + PlacementName.UnlockPose);
         
         // Unsubscribe to Rewarded Video Ads
         Events.onRewardedVideoAdRewardedEvent -= OnRewardedVideoAdRewardedEvent;

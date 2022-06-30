@@ -52,6 +52,10 @@ public class CoolnessUpgrade : MonoBehaviour
                 _isAdEnabled = true;
                 _coolnessUpgradeButtonImage.sprite = watchAdCoolnessUpgradeIcon;
                 _costText.gameObject.SetActive(false);
+                
+                // Rewarded Videos
+                // Rewarded Suggested Event
+                HomaBelly.Instance.TrackDesignEvent("rewarded:" + "suggested" + ":" + PlacementName.UpgradeCoolness);
             }
             else
             {
@@ -121,7 +125,7 @@ public class CoolnessUpgrade : MonoBehaviour
                 // Show Ad
                 if (HomaBelly.Instance.IsRewardedVideoAdAvailable())
                 {
-                    HomaBelly.Instance.ShowRewardedVideoAd("Coolness Upgrade");
+                    HomaBelly.Instance.ShowRewardedVideoAd(PlacementName.UpgradeCoolness);
                 }
             }
         }
@@ -132,6 +136,10 @@ public class CoolnessUpgrade : MonoBehaviour
     {
         CoolnessUpgradeButtonEffects(_currentCoolnessLevel);
         CheckCoolnessUpgradeButtonTypeStatus();
+        
+        // Rewarded Videos
+        // Rewarded Claimed Event
+        HomaBelly.Instance.TrackDesignEvent("rewarded:" + "taken" + ":" + PlacementName.UpgradeCoolness);
         
         // Unsubscribe to Rewarded Video Ads
         Events.onRewardedVideoAdRewardedEvent -= OnRewardedVideoAdRewardedEvent;

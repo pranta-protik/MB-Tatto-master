@@ -46,6 +46,10 @@ public class ValueUpgrade : MonoBehaviour
             _isAdEnabled = true;
             _valueUpgradeButtonImage.sprite = watchAdValueUpgradeIcon;
             _costText.gameObject.SetActive(false);
+            
+            // Rewarded Videos
+            // Rewarded Suggested Event
+            HomaBelly.Instance.TrackDesignEvent("rewarded:" + "suggested" + ":" + PlacementName.UpgradeValue);
         }
         else
         {
@@ -108,7 +112,7 @@ public class ValueUpgrade : MonoBehaviour
             // Show Ad
             if (HomaBelly.Instance.IsRewardedVideoAdAvailable())
             {
-                HomaBelly.Instance.ShowRewardedVideoAd("Value Upgrade");
+                HomaBelly.Instance.ShowRewardedVideoAd(PlacementName.UpgradeValue);
             }
         }
     }
@@ -122,6 +126,10 @@ public class ValueUpgrade : MonoBehaviour
 
         ValueUpgradeButtonEffects(_priceTagTotalScore);
         CheckValueUpgradeButtonTypeStatus();
+        
+        // Rewarded Videos
+        // Rewarded Claimed Event
+        HomaBelly.Instance.TrackDesignEvent("rewarded:" + "taken" + ":" + PlacementName.UpgradeValue);
         
         // Unsubscribe to Rewarded Video Ads
         Events.onRewardedVideoAdRewardedEvent -= OnRewardedVideoAdRewardedEvent;

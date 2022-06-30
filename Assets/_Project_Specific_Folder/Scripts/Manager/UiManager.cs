@@ -205,12 +205,16 @@ public class UiManager : Singleton<UiManager>
     }
 
     #endregion
-
+    
     #region MainMenu Buttons
 
     public void OnInstagramGalleryButtonClick()
     {
         mainMenuInstagramGallery.SetActive(true);
+        
+        // Rewarded Videos
+        // Rewarded Suggested Event
+        HomaBelly.Instance.TrackDesignEvent("rewarded:" + "suggested" + ":" + PlacementName.UpdateUsername);
     }
 
     public void OnInstagramGalleryCloseButtonClick()
@@ -292,6 +296,10 @@ public class UiManager : Singleton<UiManager>
     {
         mobileScreen.SetActive(true);
         transitionScreen.SetActive(false);
+        
+        // Rewarded Videos
+        // Rewarded Suggested Event
+        HomaBelly.Instance.TrackDesignEvent("rewarded:" + "suggested" + ":" + PlacementName.UnlockPose);
     }
 
     public void MovePriceTag()

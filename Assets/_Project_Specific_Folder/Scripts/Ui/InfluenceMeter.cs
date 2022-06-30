@@ -165,7 +165,7 @@ public class InfluenceMeter : MonoBehaviour
         // Show Ad
         if (HomaBelly.Instance.IsRewardedVideoAdAvailable())
         {
-            HomaBelly.Instance.ShowRewardedVideoAd("Coolness Upgrade");
+            HomaBelly.Instance.ShowRewardedVideoAd(PlacementName.WrestleOpponent);
         }
     }
 
@@ -176,6 +176,10 @@ public class InfluenceMeter : MonoBehaviour
         
         GameManager.Instance.isWrestling = true;
         PlayerPrefs.SetInt("InfluncerFightStatus" + _influencerStatus.influencerId, 1);
+        
+        // Rewarded Videos
+        // Rewarded Claimed Event
+        HomaBelly.Instance.TrackDesignEvent("rewarded:" + "taken" + ":" + PlacementName.WrestleOpponent);
         
         // Unsubscribe to Rewarded Video Ads
         Events.onRewardedVideoAdRewardedEvent -= OnRewardedVideoAdRewardedEvent;
@@ -224,6 +228,10 @@ public class InfluenceMeter : MonoBehaviour
             _fightBanner.transform.GetChild(2).gameObject.SetActive(true);
             
             GameManager.Instance.isWrestling = false;
+            
+            // Rewarded Videos
+            // Rewarded Suggested Event
+            HomaBelly.Instance.TrackDesignEvent("rewarded:" + "suggested" + ":" + PlacementName.WrestleOpponent);
         }
     }
     
