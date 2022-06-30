@@ -1,3 +1,4 @@
+using HomaGames.HomaBelly;
 using UnityEngine;
 
 public class PoseManager : MonoBehaviour
@@ -7,10 +8,25 @@ public class PoseManager : MonoBehaviour
     
     private void WatchAd()
     {
-        Debug.Log("Ad Watched");
+        // Subscribe to Rewarded Video Ads
+        Events.onRewardedVideoAdRewardedEvent += OnRewardedVideoAdRewardedEvent;
+            
+        // Show Ad
+        if (HomaBelly.Instance.IsRewardedVideoAdAvailable())
+        {
+            HomaBelly.Instance.ShowRewardedVideoAd("Unlock Filter");   
+        }
+    }
+    
+    // Collect Ad Rewards
+    private void OnRewardedVideoAdRewardedEvent(VideoAdReward obj)
+    {
         PlayerPrefs.SetInt("PoseAdWatched" + _currentPoseButtonId, 1);
         _poseButton.buttonImage.sprite = _poseButton.normalIcon; 
         GameManager.Instance.PlayPoseAnimation(_poseButton.animationId);
+        
+        // Unsubscribe to Rewarded Video Ads
+        Events.onRewardedVideoAdRewardedEvent -= OnRewardedVideoAdRewardedEvent;
     }
 
     public void ResetPose()

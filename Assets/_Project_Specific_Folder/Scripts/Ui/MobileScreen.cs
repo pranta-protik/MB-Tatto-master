@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using DG.Tweening;
+using HomaGames.HomaBelly;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -98,10 +99,25 @@ public class MobileScreen : MonoBehaviour
     
     public void OnWatchAdButtonClick()
     {
-        Debug.Log("Ad Watched");
+        // Subscribe to Rewarded Video Ads
+        Events.onRewardedVideoAdRewardedEvent += OnRewardedVideoAdRewardedEvent;
+            
+        // Show Ad
+        if (HomaBelly.Instance.IsRewardedVideoAdAvailable())
+        {
+            HomaBelly.Instance.ShowRewardedVideoAd("Unlock Filter");   
+        }
+    }
+    
+    // Collect Ad Rewards
+    private void OnRewardedVideoAdRewardedEvent(VideoAdReward obj)
+    {
         PlayerPrefs.SetInt("FilterAdWatched" + _filterManager.currentFilterButtonId, 1);
         _captureButton.SetActive(true);
         _watchAdButton.SetActive(false);
         OnCaptureButtonClick();
+        
+        // Unsubscribe to Rewarded Video Ads
+        Events.onRewardedVideoAdRewardedEvent -= OnRewardedVideoAdRewardedEvent;
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using HomaGames.HomaBelly;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -129,13 +130,27 @@ public class SelectionMenu : MonoBehaviour
         }
         else
         {
-            Debug.Log("Ad Watched");
+            // Subscribe to Rewarded Video Ads
+            Events.onRewardedVideoAdRewardedEvent += OnRewardedVideoAdRewardedEvent;
             
-            UnlockButtonEffects();
-            CheckUnlockButtonTypeStatus();
+            // Show Ad
+            if (HomaBelly.Instance.IsRewardedVideoAdAvailable())
+            {
+                HomaBelly.Instance.ShowRewardedVideoAd("Unlock New Hand");   
+            }
         }
     }
 
+    // Collect Ad Rewards
+    private void OnRewardedVideoAdRewardedEvent(VideoAdReward obj)
+    {
+        UnlockButtonEffects();
+        CheckUnlockButtonTypeStatus();
+        
+        // Unsubscribe to Rewarded Video Ads
+        Events.onRewardedVideoAdRewardedEvent -= OnRewardedVideoAdRewardedEvent;
+    }
+    
     private void UnlockButtonEffects()
     {
         int currentUnlockAmount = PlayerPrefs.GetInt("UnlockAmount", 1);

@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using HomaGames.HomaBelly;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,14 +15,14 @@ public class MainMenuInstagramGallery : MonoBehaviour
     private TMP_Text _usernameText;
     private GameObject _changeUsernamePanel;
     private TMP_InputField _usernameInputField;
-    
+
     private void Start()
     {
         _scrollViewContentTransform = transform.GetChild(6).GetChild(0).GetChild(0).GetChild(0);
         _postsText = transform.GetChild(4).GetChild(1).GetComponent<TMP_Text>();
         _followersText = transform.GetChild(5).GetChild(1).GetComponent<TMP_Text>();
         _usernameText = transform.GetChild(2).GetComponent<TMP_Text>();
-        
+
         _changeUsernamePanel = transform.GetChild(8).gameObject;
         _usernameInputField = _changeUsernamePanel.transform.GetChild(1).GetComponent<TMP_InputField>();
 
@@ -30,7 +31,7 @@ public class MainMenuInstagramGallery : MonoBehaviour
 
         string currentFollowers = PlayerPrefs.GetString("CurrentFollowers");
         _followersText.SetText(currentFollowers == "" ? "0" : currentFollowers);
-        
+
         _usernameText.SetText(PlayerPrefs.GetString("Username"));
 
         SpawnPictureFrames(0, totalPhotos);
@@ -42,9 +43,10 @@ public class MainMenuInstagramGallery : MonoBehaviour
 
     private void SpawnPictureFrames(int startIndex, int totalPhotos)
     {
-        for (int i = totalPhotos-1; i >= startIndex; i--)
+        for (int i = totalPhotos - 1; i >= startIndex; i--)
         {
-            GameObject pictureFrameObj = Instantiate(pictureFramePrefab, _scrollViewContentTransform.position, Quaternion.identity, _scrollViewContentTransform);
+            GameObject pictureFrameObj =
+                Instantiate(pictureFramePrefab, _scrollViewContentTransform.position, Quaternion.identity, _scrollViewContentTransform);
 
             string filename = $"{Application.persistentDataPath}/Snapshots/" + (i + 1) + ".png";
 
@@ -68,8 +70,23 @@ public class MainMenuInstagramGallery : MonoBehaviour
 
     public void OnChangeUsernameButtonClick()
     {
-        Debug.Log("Ad Watched");
+        // Subscribe to Rewarded Video Ads
+        Events.onRewardedVideoAdRewardedEvent += OnRewardedVideoAdRewardedEvent;
+
+        // Show Ad
+        if (HomaBelly.Instance.IsRewardedVideoAdAvailable())
+        {
+            HomaBelly.Instance.ShowRewardedVideoAd("Update Username");
+        }
+    }
+
+    // Collect Ad Reward
+    private void OnRewardedVideoAdRewardedEvent(VideoAdReward obj)
+    {
         _changeUsernamePanel.SetActive(true);
+        
+        // Unsubscribe to Rewarded Video Ads
+        Events.onRewardedVideoAdRewardedEvent -= OnRewardedVideoAdRewardedEvent;
     }
 
     public void OnChangeUsernameCloseButtonClick()
@@ -80,14 +97,14 @@ public class MainMenuInstagramGallery : MonoBehaviour
     public void OnChangeUsernameDoneButtonClick()
     {
         string newUsername = _usernameInputField.text;
-        
+
         if (!String.IsNullOrWhiteSpace(newUsername))
         {
             PlayerPrefs.SetString("Username", newUsername);
         }
 
         _usernameText.SetText(PlayerPrefs.GetString("Username"));
-        
+
         _usernameInputField.text = "";
         _changeUsernamePanel.SetActive(false);
     }

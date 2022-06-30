@@ -1,4 +1,5 @@
 using DG.Tweening;
+using HomaGames.HomaBelly;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,6 +18,9 @@ public class ValueUpgrade : MonoBehaviour
     private TextMeshProUGUI _levelText;
     private Button _button;
     private bool _isAdEnabled;
+    private int _currentUpgradeAmount;
+    private int _currentPriceTagScore;
+    private int _priceTagTotalScore;
 
     private void Start()
     {
@@ -75,22 +79,22 @@ public class ValueUpgrade : MonoBehaviour
     
     public void OnValueUpgradeButtonClick()
     {
-        int currentUpgradeAmount = PlayerPrefs.GetInt("ValueUpgradeAmount", baseUpgradeAmount);
-        int currentPriceTagScore = PlayerPrefs.GetInt("PriceTagBaseScore", 0);
-        int priceTagTotalScore = currentPriceTagScore + currentUpgradeAmount;
+        _currentUpgradeAmount = PlayerPrefs.GetInt("ValueUpgradeAmount", baseUpgradeAmount);
+        _currentPriceTagScore = PlayerPrefs.GetInt("PriceTagBaseScore", 0);
+        _priceTagTotalScore = _currentPriceTagScore + _currentUpgradeAmount;
 
         if (!_isAdEnabled)
         {
             if (StorageManager.GetTotalScore() >= requiredScoreForValueUpgrade)
             {
-                StorageManager.Instance.SetCurrentScore(priceTagTotalScore);
+                StorageManager.Instance.SetCurrentScore(_priceTagTotalScore);
                 StorageManager.SetTotalScore(StorageManager.GetTotalScore() - requiredScoreForValueUpgrade);
                 
-                UiManager.Instance.UpdatePriceTag(priceTagTotalScore);
-                UiManager.Instance.ValueUpgradeEffect(currentUpgradeAmount);
+                UiManager.Instance.UpdatePriceTag(_priceTagTotalScore);
+                UiManager.Instance.ValueUpgradeEffect(_currentUpgradeAmount);
                 UiManager.Instance.UpdateTotalScoreText(StorageManager.GetTotalScore());
                 
-                ValueUpgradeButtonEffects(priceTagTotalScore);
+                ValueUpgradeButtonEffects(_priceTagTotalScore);
                 CheckValueUpgradeButtonTypeStatus();
             }
             CheckValueUpgradeButtonAvailability();
@@ -98,17 +102,31 @@ public class ValueUpgrade : MonoBehaviour
         }
         else
         {
-            Debug.Log("Ad Watched");
+            // Subscribe to Rewarded Video Ads
+            Events.onRewardedVideoAdRewardedEvent += OnRewardedVideoAdRewardedEvent;
             
-            StorageManager.Instance.SetCurrentScore(priceTagTotalScore);
-            UiManager.Instance.UpdatePriceTag(priceTagTotalScore);
-            UiManager.Instance.ValueUpgradeEffect(currentUpgradeAmount);
-
-            ValueUpgradeButtonEffects(priceTagTotalScore);
-            CheckValueUpgradeButtonTypeStatus();
+            // Show Ad
+            if (HomaBelly.Instance.IsRewardedVideoAdAvailable())
+            {
+                HomaBelly.Instance.ShowRewardedVideoAd("Value Upgrade");
+            }
         }
     }
 
+    // Collect Ad Rewards
+    private void OnRewardedVideoAdRewardedEvent(VideoAdReward obj)
+    {
+        StorageManager.Instance.SetCurrentScore(_priceTagTotalScore);
+        UiManager.Instance.UpdatePriceTag(_priceTagTotalScore);
+        UiManager.Instance.ValueUpgradeEffect(_currentUpgradeAmount);
+
+        ValueUpgradeButtonEffects(_priceTagTotalScore);
+        CheckValueUpgradeButtonTypeStatus();
+        
+        // Unsubscribe to Rewarded Video Ads
+        Events.onRewardedVideoAdRewardedEvent -= OnRewardedVideoAdRewardedEvent;
+    }
+    
     private void ValueUpgradeButtonEffects(int totalScore)
     {
         PlayerPrefs.SetInt("PriceTagBaseScore", totalScore);

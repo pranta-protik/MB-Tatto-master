@@ -1,4 +1,5 @@
 using DG.Tweening;
+using HomaGames.HomaBelly;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,6 +18,7 @@ public class CoolnessUpgrade : MonoBehaviour
     private TextMeshProUGUI _levelText;
     private bool _isAdEnabled;
     private bool _isMaxedOut;
+    private int _currentCoolnessLevel;
 
     private void Start()
     {
@@ -88,14 +90,14 @@ public class CoolnessUpgrade : MonoBehaviour
         _levelText.gameObject.SetActive(false);
         _button.interactable = false;
     }
-
+    
     public void OnCoolnessUpgradeButtonClick()
     {
-        int currentCoolnessLevel = PlayerPrefs.GetInt("CoolnessUpgradeLevel", 1);
-        
-        if (currentCoolnessLevel < GameManager.Instance.GetTotalTattooGunAmount() * 2)
+        _currentCoolnessLevel = PlayerPrefs.GetInt("CoolnessUpgradeLevel", 1);
+
+        if (_currentCoolnessLevel < GameManager.Instance.GetTotalTattooGunAmount() * 2)
         {
-            currentCoolnessLevel += 1;
+            _currentCoolnessLevel += 1;
 
             if (!_isAdEnabled)
             {
@@ -105,7 +107,7 @@ public class CoolnessUpgrade : MonoBehaviour
                     
                     UiManager.Instance.UpdateTotalScoreText(StorageManager.GetTotalScore());
                     
-                    CoolnessUpgradeButtonEffects(currentCoolnessLevel);
+                    CoolnessUpgradeButtonEffects(_currentCoolnessLevel);
                     CheckCoolnessUpgradeButtonTypeStatus();
                 }
                 CheckCoolnessUpgradeButtonAvailability();
@@ -113,14 +115,28 @@ public class CoolnessUpgrade : MonoBehaviour
             }
             else
             {
-                Debug.Log("Ad Watched");
+                // Subscribe to Rewarded Video Ads
+                Events.onRewardedVideoAdRewardedEvent += OnRewardedVideoAdRewardedEvent;
                 
-                CoolnessUpgradeButtonEffects(currentCoolnessLevel);
-                CheckCoolnessUpgradeButtonTypeStatus();   
+                // Show Ad
+                if (HomaBelly.Instance.IsRewardedVideoAdAvailable())
+                {
+                    HomaBelly.Instance.ShowRewardedVideoAd("Coolness Upgrade");
+                }
             }
         }
     }
 
+    // Collect Ad Rewards
+    private void OnRewardedVideoAdRewardedEvent(VideoAdReward obj)
+    {
+        CoolnessUpgradeButtonEffects(_currentCoolnessLevel);
+        CheckCoolnessUpgradeButtonTypeStatus();
+        
+        // Unsubscribe to Rewarded Video Ads
+        Events.onRewardedVideoAdRewardedEvent -= OnRewardedVideoAdRewardedEvent;
+    }
+    
     private void CoolnessUpgradeButtonEffects(int coolnessLevel)
     {
         if (coolnessLevel <= GameManager.Instance.GetTotalTattooGunAmount())
