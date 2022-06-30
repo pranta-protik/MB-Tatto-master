@@ -124,6 +124,8 @@ public class SelectionMenu : MonoBehaviour
                 CheckUnlockButtonTypeStatus();
             }
             CheckUnlockButtonAvailability();
+            UiManager.Instance.valueUpgradeButton.GetComponent<ValueUpgrade>().CheckValueUpgradeButtonAvailability();
+            UiManager.Instance.coolnessUpgradeButton.GetComponent<CoolnessUpgrade>().CheckCoolnessUpgradeButtonAvailability();
         }
         else
         {
