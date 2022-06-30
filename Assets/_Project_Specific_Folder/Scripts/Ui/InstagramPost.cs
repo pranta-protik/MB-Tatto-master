@@ -32,10 +32,10 @@ public class InstagramPost : MonoBehaviour
             _commentIndexList.Remove(commentIndex);
             
             commentImage.sprite = commentSprites[commentIndex];
-            commentImage.DOFade(0f, 2f);
+            commentImage.DOFade(0f, 2f).SetDelay(1f);
             
-            commentObj.transform.DOMoveY(commentObj.transform.position.y + popUpDistance, 2f);
-            yield return new WaitForSeconds(0.3f);
+            commentObj.transform.DOMoveY(commentObj.transform.position.y + popUpDistance, 3f);
+            yield return new WaitForSeconds(0.5f);
         }
     }
 }

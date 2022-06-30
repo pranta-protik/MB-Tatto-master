@@ -663,7 +663,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Skip
+  m_text: SKIP
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9764b6c67f9977c4693394f44832eb3b, type: 2}
   m_sharedMaterial: {fileID: 8646366750839733863, guid: 9764b6c67f9977c4693394f44832eb3b, type: 2}
@@ -907,7 +907,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 415, y: 165}
+  m_AnchoredPosition: {x: 470, y: 165}
   m_SizeDelta: {x: 532, y: 34.289062}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &78536035 stripped
@@ -3457,7 +3457,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 80, y: 352}
-  m_SizeDelta: {x: 160, y: 755}
+  m_SizeDelta: {x: 160, y: 770}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &352690122
 MonoBehaviour:
@@ -3472,14 +3472,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.16037738, g: 0.16037738, b: 0.16037738, a: 0.39215687}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: e041f4d140d88ee48852c3ebbc86184e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4508,7 +4508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.392}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6056,7 +6056,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -160, y: -680}
+  m_AnchoredPosition: {x: 0, y: -1650}
   m_SizeDelta: {x: 200, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &591956915
@@ -12882,7 +12882,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 707b68ad4ad30db45940fad73110255d, type: 3}
   comment: {fileID: 4313858314658679670, guid: d9241404a9de936488629de30fc65f39, type: 3}
   commentSpawnTransform: {fileID: 75757013}
-  popUpDistance: 3
+  popUpDistance: 4
 --- !u!1 &852909857
 GameObject:
   m_ObjectHideFlags: 0
@@ -21138,7 +21138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1138941466
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21354,7 +21354,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 100
+  far clip plane: 1000
   field of view: 58
   orthographic: 0
   orthographic size: 5
@@ -22205,14 +22205,14 @@ RectTransform:
   m_GameObject: {fileID: 1270914697}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_Children: []
   m_Father: {fileID: 1231358807}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 160, y: -670}
+  m_AnchoredPosition: {x: 0, y: -1220}
   m_SizeDelta: {x: 504, y: 494}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1270914699
@@ -23218,7 +23218,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1392618667
 RectTransform:
   m_ObjectHideFlags: 0
@@ -23542,7 +23542,7 @@ RectTransform:
   - {fileID: 8022921452520217181}
   - {fileID: 1946429170}
   m_Father: {fileID: 5443246868219738669}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -25151,7 +25151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6226415, g: 0.6226415, b: 0.6226415, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -27470,7 +27470,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 65}
   m_SizeDelta: {x: 511.1347, y: 642.99994}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1770990394
@@ -27869,7 +27869,7 @@ RectTransform:
   - {fileID: 469680222}
   - {fileID: 1188150164}
   m_Father: {fileID: 5443246868219738669}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -27892,11 +27892,11 @@ MonoBehaviour:
   - playerIconYPosition: 70
     crossedOpponent: {fileID: 0}
   - playerIconYPosition: 125
-    crossedOpponent: {fileID: 0}
+    crossedOpponent: {fileID: 317713120}
   - playerIconYPosition: 180
-    crossedOpponent: {fileID: 0}
+    crossedOpponent: {fileID: 920170291}
   - playerIconYPosition: 235
-    crossedOpponent: {fileID: 0}
+    crossedOpponent: {fileID: 1728578066}
   - playerIconYPosition: 290
     crossedOpponent: {fileID: 0}
   - playerIconYPosition: 320
@@ -40338,10 +40338,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalValueUpgradeIcon: {fileID: 21300000, guid: 01be37eafb113b443baf63598109507d, type: 3}
   watchAdValueUpgradeIcon: {fileID: 21300000, guid: d6c039c32fe7a1f498ac2e0a7a60ff8e, type: 3}
-  baseUpgradeAmount: 25
+  baseUpgradeAmount: 250
   upgradeMultiplier: 2
   requiredScoreForValueUpgrade: 100
-  startingLevelForUpgradeValueWatchingAd: 250
+  startingLevelForUpgradeValueWatchingAd: 3
 --- !u!1 &2065474232
 GameObject:
   m_ObjectHideFlags: 0
@@ -46554,7 +46554,7 @@ RectTransform:
   m_Children:
   - {fileID: 1698252273177935256}
   m_Father: {fileID: 5443246868219738669}
-  m_RootOrder: 16
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -48920,9 +48920,9 @@ RectTransform:
   - {fileID: 943916263}
   - {fileID: 845298534}
   - {fileID: 1990013024}
+  - {fileID: 1698252271999335888}
   - {fileID: 1804672027}
   - {fileID: 1435500671}
-  - {fileID: 1698252271999335888}
   - {fileID: 1138941466}
   m_Father: {fileID: 5443219694862341667}
   m_RootOrder: 0

@@ -108,6 +108,11 @@ public class UiManager : Singleton<UiManager>
             {
                 valueUpgradeButton.SetActive(false);
             }
+
+            if (totalScoreText != null)
+            {
+                totalScoreText.transform.parent.gameObject.SetActive(false);
+            }
         }
 
         if (totalScoreText!= null)
