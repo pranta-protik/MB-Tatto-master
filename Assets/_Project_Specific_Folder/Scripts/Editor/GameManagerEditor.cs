@@ -24,9 +24,11 @@ public class GameManagerEditor : Editor
         EditorGUILayout.PropertyField(serializedObject.FindProperty("tattooGunSpawnEffect"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("tattooEffect"));
         
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("isAdEnabled"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("isBannerAdEnabled"));
+        
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("isInterstitialAdEnabled"));
 
-        if (gameManager.isAdEnabled)
+        if (gameManager.isInterstitialAdEnabled)
         {
             EditorGUILayout.PropertyField(serializedObject.FindProperty("interstitialAdStartLevel"));
         }

@@ -1,7 +1,10 @@
-﻿using System;
+﻿#if UNITY_ANDROID || UNITY_IOS
+#define HOMA_BELLY_INSTALL_SUPPORTED
+#endif
+using System;
 using System.Threading.Tasks;
 using HomaGames.HomaBelly;
-using HomaGames.HomaBelly.Utilities;
+using HomaGames.HomaBelly.Installer.Utilities;
 using UnityEditor;
 using UnityEngine;
 
@@ -23,7 +26,10 @@ public class HomaBellyInstallWindow : HomaBellyBaseWindow
     {
         Vector2 originalIconSize = EditorGUIUtility.GetIconSize();
         EditorGUIUtility.SetIconSize(new Vector2(32, 32));
-        
+#if !HOMA_BELLY_INSTALL_SUPPORTED
+        var guiPreviouslyEnabled = GUI.enabled;
+        GUI.enabled = false;
+#endif
         GUILayout.Label("Enter your app token:", HomaGamesStyle.CenteredBoldText);
 
         // Input field
@@ -108,7 +114,9 @@ public class HomaBellyInstallWindow : HomaBellyBaseWindow
 
         GUILayout.FlexibleSpace();
         GUILayout.EndHorizontal();
-
+#if !HOMA_BELLY_INSTALL_SUPPORTED
+        GUI.enabled = guiPreviouslyEnabled;
+#endif
         // Display error (if any)
         DisplayError();
         
@@ -154,6 +162,10 @@ public class HomaBellyInstallWindow : HomaBellyBaseWindow
                 }
             }
         }
+#if !HOMA_BELLY_INSTALL_SUPPORTED
+        GUILayout.Label("Homa Belly is only supported for Android and iOS targets.\n Please change the target in Unity Build Settings.",
+            HomaGamesStyle.ErrorLabelStyle);
+#endif
     }
 
     private bool IsValidAppToken(string appToken)

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HomaGames.HomaBelly.Utilities
+namespace HomaGames.HomaBelly.Installer.Utilities
 {
     /// <summary>
     /// Exception to be thrown by EditorHttpCaller when the API returns

@@ -9,7 +9,6 @@ using MySDK;
 using PathCreation;
 using HomaGames.HomaBelly;
 using GameAnalyticsSDK;
-using UnityEngine.Serialization;
 
 public enum ERotationAxis
 {
@@ -41,8 +40,9 @@ public class GameManager : Singleton<GameManager>
     }
 
     public int totalLevelNo = 50;
-    [Header("Ad Section")]
-    public bool isAdEnabled;
+    [Header("Ad Section")] 
+    public bool isBannerAdEnabled;
+    public bool isInterstitialAdEnabled;
     public int interstitialAdStartLevel;
     public EGameMode gameMode;
     public int currentTattooGunLevel;
@@ -149,7 +149,7 @@ public class GameManager : Singleton<GameManager>
         UAManager.Instance.handId = PlayerPrefs.GetInt("SelectedHandCardId", 0);
         
         // Banner Ad
-        if (isAdEnabled)
+        if (isBannerAdEnabled)
         {
             Events.onBannerAdLoadedEvent+= OnBannerAdLoadedEvent;
             HomaBelly.Instance.LoadBanner();    
@@ -209,8 +209,13 @@ public class GameManager : Singleton<GameManager>
                     {
                         _timerInitialValue += 0.12f;
 
-                        _wrestlingPivot.GetComponent<Rotator>().enabled = false;
-                        _wrestlingPivot.transform.DOLocalRotate(new Vector3(_wrestlingPivot.transform.eulerAngles.x + _timerInitialValue + 16f, 0f, 0f), 0.1f);
+                        if (_wrestlingPivot != null)
+                        {
+                            _wrestlingPivot.GetComponent<Rotator>().enabled = false;
+                            _wrestlingPivot.transform.DOLocalRotate(new Vector3(_wrestlingPivot.transform.eulerAngles.x + _timerInitialValue + 16f, 0f, 0f),
+                                0.1f);
+                        }
+
                         _mainCamera.transform.DOShakePosition(1.5f, 0.01f);
                         _mainCamera.DOFieldOfView(55, 2f);
                         _isClicked = true;
@@ -225,7 +230,11 @@ public class GameManager : Singleton<GameManager>
                         if (_timeLeft < 0)
                         {
                             _timeLeft = 0.4f;
-                            _wrestlingPivot.transform.DOLocalRotate(new Vector3(-22f, 0f, 0f), 1.5f).SetEase(Ease.InSine);
+                            if (_wrestlingPivot != null)
+                            {
+                                _wrestlingPivot.transform.DOLocalRotate(new Vector3(-22f, 0f, 0f), 1.5f).SetEase(Ease.InSine);
+                            }
+
                             _isClicked = false;
                         }
                     }

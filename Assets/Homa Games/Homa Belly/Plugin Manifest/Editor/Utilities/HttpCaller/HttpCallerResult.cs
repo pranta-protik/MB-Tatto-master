@@ -1,4 +1,4 @@
-﻿namespace HomaGames.HomaBelly.Utilities
+﻿namespace HomaGames.HomaBelly.Installer.Utilities
 {
     /// <summary>
     /// Result object returned from IHttpCaller

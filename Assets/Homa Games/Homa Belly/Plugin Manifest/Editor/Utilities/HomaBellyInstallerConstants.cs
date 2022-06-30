@@ -3,7 +3,7 @@
     public static class HomaBellyInstallerConstants
     {
         public static string PRODUCT_NAME = "Homa Belly";
-        public static string PRODUCT_VERSION = "1.4.2";
+        public static string PRODUCT_VERSION = "1.4.3";
 #if !HOMA_BELLY_DEV_ENV
         public static string API_HOST = "https://damysus-engine.homagames.com";
 #else

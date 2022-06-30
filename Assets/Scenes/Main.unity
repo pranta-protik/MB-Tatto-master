@@ -6937,7 +6937,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 0.35
@@ -22446,7 +22446,8 @@ MonoBehaviour:
   DontDestroyLoad: 0
   m_IsSingletonLogsEnabled: 0
   totalLevelNo: 50
-  isAdEnabled: 1
+  isBannerAdEnabled: 1
+  isInterstitialAdEnabled: 1
   interstitialAdStartLevel: 3
   gameMode: 0
   currentTattooGunLevel: 0

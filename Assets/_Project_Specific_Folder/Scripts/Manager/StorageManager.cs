@@ -1,6 +1,5 @@
 using UnityEngine;
 using Singleton;
-using HomaGames.HomaConsole.Core.Attributes;
 
 public class StorageManager : Singleton<StorageManager>
 {
@@ -13,7 +12,7 @@ public class StorageManager : Singleton<StorageManager>
     public override void Start()
     {
         base.Start();
-        SetCurrentScore(PlayerPrefs.GetInt("BaseScore", 0));
+        SetCurrentScore(PlayerPrefs.GetInt("PriceTagBaseScore", 0));
     }
 
     public int GetCurrentScore()

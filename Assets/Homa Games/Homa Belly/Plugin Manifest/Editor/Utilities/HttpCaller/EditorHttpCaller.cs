@@ -5,11 +5,13 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using HomaGames.HomaBelly.Installer;
 using HomaGames.HomaBelly.Installer.Utilities;
 
 namespace HomaGames.HomaBelly.Utilities
 {
 #if UNITY_EDITOR
+    [Obsolete("Use the EditorHttpCaller included in Homa Belly Core instead.")]
     public class EditorHttpCaller<T>
     {
         #region IHttpCaller implementation

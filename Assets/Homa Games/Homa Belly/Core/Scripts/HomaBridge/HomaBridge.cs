@@ -61,7 +61,6 @@ namespace HomaGames.HomaBelly
 
             // Initialize
             InitializeMediators();
-            InitializeAttributions();
             InitializeAnalytics();
             InitializeCustomerSupport();
 
@@ -77,6 +76,7 @@ namespace HomaGames.HomaBelly
         private void InitializeRemoteConfigurationDependantComponents(RemoteConfiguration.RemoteConfigurationSetup remoteConfigurationSetup)
         {
             CrossPromotionManager.Initialize(remoteConfigurationSetup);
+            InitializeAttributions(remoteConfigurationSetup);
         }
 
         public void SetDebug(bool enabled)
@@ -667,12 +667,17 @@ namespace HomaGames.HomaBelly
 
 #region Attributions
 
-        private void InitializeAttributions()
+        private void InitializeAttributions(RemoteConfiguration.RemoteConfigurationSetup remoteConfigurationSetup)
         {
             if (!HomaBridgeDependencies.GetAttributions(out var attributions))
             {
                 HomaGamesLog.Warning($"[Homa Belly] No attribution services found in this project.");
                 return;
+            }
+
+            if (remoteConfigurationSetup?.AttributionConfigurationModel?.DisableSingular == true)
+            {
+                attributions.RemoveAll(attribution => attribution.GetType().FullName?.Contains("Singular") == true);
             }
             
             // If Geryon Scope and Variant IDs are found, report it to all Attribution

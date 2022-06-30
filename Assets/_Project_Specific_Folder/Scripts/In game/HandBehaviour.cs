@@ -334,7 +334,7 @@ public class HandBehaviour : MonoBehaviour
             if (levelId >= GameManager.Instance.interstitialAdStartLevel)
             {
                 // Check if ad is available
-                if(HomaBelly.Instance.IsInterstitialAvailable() && GameManager.Instance.isAdEnabled)
+                if(HomaBelly.Instance.IsInterstitialAvailable() && GameManager.Instance.isInterstitialAdEnabled)
                 {
                     HomaBelly.Instance.ShowInterstitial("Level End Ad");    
                 }
@@ -428,6 +428,7 @@ public class HandBehaviour : MonoBehaviour
     private void UpdateScore(int cost, bool isGood)
     {
         int score = StorageManager.Instance.GetCurrentScore();
+        
         string scoreText;
         Color color;
 
