@@ -4,6 +4,7 @@ using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
 using HomaGames.HomaBelly.Utilities;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -25,6 +26,8 @@ namespace HomaGames.HomaBelly
         {
             public string AppToken;
             public CrossPromotionConfigurationModel CrossPromotionConfigurationModel;
+            public AttributionConfigurationModel AttributionConfigurationModel;
+            
         }
 
         #region Public methods
@@ -38,6 +41,7 @@ namespace HomaGames.HomaBelly
         public static async Task<RemoteConfigurationSetup> FetchRemoteConfiguration()
         {
             RemoteConfigurationSetup everyTimeResult = new RemoteConfigurationSetup();
+            int everyTimeTimeout = 10_000;
 
             try
             {
@@ -55,7 +59,8 @@ namespace HomaGames.HomaBelly
                         // We are not interested in FIRST TIME response, so we just ignore it
                         HomaGamesLog.Debug($"[Remote Configuration] Requesting first time config {firstTimeUri}...");
 
-                        await Get(firstTimeUri);
+                        await Get(firstTimeUri, 5_000);
+                        everyTimeTimeout = 5_000;
 
                         PlayerPrefs.SetInt(RemoteConfigurationConstants.FIRST_TIME_ALREADY_REQUESTED, 1);
                         PlayerPrefs.Save();
@@ -64,7 +69,7 @@ namespace HomaGames.HomaBelly
 
                     HomaGamesLog.Debug($"[Remote Configuration] Requesting every time config {everyTimeUri}");
 
-                    everyTimeResult = await Get(everyTimeUri);
+                    everyTimeResult = await Get(everyTimeUri, everyTimeTimeout);
 
                     HomaGamesLog.Debug($"[Remote Configuration] Done");
                 }
@@ -98,18 +103,18 @@ namespace HomaGames.HomaBelly
         }
 
 
-
         /// <summary>
         /// Asynchornous Http GET request
         /// </summary>
         /// <param name="uri">The URI to query</param>
+        /// <param name="timeout">The timeout delay</param>
         /// <returns></returns>
-        private static async Task<RemoteConfigurationSetup> Get(string uri)
+        private static async Task<RemoteConfigurationSetup> Get(string uri, int timeout = Int32.MaxValue)
         {
             using (HttpClient client = HttpCaller.GetHttpClient())
             {
-                HttpResponseMessage response = await client.GetAsync(uri).ConfigureAwait(false);
-                if (response.IsSuccessStatusCode)
+                HttpResponseMessage response = await client.GetAsync(uri).AddTimeout(timeout);
+                if (response != null && response.IsSuccessStatusCode)
                 {
                     string resultString = await response.Content.ReadAsStringAsync();
 
@@ -132,6 +137,7 @@ namespace HomaGames.HomaBelly
                         {
                             Dictionary<string, object> resDictionary = (Dictionary<string, object>) dictionary["res"];
                             remoteConfigurationSetup.CrossPromotionConfigurationModel = CrossPromotionConfigurationModel.FromRemoteConfigurationDictionary(resDictionary);
+                            remoteConfigurationSetup.AttributionConfigurationModel = AttributionConfigurationModel.FromRemoteConfigurationDictionary(resDictionary);
                         }
                     }
 
@@ -143,5 +149,16 @@ namespace HomaGames.HomaBelly
             return default;
         }
 #endregion
+    }
+    
+    public static class TaskExtension {
+        public static async Task<T> AddTimeout<T>(this Task<T> task, int delayMs)
+        {
+            Task resultTask = await Task.WhenAny(task, Task.Delay(delayMs));
+            if (resultTask == task)
+                return task.Result;
+
+            return default;
+        }
     }
 }

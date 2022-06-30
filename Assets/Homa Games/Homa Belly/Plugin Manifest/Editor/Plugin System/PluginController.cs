@@ -1,13 +1,13 @@
 ﻿using System.Threading.Tasks;
-using HomaGames.HomaBelly.Utilities;
 using HomaGames.HomaBelly.Installer.Utilities;
+using HomaGames.HomaBelly.Utilities;
 using UnityEditor;
 
 namespace HomaGames.HomaBelly
 {
     public class PluginController
     {
-        private EditorHttpCaller<PluginManifest> editorHttpCaller;
+        private Installer.Utilities.EditorHttpCaller<PluginManifest> editorHttpCaller;
         private PluginManifestDeserializer pluginManifestDeserializer;
         private PackageInstaller packageInstaller;
         private PackageDownloader packageDownloader;
@@ -20,7 +20,7 @@ namespace HomaGames.HomaBelly
             packageInstaller = new PackageInstaller();
             packageDownloader = new PackageDownloader();
             packageUninstaller = new PackageUninstaller();
-            editorHttpCaller = new EditorHttpCaller<PluginManifest>();
+            editorHttpCaller = new Installer.Utilities.EditorHttpCaller<PluginManifest>();
             pluginManifestDeserializer = new PluginManifestDeserializer();
             latestInstalledManifest = PluginManifest.LoadFromLocalFile();
         }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using HomaGames.HomaBelly;
 using TMPro;
 using MoreMountains.NiceVibrations;
 using Random = UnityEngine.Random;
@@ -327,6 +328,18 @@ public class HandBehaviour : MonoBehaviour
             // For Homa UA 
             // _camera.GetComponent<CameraController>().ResetCamPosYZ();
 
+            // Interstitial Ad
+            int levelId = (PlayerPrefs.GetInt("current_scene_text", 0) + 1);
+            
+            if (levelId >= GameManager.Instance.interstitialAdStartLevel)
+            {
+                // Check if ad is available
+                if(HomaBelly.Instance.IsInterstitialAvailable() && GameManager.Instance.isInterstitialAdEnabled)
+                {
+                    HomaBelly.Instance.ShowInterstitial("Level End Ad");    
+                }
+            }
+            
             other.GetComponent<Collider>().enabled = false;
             UiManager.Instance.ClearUIOnFinishLine();
 
@@ -415,6 +428,7 @@ public class HandBehaviour : MonoBehaviour
     private void UpdateScore(int cost, bool isGood)
     {
         int score = StorageManager.Instance.GetCurrentScore();
+        
         string scoreText;
         Color color;
 

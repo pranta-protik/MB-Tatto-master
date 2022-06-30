@@ -11,13 +11,13 @@ namespace HomaGames.HomaBelly.Utilities
     /// </summary>
     public class PackageDownloader
     {
-        private EditorHttpCaller<string> httpCaller;
+        private HomaGames.HomaBelly.Installer.Utilities.EditorHttpCaller<string> httpCaller;
         private float numberOfPackagesToBeDownloaded = 0;
         private float numberOfPackagesAlreadyDownloaded = 0;
 
         public PackageDownloader()
         {
-            httpCaller = new EditorHttpCaller<string>();
+            httpCaller = new Installer.Utilities.EditorHttpCaller<string>();
         }
 
         /// <summary>

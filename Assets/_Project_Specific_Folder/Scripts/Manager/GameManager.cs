@@ -40,7 +40,9 @@ public class GameManager : Singleton<GameManager>
     }
 
     public int totalLevelNo = 50;
-    public bool isAdEnabled;
+    [Header("Ad Section")] 
+    public bool isBannerAdEnabled;
+    public bool isInterstitialAdEnabled;
     public int interstitialAdStartLevel;
     public EGameMode gameMode;
     public int currentTattooGunLevel;
@@ -55,12 +57,23 @@ public class GameManager : Singleton<GameManager>
     [HideInInspector] public PathCreator pathCreator;
     [HideInInspector] public bool hasGameStarted;
     [HideInInspector] public bool isGameOver;
+    [HideInInspector] public bool isGoldenTattooGunActivated;
+    [HideInInspector] public bool isWrestling;
     
-    [SerializeField] private List<GameObject> tattooGuns =  new List<GameObject>();
-    [SerializeField] private GameObject tattooGunSpawnEffect;
-    [SerializeField] private GameObject tattooEffect;
     [SerializeField] private Transform wrestlingCameraTransform;
     [SerializeField] private int specificLevelId;
+    
+    [Header("Tattoo Gun Section")]
+    [SerializeField] private List<GameObject> tattooGuns =  new List<GameObject>();
+    [SerializeField] private Color goldenTattooGunMaterialColor;
+    [SerializeField] private float goldenTattooGunMaterialSmoothness;
+    [SerializeField] private float goldenTattooGunMaterialMetallic;
+    [SerializeField] private GameObject tattooGunSpawnEffect;
+    [SerializeField] private GameObject tattooEffect;
+    [SerializeField] private PostProcessHandler postProcessHandler;
+    
+    private static readonly int SHPropSmoothness = Shader.PropertyToID("_Glossiness");
+    private static readonly int SHPropMetallic = Shader.PropertyToID("_Metallic");
     
     private int _handId;
     private HandBehaviour _mainHandBehaviour;
@@ -72,7 +85,6 @@ public class GameManager : Singleton<GameManager>
     private GameObject _fightingRing;
     private GameObject _wrestlingPivot;
     private Leveldetails _levelDetails;
-    private bool _isWrestling;
     private float _timeLeft;
     private float _timerInitialValue;
     private bool _isClicked;
@@ -123,18 +135,35 @@ public class GameManager : Singleton<GameManager>
         if (currentTattooGunLevel >= GetTotalTattooGunAmount())
         {
             currentTattooGunLevel %= GetTotalTattooGunAmount();
+            
+            isGoldenTattooGunActivated = true;
         }
 
         tattooGuns[currentTattooGunLevel].SetActive(true);
 
+        if (isGoldenTattooGunActivated)
+        {
+            UpdateTattooGunMaterial(tattooGuns[currentTattooGunLevel].GetComponent<MeshRenderer>());
+        }
+
         UAManager.Instance.handId = PlayerPrefs.GetInt("SelectedHandCardId", 0);
         
         // Banner Ad
-        if (isAdEnabled)
+        if (isBannerAdEnabled)
         {
             Events.onBannerAdLoadedEvent+= OnBannerAdLoadedEvent;
             HomaBelly.Instance.LoadBanner();    
         }
+    }
+
+    private void UpdateTattooGunMaterial(MeshRenderer meshRenderer)
+    {
+        Material material = meshRenderer.material;
+        
+        material.mainTexture = null;
+        material.color = goldenTattooGunMaterialColor;
+        material.SetFloat(SHPropSmoothness, goldenTattooGunMaterialSmoothness);
+        material.SetFloat(SHPropMetallic, goldenTattooGunMaterialMetallic);
     }
 
     private void OnBannerAdLoadedEvent(string obj)
@@ -143,7 +172,7 @@ public class GameManager : Singleton<GameManager>
     }
 
     private void Update()
-    {  
+    {
         if (_bossParent == null)
         {
             _bossParent = GameObject.Find("Bosses");
@@ -159,54 +188,66 @@ public class GameManager : Singleton<GameManager>
         {
             return;
         }
-        
-        if (Input.GetMouseButton(0))
-        {
-            if (_wrestlingPivot != null)
-            {
-                _wrestlingPivot.transform.DOKill();
-            }
-        }
-        
-        if (_isWrestling && !isGameOver)
-        {
-            if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
-            {
-                _timeLeft = 0.4f;
 
-                if (_timerInitialValue < 1f)
+        if (isWrestling)
+        {
+            if (Input.GetMouseButton(0))
+            {
+                if (_wrestlingPivot != null)
                 {
-                    _timerInitialValue += 0.12f;
-
-                    _wrestlingPivot.GetComponent<Rotator>().enabled = false;
-                    _wrestlingPivot.transform.DOLocalRotate(new Vector3(_wrestlingPivot.transform.eulerAngles.x + _timerInitialValue + 16f, 0f, 0f), 0.1f);
-                    _mainCamera.transform.DOShakePosition(1.5f, 0.01f);
-                    _mainCamera.DOFieldOfView(55, 2f);
-                    _isClicked = true;
+                    _wrestlingPivot.transform.DOKill();
                 }
             }
-            else
-            {
-                if (_isClicked)
-                {
-                    _timeLeft -= Time.deltaTime;
 
-                    if (_timeLeft < 0)
+            if (!isGameOver)
+            {
+                if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
+                {
+                    _timeLeft = 0.4f;
+
+                    if (_timerInitialValue < 1f)
                     {
-                        _timeLeft = 0.4f;
-                        _wrestlingPivot.transform.DOLocalRotate(new Vector3(-22f, 0f, 0f), 1.5f).SetEase(Ease.InSine);
-                        _isClicked = false;
+                        _timerInitialValue += 0.12f;
+
+                        if (_wrestlingPivot != null)
+                        {
+                            _wrestlingPivot.GetComponent<Rotator>().enabled = false;
+                            _wrestlingPivot.transform.DOLocalRotate(new Vector3(_wrestlingPivot.transform.eulerAngles.x + _timerInitialValue + 16f, 0f, 0f),
+                                0.1f);
+                        }
+
+                        _mainCamera.transform.DOShakePosition(1.5f, 0.01f);
+                        _mainCamera.DOFieldOfView(55, 2f);
+                        _isClicked = true;
                     }
                 }
-            }
+                else
+                {
+                    if (_isClicked)
+                    {
+                        _timeLeft -= Time.deltaTime;
 
-            if (_timerInitialValue > 0)
-            {
-                _timerInitialValue -= 0.0071f;
+                        if (_timeLeft < 0)
+                        {
+                            _timeLeft = 0.4f;
+                            if (_wrestlingPivot != null)
+                            {
+                                _wrestlingPivot.transform.DOLocalRotate(new Vector3(-22f, 0f, 0f), 1.5f).SetEase(Ease.InSine);
+                            }
+
+                            _isClicked = false;
+                        }
+                    }
+                }
+
+                if (_timerInitialValue > 0)
+                {
+                    _timerInitialValue -= 0.0071f;
+                }
             }
         }
     }
-    
+
     public void PlayPoseAnimation(int index)
     {
         _mainHandBehaviour.PlayPoseAnimation(index);
@@ -226,11 +267,14 @@ public class GameManager : Singleton<GameManager>
 
     public void UpgradeTattooGun()
     {
-        Debug.Log(currentTattooGunLevel);
-
         tattooGuns[currentTattooGunLevel == 0 ? GetTotalTattooGunAmount() - 1 : currentTattooGunLevel - 1].SetActive(false);
         tattooGuns[currentTattooGunLevel].SetActive(true);
 
+        if (isGoldenTattooGunActivated)
+        {
+            UpdateTattooGunMaterial(tattooGuns[currentTattooGunLevel].GetComponent<MeshRenderer>());
+        }
+        
         tattooGunSpawnEffect.GetComponent<ParticleSystem>().Play();
 
         int currentTattooLevel = PlayerPrefs.GetInt("CurrentTattooTypeLevel" + _levelDetails.tattooId, 0);
@@ -379,6 +423,8 @@ public class GameManager : Singleton<GameManager>
 
     public void WrestlingSetup(int bossHandId)
     {
+        postProcessHandler.RemoveAllEffects();
+        
         _currentBoss = _bossParent.transform.GetChild(bossHandId).gameObject;
         
         Transform mainHandTransform = _mainHandBehaviour.transform.parent;
@@ -414,7 +460,6 @@ public class GameManager : Singleton<GameManager>
         endTransform.GetChild(4).GetComponent<EndDetector>().endEffect.Play();
         _wrestlingPivot.GetComponent<Rotator>().enabled = true;
         UiManager.Instance.tapFastPanel.SetActive(true);
-        _isWrestling = true;
     }
 
     private void OnApplicationPause(bool pauseStatus)
