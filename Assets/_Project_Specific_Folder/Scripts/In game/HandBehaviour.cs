@@ -129,6 +129,9 @@ public class HandBehaviour : MonoBehaviour
 
         if (other.gameObject.CompareTag("GoodGate"))
         {
+            // Playable Ad Gameplay
+            GameManager.Instance.customTattooObj.SetActive(false);
+            
             _hasGoneThroughGoodGate = true;
             
             MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
@@ -158,6 +161,9 @@ public class HandBehaviour : MonoBehaviour
 
         if (other.gameObject.CompareTag("BadGate"))
         {
+            // Playable Ad Gameplay
+            GameManager.Instance.customTattooObj.SetActive(false);
+            
             MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
             other.GetComponent<BoxCollider>().enabled = false;
             
