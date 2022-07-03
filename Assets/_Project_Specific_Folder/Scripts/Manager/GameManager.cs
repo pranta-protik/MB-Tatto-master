@@ -369,6 +369,7 @@ public class GameManager : Singleton<GameManager>
     {
         mainCamera.gameObject.SetActive(false);
         customTattooDrawScreen.SetActive(true);
+        UiManager.Instance.DisablePriceTag();
     }
 
     public GameObject customTattooObj;
@@ -379,6 +380,7 @@ public class GameManager : Singleton<GameManager>
         customTattooObj.GetComponent<MeshRenderer>().material.DOFade(0, 0);
         customTattooObj.GetComponent<MeshRenderer>().material.mainTexture = customTattoo;
         
+        UiManager.Instance.EnablePriceTag();
         StartCoroutine(DelayPlayerControlRoutine());
     }
 

@@ -145,6 +145,16 @@ public class UiManager : Singleton<UiManager>
     {
         totalScoreText.SetText("$" + totalScore);
     }
+
+    public void EnablePriceTag()
+    {
+        priceTag.SetActive(true);
+    }
+
+    public void DisablePriceTag()
+    {
+        priceTag.SetActive(false);
+    }
     
     #region Upgrade Buttons
 
