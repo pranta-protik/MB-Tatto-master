@@ -9,7 +9,6 @@ using MySDK;
 using PathCreation;
 using HomaGames.HomaBelly;
 using GameAnalyticsSDK;
-using UnityEngine.Serialization;
 
 public enum ERotationAxis
 {
@@ -60,9 +59,7 @@ public class GameManager : Singleton<GameManager>
     [HideInInspector] public bool isGameOver;
     [HideInInspector] public bool isGoldenTattooGunActivated;
     [HideInInspector] public bool isWrestling;
-    [HideInInspector] public Camera mainCamera;
     
-    [SerializeField] private GameObject customTattooDrawScreen;
     [SerializeField] private Transform wrestlingCameraTransform;
     [SerializeField] private int specificLevelId;
     
@@ -80,6 +77,7 @@ public class GameManager : Singleton<GameManager>
     
     private int _handId;
     private HandBehaviour _mainHandBehaviour;
+    private Camera _mainCamera;
     private CameraController _cameraController;
     private GameObject _pathObj;
     private GameObject _bossParent;
@@ -105,11 +103,11 @@ public class GameManager : Singleton<GameManager>
     
         base.Start();
 
-        mainCamera = Camera.main;
+        _mainCamera = Camera.main;
 
-        if (mainCamera != null)
+        if (_mainCamera != null)
         {
-            _cameraController = mainCamera.GetComponent<CameraController>();
+            _cameraController = _mainCamera.GetComponent<CameraController>();
         }
 
         _handId = PlayerPrefs.GetInt("SelectedHandCardId");
@@ -218,8 +216,8 @@ public class GameManager : Singleton<GameManager>
                                 0.1f);
                         }
 
-                        mainCamera.transform.DOShakePosition(1.5f, 0.01f);
-                        mainCamera.DOFieldOfView(55, 2f);
+                        _mainCamera.transform.DOShakePosition(1.5f, 0.01f);
+                        _mainCamera.DOFieldOfView(55, 2f);
                         _isClicked = true;
                     }
                 }
@@ -290,9 +288,9 @@ public class GameManager : Singleton<GameManager>
     public void FinishWrestling()
     {
         UiManager.Instance.tapFastPanel.SetActive(false);
-        mainCamera.DOKill();
-        mainCamera.transform.DOShakePosition(1f, .1f);
-        mainCamera.DOFieldOfView(70f, 1f);
+        _mainCamera.DOKill();
+        _mainCamera.transform.DOShakePosition(1f, .1f);
+        _mainCamera.DOFieldOfView(70f, 1f);
         isGameOver = true;
         _wrestlingPivot.transform.GetChild(1).parent = null;
         _mainHandBehaviour.transform.parent.DOLocalMoveY(0.8f, 0.3f);
@@ -361,20 +359,12 @@ public class GameManager : Singleton<GameManager>
         
         UiManager.Instance.ClearUIOnGameStart();
         UiManager.Instance.MovePriceTag();
-
-        playerPathFollower.transform.DOMoveX(-0.55f, .5f).OnComplete(EnableCustomTattooDrawingScreen);
-    }
-
-    private void EnableCustomTattooDrawingScreen()
-    {
-        mainCamera.gameObject.SetActive(false);
-        customTattooDrawScreen.SetActive(true);
-    }
-
-    private void EnableTattooGun()
-    {
-        tattooGuns[currentTattooGunLevel].GetComponent<Animator>().enabled = true;
-        StartCoroutine(DelayPlayerControlRoutine());
+        
+        playerPathFollower.transform.DOMoveX(-0.55f, .5f).OnComplete(() =>
+        {
+            tattooGuns[currentTattooGunLevel].GetComponent<Animator>().enabled = true;
+            StartCoroutine(DelayPlayerControlRoutine());
+        });
     }
 
     IEnumerator DelayPlayerControlRoutine()
@@ -440,7 +430,7 @@ public class GameManager : Singleton<GameManager>
         Transform mainHandTransform = _mainHandBehaviour.transform.parent;
         Transform tattooHandTransform = _mainHandBehaviour.tattooHand.transform.parent;
         Transform playerTransform = mainHandTransform.parent;
-        Transform mainCameraTransform = mainCamera.transform;
+        Transform mainCameraTransform = _mainCamera.transform;
         Transform endTransform = _bossParent.transform.parent;
         
         playerTransform.parent = _wrestlingPivot.transform;
@@ -454,7 +444,7 @@ public class GameManager : Singleton<GameManager>
         _cameraController.enabled = false;
         mainCameraTransform.position = wrestlingCameraTransform.position;
         mainCameraTransform.eulerAngles = wrestlingCameraTransform.eulerAngles;
-        mainCamera.fieldOfView = 75f;
+        _mainCamera.fieldOfView = 75f;
 
         mainHandTransform.localEulerAngles = new Vector3(0f, -90f, 9f);
         tattooHandTransform.localEulerAngles = new Vector3(0f, -90f, 9f);
