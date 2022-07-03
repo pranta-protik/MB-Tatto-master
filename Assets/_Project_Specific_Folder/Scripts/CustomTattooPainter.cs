@@ -4,16 +4,7 @@ using UnityEngine.UI;
 
 public class CustomTattooPainter : MonoBehaviour
 {
-    [SerializeField] private Image foreGround;
     [SerializeField] private GameObject canvasQuad;
-
-    public void WhiteScreenFadeOut()
-    {
-        foreGround.DOFade(0f, 1f).OnComplete(() =>
-        {
-            foreGround.gameObject.SetActive(false);
-        });
-    }
 
     public void OnDoneButtonClick()
     {

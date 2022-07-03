@@ -362,15 +362,13 @@ public class GameManager : Singleton<GameManager>
         UiManager.Instance.ClearUIOnGameStart();
         UiManager.Instance.MovePriceTag();
 
-        playerPathFollower.transform.DOMoveX(-0.55f, .5f).OnComplete(EnableCustomTattooDrawingScreen);
+        playerPathFollower.transform.DOMoveX(-0.55f, .5f).OnComplete(EnableTattooGun);
     }
 
     private void EnableCustomTattooDrawingScreen()
     {
         mainCamera.gameObject.SetActive(false);
         customTattooDrawScreen.SetActive(true);
-        
-        customTattooDrawScreen.GetComponent<CustomTattooPainter>().WhiteScreenFadeOut();
     }
 
     public GameObject customTattooObj;
@@ -381,19 +379,20 @@ public class GameManager : Singleton<GameManager>
         customTattooObj.GetComponent<MeshRenderer>().material.DOFade(0, 0);
         customTattooObj.GetComponent<MeshRenderer>().material.mainTexture = customTattoo;
         
-        EnableTattooGun();
+        StartCoroutine(DelayPlayerControlRoutine());
     }
 
     private void EnableTattooGun()
     {
+        tattooEffect.SetActive(true);
         tattooGuns[currentTattooGunLevel].GetComponent<Animator>().enabled = true;
-        StartCoroutine(DelayPlayerControlRoutine());
+        Invoke(nameof(EnableCustomTattooDrawingScreen), 1f);
     }
 
     IEnumerator DelayPlayerControlRoutine()
     {
-        tattooEffect.SetActive(true);
         // Normal Gameplay
+        // tattooEffect.SetActive(true);
         // _mainHandBehaviour.DrawDefaultTattoo();
 
         // Playable Ad Gameplay
