@@ -13,6 +13,7 @@ public class GameManagerEditor : Editor
         EditorGUILayout.PropertyField(serializedObject.FindProperty("likes"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("followers"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("handGroups"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("customTattooDrawScreen"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("playerPathFollower"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("wrestlingCameraTransform"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("postProcessHandler"));
