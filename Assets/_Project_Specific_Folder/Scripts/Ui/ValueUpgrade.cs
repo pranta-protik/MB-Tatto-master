@@ -21,6 +21,7 @@ public class ValueUpgrade : MonoBehaviour
     private int _currentUpgradeAmount;
     private int _currentPriceTagScore;
     private int _priceTagTotalScore;
+    private bool _isScaleEffectEnabled;
 
     private void Start()
     {
@@ -46,6 +47,12 @@ public class ValueUpgrade : MonoBehaviour
             _isAdEnabled = true;
             _valueUpgradeButtonImage.sprite = watchAdValueUpgradeIcon;
             _costText.gameObject.SetActive(false);
+            
+            if (!_isScaleEffectEnabled)
+            {
+                _isScaleEffectEnabled = true;
+                transform.DOScale(new Vector3(1.45f, 1.45f, 1.45f), 0.5f).SetLoops(-1, LoopType.Yoyo);
+            }
             
             // Rewarded Videos
             // Rewarded Suggested Event
