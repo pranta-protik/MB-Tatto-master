@@ -8,7 +8,6 @@ using DG.Tweening;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 using HomaGames.HomaBelly;
-using HomaGames.HomaConsole.Core.Attributes;
 
 public class UiManager : Singleton<UiManager>
 {
