@@ -8,10 +8,18 @@ public class CharacterMotor : MonoBehaviour
     [SerializeField] private CharacterController characterController;
     [SerializeField] private Transform characterModelTransform;
     [SerializeField] private float movementSpeed = 1f;
-    
+
     private Vector3 dirVector;
 
-    private void FixedUpdate()
+    private void Awake()
+    {
+#if UNITY_EDITOR
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 60;
+#endif
+    }
+
+    private void Update()
     {
         dirVector = Vector3.zero;
 
@@ -19,14 +27,17 @@ public class CharacterMotor : MonoBehaviour
         {
             dirVector += Vector3.forward;
         }
+
         if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             dirVector += Vector3.left;
         }
+
         if(Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
             dirVector += Vector3.back;
         }
+
         if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             dirVector += Vector3.right;
@@ -34,8 +45,9 @@ public class CharacterMotor : MonoBehaviour
 
         if(dirVector != Vector3.zero)
         {
+            dirVector = dirVector.normalized;
             characterModelTransform.LookAt(characterModelTransform.position + dirVector);
-            characterController.Move(dirVector * movementSpeed);
+            characterController.Move(dirVector * movementSpeed * Time.deltaTime);
         }
     }
 }

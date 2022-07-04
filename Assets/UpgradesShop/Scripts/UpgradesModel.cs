@@ -9,8 +9,8 @@ public class UpgradesModel : MonoBehaviour
     public List<TattooUpgradeSO> tattooUpgrades; //The order of this list defines the unlock order
     public List<JewelryUpgradeSO> jewelryUpgrades; //The order of this list defines the unlock order
 
-    public TattooUpgradeSO selectedTattooUpgrade;
-    public JewelryUpgradeSO selectedJewelryUpgrade;
+    [HideInInspector] public TattooUpgradeSO selectedTattooUpgrade;
+    [HideInInspector] public JewelryUpgradeSO selectedJewelryUpgrade;
 
     private int tattooSelectedIndex;
     private int jewelrySelectedIndex;
@@ -54,7 +54,7 @@ public class UpgradesModel : MonoBehaviour
     #endregion
 
     #region Handlers
-    private void OnUpgradeUnlocked(MultiUpgradeDataSO upgrade)
+    private void OnUpgradeUnlocked(UpgradeDataSO upgrade)
     {
         switch(upgrade.upgradeType)
         {
@@ -81,7 +81,7 @@ public class UpgradesModel : MonoBehaviour
     #endregion
 
     #region Logic
-    public void SelectUpgrade(MultiUpgradeDataSO upgrade)
+    public void SelectUpgrade(UpgradeDataSO upgrade)
     {
         switch(upgrade.upgradeType)
         {

@@ -1,14 +1,18 @@
 using System;
+using DG.Tweening;
 using UnityEngine;
 
 public class PayPlatform : MonoBehaviour
 {
     #region Params
     [SerializeField] private UpgradeDataSO upgradeData;
-    [SerializeField] private float timeToPay;
-    [SerializeField] private CurrencyStacksPool currencyStacksPool;
+    [SerializeField] private float timeToPay = 0.4f;
+    [SerializeField] private Transform depositTarget;
+    [SerializeField] private float depositTravelTime = 0.3f;
 
     private float elapsedTime;
+    private int currencyAmount;
+    private bool isPaymentOngoing = false;
 
     private const string PlayerTag = "Player";
     private const int paymentsAmount = 100;
@@ -18,6 +22,11 @@ public class PayPlatform : MonoBehaviour
     private void Awake()
     {
         upgradeData.UpgradesMaxedAction += OnUpgradesMaxed;
+    }
+
+    private void Start()
+    {
+        currencyAmount = StorageManager.GetTotalScore();
     }
 
     private void OnDestroy()
@@ -34,12 +43,13 @@ public class PayPlatform : MonoBehaviour
             return;
         }
 
+        isPaymentOngoing = true;
         elapsedTime = 0f;
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if(other.tag != PlayerTag)
+        if(!isPaymentOngoing || other.tag != PlayerTag)
         {
             return;
         }
@@ -49,8 +59,18 @@ public class PayPlatform : MonoBehaviour
         if(elapsedTime >= timeToPay)
         {
             elapsedTime -= timeToPay;
-            DoPayment();
+            isPaymentOngoing = DoPayment();
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.tag != PlayerTag)
+        {
+            return;
+        }
+
+        isPaymentOngoing = false;
     }
 
     private void OnUpgradesMaxed()
@@ -60,14 +80,24 @@ public class PayPlatform : MonoBehaviour
     #endregion
 
     #region Logic
-    private void DoPayment()
+    private bool DoPayment()
     {
-        upgradeData.Deposit(paymentsAmount);
-        //TODO: Animation of money from character to station
+        currencyAmount = StorageManager.GetTotalScore();
+
+        if(paymentsAmount > currencyAmount)
+        {
+            return false;
+        }
+
+        Transform cashStack = CurrencyStacksPool.Instance.Pull();
+        cashStack.DOMove(depositTarget.position, depositTravelTime).OnComplete(() =>
+        {
+            StorageManager.SetTotalScore(currencyAmount - paymentsAmount);
+            upgradeData.Deposit(paymentsAmount);
+            CurrencyStacksPool.Instance.Push(cashStack);
+        });
+
+        return true;
     }
     #endregion
-}
-
-public class CurrencyStacksPool : MonoBehaviour
-{
 }

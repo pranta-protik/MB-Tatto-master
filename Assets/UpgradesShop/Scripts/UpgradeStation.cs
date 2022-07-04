@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class UpgradeStation : MonoBehaviour
 {
-    [SerializeField] private MultiUpgradeDataSO upgradeData;
+    [SerializeField] private UpgradeDataSO upgradeData;
     [SerializeField] private GameObject lockedContainer;
 
     #region Init&Mono
@@ -32,7 +32,7 @@ public class UpgradeStation : MonoBehaviour
         gameObject.SetActive(true);
     }
 
-    private void OnUnlocked(MultiUpgradeDataSO upgrade)
+    private void OnUnlocked(UpgradeDataSO upgrade)
     {
         SetState(false);
     }
