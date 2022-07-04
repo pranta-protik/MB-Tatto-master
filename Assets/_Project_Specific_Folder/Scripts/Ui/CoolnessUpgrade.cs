@@ -13,19 +13,22 @@ public class CoolnessUpgrade : MonoBehaviour
     [SerializeField] private int startingLevelForUpgradeCoolnessWatchingAd;
 
     private Image _coolnessUpgradeButtonImage;
+    private GameObject _shineEffectObj;
     private Button _button;
-    private TextMeshProUGUI _costText;
-    private TextMeshProUGUI _levelText;
+    private TMP_Text _costText;
+    private TMP_Text _levelText;
     private bool _isAdEnabled;
     private bool _isMaxedOut;
     private int _currentCoolnessLevel;
+    private bool _isScaleEffectEnabled;
 
     private void Start()
     {
         _button = transform.GetComponent<Button>();
         _coolnessUpgradeButtonImage = transform.GetComponent<Image>();
-        _costText = transform.GetChild(1).GetComponent<TextMeshProUGUI>();
-        _levelText = transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        _shineEffectObj = transform.GetChild(2).gameObject;
+        _costText = transform.GetChild(1).GetComponent<TMP_Text>();
+        _levelText = transform.GetChild(0).GetComponent<TMP_Text>();
 
         _levelText.SetText("Stage " + PlayerPrefs.GetInt("CoolnessUpgradeLevel", 1));
         
@@ -33,9 +36,10 @@ public class CoolnessUpgrade : MonoBehaviour
 
         if (!_isAdEnabled)
         {
+            _shineEffectObj.SetActive(false);
             CheckCoolnessUpgradeButtonAvailability();
         }
-        
+
         if (PlayerPrefs.GetInt("CoolnessUpgradeLevel", 1) == GameManager.Instance.GetTotalTattooGunAmount() * 2)
         {
             _isMaxedOut = true;
@@ -52,7 +56,14 @@ public class CoolnessUpgrade : MonoBehaviour
                 _isAdEnabled = true;
                 _coolnessUpgradeButtonImage.sprite = watchAdCoolnessUpgradeIcon;
                 _costText.gameObject.SetActive(false);
-                
+
+                if (!_isScaleEffectEnabled)
+                {
+                    _isScaleEffectEnabled = true;
+                    _shineEffectObj.SetActive(true);
+                    transform.DOScale(new Vector3(1.45f, 1.45f, 1.45f), 0.5f).SetLoops(-1, LoopType.Yoyo);
+                }
+
                 // Rewarded Videos
                 // Rewarded Suggested Event
                 HomaBelly.Instance.TrackDesignEvent("rewarded:" + "suggested" + ":" + PlacementName.UpgradeCoolness);
@@ -93,6 +104,11 @@ public class CoolnessUpgrade : MonoBehaviour
         _coolnessUpgradeButtonImage.sprite = maxedOutCoolnessUpgradeIcon;
         _levelText.gameObject.SetActive(false);
         _button.interactable = false;
+        
+        _shineEffectObj.SetActive(false);
+        Transform buttonTransform = transform;
+        buttonTransform.DOKill();
+        buttonTransform.localScale = new Vector3(1.4f, 1.4f, 1.4f);
     }
     
     public void OnCoolnessUpgradeButtonClick()

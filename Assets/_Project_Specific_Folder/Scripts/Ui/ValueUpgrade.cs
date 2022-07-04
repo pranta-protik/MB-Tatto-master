@@ -14,20 +14,23 @@ public class ValueUpgrade : MonoBehaviour
     [SerializeField] private int startingLevelForUpgradeValueWatchingAd;
     
     private Image _valueUpgradeButtonImage;
-    private TextMeshProUGUI _costText;
-    private TextMeshProUGUI _levelText;
+    private GameObject _shineEffectObj;
+    private TMP_Text _costText;
+    private TMP_Text _levelText;
     private Button _button;
     private bool _isAdEnabled;
     private int _currentUpgradeAmount;
     private int _currentPriceTagScore;
     private int _priceTagTotalScore;
+    private bool _isScaleEffectEnabled;
 
     private void Start()
     {
         _button = transform.GetComponent<Button>();
         _valueUpgradeButtonImage = transform.GetComponent<Image>();
-        _costText = transform.GetChild(1).GetComponent<TextMeshProUGUI>();
-        _levelText = transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        _shineEffectObj = transform.GetChild(2).gameObject;
+        _costText = transform.GetChild(1).GetComponent<TMP_Text>();
+        _levelText = transform.GetChild(0).GetComponent<TMP_Text>();
         
         _levelText.SetText("$" + PlayerPrefs.GetInt("ValueUpgradeAmount", baseUpgradeAmount));
         
@@ -35,6 +38,7 @@ public class ValueUpgrade : MonoBehaviour
 
         if (!_isAdEnabled)
         {
+            _shineEffectObj.SetActive(false);
             CheckValueUpgradeButtonAvailability();    
         }
     }
@@ -46,6 +50,13 @@ public class ValueUpgrade : MonoBehaviour
             _isAdEnabled = true;
             _valueUpgradeButtonImage.sprite = watchAdValueUpgradeIcon;
             _costText.gameObject.SetActive(false);
+            
+            if (!_isScaleEffectEnabled)
+            {
+                _isScaleEffectEnabled = true;
+                _shineEffectObj.SetActive(true);
+                transform.DOScale(new Vector3(1.45f, 1.45f, 1.45f), 0.5f).SetLoops(-1, LoopType.Yoyo);
+            }
             
             // Rewarded Videos
             // Rewarded Suggested Event

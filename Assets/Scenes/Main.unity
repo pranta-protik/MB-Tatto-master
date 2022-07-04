@@ -3241,6 +3241,7 @@ RectTransform:
   m_Children:
   - {fileID: 1500502675}
   - {fileID: 168551397}
+  - {fileID: 665367927}
   m_Father: {fileID: 1687032262230919136}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6498,6 +6499,81 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 657540336}
+  m_CullTransparentMesh: 1
+--- !u!1 &665367926
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 665367927}
+  - component: {fileID: 665367929}
+  - component: {fileID: 665367928}
+  m_Layer: 5
+  m_Name: ShineEffect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &665367927
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665367926}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 343490214}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &665367928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665367926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 2100000, guid: 2d6b82d70ee2a6445954da1ff27b96a2, type: 2}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: ccb7f44614cd3484a9f55e7e1ac71512, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &665367929
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665367926}
   m_CullTransparentMesh: 1
 --- !u!1 &669671975 stripped
 GameObject:
@@ -12673,6 +12749,51 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 824647420}
+  m_CullTransparentMesh: 1
+--- !u!1 &828282177
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 828282178}
+  - component: {fileID: 828282180}
+  m_Layer: 5
+  m_Name: MeterBar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &828282178
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828282177}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1557872863}
+  m_Father: {fileID: 1804672027}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -575}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0}
+--- !u!222 &828282180
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828282177}
   m_CullTransparentMesh: 1
 --- !u!1 &834215520
 GameObject:
@@ -23161,6 +23282,95 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7627272719563497163, guid: d10567e03bef4dc488ac3feccff7234f, type: 3}
   m_PrefabInstance: {fileID: 1346000511}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1350117753
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1350117754}
+  - component: {fileID: 1350117756}
+  - component: {fileID: 1350117755}
+  - component: {fileID: 1350117757}
+  m_Layer: 5
+  m_Name: MeterScale
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1350117754
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350117753}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_Children: []
+  m_Father: {fileID: 1804672027}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -438.00003}
+  m_SizeDelta: {x: 1253.3334, y: 235}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1350117755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350117753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 6bddfeb39f2a163469dd8674a383a225, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1350117756
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350117753}
+  m_CullTransparentMesh: 1
+--- !u!114 &1350117757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350117753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f6ebc879ea65684c9de0ff6b9087d88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  multiplierPointer: {fileID: 828282177}
 --- !u!1 &1350137774
 GameObject:
   m_ObjectHideFlags: 0
@@ -25619,6 +25829,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1546296003}
   m_CullTransparentMesh: 1
+--- !u!1 &1557872862
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1557872863}
+  - component: {fileID: 1557872865}
+  - component: {fileID: 1557872864}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1557872863
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1557872862}
+  m_LocalRotation: {x: 0, y: 0, z: -0.5735764, w: 0.8191521}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.7, z: 0.5}
+  m_Children: []
+  m_Father: {fileID: 828282178}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -70}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 73, y: 287}
+  m_Pivot: {x: 0.5, y: 0}
+--- !u!114 &1557872864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1557872862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 5c6d4541dc4daac4a847e627e596ba6d, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1557872865
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1557872862}
+  m_CullTransparentMesh: 1
 --- !u!1 &1558966526
 GameObject:
   m_ObjectHideFlags: 0
@@ -25956,7 +26241,7 @@ GameObject:
   - component: {fileID: 1587823070}
   - component: {fileID: 1587823069}
   m_Layer: 5
-  m_Name: Shiny
+  m_Name: ShineEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26539,6 +26824,81 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1645225770}
+  m_CullTransparentMesh: 1
+--- !u!1 &1649792585
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1649792586}
+  - component: {fileID: 1649792588}
+  - component: {fileID: 1649792587}
+  m_Layer: 5
+  m_Name: ShineEffect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1649792586
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1649792585}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2059400186}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1649792587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1649792585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 2100000, guid: 2d6b82d70ee2a6445954da1ff27b96a2, type: 2}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: ccb7f44614cd3484a9f55e7e1ac71512, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1649792588
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1649792585}
   m_CullTransparentMesh: 1
 --- !u!1 &1656499945 stripped
 GameObject:
@@ -27894,7 +28254,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1804672027
 RectTransform:
   m_ObjectHideFlags: 0
@@ -27914,6 +28274,8 @@ RectTransform:
   - {fileID: 369237382}
   - {fileID: 469680222}
   - {fileID: 1188150164}
+  - {fileID: 1350117754}
+  - {fileID: 828282178}
   m_Father: {fileID: 5443246868219738669}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -28680,32 +29042,32 @@ MonoBehaviour:
   tattooGroups:
   - groupId: 0
     defaultTattoos:
-    - {fileID: 2800000, guid: 68906f73a7d7a734ba32b64c0727f9be, type: 3}
-    - {fileID: 2800000, guid: 857e1a0d1016c8748a5faeaccd9ff01f, type: 3}
-    - {fileID: 2800000, guid: 3e03474741fccd84c92fb71c026ad6f9, type: 3}
-    - {fileID: 2800000, guid: c8a681c5fe9514e4e8f15db52cbb63f7, type: 3}
+    - {fileID: 2800000, guid: 8822c12b2b95f9d4284ff1005e5298e7, type: 3}
+    - {fileID: 2800000, guid: 475a95a3486562b428dbec1a39fc70a2, type: 3}
+    - {fileID: 2800000, guid: 664a9b018dc72bc46aac035abc684645, type: 3}
+    - {fileID: 2800000, guid: 6675af606807cfb488bcd128aedcd1eb, type: 3}
     expensiveTattoos:
-    - {fileID: 2800000, guid: 7684830d85a3b8642af02ec75969e33d, type: 3}
-    - {fileID: 2800000, guid: 0e450ae456587c34cbcab57c5d568fe6, type: 3}
-    - {fileID: 2800000, guid: e2f0b2c04d277d049a34e6d7c9636143, type: 3}
-    - {fileID: 2800000, guid: 115a2dcfc4ca03843b39c9ed69f77dd4, type: 3}
-    - {fileID: 2800000, guid: adbb3eb6ce7b0e349bf7eaaa378c11fb, type: 3}
-    - {fileID: 2800000, guid: a501bc1ac0b55f04d941b1534565f60d, type: 3}
-    - {fileID: 2800000, guid: bd23c68033ec66447828e84f6db9a842, type: 3}
-    - {fileID: 2800000, guid: cd1f30f99cb3b934f99694d7ed2fd011, type: 3}
-    - {fileID: 2800000, guid: ee0a6e1e3a6d82a41b0b83d2407ed2e4, type: 3}
-    - {fileID: 2800000, guid: 713b93775c48c4d428664566c719f45e, type: 3}
-    - {fileID: 2800000, guid: c9c1a3dbe68bb9c48b3410e5bf5a95aa, type: 3}
-    - {fileID: 2800000, guid: 7f25f7bc547dc3c46ae9cec2722aa75f, type: 3}
-    - {fileID: 2800000, guid: 226d5c660c128bb4aaacc730cb9b85ca, type: 3}
-    - {fileID: 2800000, guid: 528b1ef08bf456444aab4390961c0560, type: 3}
-    - {fileID: 2800000, guid: 60254631a4692fb4ebe046f82f5df6ff, type: 3}
+    - {fileID: 2800000, guid: 980cd1490dcd1fb40a8c08358042be4b, type: 3}
+    - {fileID: 2800000, guid: 101ccb33ea1581a418822dfa05ad451d, type: 3}
+    - {fileID: 2800000, guid: 853a2a2eba076d94aab2361bd913ed44, type: 3}
+    - {fileID: 2800000, guid: 6fc0a9ed35a8a4449b6530269aa4d342, type: 3}
+    - {fileID: 2800000, guid: 7466f47ff859ca744ba80f2ed27921af, type: 3}
+    - {fileID: 2800000, guid: 76811b8a8e776ca45bd4c9925741d434, type: 3}
+    - {fileID: 2800000, guid: b00c0ae12add0f3458535ae01ad87c30, type: 3}
+    - {fileID: 2800000, guid: a6f3de2386c7d2b41bde11edeeffb6b5, type: 3}
+    - {fileID: 2800000, guid: c814567c273dbe147825f378658299d2, type: 3}
+    - {fileID: 2800000, guid: 2b18865da5ec4014690ce01ae96c6741, type: 3}
+    - {fileID: 2800000, guid: 4855f8e13945e0848b8d3ed7a20227dd, type: 3}
+    - {fileID: 2800000, guid: db2afb8decb870a4398937fff2a51b08, type: 3}
+    - {fileID: 2800000, guid: 7dfc2ab5805044048aac9ca9814d6ca1, type: 3}
+    - {fileID: 2800000, guid: 327b40dfce71e754fb6a73e9ce7f64f5, type: 3}
+    - {fileID: 2800000, guid: a5c3d369245817c48942cc0b86552942, type: 3}
     expensiveBlueTattoos:
-    - {fileID: 2800000, guid: fd1cf03f13b436f418ae95008ad2a653, type: 3}
-    - {fileID: 2800000, guid: 09cc29a1182692e47a2bacb94531723f, type: 3}
+    - {fileID: 2800000, guid: 0aa581f8dd2ba464faffb44299dfc785, type: 3}
+    - {fileID: 2800000, guid: 57632765514e9a1449463f9fe311ba01, type: 3}
     expensiveYellowTattoos:
-    - {fileID: 2800000, guid: d6219075d82755649b8e79324419dfbd, type: 3}
-    - {fileID: 2800000, guid: 731709182f869d44cbe1045606adaf38, type: 3}
+    - {fileID: 2800000, guid: bdfa18232d97c914b857b53482729725, type: 3}
+    - {fileID: 2800000, guid: 5069a25f40e4ace4e9a15d8bfe17dd7d, type: 3}
     cheapTattoos:
     - {fileID: 2800000, guid: 61211112e0a990b4a9aace533d346f26, type: 3}
     - {fileID: 2800000, guid: 1b7bec209599c7f44b40242430ef04c6, type: 3}
@@ -28723,32 +29085,31 @@ MonoBehaviour:
     cheapColorTattooIdSequences: 0400000005000000
   - groupId: 1
     defaultTattoos:
-    - {fileID: 2800000, guid: 51586b72977edae49a9eb93187a2cbc2, type: 3}
-    - {fileID: 2800000, guid: ebd0433fbfa997e449bcf70862c13682, type: 3}
-    - {fileID: 2800000, guid: b6600b419fb0faa4896c8516ed179f6b, type: 3}
-    - {fileID: 2800000, guid: e561c5f3c6fc1df4abc8247b05b94517, type: 3}
+    - {fileID: 2800000, guid: 4ecc3981b7463c54caa3a3ec367ddb78, type: 3}
+    - {fileID: 2800000, guid: 20b25b43910fcd74dbc425dd6787b7bb, type: 3}
+    - {fileID: 2800000, guid: 3ef9066e31410bd4b848b8bc429c7ffc, type: 3}
+    - {fileID: 2800000, guid: 2859d7ada0fdd624489873ef25df97df, type: 3}
     expensiveTattoos:
-    - {fileID: 2800000, guid: fe5f278dc00ff154a88bef10ac7b31e6, type: 3}
-    - {fileID: 2800000, guid: 59c5f6181c7ddad40be096efe8c999fb, type: 3}
-    - {fileID: 2800000, guid: 7f03bbc5666a23b4283ff71bd81bd216, type: 3}
-    - {fileID: 2800000, guid: 7b2aac6e709744d4e97f739c7df5f089, type: 3}
-    - {fileID: 2800000, guid: ddd01f458f3e3a349b3ee171a0c16b4f, type: 3}
-    - {fileID: 2800000, guid: 23c21173a91bcb24ca182dc733592d54, type: 3}
-    - {fileID: 2800000, guid: b169dfcaf3edfcc42a61bb7296883fe1, type: 3}
-    - {fileID: 2800000, guid: 23f503535b4cb7f4c878b81aef92a205, type: 3}
-    - {fileID: 2800000, guid: 66118f4295829894387c1139c412a3e6, type: 3}
-    - {fileID: 2800000, guid: d86f97d5ceeb998498087f5f99d2df84, type: 3}
-    - {fileID: 2800000, guid: 95627a068e4d0664f82d344fc213aa75, type: 3}
-    - {fileID: 2800000, guid: 10aaddba0d9f7064f944bbcc743f9fb0, type: 3}
-    - {fileID: 2800000, guid: 7589cc6a2d57e8245bdf87564a2f6542, type: 3}
-    - {fileID: 2800000, guid: 687168022b8b26e478b2facc6052e12d, type: 3}
-    - {fileID: 2800000, guid: 0eec76cd514400a4b800d780d1420a24, type: 3}
+    - {fileID: 2800000, guid: ebc2d39d62b9bcd4f82ac13ad65126e5, type: 3}
+    - {fileID: 2800000, guid: e0cf4e7d82961cb46ab96043c20dbad5, type: 3}
+    - {fileID: 2800000, guid: 1fd214f4990ad874fb8e3ae7a6a5d66b, type: 3}
+    - {fileID: 2800000, guid: 724b58a607b05584d8fa269d1a4b2ea9, type: 3}
+    - {fileID: 2800000, guid: 2d5e4a66916488448ba9c893a9bf8380, type: 3}
+    - {fileID: 2800000, guid: c4f6b80cea91d2d4ea5ac8ad53b32820, type: 3}
+    - {fileID: 2800000, guid: 52cf3ef61c59f03458df59e1ec883bcc, type: 3}
+    - {fileID: 2800000, guid: 16037bfdbf87fd641b68ea79bf4dc1ba, type: 3}
+    - {fileID: 2800000, guid: 6162b8376b8b4dd4da813f991e86ea5d, type: 3}
+    - {fileID: 2800000, guid: 3b2a23bfcfedccb4fb1a8be2614c64c9, type: 3}
+    - {fileID: 2800000, guid: cf4ca947123b2c54cb94fe10a626ba86, type: 3}
+    - {fileID: 2800000, guid: b437cd185a9d7bc41a98e09f78f3f95f, type: 3}
+    - {fileID: 2800000, guid: eb87f984d9ba70149bf6bf93ac4a5083, type: 3}
+    - {fileID: 2800000, guid: f31634d146eafad4b80f00a8a800867f, type: 3}
     expensiveBlueTattoos:
-    - {fileID: 2800000, guid: c609974ea762f5d469e2d17e96d911e1, type: 3}
-    - {fileID: 2800000, guid: eb824163bedd3a2479bf0b1e969a90e7, type: 3}
+    - {fileID: 2800000, guid: 9bc5fb85752c44c43b9d63b66cf91b44, type: 3}
+    - {fileID: 2800000, guid: be5bc749da67d0f4fbd4f02f3f360d06, type: 3}
     expensiveYellowTattoos:
-    - {fileID: 2800000, guid: 3c6f2ccc924ca8445a8cf88aebda6c24, type: 3}
-    - {fileID: 2800000, guid: 922059f04371125438b91f0e4ee7f1de, type: 3}
+    - {fileID: 2800000, guid: 7c9ab328787a2f340b66427f058283d9, type: 3}
+    - {fileID: 2800000, guid: 62499c79bcd51ac41ab1479708c4c429, type: 3}
     cheapTattoos:
     - {fileID: 2800000, guid: 70dcff40d21fdb048b1f36ceaaa0b998, type: 3}
     - {fileID: 2800000, guid: 0f2783b918cfc634d80974cf2b187d34, type: 3}
@@ -28762,36 +29123,36 @@ MonoBehaviour:
     cheapYellowTattoos:
     - {fileID: 2800000, guid: 2a7d65e0f425b7344bc92d9855e37054, type: 3}
     - {fileID: 2800000, guid: 4d39e238620f54c47b2919c40c5f3d32, type: 3}
-    expensiveColorTattooIdSequences: 090000000b000000
+    expensiveColorTattooIdSequences: 0800000009000000
     cheapColorTattooIdSequences: 0400000005000000
   - groupId: 2
     defaultTattoos:
-    - {fileID: 2800000, guid: f7a9ead41cf2ca34bb73db79adaa62ff, type: 3}
-    - {fileID: 2800000, guid: 7057de97dbc2e564fb7a55959b457b58, type: 3}
-    - {fileID: 2800000, guid: 1b67ed2c80aa49a41996d496fdd83261, type: 3}
-    - {fileID: 2800000, guid: a329896198826074681004bf359f79dc, type: 3}
+    - {fileID: 2800000, guid: 39ea4f6934d9472479e59f6af98d8835, type: 3}
+    - {fileID: 2800000, guid: 45f4a202e72d57746908d56c754c239d, type: 3}
+    - {fileID: 2800000, guid: 9d5da8501fe005e4280297c38e49fc30, type: 3}
+    - {fileID: 2800000, guid: 505ad0f09840018499312c302fd28cf9, type: 3}
     expensiveTattoos:
-    - {fileID: 2800000, guid: 13ca252e634bccc4fa889bd433233e3d, type: 3}
-    - {fileID: 2800000, guid: 2e89ffe8f21cd7d49b138727ea3b94b5, type: 3}
-    - {fileID: 2800000, guid: 9bf5af9e3c933e24689e7aa45a48e147, type: 3}
-    - {fileID: 2800000, guid: 9c2d8866bad02964f9426fd6ae41c4d3, type: 3}
-    - {fileID: 2800000, guid: 71bc67afc034a684589820bcd952391e, type: 3}
-    - {fileID: 2800000, guid: 19e0d42cf690bf94594819710dabd217, type: 3}
-    - {fileID: 2800000, guid: ba6beba3741af0d43b2d86c1407101d6, type: 3}
-    - {fileID: 2800000, guid: 5075d414eb7b57143b6344f77278b779, type: 3}
-    - {fileID: 2800000, guid: c0ab98dc1aeb1424ca336e11a5fd4c58, type: 3}
-    - {fileID: 2800000, guid: ac53391aec64ae044a3b0e00c5ef904c, type: 3}
-    - {fileID: 2800000, guid: 22ba3de7fc865124e865579a5f4d3954, type: 3}
-    - {fileID: 2800000, guid: 4792ee425b0514248bf6eb31a2f71265, type: 3}
-    - {fileID: 2800000, guid: ed50be07704c83046ac49f974ca5f9a9, type: 3}
-    - {fileID: 2800000, guid: 265d8ff94b0da9e4aaf149e4840bf66e, type: 3}
-    - {fileID: 2800000, guid: 6ee1ee8c04f3df04f8d4885090538ee8, type: 3}
+    - {fileID: 2800000, guid: 441d2d06c1d012c44b501cb07d7a8c38, type: 3}
+    - {fileID: 2800000, guid: 574281c1e16def348bb92fdd99210c6d, type: 3}
+    - {fileID: 2800000, guid: 428e853b8c67981499c0a85659da35ba, type: 3}
+    - {fileID: 2800000, guid: 4babb75c43dc716468e36b0c1cb395be, type: 3}
+    - {fileID: 2800000, guid: 4a7df604f895d97459d162822fd20b10, type: 3}
+    - {fileID: 2800000, guid: 222ff99046e694d49bf29529a6e22b8a, type: 3}
+    - {fileID: 2800000, guid: 5e0aa9e1b58974c4b80e5365181819fa, type: 3}
+    - {fileID: 2800000, guid: 055005d714ac8c7488caf709e48a6c16, type: 3}
+    - {fileID: 2800000, guid: e676799b44b95d4438c76c35312279af, type: 3}
+    - {fileID: 2800000, guid: cb277b292c19ab54e8aafce4b16b97af, type: 3}
+    - {fileID: 2800000, guid: 2c25b2ab9a9d22243b0d465c4f136882, type: 3}
+    - {fileID: 2800000, guid: c7aa40d19cb44454e98e572423152119, type: 3}
+    - {fileID: 2800000, guid: 1ba5db87b4aebce449dc508966c4956f, type: 3}
+    - {fileID: 2800000, guid: 5d29ede363eb88749bd1a85a4026d1d8, type: 3}
+    - {fileID: 2800000, guid: e8f6cb7b2e9f3fb48864af27842ac3ba, type: 3}
     expensiveBlueTattoos:
-    - {fileID: 2800000, guid: e3a04436edb9cca48b349838769ae739, type: 3}
-    - {fileID: 2800000, guid: c0efdd6d371d7ee4a900f2ba03b01eb7, type: 3}
+    - {fileID: 2800000, guid: f7aad1134b82d0b4dbac1b703ee8f6bb, type: 3}
+    - {fileID: 2800000, guid: 82d0f2fab34cc32438848e0448d6c521, type: 3}
     expensiveYellowTattoos:
-    - {fileID: 2800000, guid: 408fc97fb958fca419c8f7c8a6e63eca, type: 3}
-    - {fileID: 2800000, guid: 90273bbcfaf05434c8dc92c422d8091a, type: 3}
+    - {fileID: 2800000, guid: 5298454087ea546488b00d2ebb4333f3, type: 3}
+    - {fileID: 2800000, guid: 19c9fd21904b8fd45b21e68345a861f6, type: 3}
     cheapTattoos:
     - {fileID: 2800000, guid: 7806204e2d54d2a4abe81f9c76a1ffcb, type: 3}
     - {fileID: 2800000, guid: baf6f63781b30b3428e374f559808f08, type: 3}
@@ -28809,32 +29170,32 @@ MonoBehaviour:
     cheapColorTattooIdSequences: 0400000005000000
   - groupId: 3
     defaultTattoos:
-    - {fileID: 2800000, guid: cd093bbab07bf5b42ad4d9dffc6c8d2f, type: 3}
-    - {fileID: 2800000, guid: fc7e3daa55874364498289953eed4d31, type: 3}
-    - {fileID: 2800000, guid: 76aac450654bfcd4991eae531657da11, type: 3}
-    - {fileID: 2800000, guid: 72eeec0677202ac4caa85fe613c81980, type: 3}
+    - {fileID: 2800000, guid: 73bc8d225c25293488bae14a0bdc03a5, type: 3}
+    - {fileID: 2800000, guid: c26503c7f0761ed409502667cbcb56d0, type: 3}
+    - {fileID: 2800000, guid: fd40a8fb423c0674a889d1133c232b99, type: 3}
+    - {fileID: 2800000, guid: 26fa7d10de69b68499c95d6c0f9c8fa5, type: 3}
     expensiveTattoos:
-    - {fileID: 2800000, guid: badf792ee2054dc41b54f3c276fb329d, type: 3}
-    - {fileID: 2800000, guid: 0e03ce2e8383e23439b7ae8f87e21c4e, type: 3}
-    - {fileID: 2800000, guid: 2afda2a8efad08d478c65925fbeeaca7, type: 3}
-    - {fileID: 2800000, guid: a3682ca048906bd4e96ffaa2825e77de, type: 3}
-    - {fileID: 2800000, guid: 2dfce161d81633441942711420d29659, type: 3}
-    - {fileID: 2800000, guid: e2b6f57e762a310498c30e629f11c095, type: 3}
-    - {fileID: 2800000, guid: 1168c81ad38b31f4ead65c7395ef5cb7, type: 3}
-    - {fileID: 2800000, guid: 708bfb661ae3a7042ab660d957830223, type: 3}
-    - {fileID: 2800000, guid: 5fe1961ea4e3c9a4580b40fb2e12b2c3, type: 3}
-    - {fileID: 2800000, guid: 9b04eb58679132a48aadc9c7b5980456, type: 3}
-    - {fileID: 2800000, guid: 76e5601f80eb847419963e404109d47f, type: 3}
-    - {fileID: 2800000, guid: 0d405d1a6d443fa4e86075187d8cdaf9, type: 3}
-    - {fileID: 2800000, guid: 19e674a1b9e34cf4db5d33d24b2d3f3e, type: 3}
-    - {fileID: 2800000, guid: 5e60208d7c7a92941a9665681ff9a364, type: 3}
-    - {fileID: 2800000, guid: f0dc45fbfd5b2fd439217a26cddd41c8, type: 3}
+    - {fileID: 2800000, guid: 65985bfe499a3f044bc7f2a27f9919f8, type: 3}
+    - {fileID: 2800000, guid: 2ad2301c6e32d834e9abafa5c5c74d68, type: 3}
+    - {fileID: 2800000, guid: 2c0abc61becd4ee4bb1df3c9f2f5dc25, type: 3}
+    - {fileID: 2800000, guid: 0109c83fe5250bb44963686e64dbc734, type: 3}
+    - {fileID: 2800000, guid: 303dd9e64c0a8674cb677cdb9cf43085, type: 3}
+    - {fileID: 2800000, guid: 93b8b24e3d00f0f449635d43b03ec6d5, type: 3}
+    - {fileID: 2800000, guid: 1d4e1f8d350455441b2a57803f03fc61, type: 3}
+    - {fileID: 2800000, guid: a9a17d55043d6574a813c63b921dcfad, type: 3}
+    - {fileID: 2800000, guid: afcb6bee3a3a8484c8cb28ccf51b0660, type: 3}
+    - {fileID: 2800000, guid: d8a13521d51955c4eb7dcb85d955d224, type: 3}
+    - {fileID: 2800000, guid: 2eee8a306d80afa4b940e87fa389cd35, type: 3}
+    - {fileID: 2800000, guid: cd24159c7f4fb3a45937eeae0e6eefe3, type: 3}
+    - {fileID: 2800000, guid: 289b64effc8eea04abb3432d00b44c0a, type: 3}
+    - {fileID: 2800000, guid: 564953f5202fd7540aca16db462387a6, type: 3}
+    - {fileID: 2800000, guid: a61da8d83d597d34592ca3088790850e, type: 3}
     expensiveBlueTattoos:
-    - {fileID: 2800000, guid: 99a58b4cb754a0340ba2ec412402130c, type: 3}
-    - {fileID: 2800000, guid: 201944689b61b2f43b5869fa9d5ed67b, type: 3}
+    - {fileID: 2800000, guid: 5b5bef809e8531d408ae40bed180382f, type: 3}
+    - {fileID: 2800000, guid: e971cf7b8e42296498958e3159d8da56, type: 3}
     expensiveYellowTattoos:
-    - {fileID: 2800000, guid: 0e8fd02e799ec13428c7179d023c19c2, type: 3}
-    - {fileID: 2800000, guid: 04de33fa68bd93e4ea882c4f6e87d66a, type: 3}
+    - {fileID: 2800000, guid: b0732f16ddbf61244897853336099f4e, type: 3}
+    - {fileID: 2800000, guid: ec856bf8423675840a78b0c65423d37d, type: 3}
     cheapTattoos:
     - {fileID: 2800000, guid: 884966d9ab41acd4280d9660d0f2ab1e, type: 3}
     - {fileID: 2800000, guid: 7e7b0827b7c54bb4eb6ce7e9c94b31e9, type: 3}
@@ -28849,32 +29210,32 @@ MonoBehaviour:
     cheapColorTattooIdSequences: 04000000
   - groupId: 4
     defaultTattoos:
-    - {fileID: 2800000, guid: 5cf0c33d3e908f842aa282c4ff56f019, type: 3}
-    - {fileID: 2800000, guid: 685d9a0aa7930f54ab65764fe1e081c9, type: 3}
-    - {fileID: 2800000, guid: 5120b0849c95adf45a559fe547438450, type: 3}
-    - {fileID: 2800000, guid: 96a8741c63aeb8b45a2d8bcc7f6686f4, type: 3}
+    - {fileID: 2800000, guid: 22c6823f7cb47dc4ab5e0d4bee9a8665, type: 3}
+    - {fileID: 2800000, guid: 9f8a8d0bced7182458c61cc309e3eb33, type: 3}
+    - {fileID: 2800000, guid: d82aa1c5c4e70e443b5c8ab4f4529544, type: 3}
+    - {fileID: 2800000, guid: 0e8a0d2f93a770b438f55fbc8434ba7e, type: 3}
     expensiveTattoos:
-    - {fileID: 2800000, guid: f6f0b91f20b63b94a990cff121b3b582, type: 3}
-    - {fileID: 2800000, guid: 528557f6ae81df94f8615d4c1487c4ff, type: 3}
-    - {fileID: 2800000, guid: 03f8c2b8d3c560149becc0785276af84, type: 3}
-    - {fileID: 2800000, guid: dfd329f798dbb6c4b82f2247768f5f84, type: 3}
-    - {fileID: 2800000, guid: 63765b0a5d2a61b4c91d257d66e0ee6e, type: 3}
-    - {fileID: 2800000, guid: 5a9e2dde2fc19b8429d4e86732ac8625, type: 3}
-    - {fileID: 2800000, guid: bfa9cc21e35ee5c4ab2279506abe7633, type: 3}
-    - {fileID: 2800000, guid: 4a38b1dc25ef08c48921901e9954c680, type: 3}
-    - {fileID: 2800000, guid: 35b0d21af85ff4c4ea43d8ab807b0c1a, type: 3}
-    - {fileID: 2800000, guid: 2b1596a80b026dd4eb0e0051ebf8b342, type: 3}
-    - {fileID: 2800000, guid: 22494093ee8c77d469724b3a781fa000, type: 3}
-    - {fileID: 2800000, guid: a57162dbc8893614fbab514b95849080, type: 3}
-    - {fileID: 2800000, guid: 823d19ca3ef9e8444a4c20f658722684, type: 3}
-    - {fileID: 2800000, guid: d46740b38edf40346bbe5cde6d93ade4, type: 3}
-    - {fileID: 2800000, guid: cf879395697e4ab44b63290c7adf6902, type: 3}
+    - {fileID: 2800000, guid: 73e97b1fe48ce23419eb458a06f5a993, type: 3}
+    - {fileID: 2800000, guid: ba749a2062e0eb3408d158fddfdfb8c6, type: 3}
+    - {fileID: 2800000, guid: b37da33ff64d37f45a4fc3c2c647330e, type: 3}
+    - {fileID: 2800000, guid: 93b5ea9cd0c527f47a6d0507b3c106eb, type: 3}
+    - {fileID: 2800000, guid: f52a3279a16e8664a99e79c03dae72b4, type: 3}
+    - {fileID: 2800000, guid: 02690dee35d780043b242c324d5f531c, type: 3}
+    - {fileID: 2800000, guid: 5932021de5918704896469f242aa3e22, type: 3}
+    - {fileID: 2800000, guid: 3fd81c9640258834fb8c543ba515e621, type: 3}
+    - {fileID: 2800000, guid: 6713a0f6c727c19478c9eb60558891e4, type: 3}
+    - {fileID: 2800000, guid: f902c045dcf9d21418bef0271bd22639, type: 3}
+    - {fileID: 2800000, guid: 7d8ec3bbb09117846addb026cf7c9413, type: 3}
+    - {fileID: 2800000, guid: ff0a178a4b92043499308107e9a6b14b, type: 3}
+    - {fileID: 2800000, guid: 28ccf505c35c30f4fbf8ea2380422230, type: 3}
+    - {fileID: 2800000, guid: 2e3e2cd5dbd282645b62a13e71bc5564, type: 3}
+    - {fileID: 2800000, guid: a3d9bf996dc4c9a4fbea997280ee2e91, type: 3}
     expensiveBlueTattoos:
-    - {fileID: 2800000, guid: 89f2f7e9d5523ca44ac2c6c0dc9e23ff, type: 3}
-    - {fileID: 2800000, guid: 089652930683fe74cb1b577879d37cbf, type: 3}
+    - {fileID: 2800000, guid: fe23e97d3367fb94aada486d1e8004a3, type: 3}
+    - {fileID: 2800000, guid: 9a29baf72c5bd7c47bbc63a6c6e3f2ed, type: 3}
     expensiveYellowTattoos:
-    - {fileID: 2800000, guid: b5149dc6303035d4b9c956b3999a64f2, type: 3}
-    - {fileID: 2800000, guid: 2cab73e6a91c28840ad5d71aa594102f, type: 3}
+    - {fileID: 2800000, guid: 39754cab3dca3c445a86051d7974af5c, type: 3}
+    - {fileID: 2800000, guid: 5553c3434efe0ec44b159867fc1eb5d8, type: 3}
     cheapTattoos:
     - {fileID: 2800000, guid: 45a2775ddbddcd1419d556a56bebda87, type: 3}
     - {fileID: 2800000, guid: 70ed4c4ddce8c084091ed0b34802a1be, type: 3}
@@ -28929,8 +29290,8 @@ MonoBehaviour:
     - {fileID: 2800000, guid: af0d61e620f848245b59cfcd5b6f9295, type: 3}
     - {fileID: 2800000, guid: d04bbbf95178e7549b821c13205a27fa, type: 3}
     cheapYellowTattoos:
-    - {fileID: 2800000, guid: b9d65dda6646d3943b11cfdad31d12cf, type: 3}
     - {fileID: 2800000, guid: 0805d70403f68164f8600cc345bf6d99, type: 3}
+    - {fileID: 2800000, guid: b9d65dda6646d3943b11cfdad31d12cf, type: 3}
     expensiveColorTattooIdSequences: 090000000a000000
     cheapColorTattooIdSequences: 0400000005000000
 --- !u!4 &1859920060
@@ -40268,6 +40629,7 @@ RectTransform:
   m_Children:
   - {fileID: 2078176223}
   - {fileID: 262745356}
+  - {fileID: 1649792586}
   m_Father: {fileID: 1687032262230919136}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

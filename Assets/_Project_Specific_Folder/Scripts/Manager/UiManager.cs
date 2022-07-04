@@ -3,12 +3,15 @@ using UnityEngine;
 using Singleton;
 using TMPro;
 using UnityEngine.UI;
+
+#if UNITY_ANDROID
 using MoreMountains.NiceVibrations;
+#endif
+
 using DG.Tweening;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 using HomaGames.HomaBelly;
-using HomaGames.HomaConsole.Core.Attributes;
 
 public class UiManager : Singleton<UiManager>
 {
@@ -194,14 +197,20 @@ public class UiManager : Singleton<UiManager>
         hapticsIcon.transform.GetChild(0).gameObject.SetActive(false);
         hapticsIcon.transform.GetChild(1).gameObject.SetActive(true);
         _isHapticsAllowed = true;
-        MMVibrationManager.SetHapticsActive(_isHapticsAllowed);
+
+#if UNITY_ANDROID
+        MMVibrationManager.SetHapticsActive(_isHapticsAllowed);  
+#endif
     }
     public void OnDisableHapticsButtonClick()
     {
         hapticsIcon.transform.GetChild(0).gameObject.SetActive(true);
         hapticsIcon.transform.GetChild(1).gameObject.SetActive(false);
         _isHapticsAllowed = false;
-        MMVibrationManager.SetHapticsActive(_isHapticsAllowed);
+        
+#if UNITY_ANDROID
+        MMVibrationManager.SetHapticsActive(_isHapticsAllowed);  
+#endif
     }
 
     #endregion
