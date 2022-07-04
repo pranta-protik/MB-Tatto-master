@@ -13,9 +13,10 @@ public class CoolnessUpgrade : MonoBehaviour
     [SerializeField] private int startingLevelForUpgradeCoolnessWatchingAd;
 
     private Image _coolnessUpgradeButtonImage;
+    private GameObject _shineEffectObj;
     private Button _button;
-    private TextMeshProUGUI _costText;
-    private TextMeshProUGUI _levelText;
+    private TMP_Text _costText;
+    private TMP_Text _levelText;
     private bool _isAdEnabled;
     private bool _isMaxedOut;
     private int _currentCoolnessLevel;
@@ -25,8 +26,9 @@ public class CoolnessUpgrade : MonoBehaviour
     {
         _button = transform.GetComponent<Button>();
         _coolnessUpgradeButtonImage = transform.GetComponent<Image>();
-        _costText = transform.GetChild(1).GetComponent<TextMeshProUGUI>();
-        _levelText = transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        _shineEffectObj = transform.GetChild(2).gameObject;
+        _costText = transform.GetChild(1).GetComponent<TMP_Text>();
+        _levelText = transform.GetChild(0).GetComponent<TMP_Text>();
 
         _levelText.SetText("Stage " + PlayerPrefs.GetInt("CoolnessUpgradeLevel", 1));
         
@@ -34,6 +36,7 @@ public class CoolnessUpgrade : MonoBehaviour
 
         if (!_isAdEnabled)
         {
+            _shineEffectObj.SetActive(false);
             CheckCoolnessUpgradeButtonAvailability();
         }
 
@@ -57,6 +60,7 @@ public class CoolnessUpgrade : MonoBehaviour
                 if (!_isScaleEffectEnabled)
                 {
                     _isScaleEffectEnabled = true;
+                    _shineEffectObj.SetActive(true);
                     transform.DOScale(new Vector3(1.45f, 1.45f, 1.45f), 0.5f).SetLoops(-1, LoopType.Yoyo);
                 }
 
@@ -101,6 +105,7 @@ public class CoolnessUpgrade : MonoBehaviour
         _levelText.gameObject.SetActive(false);
         _button.interactable = false;
         
+        _shineEffectObj.SetActive(false);
         Transform buttonTransform = transform;
         buttonTransform.DOKill();
         buttonTransform.localScale = new Vector3(1.4f, 1.4f, 1.4f);
