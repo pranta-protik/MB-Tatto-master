@@ -15,8 +15,8 @@ public class UpgradeStation : MonoBehaviour
 
     private void Start()
     {
-        payPlatform.Init(upgradeData, transform);
-        gameObject.SetActive(upgradeData.IsAvailable);
+        payPlatform.Init(upgradeData);
+        // gameObject.SetActive(upgradeData.IsAvailable);
         SetState(upgradeData.IsUnlocked);
     }
 

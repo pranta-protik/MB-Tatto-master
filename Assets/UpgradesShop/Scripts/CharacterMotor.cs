@@ -47,7 +47,8 @@ public class CharacterMotor : MonoBehaviour
         {
             dirVector = dirVector.normalized;
             characterModelTransform.LookAt(characterModelTransform.position + dirVector);
-            characterController.Move(dirVector * movementSpeed * Time.deltaTime);
+            // characterController.Move(dirVector * movementSpeed * Time.deltaTime);
+            characterController.SimpleMove(dirVector * movementSpeed);
         }
     }
 }

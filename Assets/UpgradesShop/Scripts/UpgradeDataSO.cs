@@ -35,6 +35,7 @@ public abstract class UpgradeDataSO : ScriptableObject
     public Action UpgradesMaxedAction;
 
     public abstract void Deposit(int amount);
+    public abstract bool HasPurchasesAvailable();
 
     protected virtual void Awake()
     {

@@ -36,7 +36,17 @@ public class MachineUpgradeSO : UpgradeDataSO
             }
         }
     }
-    
+
+    public override bool HasPurchasesAvailable()
+    {
+        if(unlockedLevel < maxLevel)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
     public void UpgradeMachine()
     {
         if(unlockedLevel == maxLevel)

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8083177064990248849}
   - component: {fileID: 4952501191278904872}
   - component: {fileID: 5639958224949795764}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Jewel Vitrine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8040415848974337250}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LockedContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,7 +135,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1324066832914621112}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BigPreviewContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 4844099451112033597}
   - component: {fileID: 8243819833526459350}
   - component: {fileID: 5994968636664331269}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Jewel Vitrine Glass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -246,7 +246,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3610048463925354928}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Meta_Game_Tattoo_Jewel_Upgrade_Station
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -279,7 +279,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4871103123889694897}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ModelsContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -315,7 +315,7 @@ GameObject:
   - component: {fileID: 4871103124410641652}
   - component: {fileID: 4871103124410641651}
   - component: {fileID: 4871103124410641650}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PayPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -412,6 +412,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToPay: 0.4
   depositTravelTime: 0.3
+  depositTarget: {fileID: 3610048463925354928}
 --- !u!1 &4871103125325415138
 GameObject:
   m_ObjectHideFlags: 0
@@ -422,7 +423,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4871103125325415139}
   - component: {fileID: 2470604060853580245}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: JewelryUpgradeStation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -472,7 +473,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7937755099152565857}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SmallPreviewContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}

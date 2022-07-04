@@ -7,9 +7,9 @@ public class PayPlatform : MonoBehaviour
     #region Params
     [SerializeField] private float timeToPay = 0.4f;
     [SerializeField] private float depositTravelTime = 0.3f;
+    [SerializeField] private Transform depositTarget;
 
     private UpgradeDataSO upgradeData;
-    private Transform depositTarget;
     private float elapsedTime;
     private int currencyAmount;
     private bool isPaymentOngoing = false;
@@ -29,10 +29,15 @@ public class PayPlatform : MonoBehaviour
         upgradeData.UpgradesMaxedAction -= OnUpgradesMaxed;
     }
 
-    public void Init(UpgradeDataSO data, Transform target)
+    public void Init(UpgradeDataSO data)
     {
         upgradeData = data;
-        depositTarget = target;
+
+        if(!upgradeData.HasPurchasesAvailable())
+        {
+            gameObject.SetActive(false);
+            return;
+        }
         
         upgradeData.UpgradesMaxedAction += OnUpgradesMaxed;
     }
@@ -62,7 +67,7 @@ public class PayPlatform : MonoBehaviour
         if(elapsedTime >= timeToPay)
         {
             elapsedTime -= timeToPay;
-            isPaymentOngoing = DoPayment();
+            isPaymentOngoing = DoPayment(other.transform);
         }
     }
 
@@ -83,7 +88,7 @@ public class PayPlatform : MonoBehaviour
     #endregion
 
     #region Logic
-    private bool DoPayment()
+    private bool DoPayment(Transform origin)
     {
         // currencyAmount = StorageManager.GetTotalScore();
         currencyAmount = 100000;
@@ -94,6 +99,7 @@ public class PayPlatform : MonoBehaviour
         }
 
         Transform cashStack = CurrencyStacksPool.Instance.Pull();
+        cashStack.transform.position = origin.position;
         cashStack.DOMove(depositTarget.position, depositTravelTime).OnComplete(() =>
         {
             StorageManager.SetTotalScore(currencyAmount - paymentsAmount);

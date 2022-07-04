@@ -19,6 +19,9 @@ public abstract class MultiUpgradeDataSO : UpgradeDataSO
             }
         }
     }
-
-  
+    
+    public override bool HasPurchasesAvailable()
+    {
+        return !IsUnlocked;
+    }
 }

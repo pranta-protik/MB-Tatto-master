@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7074020776555811131}
   - component: {fileID: 3097999986057568366}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tatoo Design Small
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 2049911785427512808}
   - component: {fileID: 8831115862992474257}
   - component: {fileID: 504319016382102051}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PayPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,6 +192,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToPay: 0.4
   depositTravelTime: 0.3
+  depositTarget: {fileID: 70515335729831359}
 --- !u!1 &1724251017666174957
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,7 +203,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4785051273675920379}
   - component: {fileID: 1028681825396690169}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TattooUpgradeStation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -254,7 +255,7 @@ GameObject:
   - component: {fileID: 196087288754591259}
   - component: {fileID: 1715025066287463720}
   - component: {fileID: 6280701803712418547}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tatto Design Station Acrylic Display
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -334,7 +335,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1880970436866799813}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Meta_Game_Tattoo_Design_Upgrade_Station_Stand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -366,7 +367,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1605638692128769751}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LockedContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -399,7 +400,7 @@ GameObject:
   - component: {fileID: 3924678881408580198}
   - component: {fileID: 4886746250566664498}
   - component: {fileID: 3803359554155900358}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Meta_Game_Tattoo_Design_Upgrade_Station
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -494,7 +495,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3667611724452650060}
   - component: {fileID: 2695986827999424869}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tatoo Design Big
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -575,7 +576,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7760813760769845044}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ModelsContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -609,7 +610,7 @@ GameObject:
   - component: {fileID: 6230368019268820483}
   - component: {fileID: 5563557470597162060}
   - component: {fileID: 129176825407779679}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tattoo Design STation Acrylic Display Glass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
