@@ -567,88 +567,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &201397070319771736
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 9201682749385746171}
-  - component: {fileID: 7125802904646313944}
-  m_Layer: 0
-  m_Name: Tatoo Design Small
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &9201682749385746171
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 201397070319771736}
-  m_LocalRotation: {x: -0.3025067, y: -0, z: -0, w: 0.9531473}
-  m_LocalPosition: {x: -0.6410003, y: 0.145, z: -0.065}
-  m_LocalScale: {x: -0.09202579, y: 0.092025794, z: 0.092025794}
-  m_Children: []
-  m_Father: {fileID: 1024444590647238095}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: -35.216, y: 0, z: 0}
---- !u!212 &7125802904646313944
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 201397070319771736}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: -5
-  m_Sprite: {fileID: 21300000, guid: 1f836455c51e20a498b9e0d6be2f7809, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!1 &221123508822341773
 GameObject:
   m_ObjectHideFlags: 0
@@ -7084,88 +7002,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &4066169304685549510
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4443670027968369439}
-  - component: {fileID: 1971366641319434249}
-  m_Layer: 0
-  m_Name: Tatoo Design Big
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4443670027968369439
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4066169304685549510}
-  m_LocalRotation: {x: -0.23959452, y: -0, z: -0, w: 0.9708731}
-  m_LocalPosition: {x: -2.14, y: 0.5, z: 0.14}
-  m_LocalScale: {x: -0.30462778, y: 0.3046278, z: 0.3046278}
-  m_Children: []
-  m_Father: {fileID: 1024444590647238095}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: -27.725, y: 0, z: 0}
---- !u!212 &1971366641319434249
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4066169304685549510}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: -5
-  m_Sprite: {fileID: 21300000, guid: 1f836455c51e20a498b9e0d6be2f7809, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!1 &4091662168331293096
 GameObject:
   m_ObjectHideFlags: 0
@@ -11186,40 +11022,6 @@ Transform:
   - {fileID: 2403532156554434141}
   m_Father: {fileID: 5330643026100288510}
   m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &5933665000184224558
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1024444590647238095}
-  m_Layer: 0
-  m_Name: Tatoo Design Upgrade Station Lvl 1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1024444590647238095
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5933665000184224558}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.4310002, y: 0, z: -1.2349999}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 5190951892001490086}
-  - {fileID: 6474312927403737107}
-  - {fileID: 9201682749385746171}
-  - {fileID: 4443670027968369439}
-  m_Father: {fileID: 412297736563246491}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5963496112217273477
 GameObject:
@@ -18722,6 +18524,68 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a211e2eac6d953342a7eeb231a54fe9f, type: 3}
   m_PrefabInstance: {fileID: 4185195164294724610}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4395171602685976338
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 412297736563246491}
+    m_Modifications:
+    - target: {fileID: 3659534943347933917, guid: 6eb5ac0839367484e8272b4ec7136101, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3659534943347933917, guid: 6eb5ac0839367484e8272b4ec7136101, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.4310002
+      objectReference: {fileID: 0}
+    - target: {fileID: 3659534943347933917, guid: 6eb5ac0839367484e8272b4ec7136101, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3659534943347933917, guid: 6eb5ac0839367484e8272b4ec7136101, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.2349999
+      objectReference: {fileID: 0}
+    - target: {fileID: 3659534943347933917, guid: 6eb5ac0839367484e8272b4ec7136101, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3659534943347933917, guid: 6eb5ac0839367484e8272b4ec7136101, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3659534943347933917, guid: 6eb5ac0839367484e8272b4ec7136101, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3659534943347933917, guid: 6eb5ac0839367484e8272b4ec7136101, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3659534943347933917, guid: 6eb5ac0839367484e8272b4ec7136101, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3659534943347933917, guid: 6eb5ac0839367484e8272b4ec7136101, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3659534943347933917, guid: 6eb5ac0839367484e8272b4ec7136101, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7973154370363409468, guid: 6eb5ac0839367484e8272b4ec7136101, type: 3}
+      propertyPath: m_Name
+      value: Tatoo Design Upgrade Station Lvl 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6eb5ac0839367484e8272b4ec7136101, type: 3}
+--- !u!4 &1024444590647238095 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3659534943347933917, guid: 6eb5ac0839367484e8272b4ec7136101, type: 3}
+  m_PrefabInstance: {fileID: 4395171602685976338}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4749439728652128987
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19149,72 +19013,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a211e2eac6d953342a7eeb231a54fe9f, type: 3}
   m_PrefabInstance: {fileID: 5693404299434397750}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &5729509201929659213
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1024444590647238095}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 177521efe0fafd5488ede13440da053a, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 177521efe0fafd5488ede13440da053a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 177521efe0fafd5488ede13440da053a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 177521efe0fafd5488ede13440da053a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 177521efe0fafd5488ede13440da053a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 177521efe0fafd5488ede13440da053a, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.000000021855694
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 177521efe0fafd5488ede13440da053a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 177521efe0fafd5488ede13440da053a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 177521efe0fafd5488ede13440da053a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 177521efe0fafd5488ede13440da053a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 177521efe0fafd5488ede13440da053a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -7511558181221131132, guid: 177521efe0fafd5488ede13440da053a, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 607fe5d072371ea45bbed2cb89ff8021, type: 2}
-    - target: {fileID: 919132149155446097, guid: 177521efe0fafd5488ede13440da053a, type: 3}
-      propertyPath: m_Name
-      value: Meta_Game_Tattoo_Design_Upgrade_Station
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 177521efe0fafd5488ede13440da053a, type: 3}
---- !u!4 &5190951892001490086 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 177521efe0fafd5488ede13440da053a, type: 3}
-  m_PrefabInstance: {fileID: 5729509201929659213}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5862447735310709928
 PrefabInstance:
@@ -19741,88 +19539,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a211e2eac6d953342a7eeb231a54fe9f, type: 3}
   m_PrefabInstance: {fileID: 6783884398182365718}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &6797013977867216888
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1024444590647238095}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 4808843fd5bd8ba4bb4e204df52e25e9, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4808843fd5bd8ba4bb4e204df52e25e9, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.63095117
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4808843fd5bd8ba4bb4e204df52e25e9, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.63095117
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4808843fd5bd8ba4bb4e204df52e25e9, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.63095117
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4808843fd5bd8ba4bb4e204df52e25e9, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4808843fd5bd8ba4bb4e204df52e25e9, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.846
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4808843fd5bd8ba4bb4e204df52e25e9, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.617
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4808843fd5bd8ba4bb4e204df52e25e9, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.8660254
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4808843fd5bd8ba4bb4e204df52e25e9, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.50000006
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4808843fd5bd8ba4bb4e204df52e25e9, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4808843fd5bd8ba4bb4e204df52e25e9, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4808843fd5bd8ba4bb4e204df52e25e9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4808843fd5bd8ba4bb4e204df52e25e9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4808843fd5bd8ba4bb4e204df52e25e9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -6115998322082535937, guid: 4808843fd5bd8ba4bb4e204df52e25e9, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 1a3165f00f466c04f9e460578bda0871, type: 2}
-    - target: {fileID: 919132149155446097, guid: 4808843fd5bd8ba4bb4e204df52e25e9, type: 3}
-      propertyPath: m_Name
-      value: Meta_Game_Tattoo_Design_Upgrade_Station_Stand
-      objectReference: {fileID: 0}
-    - target: {fileID: 7656732485542524078, guid: 4808843fd5bd8ba4bb4e204df52e25e9, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 5faa30f261137a14f9810860431ac636, type: 2}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4808843fd5bd8ba4bb4e204df52e25e9, type: 3}
---- !u!4 &6474312927403737107 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4808843fd5bd8ba4bb4e204df52e25e9, type: 3}
-  m_PrefabInstance: {fileID: 6797013977867216888}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6871437988037734138
 PrefabInstance:

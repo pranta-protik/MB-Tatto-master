@@ -12,36 +12,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0770fa133d08429fb8a8e2acbfd30c98, type: 3}
   m_Name: MachineUpgrade
   m_EditorClassIdentifier: 
-  upgradeName: 
+  upgradeName: TattooMachine
   upgradeType: 0
   machineAssets:
-  - Machine3DModel: {fileID: 0}
-    InkColor: {r: 0, g: 0, b: 0, a: 0}
-    upgradePrize: 0
-  - Machine3DModel: {fileID: 0}
-    InkColor: {r: 0, g: 0, b: 0, a: 0}
-    upgradePrize: 0
-  - Machine3DModel: {fileID: 0}
-    InkColor: {r: 0, g: 0, b: 0, a: 0}
-    upgradePrize: 0
-  - Machine3DModel: {fileID: 0}
-    InkColor: {r: 0, g: 0, b: 0, a: 0}
-    upgradePrize: 0
-  - Machine3DModel: {fileID: 0}
-    InkColor: {r: 0, g: 0, b: 0, a: 0}
-    upgradePrize: 0
-  - Machine3DModel: {fileID: 0}
-    InkColor: {r: 0, g: 0, b: 0, a: 0}
-    upgradePrize: 0
-  - Machine3DModel: {fileID: 0}
-    InkColor: {r: 0, g: 0, b: 0, a: 0}
-    upgradePrize: 0
-  - Machine3DModel: {fileID: 0}
-    InkColor: {r: 0, g: 0, b: 0, a: 0}
-    upgradePrize: 0
-  - Machine3DModel: {fileID: 0}
-    InkColor: {r: 0, g: 0, b: 0, a: 0}
-    upgradePrize: 0
-  - Machine3DModel: {fileID: 0}
-    InkColor: {r: 0, g: 0, b: 0, a: 0}
-    upgradePrize: 0
+  - Machine3DModel: {fileID: 919132149155446097, guid: 3422323b492cb9c4ba5a13e1ac7fc7a0, type: 3}
+    InkColor: {r: 0, g: 0, b: 0, a: 1}
+    upgradePrize: 1000
+  - Machine3DModel: {fileID: 919132149155446097, guid: 23582775266afb945bb666aa81dee83e, type: 3}
+    InkColor: {r: 1, g: 0, b: 0, a: 1}
+    upgradePrize: 2000
+  - Machine3DModel: {fileID: 919132149155446097, guid: dd440a7d9566ac04a8b34b5e64d5e437, type: 3}
+    InkColor: {r: 0, g: 0, b: 0.92941177, a: 1}
+    upgradePrize: 3000
+  - Machine3DModel: {fileID: 919132149155446097, guid: d8529f91ad76105458e8ada555dbc3fe, type: 3}
+    InkColor: {r: 0.16503836, g: 0.8962264, b: 0, a: 1}
+    upgradePrize: 4000
+  - Machine3DModel: {fileID: 919132149155446097, guid: 9fb954cb19dc82244833de42df6b3fe4, type: 3}
+    InkColor: {r: 0.8584906, g: 0, b: 0.6858003, a: 1}
+    upgradePrize: 5000
+  - Machine3DModel: {fileID: 919132149155446097, guid: c265cab46a9dc5b448997583e863008d, type: 3}
+    InkColor: {r: 0.24313726, g: 0.44705874, b: 0.44705883, a: 1}
+    upgradePrize: 6000
+  - Machine3DModel: {fileID: 919132149155446097, guid: c3f22dd50524c7b44be6ad7741d76812, type: 3}
+    InkColor: {r: 1, g: 0.99068856, b: 0, a: 1}
+    upgradePrize: 7000
+  - Machine3DModel: {fileID: 919132149155446097, guid: 5c3c50e4339925241a05fc111c99e0ec, type: 3}
+    InkColor: {r: 0.42202768, g: 0.054901958, b: 1, a: 1}
+    upgradePrize: 8000
+  - Machine3DModel: {fileID: 919132149155446097, guid: f7a86a30dcbe1b347999737c78756d5e, type: 3}
+    InkColor: {r: 0.7404704, g: 1, b: 0, a: 1}
+    upgradePrize: 9000
+  - Machine3DModel: {fileID: 919132149155446097, guid: 459643ea8675ad845895bce3d017e448, type: 3}
+    InkColor: {r: 1, g: 1, b: 1, a: 1}
+    upgradePrize: 10000

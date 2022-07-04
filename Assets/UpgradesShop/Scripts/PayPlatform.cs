@@ -5,11 +5,11 @@ using UnityEngine;
 public class PayPlatform : MonoBehaviour
 {
     #region Params
-    [SerializeField] private UpgradeDataSO upgradeData;
     [SerializeField] private float timeToPay = 0.4f;
-    [SerializeField] private Transform depositTarget;
     [SerializeField] private float depositTravelTime = 0.3f;
 
+    private UpgradeDataSO upgradeData;
+    private Transform depositTarget;
     private float elapsedTime;
     private int currencyAmount;
     private bool isPaymentOngoing = false;
@@ -19,11 +19,6 @@ public class PayPlatform : MonoBehaviour
     #endregion
 
     #region Init&Mono
-    private void Awake()
-    {
-        upgradeData.UpgradesMaxedAction += OnUpgradesMaxed;
-    }
-
     private void Start()
     {
         currencyAmount = StorageManager.GetTotalScore();
@@ -32,6 +27,14 @@ public class PayPlatform : MonoBehaviour
     private void OnDestroy()
     {
         upgradeData.UpgradesMaxedAction -= OnUpgradesMaxed;
+    }
+
+    public void Init(UpgradeDataSO data, Transform target)
+    {
+        upgradeData = data;
+        depositTarget = target;
+        
+        upgradeData.UpgradesMaxedAction += OnUpgradesMaxed;
     }
     #endregion
 
@@ -82,7 +85,8 @@ public class PayPlatform : MonoBehaviour
     #region Logic
     private bool DoPayment()
     {
-        currencyAmount = StorageManager.GetTotalScore();
+        // currencyAmount = StorageManager.GetTotalScore();
+        currencyAmount = 100000;
 
         if(paymentsAmount > currencyAmount)
         {

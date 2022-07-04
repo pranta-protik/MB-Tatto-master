@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +11,8 @@ public class MachineUpgradeSO : UpgradeDataSO
     
     public int maxLevel => machineAssets.Count;
     public int UnlockedLevel => unlockedLevel;
+
+    public Action<int> LevelChangedAction;
     
     private const string LEVEL_KEY = "LevelKey";
     
@@ -44,6 +47,8 @@ public class MachineUpgradeSO : UpgradeDataSO
         
         unlockedLevel++;
         PlayerPrefs.SetInt(LEVEL_KEY, unlockedLevel);
+
+        LevelChangedAction?.Invoke(unlockedLevel);
     }
 
     private int GetPriceSum()

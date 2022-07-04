@@ -1,13 +1,13 @@
-using System;
 using UnityEngine;
 
 public class UpgradeStation : MonoBehaviour
 {
-    [SerializeField] private UpgradeDataSO upgradeData;
+    [SerializeField] protected UpgradeDataSO upgradeData;
     [SerializeField] private GameObject lockedContainer;
+    [SerializeField] private PayPlatform payPlatform;
 
     #region Init&Mono
-    private void Awake()
+    protected virtual void Awake()
     {
         upgradeData.UpgradeActivatedAction += OnActivate;
         upgradeData.UpgradeUnlockedAction += OnUnlocked;
@@ -15,11 +15,12 @@ public class UpgradeStation : MonoBehaviour
 
     private void Start()
     {
+        payPlatform.Init(upgradeData, transform);
         gameObject.SetActive(upgradeData.IsAvailable);
         SetState(upgradeData.IsUnlocked);
     }
 
-    private void OnDestroy()
+    protected virtual void OnDestroy()
     {
         upgradeData.UpgradeActivatedAction -= OnActivate;
         upgradeData.UpgradeUnlockedAction -= OnUnlocked;
@@ -32,12 +33,12 @@ public class UpgradeStation : MonoBehaviour
         gameObject.SetActive(true);
     }
 
-    private void OnUnlocked(UpgradeDataSO upgrade)
+    protected virtual void OnUnlocked(UpgradeDataSO upgrade)
     {
         SetState(false);
     }
     #endregion
-    
+
     #region Logic
     private void SetState(bool isLocked)
     {
