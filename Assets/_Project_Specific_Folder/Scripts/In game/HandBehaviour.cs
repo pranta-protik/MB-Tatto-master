@@ -6,7 +6,11 @@ using UnityEngine.UI;
 using DG.Tweening;
 using HomaGames.HomaBelly;
 using TMPro;
+
+#if UNITY_ANDROID
 using MoreMountains.NiceVibrations;
+#endif
+
 using Random = UnityEngine.Random;
 
 public class HandBehaviour : MonoBehaviour
@@ -130,8 +134,11 @@ public class HandBehaviour : MonoBehaviour
         if (other.gameObject.CompareTag("GoodGate"))
         {
             _hasGoneThroughGoodGate = true;
-            
+
+#if UNITY_ANDROID
             MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+#endif
+            
             other.GetComponent<BoxCollider>().enabled = false;
             
             Gates gate = other.GetComponentInParent<Gates>();
@@ -158,7 +165,10 @@ public class HandBehaviour : MonoBehaviour
 
         if (other.gameObject.CompareTag("BadGate"))
         {
+#if UNITY_ANDROID
             MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+#endif
+            
             other.GetComponent<BoxCollider>().enabled = false;
             
             Gates gate = other.GetComponentInParent<Gates>();
@@ -211,7 +221,10 @@ public class HandBehaviour : MonoBehaviour
 
         if (other.gameObject.CompareTag("Blue"))
         {
+#if UNITY_ANDROID
             MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+#endif
+            
             other.GetComponent<BoxCollider>().enabled = false;
             
             _shineEffect.Play();
@@ -238,7 +251,10 @@ public class HandBehaviour : MonoBehaviour
 
         if (other.gameObject.CompareTag("Yellow"))
         {
+#if UNITY_ANDROID
             MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+#endif
+            
             other.GetComponent<BoxCollider>().enabled = false;
             
             _shineEffect.Play();
@@ -268,7 +284,10 @@ public class HandBehaviour : MonoBehaviour
 
         if (other.gameObject.CompareTag("Ring"))
         {
+#if UNITY_ANDROID
             MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+#endif
+            
             other.GetComponent<BoxCollider>().enabled = false;
             
             GateGestureEffect();
@@ -280,7 +299,10 @@ public class HandBehaviour : MonoBehaviour
 
         if (other.gameObject.CompareTag("Bracelet"))
         {
+#if UNITY_ANDROID
             MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+#endif
+            
             other.GetComponent<BoxCollider>().enabled = false;
 
             GateGestureEffect();
@@ -397,7 +419,10 @@ public class HandBehaviour : MonoBehaviour
 
     private void CommonObstacleHitEffects()
     {
+#if UNITY_ANDROID
         MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+#endif
+        
         StartCoroutine(SpeedSlowDownRoutine());
         StartCoroutine(UiManager.Instance.HurtScreenRoutine());
         mainHandAnimator.Play("Hurt");
