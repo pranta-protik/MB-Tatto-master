@@ -54,7 +54,7 @@ public class FilterManager : MonoBehaviour
             
             // Rewarded Videos
             // Rewarded Suggested Event
-            HomaBelly.Instance.TrackDesignEvent("rewarded:" + "suggested" + ":" + PlacementName.UnlockFilter);
+            HomaBelly.Instance.TrackDesignEvent("rewarded:" + "suggested" + ":" + PlacementName.UNLOCK_FILTER);
         }
         else
         {

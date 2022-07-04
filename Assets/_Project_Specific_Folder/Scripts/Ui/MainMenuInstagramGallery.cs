@@ -76,7 +76,7 @@ public class MainMenuInstagramGallery : MonoBehaviour
         // Show Ad
         if (HomaBelly.Instance.IsRewardedVideoAdAvailable())
         {
-            HomaBelly.Instance.ShowRewardedVideoAd(PlacementName.UpdateUsername);
+            HomaBelly.Instance.ShowRewardedVideoAd(PlacementName.UPDATE_USERNAME);
         }
     }
 
@@ -87,7 +87,7 @@ public class MainMenuInstagramGallery : MonoBehaviour
         
         // Rewarded Videos
         // Rewarded Claimed Event
-        HomaBelly.Instance.TrackDesignEvent("rewarded:" + "taken" + ":" + PlacementName.UpdateUsername);
+        HomaBelly.Instance.TrackDesignEvent("rewarded:" + "taken" + ":" + PlacementName.UPDATE_USERNAME);
         
         // Unsubscribe to Rewarded Video Ads
         Events.onRewardedVideoAdRewardedEvent -= OnRewardedVideoAdRewardedEvent;

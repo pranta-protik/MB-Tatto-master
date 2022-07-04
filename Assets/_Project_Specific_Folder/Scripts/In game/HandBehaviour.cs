@@ -360,8 +360,10 @@ public class HandBehaviour : MonoBehaviour
                 {
                     HomaBelly.Instance.ShowInterstitial("Level End Ad");    
                 }
+                
+                UiManager.Instance.ratingScreen.SetActive(true);
             }
-            
+
             other.GetComponent<Collider>().enabled = false;
             UiManager.Instance.ClearUIOnFinishLine();
 

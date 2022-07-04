@@ -23,6 +23,7 @@ public class UiManager : Singleton<UiManager>
     public GameObject tapFastPanel;
     public GameObject coolnessUpgradeButton;
     public GameObject valueUpgradeButton;
+    public GameObject ratingScreen;
 
     [HideInInspector] public bool isInstagramGalleryPhotoUpdated;
     [HideInInspector] public string followerValue;
@@ -223,7 +224,7 @@ public class UiManager : Singleton<UiManager>
         
         // Rewarded Videos
         // Rewarded Suggested Event
-        HomaBelly.Instance.TrackDesignEvent("rewarded:" + "suggested" + ":" + PlacementName.UpdateUsername);
+        HomaBelly.Instance.TrackDesignEvent("rewarded:" + "suggested" + ":" + PlacementName.UPDATE_USERNAME);
     }
 
     public void OnInstagramGalleryCloseButtonClick()
@@ -308,7 +309,7 @@ public class UiManager : Singleton<UiManager>
         
         // Rewarded Videos
         // Rewarded Suggested Event
-        HomaBelly.Instance.TrackDesignEvent("rewarded:" + "suggested" + ":" + PlacementName.UnlockPose);
+        HomaBelly.Instance.TrackDesignEvent("rewarded:" + "suggested" + ":" + PlacementName.UNLOCK_POSE);
     }
 
     public void MovePriceTag()

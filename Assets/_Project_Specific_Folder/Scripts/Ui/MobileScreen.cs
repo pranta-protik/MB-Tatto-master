@@ -105,7 +105,7 @@ public class MobileScreen : MonoBehaviour
         // Show Ad
         if (HomaBelly.Instance.IsRewardedVideoAdAvailable())
         {
-            HomaBelly.Instance.ShowRewardedVideoAd(PlacementName.UnlockFilter);   
+            HomaBelly.Instance.ShowRewardedVideoAd(PlacementName.UNLOCK_FILTER);   
         }
     }
     
@@ -119,7 +119,7 @@ public class MobileScreen : MonoBehaviour
         
         // Rewarded Videos
         // Rewarded Claimed Event
-        HomaBelly.Instance.TrackDesignEvent("rewarded:" + "taken" + ":" + PlacementName.UnlockFilter);
+        HomaBelly.Instance.TrackDesignEvent("rewarded:" + "taken" + ":" + PlacementName.UNLOCK_FILTER);
         
         // Unsubscribe to Rewarded Video Ads
         Events.onRewardedVideoAdRewardedEvent -= OnRewardedVideoAdRewardedEvent;

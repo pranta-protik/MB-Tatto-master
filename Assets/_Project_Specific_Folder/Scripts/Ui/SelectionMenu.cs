@@ -59,7 +59,7 @@ public class SelectionMenu : MonoBehaviour
             
             // Rewarded Videos
             // Rewarded Suggested Event
-            HomaBelly.Instance.TrackDesignEvent("rewarded:" + "suggested" + ":" + PlacementName.UnlockNewHand);
+            HomaBelly.Instance.TrackDesignEvent("rewarded:" + "suggested" + ":" + PlacementName.UNLOCK_NEW_HAND);
         }
         else
         {
@@ -140,7 +140,7 @@ public class SelectionMenu : MonoBehaviour
             // Show Ad
             if (HomaBelly.Instance.IsRewardedVideoAdAvailable())
             {
-                HomaBelly.Instance.ShowRewardedVideoAd(PlacementName.UnlockNewHand);   
+                HomaBelly.Instance.ShowRewardedVideoAd(PlacementName.UNLOCK_NEW_HAND);   
             }
         }
     }
@@ -153,7 +153,7 @@ public class SelectionMenu : MonoBehaviour
         
         // Rewarded Videos
         // Rewarded Claimed Event
-        HomaBelly.Instance.TrackDesignEvent("rewarded:" + "taken" + ":" + PlacementName.UnlockNewHand);
+        HomaBelly.Instance.TrackDesignEvent("rewarded:" + "taken" + ":" + PlacementName.UNLOCK_NEW_HAND);
         
         // Unsubscribe to Rewarded Video Ads
         Events.onRewardedVideoAdRewardedEvent -= OnRewardedVideoAdRewardedEvent;
