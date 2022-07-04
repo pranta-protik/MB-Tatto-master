@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: upgradeData
       value: 
       objectReference: {fileID: 11400000, guid: e6874c078b6164adf9d1f454259f1cfc, type: 2}
+    - target: {fileID: 9102067964777152828, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
+      propertyPath: upgradeData
+      value: 
+      objectReference: {fileID: 11400000, guid: e6874c078b6164adf9d1f454259f1cfc, type: 2}
     - target: {fileID: 9102067965173100332, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
       propertyPath: m_Name
       value: TattooUpgradeStation (3)
@@ -189,6 +193,76 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9102067965173100333, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
   m_PrefabInstance: {fileID: 35273882}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &104633070
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 860898873}
+    m_Modifications:
+    - target: {fileID: 4277550390630108701, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
+      propertyPath: upgradeData
+      value: 
+      objectReference: {fileID: 11400000, guid: 4a0520f5c35bb40e3a778160ecd50ab7, type: 2}
+    - target: {fileID: 9102067964777152828, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
+      propertyPath: upgradeData
+      value: 
+      objectReference: {fileID: 11400000, guid: 4a0520f5c35bb40e3a778160ecd50ab7, type: 2}
+    - target: {fileID: 9102067965173100332, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
+      propertyPath: m_Name
+      value: JewelryUpgradeStation (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9102067965173100333, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9102067965173100333, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 19.53
+      objectReference: {fileID: 0}
+    - target: {fileID: 9102067965173100333, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.512
+      objectReference: {fileID: 0}
+    - target: {fileID: 9102067965173100333, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 9102067965173100333, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9102067965173100333, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9102067965173100333, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9102067965173100333, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9102067965173100333, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9102067965173100333, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9102067965173100333, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
+--- !u!4 &104633071 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9102067965173100333, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
+  m_PrefabInstance: {fileID: 104633070}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &138751673
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,6 +298,7 @@ Transform:
   - {fileID: 2124756665}
   - {fileID: 397756991}
   - {fileID: 1314144692}
+  - {fileID: 1837708174}
   m_Father: {fileID: 922828850}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -235,6 +310,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 860898873}
     m_Modifications:
     - target: {fileID: 4277550390630108701, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
+      propertyPath: upgradeData
+      value: 
+      objectReference: {fileID: 11400000, guid: 4bd0445bf9457445888762c5183a2196, type: 2}
+    - target: {fileID: 9102067964777152828, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
       propertyPath: upgradeData
       value: 
       objectReference: {fileID: 11400000, guid: 4bd0445bf9457445888762c5183a2196, type: 2}
@@ -301,6 +380,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 860898873}
     m_Modifications:
     - target: {fileID: 4277550390630108701, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
+      propertyPath: upgradeData
+      value: 
+      objectReference: {fileID: 11400000, guid: d37e552507c9341a28cf9fedcf412ee9, type: 2}
+    - target: {fileID: 9102067964777152828, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
       propertyPath: upgradeData
       value: 
       objectReference: {fileID: 11400000, guid: d37e552507c9341a28cf9fedcf412ee9, type: 2}
@@ -448,6 +531,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 138751674}
     m_Modifications:
     - target: {fileID: 4277550390630108701, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
+      propertyPath: upgradeData
+      value: 
+      objectReference: {fileID: 11400000, guid: deebc9a389c1248eca67233695f8bfa8, type: 2}
+    - target: {fileID: 9102067964777152828, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
       propertyPath: upgradeData
       value: 
       objectReference: {fileID: 11400000, guid: deebc9a389c1248eca67233695f8bfa8, type: 2}
@@ -779,6 +866,7 @@ Transform:
   - {fileID: 371243662}
   - {fileID: 334631955}
   - {fileID: 1893582378}
+  - {fileID: 104633071}
   m_Father: {fileID: 922828850}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -790,6 +878,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 138751674}
     m_Modifications:
     - target: {fileID: 4277550390630108701, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
+      propertyPath: upgradeData
+      value: 
+      objectReference: {fileID: 11400000, guid: b7002dcf4154d459bb22467d55356622, type: 2}
+    - target: {fileID: 9102067964777152828, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
       propertyPath: upgradeData
       value: 
       objectReference: {fileID: 11400000, guid: b7002dcf4154d459bb22467d55356622, type: 2}
@@ -895,6 +987,10 @@ PrefabInstance:
       propertyPath: upgradeData
       value: 
       objectReference: {fileID: 11400000, guid: 71edc785f73f94310b3efa38638658f3, type: 2}
+    - target: {fileID: 9102067964777152828, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
+      propertyPath: upgradeData
+      value: 
+      objectReference: {fileID: 11400000, guid: 71edc785f73f94310b3efa38638658f3, type: 2}
     - target: {fileID: 9102067965173100332, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
       propertyPath: m_Name
       value: TattooUpgradeStation (1)
@@ -958,6 +1054,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 860898873}
     m_Modifications:
     - target: {fileID: 4277550390630108701, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
+      propertyPath: upgradeData
+      value: 
+      objectReference: {fileID: 11400000, guid: 827c3320d73e044be98424caee9f28a5, type: 2}
+    - target: {fileID: 9102067964777152828, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
       propertyPath: upgradeData
       value: 
       objectReference: {fileID: 11400000, guid: 827c3320d73e044be98424caee9f28a5, type: 2}
@@ -1027,6 +1127,10 @@ PrefabInstance:
       propertyPath: upgradeData
       value: 
       objectReference: {fileID: 11400000, guid: b4761b10879df4ad092f210a6ac8deab, type: 2}
+    - target: {fileID: 9102067964777152828, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
+      propertyPath: upgradeData
+      value: 
+      objectReference: {fileID: 11400000, guid: b4761b10879df4ad092f210a6ac8deab, type: 2}
     - target: {fileID: 9102067965173100332, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
       propertyPath: m_Name
       value: JewelryUpgradeStation (5)
@@ -1093,6 +1197,10 @@ PrefabInstance:
       propertyPath: upgradeData
       value: 
       objectReference: {fileID: 11400000, guid: e4c25c062712e4e7a9c3f1051e37c5fb, type: 2}
+    - target: {fileID: 9102067964777152828, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
+      propertyPath: upgradeData
+      value: 
+      objectReference: {fileID: 11400000, guid: e4c25c062712e4e7a9c3f1051e37c5fb, type: 2}
     - target: {fileID: 9102067965173100332, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
       propertyPath: m_Name
       value: JewelryUpgradeStation (4)
@@ -1156,6 +1264,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 138751674}
     m_Modifications:
     - target: {fileID: 4277550390630108701, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
+      propertyPath: upgradeData
+      value: 
+      objectReference: {fileID: 11400000, guid: 6adcbd251519648b18b4aa741c86ff8e, type: 2}
+    - target: {fileID: 9102067964777152828, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
       propertyPath: upgradeData
       value: 
       objectReference: {fileID: 11400000, guid: 6adcbd251519648b18b4aa741c86ff8e, type: 2}
@@ -1436,6 +1548,10 @@ PrefabInstance:
       propertyPath: upgradeData
       value: 
       objectReference: {fileID: 11400000, guid: c47d3dabc4dc44d15a16d37db414012f, type: 2}
+    - target: {fileID: 9102067964777152828, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
+      propertyPath: upgradeData
+      value: 
+      objectReference: {fileID: 11400000, guid: c47d3dabc4dc44d15a16d37db414012f, type: 2}
     - target: {fileID: 9102067965173100332, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
       propertyPath: m_Name
       value: JewelryUpgradeStation (1)
@@ -1499,6 +1615,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 138751674}
     m_Modifications:
     - target: {fileID: 4277550390630108701, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
+      propertyPath: upgradeData
+      value: 
+      objectReference: {fileID: 11400000, guid: c571fb3ea16264a0d8952bb0ce6dab2c, type: 2}
+    - target: {fileID: 9102067964777152828, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
       propertyPath: upgradeData
       value: 
       objectReference: {fileID: 11400000, guid: c571fb3ea16264a0d8952bb0ce6dab2c, type: 2}
@@ -1663,6 +1783,10 @@ PrefabInstance:
       propertyPath: upgradeData
       value: 
       objectReference: {fileID: 11400000, guid: a86314d0a4a9f4163a869264ae85de64, type: 2}
+    - target: {fileID: 9102067964777152828, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
+      propertyPath: upgradeData
+      value: 
+      objectReference: {fileID: 11400000, guid: a86314d0a4a9f4163a869264ae85de64, type: 2}
     - target: {fileID: 9102067965173100332, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
       propertyPath: m_Name
       value: JewelryUpgradeStation (2)
@@ -1718,6 +1842,76 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9102067965173100333, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
   m_PrefabInstance: {fileID: 1825870110}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1837708173
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 138751674}
+    m_Modifications:
+    - target: {fileID: 4277550390630108701, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
+      propertyPath: upgradeData
+      value: 
+      objectReference: {fileID: 11400000, guid: a9ce1cac8ced64be4bd31d09f809a81e, type: 2}
+    - target: {fileID: 9102067964777152828, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
+      propertyPath: upgradeData
+      value: 
+      objectReference: {fileID: 11400000, guid: a9ce1cac8ced64be4bd31d09f809a81e, type: 2}
+    - target: {fileID: 9102067965173100332, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
+      propertyPath: m_Name
+      value: TattooUpgradeStation (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9102067965173100333, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9102067965173100333, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 19.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 9102067965173100333, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.512
+      objectReference: {fileID: 0}
+    - target: {fileID: 9102067965173100333, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 9102067965173100333, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9102067965173100333, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9102067965173100333, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9102067965173100333, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9102067965173100333, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9102067965173100333, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9102067965173100333, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
+--- !u!4 &1837708174 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9102067965173100333, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
+  m_PrefabInstance: {fileID: 1837708173}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1893582377
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1728,7 +1922,11 @@ PrefabInstance:
     - target: {fileID: 4277550390630108701, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
       propertyPath: upgradeData
       value: 
-      objectReference: {fileID: 11400000, guid: b4761b10879df4ad092f210a6ac8deab, type: 2}
+      objectReference: {fileID: 11400000, guid: 6098d61e7235b4f399029cabb422b31f, type: 2}
+    - target: {fileID: 9102067964777152828, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
+      propertyPath: upgradeData
+      value: 
+      objectReference: {fileID: 11400000, guid: 6098d61e7235b4f399029cabb422b31f, type: 2}
     - target: {fileID: 9102067965173100332, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
       propertyPath: m_Name
       value: JewelryUpgradeStation (8)
@@ -1795,6 +1993,10 @@ PrefabInstance:
       propertyPath: upgradeData
       value: 
       objectReference: {fileID: 11400000, guid: ac3d07e915f9b4edc812cb6c5fd30704, type: 2}
+    - target: {fileID: 9102067964777152828, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
+      propertyPath: upgradeData
+      value: 
+      objectReference: {fileID: 11400000, guid: ac3d07e915f9b4edc812cb6c5fd30704, type: 2}
     - target: {fileID: 9102067965173100332, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
       propertyPath: m_Name
       value: TattooUpgradeStation (4)
@@ -1858,6 +2060,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 138751674}
     m_Modifications:
     - target: {fileID: 4277550390630108701, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
+      propertyPath: upgradeData
+      value: 
+      objectReference: {fileID: 11400000, guid: 30db2dc4f32424a30af879767cdb7905, type: 2}
+    - target: {fileID: 9102067964777152828, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
       propertyPath: upgradeData
       value: 
       objectReference: {fileID: 11400000, guid: 30db2dc4f32424a30af879767cdb7905, type: 2}
@@ -1986,6 +2192,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 922828850}
     m_Modifications:
     - target: {fileID: 4277550390630108701, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
+      propertyPath: upgradeData
+      value: 
+      objectReference: {fileID: 11400000, guid: 053d561b622a94072910164ce4730d8c, type: 2}
+    - target: {fileID: 9102067964777152828, guid: 3018786ddaac7480498d8f84c494feaf, type: 3}
       propertyPath: upgradeData
       value: 
       objectReference: {fileID: 11400000, guid: 053d561b622a94072910164ce4730d8c, type: 2}

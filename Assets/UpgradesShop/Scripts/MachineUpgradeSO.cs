@@ -6,11 +6,9 @@ public class MachineUpgradeSO : UpgradeDataSO
 {
     public List<MachineAssets> machineAssets;
     
-    [SerializeField] private List<int> upgradePrices;
-
     private int unlockedLevel;
     
-    public int maxLevel => upgradePrices.Count;
+    public int maxLevel => machineAssets.Count;
     public int UnlockedLevel => unlockedLevel;
     
     private const string LEVEL_KEY = "LevelKey";
@@ -53,7 +51,7 @@ public class MachineUpgradeSO : UpgradeDataSO
         int finalPrice = 0;
         for(int i = 0; i < unlockedLevel; i++)
         {
-            finalPrice += upgradePrices[i];
+            finalPrice += machineAssets[i].upgradePrize;
         }
 
         return finalPrice;
@@ -75,4 +73,5 @@ public class MachineAssets
 {
     public GameObject Machine3DModel;
     public Color InkColor;
+    public int upgradePrize;
 }
