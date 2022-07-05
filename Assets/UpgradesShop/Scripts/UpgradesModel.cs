@@ -39,6 +39,13 @@ public class UpgradesModel : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        machineUpgrade.Activate();
+        selectedTattooUpgrade.Activate();
+        selectedJewelryUpgrade.Activate();
+    }
+
     private void OnDestroy()
     {
         for(int i = 0, count = tattooUpgrades.Count; i < count; i++)

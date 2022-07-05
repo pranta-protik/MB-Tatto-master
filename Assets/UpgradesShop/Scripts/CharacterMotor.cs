@@ -24,13 +24,9 @@ public class CharacterMotor : MonoBehaviour
     {
         dirVector = Vector3.forward * joystick.Vertical + Vector3.right * joystick.Horizontal;
         
-        
         if(dirVector != Vector3.zero)
         {
-            Debug.Log("TEST dirVector: " + dirVector);
-            // dirVector = dirVector.normalized;
             characterModelTransform.LookAt(characterModelTransform.position + dirVector.normalized);
-            // characterController.Move(dirVector * movementSpeed * Time.deltaTime);
             characterController.SimpleMove(dirVector * movementSpeed);
         }
     }

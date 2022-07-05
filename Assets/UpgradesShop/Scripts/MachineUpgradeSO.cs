@@ -19,9 +19,13 @@ public class MachineUpgradeSO : UpgradeDataSO
     
     private const string LEVEL_KEY = "LevelKey";
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+        
         upgradeType = UpgradeType.TattooMachine;
+        isAvailable = true;
+        isUnlocked = true;
         unlockedLevel = PlayerPrefs.GetInt(LEVEL_KEY, 1);
     }
 
