@@ -154,6 +154,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
     Android: com.manabreak.tattooevolution
+    iPhone: com.manabreak.tattooevolution
   buildNumber:
     Standalone: 0
     iPhone: 0
@@ -691,7 +692,7 @@ PlayerSettings:
   webGLDecompressionFallback: 0
   scriptingDefineSymbols:
     1: ODIN_INSPECTOR;ODIN_INSPECTOR_3;UNITY_POST_PROCESSING_STACK_V2
-    4: HOMA_BELLY;HOMA_BELLY_DEFAULT_ANALYTICS_ENABLED;HOMA_BELLY_EDITOR_ANALYTICS_ENABLED;gameanalytics_max_enabled
+    4: HOMA_BELLY;HOMA_BELLY_DEFAULT_ANALYTICS_ENABLED;HOMA_BELLY_EDITOR_ANALYTICS_ENABLED;gameanalytics_max_enabled;ODIN_INSPECTOR;ODIN_INSPECTOR_3
     7: ODIN_INSPECTOR;ODIN_INSPECTOR_3;MOREMOUNTAINS_NICEVIBRATIONS;HOMA_BELLY;UNITY_POST_PROCESSING_STACK_V2;HOMA_BELLY_DEFAULT_ANALYTICS_ENABLED;HOMA_BELLY_EDITOR_ANALYTICS_ENABLED;gameanalytics_max_enabled
     13: UNITY_POST_PROCESSING_STACK_V2
     14: UNITY_POST_PROCESSING_STACK_V2
