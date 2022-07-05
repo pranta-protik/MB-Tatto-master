@@ -312,6 +312,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4871103125325415139}
   - component: {fileID: 2470604060853580245}
+  - component: {fileID: 7392794887179415397}
   m_Layer: 3
   m_Name: JewelryUpgradeStation
   m_TagString: Untagged
@@ -351,8 +352,23 @@ MonoBehaviour:
   upgradeData: {fileID: 0}
   lockedContainer: {fileID: 1334467688672363167}
   payPlatform: {fileID: 1178868435455342814}
+  upscaleValue: 4
+  scaleDuration: 0.33
   smallPreviewContainer: {fileID: 7937755099152565857}
   bigPreviewContainer: {fileID: 1324066832914621112}
+--- !u!135 &7392794887179415397
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4871103125325415138}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.57
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &9083553379885848303
 GameObject:
   m_ObjectHideFlags: 0

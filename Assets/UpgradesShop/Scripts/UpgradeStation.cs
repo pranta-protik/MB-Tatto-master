@@ -1,23 +1,36 @@
+using System;
+using DG.Tweening;
 using UnityEngine;
 
-public class UpgradeStation : MonoBehaviour
+public abstract class UpgradeStation : MonoBehaviour
 {
+    #region Params
     [SerializeField] protected UpgradeDataSO upgradeData;
     [SerializeField] private GameObject lockedContainer;
     [SerializeField] private PayPlatform payPlatform;
+    [SerializeField] protected float upscaleValue = 1.5f;
+    [SerializeField] protected float scaleDuration = 0.33f;
+
+    protected Vector3 originalPreviewScale;
+    protected Tweener upscaleTween;
+    
+    private const string PlayerTag = "Player";
+    #endregion
+
+    public abstract void UpscaleBigPreview();
+    public abstract void DownscaleBigPreview();
 
     #region Init&Mono
     protected virtual void Awake()
     {
         upgradeData.UpgradeActivatedAction += OnActivate;
         upgradeData.UpgradeUnlockedAction += OnUnlocked;
-        upgradeData.UpgradesMaxedAction += OnUpgradesMaxed;
     }
-    
+
     private void Start()
     {
         payPlatform.Init(upgradeData);
-        
+
         //TEMP disabled
         // gameObject.SetActive(upgradeData.IsAvailable);
         SetState(upgradeData.IsUnlocked);
@@ -27,11 +40,30 @@ public class UpgradeStation : MonoBehaviour
     {
         upgradeData.UpgradeActivatedAction -= OnActivate;
         upgradeData.UpgradeUnlockedAction -= OnUnlocked;
-        upgradeData.UpgradesMaxedAction -= OnUpgradesMaxed;
     }
     #endregion
 
     #region Handlers
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag != PlayerTag)
+        {
+            return;
+        }
+        
+        UpscaleBigPreview();
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.tag != PlayerTag)
+        {
+            return;
+        }
+        
+        DownscaleBigPreview();
+    }
+
     private void OnActivate()
     {
         gameObject.SetActive(true);
@@ -41,11 +73,6 @@ public class UpgradeStation : MonoBehaviour
     {
         SetState(false);
     }
-
-    private void OnUpgradesMaxed()
-    {
-
-    }
     #endregion
 
     #region Logic
@@ -53,6 +80,5 @@ public class UpgradeStation : MonoBehaviour
     {
         lockedContainer.SetActive(isLocked);
     }
-
     #endregion
 }

@@ -24,13 +24,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 549914466563304631}
-  m_LocalRotation: {x: -0.30250672, y: -0, z: -0, w: 0.9531473}
-  m_LocalPosition: {x: 0.01279974, y: 0.56519985, z: -0.06499984}
-  m_LocalScale: {x: 0.02012498, y: 0.03032721, z: 0.092025794}
+  m_LocalRotation: {x: -0.00000009810497, y: -0.9531473, z: 0.3025067, w: 0.0000003054738}
+  m_LocalPosition: {x: -0.388, y: 0.282, z: -0.169}
+  m_LocalScale: {x: 0.0559726, y: 0.0559726, z: 0}
   m_Children: []
   m_Father: {fileID: 70515335729831359}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -35.216, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 35.216, y: -180, z: 0}
 --- !u!212 &3097999986057568366
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 20.48, y: 20.48}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -92,6 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4785051273675920379}
   - component: {fileID: 1028681825396690169}
+  - component: {fileID: 8283318113927572198}
   m_Layer: 3
   m_Name: TattooUpgradeStation
   m_TagString: Untagged
@@ -131,8 +132,24 @@ MonoBehaviour:
   upgradeData: {fileID: 0}
   lockedContainer: {fileID: 8050774513490220484}
   payPlatform: {fileID: 3083748259177356674}
+  upscaleValue: 2
+  scaleDuration: 0.33
+  bigPreviewContainer: {fileID: 1880970436866799813}
   smallPreviewSpriteRenderer: {fileID: 3097999986057568366}
   bigPreviewSpriteRenderer: {fileID: 2695986827999424869}
+--- !u!135 &8283318113927572198
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1724251017666174957}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.57
+  m_Center: {x: 2.43, y: 0, z: -1.27}
 --- !u!1 &7379947505335232201
 GameObject:
   m_ObjectHideFlags: 0
@@ -398,13 +415,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8535792201697304692}
-  m_LocalRotation: {x: 0.7448815, y: -0, z: -0, w: 0.66719675}
-  m_LocalPosition: {x: 0.49290645, y: 0.34, z: 0.19}
-  m_LocalScale: {x: 0.3109818, y: 0.2447083, z: 0.48280725}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0.7071068, w: 0}
+  m_LocalPosition: {x: -1.08, y: 0.042, z: 0.784}
+  m_LocalScale: {x: 0.15818, y: 0.15818, z: 0.15818}
   m_Children: []
   m_Father: {fileID: 196087288754591259}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 96.298004, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 180}
 --- !u!212 &2695986827999424869
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -450,7 +467,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 4.36, y: 2.06}
+  m_Size: {x: 20.48, y: 20.48}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0

@@ -11128,6 +11128,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7229086151279701847}
   - component: {fileID: 9135008182297592818}
+  - component: {fileID: 3412773913924942786}
   m_Layer: 3
   m_Name: MachineUpgradeStation
   m_TagString: Untagged
@@ -11178,6 +11179,19 @@ MonoBehaviour:
   - {fileID: 8088394716779141884}
   - {fileID: 346121281334369511}
   - {fileID: 7057479311935272131}
+--- !u!135 &3412773913924942786
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7229086151279701846}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3.22
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7229086152783054084
 GameObject:
   m_ObjectHideFlags: 0
@@ -11187,7 +11201,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7229086152783054085}
-  - component: {fileID: 7229086152783054086}
   m_Layer: 3
   m_Name: UpgradeModel
   m_TagString: Untagged
@@ -11211,19 +11224,6 @@ Transform:
   m_Father: {fileID: 7229086151279701847}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &7229086152783054086
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7229086152783054084}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7239944167567991845
 GameObject:
   m_ObjectHideFlags: 0
