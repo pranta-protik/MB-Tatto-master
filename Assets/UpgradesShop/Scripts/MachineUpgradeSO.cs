@@ -1,21 +1,23 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu(menuName = "Upgrades/MachineUpgradeData")]
 public class MachineUpgradeSO : UpgradeDataSO
 {
-    public List<MachineAssets> machineAssets;
+    [FormerlySerializedAs("machineData")] [FormerlySerializedAs("machineAssets")] public List<MachineData> machineDatas;
     
     private int unlockedLevel;
     
-    public int maxLevel => machineAssets.Count;
+    public int maxLevel => machineDatas.Count;
     public int UnlockedLevel => unlockedLevel;
+    public MachineData CurrentMachineData => machineDatas[unlockedLevel];
 
     public Action<int> LevelChangedAction;
     
     private const string LEVEL_KEY = "LevelKey";
-    
+
     private void Awake()
     {
         upgradeType = UpgradeType.TattooMachine;
@@ -46,6 +48,11 @@ public class MachineUpgradeSO : UpgradeDataSO
 
         return false;
     }
+    
+    public override int GetNextPurchasePrice()
+    {
+        return CurrentMachineData.upgradePrize;
+    }
 
     public void UpgradeMachine()
     {
@@ -59,6 +66,11 @@ public class MachineUpgradeSO : UpgradeDataSO
         PlayerPrefs.SetInt(LEVEL_KEY, unlockedLevel);
 
         LevelChangedAction?.Invoke(unlockedLevel);
+
+        if(unlockedLevel == maxLevel)
+        {
+            UpgradesMaxedAction?.Invoke();
+        }
     }
 
     private int GetPriceSum()
@@ -66,7 +78,7 @@ public class MachineUpgradeSO : UpgradeDataSO
         int finalPrice = 0;
         for(int i = 0; i < unlockedLevel; i++)
         {
-            finalPrice += machineAssets[i].upgradePrize;
+            finalPrice += machineDatas[i].upgradePrize;
         }
 
         return finalPrice;
@@ -74,17 +86,17 @@ public class MachineUpgradeSO : UpgradeDataSO
     
     public GameObject GetMachine()
     {
-        return machineAssets[unlockedLevel - 1].Machine3DModel;
+        return machineDatas[unlockedLevel - 1].Machine3DModel;
     }
 
     public Color GetInkColor()
     {
-        return machineAssets[unlockedLevel - 1].InkColor;
+        return machineDatas[unlockedLevel - 1].InkColor;
     }
 }
 
 [System.Serializable]
-public class MachineAssets
+public class MachineData
 {
     public GameObject Machine3DModel;
     public Color InkColor;

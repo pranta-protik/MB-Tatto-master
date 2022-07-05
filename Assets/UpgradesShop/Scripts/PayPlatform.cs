@@ -1,5 +1,6 @@
 using System;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 
 public class PayPlatform : MonoBehaviour
@@ -8,12 +9,14 @@ public class PayPlatform : MonoBehaviour
     [SerializeField] private float timeToPay = 0.4f;
     [SerializeField] private float depositTravelTime = 0.3f;
     [SerializeField] private Transform depositTarget;
-
+    [SerializeField] private TextMeshPro cashText;
+    
     private UpgradeDataSO upgradeData;
     private float elapsedTime;
     private int currencyAmount;
     private bool isPaymentOngoing = false;
 
+    private const string SEPARATOR = "/";
     private const string PlayerTag = "Player";
     private const int paymentsAmount = 100;
     #endregion
@@ -38,6 +41,8 @@ public class PayPlatform : MonoBehaviour
             gameObject.SetActive(false);
             return;
         }
+        
+        SetCashText();
         
         upgradeData.UpgradesMaxedAction += OnUpgradesMaxed;
     }
@@ -90,7 +95,9 @@ public class PayPlatform : MonoBehaviour
     #region Logic
     private bool DoPayment(Transform origin)
     {
-        // currencyAmount = StorageManager.GetTotalScore();
+        currencyAmount = StorageManager.GetTotalScore();
+        
+        //TEMP
         currencyAmount = 100000;
 
         if(paymentsAmount > currencyAmount)
@@ -104,10 +111,16 @@ public class PayPlatform : MonoBehaviour
         {
             StorageManager.SetTotalScore(currencyAmount - paymentsAmount);
             upgradeData.Deposit(paymentsAmount);
+            SetCashText();
             CurrencyStacksPool.Instance.Push(cashStack);
         });
 
         return true;
+    }
+    
+    private void SetCashText()
+    {
+        cashText.SetText(string.Concat(upgradeData.CurrencyDeposited, SEPARATOR, upgradeData.GetNextPurchasePrice()));
     }
     #endregion
 }

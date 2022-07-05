@@ -11,11 +11,14 @@ public class UpgradeStation : MonoBehaviour
     {
         upgradeData.UpgradeActivatedAction += OnActivate;
         upgradeData.UpgradeUnlockedAction += OnUnlocked;
+        upgradeData.UpgradesMaxedAction += OnUpgradesMaxed;
     }
-
+    
     private void Start()
     {
         payPlatform.Init(upgradeData);
+        
+        //TEMP disabled
         // gameObject.SetActive(upgradeData.IsAvailable);
         SetState(upgradeData.IsUnlocked);
     }
@@ -24,6 +27,7 @@ public class UpgradeStation : MonoBehaviour
     {
         upgradeData.UpgradeActivatedAction -= OnActivate;
         upgradeData.UpgradeUnlockedAction -= OnUnlocked;
+        upgradeData.UpgradesMaxedAction -= OnUpgradesMaxed;
     }
     #endregion
 
@@ -37,6 +41,11 @@ public class UpgradeStation : MonoBehaviour
     {
         SetState(false);
     }
+
+    private void OnUpgradesMaxed()
+    {
+
+    }
     #endregion
 
     #region Logic
@@ -44,5 +53,6 @@ public class UpgradeStation : MonoBehaviour
     {
         lockedContainer.SetActive(isLocked);
     }
+
     #endregion
 }

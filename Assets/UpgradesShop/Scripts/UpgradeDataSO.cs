@@ -14,8 +14,7 @@ public abstract class UpgradeDataSO : ScriptableObject
     public bool IsAvailable => isAvailable;
     public bool IsUnlocked => isUnlocked;
 
-    public Action UpgradeActivatedAction;
-    public Action<UpgradeDataSO> UpgradeUnlockedAction;
+   
 
     [HideInInspector] public UpgradeType upgradeType;
 
@@ -32,10 +31,13 @@ public abstract class UpgradeDataSO : ScriptableObject
         }
     }
 
+    public Action UpgradeActivatedAction;
+    public Action<UpgradeDataSO> UpgradeUnlockedAction;
     public Action UpgradesMaxedAction;
 
     public abstract void Deposit(int amount);
     public abstract bool HasPurchasesAvailable();
+    public abstract int GetNextPurchasePrice();
 
     protected virtual void Awake()
     {
@@ -62,7 +64,7 @@ public abstract class UpgradeDataSO : ScriptableObject
         UpgradeActivatedAction?.Invoke();
     }
 
-    public void Unlock()
+    public virtual void Unlock()
     {
         if(isUnlocked)
         {
@@ -73,7 +75,6 @@ public abstract class UpgradeDataSO : ScriptableObject
         isUnlocked = true;
         PlayerPrefs.SetInt(unlockedKey, 1);
         UpgradeUnlockedAction?.Invoke(this);
-        UpgradesMaxedAction?.Invoke();
     }
 }
 

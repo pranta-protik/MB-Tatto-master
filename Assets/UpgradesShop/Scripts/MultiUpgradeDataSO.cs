@@ -4,7 +4,7 @@ using UnityEngine;
 public abstract class MultiUpgradeDataSO : UpgradeDataSO
 {
     [SerializeField] private int unlockPrice;
-
+    
     public override void Deposit(int amount)
     {
         CurrencyDeposited += amount;
@@ -19,9 +19,21 @@ public abstract class MultiUpgradeDataSO : UpgradeDataSO
             }
         }
     }
+
+    public override void Unlock()
+    {
+        base.Unlock();
+        
+        UpgradesMaxedAction?.Invoke();
+    }
     
     public override bool HasPurchasesAvailable()
     {
         return !IsUnlocked;
+    }
+
+    public override int GetNextPurchasePrice()
+    {
+        return unlockPrice;
     }
 }
