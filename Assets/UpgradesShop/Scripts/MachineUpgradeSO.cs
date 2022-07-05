@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu(menuName = "Upgrades/MachineUpgradeData")]
 public class MachineUpgradeSO : UpgradeDataSO
 {
-    public List<MachineData> machineDatas;
+    [FormerlySerializedAs("machineData")] [FormerlySerializedAs("machineAssets")] public List<MachineData> machineDatas;
     
     private int unlockedLevel;
     private int currentPrice;
