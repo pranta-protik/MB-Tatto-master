@@ -60,7 +60,7 @@ public class ValueUpgrade : MonoBehaviour
             
             // Rewarded Videos
             // Rewarded Suggested Event
-            HomaBelly.Instance.TrackDesignEvent("rewarded:" + "suggested" + ":" + PlacementName.UpgradeValue);
+            HomaBelly.Instance.TrackDesignEvent("rewarded:" + "suggested" + ":" + PlacementName.UPGRADE_VALUE);
         }
         else
         {
@@ -123,7 +123,7 @@ public class ValueUpgrade : MonoBehaviour
             // Show Ad
             if (HomaBelly.Instance.IsRewardedVideoAdAvailable())
             {
-                HomaBelly.Instance.ShowRewardedVideoAd(PlacementName.UpgradeValue);
+                HomaBelly.Instance.ShowRewardedVideoAd(PlacementName.UPGRADE_VALUE);
             }
         }
     }
@@ -140,7 +140,7 @@ public class ValueUpgrade : MonoBehaviour
         
         // Rewarded Videos
         // Rewarded Claimed Event
-        HomaBelly.Instance.TrackDesignEvent("rewarded:" + "taken" + ":" + PlacementName.UpgradeValue);
+        HomaBelly.Instance.TrackDesignEvent("rewarded:" + "taken" + ":" + PlacementName.UPGRADE_VALUE);
         
         // Unsubscribe to Rewarded Video Ads
         Events.onRewardedVideoAdRewardedEvent -= OnRewardedVideoAdRewardedEvent;
