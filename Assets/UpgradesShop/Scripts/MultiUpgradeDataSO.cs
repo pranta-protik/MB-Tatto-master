@@ -11,12 +11,13 @@ public abstract class MultiUpgradeDataSO : UpgradeDataSO
 
         if(CurrencyDeposited >= unlockPrice)
         {
-            Unlock();
-
             if(CurrencyDeposited > unlockPrice)
             {
                 Debug.LogError("[UPGRADES] To much money deposited for upgrade " + upgradeName);
             }
+
+            Unlock();
+            CurrencyDeposited = 0;
         }
     }
 

@@ -16,7 +16,6 @@ public class PayPlatform : MonoBehaviour
     private int currencyAmount;
     private bool isPaymentOngoing = false;
 
-    private const string SEPARATOR = "/";
     private const string PlayerTag = "Player";
     private const int paymentsAmount = 100;
     #endregion
@@ -72,7 +71,7 @@ public class PayPlatform : MonoBehaviour
         if(elapsedTime >= timeToPay)
         {
             elapsedTime -= timeToPay;
-            isPaymentOngoing = DoPayment(other.transform);
+            isPaymentOngoing = DoPayment();
         }
     }
 
@@ -93,7 +92,7 @@ public class PayPlatform : MonoBehaviour
     #endregion
 
     #region Logic
-    private bool DoPayment(Transform origin)
+    private bool DoPayment()
     {
         currencyAmount = StorageManager.GetTotalScore();
         
@@ -106,7 +105,7 @@ public class PayPlatform : MonoBehaviour
         }
 
         Transform cashStack = CurrencyStacksPool.Instance.Pull();
-        cashStack.transform.position = origin.position;
+        cashStack.transform.position = transform.position;
         cashStack.DOMove(depositTarget.position, depositTravelTime).OnComplete(() =>
         {
             StorageManager.SetTotalScore(currencyAmount - paymentsAmount);
@@ -120,7 +119,8 @@ public class PayPlatform : MonoBehaviour
     
     private void SetCashText()
     {
-        cashText.SetText(string.Concat(upgradeData.CurrencyDeposited, SEPARATOR, upgradeData.GetNextPurchasePrice()));
+        cashText.SetText((upgradeData.GetNextPurchasePrice() - upgradeData.CurrencyDeposited).ToString());
+
     }
     #endregion
 }

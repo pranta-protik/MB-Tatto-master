@@ -6,6 +6,7 @@ using UnityEngine;
 public class CharacterMotor : MonoBehaviour
 {
     [SerializeField] private CharacterController characterController;
+    [SerializeField] private Joystick joystick;
     [SerializeField] private Transform characterModelTransform;
     [SerializeField] private float movementSpeed = 1f;
 
@@ -21,32 +22,12 @@ public class CharacterMotor : MonoBehaviour
 
     private void Update()
     {
-        dirVector = Vector3.zero;
-
-        if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
-        {
-            dirVector += Vector3.forward;
-        }
-
-        if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-        {
-            dirVector += Vector3.left;
-        }
-
-        if(Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
-        {
-            dirVector += Vector3.back;
-        }
-
-        if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-        {
-            dirVector += Vector3.right;
-        }
+        dirVector = Vector3.forward * joystick.Vertical + Vector3.right * joystick.Horizontal;
 
         if(dirVector != Vector3.zero)
         {
-            dirVector = dirVector.normalized;
-            characterModelTransform.LookAt(characterModelTransform.position + dirVector);
+            // dirVector = dirVector.normalized;
+            characterModelTransform.LookAt(characterModelTransform.position + dirVector.normalized);
             // characterController.Move(dirVector * movementSpeed * Time.deltaTime);
             characterController.SimpleMove(dirVector * movementSpeed);
         }

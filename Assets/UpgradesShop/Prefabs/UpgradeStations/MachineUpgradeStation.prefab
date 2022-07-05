@@ -14337,6 +14337,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7229086151279701847}
     m_Modifications:
+    - target: {fileID: 634119257014064833, guid: dac117c06126d4b84bd8849225075f9b, type: 3}
+      propertyPath: depositTarget
+      value: 
+      objectReference: {fileID: 4638908469831157273}
     - target: {fileID: 634119257014064834, guid: dac117c06126d4b84bd8849225075f9b, type: 3}
       propertyPath: m_RootOrder
       value: 2

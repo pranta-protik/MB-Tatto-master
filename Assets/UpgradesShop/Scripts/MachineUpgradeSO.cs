@@ -1,14 +1,14 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 [CreateAssetMenu(menuName = "Upgrades/MachineUpgradeData")]
 public class MachineUpgradeSO : UpgradeDataSO
 {
-    [FormerlySerializedAs("machineData")] [FormerlySerializedAs("machineAssets")] public List<MachineData> machineDatas;
+    public List<MachineData> machineDatas;
     
     private int unlockedLevel;
+    private int currentPrice;
     
     public int maxLevel => machineDatas.Count;
     public int UnlockedLevel => unlockedLevel;
@@ -27,15 +27,17 @@ public class MachineUpgradeSO : UpgradeDataSO
     public override void Deposit(int amount)
     {
         CurrencyDeposited += amount;
+        currentPrice = machineDatas[unlockedLevel].upgradePrize;
 
-        if(CurrencyDeposited >= GetPriceSum())
+        if(CurrencyDeposited >= currentPrice)
         {
-            UpgradeMachine();
-
-            if(CurrencyDeposited > GetPriceSum() && unlockedLevel == maxLevel)
+            if(CurrencyDeposited > currentPrice && unlockedLevel == maxLevel)
             {
                 Debug.LogError("[UPGRADES] To much money deposited for machine upgrade");
             }
+            
+            CurrencyDeposited = 0;
+            UpgradeMachine();
         }
     }
 
@@ -73,17 +75,6 @@ public class MachineUpgradeSO : UpgradeDataSO
         }
     }
 
-    private int GetPriceSum()
-    {
-        int finalPrice = 0;
-        for(int i = 0; i < unlockedLevel; i++)
-        {
-            finalPrice += machineDatas[i].upgradePrize;
-        }
-
-        return finalPrice;
-    }
-    
     public GameObject GetMachine()
     {
         return machineDatas[unlockedLevel - 1].Machine3DModel;
