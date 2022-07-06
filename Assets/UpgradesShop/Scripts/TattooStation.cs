@@ -12,26 +12,22 @@ public class TattooStation : UpgradeStation
     protected override void Awake()
     {
         base.Awake();
-        
+
         tattoUpgradeData = upgradeData as TattooUpgradeSO;
+        originalPreviewScale = bigPreviewContainer.transform.localScale;
 
         SetPreviewSprites();
     }
-    
+
     public override void UpscaleBigPreview()
     {
-        originalPreviewScale = bigPreviewContainer.transform.localScale;
-
         if(upscaleTween != null)
         {
             upscaleTween.Kill();
             upscaleTween = null;
         }
-        
-        upscaleTween = bigPreviewContainer.transform.DOScale(originalPreviewScale * upscaleValue, scaleDuration).OnComplete(() =>
-        {
-            upscaleTween = null;
-        });
+
+        upscaleTween = bigPreviewContainer.transform.DOScale(originalPreviewScale * upscaleValue, scaleDuration).OnComplete(() => { upscaleTween = null; });
     }
 
     public override void DownscaleBigPreview()
@@ -41,11 +37,8 @@ public class TattooStation : UpgradeStation
             upscaleTween.Kill();
             upscaleTween = null;
         }
-        
-        upscaleTween = bigPreviewContainer.transform.DOScale(originalPreviewScale, scaleDuration).OnComplete(() =>
-        {
-            upscaleTween = null;
-        });
+
+        upscaleTween = bigPreviewContainer.transform.DOScale(originalPreviewScale, scaleDuration).OnComplete(() => { upscaleTween = null; });
     }
 
     private void SetPreviewSprites()

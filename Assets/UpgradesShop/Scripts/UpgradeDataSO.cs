@@ -32,12 +32,13 @@ public abstract class UpgradeDataSO : ScriptableObject
     public Action UpgradeActivatedAction;
     public Action<UpgradeDataSO> UpgradeUnlockedAction;
     public Action UpgradesMaxedAction;
+    public Action PaymentSuccessfulAction;
 
     public abstract void Deposit(int amount);
     public abstract bool HasPurchasesAvailable();
     public abstract int GetNextPurchasePrice();
 
-    protected virtual void Awake()
+    public virtual void Init()
     {
         availableKey = string.Concat("AvailableKey", "_", upgradeType, "_", upgradeName);
         unlockedKey = string.Concat("UnlockedKey", "_", upgradeType, "_", upgradeName);

@@ -29,6 +29,7 @@ public class PayPlatform : MonoBehaviour
     private void OnDestroy()
     {
         upgradeData.UpgradesMaxedAction -= OnUpgradesMaxed;
+        upgradeData.PaymentSuccessfulAction -= OnPaymentSuccessful;
     }
 
     public void Init(UpgradeDataSO data)
@@ -44,7 +45,10 @@ public class PayPlatform : MonoBehaviour
         SetCashText();
         
         upgradeData.UpgradesMaxedAction += OnUpgradesMaxed;
+        upgradeData.PaymentSuccessfulAction += OnPaymentSuccessful;
     }
+
+ 
     #endregion
 
     #region Handlers
@@ -88,6 +92,11 @@ public class PayPlatform : MonoBehaviour
     private void OnUpgradesMaxed()
     {
         gameObject.SetActive(false);
+    }
+    
+    private void OnPaymentSuccessful()
+    {
+        isPaymentOngoing = false;
     }
     #endregion
 

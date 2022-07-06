@@ -5,9 +5,9 @@ public class JewelryUpgradeSO : MultiUpgradeDataSO
 {
     [SerializeField] private GameObject jewelryPrefab;
     
-    protected override void Awake()
+    public override void Init()
     {
-        base.Awake();
+        base.Init();
         
         upgradeType = UpgradeType.Jewelry;
     }

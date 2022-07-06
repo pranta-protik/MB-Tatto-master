@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using DG.Tweening;
+using UnityEditor;
 using UnityEngine;
 
 public class MachineStation : UpgradeStation
@@ -19,7 +20,12 @@ public class MachineStation : UpgradeStation
 
         machineUpgradeData = upgradeData as MachineUpgradeSO;
         machineUpgradeData.LevelChangedAction += OnLevelChanged;
+    }
 
+    protected override void Start()
+    {
+        base.Start();
+        
         ActivateMachineLevel();
     }
 
@@ -74,6 +80,7 @@ public class MachineStation : UpgradeStation
     
     private void ActivateMachineLevel()
     {
+        Debug.Log("TEST ActivateMachineLevel: " + machineUpgradeData.UnlockedLevel);
         for(int i = 0, count = levels.Count; i < count; i++)
         {
             if(i == machineUpgradeData.UnlockedLevel - 1)

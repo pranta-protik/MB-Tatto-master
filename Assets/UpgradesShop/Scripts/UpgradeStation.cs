@@ -13,10 +13,12 @@ public abstract class UpgradeStation : MonoBehaviour
     [SerializeField] private Shader greyscaleShader;
     [SerializeField] protected float upscaleValue = 1.5f;
     [SerializeField] protected float scaleDuration = 0.33f;
+    [SerializeField] private List<Renderer> renderersToGreyscale;
 
     protected Vector3 originalPreviewScale;
     protected Tweener upscaleTween;
     private bool hasUsedGreyscale = false;
+    private List<Shader> originalShaders;
     
     private const string PlayerTag = "Player";
     #endregion
@@ -31,7 +33,7 @@ public abstract class UpgradeStation : MonoBehaviour
         upgradeData.UpgradeUnlockedAction += OnUnlocked;
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         payPlatform.Init(upgradeData);
         gameObject.SetActive(upgradeData.IsAvailable);
@@ -78,8 +80,7 @@ public abstract class UpgradeStation : MonoBehaviour
     #endregion
 
     #region Logic
-    private List<Renderer> renderers;
-    private List<Shader> originalShaders;
+   
     private void SetState(bool isLocked)
     {
         if(lockedContainer != null)
@@ -89,22 +90,21 @@ public abstract class UpgradeStation : MonoBehaviour
 
         if(isLocked)
         {
-            renderers = GetComponentsInChildren<Renderer>().ToList();
             originalShaders = new List<Shader>();
             
-            for(int i = 0, count = renderers.Count; i < count; i++)
+            for(int i = 0, count = renderersToGreyscale.Count; i < count; i++)
             {
-                originalShaders.Add(renderers[i].material.shader);
-                renderers[i].material.shader = greyscaleShader;
+                originalShaders.Add(renderersToGreyscale[i].material.shader);
+                renderersToGreyscale[i].material.shader = greyscaleShader;
             }
 
             hasUsedGreyscale = true;
         }
         else if(hasUsedGreyscale)
         {
-            for(int i = 0, count = renderers.Count; i < count; i++)
+            for(int i = 0, count = renderersToGreyscale.Count; i < count; i++)
             {
-                renderers[i].material.shader = originalShaders[i];
+                renderersToGreyscale[i].material.shader = originalShaders[i];
             }
 
             hasUsedGreyscale = false;

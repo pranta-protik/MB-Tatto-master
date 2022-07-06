@@ -437,6 +437,8 @@ MonoBehaviour:
   greyscaleShader: {fileID: 4800000, guid: e4dcac07d885849e5b7c216b2228ba01, type: 3}
   upscaleValue: 4
   scaleDuration: 0.33
+  renderersToGreyscale:
+  - {fileID: 4952501191278904872}
   smallPreviewContainer: {fileID: 7937755099152565857}
   bigPreviewContainer: {fileID: 1324066832914621112}
 --- !u!135 &7392794887179415397

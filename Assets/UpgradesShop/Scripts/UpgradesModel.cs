@@ -28,13 +28,16 @@ public class UpgradesModel : MonoBehaviour
         selectedTattooUpgrade = tattooUpgrades[tattooSelectedIndex];
         selectedJewelryUpgrade = jewelryUpgrades[jewelrySelectedIndex];
 
+        machineUpgrade.Init();
         for(int i = 0, count = tattooUpgrades.Count; i < count; i++)
         {
+            tattooUpgrades[i].Init();
             tattooUpgrades[i].UpgradeUnlockedAction += OnUpgradeUnlocked;
         }
 
         for(int i = 0, count = jewelryUpgrades.Count; i < count; i++)
         {
+            jewelryUpgrades[i].Init();
             jewelryUpgrades[i].UpgradeUnlockedAction += OnUpgradeUnlocked;
         }
     }
@@ -63,6 +66,7 @@ public class UpgradesModel : MonoBehaviour
     #region Handlers
     private void OnUpgradeUnlocked(UpgradeDataSO upgrade)
     {
+        Debug.Log("TEST OnUpgradeUnlocked: " + upgrade.upgradeType);
         switch(upgrade.upgradeType)
         {
             case UpgradeType.TattooDesign:
@@ -108,14 +112,14 @@ public class UpgradesModel : MonoBehaviour
             case UpgradeType.TattooDesign:
                 if(tattooSelectedIndex < tattooUpgrades.Count - 1)
                 {
-                    tattooUpgrades[tattooSelectedIndex + 1].Activate();
+                    tattooUpgrades[tattooSelectedIndex].Activate();
                 }
 
                 break;
             case UpgradeType.Jewelry:
                 if(jewelrySelectedIndex < jewelryUpgrades.Count - 1)
                 {
-                    jewelryUpgrades[jewelrySelectedIndex + 1].Activate();
+                    jewelryUpgrades[jewelrySelectedIndex].Activate();
                 }
 
                 break;

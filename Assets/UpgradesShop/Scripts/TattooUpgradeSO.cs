@@ -6,9 +6,9 @@ public class TattooUpgradeSO : MultiUpgradeDataSO
 {
     [SerializeField] private Sprite tattooSprite;
     
-    protected override void Awake()
+    public override void Init()
     {
-        base.Awake();
+        base.Init();
 
         upgradeType = UpgradeType.TattooDesign;
     }

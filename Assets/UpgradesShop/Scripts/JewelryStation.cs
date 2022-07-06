@@ -14,13 +14,13 @@ public class JewelryStation : UpgradeStation
         base.Awake();
 
         jewelryUpgradeData = upgradeData as JewelryUpgradeSO;
-
+        originalPreviewScale = bigPreviewContainer.transform.localScale;
+        
         Set3DModelPreview();
     }
 
     public override void UpscaleBigPreview()
     {
-        originalPreviewScale = bigPreviewContainer.transform.localScale;
 
         if(upscaleTween != null)
         {

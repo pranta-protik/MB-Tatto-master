@@ -19,14 +19,15 @@ public class MachineUpgradeSO : UpgradeDataSO
     
     private const string LEVEL_KEY = "LevelKey";
 
-    protected override void Awake()
+    public override void Init()
     {
-        base.Awake();
+        base.Init();
         
         upgradeType = UpgradeType.TattooMachine;
         isAvailable = true;
         isUnlocked = true;
         unlockedLevel = PlayerPrefs.GetInt(LEVEL_KEY, 1);
+        Debug.Log("TEST unlockedLevel: " + unlockedLevel);
     }
 
     public override void Deposit(int amount)
@@ -43,6 +44,7 @@ public class MachineUpgradeSO : UpgradeDataSO
             
             CurrencyDeposited = 0;
             UpgradeMachine();
+            PaymentSuccessfulAction?.Invoke();
         }
     }
 
