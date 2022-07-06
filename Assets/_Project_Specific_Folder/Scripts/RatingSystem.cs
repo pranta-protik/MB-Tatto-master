@@ -56,4 +56,10 @@ public class RatingSystem : MonoBehaviour
             GameManager.Instance.MobileScreenTransition();
         });
     }
+
+    public void OnCloseButtonClick()
+    {
+        gameObject.SetActive(false);
+        GameManager.Instance.MobileScreenTransition();
+    }
 }

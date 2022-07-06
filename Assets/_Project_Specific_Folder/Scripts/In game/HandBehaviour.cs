@@ -329,11 +329,6 @@ public class HandBehaviour : MonoBehaviour
 
             // Interstitial Ad
             int levelId = (PlayerPrefs.GetInt("current_scene_text", 0) + 1);
-
-            if (levelId == GameManager.Instance.ratingDisplayLevel)
-            {
-                UiManager.Instance.ratingScreen.SetActive(true);
-            }
             
             if (levelId >= GameManager.Instance.interstitialAdStartLevel)
             {
@@ -356,6 +351,15 @@ public class HandBehaviour : MonoBehaviour
             _tattooHandController.enabled = false;
             
             GameManager.Instance.mobileObj = other.transform.GetChild(2).gameObject;
+            
+            if (levelId == GameManager.Instance.ratingDisplayLevel)
+            {
+                UiManager.Instance.ratingScreen.SetActive(true);
+            }
+            else
+            {
+                GameManager.Instance.MobileScreenTransition();
+            }
         }
 
         #endregion
