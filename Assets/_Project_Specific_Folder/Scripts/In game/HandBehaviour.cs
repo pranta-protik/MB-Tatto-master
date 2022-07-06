@@ -329,6 +329,11 @@ public class HandBehaviour : MonoBehaviour
 
             // Interstitial Ad
             int levelId = (PlayerPrefs.GetInt("current_scene_text", 0) + 1);
+
+            if (levelId == GameManager.Instance.ratingDisplayLevel)
+            {
+                UiManager.Instance.ratingScreen.SetActive(true);
+            }
             
             if (levelId >= GameManager.Instance.interstitialAdStartLevel)
             {
@@ -337,8 +342,6 @@ public class HandBehaviour : MonoBehaviour
                 {
                     HomaBelly.Instance.ShowInterstitial("Level End Ad");    
                 }
-                
-                UiManager.Instance.ratingScreen.SetActive(true);
             }
 
             other.GetComponent<Collider>().enabled = false;
@@ -351,25 +354,8 @@ public class HandBehaviour : MonoBehaviour
             tattooHandAnimator.transform.parent.DOLocalMoveX(0, .2f);
             _mainHandController.enabled = false;
             _tattooHandController.enabled = false;
-
-            GameObject mobileObj = other.transform.GetChild(2).gameObject;
-
-            mobileObj.transform.DOLocalMoveY(0.88f, 0.5f);
-            mobileObj.transform.DORotate(new Vector3(-50f, 270f, 90f), 0.5f).OnComplete(() =>
-            {
-                mobileObj.transform.DOLocalMove(new Vector3(-.66f, 0.88f, 0.113f), 1f).OnComplete(() =>
-                {
-                    UiManager.Instance.transitionScreen.SetActive(true);
-                    UiManager.Instance.transitionScreen.GetComponent<Image>().DOFade(1f, 0.5f).OnComplete(() =>
-                    {
-                        _camera.transform.DORotate(new Vector3(46f, 90f, 0f), 0.01f).OnComplete(() =>
-                        {
-                            mobileObj.SetActive(false);
-                            UiManager.Instance.EnableMobileScreenUI();
-                        });
-                    });
-                });
-            });
+            
+            GameManager.Instance.mobileObj = other.transform.GetChild(2).gameObject;
         }
 
         #endregion

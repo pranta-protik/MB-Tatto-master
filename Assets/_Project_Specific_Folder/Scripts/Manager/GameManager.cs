@@ -9,6 +9,7 @@ using MySDK;
 using PathCreation;
 using HomaGames.HomaBelly;
 using GameAnalyticsSDK;
+using UnityEngine.UI;
 
 public enum ERotationAxis
 {
@@ -44,6 +45,7 @@ public class GameManager : Singleton<GameManager>
     public bool isBannerAdEnabled;
     public bool isInterstitialAdEnabled;
     public int interstitialAdStartLevel;
+    public int ratingDisplayLevel;
     public EGameMode gameMode;
     public int currentTattooGunLevel;
     public List<GameObject> levelPrefabs = new List<GameObject>();
@@ -421,6 +423,27 @@ public class GameManager : Singleton<GameManager>
 
     #endregion
 
+    [HideInInspector] public GameObject mobileObj;
+    public void MobileScreenTransition()
+    {
+        mobileObj.transform.DOLocalMoveY(0.88f, 0.5f);
+        mobileObj.transform.DORotate(new Vector3(-50f, 270f, 90f), 0.5f).OnComplete(() =>
+        {
+            mobileObj.transform.DOLocalMove(new Vector3(-.66f, 0.88f, 0.113f), 1f).OnComplete(() =>
+            {
+                UiManager.Instance.transitionScreen.SetActive(true);
+                UiManager.Instance.transitionScreen.GetComponent<Image>().DOFade(1f, 0.5f).OnComplete(() =>
+                {
+                    Camera.main.transform.DORotate(new Vector3(46f, 90f, 0f), 0.01f).OnComplete(() =>
+                    {
+                        mobileObj.SetActive(false);
+                        UiManager.Instance.EnableMobileScreenUI();
+                    });
+                });
+            });
+        });
+    }
+    
     public void WrestlingSetup(int bossHandId)
     {
         postProcessHandler.RemoveAllEffects();
