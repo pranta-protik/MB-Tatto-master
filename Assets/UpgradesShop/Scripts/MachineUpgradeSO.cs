@@ -27,7 +27,6 @@ public class MachineUpgradeSO : UpgradeDataSO
         isAvailable = true;
         isUnlocked = true;
         unlockedLevel = PlayerPrefs.GetInt(LEVEL_KEY, 1);
-        Debug.Log("TEST unlockedLevel: " + unlockedLevel);
     }
 
     public override void Deposit(int amount)

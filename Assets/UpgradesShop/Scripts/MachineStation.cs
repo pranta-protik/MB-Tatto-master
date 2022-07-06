@@ -80,7 +80,6 @@ public class MachineStation : UpgradeStation
     
     private void ActivateMachineLevel()
     {
-        Debug.Log("TEST ActivateMachineLevel: " + machineUpgradeData.UnlockedLevel);
         for(int i = 0, count = levels.Count; i < count; i++)
         {
             if(i == machineUpgradeData.UnlockedLevel - 1)
