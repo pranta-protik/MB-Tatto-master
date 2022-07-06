@@ -35,6 +35,10 @@ public class ScoreMultiplier : MonoBehaviour
         {
             HomaBelly.Instance.ShowRewardedVideoAd(PlacementName.SCORE_MULTIPLIER);
         }
+        else
+        {
+            Events.onRewardedVideoAdRewardedEvent -= OnRewardedVideoAdRewardedEvent;
+        }
     }
 
     private void OnRewardedVideoAdRewardedEvent(VideoAdReward obj)

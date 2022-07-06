@@ -143,6 +143,10 @@ public class CoolnessUpgrade : MonoBehaviour
                 {
                     HomaBelly.Instance.ShowRewardedVideoAd(PlacementName.UPGRADE_COOLNESS);
                 }
+                else
+                {
+                    Events.onRewardedVideoAdRewardedEvent -= OnRewardedVideoAdRewardedEvent;
+                }
             }
         }
     }

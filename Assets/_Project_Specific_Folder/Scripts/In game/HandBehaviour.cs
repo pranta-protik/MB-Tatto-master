@@ -329,16 +329,14 @@ public class HandBehaviour : MonoBehaviour
 
             // Interstitial Ad
             int levelId = (PlayerPrefs.GetInt("current_scene_text", 0) + 1);
-            
+
             if (levelId >= GameManager.Instance.interstitialAdStartLevel)
             {
                 // Check if ad is available
-                if(HomaBelly.Instance.IsInterstitialAvailable() && GameManager.Instance.isInterstitialAdEnabled)
+                if (HomaBelly.Instance.IsInterstitialAvailable() && GameManager.Instance.isInterstitialAdEnabled)
                 {
-                    HomaBelly.Instance.ShowInterstitial("Level End Ad");    
+                    HomaBelly.Instance.ShowInterstitial("Level End Ad");
                 }
-                
-                UiManager.Instance.ratingScreen.SetActive(true);
             }
 
             other.GetComponent<Collider>().enabled = false;
@@ -352,24 +350,17 @@ public class HandBehaviour : MonoBehaviour
             _mainHandController.enabled = false;
             _tattooHandController.enabled = false;
 
-            GameObject mobileObj = other.transform.GetChild(2).gameObject;
+            GameManager.Instance.mobileObj = other.transform.GetChild(2).gameObject;
 
-            mobileObj.transform.DOLocalMoveY(0.88f, 0.5f);
-            mobileObj.transform.DORotate(new Vector3(-50f, 270f, 90f), 0.5f).OnComplete(() =>
+            if (levelId == GameManager.Instance.ratingDisplayLevel)
             {
-                mobileObj.transform.DOLocalMove(new Vector3(-.66f, 0.88f, 0.113f), 1f).OnComplete(() =>
-                {
-                    UiManager.Instance.transitionScreen.SetActive(true);
-                    UiManager.Instance.transitionScreen.GetComponent<Image>().DOFade(1f, 0.5f).OnComplete(() =>
-                    {
-                        _camera.transform.DORotate(new Vector3(46f, 90f, 0f), 0.01f).OnComplete(() =>
-                        {
-                            mobileObj.SetActive(false);
-                            UiManager.Instance.EnableMobileScreenUI();
-                        });
-                    });
-                });
-            });
+                GameManager.Instance.MobileScreenTransition();
+                // UiManager.Instance.ratingScreen.SetActive(true);
+            }
+            else
+            {
+                GameManager.Instance.MobileScreenTransition();
+            }
         }
 
         #endregion

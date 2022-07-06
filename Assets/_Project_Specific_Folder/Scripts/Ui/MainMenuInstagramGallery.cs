@@ -78,6 +78,10 @@ public class MainMenuInstagramGallery : MonoBehaviour
         {
             HomaBelly.Instance.ShowRewardedVideoAd(PlacementName.UPDATE_USERNAME);
         }
+        else
+        {
+            Events.onRewardedVideoAdRewardedEvent -= OnRewardedVideoAdRewardedEvent;
+        }
     }
 
     // Collect Ad Reward

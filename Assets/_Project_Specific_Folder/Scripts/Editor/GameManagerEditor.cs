@@ -23,6 +23,8 @@ public class GameManagerEditor : Editor
         EditorGUILayout.PropertyField(serializedObject.FindProperty("goldenTattooGunMaterialSmoothness"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("tattooGunSpawnEffect"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("tattooEffect"));
+
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("ratingDisplayLevel"));
         
         EditorGUILayout.PropertyField(serializedObject.FindProperty("isBannerAdEnabled"));
         
