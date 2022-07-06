@@ -107,6 +107,10 @@ public class MobileScreen : MonoBehaviour
         {
             HomaBelly.Instance.ShowRewardedVideoAd(PlacementName.UNLOCK_FILTER);   
         }
+        else
+        {
+            Events.onRewardedVideoAdRewardedEvent -= OnRewardedVideoAdRewardedEvent;
+        }
     }
     
     // Collect Ad Rewards

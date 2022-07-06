@@ -142,6 +142,10 @@ public class SelectionMenu : MonoBehaviour
             {
                 HomaBelly.Instance.ShowRewardedVideoAd(PlacementName.UNLOCK_NEW_HAND);   
             }
+            else
+            {
+                Events.onRewardedVideoAdRewardedEvent -= OnRewardedVideoAdRewardedEvent;
+            }
         }
     }
 

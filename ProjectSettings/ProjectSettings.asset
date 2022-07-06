@@ -134,7 +134,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 0.6
+  bundleVersion: 0.7
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -159,7 +159,7 @@ PlayerSettings:
     iPhone: 0
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
-  AndroidBundleVersionCode: 6
+  AndroidBundleVersionCode: 7
   AndroidMinSdkVersion: 22
   AndroidTargetSdkVersion: 30
   AndroidPreferredInstallLocation: 1
@@ -254,7 +254,7 @@ PlayerSettings:
   AndroidEnableTango: 0
   androidEnableBanner: 1
   androidUseLowAccuracyLocation: 0
-  androidUseCustomKeystore: 0
+  androidUseCustomKeystore: 1
   m_AndroidBanners:
   - width: 320
     height: 180
@@ -691,8 +691,8 @@ PlayerSettings:
   webGLDecompressionFallback: 0
   scriptingDefineSymbols:
     1: ODIN_INSPECTOR;ODIN_INSPECTOR_3;UNITY_POST_PROCESSING_STACK_V2
-    4: HOMA_BELLY;HOMA_BELLY_DEFAULT_ANALYTICS_ENABLED;HOMA_BELLY_EDITOR_ANALYTICS_ENABLED;gameanalytics_max_enabled;HOMA_DEVELOPMENT;HOMA_BELLY_DEBUG_CLASS_OVERRIDE_ENABLED
-    7: ODIN_INSPECTOR;ODIN_INSPECTOR_3;MOREMOUNTAINS_NICEVIBRATIONS;HOMA_BELLY;UNITY_POST_PROCESSING_STACK_V2;HOMA_BELLY_DEFAULT_ANALYTICS_ENABLED;HOMA_BELLY_EDITOR_ANALYTICS_ENABLED;gameanalytics_max_enabled;HOMA_DEVELOPMENT;HOMA_BELLY_DEBUG_CLASS_OVERRIDE_ENABLED
+    4: HOMA_BELLY;HOMA_BELLY_DEFAULT_ANALYTICS_ENABLED;HOMA_BELLY_EDITOR_ANALYTICS_ENABLED;gameanalytics_max_enabled
+    7: ODIN_INSPECTOR;ODIN_INSPECTOR_3;MOREMOUNTAINS_NICEVIBRATIONS;HOMA_BELLY;UNITY_POST_PROCESSING_STACK_V2;HOMA_BELLY_DEFAULT_ANALYTICS_ENABLED;HOMA_BELLY_EDITOR_ANALYTICS_ENABLED;gameanalytics_max_enabled
     13: UNITY_POST_PROCESSING_STACK_V2
     14: UNITY_POST_PROCESSING_STACK_V2
     19: UNITY_POST_PROCESSING_STACK_V2
@@ -783,7 +783,14 @@ PlayerSettings:
   XboxOneOverrideIdentityPublisher: 
   vrEditorSettings: {}
   cloudServicesEnabled:
+    Analytics: 0
+    Build: 0
+    Collab: 0
+    Game Performance: 0
+    Purchasing: 0
+    UDP: 0
     UNet: 1
+    Unity Ads: 0
   luminIcon:
     m_Name: 
     m_ModelFolderPath: 
@@ -797,11 +804,11 @@ PlayerSettings:
     m_VersionName: 
   apiCompatibilityLevel: 6
   activeInputHandler: 0
-  cloudProjectId: c7f6e8e8-cc37-4ec9-bbf0-fe6298916d44
+  cloudProjectId: 
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Tattoo Evolution
-  organizationId: pranta-cse
+  projectName: 
+  organizationId: 
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   virtualTexturingSupportEnabled: 0

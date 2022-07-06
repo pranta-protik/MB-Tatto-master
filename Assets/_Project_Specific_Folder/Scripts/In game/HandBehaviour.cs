@@ -329,13 +329,13 @@ public class HandBehaviour : MonoBehaviour
 
             // Interstitial Ad
             int levelId = (PlayerPrefs.GetInt("current_scene_text", 0) + 1);
-            
+
             if (levelId >= GameManager.Instance.interstitialAdStartLevel)
             {
                 // Check if ad is available
-                if(HomaBelly.Instance.IsInterstitialAvailable() && GameManager.Instance.isInterstitialAdEnabled)
+                if (HomaBelly.Instance.IsInterstitialAvailable() && GameManager.Instance.isInterstitialAdEnabled)
                 {
-                    HomaBelly.Instance.ShowInterstitial("Level End Ad");    
+                    HomaBelly.Instance.ShowInterstitial("Level End Ad");
                 }
             }
 
@@ -349,12 +349,13 @@ public class HandBehaviour : MonoBehaviour
             tattooHandAnimator.transform.parent.DOLocalMoveX(0, .2f);
             _mainHandController.enabled = false;
             _tattooHandController.enabled = false;
-            
+
             GameManager.Instance.mobileObj = other.transform.GetChild(2).gameObject;
-            
+
             if (levelId == GameManager.Instance.ratingDisplayLevel)
             {
-                UiManager.Instance.ratingScreen.SetActive(true);
+                GameManager.Instance.MobileScreenTransition();
+                // UiManager.Instance.ratingScreen.SetActive(true);
             }
             else
             {

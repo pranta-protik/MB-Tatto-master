@@ -36,21 +36,23 @@ public class InfluenceMeter : MonoBehaviour
     private InfluencerStatus _influencerStatus;
     private GameObject _fightBanner;
     private GameObject _fightIcon;
-    private GameObject _watchAdButton;
+    private GameObject _nextButton;
+    // private GameObject _watchAdButton;
     private GameObject _foregroundScreen;
-    private GameObject _skipButton;
-    private GameObject _scoreMultiplierMeter;
-    private GameObject _scoreMultiplierPointer;
+    // private GameObject _skipButton;
+    // private GameObject _scoreMultiplierMeter;
+    // private GameObject _scoreMultiplierPointer;
 
     private void Start()
     {
         _fightBanner = transform.GetChild(4).gameObject;
         _fightIcon = transform.GetChild(5).gameObject;
-        _watchAdButton = transform.GetChild(6).gameObject;
+        _nextButton = transform.GetChild(6).gameObject;
+        // _watchAdButton = transform.GetChild(6).gameObject;
         _foregroundScreen = transform.GetChild(10).gameObject;
-        _skipButton = transform.GetChild(7).gameObject;
-        _scoreMultiplierMeter = transform.GetChild(8).gameObject;
-        _scoreMultiplierPointer = transform.GetChild(9).gameObject;
+        // _skipButton = transform.GetChild(7).gameObject;
+        // _scoreMultiplierMeter = transform.GetChild(8).gameObject;
+        // _scoreMultiplierPointer = transform.GetChild(9).gameObject;
         
         _targetCash = StorageManager.Instance.currentLevelScore < 0 ? 500 : StorageManager.Instance.currentLevelScore;
         _cashText = transform.GetChild(3).GetComponent<TMP_Text>();
@@ -125,7 +127,8 @@ public class InfluenceMeter : MonoBehaviour
         }
         else
         {
-            EnableWatchAdButton();
+            EnableNextButton();
+            // EnableWatchAdButton();
         }
     }
 
@@ -153,12 +156,14 @@ public class InfluenceMeter : MonoBehaviour
                 }
                 else
                 {
-                    EnableWatchAdButton();
+                    EnableNextButton();
+                    // EnableWatchAdButton();
                 }
             }
             else
             {
-                EnableWatchAdButton();
+                EnableNextButton();
+                // EnableWatchAdButton();
             }
         });   
     }
@@ -172,6 +177,10 @@ public class InfluenceMeter : MonoBehaviour
         if (HomaBelly.Instance.IsRewardedVideoAdAvailable())
         {
             HomaBelly.Instance.ShowRewardedVideoAd(PlacementName.WRESTLE_OPPONENT);
+        }
+        else
+        {
+            Events.onRewardedVideoAdRewardedEvent -= OnRewardedVideoAdRewardedEvent;
         }
     }
 
@@ -204,8 +213,9 @@ public class InfluenceMeter : MonoBehaviour
         
         PlayerPrefs.SetInt("InfluencerStatus" + _influencerStatus.influencerId, 1);
         PlayerPrefs.SetInt("InfluncerFightStatus" + _influencerStatus.influencerId, 0);
-        
-        EnableWatchAdButton();
+     
+        EnableNextButton();
+        // EnableWatchAdButton();
     }
     
     private void StartWrestling()
@@ -260,21 +270,28 @@ public class InfluenceMeter : MonoBehaviour
         
         StartCoroutine(_influencerStatus.DecreaseFollowers());
         
-        Invoke(nameof(EnableWatchAdButton), 2.5f);
+        Invoke(nameof(EnableNextButton), 2.5f);
+        // Invoke(nameof(EnableWatchAdButton), 2.5f);
     }
 
-    private void EnableWatchAdButton()
+    private void EnableNextButton()
     {
-        _watchAdButton.SetActive(true);
-        _watchAdButton.transform.DOScale(new Vector3(0.8f, 0.8f, 0.8f), 0.5f).SetLoops(-1, LoopType.Yoyo);
-        _skipButton.SetActive(true);
-        _scoreMultiplierMeter.SetActive(true);
-        _scoreMultiplierPointer.SetActive(true);
-        
-        // Rewarded Videos
-        // Rewarded Suggested Event
-        HomaBelly.Instance.TrackDesignEvent("rewarded:" + "suggested" + ":" + PlacementName.SCORE_MULTIPLIER);
+        _nextButton.SetActive(true);
+        _nextButton.transform.DOScale(new Vector3(0.8f, 0.8f, 0.8f), 0.5f).SetLoops(-1, LoopType.Yoyo);
     }
+    
+    // private void EnableWatchAdButton()
+    // {
+    //     _watchAdButton.SetActive(true);
+    //     _watchAdButton.transform.DOScale(new Vector3(0.8f, 0.8f, 0.8f), 0.5f).SetLoops(-1, LoopType.Yoyo);
+    //     _skipButton.SetActive(true);
+    //     _scoreMultiplierMeter.SetActive(true);
+    //     _scoreMultiplierPointer.SetActive(true);
+    //     
+    //     // Rewarded Videos
+    //     // Rewarded Suggested Event
+    //     HomaBelly.Instance.TrackDesignEvent("rewarded:" + "suggested" + ":" + PlacementName.SCORE_MULTIPLIER);
+    // }
     
     public void EnableUnlockScreen()
     {

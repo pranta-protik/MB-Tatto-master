@@ -125,6 +125,10 @@ public class ValueUpgrade : MonoBehaviour
             {
                 HomaBelly.Instance.ShowRewardedVideoAd(PlacementName.UPGRADE_VALUE);
             }
+            else
+            {
+                Events.onRewardedVideoAdRewardedEvent -= OnRewardedVideoAdRewardedEvent;
+            }
         }
     }
 

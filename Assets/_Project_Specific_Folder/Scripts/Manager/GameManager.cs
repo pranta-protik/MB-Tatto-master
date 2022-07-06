@@ -434,7 +434,7 @@ public class GameManager : Singleton<GameManager>
                 UiManager.Instance.transitionScreen.SetActive(true);
                 UiManager.Instance.transitionScreen.GetComponent<Image>().DOFade(1f, 0.5f).OnComplete(() =>
                 {
-                    Camera.main.transform.DORotate(new Vector3(46f, 90f, 0f), 0.01f).OnComplete(() =>
+                    _mainCamera.transform.DORotate(new Vector3(46f, 90f, 0f), 0.01f).OnComplete(() =>
                     {
                         mobileObj.SetActive(false);
                         UiManager.Instance.EnableMobileScreenUI();
