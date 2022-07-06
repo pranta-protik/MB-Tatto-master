@@ -7591,6 +7591,7 @@ MonoBehaviour:
   tapFastPanel: {fileID: 0}
   coolnessUpgradeButton: {fileID: 0}
   valueUpgradeButton: {fileID: 0}
+  ratingScreen: {fileID: 0}
   isInstagramGalleryPhotoUpdated: 0
   followerValue: 
   isBadTattoo: 0
@@ -7601,13 +7602,17 @@ MonoBehaviour:
   valueUpgradeIncrementEffect: {fileID: 0}
   mobileScreen: {fileID: 0}
   selectionMenuButton: {fileID: 0}
+  instagramGalleryButton: {fileID: 0}
   shop: {fileID: 1895934326}
   levelNoText: {fileID: 0}
   selectionMenu: {fileID: 0}
+  mainMenuInstagramGallery: {fileID: 0}
   popUpScale: 5
   popUpDuration: 0.3
   instagramGalleryPage: {fileID: 0}
   influenceMeterPage: {fileID: 0}
+  _currentLevel: 0
+  _currentLevelText: 0
 --- !u!114 &1577174985317205378
 MonoBehaviour:
   m_ObjectHideFlags: 0
