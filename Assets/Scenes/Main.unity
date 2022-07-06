@@ -2779,7 +2779,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &246476785
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7470,7 +7470,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &717399743
 RectTransform:
   m_ObjectHideFlags: 0
@@ -29747,7 +29747,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1804672027
 RectTransform:
   m_ObjectHideFlags: 0
@@ -30593,6 +30593,7 @@ MonoBehaviour:
     - {fileID: 2800000, guid: 52cf3ef61c59f03458df59e1ec883bcc, type: 3}
     - {fileID: 2800000, guid: 16037bfdbf87fd641b68ea79bf4dc1ba, type: 3}
     - {fileID: 2800000, guid: 6162b8376b8b4dd4da813f991e86ea5d, type: 3}
+    - {fileID: 2800000, guid: 695cf13fb21f49745976fd6817ed8673, type: 3}
     - {fileID: 2800000, guid: 3b2a23bfcfedccb4fb1a8be2614c64c9, type: 3}
     - {fileID: 2800000, guid: cf4ca947123b2c54cb94fe10a626ba86, type: 3}
     - {fileID: 2800000, guid: b437cd185a9d7bc41a98e09f78f3f95f, type: 3}
@@ -30601,9 +30602,11 @@ MonoBehaviour:
     expensiveBlueTattoos:
     - {fileID: 2800000, guid: 9bc5fb85752c44c43b9d63b66cf91b44, type: 3}
     - {fileID: 2800000, guid: be5bc749da67d0f4fbd4f02f3f360d06, type: 3}
+    - {fileID: 2800000, guid: 9d408a593c909314a856b398cdf676bd, type: 3}
     expensiveYellowTattoos:
     - {fileID: 2800000, guid: 7c9ab328787a2f340b66427f058283d9, type: 3}
     - {fileID: 2800000, guid: 62499c79bcd51ac41ab1479708c4c429, type: 3}
+    - {fileID: 2800000, guid: 623acdc6deace6c40a36b9e6c3448062, type: 3}
     cheapTattoos:
     - {fileID: 2800000, guid: 70dcff40d21fdb048b1f36ceaaa0b998, type: 3}
     - {fileID: 2800000, guid: 0f2783b918cfc634d80974cf2b187d34, type: 3}
@@ -30617,7 +30620,7 @@ MonoBehaviour:
     cheapYellowTattoos:
     - {fileID: 2800000, guid: 2a7d65e0f425b7344bc92d9855e37054, type: 3}
     - {fileID: 2800000, guid: 4d39e238620f54c47b2919c40c5f3d32, type: 3}
-    expensiveColorTattooIdSequences: 0800000009000000
+    expensiveColorTattooIdSequences: 08000000090000000a000000
     cheapColorTattooIdSequences: 0400000005000000
   - groupId: 2
     defaultTattoos:
@@ -30747,10 +30750,10 @@ MonoBehaviour:
     cheapColorTattooIdSequences: 0400000005000000
   - groupId: 5
     defaultTattoos:
-    - {fileID: 2800000, guid: 1f836455c51e20a498b9e0d6be2f7809, type: 3}
-    - {fileID: 2800000, guid: 907636d5ec0fd024eac347c1da196fc0, type: 3}
-    - {fileID: 2800000, guid: 93138951424f9e34fa0a5633d693ee83, type: 3}
-    - {fileID: 2800000, guid: 5750a5fc4a272ce46ae6e22cf3f0f084, type: 3}
+    - {fileID: 2800000, guid: 1b40c619052ee4c4698ac27606a72e10, type: 3}
+    - {fileID: 2800000, guid: ab72612fc2f4f054583fddf4b6368ad1, type: 3}
+    - {fileID: 2800000, guid: 4d9bbf268cbe0394194976b95d76195c, type: 3}
+    - {fileID: 2800000, guid: 802bccbcdb43acc46ac893a5842dfb97, type: 3}
     expensiveTattoos:
     - {fileID: 2800000, guid: b6fd91880c20fb64ab336a520692875b, type: 3}
     - {fileID: 2800000, guid: 02e39ea461d07b6479e9c61453a65110, type: 3}
@@ -30768,11 +30771,11 @@ MonoBehaviour:
     - {fileID: 2800000, guid: cd8223ca059092c4bb32ebf398b66df2, type: 3}
     - {fileID: 2800000, guid: e68c1d05052789441ac693843f265923, type: 3}
     expensiveBlueTattoos:
-    - {fileID: 2800000, guid: e434e51bd81b0714e991b980a333bc99, type: 3}
     - {fileID: 2800000, guid: 604ee8490eef980469800ca34e238cd5, type: 3}
+    - {fileID: 2800000, guid: ce5ec2774aa17244e8b04a07ed9bf27f, type: 3}
     expensiveYellowTattoos:
-    - {fileID: 2800000, guid: 94709cb7d583eec489d0bfd775ed53cd, type: 3}
     - {fileID: 2800000, guid: 2233d526ca54e0e4f94d8ff11293aa3a, type: 3}
+    - {fileID: 2800000, guid: ff66de8b923bfaa4692a682e509728bb, type: 3}
     cheapTattoos:
     - {fileID: 2800000, guid: 8ef5dcaebf972ca4e8b38c952dc86f90, type: 3}
     - {fileID: 2800000, guid: 08536b3808eb6b740ab75340c2343de9, type: 3}
@@ -30784,9 +30787,9 @@ MonoBehaviour:
     - {fileID: 2800000, guid: af0d61e620f848245b59cfcd5b6f9295, type: 3}
     - {fileID: 2800000, guid: d04bbbf95178e7549b821c13205a27fa, type: 3}
     cheapYellowTattoos:
-    - {fileID: 2800000, guid: 0805d70403f68164f8600cc345bf6d99, type: 3}
     - {fileID: 2800000, guid: b9d65dda6646d3943b11cfdad31d12cf, type: 3}
-    expensiveColorTattooIdSequences: 090000000a000000
+    - {fileID: 2800000, guid: 0805d70403f68164f8600cc345bf6d99, type: 3}
+    expensiveColorTattooIdSequences: 0a0000000b000000
     cheapColorTattooIdSequences: 0400000005000000
 --- !u!4 &1859920060
 Transform:

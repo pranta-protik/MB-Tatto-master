@@ -27,8 +27,7 @@ public class RatingSystem : MonoBehaviour
 
     private void GoToRatingLink()
     {
-        Debug.Log("Go to Rating Page");
-        Application.OpenURL("https://play.google.com/store/games");
+        Application.OpenURL("https://play.google.com/store/apps/details?id=com.manabreak.tattooevolution");
         gameObject.SetActive(false);    
     }
     
