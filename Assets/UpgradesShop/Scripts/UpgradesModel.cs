@@ -110,14 +110,14 @@ public class UpgradesModel : MonoBehaviour
         switch(upgradeType)
         {
             case UpgradeType.TattooDesign:
-                if(tattooSelectedIndex < tattooUpgrades.Count - 1)
+                if(tattooSelectedIndex < tattooUpgrades.Count)
                 {
                     tattooUpgrades[tattooSelectedIndex].Activate();
                 }
 
                 break;
             case UpgradeType.Jewelry:
-                if(jewelrySelectedIndex < jewelryUpgrades.Count - 1)
+                if(jewelrySelectedIndex < jewelryUpgrades.Count)
                 {
                     jewelryUpgrades[jewelrySelectedIndex].Activate();
                 }
