@@ -51,7 +51,7 @@ MonoBehaviour:
   cameraPivot: {fileID: 2400116061105504171}
   characterAnimator: {fileID: 3680585425168682043}
   movementSpeed: 5
-  animatorMovementSpeed: 2
+  animatorMovementSpeed: 1
 --- !u!1 &2400116060383580250
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,7 +269,7 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 0fed877023e724da798be5f0442283de, type: 2}
     - target: {fileID: 5866666021909216657, guid: 77f1f4e29bf0f944890703b3258ee278, type: 3}
       propertyPath: m_ApplyRootMotion
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77f1f4e29bf0f944890703b3258ee278, type: 3}

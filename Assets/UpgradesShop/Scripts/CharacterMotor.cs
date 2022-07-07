@@ -40,8 +40,8 @@ public class CharacterMotor : MonoBehaviour
 
             characterAnimator.speed = dirVector.magnitude * animatorMovementSpeed;
             characterModelTransform.LookAt(characterModelTransform.position + dirVector.normalized);
-            // characterController.SimpleMove(dirVector * movementSpeed); //We are using root motion now
-            characterController.SimpleMove(Vector3.zero); //To use the gravity and steps climb logic of CharacterController but not the movement
+            characterController.SimpleMove(dirVector * movementSpeed); //To use with no root motion
+            // characterController.SimpleMove(Vector3.zero); //To use the gravity and steps climb logic of CharacterController but not the movement
         }
         else if(isMoving)
         {

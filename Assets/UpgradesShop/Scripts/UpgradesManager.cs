@@ -31,6 +31,14 @@ public class UpgradesManager : Performance_Singleton<UpgradesManager>
         SceneManager.LoadScene(sceneName);
     }
 
+#if UNITY_EDITOR
+    [Sirenix.OdinInspector.Button]
+    public void AddCash()
+    {
+        StorageManager.SetTotalScore(100000);
+    }
+#endif
+
     public GameObject GetTatgun()
     {
         return MachineUpgradeSo.GetMachine();
