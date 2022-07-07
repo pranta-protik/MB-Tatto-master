@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradesModel: {fileID: 5771652360195162712}
+  exitShopTrigger: {fileID: 0}
+  sceneName: Main
 --- !u!114 &5771652360195162712
 MonoBehaviour:
   m_ObjectHideFlags: 0

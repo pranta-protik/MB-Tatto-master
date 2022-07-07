@@ -59,7 +59,7 @@ namespace HomaGames.HomaConsole.Performance.Utils
 
         #region Methods -> Unity Callbacks
 
-        void Awake()
+        protected virtual void Awake()
         {
             if (_instance != null)
             {
@@ -71,7 +71,7 @@ namespace HomaGames.HomaConsole.Performance.Utils
             }
         }
 
-        void OnDestroy()
+        protected virtual void OnDestroy()
         {
             if (_instance == this)
             {
