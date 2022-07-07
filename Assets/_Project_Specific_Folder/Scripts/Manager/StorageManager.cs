@@ -10,7 +10,7 @@ public class StorageManager : Singleton<StorageManager>
     
     [HideInInspector] public int currentLevelScore;
 
-    public Action<int> CurrentScoreChangedAction;
+    public static Action<int> CurrentScoreChangedAction;
 
     public override void Start()
     {
