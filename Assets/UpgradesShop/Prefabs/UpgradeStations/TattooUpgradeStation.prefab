@@ -133,7 +133,7 @@ MonoBehaviour:
   lockedContainer: {fileID: 8050774513490220484}
   payPlatform: {fileID: 3083748259177356674}
   greyscaleShader: {fileID: 4800000, guid: e4dcac07d885849e5b7c216b2228ba01, type: 3}
-  upscaleValue: 2
+  upscaleValue: 1.8
   scaleDuration: 0.33
   renderersToGreyscale:
   - {fileID: 4886746250566664498}
@@ -151,7 +151,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 2.57
+  m_Radius: 1.8
   m_Center: {x: 2.43, y: 0, z: -1.27}
 --- !u!1 &6272474198415939185
 GameObject:

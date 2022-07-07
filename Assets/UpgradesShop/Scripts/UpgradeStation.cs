@@ -36,6 +36,7 @@ public abstract class UpgradeStation : MonoBehaviour
     protected virtual void Start()
     {
         payPlatform.Init(upgradeData);
+
         gameObject.SetActive(upgradeData.IsAvailable);
         SetState(!upgradeData.IsUnlocked);
     }
@@ -106,7 +107,7 @@ public abstract class UpgradeStation : MonoBehaviour
             {
                 renderersToGreyscale[i].material.shader = originalShaders[i];
             }
-
+            
             hasUsedGreyscale = false;
         }
     }

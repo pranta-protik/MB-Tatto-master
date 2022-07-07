@@ -11140,6 +11140,7 @@ MonoBehaviour:
   greyscaleShader: {fileID: 4800000, guid: e4dcac07d885849e5b7c216b2228ba01, type: 3}
   upscaleValue: 1.5
   scaleDuration: 0.33
+  renderersToGreyscale: []
   levels:
   - {fileID: 7146088635691910809}
   - {fileID: 2537479069482719527}
@@ -11162,7 +11163,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3.22
+  m_Radius: 1.8
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7229086152783054084
 GameObject:

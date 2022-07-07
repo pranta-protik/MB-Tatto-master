@@ -54,7 +54,6 @@ public abstract class UpgradeDataSO : ScriptableObject
     {
         if(isAvailable)
         {
-            Debug.LogError(string.Concat("[UPGRADES] Upgrade ", upgradeName, " is already active"));
             return;
         }
         

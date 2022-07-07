@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -66,13 +65,13 @@ public class UpgradesModel : MonoBehaviour
     #region Handlers
     private void OnUpgradeUnlocked(UpgradeDataSO upgrade)
     {
-        Debug.Log("TEST OnUpgradeUnlocked: " + upgrade.upgradeType);
         switch(upgrade.upgradeType)
         {
             case UpgradeType.TattooDesign:
                 if(tattooSelectedIndex < tattooUpgrades.Count - 1)
                 {
                     tattooSelectedIndex++;
+                    PlayerPrefs.SetInt(TATTOO_INDEX_KEY, tattooSelectedIndex);
                     ActivateNextUpgrade(upgrade.upgradeType);
                 }
 
@@ -81,6 +80,7 @@ public class UpgradesModel : MonoBehaviour
                 if(jewelrySelectedIndex < jewelryUpgrades.Count - 1)
                 {
                     jewelrySelectedIndex++;
+                    PlayerPrefs.SetInt(JEWELRY_INDEX_KEY, jewelrySelectedIndex);
                     ActivateNextUpgrade(upgrade.upgradeType);
                 }
 
