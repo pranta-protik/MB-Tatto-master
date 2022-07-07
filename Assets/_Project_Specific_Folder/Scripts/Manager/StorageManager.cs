@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Singleton;
 
@@ -8,6 +9,8 @@ public class StorageManager : Singleton<StorageManager>
     public static void SetTotalScore(int score) => PlayerPrefs.SetInt("LifeTimeScore", score);
     
     [HideInInspector] public int currentLevelScore;
+
+    public Action<int> CurrentScoreChangedAction;
 
     public override void Start()
     {
@@ -23,5 +26,6 @@ public class StorageManager : Singleton<StorageManager>
     public void SetCurrentScore(int score)
     {
         currentLevelScore = score;
+        CurrentScoreChangedAction?.Invoke(currentLevelScore);
     }
 }

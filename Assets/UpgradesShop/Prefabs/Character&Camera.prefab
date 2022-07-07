@@ -51,6 +51,7 @@ MonoBehaviour:
   cameraPivot: {fileID: 2400116061105504171}
   characterAnimator: {fileID: 3680585425168682043}
   movementSpeed: 5
+  animatorMovementSpeed: 2
 --- !u!1 &2400116060383580250
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,13 +177,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1.2
+  m_Height: 2
   m_Radius: 0.3
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.56, z: 0}
+  m_Center: {x: 0, y: 0.96, z: 0}
 --- !u!1001 &7097256677588103594
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -193,6 +194,18 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 77f1f4e29bf0f944890703b3258ee278, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 77f1f4e29bf0f944890703b3258ee278, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.35
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 77f1f4e29bf0f944890703b3258ee278, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.35
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 77f1f4e29bf0f944890703b3258ee278, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.35
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 77f1f4e29bf0f944890703b3258ee278, type: 3}
       propertyPath: m_LocalPosition.x

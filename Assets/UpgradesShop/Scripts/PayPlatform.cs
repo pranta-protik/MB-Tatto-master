@@ -120,9 +120,7 @@ public class PayPlatform : MonoBehaviour
         }
 
         currencyAmount = StorageManager.GetTotalScore();
-
-        currencyAmount = 1000000;
-
+        
         if(toDeposit > currencyAmount)
         {
             return false;

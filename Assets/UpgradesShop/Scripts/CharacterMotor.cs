@@ -8,6 +8,7 @@ public class CharacterMotor : MonoBehaviour
     [SerializeField] private Transform cameraPivot;
     [SerializeField] private Animator characterAnimator;
     [SerializeField] private float movementSpeed = 1f;
+    [SerializeField] private float animatorMovementSpeed = 2f;
 
     private Vector3 dirVector;
     private Vector3 cameraModelDif;
@@ -37,7 +38,7 @@ public class CharacterMotor : MonoBehaviour
                 isMoving = true;
             }
 
-            characterAnimator.speed = dirVector.magnitude;
+            characterAnimator.speed = dirVector.magnitude * animatorMovementSpeed;
             characterModelTransform.LookAt(characterModelTransform.position + dirVector.normalized);
             // characterController.SimpleMove(dirVector * movementSpeed); //We are using root motion now
             characterController.SimpleMove(Vector3.zero); //To use the gravity and steps climb logic of CharacterController but not the movement

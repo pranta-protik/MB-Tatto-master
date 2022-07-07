@@ -8,9 +8,7 @@ public abstract class MultiUpgradeDataSO : UpgradeDataSO
     public override void Deposit(int amount)
     {
         CurrencyDeposited += amount;
-
-        Debug.Log("TEST Deposit " + amount + ", total: " + CurrencyDeposited + ", goal: " + unlockPrice);
-
+        
         if(CurrencyDeposited >= unlockPrice)
         {
             if(CurrencyDeposited > unlockPrice)
