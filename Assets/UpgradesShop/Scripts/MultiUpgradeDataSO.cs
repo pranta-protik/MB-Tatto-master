@@ -9,6 +9,8 @@ public abstract class MultiUpgradeDataSO : UpgradeDataSO
     {
         CurrencyDeposited += amount;
 
+        Debug.Log("TEST Deposit " + amount + ", total: " + CurrencyDeposited + ", goal: " + unlockPrice);
+
         if(CurrencyDeposited >= unlockPrice)
         {
             if(CurrencyDeposited > unlockPrice)

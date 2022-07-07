@@ -13,7 +13,7 @@ public abstract class UpgradeDataSO : ScriptableObject
 
     public bool IsAvailable => isAvailable;
     public bool IsUnlocked => isUnlocked;
-    
+
     [HideInInspector] public UpgradeType upgradeType;
 
     private int currencyDeposited;
@@ -49,14 +49,14 @@ public abstract class UpgradeDataSO : ScriptableObject
         currencyDepositedKey = string.Concat("CurrencyDepositedKey", "_", upgradeType, "_", upgradeName);
         currencyDeposited = PlayerPrefs.GetInt(currencyDepositedKey, 0);
     }
-    
+
     public void Activate()
     {
         if(isAvailable)
         {
             return;
         }
-        
+
         isAvailable = true;
         PlayerPrefs.SetInt(availableKey, 1);
         UpgradeActivatedAction?.Invoke();
@@ -69,10 +69,25 @@ public abstract class UpgradeDataSO : ScriptableObject
             Debug.LogError(string.Concat("[UPGRADES] Upgrade ", upgradeName, " is already unlocked"));
             return;
         }
-        
+
         isUnlocked = true;
         PlayerPrefs.SetInt(unlockedKey, 1);
         UpgradeUnlockedAction?.Invoke(this);
+    }
+
+    public bool CanDeposit(int amount, int amountInTransit)
+    {
+        if(GetNextPurchasePrice() - currencyDeposited - amountInTransit > amount)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    public int LastDepositAmount(int amountInTransit)
+    {
+        return GetNextPurchasePrice() - currencyDeposited - amountInTransit;
     }
 }
 

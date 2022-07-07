@@ -1,5 +1,3 @@
-using System;
-using System.Runtime.CompilerServices;
 using HomaGames.HomaConsole.Performance.Utils;
 using UnityEngine;
 using UnityEngine.SceneManagement;

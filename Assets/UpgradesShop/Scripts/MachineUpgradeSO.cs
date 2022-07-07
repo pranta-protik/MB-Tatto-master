@@ -34,6 +34,9 @@ public class MachineUpgradeSO : UpgradeDataSO
         CurrencyDeposited += amount;
         currentPrice = machineDatas[unlockedLevel].upgradePrize;
 
+        Debug.Log("TEST Deposit " + amount + ", total: " + CurrencyDeposited + ", goal: " + currentPrice);
+
+        
         if(CurrencyDeposited >= currentPrice)
         {
             if(CurrencyDeposited > currentPrice && unlockedLevel == maxLevel)

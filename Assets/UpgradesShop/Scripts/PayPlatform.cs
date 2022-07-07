@@ -10,19 +10,21 @@ public class PayPlatform : MonoBehaviour
     [SerializeField] private float depositTravelTime = 0.3f;
     [SerializeField] private Transform depositTarget;
     [SerializeField] private TextMeshPro cashText;
-    
+    [SerializeField] private int paymentsAmount = 100;
+
     private UpgradeDataSO upgradeData;
     private float elapsedTime;
     private int currencyAmount;
     private bool isPaymentOngoing = false;
+    private int currencyInTransit;
 
     private const string PlayerTag = "Player";
-    private const int paymentsAmount = 100;
     #endregion
 
     #region Init&Mono
     private void Start()
     {
+        currencyInTransit = 0;
         currencyAmount = StorageManager.GetTotalScore();
     }
 
@@ -41,14 +43,12 @@ public class PayPlatform : MonoBehaviour
             gameObject.SetActive(false);
             return;
         }
-        
+
         SetCashText();
-        
+
         upgradeData.UpgradesMaxedAction += OnUpgradesMaxed;
         upgradeData.PaymentSuccessfulAction += OnPaymentSuccessful;
     }
-
- 
     #endregion
 
     #region Handlers
@@ -93,7 +93,7 @@ public class PayPlatform : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
-    
+
     private void OnPaymentSuccessful()
     {
         isPaymentOngoing = false;
@@ -103,33 +103,49 @@ public class PayPlatform : MonoBehaviour
     #region Logic
     private bool DoPayment()
     {
-        currencyAmount = StorageManager.GetTotalScore();
-        
-        //TEMP
-        currencyAmount = 100000;
+        int toDeposit;
 
-        if(paymentsAmount > currencyAmount)
+        if(!upgradeData.CanDeposit(paymentsAmount, currencyInTransit))
+        {
+            toDeposit = upgradeData.LastDepositAmount(currencyInTransit);
+
+            if(toDeposit <= 0)
+            {
+                return false;
+            }
+        }
+        else
+        {
+            toDeposit = paymentsAmount;
+        }
+
+        currencyAmount = StorageManager.GetTotalScore();
+
+        currencyAmount = 1000000;
+
+        if(toDeposit > currencyAmount)
         {
             return false;
         }
 
         Transform cashStack = CurrencyStacksPool.Instance.Pull();
         cashStack.transform.position = transform.position;
+        currencyInTransit += toDeposit;
         cashStack.DOMove(depositTarget.position, depositTravelTime).OnComplete(() =>
         {
-            StorageManager.SetTotalScore(currencyAmount - paymentsAmount);
-            upgradeData.Deposit(paymentsAmount);
+            currencyInTransit -= toDeposit;
+            StorageManager.SetTotalScore(currencyAmount - toDeposit);
+            upgradeData.Deposit(toDeposit);
             SetCashText();
             CurrencyStacksPool.Instance.Push(cashStack);
         });
 
         return true;
     }
-    
+
     private void SetCashText()
     {
         cashText.SetText((upgradeData.GetNextPurchasePrice() - upgradeData.CurrencyDeposited).ToString());
-
     }
     #endregion
 }
