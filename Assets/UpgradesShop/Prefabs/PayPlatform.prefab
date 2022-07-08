@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 634119257014064834}
   - component: {fileID: 634119257014064832}
   - component: {fileID: 634119257014064833}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PayPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.0440903, y: 0.5, z: 1.0013709}
+  m_Size: {x: 1.34409, y: 4.03, z: 1.301371}
   m_Center: {x: 0.017584793, y: 0.25, z: -0.002655624}
 --- !u!114 &634119257014064833
 MonoBehaviour:
@@ -61,7 +61,7 @@ MonoBehaviour:
   timeToPay: 0.2
   depositTravelTime: 0.3
   depositTarget: {fileID: 0}
-  cashText: {fileID: 0}
+  cashText: {fileID: 4161414232980866152}
   paymentsAmount: 100
 --- !u!1 &4332322054161543203
 GameObject:
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 8286393020538584828}
   - component: {fileID: 5574700528362886072}
   - component: {fileID: 4161414232980866152}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TMP_Price
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -244,7 +244,7 @@ GameObject:
   - component: {fileID: 8330706047329176953}
   - component: {fileID: 947863900237306767}
   - component: {fileID: 7668633634036352857}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PayPlatform Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
