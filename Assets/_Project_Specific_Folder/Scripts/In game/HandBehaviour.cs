@@ -354,8 +354,7 @@ public class HandBehaviour : MonoBehaviour
 
             if (levelId == GameManager.Instance.ratingDisplayLevel)
             {
-                GameManager.Instance.MobileScreenTransition();
-                // UiManager.Instance.ratingScreen.SetActive(true);
+                UiManager.Instance.ratingScreen.SetActive(true);
             }
             else
             {
