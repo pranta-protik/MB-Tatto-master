@@ -346,27 +346,30 @@ public class GameManager : Singleton<GameManager>
 
     public void StartGameplay()
     {
-         GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "Game Start");
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "Game Start");
         // Invoke this method everytime the user starts the gameplay at any level
         DefaultAnalytics.GameplayStarted();
-        
+
         // Invoke this every time player starts the level. Levels should start at 1
-        
+
         string levelId = (PlayerPrefs.GetInt("current_scene_text", 0) + 1).ToString();
-        
+
         // Progression events
         // Level Start Event
         DefaultAnalytics.LevelStarted(levelId);
 
         PlayerPrefs.SetFloat("LevelStartTime", Time.time);
-        
+
         UiManager.Instance.ClearUIOnGameStart();
         UiManager.Instance.MovePriceTag();
-        
-        playerPathFollower.transform.DOMoveX(-0.55f, .5f).OnComplete(() =>
+
+        _mainCamera.transform.DOLocalRotate(new Vector3(27.761f, 90, 0), .3f).OnComplete(() =>
         {
-            tattooGuns[currentTattooGunLevel].GetComponent<Animator>().enabled = true;
-            StartCoroutine(DelayPlayerControlRoutine());
+            playerPathFollower.transform.DOMoveX(-0.55f, .5f).OnComplete(() =>
+            {
+                tattooGuns[currentTattooGunLevel].GetComponent<Animator>().enabled = true;
+                StartCoroutine(DelayPlayerControlRoutine());
+            }); 
         });
     }
 

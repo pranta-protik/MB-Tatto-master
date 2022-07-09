@@ -218,12 +218,14 @@ public class UiManager : Singleton<UiManager>
         shopButton.SetActive(false);
         instagramGalleryButton.SetActive(false);
         
-        _camera.transform.DOLocalRotate(new Vector3(42, 90, 0), .3f).OnComplete(() =>
-        {
-            selectionMenu.SetActive(true);
-            selectionMenu.GetComponent<SelectionMenu>().CheckUnlockButtonTypeStatus();
-            selectionMenu.GetComponent<SelectionMenu>().CheckUnlockButtonAvailability();
-        });
+        selectionMenu.SetActive(true);
+        selectionMenu.GetComponent<SelectionMenu>().CheckUnlockButtonTypeStatus();
+        selectionMenu.GetComponent<SelectionMenu>().CheckUnlockButtonAvailability();
+        
+        // _camera.transform.DOLocalRotate(new Vector3(42, 90, 0), .3f).OnComplete(() =>
+        // {
+        //     
+        // });
     }
     
     public void OnCloseSelectionMenuButtonClick()
@@ -233,16 +235,18 @@ public class UiManager : Singleton<UiManager>
         
         selectionMenu.SetActive(false);
         
-        _camera.transform.DOLocalRotate(new Vector3(27.761f, 90, 0), .3f).OnComplete(() =>
-        {
-            levelNoText.transform.parent.gameObject.SetActive(true);
+        levelNoText.transform.parent.gameObject.SetActive(true);
             
-            // shop.SetActive(true);
-            priceTag.SetActive(true);
-            selectionMenuButton.SetActive(true);
-            shopButton.SetActive(true);
-            instagramGalleryButton.SetActive(true);
-        });
+        // shop.SetActive(true);
+        priceTag.SetActive(true);
+        selectionMenuButton.SetActive(true);
+        shopButton.SetActive(true);
+        instagramGalleryButton.SetActive(true);
+        
+        // _camera.transform.DOLocalRotate(new Vector3(27.761f, 90, 0), .3f).OnComplete(() =>
+        // {
+        //  
+        // });
     }
 
     #endregion
