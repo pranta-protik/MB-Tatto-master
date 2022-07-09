@@ -32,8 +32,8 @@ public class UiManager : Singleton<UiManager>
     [SerializeField] private GameObject valueUpgradeIncrementEffect;
     [SerializeField] private GameObject mobileScreen;
     [SerializeField] private GameObject selectionMenuButton;
+    [SerializeField] private GameObject shopButton;
     [SerializeField] private GameObject instagramGalleryButton;
-    [SerializeField] private GameObject shop;
     [SerializeField] private TextMeshProUGUI levelNoText;
     [SerializeField] private GameObject selectionMenu;
     [SerializeField] private GameObject mainMenuInstagramGallery;
@@ -81,14 +81,17 @@ public class UiManager : Singleton<UiManager>
         {
             levelNoText.SetText((_currentLevelText + 1).ToString());            
         }
+
+        if (_currentLevelText < 3 && !UAManager.Instance.EnableUA)
+        {
+            if (shopButton != null)
+            {
+                shopButton.SetActive(false);
+            }
+        }
         
         if (_currentLevelText == 0 && !UAManager.Instance.EnableUA)
         {
-            if (shop != null)
-            {
-                shop.SetActive(false);
-            }
-
             if (selectionMenuButton != null)
             {
                 selectionMenuButton.SetActive(false);
@@ -145,6 +148,11 @@ public class UiManager : Singleton<UiManager>
     {
         totalScoreText.SetText("$" + totalScore);
     }
+
+    public void OnShopButtonClick()
+    {
+        SceneManager.LoadScene("UpgradesShop");
+    }
     
     #region Upgrade Buttons
 
@@ -158,31 +166,6 @@ public class UiManager : Singleton<UiManager>
         {
             Destroy(incrementTextObj);
         });
-    }
-    
-    #endregion
-    
-    #region PopUps
-
-    public void OnShopPopUpButtonClick()
-    {
-        shop.transform.GetChild(1).gameObject.SetActive(true);
-        shop.transform.GetChild(2).gameObject.SetActive(true);
-        shop.transform.GetChild(2).DOScale(new Vector3(popUpScale, popUpScale, popUpScale), popUpDuration);
-    }
-
-    public void OnClosePopUpButtonClick()
-    {
-        shop.transform.GetChild(2).DOScale(new Vector3(0f, 0f, 0f), popUpDuration).OnComplete(() =>
-        {
-            shop.transform.GetChild(1).gameObject.SetActive(false);
-            shop.transform.GetChild(2).gameObject.SetActive(false); 
-        });
-    }
-
-    public void UpdateShopTimer(string timeLeftText)
-    {
-        shop.transform.GetChild(2).GetChild(1).GetComponent<TextMeshProUGUI>().SetText(timeLeftText);
     }
     
     #endregion
@@ -232,6 +215,7 @@ public class UiManager : Singleton<UiManager>
         // shop.SetActive(false);
         priceTag.SetActive(false);
         selectionMenuButton.SetActive(false);
+        shopButton.SetActive(false);
         instagramGalleryButton.SetActive(false);
         
         _camera.transform.DOLocalRotate(new Vector3(42, 90, 0), .3f).OnComplete(() =>
@@ -256,6 +240,7 @@ public class UiManager : Singleton<UiManager>
             // shop.SetActive(true);
             priceTag.SetActive(true);
             selectionMenuButton.SetActive(true);
+            shopButton.SetActive(true);
             instagramGalleryButton.SetActive(true);
         });
     }
@@ -269,7 +254,7 @@ public class UiManager : Singleton<UiManager>
         levelNoText.transform.parent.gameObject.SetActive(false);
         selectionMenuButton.SetActive(false);
         instagramGalleryButton.SetActive(false);
-        shop.SetActive(false);
+        shopButton.SetActive(false);
         startUI.SetActive(false);
     }
 

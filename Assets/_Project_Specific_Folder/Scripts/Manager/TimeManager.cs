@@ -16,7 +16,7 @@ public class TimeManager : MonoBehaviour
         {
             timeRemaining -= Time.deltaTime;
             TimeSpan timeSpan = TimeSpan.FromSeconds(timeRemaining);
-            UiManager.Instance.UpdateShopTimer($"{timeSpan.Hours:00} : {timeSpan.Minutes:00} : {timeSpan.Seconds:00}");
+            // UiManager.Instance.UpdateShopTimer($"{timeSpan.Hours:00} : {timeSpan.Minutes:00} : {timeSpan.Seconds:00}");
         }
         else
         {
