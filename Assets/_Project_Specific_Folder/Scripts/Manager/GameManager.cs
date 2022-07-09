@@ -45,6 +45,7 @@ public class GameManager : Singleton<GameManager>
     public bool isBannerAdEnabled;
     public bool isInterstitialAdEnabled;
     public int interstitialAdStartLevel;
+    public int shopOpeningLevel;
     public int ratingDisplayLevel;
     public EGameMode gameMode;
     public int currentTattooGunLevel;

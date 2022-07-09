@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.7031792, g: 0.79314893, b: 1.0066249, a: 1}
+  m_IndirectSpecularColor: {r: 0.7312142, g: 0.7501438, b: 1.0066249, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -23460,6 +23460,7 @@ MonoBehaviour:
   isBannerAdEnabled: 1
   isInterstitialAdEnabled: 1
   interstitialAdStartLevel: 4
+  shopOpeningLevel: 3
   ratingDisplayLevel: 2
   gameMode: 0
   currentTattooGunLevel: 0

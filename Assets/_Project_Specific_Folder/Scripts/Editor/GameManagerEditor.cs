@@ -26,6 +26,8 @@ public class GameManagerEditor : Editor
 
         EditorGUILayout.PropertyField(serializedObject.FindProperty("ratingDisplayLevel"));
         
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("shopOpeningLevel"));
+        
         EditorGUILayout.PropertyField(serializedObject.FindProperty("isBannerAdEnabled"));
         
         EditorGUILayout.PropertyField(serializedObject.FindProperty("isInterstitialAdEnabled"));
