@@ -265,29 +265,29 @@ public class HandBehaviour : MonoBehaviour
 
         #region Ornament Gates
 
-        if (other.gameObject.CompareTag("Ring"))
-        {
-            MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
-            other.GetComponent<BoxCollider>().enabled = false;
-            
-            GateGestureEffect();
-            
-            OrnamentGate ornamentGate = other.gameObject.GetComponent<OrnamentGate>();
-
-            ringOrnamentGroups[ornamentGate.ornamentGroupId].ornamentDesigns[ornamentGate.ornamentDesignId].SetActive(true);
-        }
-
-        if (other.gameObject.CompareTag("Bracelet"))
-        {
-            MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
-            other.GetComponent<BoxCollider>().enabled = false;
-
-            GateGestureEffect();
-            
-            OrnamentGate ornamentGate = other.gameObject.GetComponent<OrnamentGate>();
-
-            braceletOrnamentGroups[ornamentGate.ornamentGroupId].ornamentDesigns[ornamentGate.ornamentDesignId].SetActive(true);
-        }
+        // if (other.gameObject.CompareTag("Ring"))
+        // {
+        //     MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+        //     other.GetComponent<BoxCollider>().enabled = false;
+        //     
+        //     GateGestureEffect();
+        //     
+        //     OrnamentGate ornamentGate = other.gameObject.GetComponent<OrnamentGate>();
+        //
+        //     ringOrnamentGroups[ornamentGate.ornamentGroupId].ornamentDesigns[ornamentGate.ornamentDesignId].SetActive(true);
+        // }
+        //
+        // if (other.gameObject.CompareTag("Bracelet"))
+        // {
+        //     MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+        //     other.GetComponent<BoxCollider>().enabled = false;
+        //
+        //     GateGestureEffect();
+        //     
+        //     OrnamentGate ornamentGate = other.gameObject.GetComponent<OrnamentGate>();
+        //
+        //     braceletOrnamentGroups[ornamentGate.ornamentGroupId].ornamentDesigns[ornamentGate.ornamentDesignId].SetActive(true);
+        // }
 
         #endregion
 
