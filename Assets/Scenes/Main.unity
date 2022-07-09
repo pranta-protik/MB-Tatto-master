@@ -49027,19 +49027,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1774019002205821719, guid: ff5bb6af1544da04d96660e9ad6012ba, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.6903455
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 1774019002205821719, guid: ff5bb6af1544da04d96660e9ad6012ba, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.15304585
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1774019002205821719, guid: ff5bb6af1544da04d96660e9ad6012ba, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.6903456
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 1774019002205821719, guid: ff5bb6af1544da04d96660e9ad6012ba, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.15304585
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1774019002205821719, guid: ff5bb6af1544da04d96660e9ad6012ba, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -49051,7 +49051,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1774019002205821719, guid: ff5bb6af1544da04d96660e9ad6012ba, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1774019002205821736, guid: ff5bb6af1544da04d96660e9ad6012ba, type: 3}
       propertyPath: m_Name
@@ -51120,6 +51120,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 378904802}
     m_Modifications:
+    - target: {fileID: 120786400122304500, guid: dc56b9ececb32904494447fe54c15714, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 120786400122304500, guid: dc56b9ececb32904494447fe54c15714, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2b06fa2a8fa314e44b7a6e86cf4efa8f, type: 2}
     - target: {fileID: 5870477701133595340, guid: dc56b9ececb32904494447fe54c15714, type: 3}
       propertyPath: m_Name
       value: TattooHand
@@ -51146,19 +51154,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5870477701133595341, guid: dc56b9ececb32904494447fe54c15714, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.6903455
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 5870477701133595341, guid: dc56b9ececb32904494447fe54c15714, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.15304585
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5870477701133595341, guid: dc56b9ececb32904494447fe54c15714, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.6903456
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 5870477701133595341, guid: dc56b9ececb32904494447fe54c15714, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.15304585
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5870477701133595341, guid: dc56b9ececb32904494447fe54c15714, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -51170,7 +51178,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5870477701133595341, guid: dc56b9ececb32904494447fe54c15714, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 25
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc56b9ececb32904494447fe54c15714, type: 3}
