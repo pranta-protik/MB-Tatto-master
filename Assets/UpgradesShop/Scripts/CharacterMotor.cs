@@ -18,6 +18,7 @@ public class CharacterMotor : MonoBehaviour
     
     private void Awake()
     {
+        QualitySettings.shadowDistance = 50f;
 #if UNITY_EDITOR
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 60;

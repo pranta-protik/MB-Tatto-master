@@ -18,8 +18,9 @@ public class HandController : MonoBehaviour
     private bool _isTouching;
     private bool _canRotate;
 
-    void Start()
+    void Awake()
     {
+        QualitySettings.shadowDistance = 5f;
         _canRotate = true;
     }
 
