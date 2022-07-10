@@ -7,16 +7,20 @@ public class TattooStation : UpgradeStation
     [SerializeField] private SpriteRenderer smallPreviewSpriteRenderer;
     [SerializeField] private SpriteRenderer bigPreviewSpriteRenderer;
 
-    private TattooUpgradeSO tattoUpgradeData;
+    private TattooUpgradeSO tattooUpgradeData;
 
     protected override void Awake()
     {
         base.Awake();
 
-        tattoUpgradeData = upgradeData as TattooUpgradeSO;
+        tattooUpgradeData = upgradeData as TattooUpgradeSO;
         originalPreviewScale = bigPreviewContainer.transform.localScale;
 
-        SetPreviewSprites();
+        // Setup 2D sprites if station is available
+        if (upgradeData.IsAvailable)
+        {
+            SetPreviewSprites();   
+        }
     }
 
     public override void UpscaleBigPreview()
@@ -43,7 +47,13 @@ public class TattooStation : UpgradeStation
 
     private void SetPreviewSprites()
     {
-        smallPreviewSpriteRenderer.sprite = tattoUpgradeData.GetTattoo();
-        bigPreviewSpriteRenderer.sprite = tattoUpgradeData.GetTattoo();
+        smallPreviewSpriteRenderer.sprite = tattooUpgradeData.GetTattoo();
+        bigPreviewSpriteRenderer.sprite = tattooUpgradeData.GetTattoo();
+    }
+
+    protected override void OnActivate()
+    {
+        base.OnActivate();
+        SetPreviewSprites();
     }
 }

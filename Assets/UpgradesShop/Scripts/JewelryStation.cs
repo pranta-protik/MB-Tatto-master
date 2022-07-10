@@ -15,8 +15,12 @@ public class JewelryStation : UpgradeStation
 
         jewelryUpgradeData = upgradeData as JewelryUpgradeSO;
         originalPreviewScale = bigPreviewContainer.transform.localScale;
-        
-        Set3DModelPreview();
+
+        // Instantiate 3D models if station is available
+        if (upgradeData.IsAvailable)
+        {
+            Set3DModelPreview();   
+        }
     }
 
     public override void UpscaleBigPreview()
@@ -52,5 +56,11 @@ public class JewelryStation : UpgradeStation
     {
         Instantiate(jewelryUpgradeData.GetJewelry(), smallPreviewContainer.transform);
         Instantiate(jewelryUpgradeData.GetJewelry(), bigPreviewContainer.transform);
+    }
+
+    protected override void OnActivate()
+    {
+        base.OnActivate();
+        Set3DModelPreview();
     }
 }

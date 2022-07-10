@@ -38,11 +38,19 @@ public class PayPlatform : MonoBehaviour
     {
         upgradeData = data;
 
+        if (!upgradeData.IsAvailable)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+
         if(!upgradeData.HasPurchasesAvailable())
         {
             gameObject.SetActive(false);
             return;
         }
+        
+        gameObject.SetActive(true);
 
         SetCashText();
 
