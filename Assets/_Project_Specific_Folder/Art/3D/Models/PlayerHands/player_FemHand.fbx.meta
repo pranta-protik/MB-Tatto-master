@@ -1,22 +1,12 @@
 fileFormatVersion: 2
-guid: 9f7610bfaedc75841ab49b557dbce793
+guid: 323187d9fc6b8d94ea64854c886c07c2
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
     second: Take 001
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Hand
-    second: {fileID: 2100000, guid: 5b3b64a028ddbac42b962da0db01e718, type: 2}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: player_FemHand_Hand_BaseColor
-    second: {fileID: 2800000, guid: 234dab997cf18374484fead75d60ebd5, type: 3}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

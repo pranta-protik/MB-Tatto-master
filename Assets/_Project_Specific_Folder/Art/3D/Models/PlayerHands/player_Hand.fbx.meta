@@ -1,17 +1,12 @@
 fileFormatVersion: 2
-guid: 4bbfb5de8d85fc341b8f5348639195bd
+guid: de810136dd57e9643afc52cf2ebf3d16
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
     second: Take 001
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Hand
-    second: {fileID: 2100000, guid: ea29f9f2372fc16449a6f5899fcfdf5e, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -43,7 +38,7 @@ ModelImporter:
   meshes:
     lODScreenPercentages: []
     globalScale: 1
-    meshCompression: 3
+    meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1

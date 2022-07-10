@@ -1,22 +1,12 @@
 fileFormatVersion: 2
-guid: f4a13f8cf7c735e40a618a3e7a8a9c2a
+guid: 1570be766c0cd25488a70eea39f7f138
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
     second: Take 001
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Hand
-    second: {fileID: 2100000, guid: 503f73b8a894bb74384ad4ecf919cacf, type: 2}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: player_Hulk_09 - Default_BaseColor
-    second: {fileID: 2800000, guid: cb883ff968210a94abd196982044b0a1, type: 3}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
