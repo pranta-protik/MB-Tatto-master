@@ -67,11 +67,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private int specificLevelId;
     
     [Header("Tattoo Gun Section")]
-    [SerializeField] private List<GameObject> tattooGuns =  new List<GameObject>();
-    [SerializeField] private Color goldenTattooGunMaterialColor;
-    [SerializeField] private float goldenTattooGunMaterialSmoothness;
-    [SerializeField] private float goldenTattooGunMaterialMetallic;
-    [SerializeField] private GameObject tattooGunSpawnEffect;
+    [SerializeField] private Transform tattooGunSpawnPosition;
     [SerializeField] private GameObject tattooEffect;
     [SerializeField] private PostProcessHandler postProcessHandler;
     
@@ -91,6 +87,7 @@ public class GameManager : Singleton<GameManager>
     private float _timeLeft;
     private float _timerInitialValue;
     private bool _isClicked;
+    private Transform _currentTattooGun;
 
     public override void Start()
     {
@@ -132,22 +129,11 @@ public class GameManager : Singleton<GameManager>
         }
         
         playerPathFollower.enabled = false;
-
-        currentTattooGunLevel = PlayerPrefs.GetInt("CoolnessUpgradeLevel", 1) - 1;
-
-        if (currentTattooGunLevel >= GetTotalTattooGunAmount())
-        {
-            currentTattooGunLevel %= GetTotalTattooGunAmount();
-            
-            isGoldenTattooGunActivated = true;
-        }
-
-        tattooGuns[currentTattooGunLevel].SetActive(true);
-
-        if (isGoldenTattooGunActivated)
-        {
-            UpdateTattooGunMaterial(tattooGuns[currentTattooGunLevel].GetComponent<MeshRenderer>());
-        }
+        
+        _currentTattooGun = Instantiate(UpgradesManager.Instance.GetTatgun().transform, tattooGunSpawnPosition);
+        
+        _currentTattooGun.localPosition = Vector3.zero;
+        _currentTattooGun.localEulerAngles = Vector3.zero;
 
         UAManager.Instance.handId = PlayerPrefs.GetInt("SelectedHandCardId", 0);
         
@@ -157,16 +143,6 @@ public class GameManager : Singleton<GameManager>
             Events.onBannerAdLoadedEvent+= OnBannerAdLoadedEvent;
             HomaBelly.Instance.LoadBanner();    
         }
-    }
-
-    private void UpdateTattooGunMaterial(MeshRenderer meshRenderer)
-    {
-        Material material = meshRenderer.material;
-        
-        material.mainTexture = null;
-        material.color = goldenTattooGunMaterialColor;
-        material.SetFloat(SHPropSmoothness, goldenTattooGunMaterialSmoothness);
-        material.SetFloat(SHPropMetallic, goldenTattooGunMaterialMetallic);
     }
 
     private void OnBannerAdLoadedEvent(string obj)
@@ -263,27 +239,13 @@ public class GameManager : Singleton<GameManager>
 
     #region Upgrade Buttons Functionality
 
-    public int GetTotalTattooGunAmount()
+    public void UpgradeDefaultTattooLevel()
     {
-        return tattooGuns.Count;
-    }
-
-    public void UpgradeTattooGun()
-    {
-        tattooGuns[currentTattooGunLevel == 0 ? GetTotalTattooGunAmount() - 1 : currentTattooGunLevel - 1].SetActive(false);
-        tattooGuns[currentTattooGunLevel].SetActive(true);
-
-        if (isGoldenTattooGunActivated)
-        {
-            UpdateTattooGunMaterial(tattooGuns[currentTattooGunLevel].GetComponent<MeshRenderer>());
-        }
-        
-        tattooGunSpawnEffect.GetComponent<ParticleSystem>().Play();
-
-        int currentTattooLevel = PlayerPrefs.GetInt("CurrentTattooTypeLevel" + _levelDetails.tattooId, 0);
-        PlayerPrefs.SetInt("CurrentTattooTypeLevel" + _levelDetails.tattooId, currentTattooLevel + 1);
+        int currentTattooLevel = PlayerPrefs.GetInt(PlayerPrefsKey.CURRENT_TATTOO_LEVEL_FOR + _levelDetails.tattooId, 0);
+        PlayerPrefs.SetInt(PlayerPrefsKey.CURRENT_TATTOO_LEVEL_FOR + _levelDetails.tattooId, currentTattooLevel + 1);
         
         _mainHandBehaviour.ResetHandTattooStatus();
+        _mainHandBehaviour.UpdateDefaultTattoo();
     }
 
     #endregion
@@ -367,7 +329,7 @@ public class GameManager : Singleton<GameManager>
         {
             playerPathFollower.transform.DOMoveX(-0.55f, .5f).OnComplete(() =>
             {
-                tattooGuns[currentTattooGunLevel].GetComponent<Animator>().enabled = true;
+                _currentTattooGun.GetComponent<Animator>().enabled = true;
                 StartCoroutine(DelayPlayerControlRoutine());
             }); 
         });
@@ -379,8 +341,8 @@ public class GameManager : Singleton<GameManager>
         _mainHandBehaviour.DrawDefaultTattoo();
 
         yield return new WaitForSeconds(.5f);
-        
-        tattooGuns[currentTattooGunLevel].transform.parent.DOMoveZ(-0.98f, .3f);
+
+        _currentTattooGun.parent.DOMoveZ(-0.98f, 0.3f);
 
         hasGameStarted = true;
         playerPathFollower.enabled = true;

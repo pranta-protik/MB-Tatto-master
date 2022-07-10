@@ -472,6 +472,18 @@ public class HandBehaviour : MonoBehaviour
         _skinnedMeshRenderer.material.DOFade(1, 1.8f);
     }
 
+    public void UpdateDefaultTattoo()
+    {
+        _shineEffect.Play();
+        
+        Mpb.SetTexture(SHPropTexture, _textureManager.tattooGroups[tattooGroupId].defaultTattoos[GetCurrentDefaultTattooId()]);
+        _skinnedMeshRenderer.SetPropertyBlock(Mpb);
+        _skinnedMeshRenderer.material.DOFade(1, 0.5f).OnComplete(() =>
+        {
+            _skinnedMeshRenderer.material.DOFade(0, 0.5f);
+        });
+    }
+
     private IEnumerator UpdateTattooTexture(Texture2D tattooTexture)
     {
         yield return new WaitForSeconds(0.2f);
@@ -496,7 +508,7 @@ public class HandBehaviour : MonoBehaviour
 
     private int GetCurrentDefaultTattooId()
     {
-        int defaultTattooId = PlayerPrefs.GetInt("CurrentTattooTypeLevel" + tattooGroupId, 0);
+        int defaultTattooId = PlayerPrefs.GetInt(PlayerPrefsKey.CURRENT_TATTOO_LEVEL_FOR + tattooGroupId, 0);
 
         if (defaultTattooId >= _textureManager.tattooGroups[tattooGroupId].defaultTattoos.Count)
         {

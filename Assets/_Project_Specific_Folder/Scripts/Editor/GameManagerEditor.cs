@@ -18,6 +18,7 @@ public class GameManagerEditor : Editor
         EditorGUILayout.PropertyField(serializedObject.FindProperty("postProcessHandler"));
         
         EditorGUILayout.PropertyField(serializedObject.FindProperty("tattooGuns"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("tattooGunSpawnPosition"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("goldenTattooGunMaterialColor"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("goldenTattooGunMaterialMetallic"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("goldenTattooGunMaterialSmoothness"));

@@ -32,7 +32,7 @@ public class ValueUpgrade : MonoBehaviour
         _costText = transform.GetChild(1).GetComponent<TMP_Text>();
         _levelText = transform.GetChild(0).GetComponent<TMP_Text>();
         
-        _levelText.SetText("$" + PlayerPrefs.GetInt("ValueUpgradeAmount", baseUpgradeAmount));
+        _levelText.SetText("$" + PlayerPrefs.GetInt(PlayerPrefsKey.VALUE_UPGRADE_AMOUNT, baseUpgradeAmount));
         
         CheckValueUpgradeButtonTypeStatus();
 
@@ -45,7 +45,7 @@ public class ValueUpgrade : MonoBehaviour
 
     private void CheckValueUpgradeButtonTypeStatus()
     {
-        if (PlayerPrefs.GetInt("ValueUpgradeLevel", 1) >= startingLevelForUpgradeValueWatchingAd)
+        if (PlayerPrefs.GetInt(PlayerPrefsKey.VALUE_UPGRADE_LEVEL, 1) >= startingLevelForUpgradeValueWatchingAd)
         {
             _isAdEnabled = true;
             _valueUpgradeButtonImage.sprite = watchAdValueUpgradeIcon;
@@ -94,7 +94,7 @@ public class ValueUpgrade : MonoBehaviour
     
     public void OnValueUpgradeButtonClick()
     {
-        _currentUpgradeAmount = PlayerPrefs.GetInt("ValueUpgradeAmount", baseUpgradeAmount);
+        _currentUpgradeAmount = PlayerPrefs.GetInt(PlayerPrefsKey.VALUE_UPGRADE_AMOUNT, baseUpgradeAmount);
         _currentPriceTagScore = PlayerPrefs.GetInt("PriceTagBaseScore", 0);
         _priceTagTotalScore = _currentPriceTagScore + _currentUpgradeAmount;
 
@@ -154,13 +154,13 @@ public class ValueUpgrade : MonoBehaviour
     {
         PlayerPrefs.SetInt("PriceTagBaseScore", totalScore);
         
-        int lastUpgradeAmount = PlayerPrefs.GetInt("ValueUpgradeAmount", baseUpgradeAmount);
+        int lastUpgradeAmount = PlayerPrefs.GetInt(PlayerPrefsKey.VALUE_UPGRADE_AMOUNT, baseUpgradeAmount);
         int nextUpgradeAmount = lastUpgradeAmount * upgradeMultiplier;
             
-        PlayerPrefs.SetInt("ValueUpgradeAmount", nextUpgradeAmount);
+        PlayerPrefs.SetInt(PlayerPrefsKey.VALUE_UPGRADE_AMOUNT, nextUpgradeAmount);
         _levelText.SetText("$" + nextUpgradeAmount);
 
-        int lastUpgradeLevel = PlayerPrefs.GetInt("ValueUpgradeLevel", 1);
-        PlayerPrefs.SetInt("ValueUpgradeLevel", lastUpgradeLevel + 1);
+        int lastUpgradeLevel = PlayerPrefs.GetInt(PlayerPrefsKey.VALUE_UPGRADE_LEVEL, 1);
+        PlayerPrefs.SetInt(PlayerPrefsKey.VALUE_UPGRADE_LEVEL, lastUpgradeLevel + 1);
     }
 }

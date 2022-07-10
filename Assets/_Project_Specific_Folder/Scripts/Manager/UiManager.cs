@@ -538,6 +538,11 @@ public class UiManager : Singleton<UiManager>
 
         PlayerPrefs.SetInt("current_scene_text", _currentLevelText + 1);
 
+        if ((PlayerPrefs.GetInt("current_scene_text", 0) + 1) % 4 == 1)
+        {
+            PlayerPrefs.SetInt(PlayerPrefsKey.DEFAULT_TATTOO_LEVEL, 1);
+        }
+
         if (PlayerPrefs.GetInt("current_scene_text", 0) == GameManager.Instance.shopOpeningLevel)
         {
             SceneManager.LoadScene("UpgradesShop");
