@@ -19,7 +19,12 @@ public class TattooStation : UpgradeStation
         // Setup 2D sprites if station is available
         if (upgradeData.IsAvailable)
         {
-            SetPreviewSprites();   
+            SetPreviewSprites();
+            bigPreviewContainer.gameObject.SetActive(true);
+        }
+        else
+        {
+            bigPreviewContainer.gameObject.SetActive(false);
         }
     }
 
@@ -55,5 +60,6 @@ public class TattooStation : UpgradeStation
     {
         base.OnActivate();
         SetPreviewSprites();
+        bigPreviewContainer.gameObject.SetActive(true);
     }
 }
