@@ -1,11 +1,10 @@
 using HomaGames.HomaConsole.Performance.Utils;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class UpgradesManager : Performance_Singleton<UpgradesManager>
 {
     [SerializeField] private UpgradesModel upgradesModel;
-    [SerializeField] private ExitShopTrigger exitShopTrigger;
+    // [SerializeField] private ExitShopTrigger exitShopTrigger;
     [SerializeField] private string sceneName;
 
     public MachineUpgradeSO MachineUpgradeSo => upgradesModel.machineUpgrade;
@@ -15,21 +14,22 @@ public class UpgradesManager : Performance_Singleton<UpgradesManager>
     protected override void Awake()
     {
         base.Awake();
-
-        exitShopTrigger.ExitShopAction += OnExitShop;
+        
+        DontDestroyOnLoad(this);
+        
+        // exitShopTrigger.ExitShopAction += OnExitShop;
     }
 
     protected override void OnDestroy()
     {
         base.OnDestroy();
-
-        exitShopTrigger.ExitShopAction += OnExitShop;
+        // exitShopTrigger.ExitShopAction += OnExitShop;
     }
 
-    private void OnExitShop()
-    {
-        SceneManager.LoadScene(sceneName);
-    }
+    // private void OnExitShop()
+    // {
+    //     SceneManager.LoadScene(sceneName);
+    // }
 
 #if UNITY_EDITOR
     [Sirenix.OdinInspector.Button]
@@ -39,6 +39,11 @@ public class UpgradesManager : Performance_Singleton<UpgradesManager>
     }
 #endif
 
+    public string GetSceneName()
+    {
+        return sceneName;
+    }
+    
     public GameObject GetTatgun()
     {
         return MachineUpgradeSo.GetMachine();

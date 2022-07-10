@@ -1,11 +1,11 @@
-using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ExitShopTrigger : MonoBehaviour
 {
    private const string PlayerTag = "Player";
 
-   public Action ExitShopAction;
+   // public Action ExitShopAction;
 
    private void OnTriggerEnter(Collider other)
    {
@@ -13,7 +13,7 @@ public class ExitShopTrigger : MonoBehaviour
       {
          return;
       }
-
-      ExitShopAction?.Invoke();
+      SceneManager.LoadScene(UpgradesManager.Instance.GetSceneName());
+      // ExitShopAction?.Invoke();
    }
 }
