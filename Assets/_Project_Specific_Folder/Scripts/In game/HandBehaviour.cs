@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using DG.Tweening;
 using HomaGames.HomaBelly;
@@ -35,7 +36,10 @@ public class HandBehaviour : MonoBehaviour
     {
         public List<GameObject> ornamentDesigns; 
     }
+
     [Header("Hand Ornaments Section")] 
+    public List<GameObject> jewelries;
+    
     public List<OrnamentGroup> ringOrnamentGroups;
     public List<OrnamentGroup> braceletOrnamentGroups;
 
@@ -50,7 +54,7 @@ public class HandBehaviour : MonoBehaviour
     private readonly List<int> _animationIndexes = new List<int>();
     private static readonly int Gesture = Animator.StringToHash("Gesture");
     private SkinnedMeshRenderer _skinnedMeshRenderer;
-    private static readonly int SHPropTexture = Shader.PropertyToID("_MainTex");
+    // private static readonly int SHPropTexture = Shader.PropertyToID("_MainTex");
     // private MaterialPropertyBlock _mpb;
     // private MaterialPropertyBlock Mpb => _mpb ??= new MaterialPropertyBlock();
     private bool _shouldChangeTattoo;
@@ -90,6 +94,14 @@ public class HandBehaviour : MonoBehaviour
         _skinnedMeshRenderer.material.DOFade(0, 0f);
 
         _skinnedMeshRenderer.materials[1].mainTexture = UpgradesManager.Instance.GetTattoo().texture;
+
+        foreach (GameObject jewelry in jewelries)
+        {
+            if (jewelry.name == UpgradesManager.Instance.GetJewel().name)
+            {
+                jewelry.SetActive(true);
+            }
+        }
 
         _textureManager = TextureManager.Instance;
 
