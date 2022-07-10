@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using DG.Tweening;
 using HomaGames.HomaBelly;
 using TMPro;
@@ -89,6 +88,8 @@ public class HandBehaviour : MonoBehaviour
 
         _skinnedMeshRenderer = tattooHand.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>();
         _skinnedMeshRenderer.material.DOFade(0, 0f);
+
+        _skinnedMeshRenderer.materials[1].mainTexture = UpgradesManager.Instance.GetTattoo().texture;
 
         _textureManager = TextureManager.Instance;
 
