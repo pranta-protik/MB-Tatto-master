@@ -1,13 +1,13 @@
 using System.Collections.Generic;
 using DG.Tweening;
-using UnityEditor;
 using UnityEngine;
 
 public class MachineStation : UpgradeStation
 {
     #region Params
     [SerializeField] private List<GameObject> levels;
-
+    [SerializeField] private ParticleSystem tattooGunUpgradeEffect;
+    
     private MachineUpgradeSO machineUpgradeData;
     private GameObject currentLevelObj;
     private Transform currentLevelPreview;
@@ -44,6 +44,7 @@ public class MachineStation : UpgradeStation
         currentLevelObj = levels[newLevel - 1];
         currentLevelPreview = currentLevelObj.transform.GetChild(0);
         currentLevelObj.SetActive(true);
+        tattooGunUpgradeEffect.Play();
     }
     #endregion
 

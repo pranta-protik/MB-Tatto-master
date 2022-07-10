@@ -11140,6 +11140,7 @@ MonoBehaviour:
   upscaleValue: 1.5
   scaleDuration: 0.33
   renderersToGreyscale: []
+  renderersToBlack: []
   levels:
   - {fileID: 7146088635691910809}
   - {fileID: 2537479069482719527}
@@ -11151,6 +11152,7 @@ MonoBehaviour:
   - {fileID: 8088394716779141884}
   - {fileID: 346121281334369511}
   - {fileID: 7057479311935272131}
+  tattooGunUpgradeEffect: {fileID: 2481341291312823178}
 --- !u!135 &3412773913924942786
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -11194,6 +11196,7 @@ Transform:
   - {fileID: 1773121209398376118}
   - {fileID: 4638908469831157273}
   - {fileID: 7223514277786221325}
+  - {fileID: 2481341291294473930}
   m_Father: {fileID: 7229086151279701847}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14303,6 +14306,73 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1001 &546836766039148484
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7229086152783054085}
+    m_Modifications:
+    - target: {fileID: 2736429242361914670, guid: ce7a10bc827817841b8b59be4884007f, type: 3}
+      propertyPath: m_Name
+      value: TattooGunSpawnEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 2736429242362280206, guid: ce7a10bc827817841b8b59be4884007f, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2736429242362280206, guid: ce7a10bc827817841b8b59be4884007f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2736429242362280206, guid: ce7a10bc827817841b8b59be4884007f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2736429242362280206, guid: ce7a10bc827817841b8b59be4884007f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2736429242362280206, guid: ce7a10bc827817841b8b59be4884007f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2736429242362280206, guid: ce7a10bc827817841b8b59be4884007f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2736429242362280206, guid: ce7a10bc827817841b8b59be4884007f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2736429242362280206, guid: ce7a10bc827817841b8b59be4884007f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2736429242362280206, guid: ce7a10bc827817841b8b59be4884007f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2736429242362280206, guid: ce7a10bc827817841b8b59be4884007f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2736429242362280206, guid: ce7a10bc827817841b8b59be4884007f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ce7a10bc827817841b8b59be4884007f, type: 3}
+--- !u!4 &2481341291294473930 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2736429242362280206, guid: ce7a10bc827817841b8b59be4884007f, type: 3}
+  m_PrefabInstance: {fileID: 546836766039148484}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &2481341291312823178 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2736429242342882382, guid: ce7a10bc827817841b8b59be4884007f, type: 3}
+  m_PrefabInstance: {fileID: 546836766039148484}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5743063840999086414
 PrefabInstance:
   m_ObjectHideFlags: 0
