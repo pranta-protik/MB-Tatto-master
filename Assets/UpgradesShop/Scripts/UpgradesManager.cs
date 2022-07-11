@@ -46,21 +46,41 @@ public class UpgradesManager : Performance_Singleton<UpgradesManager>
     
     public GameObject GetTatgun()
     {
+        if(!MachineUpgradeSo.IsAvailable || !MachineUpgradeSo.IsUnlocked)
+        {
+            return null;
+        }
+        
         return MachineUpgradeSo.GetMachine();
     }
 
     public Color GetInkColor()
     {
+        if(!MachineUpgradeSo.IsAvailable || !MachineUpgradeSo.IsUnlocked)
+        {
+            return Color.black;
+        }
+        
         return MachineUpgradeSo.GetInkColor();
     }
 
     public Sprite GetTattoo()
     {
+        if(!SelectedTattooUpgrade.IsAvailable || !SelectedTattooUpgrade.IsUnlocked)
+        {
+            return null;
+        }
+        
         return SelectedTattooUpgrade.GetTattoo();
     }
 
     public GameObject GetJewel()
     {
+        if(!SelectedJewelryUpgrade.IsAvailable || !SelectedJewelryUpgrade.IsUnlocked)
+        {
+            return null;
+        }
+
         return SelectedJewelryUpgrade.GetJewelry();
     }
 }
