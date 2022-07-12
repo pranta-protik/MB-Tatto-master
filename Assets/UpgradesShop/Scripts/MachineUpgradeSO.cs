@@ -15,6 +15,8 @@ public class MachineUpgradeSO : UpgradeDataSO
     public int UnlockedLevel => unlockedLevel;
     public MachineData CurrentMachineData => machineDatas[unlockedLevel];
 
+    public GameObject defaultMachine;
+
     public Action<int> LevelChangedAction;
     
     private const string LEVEL_KEY = "LevelKey";
@@ -81,6 +83,11 @@ public class MachineUpgradeSO : UpgradeDataSO
         }
     }
 
+    public GameObject GetDefaultMachine()
+    {
+        return defaultMachine;
+    }
+    
     public GameObject GetMachine()
     {
         return machineDatas[unlockedLevel - 1].Machine3DModel;

@@ -91,12 +91,26 @@ public class HandBehaviour : MonoBehaviour
         }
 
         _skinnedMeshRenderer = tattooHand.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>();
-        _skinnedMeshRenderer.material.DOFade(0, 0f);
+        _skinnedMeshRenderer.materials[0].DOFade(0, 0f);
 
-        _skinnedMeshRenderer.materials[1].mainTexture = UpgradesManager.Instance.GetTattoo().texture;
+        
+        if (UpgradesManager.Instance.GetTattoo()!= null)
+        {
+            _skinnedMeshRenderer.materials[1].mainTexture = UpgradesManager.Instance.GetTattoo().texture;    
+        }
+        else
+        {
+            _skinnedMeshRenderer.materials[1].DOFade(0, 0f);
+        }
+
 
         foreach (GameObject jewelry in jewelries)
         {
+            if (UpgradesManager.Instance.GetJewel() == null)
+            {
+                break;
+            }
+            
             if (jewelry.name == UpgradesManager.Instance.GetJewel().name)
             {
                 jewelry.SetActive(true);
@@ -518,7 +532,7 @@ public class HandBehaviour : MonoBehaviour
     private int GetCurrentDefaultTattooId()
     {
         int defaultTattooId = PlayerPrefs.GetInt(PlayerPrefsKey.CURRENT_TATTOO_LEVEL_FOR + tattooGroupId, 0);
-
+        
         if (defaultTattooId >= _textureManager.tattooGroups[tattooGroupId].defaultTattoos.Count)
         {
             defaultTattooId = _textureManager.tattooGroups[tattooGroupId].defaultTattoos.Count - 1;

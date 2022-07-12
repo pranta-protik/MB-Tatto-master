@@ -16,7 +16,7 @@ MonoBehaviour:
   upgradeType: 0
   machineDatas:
   - Machine3DModel: {fileID: 6389879934336167095, guid: d6e6e6a31ef323a4083ea61c7a9fcc7c, type: 3}
-    InkColor: {r: 0, g: 0, b: 0, a: 1}
+    InkColor: {r: 0, g: 0, b: 0, a: 0}
     upgradePrize: 1000
   - Machine3DModel: {fileID: 3189026248508687954, guid: 982cfe68c41a91248898096aeb1157e7, type: 3}
     InkColor: {r: 1, g: 0, b: 0, a: 1}
@@ -45,3 +45,4 @@ MonoBehaviour:
   - Machine3DModel: {fileID: 6421082943997646780, guid: 060e5075fdb454a49bf58faca0a88a12, type: 3}
     InkColor: {r: 1, g: 1, b: 1, a: 1}
     upgradePrize: 10000
+  defaultMachine: {fileID: 6389879934336167095, guid: d6e6e6a31ef323a4083ea61c7a9fcc7c, type: 3}

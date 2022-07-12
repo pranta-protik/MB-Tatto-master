@@ -44,11 +44,11 @@ public class UpgradesManager : Performance_Singleton<UpgradesManager>
         return sceneName;
     }
     
-    public GameObject GetTatgun()
+    public GameObject GetTattooGun()
     {
         if(!MachineUpgradeSo.IsAvailable || !MachineUpgradeSo.IsUnlocked)
         {
-            return null;
+            return MachineUpgradeSo.GetDefaultMachine();
         }
         
         return MachineUpgradeSo.GetMachine();

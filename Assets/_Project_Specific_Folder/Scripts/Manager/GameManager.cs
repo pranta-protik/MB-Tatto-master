@@ -130,7 +130,7 @@ public class GameManager : Singleton<GameManager>
         
         playerPathFollower.enabled = false;
         
-        _currentTattooGun = Instantiate(UpgradesManager.Instance.GetTatgun().transform, tattooGunSpawnPosition);
+        _currentTattooGun = Instantiate(UpgradesManager.Instance.GetTattooGun().transform, tattooGunSpawnPosition);
         
         _currentTattooGun.localPosition = Vector3.zero;
         _currentTattooGun.localEulerAngles = Vector3.zero;
