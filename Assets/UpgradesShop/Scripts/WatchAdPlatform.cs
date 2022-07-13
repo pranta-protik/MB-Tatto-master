@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using HomaGames.HomaBelly;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class WatchAdPlatform : MonoBehaviour
@@ -66,7 +67,31 @@ public class WatchAdPlatform : MonoBehaviour
 
     private void WatchAd()
     {
+        // Subscribe to Rewarded Video Ads
+        Events.onRewardedVideoAdRewardedEvent += OnRewardedVideoAdRewardedEvent;
+            
+        // Show Ad
+        if (HomaBelly.Instance.IsRewardedVideoAdAvailable())
+        {
+            HomaBelly.Instance.ShowRewardedVideoAd(PlacementName.UNLOCK_STATION);
+        }
+        else
+        {
+            Events.onRewardedVideoAdRewardedEvent -= OnRewardedVideoAdRewardedEvent;
+        }
+    }
+    
+    // Collect Ad Rewards
+    private void OnRewardedVideoAdRewardedEvent(VideoAdReward obj)
+    {
         transform.parent.GetComponent<AdUpgradeStation>().UnlockStation();
         this.gameObject.SetActive(false);
+        
+        // Rewarded Videos
+        // Rewarded Claimed Event
+        HomaBelly.Instance.TrackDesignEvent("rewarded:" + "taken" + ":" + PlacementName.UNLOCK_STATION);
+        
+        // Unsubscribe to Rewarded Video Ads
+        Events.onRewardedVideoAdRewardedEvent -= OnRewardedVideoAdRewardedEvent;
     }
 }
