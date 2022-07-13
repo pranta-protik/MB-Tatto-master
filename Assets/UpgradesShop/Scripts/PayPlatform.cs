@@ -2,6 +2,7 @@ using System;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PayPlatform : MonoBehaviour
 {
@@ -61,6 +62,12 @@ public class PayPlatform : MonoBehaviour
     #endregion
 
     #region Handlers
+
+    private float _time;
+    private bool isProgressBarFilling;
+    [SerializeField] private Image progressBar;
+    [SerializeField] private float second;
+    
     private void OnTriggerEnter(Collider other)
     {
         if(!other.CompareTag(PlayerTag))
@@ -68,23 +75,42 @@ public class PayPlatform : MonoBehaviour
             return;
         }
 
-        isPaymentOngoing = true;
+        isProgressBarFilling = true;
+        isPaymentOngoing = false;
         elapsedTime = 0f;
+        _time = 0;
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if(!isPaymentOngoing || !other.CompareTag(PlayerTag))
+        if(!other.CompareTag(PlayerTag))
         {
             return;
         }
 
-        elapsedTime += Time.deltaTime;
-
-        if(elapsedTime >= timeToPay)
+        if (isProgressBarFilling)
         {
-            elapsedTime -= timeToPay;
-            isPaymentOngoing = DoPayment();
+            if (_time < second)
+            {
+                _time += Time.deltaTime;
+                progressBar.fillAmount = _time;   
+            }
+            else
+            {
+                isPaymentOngoing = true;
+                isProgressBarFilling = false;
+            }    
+        }
+
+        if (!isProgressBarFilling && isPaymentOngoing)
+        {
+            elapsedTime += Time.deltaTime;
+        
+            if(elapsedTime >= timeToPay)
+            {
+                elapsedTime -= timeToPay;
+                isPaymentOngoing = DoPayment();
+            }    
         }
     }
 
@@ -95,6 +121,9 @@ public class PayPlatform : MonoBehaviour
             return;
         }
 
+        isProgressBarFilling = false;
+        progressBar.fillAmount = 0;
+        
         isPaymentOngoing = false;
     }
 
