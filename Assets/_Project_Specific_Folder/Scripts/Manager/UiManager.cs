@@ -89,37 +89,16 @@ public class UiManager : Singleton<UiManager>
             }
         }
 
+        UpdateTotalScoreText(StorageManager.GetTotalScore());
+        
         if (_currentLevelText == 0 && !UAManager.Instance.EnableUA)
         {
-            if (selectionMenuButton != null)
-            {
-                selectionMenuButton.SetActive(false);
-            }
-
-            if (instagramGalleryButton != null)
-            {
-                instagramGalleryButton.SetActive(false);
-            }
-
-            if (coolnessUpgradeButton != null)
-            {
-                coolnessUpgradeButton.SetActive(false);
-            }
-
-            if (valueUpgradeButton != null)
-            {
-                valueUpgradeButton.SetActive(false);
-            }
-
-            if (totalScoreText != null)
-            {
-                totalScoreText.transform.parent.gameObject.SetActive(false);
-            }
-        }
-
-        if (totalScoreText != null)
-        {
-            UpdateTotalScoreText(StorageManager.GetTotalScore());
+            selectionMenuButton.SetActive(false);
+            instagramGalleryButton.SetActive(false);
+            coolnessUpgradeButton.SetActive(false);
+            valueUpgradeButton.SetActive(false);
+            
+            totalScoreText.transform.parent.gameObject.SetActive(false);
         }
     }
 

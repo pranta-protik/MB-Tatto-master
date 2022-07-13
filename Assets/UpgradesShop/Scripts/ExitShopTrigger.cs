@@ -15,7 +15,7 @@ public class ExitShopTrigger : MonoBehaviour
 
    private void OnTriggerEnter(Collider other)
    {
-      if(other.tag != PlayerTag)
+      if(!other.CompareTag(PlayerTag))
       {
          return;
       }
@@ -28,7 +28,7 @@ public class ExitShopTrigger : MonoBehaviour
       // Meta Session Event
       HomaBelly.Instance.TrackDesignEvent("Meta_Session:" + levelId, duration);
       
-      SceneManager.LoadScene(UpgradesManager.Instance.GetSceneName());
+      SceneManager.LoadSceneAsync((int) SceneIndexes.SPLASH);
       // ExitShopAction?.Invoke();
    }
 }
