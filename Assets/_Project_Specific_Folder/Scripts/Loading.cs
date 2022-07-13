@@ -1,3 +1,6 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -9,12 +12,19 @@ public class Loading : MonoBehaviour
     public float second;
 
     public Image fillImage;
-    
-    
+
+    private AsyncOperation _mainSceneLoading;
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
+
     void Start()
     {
         _time = 0f;
-        Invoke(nameof(LoadGame), second);
+        LoadGame();
+        // Invoke(nameof(LoadGame), second);
     }
 
     private void Update()
@@ -24,10 +34,15 @@ public class Loading : MonoBehaviour
             _time += Time.deltaTime;
             fillImage.fillAmount = _time / second;
         }
+        
+        if (_mainSceneLoading.isDone && _time >= second)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
-    public void LoadGame()
+    private void LoadGame()
     {
-        SceneManager.LoadScene("Main");
+        _mainSceneLoading = SceneManager.LoadSceneAsync((int) SceneIndexes.MAIN);
     }
 }

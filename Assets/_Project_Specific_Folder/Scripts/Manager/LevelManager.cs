@@ -18,7 +18,9 @@ public class LevelManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("SavedTattooNo", 0);
             _gameOpenCount = 0;
-            SceneManager.LoadScene("Splash");
+
+            SceneManager.LoadSceneAsync((int) SceneIndexes.SPLASH);
+            
             PlayerPrefs.SetInt("Played", 1);
             PlayerPrefs.SetString("Username", defaultUsername);
             
@@ -44,14 +46,14 @@ public class LevelManager : MonoBehaviour
             HomaBelly.Instance.TrackDesignEvent("Session:"+_gameOpenCount+":Started", Time.time);    
         }
     }
-    
+
     private static void LoadLastScene()
     {
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadSceneAsync((int) SceneIndexes.MAIN);
     }
 
-    public static void LoadLevelCount()
-    {
-        PlayerPrefs.GetInt("current_scene");
-    }
+    // public static void LoadLevelCount()
+    // {
+    //     PlayerPrefs.GetInt("current_scene");
+    // }
 }

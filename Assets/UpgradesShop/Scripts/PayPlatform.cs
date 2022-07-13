@@ -40,7 +40,7 @@ public class PayPlatform : MonoBehaviour
 
         if (!upgradeData.IsAvailable)
         {
-            gameObject.SetActive(false);
+            GetComponent<BoxCollider>().enabled = false;
             return;
         }
 
@@ -51,6 +51,7 @@ public class PayPlatform : MonoBehaviour
         }
         
         gameObject.SetActive(true);
+        GetComponent<BoxCollider>().enabled = true;
 
         SetCashText();
 
@@ -62,7 +63,7 @@ public class PayPlatform : MonoBehaviour
     #region Handlers
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag != PlayerTag)
+        if(!other.CompareTag(PlayerTag))
         {
             return;
         }
@@ -73,7 +74,7 @@ public class PayPlatform : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if(!isPaymentOngoing || other.tag != PlayerTag)
+        if(!isPaymentOngoing || !other.CompareTag(PlayerTag))
         {
             return;
         }
@@ -89,7 +90,7 @@ public class PayPlatform : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if(other.tag != PlayerTag)
+        if(!other.CompareTag(PlayerTag))
         {
             return;
         }
