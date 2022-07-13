@@ -23,9 +23,10 @@ public class MachineUpgradeSO : UpgradeDataSO
 
     public override void Init()
     {
+        upgradeType = UpgradeType.TattooMachine;
+        
         base.Init();
         
-        upgradeType = UpgradeType.TattooMachine;
         isAvailable = true;
         isUnlocked = true;
         unlockedLevel = PlayerPrefs.GetInt(LEVEL_KEY, 1);

@@ -123,11 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &120135124 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5421277466414245629, guid: c79fd9c89339b48b480ca133d19efc37, type: 3}
-  m_PrefabInstance: {fileID: 101538862706268800}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &160722400
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,16 +255,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &550832011 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5746425426102723211, guid: c79fd9c89339b48b480ca133d19efc37, type: 3}
-  m_PrefabInstance: {fileID: 101538862706268800}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &695296637 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4916180361520378853, guid: c79fd9c89339b48b480ca133d19efc37, type: 3}
-  m_PrefabInstance: {fileID: 101538862706268800}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &810241497
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,6 +348,63 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1001 &835850604
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5771652360195162710, guid: ba2fb4419de114a1d85925b07353befb, type: 3}
+      propertyPath: m_Name
+      value: UpgradesManager&Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 5771652360195162713, guid: ba2fb4419de114a1d85925b07353befb, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5771652360195162713, guid: ba2fb4419de114a1d85925b07353befb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5771652360195162713, guid: ba2fb4419de114a1d85925b07353befb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5771652360195162713, guid: ba2fb4419de114a1d85925b07353befb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5771652360195162713, guid: ba2fb4419de114a1d85925b07353befb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5771652360195162713, guid: ba2fb4419de114a1d85925b07353befb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5771652360195162713, guid: ba2fb4419de114a1d85925b07353befb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5771652360195162713, guid: ba2fb4419de114a1d85925b07353befb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5771652360195162713, guid: ba2fb4419de114a1d85925b07353befb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5771652360195162713, guid: ba2fb4419de114a1d85925b07353befb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5771652360195162713, guid: ba2fb4419de114a1d85925b07353befb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ba2fb4419de114a1d85925b07353befb, type: 3}
 --- !u!1001 &924287064
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -550,11 +592,6 @@ Transform:
   m_Father: {fileID: 1227226488}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1169721174 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6960745350949540983, guid: c79fd9c89339b48b480ca133d19efc37, type: 3}
-  m_PrefabInstance: {fileID: 101538862706268800}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1227226487
 GameObject:
   m_ObjectHideFlags: 0
@@ -648,11 +685,6 @@ LightingSettings:
   m_PVRFilteringAtrousPositionSigmaDirect: 0.5
   m_PVRFilteringAtrousPositionSigmaIndirect: 2
   m_PVRFilteringAtrousPositionSigmaAO: 1
---- !u!1 &1387064440 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7080992108106098221, guid: c79fd9c89339b48b480ca133d19efc37, type: 3}
-  m_PrefabInstance: {fileID: 101538862706268800}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1487756591
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -755,31 +787,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6390645198608721771, guid: a70a75f3f81e545adaae500a3d5c58b0, type: 3}
   m_PrefabInstance: {fileID: 1487756591}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1739163955 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6790561058548843180, guid: c79fd9c89339b48b480ca133d19efc37, type: 3}
-  m_PrefabInstance: {fileID: 101538862706268800}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1905614338 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 406756038180486227, guid: c79fd9c89339b48b480ca133d19efc37, type: 3}
-  m_PrefabInstance: {fileID: 101538862706268800}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2031045133 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2476507879538751891, guid: c79fd9c89339b48b480ca133d19efc37, type: 3}
-  m_PrefabInstance: {fileID: 101538862706268800}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2035424604 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7905680961822169238, guid: c79fd9c89339b48b480ca133d19efc37, type: 3}
-  m_PrefabInstance: {fileID: 101538862706268800}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2132489435 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8167134071052909128, guid: c79fd9c89339b48b480ca133d19efc37, type: 3}
-  m_PrefabInstance: {fileID: 101538862706268800}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &101538862706268800
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -787,6 +794,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 542194393920465539, guid: c79fd9c89339b48b480ca133d19efc37, type: 3}
+      propertyPath: upgradeName
+      value: Tattoo9
+      objectReference: {fileID: 0}
+    - target: {fileID: 542194393920465539, guid: c79fd9c89339b48b480ca133d19efc37, type: 3}
+      propertyPath: tattooSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: fcdb384ced3d69d47bd13bd2b41b6fc6, type: 3}
+    - target: {fileID: 1296115285030761254, guid: c79fd9c89339b48b480ca133d19efc37, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 6.26
+      objectReference: {fileID: 0}
     - target: {fileID: 2008933645324100942, guid: c79fd9c89339b48b480ca133d19efc37, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -835,74 +854,54 @@ PrefabInstance:
       propertyPath: m_Name
       value: World
       objectReference: {fileID: 0}
-    - target: {fileID: 2476507879538751891, guid: c79fd9c89339b48b480ca133d19efc37, type: 3}
-      propertyPath: m_IsActive
-      value: 0
+    - target: {fileID: 2800231999928654084, guid: c79fd9c89339b48b480ca133d19efc37, type: 3}
+      propertyPath: upgradeName
+      value: Tattoo8
       objectReference: {fileID: 0}
-    - target: {fileID: 2524201411613351550, guid: c79fd9c89339b48b480ca133d19efc37, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524201411613351550, guid: c79fd9c89339b48b480ca133d19efc37, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.458
-      objectReference: {fileID: 0}
-    - target: {fileID: 3417591157153477687, guid: c79fd9c89339b48b480ca133d19efc37, type: 3}
-      propertyPath: m_FillAmount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5746425426102723211, guid: c79fd9c89339b48b480ca133d19efc37, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7080992108106098221, guid: c79fd9c89339b48b480ca133d19efc37, type: 3}
+    - target: {fileID: 2800231999928654084, guid: c79fd9c89339b48b480ca133d19efc37, type: 3}
+      propertyPath: tattooSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 792442fd5dbbb384695ddb71cf8e8271, type: 3}
+    - target: {fileID: 4933295444354973488, guid: c79fd9c89339b48b480ca133d19efc37, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 9200480772857783110, guid: c79fd9c89339b48b480ca133d19efc37, type: 3}
-      propertyPath: levels.Array.size
-      value: 10
+    - target: {fileID: 7290405130102312119, guid: c79fd9c89339b48b480ca133d19efc37, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 9200480772857783110, guid: c79fd9c89339b48b480ca133d19efc37, type: 3}
-      propertyPath: levels.Array.data[0]
+    - target: {fileID: 7834683714185785137, guid: c79fd9c89339b48b480ca133d19efc37, type: 3}
+      propertyPath: upgradeName
+      value: Jewel8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7834683714185785137, guid: c79fd9c89339b48b480ca133d19efc37, type: 3}
+      propertyPath: jewelryPrefab
       value: 
-      objectReference: {fileID: 1387064440}
-    - target: {fileID: 9200480772857783110, guid: c79fd9c89339b48b480ca133d19efc37, type: 3}
-      propertyPath: levels.Array.data[1]
+      objectReference: {fileID: 919132149155446097, guid: bb409be1ae7ffab46a0ad4783f0e5f92, type: 3}
+    - target: {fileID: 7834683714185785137, guid: c79fd9c89339b48b480ca133d19efc37, type: 3}
+      propertyPath: jewelryPrefabName
+      value: Jewel8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7953120709445433320, guid: c79fd9c89339b48b480ca133d19efc37, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 9060298125602395796, guid: c79fd9c89339b48b480ca133d19efc37, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9176628853063536204, guid: c79fd9c89339b48b480ca133d19efc37, type: 3}
+      propertyPath: upgradeName
+      value: Jewel9
+      objectReference: {fileID: 0}
+    - target: {fileID: 9176628853063536204, guid: c79fd9c89339b48b480ca133d19efc37, type: 3}
+      propertyPath: jewelryPrefab
       value: 
-      objectReference: {fileID: 2031045133}
-    - target: {fileID: 9200480772857783110, guid: c79fd9c89339b48b480ca133d19efc37, type: 3}
-      propertyPath: levels.Array.data[2]
-      value: 
-      objectReference: {fileID: 550832011}
-    - target: {fileID: 9200480772857783110, guid: c79fd9c89339b48b480ca133d19efc37, type: 3}
-      propertyPath: levels.Array.data[3]
-      value: 
-      objectReference: {fileID: 695296637}
-    - target: {fileID: 9200480772857783110, guid: c79fd9c89339b48b480ca133d19efc37, type: 3}
-      propertyPath: levels.Array.data[4]
-      value: 
-      objectReference: {fileID: 120135124}
-    - target: {fileID: 9200480772857783110, guid: c79fd9c89339b48b480ca133d19efc37, type: 3}
-      propertyPath: levels.Array.data[5]
-      value: 
-      objectReference: {fileID: 2035424604}
-    - target: {fileID: 9200480772857783110, guid: c79fd9c89339b48b480ca133d19efc37, type: 3}
-      propertyPath: levels.Array.data[6]
-      value: 
-      objectReference: {fileID: 1739163955}
-    - target: {fileID: 9200480772857783110, guid: c79fd9c89339b48b480ca133d19efc37, type: 3}
-      propertyPath: levels.Array.data[7]
-      value: 
-      objectReference: {fileID: 2132489435}
-    - target: {fileID: 9200480772857783110, guid: c79fd9c89339b48b480ca133d19efc37, type: 3}
-      propertyPath: levels.Array.data[8]
-      value: 
-      objectReference: {fileID: 1905614338}
-    - target: {fileID: 9200480772857783110, guid: c79fd9c89339b48b480ca133d19efc37, type: 3}
-      propertyPath: levels.Array.data[9]
-      value: 
-      objectReference: {fileID: 1169721174}
+      objectReference: {fileID: 2973327057590136709, guid: c0c63460ba883a542aaad45b8e47ddd5, type: 3}
+    - target: {fileID: 9176628853063536204, guid: c79fd9c89339b48b480ca133d19efc37, type: 3}
+      propertyPath: jewelryPrefabName
+      value: Jewel9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c79fd9c89339b48b480ca133d19efc37, type: 3}
 --- !u!1001 &2354219876951843360

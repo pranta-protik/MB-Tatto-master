@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradesModel: {fileID: 5771652360195162712}
-  exitShopTrigger: {fileID: 0}
   sceneName: Main
+  interstitialAdTimer: 45
 --- !u!114 &5771652360195162712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,8 +68,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b7002dcf4154d459bb22467d55356622, type: 2}
   - {fileID: 11400000, guid: 30db2dc4f32424a30af879767cdb7905, type: 2}
   - {fileID: 11400000, guid: deebc9a389c1248eca67233695f8bfa8, type: 2}
-  - {fileID: 11400000, guid: 6adcbd251519648b18b4aa741c86ff8e, type: 2}
-  - {fileID: 11400000, guid: a9ce1cac8ced64be4bd31d09f809a81e, type: 2}
   jewelryUpgrades:
   - {fileID: 11400000, guid: c47d3dabc4dc44d15a16d37db414012f, type: 2}
   - {fileID: 11400000, guid: a86314d0a4a9f4163a869264ae85de64, type: 2}
@@ -78,7 +76,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b4761b10879df4ad092f210a6ac8deab, type: 2}
   - {fileID: 11400000, guid: d37e552507c9341a28cf9fedcf412ee9, type: 2}
   - {fileID: 11400000, guid: 4bd0445bf9457445888762c5183a2196, type: 2}
-  - {fileID: 11400000, guid: 6098d61e7235b4f399029cabb422b31f, type: 2}
-  - {fileID: 11400000, guid: 4a0520f5c35bb40e3a778160ecd50ab7, type: 2}
   selectedTattooUpgrade: {fileID: 0}
   selectedJewelryUpgrade: {fileID: 0}

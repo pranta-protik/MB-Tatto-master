@@ -7,9 +7,8 @@ public class JewelryUpgradeSO : MultiUpgradeDataSO
     
     public override void Init()
     {
-        base.Init();
-        
         upgradeType = UpgradeType.Jewelry;
+        base.Init();
     }
 
     public GameObject GetJewelry()

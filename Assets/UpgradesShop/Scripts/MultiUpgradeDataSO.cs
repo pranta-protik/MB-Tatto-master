@@ -1,10 +1,9 @@
-using System;
 using UnityEngine;
 
 public abstract class MultiUpgradeDataSO : UpgradeDataSO
 {
     [SerializeField] private int unlockPrice;
-    
+
     public override void Deposit(int amount)
     {
         CurrencyDeposited += amount;
