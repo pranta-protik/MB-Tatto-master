@@ -63,7 +63,7 @@ public abstract class UpgradeStation : MonoBehaviour
     #region Handlers
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag != PlayerTag)
+        if(!other.CompareTag(PlayerTag))
         {
             return;
         }
@@ -76,7 +76,7 @@ public abstract class UpgradeStation : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if(other.tag != PlayerTag)
+        if(!other.CompareTag(PlayerTag))
         {
             return;
         }
@@ -93,10 +93,10 @@ public abstract class UpgradeStation : MonoBehaviour
         // Remove black silhouette
         // gameObject.SetActive(true);
         SetAvailabilityState(true);
-        SetUnlockState(!upgradeData.IsUnlocked);   
+        SetUnlockState(!upgradeData.IsUnlocked);
     }
 
-    protected virtual void OnUnlocked(UpgradeDataSO upgrade)
+    private void OnUnlocked(UpgradeDataSO upgrade)
     {
         SetUnlockState(false);
     }

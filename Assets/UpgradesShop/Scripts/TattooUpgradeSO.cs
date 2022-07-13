@@ -8,9 +8,8 @@ public class TattooUpgradeSO : MultiUpgradeDataSO
     
     public override void Init()
     {
-        base.Init();
-
         upgradeType = UpgradeType.TattooDesign;
+        base.Init();
     }
 
     public Sprite GetTattoo()

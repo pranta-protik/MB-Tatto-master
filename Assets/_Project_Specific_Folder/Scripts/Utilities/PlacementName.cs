@@ -8,4 +8,5 @@ public static class PlacementName
     public const string UNLOCK_FILTER = "Unlock_Filter";
     public const string UNLOCK_POSE = "Unlock_Pose";
     public const string SCORE_MULTIPLIER = "Score_Multiplier";
+    public const string UNLOCK_STATION = "Unlock_Station";
 }

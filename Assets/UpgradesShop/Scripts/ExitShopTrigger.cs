@@ -12,6 +12,9 @@ public class ExitShopTrigger : MonoBehaviour
    private void Start()
    {
       PlayerPrefs.SetFloat(PlayerPrefsKey.META_WORLD_START_TIME, Time.time);
+      // Rewarded Videos
+      // Rewarded Suggested Event
+      HomaBelly.Instance.TrackDesignEvent("rewarded:" + "suggested" + ":" + PlacementName.UNLOCK_STATION);
    }
 
    private void Update()

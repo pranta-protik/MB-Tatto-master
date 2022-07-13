@@ -18,7 +18,11 @@ public class PayPlatform : MonoBehaviour
     private int currencyAmount;
     private bool isPaymentOngoing = false;
     private int currencyInTransit;
-
+    private float _time;
+    private bool isProgressBarFilling;
+    [SerializeField] private Image progressBar;
+    [SerializeField] private float second;
+    
     private const string PlayerTag = "Player";
     #endregion
 
@@ -63,11 +67,6 @@ public class PayPlatform : MonoBehaviour
 
     #region Handlers
 
-    private float _time;
-    private bool isProgressBarFilling;
-    [SerializeField] private Image progressBar;
-    [SerializeField] private float second;
-    
     private void OnTriggerEnter(Collider other)
     {
         if(!other.CompareTag(PlayerTag))
@@ -93,7 +92,7 @@ public class PayPlatform : MonoBehaviour
             if (_time < second)
             {
                 _time += Time.deltaTime;
-                progressBar.fillAmount = _time;   
+                progressBar.fillAmount = _time / second;
             }
             else
             {

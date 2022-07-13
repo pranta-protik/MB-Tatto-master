@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using UnityEngine;
 
 public abstract class UpgradeDataSO : ScriptableObject
@@ -45,7 +44,7 @@ public abstract class UpgradeDataSO : ScriptableObject
 
         isAvailable = PlayerPrefs.GetInt(availableKey, 0) == 1;
         isUnlocked = PlayerPrefs.GetInt(unlockedKey, 0) == 1;
-
+        
         currencyDepositedKey = string.Concat("CurrencyDepositedKey", "_", upgradeType, "_", upgradeName);
         currencyDeposited = PlayerPrefs.GetInt(currencyDepositedKey, 0);
     }
