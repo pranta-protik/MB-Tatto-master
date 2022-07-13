@@ -5390,63 +5390,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8604985041636873246, guid: 4c3dd0da40a3fb848bae1d09f915b86e, type: 3}
   m_PrefabInstance: {fileID: 3782990946535964771}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &503006900
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5771652360195162710, guid: ba2fb4419de114a1d85925b07353befb, type: 3}
-      propertyPath: m_Name
-      value: UpgradesManager&Model
-      objectReference: {fileID: 0}
-    - target: {fileID: 5771652360195162713, guid: ba2fb4419de114a1d85925b07353befb, type: 3}
-      propertyPath: m_RootOrder
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 5771652360195162713, guid: ba2fb4419de114a1d85925b07353befb, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5771652360195162713, guid: ba2fb4419de114a1d85925b07353befb, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5771652360195162713, guid: ba2fb4419de114a1d85925b07353befb, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5771652360195162713, guid: ba2fb4419de114a1d85925b07353befb, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5771652360195162713, guid: ba2fb4419de114a1d85925b07353befb, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5771652360195162713, guid: ba2fb4419de114a1d85925b07353befb, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5771652360195162713, guid: ba2fb4419de114a1d85925b07353befb, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5771652360195162713, guid: ba2fb4419de114a1d85925b07353befb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5771652360195162713, guid: ba2fb4419de114a1d85925b07353befb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5771652360195162713, guid: ba2fb4419de114a1d85925b07353befb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ba2fb4419de114a1d85925b07353befb, type: 3}
 --- !u!224 &506869860
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20816,9 +20759,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1804672028}
-        m_TargetAssemblyTypeName: InfluenceMeter, Assembly-CSharp
-        m_MethodName: EnableUnlockScreen
+      - m_Target: {fileID: 1350117757}
+        m_TargetAssemblyTypeName: ScoreMultiplier, Assembly-CSharp
+        m_MethodName: OnSkipButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

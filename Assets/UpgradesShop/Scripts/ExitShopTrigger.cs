@@ -1,3 +1,4 @@
+using System;
 using HomaGames.HomaBelly;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -5,12 +6,26 @@ using UnityEngine.SceneManagement;
 public class ExitShopTrigger : MonoBehaviour
 {
    private const string PlayerTag = "Player";
-
+   private bool _isAdShown = false;
    // public Action ExitShopAction;
 
    private void Start()
    {
       PlayerPrefs.SetFloat(PlayerPrefsKey.META_WORLD_START_TIME, Time.time);
+   }
+
+   private void Update()
+   {
+      if (!_isAdShown && Time.time - PlayerPrefs.GetFloat(PlayerPrefsKey.META_WORLD_START_TIME) > UpgradesManager.Instance.interstitialAdTimer)
+      {
+         // Check if ad is available
+         if (HomaBelly.Instance.IsInterstitialAvailable() && AdManager.Instance.isInterstitialAdEnabled)
+         {
+            HomaBelly.Instance.ShowInterstitial("Shop Duration Ad");
+         }
+
+         _isAdShown = true;
+      }
    }
 
    private void OnTriggerEnter(Collider other)

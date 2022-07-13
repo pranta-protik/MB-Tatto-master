@@ -6,6 +6,7 @@ public class UpgradesManager : Performance_Singleton<UpgradesManager>
     [SerializeField] private UpgradesModel upgradesModel;
     // [SerializeField] private ExitShopTrigger exitShopTrigger;
     [SerializeField] private string sceneName;
+    public float interstitialAdTimer = 45f;
 
     public MachineUpgradeSO MachineUpgradeSo => upgradesModel.machineUpgrade;
     public TattooUpgradeSO SelectedTattooUpgrade => upgradesModel.selectedTattooUpgrade;
