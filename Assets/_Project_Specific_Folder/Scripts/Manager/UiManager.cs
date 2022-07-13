@@ -13,7 +13,7 @@ public class UiManager : Singleton<UiManager>
 {
     public GameObject hurtScreen;
     public GameObject transitionScreen;
-    
+
     public GameObject unlockPanel;
     public GameObject instagramPostPage;
     public GameObject tapFastPanel;
@@ -24,7 +24,7 @@ public class UiManager : Singleton<UiManager>
     [HideInInspector] public bool isInstagramGalleryPhotoUpdated;
     [HideInInspector] public string followerValue;
     [HideInInspector] public bool isBadTattoo;
-    
+
     [SerializeField] private GameObject startUI;
     [SerializeField] private GameObject hapticsIcon;
     [SerializeField] private TextMeshProUGUI totalScoreText;
@@ -33,12 +33,11 @@ public class UiManager : Singleton<UiManager>
     [SerializeField] private GameObject mobileScreen;
     [SerializeField] private GameObject selectionMenuButton;
     [SerializeField] private GameObject shopButton;
+    [SerializeField] private int shopOpeningLevel;
     [SerializeField] private GameObject instagramGalleryButton;
     [SerializeField] private TextMeshProUGUI levelNoText;
     [SerializeField] private GameObject selectionMenu;
     [SerializeField] private GameObject mainMenuInstagramGallery;
-    [SerializeField] private float popUpScale = 5f;
-    [SerializeField] private float popUpDuration = 0.3f;
     [SerializeField] private GameObject instagramGalleryPage;
     [SerializeField] private GameObject influenceMeterPage;
 
@@ -48,7 +47,7 @@ public class UiManager : Singleton<UiManager>
     private bool _isHapticsAllowed;
     private Camera _camera;
     private string _followerValueLetter = "K";
-    
+
     private bool _shouldUpdateLikeText;
     private float _currentLike;
     private float _startLike;
@@ -67,29 +66,29 @@ public class UiManager : Singleton<UiManager>
         base.Start();
 
         _camera = Camera.main;
-        
-        if (priceTag!=null)
+
+        if (priceTag != null)
         {
             _scoreText = priceTag.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
             _scoreText.SetText(PlayerPrefs.GetInt("PriceTagBaseScore", 0).ToString());
         }
-        
+
         _currentLevel = PlayerPrefs.GetInt("current_scene", 0);
         _currentLevelText = PlayerPrefs.GetInt("current_scene_text", 0);
 
         if (levelNoText != null)
         {
-            levelNoText.SetText((_currentLevelText + 1).ToString());            
+            levelNoText.SetText((_currentLevelText + 1).ToString());
         }
 
-        if (_currentLevelText < 3 && !UAManager.Instance.EnableUA)
+        if ((_currentLevelText + 1) < shopOpeningLevel && !UAManager.Instance.EnableUA)
         {
             if (shopButton != null)
             {
                 shopButton.SetActive(false);
             }
         }
-        
+
         if (_currentLevelText == 0 && !UAManager.Instance.EnableUA)
         {
             if (selectionMenuButton != null)
@@ -102,7 +101,7 @@ public class UiManager : Singleton<UiManager>
                 instagramGalleryButton.SetActive(false);
             }
 
-            if (coolnessUpgradeButton!=null)
+            if (coolnessUpgradeButton != null)
             {
                 coolnessUpgradeButton.SetActive(false);
             }
@@ -118,7 +117,7 @@ public class UiManager : Singleton<UiManager>
             }
         }
 
-        if (totalScoreText!= null)
+        if (totalScoreText != null)
         {
             UpdateTotalScoreText(StorageManager.GetTotalScore());
         }
@@ -143,7 +142,7 @@ public class UiManager : Singleton<UiManager>
             Invoke(nameof(EnableInfluenceMeterScreen), 1.5f);
         }
     }
-    
+
     public void UpdateTotalScoreText(int totalScore)
     {
         totalScoreText.SetText("$" + totalScore);
@@ -153,7 +152,7 @@ public class UiManager : Singleton<UiManager>
     {
         SceneManager.LoadScene("UpgradesShop");
     }
-    
+
     #region Upgrade Buttons
 
     public void ValueUpgradeEffect(int value)
@@ -162,12 +161,9 @@ public class UiManager : Singleton<UiManager>
             Instantiate(valueUpgradeIncrementEffect, priceTag.transform.GetChild(1).position, priceTag.transform.GetChild(1).rotation, priceTag.transform);
         incrementTextObj.GetComponent<TextMeshProUGUI>().SetText("+" + value);
         incrementTextObj.GetComponent<TextMeshProUGUI>().DOFade(0, 1f);
-        incrementTextObj.GetComponent<RectTransform>().DOAnchorPosY(130f, 1f).OnComplete(() =>
-        {
-            Destroy(incrementTextObj);
-        });
+        incrementTextObj.GetComponent<RectTransform>().DOAnchorPosY(130f, 1f).OnComplete(() => { Destroy(incrementTextObj); });
     }
-    
+
     #endregion
 
     #region Haptics
@@ -179,6 +175,7 @@ public class UiManager : Singleton<UiManager>
         _isHapticsAllowed = true;
         MMVibrationManager.SetHapticsActive(_isHapticsAllowed);
     }
+
     public void OnDisableHapticsButtonClick()
     {
         hapticsIcon.transform.GetChild(0).gameObject.SetActive(true);
@@ -188,13 +185,13 @@ public class UiManager : Singleton<UiManager>
     }
 
     #endregion
-    
+
     #region MainMenu Buttons
 
     public void OnInstagramGalleryButtonClick()
     {
         mainMenuInstagramGallery.SetActive(true);
-        
+
         // Rewarded Videos
         // Rewarded Suggested Event
         HomaBelly.Instance.TrackDesignEvent("rewarded:" + "suggested" + ":" + PlacementName.UPDATE_USERNAME);
@@ -204,45 +201,45 @@ public class UiManager : Singleton<UiManager>
     {
         mainMenuInstagramGallery.SetActive(false);
     }
-    
+
     public void OnSelectionMenuButtonClick()
     {
         // Debug mode
         UAManager.Instance.isEndReached = true;
-        
+
         levelNoText.transform.parent.gameObject.SetActive(false);
-        
+
         // shop.SetActive(false);
         priceTag.SetActive(false);
         selectionMenuButton.SetActive(false);
         shopButton.SetActive(false);
         instagramGalleryButton.SetActive(false);
-        
+
         selectionMenu.SetActive(true);
         selectionMenu.GetComponent<SelectionMenu>().CheckUnlockButtonTypeStatus();
         selectionMenu.GetComponent<SelectionMenu>().CheckUnlockButtonAvailability();
-        
+
         // _camera.transform.DOLocalRotate(new Vector3(42, 90, 0), .3f).OnComplete(() =>
         // {
         //     
         // });
     }
-    
+
     public void OnCloseSelectionMenuButtonClick()
     {
         // Debug mode
         UAManager.Instance.isEndReached = false;
-        
+
         selectionMenu.SetActive(false);
-        
+
         levelNoText.transform.parent.gameObject.SetActive(true);
-            
+
         // shop.SetActive(true);
         priceTag.SetActive(true);
         selectionMenuButton.SetActive(true);
         shopButton.SetActive(true);
         instagramGalleryButton.SetActive(true);
-        
+
         // _camera.transform.DOLocalRotate(new Vector3(27.761f, 90, 0), .3f).OnComplete(() =>
         // {
         //  
@@ -250,7 +247,7 @@ public class UiManager : Singleton<UiManager>
     }
 
     #endregion
-    
+
     #region Gameplay changes
 
     public void ClearUIOnGameStart()
@@ -266,7 +263,7 @@ public class UiManager : Singleton<UiManager>
     {
         priceTag.transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.3f).SetLoops(4, LoopType.Yoyo);
     }
-    
+
     public void UpdatePriceTag(int value)
     {
         _scoreText.SetText(value.ToString());
@@ -275,6 +272,7 @@ public class UiManager : Singleton<UiManager>
             priceTag.GetComponent<Image>().DOColor(Color.red, 0.5f).SetLoops(2, LoopType.Yoyo);
         }
     }
+
     public void ClearUIOnFinishLine()
     {
         hapticsIcon.SetActive(false);
@@ -285,7 +283,7 @@ public class UiManager : Singleton<UiManager>
     {
         mobileScreen.SetActive(true);
         transitionScreen.SetActive(false);
-        
+
         // Rewarded Videos
         // Rewarded Suggested Event
         HomaBelly.Instance.TrackDesignEvent("rewarded:" + "suggested" + ":" + PlacementName.UNLOCK_POSE);
@@ -304,9 +302,9 @@ public class UiManager : Singleton<UiManager>
     }
 
     #endregion
-    
+
     #region Instagram Like and Follower Settings
-    
+
     private void UpdateLikeText()
     {
         if (_currentLike < _targetLike)
@@ -317,18 +315,18 @@ public class UiManager : Singleton<UiManager>
         else
         {
             _shouldUpdateLikeText = false;
-            
+
             Transform postEmojiParent = instagramPostPage.transform.GetChild(1).GetChild(3);
-            
+
             if (isBadTattoo)
             {
-                postEmojiParent.GetChild(1).gameObject.SetActive(true);    
+                postEmojiParent.GetChild(1).gameObject.SetActive(true);
             }
             else
             {
-                postEmojiParent.GetChild(0).gameObject.SetActive(true);    
+                postEmojiParent.GetChild(0).gameObject.SetActive(true);
             }
-            
+
             PlayerPrefs.SetInt("TargetLikeIndex", _targetLikeIndex + 1);
             Invoke(nameof(EnableInstagramGalleryPage), 1.5f);
         }
@@ -337,10 +335,10 @@ public class UiManager : Singleton<UiManager>
         int rightValue = Mathf.RoundToInt(_currentLike) % 1000;
 
         TMP_Text likeText = instagramPostPage.transform.GetChild(1).GetChild(2).GetComponent<TMP_Text>();
-        
-        if (leftValue==0)
+
+        if (leftValue == 0)
         {
-            likeText.SetText(rightValue.ToString());    
+            likeText.SetText(rightValue.ToString());
         }
         else
         {
@@ -366,11 +364,11 @@ public class UiManager : Singleton<UiManager>
             likeText.SetText(leftValue + "," + rightString);
         }
     }
-    
+
     private void UpdateFollowersText()
     {
         TMP_Text followersText = instagramGalleryPage.transform.GetChild(4).GetChild(1).GetComponent<TMP_Text>();
-        
+
         if (_currentFollowers < _targetFollowers)
         {
             _currentFollowers += ((_targetFollowers - _startFollowers) / 1.5f) * Time.deltaTime;
@@ -396,7 +394,7 @@ public class UiManager : Singleton<UiManager>
         else
         {
             _shouldUpdateFollowersText = false;
-            
+
             if (isBadTattoo)
             {
                 Transform followerDropTextTransform = instagramGalleryPage.transform.GetChild(4).GetChild(1).GetChild(0);
@@ -407,9 +405,9 @@ public class UiManager : Singleton<UiManager>
             if (PlayerPrefs.GetInt("TargetFollowersIndex", 0) <= GameManager.Instance.followers.Count)
             {
                 int randomRange = GameManager.Instance.followers[_targetFollowersIndex].randomRange;
-                
+
                 int totalFollowers;
-                
+
                 if (isBadTattoo)
                 {
                     totalFollowers = GameManager.Instance.followers[_targetFollowersIndex].value + Random.Range(-randomRange, 0);
@@ -418,7 +416,7 @@ public class UiManager : Singleton<UiManager>
                 {
                     totalFollowers = GameManager.Instance.followers[_targetFollowersIndex].value + Random.Range(0, randomRange);
                 }
-                
+
                 followerValue = totalFollowers + GameManager.Instance.followers[_targetFollowersIndex].scale;
             }
             else
@@ -426,9 +424,9 @@ public class UiManager : Singleton<UiManager>
                 followerValue = Random.Range(899, 999) + "M";
                 PlayerPrefs.SetInt("TargetFollowersIndex", GameManager.Instance.followers.Count);
             }
-            
+
             PlayerPrefs.SetString("CurrentFollowers", followerValue);
-            
+
             followersText.SetText(followerValue);
             _isFollowersUpdated = true;
         }
@@ -440,20 +438,21 @@ public class UiManager : Singleton<UiManager>
         instagramPostPage.transform.GetChild(1).GetChild(0).GetComponent<TMP_Text>().SetText(PlayerPrefs.GetString("Username"));
         instagramPostPage.transform.GetChild(3).GetComponent<Image>().DOFade(0, 0.5f);
         _targetLikeIndex = PlayerPrefs.GetInt("TargetLikeIndex", 0);
-            
+
         if (_targetLikeIndex < GameManager.Instance.likes.Count)
         {
-            _targetLike = GameManager.Instance.likes[_targetLikeIndex];   
+            _targetLike = GameManager.Instance.likes[_targetLikeIndex];
         }
         else
         {
             _targetLike = GameManager.Instance.likes[GameManager.Instance.likes.Count - 1] + Random.Range(-100, 100);
         }
+
         _currentLike = 0;
         _startLike = _currentLike;
         _shouldUpdateLikeText = true;
     }
-    
+
     private void EnableInstagramGalleryPage()
     {
         instagramPostPage.SetActive(false);
@@ -509,7 +508,7 @@ public class UiManager : Singleton<UiManager>
         yield return new WaitForSeconds(2f);
         influenceMeterPage.GetComponent<InfluenceMeter>().CrossOpponentVisual();
     }
-    
+
     #endregion
 
     public void ReloadSceneWithNewLevel()
@@ -519,7 +518,7 @@ public class UiManager : Singleton<UiManager>
         // Progression Events
         // Level Completed Event
         DefaultAnalytics.LevelCompleted();
-        
+
         string levelId = (PlayerPrefs.GetInt("current_scene_text", 0) + 1).ToString();
         float levelDuration = Time.time - PlayerPrefs.GetFloat("LevelStartTime", 0);
 
@@ -543,15 +542,13 @@ public class UiManager : Singleton<UiManager>
             PlayerPrefs.SetInt(PlayerPrefsKey.DEFAULT_TATTOO_LEVEL, 1);
         }
 
-        if (PlayerPrefs.GetInt("current_scene_text", 0) == GameManager.Instance.shopOpeningLevel)
+        if ((PlayerPrefs.GetInt("current_scene_text", 0) + 1) == shopOpeningLevel)
         {
             SceneManager.LoadScene("UpgradesShop");
         }
         else
         {
-            SceneManager.LoadScene("Main");   
+            SceneManager.LoadScene("Main");
         }
     }
-
-
 }

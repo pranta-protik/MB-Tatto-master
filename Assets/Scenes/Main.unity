@@ -23584,10 +23584,9 @@ MonoBehaviour:
   isBannerAdEnabled: 1
   isInterstitialAdEnabled: 1
   interstitialAdStartLevel: 4
-  shopOpeningLevel: 3
+  shopOpeningLevel: 2
   ratingDisplayLevel: 2
   gameMode: 0
-  currentTattooGunLevel: 0
   levelPrefabs:
   - {fileID: 6828944569146319530, guid: 1e9203e20f9636a46a1b0a202da32413, type: 3}
   - {fileID: 6828944569146319530, guid: 10648a6f84edf224a955a5a3951cb2c5, type: 3}
@@ -23727,7 +23726,6 @@ MonoBehaviour:
   pathCreator: {fileID: 0}
   hasGameStarted: 0
   isGameOver: 0
-  isGoldenTattooGunActivated: 0
   isWrestling: 0
   wrestlingCameraTransform: {fileID: 2040196989}
   specificLevelId: 2
@@ -43407,12 +43405,11 @@ MonoBehaviour:
   mobileScreen: {fileID: 1961694457}
   selectionMenuButton: {fileID: 425760740}
   shopButton: {fileID: 761370556}
+  shopOpeningLevel: 2
   instagramGalleryButton: {fileID: 1098155143}
   levelNoText: {fileID: 3464536507856245032}
   selectionMenu: {fileID: 451508828}
   mainMenuInstagramGallery: {fileID: 1917380866}
-  popUpScale: 5
-  popUpDuration: 0.3
   instagramGalleryPage: {fileID: 1990013023}
   influenceMeterPage: {fileID: 1804672026}
   _currentLevel: 0

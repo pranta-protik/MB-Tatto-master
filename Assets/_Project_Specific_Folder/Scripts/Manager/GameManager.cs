@@ -45,10 +45,8 @@ public class GameManager : Singleton<GameManager>
     public bool isBannerAdEnabled;
     public bool isInterstitialAdEnabled;
     public int interstitialAdStartLevel;
-    public int shopOpeningLevel;
     public int ratingDisplayLevel;
     public EGameMode gameMode;
-    public int currentTattooGunLevel;
     public List<GameObject> levelPrefabs = new List<GameObject>();
     public List<int> likes = new List<int>();
     public List<FollowerInfoSet> followers = new List<FollowerInfoSet>();
@@ -60,7 +58,6 @@ public class GameManager : Singleton<GameManager>
     [HideInInspector] public PathCreator pathCreator;
     [HideInInspector] public bool hasGameStarted;
     [HideInInspector] public bool isGameOver;
-    [HideInInspector] public bool isGoldenTattooGunActivated;
     [HideInInspector] public bool isWrestling;
     
     [SerializeField] private Transform wrestlingCameraTransform;
@@ -70,9 +67,6 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private Transform tattooGunSpawnPosition;
     [SerializeField] private GameObject tattooEffect;
     [SerializeField] private PostProcessHandler postProcessHandler;
-    
-    private static readonly int SHPropSmoothness = Shader.PropertyToID("_Glossiness");
-    private static readonly int SHPropMetallic = Shader.PropertyToID("_Metallic");
     
     private int _handId;
     private HandBehaviour _mainHandBehaviour;

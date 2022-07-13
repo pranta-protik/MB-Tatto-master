@@ -5,4 +5,5 @@
     public const string VALUE_UPGRADE_LEVEL = "ValueUpgradeLevel";
     public const string VALUE_UPGRADE_AMOUNT = "ValueUpgradeAmount";
     public const string CURRENT_TATTOO_LEVEL_FOR = "CurrentTattooLevelFor";
+    public const string META_WORLD_START_TIME = "MetaWorldStartTime";
 }

@@ -14,7 +14,7 @@ public class Loading : MonoBehaviour
     void Start()
     {
         _time = 0f;
-        Invoke("LoadGame", second);
+        Invoke(nameof(LoadGame), second);
     }
 
     private void Update()
