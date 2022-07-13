@@ -22,15 +22,6 @@ public class GameManagerEditor : Editor
 
         EditorGUILayout.PropertyField(serializedObject.FindProperty("ratingDisplayLevel"));
 
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("isBannerAdEnabled"));
-        
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("isInterstitialAdEnabled"));
-
-        if (gameManager.isInterstitialAdEnabled)
-        {
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("interstitialAdStartLevel"));
-        }
-
         EditorGUILayout.PropertyField(serializedObject.FindProperty("gameMode"));
 
         if (gameManager.gameMode == GameManager.EGameMode.Test)

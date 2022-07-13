@@ -81,7 +81,7 @@ public class UiManager : Singleton<UiManager>
             levelNoText.SetText((_currentLevelText + 1).ToString());
         }
 
-        if ((_currentLevelText + 1) < shopOpeningLevel && !UAManager.Instance.EnableUA)
+        if (_currentLevelText < shopOpeningLevel && !UAManager.Instance.EnableUA)
         {
             if (shopButton != null)
             {
@@ -520,8 +520,8 @@ public class UiManager : Singleton<UiManager>
         {
             PlayerPrefs.SetInt(PlayerPrefsKey.DEFAULT_TATTOO_LEVEL, 1);
         }
-
-        if ((PlayerPrefs.GetInt("current_scene_text", 0) + 1) == shopOpeningLevel)
+        
+        if (PlayerPrefs.GetInt("current_scene_text", 0) == shopOpeningLevel)
         {
             SceneManager.LoadScene("UpgradesShop");
         }

@@ -4,7 +4,6 @@ using Singleton;
 
 public class StorageManager : Singleton<StorageManager>
 {
-
     public static int GetTotalScore() => PlayerPrefs.GetInt("LifeTimeScore", 0);
 
     public static void SetTotalScore(int score)

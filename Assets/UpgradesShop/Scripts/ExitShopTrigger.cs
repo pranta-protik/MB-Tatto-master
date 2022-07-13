@@ -19,9 +19,20 @@ public class ExitShopTrigger : MonoBehaviour
       {
          return;
       }
-      
-      string levelId = (PlayerPrefs.GetInt("current_scene_text", 0) + 1).ToString();
 
+      if (PlayerPrefs.GetInt("FirstShopEncounter", 1) == 1)
+      {
+         PlayerPrefs.SetInt("FirstShopEncounter", 0);
+         
+         // Check if ad is available
+         if (HomaBelly.Instance.IsInterstitialAvailable() && AdManager.Instance.isInterstitialAdEnabled)
+         {
+            HomaBelly.Instance.ShowInterstitial("Shop Exit Ad");
+         }   
+      }
+
+      string levelId = (PlayerPrefs.GetInt("current_scene_text", 0) + 1).ToString();
+      
       float duration = Time.time - PlayerPrefs.GetFloat(PlayerPrefsKey.META_WORLD_START_TIME, 0);
       
       // Meta World

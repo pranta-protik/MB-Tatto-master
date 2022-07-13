@@ -41,10 +41,6 @@ public class GameManager : Singleton<GameManager>
     }
 
     public int totalLevelNo = 50;
-    [Header("Ad Section")] 
-    public bool isBannerAdEnabled;
-    public bool isInterstitialAdEnabled;
-    public int interstitialAdStartLevel;
     public int ratingDisplayLevel;
     public EGameMode gameMode;
     public List<GameObject> levelPrefabs = new List<GameObject>();
@@ -132,7 +128,7 @@ public class GameManager : Singleton<GameManager>
         UAManager.Instance.handId = PlayerPrefs.GetInt("SelectedHandCardId", 0);
         
         // Banner Ad
-        if (isBannerAdEnabled)
+        if (AdManager.Instance.isBannerAdEnabled)
         {
             Events.onBannerAdLoadedEvent+= OnBannerAdLoadedEvent;
             HomaBelly.Instance.LoadBanner();    

@@ -356,11 +356,11 @@ public class HandBehaviour : MonoBehaviour
 
             // Interstitial Ad
             int levelId = (PlayerPrefs.GetInt("current_scene_text", 0) + 1);
-
-            if (levelId >= GameManager.Instance.interstitialAdStartLevel)
+            
+            if (levelId >= AdManager.Instance.interstitialAdStartLevel)
             {
                 // Check if ad is available
-                if (HomaBelly.Instance.IsInterstitialAvailable() && GameManager.Instance.isInterstitialAdEnabled)
+                if (HomaBelly.Instance.IsInterstitialAvailable() && AdManager.Instance.isInterstitialAdEnabled)
                 {
                     HomaBelly.Instance.ShowInterstitial("Level End Ad");
                 }

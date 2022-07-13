@@ -41,6 +41,12 @@ public class ScoreMultiplier : MonoBehaviour
         }
     }
 
+    public void OnSkipButtonClick()
+    {
+        UpdateCash(1);
+        Invoke(nameof(EnableUnlockScreen), 1f);
+    }
+
     private void OnRewardedVideoAdRewardedEvent(VideoAdReward obj)
     {
         multiplierPointer.transform.DOKill();
@@ -50,12 +56,12 @@ public class ScoreMultiplier : MonoBehaviour
         {
             if (_pointerAngle.z >= multiplierValue.startAngle && _pointerAngle.z <= multiplierValue.endAngle)
             {
-                Debug.Log(multiplierValue.value);
+                UpdateCash(multiplierValue.value);
                 break;
             }
         }
         
-        Invoke(nameof(EnableUnlockScreen), 2f);
+        Invoke(nameof(EnableUnlockScreen), 1f);
         
         // Rewarded Videos
         // Rewarded Claimed Event
@@ -63,6 +69,19 @@ public class ScoreMultiplier : MonoBehaviour
         
         // Unsubscribe to Rewarded Video Ads
         Events.onRewardedVideoAdRewardedEvent -= OnRewardedVideoAdRewardedEvent; 
+    }
+
+    private void UpdateCash(int multiplier)
+    {
+        InfluenceMeter influenceMeter = transform.parent.GetComponent<InfluenceMeter>();
+        
+        int finalCash = influenceMeter.GetCurrentLevelCash() * multiplier;
+        
+        StorageManager.SetTotalScore(StorageManager.GetTotalScore() + finalCash);
+        
+        influenceMeter.UpdateCash(finalCash);
+        
+        influenceMeter.DisplayCash();
     }
 
     private void EnableUnlockScreen()

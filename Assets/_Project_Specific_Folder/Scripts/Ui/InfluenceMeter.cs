@@ -32,6 +32,7 @@ public class InfluenceMeter : MonoBehaviour
     private RectTransform _meterIcon;
     private TMP_Text _followersText;
     private TMP_Text _usernameText;
+    private GameObject _cashBanner;
     private TMP_Text _cashText;
     private InfluencerStatus _influencerStatus;
     private GameObject _fightBanner;
@@ -53,12 +54,12 @@ public class InfluenceMeter : MonoBehaviour
         _skipButton = transform.GetChild(7).gameObject;
         _scoreMultiplierMeter = transform.GetChild(8).gameObject;
         _scoreMultiplierPointer = transform.GetChild(9).gameObject;
+        _cashBanner = transform.GetChild(2).gameObject;
+        _cashText = transform.GetChild(3).GetComponent<TMP_Text>();
         
         _targetCash = StorageManager.Instance.currentLevelScore < 0 ? 500 : StorageManager.Instance.currentLevelScore;
-        _cashText = transform.GetChild(3).GetComponent<TMP_Text>();
-        _cashText.SetText("$" + _targetCash);
         
-        StorageManager.SetTotalScore(StorageManager.GetTotalScore() + _targetCash);
+        UpdateCash(_targetCash);
 
         Transform playerIconTransform = transform.GetChild(1).GetChild(0).GetChild(0);
         
@@ -104,6 +105,15 @@ public class InfluenceMeter : MonoBehaviour
         Invoke(nameof(UpdateInfluenceMeter), 0.5f);
     }
 
+    public int GetCurrentLevelCash()
+    {
+        return _targetCash;
+    }
+    public void UpdateCash(int totalCash)
+    {
+        _cashText.SetText("$" + totalCash);
+    }
+    
     private void UpdateInfluenceMeter()
     {
         if (_yPositionIndex < playerIconYPositions.Count)
@@ -293,13 +303,30 @@ public class InfluenceMeter : MonoBehaviour
     {
         _watchAdButton.SetActive(true);
         _watchAdButton.transform.DOScale(new Vector3(0.8f, 0.8f, 0.8f), 0.5f).SetLoops(-1, LoopType.Yoyo);
+        
         _skipButton.SetActive(true);
+        
+        _cashBanner.SetActive(false);
+        _cashText.gameObject.SetActive(false);
+        
         _scoreMultiplierMeter.SetActive(true);
         _scoreMultiplierPointer.SetActive(true);
         
         // Rewarded Videos
         // Rewarded Suggested Event
         HomaBelly.Instance.TrackDesignEvent("rewarded:" + "suggested" + ":" + PlacementName.SCORE_MULTIPLIER);
+    }
+
+    public void DisplayCash()
+    {
+        _watchAdButton.SetActive(false);
+        _skipButton.SetActive(false);
+        
+        _cashBanner.SetActive(true);
+        _cashText.gameObject.SetActive(true);
+        
+        _scoreMultiplierMeter.SetActive(false);
+        _scoreMultiplierPointer.SetActive(false);
     }
     
     public void EnableUnlockScreen()
