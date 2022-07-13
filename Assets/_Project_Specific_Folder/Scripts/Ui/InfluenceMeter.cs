@@ -229,26 +229,35 @@ public class InfluenceMeter : MonoBehaviour
         _fightIcon.SetActive(true);
         
         GameManager.Instance.WrestlingSetup(_influencerStatus.influencerHandId);
+
+        _fightBanner.transform.GetChild(1).gameObject.SetActive(true);
+        _fightBanner.transform.GetChild(2).gameObject.SetActive(true);
+            
+        GameManager.Instance.isWrestling = false;
+            
+        // Rewarded Videos
+        // Rewarded Suggested Event
+        HomaBelly.Instance.TrackDesignEvent("rewarded:" + "suggested" + ":" + PlacementName.WRESTLE_OPPONENT);
         
-        if (PlayerPrefs.GetInt("FirstFight", 1) == 1)
-        {
-            _fightBanner.SetActive(false);
-            GameManager.Instance.isWrestling = true;
-            
-            PlayerPrefs.SetInt("FirstFight", 0);
-            PlayerPrefs.SetInt("InfluncerFightStatus" + _influencerStatus.influencerId, 1);
-        }
-        else
-        {
-            _fightBanner.transform.GetChild(1).gameObject.SetActive(true);
-            _fightBanner.transform.GetChild(2).gameObject.SetActive(true);
-            
-            GameManager.Instance.isWrestling = false;
-            
-            // Rewarded Videos
-            // Rewarded Suggested Event
-            HomaBelly.Instance.TrackDesignEvent("rewarded:" + "suggested" + ":" + PlacementName.WRESTLE_OPPONENT);
-        }
+        // if (PlayerPrefs.GetInt("FirstFight", 1) == 1)
+        // {
+        //     _fightBanner.SetActive(false);
+        //     GameManager.Instance.isWrestling = true;
+        //     
+        //     PlayerPrefs.SetInt("FirstFight", 0);
+        //     PlayerPrefs.SetInt("InfluncerFightStatus" + _influencerStatus.influencerId, 1);
+        // }
+        // else
+        // {
+        //     _fightBanner.transform.GetChild(1).gameObject.SetActive(true);
+        //     _fightBanner.transform.GetChild(2).gameObject.SetActive(true);
+        //     
+        //     GameManager.Instance.isWrestling = false;
+        //     
+        //     // Rewarded Videos
+        //     // Rewarded Suggested Event
+        //     HomaBelly.Instance.TrackDesignEvent("rewarded:" + "suggested" + ":" + PlacementName.WRESTLE_OPPONENT);
+        // }
     }
     
     public void CrossOpponentVisual()
