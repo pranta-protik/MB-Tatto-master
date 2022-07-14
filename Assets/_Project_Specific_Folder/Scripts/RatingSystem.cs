@@ -20,7 +20,7 @@ public class RatingSystem : MonoBehaviour
             _ratingStarts[i].color = Color.yellow;
         }
 
-        if (buttonIndex < 4)
+        if (buttonIndex < 5)
         {
             Invoke(nameof(EnablePopUp), 0.5f);
         }
