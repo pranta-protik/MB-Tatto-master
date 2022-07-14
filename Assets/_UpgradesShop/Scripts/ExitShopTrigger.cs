@@ -17,6 +17,12 @@ public class ExitShopTrigger : MonoBehaviour
 
    private void Update()
    {
+      if (PlayerPrefs.GetInt("FirstShopEncounter", 1) == 1)
+      {
+         _isAdShown = true;
+         return;
+      }
+      
       if (!_isAdShown && Time.time - PlayerPrefs.GetFloat(PlayerPrefsKey.META_WORLD_START_TIME) > UpgradesManager.Instance.interstitialAdTimer)
       {
          // Check if ad is available
