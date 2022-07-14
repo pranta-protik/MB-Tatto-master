@@ -246,7 +246,8 @@ public class InfluenceMeter : MonoBehaviour
 
         _fightBanner.transform.GetChild(1).gameObject.SetActive(true);
         _fightBanner.transform.GetChild(2).gameObject.SetActive(true);
-            
+        _fightBanner.transform.GetChild(2).DOScale(new Vector3(2.4f, 2.4f, 2.4f), 0.5f).SetLoops(-1, LoopType.Yoyo);    
+        
         GameManager.Instance.isWrestling = false;
             
         // Rewarded Videos
