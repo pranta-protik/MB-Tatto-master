@@ -330,8 +330,8 @@ public class InfluenceMeter : MonoBehaviour
         // _cashBanner.SetActive(true);
         // _cashText.gameObject.SetActive(true);
         
-        _scoreMultiplierMeter.SetActive(false);
-        _scoreMultiplierPointer.SetActive(false);
+        // _scoreMultiplierMeter.SetActive(false);
+        // _scoreMultiplierPointer.SetActive(false);
     }
     
     public void EnableUnlockScreen()

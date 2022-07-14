@@ -2541,8 +2541,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4096,7 +4096,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   endOfPathInstruction: 2
   distanceTravelled: 3.7
-  maxSpeed: 20
+  maxSpeed: 2
   increaseMultiplier: 4
   speedDecrementFactor: 3
   speedDecrementDuration: 0.6
@@ -5957,7 +5957,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8887833401a20b944b5e9b6da4ad9f8d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b43862ff28bf2ee48b4b1aba6f0f5231, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13510,7 +13510,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 99b4947d1aff40e48b469c036ca9d5c8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a24d9b883c54d114b861dea7eefcab64, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -26845,7 +26845,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cc841664fbc72bf48b28de5ecb57046a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e2e8c02e29fa1e740b1264e5cb94c6f2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -29203,7 +29203,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5aae2788125524342ae223158f073e69, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1d148f0c404a71c438df32b414c90747, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -30571,7 +30571,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4db5e364046baec42920bd3b16e7f212, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 398e612cabb597548ae76b8270a8d649, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
