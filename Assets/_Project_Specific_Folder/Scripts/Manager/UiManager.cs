@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using Singleton;
@@ -27,7 +28,7 @@ public class UiManager : Singleton<UiManager>
 
     [SerializeField] private GameObject startUI;
     [SerializeField] private GameObject hapticsIcon;
-    [SerializeField] private TextMeshProUGUI totalScoreText;
+    [SerializeField] private TMP_Text totalScoreText;
     [SerializeField] private GameObject priceTag;
     [SerializeField] private GameObject valueUpgradeIncrementEffect;
     [SerializeField] private GameObject mobileScreen;
@@ -42,7 +43,7 @@ public class UiManager : Singleton<UiManager>
     [SerializeField] private GameObject instagramGalleryPage;
     [SerializeField] private GameObject influenceMeterPage;
 
-    private TextMeshProUGUI _scoreText;
+    private TMP_Text _scoreText;
     [SerializeField] private int _currentLevel;
     [SerializeField] private int _currentLevelText;
     private bool _isHapticsAllowed;
@@ -65,7 +66,7 @@ public class UiManager : Singleton<UiManager>
     {
         base.Start();
 
-        _scoreText = priceTag.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        _scoreText = priceTag.transform.GetChild(0).GetComponent<TMP_Text>();
         _scoreText.SetText(PlayerPrefs.GetInt("PriceTagBaseScore", 0).ToString());
 
         _currentLevel = PlayerPrefs.GetInt("current_scene", 0);
@@ -113,7 +114,7 @@ public class UiManager : Singleton<UiManager>
 
     public void UpdateTotalScoreText(int totalScore)
     {
-        totalScoreText.SetText("$" + totalScore);
+        totalScoreText.SetText($"${CurrencySystem.GetConvertedCurrencyString(totalScore)}");
     }
 
     public void OnShopButtonClick()

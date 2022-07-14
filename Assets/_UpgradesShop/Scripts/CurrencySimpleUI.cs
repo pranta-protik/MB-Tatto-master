@@ -5,8 +5,6 @@ public class CurrencySimpleUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI currencyText;
 
-    private const string DOLAR = "$";
-
     private void Awake()
     {
         StorageManager.CurrentScoreChangedAction += OnCurrencyChanged;
@@ -14,7 +12,7 @@ public class CurrencySimpleUI : MonoBehaviour
 
     private void Start()
     {
-        SetCurrency(StorageManager.GetTotalScore().ToString());
+        SetCurrency(StorageManager.GetTotalScore());
     }
 
     private void OnDestroy()
@@ -24,11 +22,11 @@ public class CurrencySimpleUI : MonoBehaviour
 
     private void OnCurrencyChanged(int currency)
     {
-        SetCurrency(currency.ToString());
+        SetCurrency(currency);
     }
 
-    private void SetCurrency(string currency)
+    private void SetCurrency(int currency)
     {
-        currencyText.SetText(string.Concat(DOLAR, currency));
+        currencyText.SetText($"${CurrencySystem.GetConvertedCurrencyString(currency)}");
     }
 }

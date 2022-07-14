@@ -9,7 +9,7 @@ public class PayPlatform : MonoBehaviour
     [SerializeField] private float timeToPay = 0.4f;
     [SerializeField] private float depositTravelTime = 0.3f;
     [SerializeField] private Transform depositTarget;
-    [SerializeField] private TextMeshPro cashText;
+    [SerializeField] private TMP_Text cashText;
     [SerializeField] private int paymentsAmount = 100;
 
     private UpgradeDataSO upgradeData;
@@ -179,7 +179,7 @@ public class PayPlatform : MonoBehaviour
 
     private void SetCashText()
     {
-        cashText.SetText((upgradeData.GetNextPurchasePrice() - upgradeData.CurrencyDeposited).ToString());
+        cashText.SetText(CurrencySystem.GetConvertedCurrencyString(upgradeData.GetNextPurchasePrice() - upgradeData.CurrencyDeposited));
     }
     #endregion
 }

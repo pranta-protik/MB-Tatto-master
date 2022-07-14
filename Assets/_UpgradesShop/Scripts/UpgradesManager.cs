@@ -18,7 +18,7 @@ public class UpgradesManager : Singleton<UpgradesManager>
     [Sirenix.OdinInspector.Button]
     public void AddCash()
     {
-        StorageManager.SetTotalScore(100000);
+        StorageManager.SetTotalScore(1000000);
     }
 
     [Sirenix.OdinInspector.Button]
