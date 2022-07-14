@@ -33,6 +33,7 @@ public class UiManager : Singleton<UiManager>
     [SerializeField] private GameObject mobileScreen;
     [SerializeField] private GameObject selectionMenuButton;
     [SerializeField] private GameObject shopButton;
+    [SerializeField] private int shopVisitingFrequency;
     [SerializeField] private int shopOpeningLevel;
     [SerializeField] private GameObject instagramGalleryButton;
     [SerializeField] private TextMeshProUGUI levelNoText;
@@ -45,7 +46,6 @@ public class UiManager : Singleton<UiManager>
     [SerializeField] private int _currentLevel;
     [SerializeField] private int _currentLevelText;
     private bool _isHapticsAllowed;
-    private Camera _camera;
     private string _followerValueLetter = "K";
 
     private bool _shouldUpdateLikeText;
@@ -64,8 +64,6 @@ public class UiManager : Singleton<UiManager>
     public override void Start()
     {
         base.Start();
-
-        _camera = Camera.main;
 
         _scoreText = priceTag.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         _scoreText.SetText(PlayerPrefs.GetInt("PriceTagBaseScore", 0).ToString());
@@ -505,7 +503,7 @@ public class UiManager : Singleton<UiManager>
             PlayerPrefs.SetInt(PlayerPrefsKey.DEFAULT_TATTOO_LEVEL, 1);
         }
         
-        if (PlayerPrefs.GetInt("current_scene_text", 0) == shopOpeningLevel)
+        if ((PlayerPrefs.GetInt("current_scene_text", 0) % shopVisitingFrequency) == 0)
         {
             SceneManager.LoadSceneAsync((int) SceneIndexes.UPGRADE_SHOP);
         }
