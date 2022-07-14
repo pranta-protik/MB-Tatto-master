@@ -4,6 +4,7 @@ using DG.Tweening;
 using HomaGames.HomaBelly;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 

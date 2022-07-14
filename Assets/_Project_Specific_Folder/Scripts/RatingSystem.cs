@@ -49,7 +49,8 @@ public class RatingSystem : MonoBehaviour
 
     private void DisablePopUp()
     {
-        _popUpScreen.transform.DOScale(new Vector3(0f, 0f, 0f), 0.5f).OnComplete(() =>
+        _popUpScreen.transform.GetChild(0).DOScale(Vector3.zero, 0.5f);
+        _popUpScreen.transform.GetChild(1).DOScale(Vector3.zero, 0.5f).OnComplete(() =>
         {
             _popUpScreen.SetActive(false);
             GameManager.Instance.MobileScreenTransition();
