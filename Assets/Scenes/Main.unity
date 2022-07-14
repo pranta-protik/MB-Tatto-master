@@ -3527,7 +3527,7 @@ MonoBehaviour:
   watchAdCoolnessUpgradeIcon: {fileID: 21300000, guid: 96884eb389ef76048ab10e6eada31825, type: 3}
   maxedOutCoolnessUpgradeIcon: {fileID: 21300000, guid: 20a9908678ea62f4ca61a4ab16a7a16d, type: 3}
   requiredScoreForCoolnessUpgrade: 1000
-  startingLevelForUpgradeCoolnessWatchingAd: 2
+  startingLevelForUpgradeCoolnessWatchingAd: 3
 --- !u!1001 &347989936
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41951,7 +41951,7 @@ MonoBehaviour:
   baseUpgradeAmount: 250
   upgradeMultiplier: 2
   requiredScoreForValueUpgrade: 100
-  startingLevelForUpgradeValueWatchingAd: 2
+  startingLevelForUpgradeValueWatchingAd: 3
 --- !u!1 &2065474232
 GameObject:
   m_ObjectHideFlags: 0
