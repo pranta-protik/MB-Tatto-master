@@ -8,6 +8,8 @@ public abstract class UpgradeStation : MonoBehaviour
     [SerializeField] protected UpgradeDataSO upgradeData;
     [SerializeField] private GameObject lockedContainer;
     [SerializeField] private PayPlatform payPlatform;
+    public EquipmentPlatform equipmentPlatform;
+    public UnequipmentPlatform unequipmentPlatform;
     [SerializeField] private Shader greyscaleShader;
     [SerializeField] protected float upscaleValue = 1.5f;
     [SerializeField] protected float scaleDuration = 0.33f;
@@ -39,17 +41,22 @@ public abstract class UpgradeStation : MonoBehaviour
     {
         payPlatform.Init(upgradeData);
         
-        // Keep all stations available from start
-        // Use black silhouette
-        // gameObject.SetActive(upgradeData.IsAvailable);
-        
         if (!upgradeData.IsAvailable)
         {
             SetAvailabilityState(upgradeData.IsAvailable);
         }
         else
         {
-            SetUnlockState(!upgradeData.IsUnlocked);   
+            SetUnlockState(!upgradeData.IsUnlocked);
+        }
+
+        if (upgradeData.IsUnlocked)
+        {
+            if (equipmentPlatform != null && unequipmentPlatform!= null)
+            {
+                equipmentPlatform.gameObject.SetActive(true);
+                unequipmentPlatform.gameObject.SetActive(false);
+            }
         }
     }
 
@@ -90,20 +97,18 @@ public abstract class UpgradeStation : MonoBehaviour
     protected virtual void OnActivate()
     {
         payPlatform.Init(upgradeData);
-        // Remove black silhouette
-        // gameObject.SetActive(true);
         SetAvailabilityState(true);
         SetUnlockState(!upgradeData.IsUnlocked);
     }
 
-    private void OnUnlocked(UpgradeDataSO upgrade)
+    protected virtual void OnUnlocked(UpgradeDataSO upgrade)
     {
         SetUnlockState(false);
     }
     #endregion
 
     #region Logic
-   
+
     private void SetUnlockState(bool isLocked)
     {
         if(lockedContainer != null)
@@ -120,7 +125,7 @@ public abstract class UpgradeStation : MonoBehaviour
                 originalShaders.Add(renderersToGreyscale[i].material.shader);
                 renderersToGreyscale[i].material.shader = greyscaleShader;
             }
-
+            
             hasUsedGreyscale = true;
         }
         else if(hasUsedGreyscale)
@@ -165,4 +170,9 @@ public abstract class UpgradeStation : MonoBehaviour
     }
     
     #endregion
+
+    public virtual int GetSerialNo()
+    {
+        return 0;
+    }
 }

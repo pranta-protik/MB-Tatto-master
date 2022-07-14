@@ -23,6 +23,27 @@ public class JewelryStation : UpgradeStation
         }
     }
 
+    protected override void Start()
+    {
+        base.Start();
+    
+        if (PlayerPrefs.GetInt(PlayerPrefsKey.EQUIPPED_JEWELRY_AMOUNT, 0) == 1)
+        {
+            int serial = PlayerPrefs.GetInt(PlayerPrefsKey.EQUIPPED_JEWELRY_INDEX, 0);
+    
+            if (serial == jewelryUpgradeData.serialNo)
+            {
+                equipmentPlatform.gameObject.SetActive(false);
+                unequipmentPlatform.gameObject.SetActive(true);
+            }
+        }
+    }
+
+    public bool IsStationUnlocked()
+    {
+        return upgradeData.IsUnlocked;
+    }
+    
     public override void UpscaleBigPreview()
     {
 
@@ -62,5 +83,25 @@ public class JewelryStation : UpgradeStation
     {
         base.OnActivate();
         Set3DModelPreview();
+    }
+
+    public override int GetSerialNo()
+    {
+        return jewelryUpgradeData.serialNo;
+    }
+
+    protected override void OnUnlocked(UpgradeDataSO upgrade)
+    {
+        base.OnUnlocked(upgrade);
+        
+        UpgradesManager.Instance.ClearAllJewelryStations();
+        
+        if (equipmentPlatform != null && unequipmentPlatform!= null)
+        {
+            equipmentPlatform.gameObject.SetActive(false);
+            unequipmentPlatform.gameObject.SetActive(true);
+            
+            PlayerPrefs.SetInt(PlayerPrefsKey.FIRST_TIME_UNEQUIP + unequipmentPlatform.GetUpgradeType() + unequipmentPlatform.GetSerialNo(), 1);
+        }
     }
 }

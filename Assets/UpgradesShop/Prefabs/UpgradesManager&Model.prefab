@@ -76,5 +76,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b4761b10879df4ad092f210a6ac8deab, type: 2}
   - {fileID: 11400000, guid: d37e552507c9341a28cf9fedcf412ee9, type: 2}
   - {fileID: 11400000, guid: 4bd0445bf9457445888762c5183a2196, type: 2}
+  tattooUpgradeSprites:
+  - {fileID: 21300000, guid: 792442fd5dbbb384695ddb71cf8e8271, type: 3}
+  - {fileID: 21300000, guid: fcdb384ced3d69d47bd13bd2b41b6fc6, type: 3}
+  jewelryUpgradePrefabs:
+  - {fileID: 919132149155446097, guid: bb409be1ae7ffab46a0ad4783f0e5f92, type: 3}
+  - {fileID: 2973327057590136709, guid: c0c63460ba883a542aaad45b8e47ddd5, type: 3}
+  jewelryUpgradeStations: []
+  tattooUpgradeStations: []
   selectedTattooUpgrade: {fileID: 0}
   selectedJewelryUpgrade: {fileID: 0}

@@ -4,6 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Upgrades/TattooUpgradeData")]
 public class TattooUpgradeSO : MultiUpgradeDataSO
 {
+    public int serialNo;
     [SerializeField] private Sprite tattooSprite;
     
     public override void Init()

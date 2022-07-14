@@ -4,8 +4,6 @@ using UnityEngine;
 public class UpgradesManager : Performance_Singleton<UpgradesManager>
 {
     [SerializeField] private UpgradesModel upgradesModel;
-    // [SerializeField] private ExitShopTrigger exitShopTrigger;
-    [SerializeField] private string sceneName;
     public float interstitialAdTimer = 45f;
 
     public MachineUpgradeSO MachineUpgradeSo => upgradesModel.machineUpgrade;
@@ -17,20 +15,7 @@ public class UpgradesManager : Performance_Singleton<UpgradesManager>
         base.Awake();
         
         DontDestroyOnLoad(this);
-        
-        // exitShopTrigger.ExitShopAction += OnExitShop;
     }
-
-    protected override void OnDestroy()
-    {
-        base.OnDestroy();
-        // exitShopTrigger.ExitShopAction += OnExitShop;
-    }
-
-    // private void OnExitShop()
-    // {
-    //     SceneManager.LoadScene(sceneName);
-    // }
 
 #if UNITY_EDITOR
     [Sirenix.OdinInspector.Button]
@@ -38,13 +23,42 @@ public class UpgradesManager : Performance_Singleton<UpgradesManager>
     {
         StorageManager.SetTotalScore(100000);
     }
+
+    [Sirenix.OdinInspector.Button]
+    public void DisplayJewelName()
+    {
+        GameObject jewel = GetJewel();
+        Debug.Log(jewel.name);
+    }
+
+    [Sirenix.OdinInspector.Button]
+    public void DisplayTattooName()
+    {
+        Sprite tattoo = GetTattoo();
+        Debug.Log(tattoo.name);
+    }
 #endif
 
-    public string GetSceneName()
+    public void ClearAllJewelryStations()
     {
-        return sceneName;
+        upgradesModel.ClearAllJewelryStations();
     }
-    
+
+    public void ClearAllTattooStations()
+    {
+        upgradesModel.ClearAllTattooStations();
+    }
+
+    public void ClearJewelryStation(int serialNo)
+    {
+        upgradesModel.ClearJewelryStation(serialNo - 1);
+    }
+
+    public void ClearTattooStation(int serialNo)
+    {
+        upgradesModel.ClearTattooStation(serialNo - 1);
+    }
+
     public GameObject GetTattooGun()
     {
         if(!MachineUpgradeSo.IsAvailable || !MachineUpgradeSo.IsUnlocked)
@@ -67,21 +81,51 @@ public class UpgradesManager : Performance_Singleton<UpgradesManager>
 
     public Sprite GetTattoo()
     {
-        if(!SelectedTattooUpgrade.IsAvailable || !SelectedTattooUpgrade.IsUnlocked)
+        Debug.Log(PlayerPrefs.GetInt(PlayerPrefsKey.EQUIPPED_TATTOO_AMOUNT, 0));
+        Debug.Log(PlayerPrefs.GetInt(PlayerPrefsKey.EQUIPPED_TATTOO_INDEX, 0));
+
+        if (PlayerPrefs.GetInt(PlayerPrefsKey.EQUIPPED_TATTOO_AMOUNT, 0)==1)
         {
+            int index = PlayerPrefs.GetInt(PlayerPrefsKey.EQUIPPED_TATTOO_INDEX, 0) - 1;
+
+            if (index < upgradesModel.tattooUpgrades.Count)
+            {
+                return upgradesModel.tattooUpgrades[index].GetTattoo();
+            }
+
+            if (index < upgradesModel.tattooUpgrades.Count + upgradesModel.tattooUpgradeSprites.Count)
+            {
+                return upgradesModel.tattooUpgradeSprites[index - upgradesModel.tattooUpgrades.Count];
+            }
+
             return null;
         }
-        
-        return SelectedTattooUpgrade.GetTattoo();
+
+        return null;
     }
 
     public GameObject GetJewel()
     {
-        if(!SelectedJewelryUpgrade.IsAvailable || !SelectedJewelryUpgrade.IsUnlocked)
+        Debug.Log(PlayerPrefs.GetInt(PlayerPrefsKey.EQUIPPED_JEWELRY_AMOUNT, 0));
+        Debug.Log(PlayerPrefs.GetInt(PlayerPrefsKey.EQUIPPED_JEWELRY_INDEX, 0));
+        
+        if (PlayerPrefs.GetInt(PlayerPrefsKey.EQUIPPED_JEWELRY_AMOUNT, 0) == 1)
         {
+            int index = PlayerPrefs.GetInt(PlayerPrefsKey.EQUIPPED_JEWELRY_INDEX, 0) - 1;
+
+            if (index < upgradesModel.jewelryUpgrades.Count)
+            {
+                return upgradesModel.jewelryUpgrades[index].GetJewelry();    
+            }
+            
+            if (index < upgradesModel.jewelryUpgrades.Count + upgradesModel.jewelryUpgradePrefabs.Count)
+            {
+                return upgradesModel.jewelryUpgradePrefabs[index - upgradesModel.jewelryUpgrades.Count];    
+            }
+
             return null;
         }
-
-        return SelectedJewelryUpgrade.GetJewelry();
+        
+        return null;
     }
 }

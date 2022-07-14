@@ -6,16 +6,19 @@ using UnityEngine;
 
 public class AdUpgradeStation : MonoBehaviour
 {
+    [SerializeField] protected int serialNo;
     [SerializeField] private string upgradeName;
     [SerializeField] private GameObject lockedContainer;
     [SerializeField] private WatchAdPlatform watchAdPlatform;
+    public EquipmentPlatform equipmentPlatform;
+    public UnequipmentPlatform unequipmentPlatform;
     [SerializeField] private Shader greyscaleShader;
     [SerializeField] protected float upscaleValue = 1.5f;
     [SerializeField] protected float scaleDuration = 0.33f;
     [SerializeField] private List<Renderer> renderersToGreyscale;
     [SerializeField] protected Transform bigPreviewContainer;
     
-    private bool isUnlocked;
+    protected bool isUnlocked;
     private string unlockedKey;
     
     public bool IsUnlocked => isUnlocked;
@@ -30,14 +33,32 @@ public class AdUpgradeStation : MonoBehaviour
     protected virtual void Start()
     {
         unlockedKey = string.Concat("UnlockedKey", "_", upgradeName);
+        
         isUnlocked = PlayerPrefs.GetInt(unlockedKey, 0) == 1;
 
         watchAdPlatform.Init(!isUnlocked);
         SetUnlockStatus(!isUnlocked);
+       
+        if (isUnlocked)
+        {
+            equipmentPlatform.gameObject.SetActive(true);
+            unequipmentPlatform.gameObject.SetActive(false);
+            
+            if (PlayerPrefs.GetInt(PlayerPrefsKey.EQUIPPED_JEWELRY_AMOUNT, 0) == 1)
+            {
+                int serial = PlayerPrefs.GetInt(PlayerPrefsKey.EQUIPPED_JEWELRY_INDEX, 0);
+
+                if (serial == serialNo)
+                {
+                    equipmentPlatform.gameObject.SetActive(false);
+                    unequipmentPlatform.gameObject.SetActive(true);
+                }
+            }
+        }
         
         originalPreviewScale = bigPreviewContainer.transform.localScale;
     }
-    
+
     private void SetUnlockStatus(bool isLocked)
     {
         if(lockedContainer != null)
@@ -68,8 +89,9 @@ public class AdUpgradeStation : MonoBehaviour
         }
     }
     
-    public void UnlockStation()
+    public virtual void UnlockStation()
     {
+        isUnlocked = true;
         PlayerPrefs.SetInt(unlockedKey, 1);
         SetUnlockStatus(false);
     }
@@ -120,5 +142,10 @@ public class AdUpgradeStation : MonoBehaviour
         {
             upscaleTween = null;
         });
+    }
+
+    public int GetSerialNo()
+    {
+        return serialNo;
     }
 }

@@ -6576,6 +6576,18 @@ PrefabInstance:
       propertyPath: upgradeData
       value: 
       objectReference: {fileID: 11400000, guid: 6098d61e7235b4f399029cabb422b31f, type: 2}
+    - target: {fileID: 4718901655608351290, guid: d2f223b49dc207b409e18f7e872ab0fc, type: 3}
+      propertyPath: serialNo
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4718901655608351290, guid: d2f223b49dc207b409e18f7e872ab0fc, type: 3}
+      propertyPath: upgradeName
+      value: Jewel8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4718901655608351290, guid: d2f223b49dc207b409e18f7e872ab0fc, type: 3}
+      propertyPath: jewelryPrefab
+      value: 
+      objectReference: {fileID: 919132149155446097, guid: bb409be1ae7ffab46a0ad4783f0e5f92, type: 3}
     - target: {fileID: 4871103125325415138, guid: d2f223b49dc207b409e18f7e872ab0fc, type: 3}
       propertyPath: m_Name
       value: JewelryUpgradeStationAd
@@ -6606,7 +6618,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4871103125325415139, guid: d2f223b49dc207b409e18f7e872ab0fc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.210006
+      value: 1.05
       objectReference: {fileID: 0}
     - target: {fileID: 4871103125325415139, guid: d2f223b49dc207b409e18f7e872ab0fc, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7086,6 +7098,18 @@ PrefabInstance:
       propertyPath: upgradeData
       value: 
       objectReference: {fileID: 11400000, guid: 4a0520f5c35bb40e3a778160ecd50ab7, type: 2}
+    - target: {fileID: 4718901655608351290, guid: d2f223b49dc207b409e18f7e872ab0fc, type: 3}
+      propertyPath: serialNo
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4718901655608351290, guid: d2f223b49dc207b409e18f7e872ab0fc, type: 3}
+      propertyPath: upgradeName
+      value: Jewel9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4718901655608351290, guid: d2f223b49dc207b409e18f7e872ab0fc, type: 3}
+      propertyPath: jewelryPrefab
+      value: 
+      objectReference: {fileID: 2973327057590136709, guid: c0c63460ba883a542aaad45b8e47ddd5, type: 3}
     - target: {fileID: 4871103125325415138, guid: d2f223b49dc207b409e18f7e872ab0fc, type: 3}
       propertyPath: m_Name
       value: JewelryUpgradeStationAd (1)
@@ -7796,7 +7820,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4785051273675920379, guid: ae03ce7a83bd3614a83163bec0ae1f32, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 13.630002
+      value: 6.26
       objectReference: {fileID: 0}
     - target: {fileID: 4785051273675920379, guid: ae03ce7a83bd3614a83163bec0ae1f32, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7826,6 +7850,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8450792568217696729, guid: ae03ce7a83bd3614a83163bec0ae1f32, type: 3}
+      propertyPath: serialNo
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8450792568217696729, guid: ae03ce7a83bd3614a83163bec0ae1f32, type: 3}
+      propertyPath: upgradeName
+      value: Tattoo8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8450792568217696729, guid: ae03ce7a83bd3614a83163bec0ae1f32, type: 3}
+      propertyPath: tattooSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 792442fd5dbbb384695ddb71cf8e8271, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae03ce7a83bd3614a83163bec0ae1f32, type: 3}
 --- !u!4 &1296115285030761254 stripped
@@ -8744,6 +8780,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8450792568217696729, guid: ae03ce7a83bd3614a83163bec0ae1f32, type: 3}
+      propertyPath: serialNo
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8450792568217696729, guid: ae03ce7a83bd3614a83163bec0ae1f32, type: 3}
+      propertyPath: upgradeName
+      value: Tattoo9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8450792568217696729, guid: ae03ce7a83bd3614a83163bec0ae1f32, type: 3}
+      propertyPath: tattooSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: fcdb384ced3d69d47bd13bd2b41b6fc6, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae03ce7a83bd3614a83163bec0ae1f32, type: 3}
 --- !u!4 &3505655640763515041 stripped

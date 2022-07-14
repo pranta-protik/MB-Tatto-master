@@ -12,7 +12,7 @@ public abstract class UpgradeDataSO : ScriptableObject
 
     public bool IsAvailable => isAvailable;
     public bool IsUnlocked => isUnlocked;
-
+    
     [HideInInspector] public UpgradeType upgradeType;
 
     private int currencyDeposited;

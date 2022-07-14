@@ -4,10 +4,10 @@ using UnityEngine.UI;
 
 public class WatchAdPlatform : MonoBehaviour
 {
-    private float _time;
-    private bool isProgressBarFilling;
     [SerializeField] private Image progressBar;
     [SerializeField] private float second;
+    private float _time;
+    private bool isProgressBarFilling;
     
     private const string PlayerTag = "Player";
 
