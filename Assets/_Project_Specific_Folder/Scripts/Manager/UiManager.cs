@@ -67,26 +67,17 @@ public class UiManager : Singleton<UiManager>
 
         _camera = Camera.main;
 
-        if (priceTag != null)
-        {
-            _scoreText = priceTag.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-            _scoreText.SetText(PlayerPrefs.GetInt("PriceTagBaseScore", 0).ToString());
-        }
+        _scoreText = priceTag.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        _scoreText.SetText(PlayerPrefs.GetInt("PriceTagBaseScore", 0).ToString());
 
         _currentLevel = PlayerPrefs.GetInt("current_scene", 0);
         _currentLevelText = PlayerPrefs.GetInt("current_scene_text", 0);
 
-        if (levelNoText != null)
-        {
-            levelNoText.SetText((_currentLevelText + 1).ToString());
-        }
+        levelNoText.SetText((_currentLevelText + 1).ToString());
 
         if (_currentLevelText < shopOpeningLevel && !UAManager.Instance.EnableUA)
         {
-            if (shopButton != null)
-            {
-                shopButton.SetActive(false);
-            }
+            shopButton.SetActive(false);
         }
 
         UpdateTotalScoreText(StorageManager.GetTotalScore());
@@ -188,7 +179,6 @@ public class UiManager : Singleton<UiManager>
 
         levelNoText.transform.parent.gameObject.SetActive(false);
 
-        // shop.SetActive(false);
         priceTag.SetActive(false);
         selectionMenuButton.SetActive(false);
         shopButton.SetActive(false);
@@ -197,11 +187,6 @@ public class UiManager : Singleton<UiManager>
         selectionMenu.SetActive(true);
         selectionMenu.GetComponent<SelectionMenu>().CheckUnlockButtonTypeStatus();
         selectionMenu.GetComponent<SelectionMenu>().CheckUnlockButtonAvailability();
-
-        // _camera.transform.DOLocalRotate(new Vector3(42, 90, 0), .3f).OnComplete(() =>
-        // {
-        //     
-        // });
     }
 
     public void OnCloseSelectionMenuButtonClick()
@@ -213,16 +198,15 @@ public class UiManager : Singleton<UiManager>
 
         levelNoText.transform.parent.gameObject.SetActive(true);
 
-        // shop.SetActive(true);
         priceTag.SetActive(true);
         selectionMenuButton.SetActive(true);
-        shopButton.SetActive(true);
+        
+        if (_currentLevelText >= shopOpeningLevel || UAManager.Instance.EnableUA)
+        {
+            shopButton.SetActive(true);
+        }
+        
         instagramGalleryButton.SetActive(true);
-
-        // _camera.transform.DOLocalRotate(new Vector3(27.761f, 90, 0), .3f).OnComplete(() =>
-        // {
-        //  
-        // });
     }
 
     #endregion
