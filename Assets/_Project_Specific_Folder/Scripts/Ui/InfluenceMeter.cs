@@ -48,12 +48,12 @@ public class InfluenceMeter : MonoBehaviour
     {
         _fightBanner = transform.GetChild(4).gameObject;
         _fightIcon = transform.GetChild(5).gameObject;
-        // _nextButton = transform.GetChild(6).gameObject;
-        _watchAdButton = transform.GetChild(6).gameObject;
+        // _nextButton = transform.GetChild(8).gameObject;
+        _scoreMultiplierMeter = transform.GetChild(6).gameObject;
+        _scoreMultiplierPointer = transform.GetChild(7).gameObject;
+        _watchAdButton = transform.GetChild(8).gameObject;
+        _skipButton = transform.GetChild(9).gameObject;
         _foregroundScreen = transform.GetChild(10).gameObject;
-        _skipButton = transform.GetChild(7).gameObject;
-        _scoreMultiplierMeter = transform.GetChild(8).gameObject;
-        _scoreMultiplierPointer = transform.GetChild(9).gameObject;
         _cashBanner = transform.GetChild(2).gameObject;
         _cashText = transform.GetChild(3).GetComponent<TMP_Text>();
         
@@ -310,8 +310,8 @@ public class InfluenceMeter : MonoBehaviour
         
         _skipButton.SetActive(true);
         
-        _cashBanner.SetActive(false);
-        _cashText.gameObject.SetActive(false);
+        // _cashBanner.SetActive(false);
+        // _cashText.gameObject.SetActive(false);
         
         _scoreMultiplierMeter.SetActive(true);
         _scoreMultiplierPointer.SetActive(true);
@@ -326,8 +326,8 @@ public class InfluenceMeter : MonoBehaviour
         _watchAdButton.SetActive(false);
         _skipButton.SetActive(false);
         
-        _cashBanner.SetActive(true);
-        _cashText.gameObject.SetActive(true);
+        // _cashBanner.SetActive(true);
+        // _cashText.gameObject.SetActive(true);
         
         _scoreMultiplierMeter.SetActive(false);
         _scoreMultiplierPointer.SetActive(false);

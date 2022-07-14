@@ -13,14 +13,14 @@ public class SelectionMenu : MonoBehaviour
     [SerializeField] private GameObject handCardPrefab;
     [SerializeField] private List<Sprite> handCardTextures = new List<Sprite>();
     public List<GameObject> handCards = new List<GameObject>();
-    [SerializeField] private Sprite normalUnlockButtonIcon;
-    [SerializeField] private Sprite watchAdUnlockButtonIcon;
+    // [SerializeField] private Sprite normalUnlockButtonIcon;
+    // [SerializeField] private Sprite watchAdUnlockButtonIcon;
     [SerializeField] private int startingAmountForUnlockHandWatchingAd;
     [SerializeField] private int baseUnlockCost;
     [SerializeField] [Range(1, 5)] private int multiplier;
     
-    private Image _unlockButtonImage;
-    private TextMeshProUGUI _costText;
+    // private Image _unlockButtonImage;
+    // private TextMeshProUGUI _costText;
     private GameObject _unlockButton;
     private int _totalCards;
     private bool _isAdEnabled;
@@ -28,8 +28,8 @@ public class SelectionMenu : MonoBehaviour
     private void Awake()
     {
         _unlockButton = transform.GetChild(3).gameObject;
-        _unlockButtonImage = _unlockButton.GetComponent<Image>();
-        _costText = _unlockButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        // _unlockButtonImage = _unlockButton.GetComponent<Image>();
+        // _costText = _unlockButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
 
         Vector3 spawnPosition = transform.GetChild(2).GetChild(0).position;
         Vector2 anchoredSpawnPosition = transform.GetChild(2).GetChild(0).GetComponent<RectTransform>().anchoredPosition;
@@ -55,8 +55,8 @@ public class SelectionMenu : MonoBehaviour
         if (PlayerPrefs.GetInt("UnlockAmount", 1) >= startingAmountForUnlockHandWatchingAd)
         {
             _isAdEnabled = true;
-            _unlockButtonImage.sprite = watchAdUnlockButtonIcon;
-            _costText.gameObject.SetActive(false);
+            // _unlockButtonImage.sprite = watchAdUnlockButtonIcon;
+            // _costText.gameObject.SetActive(false);
             
             // Rewarded Videos
             // Rewarded Suggested Event
@@ -65,9 +65,9 @@ public class SelectionMenu : MonoBehaviour
         else
         {
             _isAdEnabled = false;
-            _unlockButtonImage.sprite = normalUnlockButtonIcon;
-            _costText.gameObject.SetActive(true);
-            _costText.SetText("$" + PlayerPrefs.GetInt("UnlockCost", baseUnlockCost));
+            // _unlockButtonImage.sprite = normalUnlockButtonIcon;
+            // _costText.gameObject.SetActive(true);
+            // _costText.SetText("$" + PlayerPrefs.GetInt("UnlockCost", baseUnlockCost));
         }
     }
     

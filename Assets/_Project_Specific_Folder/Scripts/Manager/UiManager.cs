@@ -219,6 +219,7 @@ public class UiManager : Singleton<UiManager>
         instagramGalleryButton.SetActive(false);
         shopButton.SetActive(false);
         startUI.SetActive(false);
+        priceTag.transform.GetChild(2).gameObject.SetActive(false);
     }
 
     public void PriceTagScaleEffect()
