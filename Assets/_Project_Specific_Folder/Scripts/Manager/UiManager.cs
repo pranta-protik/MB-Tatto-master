@@ -507,11 +507,11 @@ public class UiManager : Singleton<UiManager>
         
         if (PlayerPrefs.GetInt("current_scene_text", 0) == shopOpeningLevel)
         {
-            SceneManager.LoadScene("UpgradesShop");
+            SceneManager.LoadSceneAsync((int) SceneIndexes.UPGRADE_SHOP);
         }
         else
         {
-            SceneManager.LoadScene("Main");
+            SceneManager.LoadSceneAsync((int) SceneIndexes.MAIN);
         }
     }
 }

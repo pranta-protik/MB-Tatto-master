@@ -17,11 +17,11 @@ public class SceneLoadCounter : Singleton<SceneLoadCounter>
     private void IncrementSceneLoad(Scene scene, LoadSceneMode mode)
     {
         if (SceneManager.GetActiveScene().buildIndex == SceneLoadCount)
-            return;
-        else
         {
-            SceneLoadCount++;
-            PlayerPrefs.SetInt("Count", SceneLoadCount);
+            return;
         }
+
+        SceneLoadCount++;
+        PlayerPrefs.SetInt("Count", SceneLoadCount);
     }
 }

@@ -81,9 +81,6 @@ public class UpgradesManager : Performance_Singleton<UpgradesManager>
 
     public Sprite GetTattoo()
     {
-        Debug.Log(PlayerPrefs.GetInt(PlayerPrefsKey.EQUIPPED_TATTOO_AMOUNT, 0));
-        Debug.Log(PlayerPrefs.GetInt(PlayerPrefsKey.EQUIPPED_TATTOO_INDEX, 0));
-
         if (PlayerPrefs.GetInt(PlayerPrefsKey.EQUIPPED_TATTOO_AMOUNT, 0)==1)
         {
             int index = PlayerPrefs.GetInt(PlayerPrefsKey.EQUIPPED_TATTOO_INDEX, 0) - 1;
@@ -106,9 +103,6 @@ public class UpgradesManager : Performance_Singleton<UpgradesManager>
 
     public GameObject GetJewel()
     {
-        Debug.Log(PlayerPrefs.GetInt(PlayerPrefsKey.EQUIPPED_JEWELRY_AMOUNT, 0));
-        Debug.Log(PlayerPrefs.GetInt(PlayerPrefsKey.EQUIPPED_JEWELRY_INDEX, 0));
-        
         if (PlayerPrefs.GetInt(PlayerPrefsKey.EQUIPPED_JEWELRY_AMOUNT, 0) == 1)
         {
             int index = PlayerPrefs.GetInt(PlayerPrefsKey.EQUIPPED_JEWELRY_INDEX, 0) - 1;

@@ -29,22 +29,20 @@ public class ScoreMultiplier : MonoBehaviour
         
         // Subscribe to Rewarded Video Ads
         Events.onRewardedVideoAdRewardedEvent += OnRewardedVideoAdRewardedEvent;
+        Events.onRewardedVideoAdClosedEvent += OnRewardedVideoAdClosedEvent;
                 
         // Show Ad
         if (HomaBelly.Instance.IsRewardedVideoAdAvailable())
         {
             HomaBelly.Instance.ShowRewardedVideoAd(PlacementName.SCORE_MULTIPLIER);
         }
-        else
-        {
-            Events.onRewardedVideoAdRewardedEvent -= OnRewardedVideoAdRewardedEvent;
-        }
     }
 
-    public void OnSkipButtonClick()
+    private void OnRewardedVideoAdClosedEvent(string obj)
     {
-        UpdateCash(1);
-        Invoke(nameof(EnableUnlockScreen), 1f);
+        // Unsubscribe to Rewarded Video Ads
+        Events.onRewardedVideoAdRewardedEvent -= OnRewardedVideoAdRewardedEvent;
+        Events.onRewardedVideoAdClosedEvent -= OnRewardedVideoAdClosedEvent;
     }
 
     private void OnRewardedVideoAdRewardedEvent(VideoAdReward obj)
@@ -68,9 +66,15 @@ public class ScoreMultiplier : MonoBehaviour
         HomaBelly.Instance.TrackDesignEvent("rewarded:" + "taken" + ":" + PlacementName.SCORE_MULTIPLIER);
         
         // Unsubscribe to Rewarded Video Ads
-        Events.onRewardedVideoAdRewardedEvent -= OnRewardedVideoAdRewardedEvent; 
+        Events.onRewardedVideoAdRewardedEvent -= OnRewardedVideoAdRewardedEvent;
     }
-
+    
+    public void OnSkipButtonClick()
+    {
+        UpdateCash(1);
+        Invoke(nameof(EnableUnlockScreen), 1f);
+    }
+    
     private void UpdateCash(int multiplier)
     {
         InfluenceMeter influenceMeter = transform.parent.GetComponent<InfluenceMeter>();

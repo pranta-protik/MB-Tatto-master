@@ -10,16 +10,20 @@ public class PoseManager : MonoBehaviour
     {
         // Subscribe to Rewarded Video Ads
         Events.onRewardedVideoAdRewardedEvent += OnRewardedVideoAdRewardedEvent;
+        Events.onRewardedVideoAdClosedEvent += OnRewardedVideoAdClosedEvent;
             
         // Show Ad
         if (HomaBelly.Instance.IsRewardedVideoAdAvailable())
         {
             HomaBelly.Instance.ShowRewardedVideoAd(PlacementName.UNLOCK_POSE);   
         }
-        else
-        {
-            Events.onRewardedVideoAdRewardedEvent -= OnRewardedVideoAdRewardedEvent;
-        }
+    }
+    
+    private void OnRewardedVideoAdClosedEvent(string obj)
+    {
+        // Unsubscribe to Rewarded Video Ads
+        Events.onRewardedVideoAdRewardedEvent -= OnRewardedVideoAdRewardedEvent;
+        Events.onRewardedVideoAdClosedEvent -= OnRewardedVideoAdClosedEvent;
     }
     
     // Collect Ad Rewards

@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using DG.Tweening;
 using HomaGames.HomaBelly;
@@ -101,16 +99,20 @@ public class MobileScreen : MonoBehaviour
     {
         // Subscribe to Rewarded Video Ads
         Events.onRewardedVideoAdRewardedEvent += OnRewardedVideoAdRewardedEvent;
+        Events.onRewardedVideoAdClosedEvent += OnRewardedVideoAdClosedEvent;
             
         // Show Ad
         if (HomaBelly.Instance.IsRewardedVideoAdAvailable())
         {
             HomaBelly.Instance.ShowRewardedVideoAd(PlacementName.UNLOCK_FILTER);   
         }
-        else
-        {
-            Events.onRewardedVideoAdRewardedEvent -= OnRewardedVideoAdRewardedEvent;
-        }
+    }
+    
+    private void OnRewardedVideoAdClosedEvent(string obj)
+    {
+        // Unsubscribe to Rewarded Video Ads
+        Events.onRewardedVideoAdRewardedEvent -= OnRewardedVideoAdRewardedEvent;
+        Events.onRewardedVideoAdClosedEvent -= OnRewardedVideoAdClosedEvent;
     }
     
     // Collect Ad Rewards

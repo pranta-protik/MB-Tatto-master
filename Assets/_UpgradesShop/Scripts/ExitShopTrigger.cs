@@ -1,4 +1,3 @@
-using System;
 using HomaGames.HomaBelly;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,7 +6,6 @@ public class ExitShopTrigger : MonoBehaviour
 {
    private const string PlayerTag = "Player";
    private bool _isAdShown = false;
-   // public Action ExitShopAction;
 
    private void Start()
    {
@@ -58,6 +56,5 @@ public class ExitShopTrigger : MonoBehaviour
       HomaBelly.Instance.TrackDesignEvent("Meta_Session:" + levelId, duration);
       
       SceneManager.LoadSceneAsync((int) SceneIndexes.SPLASH);
-      // ExitShopAction?.Invoke();
    }
 }

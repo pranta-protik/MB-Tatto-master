@@ -132,17 +132,21 @@ public class CoolnessUpgrade : MonoBehaviour
         {
             // Subscribe to Rewarded Video Ads
             Events.onRewardedVideoAdRewardedEvent += OnRewardedVideoAdRewardedEvent;
+            Events.onRewardedVideoAdClosedEvent += OnRewardedVideoAdClosedEvent;
                 
             // Show Ad
             if (HomaBelly.Instance.IsRewardedVideoAdAvailable())
             {
                 HomaBelly.Instance.ShowRewardedVideoAd(PlacementName.UPGRADE_COOLNESS);
             }
-            else
-            {
-                Events.onRewardedVideoAdRewardedEvent -= OnRewardedVideoAdRewardedEvent;
-            }
         }
+    }
+    
+    private void OnRewardedVideoAdClosedEvent(string obj)
+    {
+        // Unsubscribe to Rewarded Video Ads
+        Events.onRewardedVideoAdRewardedEvent -= OnRewardedVideoAdRewardedEvent;
+        Events.onRewardedVideoAdClosedEvent -= OnRewardedVideoAdClosedEvent;
     }
 
     // Collect Ad Rewards
@@ -161,18 +165,6 @@ public class CoolnessUpgrade : MonoBehaviour
     
     private void CoolnessUpgradeButtonEffects(int coolnessLevel)
     {
-        // if (coolnessLevel <= GameManager.Instance.GetTotalTattooGunAmount())
-        // {
-        //     GameManager.Instance.currentTattooGunLevel = coolnessLevel - 1;
-        // }
-        // else
-        // {
-        //     GameManager.Instance.currentTattooGunLevel = (coolnessLevel - 1) % GameManager.Instance.GetTotalTattooGunAmount();
-        //     GameManager.Instance.isGoldenTattooGunActivated = true;
-        // }
-        //
-        // GameManager.Instance.UpgradeTattooGun();
-        
         PlayerPrefs.SetInt(PlayerPrefsKey.COOLNESS_UPGRADE_LEVEL, coolnessLevel);
         _levelText.SetText("Stage " + coolnessLevel);
         
