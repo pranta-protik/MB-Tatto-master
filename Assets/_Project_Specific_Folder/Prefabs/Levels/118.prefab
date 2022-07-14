@@ -465,6 +465,7 @@ Transform:
   - {fileID: 7499196350305293995}
   - {fileID: 5649640482881461210}
   - {fileID: 7664877064766235481}
+  - {fileID: 5344033042114208492}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1552,6 +1553,10 @@ PrefabInstance:
     - target: {fileID: 7543357610566862810, guid: 15e6b70ef60562941a5a91f4d29521c8, type: 3}
       propertyPath: m_Name
       value: Lasergate Ring
+      objectReference: {fileID: 0}
+    - target: {fileID: 7543357610566862810, guid: 15e6b70ef60562941a5a91f4d29521c8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15e6b70ef60562941a5a91f4d29521c8, type: 3}
@@ -3377,6 +3382,96 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 2308591637298703741, guid: 9a1d9d415da6b4f46a40d178bb458aa8, type: 3}
   m_PrefabInstance: {fileID: 8053185448231817282}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8743504386171643065
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6828944569146319531}
+    m_Modifications:
+    - target: {fileID: 3710679493593941589, guid: 5b8b4fd719b5ec94e8c0dd651c64549b, type: 3}
+      propertyPath: m_RootOrder
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710679493593941589, guid: 5b8b4fd719b5ec94e8c0dd651c64549b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 31.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710679493593941589, guid: 5b8b4fd719b5ec94e8c0dd651c64549b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.16740882
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710679493593941589, guid: 5b8b4fd719b5ec94e8c0dd651c64549b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.212
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710679493593941589, guid: 5b8b4fd719b5ec94e8c0dd651c64549b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710679493593941589, guid: 5b8b4fd719b5ec94e8c0dd651c64549b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710679493593941589, guid: 5b8b4fd719b5ec94e8c0dd651c64549b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710679493593941589, guid: 5b8b4fd719b5ec94e8c0dd651c64549b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710679493593941589, guid: 5b8b4fd719b5ec94e8c0dd651c64549b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710679493593941589, guid: 5b8b4fd719b5ec94e8c0dd651c64549b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710679493593941589, guid: 5b8b4fd719b5ec94e8c0dd651c64549b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710679493593941592, guid: 5b8b4fd719b5ec94e8c0dd651c64549b, type: 3}
+      propertyPath: m_Name
+      value: Moving bad Gate (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710679493593941592, guid: 5b8b4fd719b5ec94e8c0dd651c64549b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710679493593941594, guid: 5b8b4fd719b5ec94e8c0dd651c64549b, type: 3}
+      propertyPath: id
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710679493593941594, guid: 5b8b4fd719b5ec94e8c0dd651c64549b, type: 3}
+      propertyPath: Cost
+      value: 4000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710679493593941594, guid: 5b8b4fd719b5ec94e8c0dd651c64549b, type: 3}
+      propertyPath: gateCost
+      value: 4000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710679493593941594, guid: 5b8b4fd719b5ec94e8c0dd651c64549b, type: 3}
+      propertyPath: gateLevel
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710679493593941594, guid: 5b8b4fd719b5ec94e8c0dd651c64549b, type: 3}
+      propertyPath: UICostText
+      value: 4K
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710679493593941594, guid: 5b8b4fd719b5ec94e8c0dd651c64549b, type: 3}
+      propertyPath: gateUICostString
+      value: 4K
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5b8b4fd719b5ec94e8c0dd651c64549b, type: 3}
+--- !u!4 &5344033042114208492 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3710679493593941589, guid: 5b8b4fd719b5ec94e8c0dd651c64549b, type: 3}
+  m_PrefabInstance: {fileID: 8743504386171643065}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9047687906490109659
 PrefabInstance:
