@@ -1,19 +1,16 @@
-using HomaGames.HomaConsole.Performance.Utils;
+using Singleton;
 using UnityEngine;
 
-public class UpgradesManager : Performance_Singleton<UpgradesManager>
+public class UpgradesManager : Singleton<UpgradesManager>
 {
     [SerializeField] private UpgradesModel upgradesModel;
     public float interstitialAdTimer = 45f;
 
     public MachineUpgradeSO MachineUpgradeSo => upgradesModel.machineUpgrade;
-    public TattooUpgradeSO SelectedTattooUpgrade => upgradesModel.selectedTattooUpgrade;
-    public JewelryUpgradeSO SelectedJewelryUpgrade => upgradesModel.selectedJewelryUpgrade;
 
-    protected override void Awake()
+    protected override void OnAwakeEvent()
     {
-        base.Awake();
-        
+        base.OnAwakeEvent();
         DontDestroyOnLoad(this);
     }
 

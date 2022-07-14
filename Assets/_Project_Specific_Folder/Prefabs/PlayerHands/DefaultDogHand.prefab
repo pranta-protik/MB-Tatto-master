@@ -20370,6 +20370,7 @@ MonoBehaviour:
   - {fileID: 1879670530272944780}
   - {fileID: 3508298816731458845}
   - {fileID: 4726794530721074189}
+  - {fileID: 5737887514209256751}
   ringOrnamentGroups: []
   braceletOrnamentGroups: []
   mainHandAnimator: {fileID: 0}
@@ -21023,6 +21024,7 @@ Transform:
   - {fileID: 1251506809278052406}
   - {fileID: 4315622185566992295}
   - {fileID: 5391690809707058871}
+  - {fileID: 4965995839729688469}
   m_Father: {fileID: 2854428814201646700}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -21298,3 +21300,86 @@ Transform:
   m_Father: {fileID: 938187534872651560}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &7413614929009191594
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3227146679431829144}
+    m_Modifications:
+    - target: {fileID: 2452405263597565247, guid: c0c63460ba883a542aaad45b8e47ddd5, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2452405263597565247, guid: c0c63460ba883a542aaad45b8e47ddd5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.0899996
+      objectReference: {fileID: 0}
+    - target: {fileID: 2452405263597565247, guid: c0c63460ba883a542aaad45b8e47ddd5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.0899999
+      objectReference: {fileID: 0}
+    - target: {fileID: 2452405263597565247, guid: c0c63460ba883a542aaad45b8e47ddd5, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.0899999
+      objectReference: {fileID: 0}
+    - target: {fileID: 2452405263597565247, guid: c0c63460ba883a542aaad45b8e47ddd5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.016
+      objectReference: {fileID: 0}
+    - target: {fileID: 2452405263597565247, guid: c0c63460ba883a542aaad45b8e47ddd5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.129
+      objectReference: {fileID: 0}
+    - target: {fileID: 2452405263597565247, guid: c0c63460ba883a542aaad45b8e47ddd5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 2452405263597565247, guid: c0c63460ba883a542aaad45b8e47ddd5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.4317116
+      objectReference: {fileID: 0}
+    - target: {fileID: 2452405263597565247, guid: c0c63460ba883a542aaad45b8e47ddd5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7091448
+      objectReference: {fileID: 0}
+    - target: {fileID: 2452405263597565247, guid: c0c63460ba883a542aaad45b8e47ddd5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.4817024
+      objectReference: {fileID: 0}
+    - target: {fileID: 2452405263597565247, guid: c0c63460ba883a542aaad45b8e47ddd5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.28053832
+      objectReference: {fileID: 0}
+    - target: {fileID: 2452405263597565247, guid: c0c63460ba883a542aaad45b8e47ddd5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2452405263597565247, guid: c0c63460ba883a542aaad45b8e47ddd5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -600
+      objectReference: {fileID: 0}
+    - target: {fileID: 2452405263597565247, guid: c0c63460ba883a542aaad45b8e47ddd5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2973327057590136709, guid: c0c63460ba883a542aaad45b8e47ddd5, type: 3}
+      propertyPath: m_Name
+      value: final_bracelet_skullandflowers
+      objectReference: {fileID: 0}
+    - target: {fileID: 2973327057590136709, guid: c0c63460ba883a542aaad45b8e47ddd5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c0c63460ba883a542aaad45b8e47ddd5, type: 3}
+--- !u!1 &5737887514209256751 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2973327057590136709, guid: c0c63460ba883a542aaad45b8e47ddd5, type: 3}
+  m_PrefabInstance: {fileID: 7413614929009191594}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4965995839729688469 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2452405263597565247, guid: c0c63460ba883a542aaad45b8e47ddd5, type: 3}
+  m_PrefabInstance: {fileID: 7413614929009191594}
+  m_PrefabAsset: {fileID: 0}

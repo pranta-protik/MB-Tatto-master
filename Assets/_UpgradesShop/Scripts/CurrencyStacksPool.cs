@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using HomaGames.HomaConsole.Performance.Utils;
+using Singleton;
 using UnityEngine;
 
-public class CurrencyStacksPool : Performance_Singleton<CurrencyStacksPool>
+public class CurrencyStacksPool : Singleton<CurrencyStacksPool>
 {
     [SerializeField] private GameObject currencyStackPrefab;
     [SerializeField] private int initialPoolSize;
@@ -11,7 +11,7 @@ public class CurrencyStacksPool : Performance_Singleton<CurrencyStacksPool>
     private Transform auxTransform;
     private GameObject auxObj;
 
-    private void Start()
+    public override void Start()
     {
         currencyStacksQueue = new Queue<Transform>();
 

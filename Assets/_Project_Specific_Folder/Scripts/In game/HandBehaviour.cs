@@ -38,9 +38,6 @@ public class HandBehaviour : MonoBehaviour
 
     [Header("Hand Ornaments Section")] 
     public List<GameObject> jewelries;
-    
-    public List<OrnamentGroup> ringOrnamentGroups;
-    public List<OrnamentGroup> braceletOrnamentGroups;
 
     [HideInInspector] public Animator mainHandAnimator;
     [HideInInspector] public Animator tattooHandAnimator;
@@ -63,13 +60,10 @@ public class HandBehaviour : MonoBehaviour
     private int _currentCheapTattooLevel;
     private PlayerPathFollower _playerPathFollower;
     private float _playerInitialSpeed;
-    private Camera _camera;
     private TextureManager _textureManager;
 
     private void Start()
     {
-        _camera = Camera.main;
-
         _mainHandController = transform.parent.GetComponent<HandController>();
         _tattooHandController = tattooHand.transform.parent.GetComponent<HandController>();
 
@@ -109,7 +103,7 @@ public class HandBehaviour : MonoBehaviour
             {
                 break;
             }
-            
+
             if (jewelry.name == UpgradesManager.Instance.GetJewel().name)
             {
                 jewelry.SetActive(true);
