@@ -8,7 +8,7 @@ public class Reception : MonoBehaviour
     public Transform StandPos;
 
     public GameObject CurrentPassenger;
-    bool a;
+   
     void Start()
     {
       

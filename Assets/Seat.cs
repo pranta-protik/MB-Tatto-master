@@ -46,11 +46,11 @@ public class Seat : MonoBehaviour
             {
 
 
-                _canTakeCustomer = false;
+              
                 TargetTime = 0;
                 if (reception.CurrentPassenger != null)
                 {
-                 
+                    _canTakeCustomer = false;
                     reception.CurrentPassenger.transform.DOMove(SittingPos.position, 3).OnComplete(() =>
                     {
                       
@@ -67,10 +67,10 @@ public class Seat : MonoBehaviour
                         #endregion
                     });
                 }
+                if(CustomerRef != null)
                 CustomerRef.transform.DOMove(Exit.transform.position, 2).OnComplete(() =>
                 {
-                   
-                      CustomerRef = null;
+                    CustomerRef = null;
                 });
             }
         }
