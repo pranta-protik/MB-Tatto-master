@@ -3,6 +3,7 @@
 public class TattooAdUpgradeStation : AdUpgradeStation
 {
     [SerializeField] private Sprite tattooSprite;
+    [SerializeField] private Sprite previewTattooSprite;
     [SerializeField] private SpriteRenderer smallPreviewSpriteRenderer;
     [SerializeField] private SpriteRenderer bigPreviewSpriteRenderer;
     
@@ -33,7 +34,7 @@ public class TattooAdUpgradeStation : AdUpgradeStation
 
     private void SetPreviewSprites()
     {
-        smallPreviewSpriteRenderer.sprite = tattooSprite;
-        bigPreviewSpriteRenderer.sprite = tattooSprite;
+        smallPreviewSpriteRenderer.sprite = previewTattooSprite;
+        bigPreviewSpriteRenderer.sprite = previewTattooSprite;
     }
 }

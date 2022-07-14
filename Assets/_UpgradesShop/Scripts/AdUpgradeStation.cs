@@ -18,9 +18,7 @@ public class AdUpgradeStation : MonoBehaviour
     
     protected bool isUnlocked;
     private string unlockedKey;
-    
-    public bool IsUnlocked => isUnlocked;
-    
+
     private bool hasUsedGreyscale = false;
     private List<Shader> originalShaders;
     private Vector3 originalPreviewScale;

@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 549914466563304631}
   m_LocalRotation: {x: -0.00000009810497, y: -0.9531473, z: 0.3025067, w: 0.0000003054738}
-  m_LocalPosition: {x: -0.388, y: 0.282, z: -0.169}
+  m_LocalPosition: {x: 0, y: 0.55, z: -0.3}
   m_LocalScale: {x: 0.0559726, y: 0.0559726, z: 0}
   m_Children: []
   m_Father: {fileID: 70515335729831359}
@@ -144,6 +144,7 @@ MonoBehaviour:
   - {fileID: 4886746250566664498}
   bigPreviewContainer: {fileID: 1880970436866799813}
   tattooSprite: {fileID: 0}
+  previewTattooSprite: {fileID: 0}
   smallPreviewSpriteRenderer: {fileID: 3097999986057568366}
   bigPreviewSpriteRenderer: {fileID: 2695986827999424869}
 --- !u!135 &8283318113927572198
@@ -507,8 +508,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8535792201697304692}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: -1.08, y: 0.042, z: 0.784}
-  m_LocalScale: {x: 0.15818, y: 0.15818, z: 0.15818}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children: []
   m_Father: {fileID: 196087288754591259}
   m_RootOrder: 0

@@ -5,6 +5,7 @@ public class TattooUpgradeSO : MultiUpgradeDataSO
 {
     public int serialNo;
     [SerializeField] private Sprite tattooSprite;
+    [SerializeField] private Sprite previewTattooSprite;
     
     public override void Init()
     {
@@ -15,5 +16,10 @@ public class TattooUpgradeSO : MultiUpgradeDataSO
     public Sprite GetTattoo()
     {
         return tattooSprite;
+    }
+
+    public Sprite GetPreviewTattoo()
+    {
+        return previewTattooSprite;
     }
 }

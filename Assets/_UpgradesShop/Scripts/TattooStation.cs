@@ -72,8 +72,8 @@ public class TattooStation : UpgradeStation
 
     private void SetPreviewSprites()
     {
-        smallPreviewSpriteRenderer.sprite = tattooUpgradeData.GetTattoo();
-        bigPreviewSpriteRenderer.sprite = tattooUpgradeData.GetTattoo();
+        smallPreviewSpriteRenderer.sprite = tattooUpgradeData.GetPreviewTattoo();
+        bigPreviewSpriteRenderer.sprite = tattooUpgradeData.GetPreviewTattoo();
     }
 
     protected override void OnActivate()
