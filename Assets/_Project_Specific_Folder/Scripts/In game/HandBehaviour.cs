@@ -30,12 +30,6 @@ public class HandBehaviour : MonoBehaviour
     public Color goodGateScorePopUpColor;
     public Color badGateScorePopUpColor;
     
-    [Serializable]
-    public struct OrnamentGroup
-    {
-        public List<GameObject> ornamentDesigns; 
-    }
-
     [Header("Hand Ornaments Section")] 
     public List<GameObject> jewelries;
 

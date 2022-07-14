@@ -42,6 +42,8 @@ public class PayPlatform : MonoBehaviour
     {
         upgradeData = data;
 
+        SetCashText();
+        
         if (!upgradeData.IsAvailable)
         {
             GetComponent<BoxCollider>().enabled = false;
@@ -56,8 +58,6 @@ public class PayPlatform : MonoBehaviour
         
         gameObject.SetActive(true);
         GetComponent<BoxCollider>().enabled = true;
-
-        SetCashText();
 
         upgradeData.UpgradesMaxedAction += OnUpgradesMaxed;
         upgradeData.PaymentSuccessfulAction += OnPaymentSuccessful;
