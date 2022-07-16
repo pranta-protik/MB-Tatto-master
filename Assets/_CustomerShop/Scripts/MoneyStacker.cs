@@ -105,7 +105,7 @@ public class MoneyStacker : MonoBehaviour
             if (roll == 2) CashAmmount = 100;
             if (roll == 3) CashAmmount = 200;
             if (roll == 1) CashAmmount = 500;
-
+            StorageManager.SetTotalScore(StorageManager.GetTotalScore() + CashAmmount);
             Destroy(other.gameObject);
 
         }
