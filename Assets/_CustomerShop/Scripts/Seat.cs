@@ -79,9 +79,9 @@ public class Seat : MonoBehaviour
                 _hasCustomer = false;
 
                 TargetTime = 0;
-                CustomerRef.transform.DOMove(Exit.position, 2).OnComplete(() =>
+                CustomerRef.transform.DOMove(Exit.position, 2).SetEase(Ease.InSine).OnComplete(() =>
                 {
-                    CustomerRef.transform.DOMoveX(CustomerRef.transform.position.x - 10, 2).OnComplete(() =>
+                    CustomerRef.transform.DOMoveX(CustomerRef.transform.position.x - 10,3).OnComplete(() =>
                     {
 
 

@@ -18,13 +18,14 @@ public class Shop : MonoBehaviour
     public int CurrentCost;
     public GameObject UnlockedMesh, LockedMesh;
     public int PerSecond;
-    [Header("Money Generation")]
-
+    [Header("Seats")]
+    public GameObject[] Seats;
+    public GameObject UnlockFX;
     public int GenerateAmmount;
     [Header("UI")]
     public TMP_Text CurrentCostText;
     public TMP_Text TotalCostText;
-    public GameObject canvas;
+    public GameObject canvas , SeatUnlockCanvas;
 
     public bool Instant;
 
@@ -42,7 +43,21 @@ public class Shop : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("CurrentCost" + Id) >= TotalCost)
         {
-            IsLocked = false;
+            CashGenerator.Instance.GenerateStack();
+            if (PlayerPrefs.GetInt("CurrentSeat" + Id) == 0)
+            {
+                Seats[0].SetActive(true);
+            }
+            else if (PlayerPrefs.GetInt("CurrentSeat" + Id) == 01)
+            {
+                Seats[01].SetActive(true);
+            }
+            else
+            {
+                Seats[02].SetActive(true);
+            }
+
+                IsLocked = false;
             LockedMesh.gameObject.SetActive(false);
             UnlockedMesh.gameObject.SetActive(true);
             //UnlockedMesh.transform.GetComponent<MySDK.Scaler>().enabled = false;
@@ -58,10 +73,10 @@ public class Shop : MonoBehaviour
     }
   public void InstantUnlock()
     {
-
-            CashGenerator.Instance.GenerateStack();
+            SeatUnlockCanvas.gameObject.SetActive(true);
+          
             LockedMesh.gameObject.SetActive(false);
-            UnlockedMesh.gameObject.SetActive(true);
+            
             //UnlockedMesh.transform.GetComponent<MySDK.Scaler>().enabled = false;
             UnlockedMesh.transform.DOScale(new Vector3(1, 1, 1), 0);
             canvas.gameObject.SetActive(false);
@@ -98,8 +113,28 @@ public class Shop : MonoBehaviour
         }
     }
 
-    public void GeneratePanelDelay()
+    public void UnlockSeat1()
     {
-      
+        Instantiate(UnlockFX, Seats[0].transform.position, Quaternion.identity);
+        UnlockedMesh.gameObject.SetActive(true);
+        SeatUnlockCanvas.gameObject.SetActive(false);
+        Seats[0].gameObject.SetActive(true);
+        PlayerPrefs.SetInt("CurrentSeat" + Id, 0);
+    }
+    public void UnlockSeat2()
+    {
+        Instantiate(UnlockFX, Seats[01].transform.position, Quaternion.identity);
+        UnlockedMesh.gameObject.SetActive(true);
+        SeatUnlockCanvas.gameObject.SetActive(false);
+        Seats[01].gameObject.SetActive(true);
+        PlayerPrefs.SetInt("CurrentSeat" + Id, 1);
+    }
+    public void UnlockSeat3()
+    {
+        Instantiate(UnlockFX, Seats[02].transform.position, Quaternion.identity);
+        UnlockedMesh.gameObject.SetActive(true);
+        SeatUnlockCanvas.gameObject.SetActive(false);
+        Seats[02].gameObject.SetActive(true);
+        PlayerPrefs.SetInt("CurrentSeat" + Id, 2);
     }
 }

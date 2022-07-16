@@ -24,7 +24,7 @@ public class MoneyStacker : MonoBehaviour
     public int DummyNumber;
     public TextMeshProUGUI currencyText;
     bool HasMoney;
-
+    public GameObject CashUi;
     int CashAmmount;
     void Start()
     {
@@ -106,9 +106,36 @@ public class MoneyStacker : MonoBehaviour
             if (roll == 3) CashAmmount = 200;
             if (roll == 1) CashAmmount = 500;
             StorageManager.SetTotalScore(StorageManager.GetTotalScore() + CashAmmount);
-            Destroy(other.gameObject);
+            CashUi.transform.DOScale(CashUi.transform.localScale * 1.1f, .1f).OnComplete(() =>
+            {
+
+                CashUi.transform.DOScale(new Vector3(2f, 2.17f, 1.5f), .1f);
+
+
+                });
+                Destroy(other.gameObject);
 
         }
+        if (other.gameObject.CompareTag("Jarr"))
+        {
+            other.GetComponent<Collider>().enabled = false;
+            other.GetComponent<CashJar>().Full.GetComponent<MeshRenderer>().enabled = false;
+            other.GetComponent<CashJar>().Empty.gameObject.SetActive(true);
+            int roll = Random.Range(1, 4);
+
+            if (roll == 2) CashAmmount = 15000;
+            if (roll == 3) CashAmmount = 30000;
+            if (roll == 1) CashAmmount = 50000;
+            CashUi.transform.DOScale(CashUi.transform.localScale * 1.1f, .1f).OnComplete(() =>
+            {
+
+                CashUi.transform.DOScale(new Vector3(2f, 2.17f, 1.5f), .1f);
+
+
+            });
+            StorageManager.SetTotalScore(StorageManager.GetTotalScore() + CashAmmount);
+        }
+
     }
 
     public IEnumerator DecreaseStack(GameObject g)
