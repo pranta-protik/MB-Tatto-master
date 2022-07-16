@@ -8,25 +8,42 @@ public class Reception : MonoBehaviour
     public Transform StandPos;
 
     public GameObject CurrentPassenger;
-   
+
+    public bool Played;
+
     void Start()
     {
-      
+       
         queueGenerator.Customers[0].transform.DOMove(StandPos.transform.position, 0);
         CurrentPassenger = queueGenerator.Customers[0].gameObject;
         queueGenerator.Customers.RemoveAt(0);
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if(CurrentPassenger == null)
-        {
 
-            queueGenerator.Customers[0].transform.DOMove(StandPos.transform.position, 2);
-            CurrentPassenger = queueGenerator.Customers[0].gameObject;
-            queueGenerator.Customers.RemoveAt(0);
+    private void Update()
+    {
+        if (CurrentPassenger == null)
+        {
+            if (!Played)
+            {
+                queueGenerator.Customers[0].transform.DOMove(StandPos.transform.position, 2).OnComplete(() =>
+                {
+
+                    CurrentPassenger = queueGenerator.Customers[0].gameObject;
+                    queueGenerator.Customers.RemoveAt(0);
+
+
+                });
+                for (int i = 0; i < queueGenerator.Customers.Count ; i++)
+                {
+                    queueGenerator.Customers[i].transform.DOMove(queueGenerator.Points[i].transform.position, .1f);
+                }
+
+                Played = true;
+            }
+
         }
     }
+
 }

@@ -26,7 +26,7 @@ public class Shop : MonoBehaviour
     public TMP_Text TotalCostText;
     public GameObject canvas;
 
-
+    public bool Instant;
 
     private void Start()
     {
@@ -45,7 +45,7 @@ public class Shop : MonoBehaviour
             IsLocked = false;
             LockedMesh.gameObject.SetActive(false);
             UnlockedMesh.gameObject.SetActive(true);
-            UnlockedMesh.transform.GetComponent<MySDK.Scaler>().enabled = false;
+            //UnlockedMesh.transform.GetComponent<MySDK.Scaler>().enabled = false;
             UnlockedMesh.transform.DOScale(new Vector3(1, 1, 1), 0);
             canvas.gameObject.SetActive(false);
           
@@ -56,7 +56,23 @@ public class Shop : MonoBehaviour
 
 
     }
+  public void InstantUnlock()
+    {
 
+            CashGenerator.Instance.GenerateStack();
+            LockedMesh.gameObject.SetActive(false);
+            UnlockedMesh.gameObject.SetActive(true);
+            //UnlockedMesh.transform.GetComponent<MySDK.Scaler>().enabled = false;
+            UnlockedMesh.transform.DOScale(new Vector3(1, 1, 1), 0);
+            canvas.gameObject.SetActive(false);
+            PlayerPrefs.SetInt("CurrentCost" + Id, TotalCost); 
+            GetComponent<BoxCollider>().enabled = false;
+
+
+        
+
+
+    }
     public void AddMoney(int Ammount)
     {
         CurrentCost = PlayerPrefs.GetInt("CurrentCost" + Id);

@@ -66,17 +66,17 @@ public class MoneyStacker : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Shop"))
         {
-            if (MainCoin >= 0)
-            {
-                m_GiveMoney = true;
+            //if (MainCoin >= 0)
+            //{
+            //    m_GiveMoney = true;
 
 
 
-                if (!m_GiveMoney)
-                    StopCoroutine(DecreaseStack(other.gameObject));
-                else
-                    StartCoroutine(DecreaseStack(other.gameObject));
-            }
+            //    if (!m_GiveMoney)
+            //        StopCoroutine(DecreaseStack(other.gameObject));
+            //    else
+            //        StartCoroutine(DecreaseStack(other.gameObject));
+            //}
 
         }
 
@@ -95,24 +95,15 @@ public class MoneyStacker : MonoBehaviour
         if (other.gameObject.CompareTag("Shop"))
         {
 
-
+            other.GetComponent<Shop>().InstantUnlock();
         }
-
+        if (other.gameObject.CompareTag("Cash"))
+            Destroy(other.gameObject);
     }
 
     public IEnumerator DecreaseStack(GameObject g)
     {
-        yield return new WaitForSeconds(1f);
-      
-
-            
-
- 
-
-
-            yield return new WaitForSeconds(0f);
-
-
+           yield return new WaitForSeconds(1f);
             yield return new WaitForSeconds(.3f);
           
             RemoveCoins(1);

@@ -15,66 +15,86 @@ public class Seat : MonoBehaviour
 
     public int Timer;
 
-    bool _canTakeCustomer;
+    [SerializeField]bool _hasCustomer;
+    GameObject g;
+    bool played;
     void Start()
     {
+        if (GetComponentInParent<Shop>() != null)
+        {
 
-        CustomerRef = Instantiate(Customer, SittingPos.transform.position, Quaternion.identity);
-        
+            if (!GetComponentInParent<Shop>().IsLocked)
+            {
+                g = Instantiate(Customer, SittingPos.transform.position, Quaternion.identity);
+                _hasCustomer = true;
+            }
+        }
+        else
+        {
+            g = Instantiate(Customer, SittingPos.transform.position, Quaternion.identity);
+            _hasCustomer = true;
+            CashGenerator.Instance.GenerateStack();
+        }
+       
+
 
         int roll = Random.Range(1, 4); // 1, 2 or 3
-      
+
         if (roll == 2) Timer = 3;
         if (roll == 3) Timer = 6;
         if (roll == 1) Timer = 9;
 
-        _canTakeCustomer = true;
+       
     }
 
     private void Update()
     {
- 
-
-
-
-        if(_canTakeCustomer)
+        if (!_hasCustomer)
         {
-            print("_canTakeCustomer");
-            TargetTime += Time.deltaTime;
-
-            if (TargetTime >= Timer)
+            if (reception.CurrentPassenger != null)
             {
+                g = reception.CurrentPassenger;
+                reception.CurrentPassenger.transform.DOMove(SittingPos.position, 2).OnComplete(() =>
+              {
+               
+                  _hasCustomer = true;
+                  int roll = Random.Range(1, 4); // 1, 2 or 3
+
+                  if (roll == 2) Timer = 3;
+                  if (roll == 3) Timer = 6;
+                  if (roll == 1) Timer = 9;
 
 
-              
-                TargetTime = 0;
-                if (reception.CurrentPassenger != null)
-                {
-                    _canTakeCustomer = false;
-                    reception.CurrentPassenger.transform.DOMove(SittingPos.position, 3).OnComplete(() =>
-                    {
-                      
-                        CustomerRef = reception.CurrentPassenger;
-                       
-                        reception.CurrentPassenger = null;
-                        _canTakeCustomer = true;
-                        #region Random Number
-                        int roll = Random.Range(1, 4); // 1, 2 or 3
-
-                        if (roll == 2) Timer = 3;
-                        if (roll == 3) Timer = 6;
-                        if (roll == 1) Timer = 9;
-                        #endregion
-                    });
-                }
-                if(CustomerRef != null)
-                CustomerRef.transform.DOMove(Exit.transform.position, 2).OnComplete(() =>
-                {
-                    CustomerRef = null;
-                });
+              }); 
+                reception.CurrentPassenger = null; reception.Played = false;
             }
+
         }
 
 
+
+
+        if (_hasCustomer)
+        {
+
+            CustomerRef = g;
+            TargetTime += Time.deltaTime;
+
+            if (TargetTime >= 4)
+            {
+
+                _hasCustomer = false;
+
+                TargetTime = 0;
+                CustomerRef.transform.DOMove(Exit.position, 2).OnComplete(() =>
+                {
+
+                    Destroy(CustomerRef);
+
+
+                });
+            }
+
+        }
     }
 }
