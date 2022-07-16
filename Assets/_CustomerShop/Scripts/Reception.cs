@@ -40,6 +40,13 @@ public class Reception : MonoBehaviour
                     queueGenerator.Customers[i].transform.DOMove(queueGenerator.Points[i].transform.position, .1f);
                 }
 
+
+                if(queueGenerator.Customers.Count < 5)
+                {
+                    queueGenerator.Generate(5);
+                }
+
+
                 Played = true;
             }
 

@@ -25,6 +25,7 @@ public class MoneyStacker : MonoBehaviour
     public TextMeshProUGUI currencyText;
     bool HasMoney;
 
+    int CashAmmount;
     void Start()
     {
 
@@ -98,7 +99,16 @@ public class MoneyStacker : MonoBehaviour
             other.GetComponent<Shop>().InstantUnlock();
         }
         if (other.gameObject.CompareTag("Cash"))
+        {
+            int roll = Random.Range(1, 4); 
+
+            if (roll == 2) CashAmmount = 100;
+            if (roll == 3) CashAmmount = 200;
+            if (roll == 1) CashAmmount = 500;
+
             Destroy(other.gameObject);
+
+        }
     }
 
     public IEnumerator DecreaseStack(GameObject g)

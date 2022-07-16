@@ -20,6 +20,8 @@ public class Seat : MonoBehaviour
     bool played;
     void Start()
     {
+
+        RandomNumberGenerator();
         if (GetComponentInParent<Shop>() != null)
         {
 
@@ -38,12 +40,6 @@ public class Seat : MonoBehaviour
        
 
 
-        int roll = Random.Range(1, 4); // 1, 2 or 3
-
-        if (roll == 2) Timer = 3;
-        if (roll == 3) Timer = 6;
-        if (roll == 1) Timer = 9;
-
        
     }
 
@@ -58,11 +54,7 @@ public class Seat : MonoBehaviour
               {
                
                   _hasCustomer = true;
-                  int roll = Random.Range(1, 4); // 1, 2 or 3
-
-                  if (roll == 2) Timer = 3;
-                  if (roll == 3) Timer = 6;
-                  if (roll == 1) Timer = 9;
+                  RandomNumberGenerator();
 
 
               }); 
@@ -76,11 +68,12 @@ public class Seat : MonoBehaviour
 
         if (_hasCustomer)
         {
+           
 
             CustomerRef = g;
             TargetTime += Time.deltaTime;
 
-            if (TargetTime >= 4)
+            if (TargetTime >= Timer)
             {
 
                 _hasCustomer = false;
@@ -88,13 +81,28 @@ public class Seat : MonoBehaviour
                 TargetTime = 0;
                 CustomerRef.transform.DOMove(Exit.position, 2).OnComplete(() =>
                 {
+                    CustomerRef.transform.DOMoveX(CustomerRef.transform.position.x - 10, 2).OnComplete(() =>
+                    {
+                       
+                        Destroy(CustomerRef);
 
-                    Destroy(CustomerRef);
+
+                    });
+                 
 
 
                 });
             }
 
         }
+    }
+
+    private void RandomNumberGenerator()
+    {
+        int roll = Random.Range(1, 4); // 1, 2 or 3
+
+        if (roll == 2) Timer = 3;
+        if (roll == 3) Timer = 6;
+        if (roll == 1) Timer = 9;
     }
 }

@@ -17,7 +17,14 @@ public class QueueGenerator : MonoBehaviour
           Customers.Add(_customerPrefab);
         }
     }
-
+    public void Generate(int a)
+    {
+        for (int i = a; i < Points.Count; i++)
+        {
+            _customerPrefab = Instantiate(CustomerPrefab, Points[i].transform.position, Quaternion.identity);
+            Customers.Add(_customerPrefab);
+        }
+    }
     // Update is called once per frame
     void Update()
     {
