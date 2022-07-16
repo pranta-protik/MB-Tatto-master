@@ -83,12 +83,12 @@ public class Seat : MonoBehaviour
                 {
                     CustomerRef.transform.DOMoveX(CustomerRef.transform.position.x - 10, 2).OnComplete(() =>
                     {
-                       
-                        Destroy(CustomerRef);
+
+
 
 
                     });
-                 
+                    Destroy(CustomerRef,2);
 
 
                 });
