@@ -184,9 +184,12 @@ public class UiManager : Singleton<UiManager>
         // shopButton.SetActive(false);
         instagramGalleryButton.SetActive(false);
 
-        selectionMenu.SetActive(true);
-        selectionMenu.GetComponent<SelectionMenu>().CheckUnlockButtonTypeStatus();
-        selectionMenu.GetComponent<SelectionMenu>().CheckUnlockButtonAvailability();
+        Camera.main.transform.DOLocalRotate(new Vector3(42, 90, 0), 0.3f).OnComplete(() =>
+        {
+            selectionMenu.SetActive(true);
+            selectionMenu.GetComponent<SelectionMenu>().CheckUnlockButtonTypeStatus();
+            selectionMenu.GetComponent<SelectionMenu>().CheckUnlockButtonAvailability();
+        });
     }
 
     public void OnCloseSelectionMenuButtonClick()
@@ -196,17 +199,20 @@ public class UiManager : Singleton<UiManager>
 
         selectionMenu.SetActive(false);
 
-        levelNoText.transform.parent.gameObject.SetActive(true);
+        Camera.main.transform.DOLocalRotate(new Vector3(27.761f, 90f, 0f), 0.3f).OnComplete(() =>
+        {
+            levelNoText.transform.parent.gameObject.SetActive(true);
 
-        priceTag.SetActive(true);
-        selectionMenuButton.SetActive(true);
+            priceTag.SetActive(true);
+            selectionMenuButton.SetActive(true);
         
-        // if (_currentLevelText >= shopOpeningLevel || UAManager.Instance.EnableUA)
-        // {
-        //     shopButton.SetActive(true);
-        // }
+            // if (_currentLevelText >= shopOpeningLevel || UAManager.Instance.EnableUA)
+            // {
+            //     shopButton.SetActive(true);
+            // }
         
-        instagramGalleryButton.SetActive(true);
+            instagramGalleryButton.SetActive(true);
+        });
     }
 
     #endregion
