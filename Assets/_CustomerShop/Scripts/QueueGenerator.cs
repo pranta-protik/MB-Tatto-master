@@ -13,6 +13,12 @@ public class QueueGenerator : MonoBehaviour
         for (int i = 0; i < Points.Count; i++) {
           _customerPrefab =  Instantiate(CustomerPrefab, Points[i].transform.position, Quaternion.identity);
           Customers.Add(_customerPrefab);
+
+            int j = Random.Range(0, 4);
+
+            if (j == 0) _customerPrefab.GetComponentInChildren<CharacterUnlock>().anim.Play("idle 0");
+            if (j == 01) _customerPrefab.GetComponentInChildren<CharacterUnlock>().anim.Play("idle 1");
+            if (j == 02) _customerPrefab.GetComponentInChildren<CharacterUnlock>().anim.Play("idle");
         }
     }
     public void Generate(int a)

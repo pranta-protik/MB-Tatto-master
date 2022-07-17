@@ -15,7 +15,7 @@ public class Seat : MonoBehaviour
     public int Timer;
 
     [SerializeField]bool _hasCustomer;
-    GameObject _customerRef;
+    [SerializeField] GameObject _customerRef;
     [SerializeField] GameObject _cloneObj;
     void Start()
     {
@@ -27,19 +27,23 @@ public class Seat : MonoBehaviour
             if (!GetComponentInParent<Shop>().IsLocked)
             {
                 _customerRef = Instantiate(Customer, SittingPos.transform.position, Quaternion.identity);
+                
+
                 _hasCustomer = true;
             }
         }
         else
         {
             _customerRef = Instantiate(Customer, SittingPos.transform.position, Quaternion.identity);
+         
+          
             _hasCustomer = true;
             CashGenerator.Instance.GenerateStack();
         }
-       
+        _customerRef.GetComponentInChildren<CharacterUnlock>().anim.Play("Sitting");
+        _customerRef.GetComponentInChildren<CharacterUnlock>().transform.DOLocalRotate(new Vector3(0, -180, 0), 0f);
 
 
-       
     }
 
     private void Update()
@@ -49,9 +53,11 @@ public class Seat : MonoBehaviour
             if (reception.CurrentPassenger != null)
             {
                 _customerRef = reception.CurrentPassenger;
+                reception.CurrentPassenger.transform.GetChild(0).GetComponent<CharacterUnlock>().anim.SetTrigger("Walk");
+                reception.CurrentPassenger.transform.GetChild(0).LookAt(transform.position);
                 reception.CurrentPassenger.transform.DOMove(SittingPos.position, 2).OnComplete(() =>
               {
-               
+                 
                   _hasCustomer = true;
                   RandomNumberGenerator();
 
@@ -67,19 +73,31 @@ public class Seat : MonoBehaviour
 
         if (_hasCustomer)
         {
-           
+           if(TargetTime > 0)
+            {
+               // _customerRef.GetComponentInChildren<CharacterUnlock>().transform.DOLocalRotate(new Vector3(0, -180, 0), .2f);
+                _customerRef.transform.GetChild(0).GetComponent<CharacterUnlock>().anim.Play("Sitting");
+                transform.GetComponentInChildren<CharacterUnlock>().anim.SetBool("CanWrite", true);
+            } 
+   
+
 
             CustomerRef = _customerRef;
+
             TargetTime += Time.deltaTime;
 
             if (TargetTime >= Timer)
             {
 
                 _hasCustomer = false;
-
+               
                 TargetTime = 0;
+                CustomerRef.transform.GetChild(0).LookAt(Exit);
+                transform.GetComponentInChildren<CharacterUnlock>().anim.SetBool("CanWrite",false);
+                CustomerRef.transform.GetChild(0).GetComponent<CharacterUnlock>().anim.SetTrigger("Walk");
                 CustomerRef.transform.DOMove(Exit.position, 2).SetEase(Ease.InSine).OnComplete(() =>
                 {
+                 
                     CustomerRef.transform.DOMoveX(CustomerRef.transform.position.x - 10,3).OnComplete(() =>
                     {
 

@@ -53,11 +53,13 @@ public class MoneyStacker : MonoBehaviour
     }
     public void RemoveCoins(int ammount)
     {
-        int a = StorageManager.GetTotalScore();
-
-        int k = a - ammount;
-        currencyText.text = k.ToString();
-        StorageManager.SetTotalScore(k);
+        if (StorageManager.GetTotalScore() >= 0)
+        {
+            int a = StorageManager.GetTotalScore();
+            int k = a - ammount;
+            currencyText.text = k.ToString();
+            StorageManager.SetTotalScore(k);
+        }
     }
 
 
@@ -67,17 +69,11 @@ public class MoneyStacker : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Shop"))
         {
-            //if (MainCoin >= 0)
-            //{
-            //    m_GiveMoney = true;
-
-
-
-            //    if (!m_GiveMoney)
-            //        StopCoroutine(DecreaseStack(other.gameObject));
-            //    else
-            //        StartCoroutine(DecreaseStack(other.gameObject));
-            //}
+            if (StorageManager.GetTotalScore() >= 0)
+            {
+                m_GiveMoney = true;
+                StartCoroutine(DecreaseStack(other.gameObject));
+            }
 
         }
 
@@ -96,7 +92,7 @@ public class MoneyStacker : MonoBehaviour
         if (other.gameObject.CompareTag("Shop"))
         {
 
-            other.GetComponent<Shop>().InstantUnlock();
+          //  other.GetComponent<Shop>().InstantUnlock();
         }
         if (other.gameObject.CompareTag("Cash"))
         {
@@ -144,7 +140,7 @@ public class MoneyStacker : MonoBehaviour
             yield return new WaitForSeconds(.3f);
           
             RemoveCoins(1);
-            print("--");
+    
             g.GetComponent<Shop>().AddMoney(1);
 
 
