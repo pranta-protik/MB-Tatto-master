@@ -34,6 +34,8 @@ public class ValueUpgrade : MonoBehaviour
         
         _levelText.SetText("$" + PlayerPrefs.GetInt(PlayerPrefsKey.VALUE_UPGRADE_AMOUNT, baseUpgradeAmount));
         
+        PlayerPrefs.SetInt(PlayerPrefsKey.VALUE_UPGRADE_LEVEL, 1);
+        
         CheckValueUpgradeButtonTypeStatus();
 
         if (!_isAdEnabled)

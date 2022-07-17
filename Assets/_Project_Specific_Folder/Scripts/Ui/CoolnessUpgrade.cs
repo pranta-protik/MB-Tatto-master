@@ -20,8 +20,9 @@ public class CoolnessUpgrade : MonoBehaviour
     private bool _isAdEnabled;
     private bool _isMaxedOut;
     private int _currentCoolnessLevel;
+    private int _currentStageCoolnessLevel;
     private bool _isScaleEffectEnabled;
-    
+
     private void Start()
     {
         _button = transform.GetComponent<Button>();
@@ -31,7 +32,16 @@ public class CoolnessUpgrade : MonoBehaviour
         _levelText = transform.GetChild(0).GetComponent<TMP_Text>();
 
         _levelText.SetText("Stage " + PlayerPrefs.GetInt(PlayerPrefsKey.COOLNESS_UPGRADE_LEVEL, 1));
-        
+
+        if (PlayerPrefs.GetInt(PlayerPrefsKey.COOLNESS_UPGRADE_LEVEL, 1) >= GameManager.Instance.GetTotalTattooGunAmount() * 2)
+        {
+            _isMaxedOut = true;
+            DisableCoolnessUpgradeButton();
+            return;
+        }
+
+        PlayerPrefs.SetInt(PlayerPrefsKey.CURRENT_STAGE_COOLNESS_LEVEL, 1);
+
         CheckCoolnessUpgradeButtonTypeStatus();
 
         if (!_isAdEnabled)
@@ -39,19 +49,13 @@ public class CoolnessUpgrade : MonoBehaviour
             _shineEffectObj.SetActive(false);
             CheckCoolnessUpgradeButtonAvailability();
         }
-
-        if (PlayerPrefs.GetInt(PlayerPrefsKey.DEFAULT_TATTOO_LEVEL, 1) == TextureManager.Instance.tattooGroups[0].defaultTattoos.Count)
-        {
-            _isMaxedOut = true;
-            DisableCoolnessUpgradeButton();
-        }
     }
 
     private void CheckCoolnessUpgradeButtonTypeStatus()
     {
         if (_isMaxedOut) return;
-        
-        if (PlayerPrefs.GetInt(PlayerPrefsKey.COOLNESS_UPGRADE_LEVEL, 1) >= startingLevelForUpgradeCoolnessWatchingAd)
+
+        if (PlayerPrefs.GetInt(PlayerPrefsKey.CURRENT_STAGE_COOLNESS_LEVEL, 1) >= startingLevelForUpgradeCoolnessWatchingAd)
         {
             _isAdEnabled = true;
             _coolnessUpgradeButtonImage.sprite = watchAdCoolnessUpgradeIcon;
@@ -79,8 +83,10 @@ public class CoolnessUpgrade : MonoBehaviour
 
     public void CheckCoolnessUpgradeButtonAvailability()
     {
-        if (_isAdEnabled) return;
+        if (_isMaxedOut) return;
         
+        if (_isAdEnabled) return;
+
         if (StorageManager.GetTotalScore() >= requiredScoreForCoolnessUpgrade)
         {
             _button.interactable = true;
@@ -101,47 +107,55 @@ public class CoolnessUpgrade : MonoBehaviour
     {
         _coolnessUpgradeButtonImage.sprite = maxedOutCoolnessUpgradeIcon;
         _levelText.gameObject.SetActive(false);
-        _button.interactable = false;
-        
+        _costText.gameObject.SetActive(false);
         _shineEffectObj.SetActive(false);
+        _button.interactable = false;
+
         Transform buttonTransform = transform;
         buttonTransform.DOKill();
         buttonTransform.localScale = new Vector3(1.4f, 1.4f, 1.4f);
     }
-    
+
     public void OnCoolnessUpgradeButtonClick()
     {
         _currentCoolnessLevel = PlayerPrefs.GetInt(PlayerPrefsKey.COOLNESS_UPGRADE_LEVEL, 1);
-        _currentCoolnessLevel += 1;
-        
-        if (!_isAdEnabled)
+        _currentStageCoolnessLevel = PlayerPrefs.GetInt(PlayerPrefsKey.CURRENT_STAGE_COOLNESS_LEVEL, 1);
+
+        if (_currentCoolnessLevel < GameManager.Instance.GetTotalTattooGunAmount() * 2)
         {
-            if (StorageManager.GetTotalScore() >= requiredScoreForCoolnessUpgrade)
+            _currentCoolnessLevel += 1;
+            _currentStageCoolnessLevel += 1;
+
+            if (!_isAdEnabled)
             {
-                StorageManager.SetTotalScore(StorageManager.GetTotalScore() - requiredScoreForCoolnessUpgrade);
-                    
-                UiManager.Instance.UpdateTotalScoreText(StorageManager.GetTotalScore());
-                    
-                CoolnessUpgradeButtonEffects(_currentCoolnessLevel);
-                CheckCoolnessUpgradeButtonTypeStatus();
+                if (StorageManager.GetTotalScore() >= requiredScoreForCoolnessUpgrade)
+                {
+                    StorageManager.SetTotalScore(StorageManager.GetTotalScore() - requiredScoreForCoolnessUpgrade);
+
+                    UiManager.Instance.UpdateTotalScoreText(StorageManager.GetTotalScore());
+
+                    CoolnessUpgradeButtonEffects(_currentCoolnessLevel);
+                    CheckCoolnessUpgradeButtonTypeStatus();
+                }
+
+                CheckCoolnessUpgradeButtonAvailability();
+                UiManager.Instance.valueUpgradeButton.GetComponent<ValueUpgrade>().CheckValueUpgradeButtonAvailability();
             }
-            CheckCoolnessUpgradeButtonAvailability();
-            UiManager.Instance.valueUpgradeButton.GetComponent<ValueUpgrade>().CheckValueUpgradeButtonAvailability();
-        }
-        else
-        {
-            // Subscribe to Rewarded Video Ads
-            Events.onRewardedVideoAdRewardedEvent += OnRewardedVideoAdRewardedEvent;
-            Events.onRewardedVideoAdClosedEvent += OnRewardedVideoAdClosedEvent;
-                
-            // Show Ad
-            if (HomaBelly.Instance.IsRewardedVideoAdAvailable())
+            else
             {
-                HomaBelly.Instance.ShowRewardedVideoAd(PlacementName.UPGRADE_COOLNESS);
+                // Subscribe to Rewarded Video Ads
+                Events.onRewardedVideoAdRewardedEvent += OnRewardedVideoAdRewardedEvent;
+                Events.onRewardedVideoAdClosedEvent += OnRewardedVideoAdClosedEvent;
+
+                // Show Ad
+                if (HomaBelly.Instance.IsRewardedVideoAdAvailable())
+                {
+                    HomaBelly.Instance.ShowRewardedVideoAd(PlacementName.UPGRADE_COOLNESS);
+                }
             }
         }
     }
-    
+
     private void OnRewardedVideoAdClosedEvent(string obj)
     {
         // Unsubscribe to Rewarded Video Ads
@@ -154,27 +168,36 @@ public class CoolnessUpgrade : MonoBehaviour
     {
         CoolnessUpgradeButtonEffects(_currentCoolnessLevel);
         CheckCoolnessUpgradeButtonTypeStatus();
-        
+
         // Rewarded Videos
         // Rewarded Claimed Event
         HomaBelly.Instance.TrackDesignEvent("rewarded:" + "taken" + ":" + PlacementName.UPGRADE_COOLNESS);
-        
+
         // Unsubscribe to Rewarded Video Ads
         Events.onRewardedVideoAdRewardedEvent -= OnRewardedVideoAdRewardedEvent;
     }
-    
+
     private void CoolnessUpgradeButtonEffects(int coolnessLevel)
     {
+        if (coolnessLevel <= GameManager.Instance.GetTotalTattooGunAmount())
+        {
+            GameManager.Instance.CurrentTattooGunLevel = coolnessLevel - 1;
+        }
+        else
+        {
+            GameManager.Instance.CurrentTattooGunLevel = (coolnessLevel - 1) % GameManager.Instance.GetTotalTattooGunAmount();
+            GameManager.Instance.IsGoldenTattooGunActivated = true;
+        }
+
+        GameManager.Instance.UpgradeTattooGun();
+
         PlayerPrefs.SetInt(PlayerPrefsKey.COOLNESS_UPGRADE_LEVEL, coolnessLevel);
+
+        PlayerPrefs.SetInt(PlayerPrefsKey.CURRENT_STAGE_COOLNESS_LEVEL, _currentStageCoolnessLevel);
+
         _levelText.SetText("Stage " + coolnessLevel);
-        
-        GameManager.Instance.UpgradeDefaultTattooLevel();
 
-        int currentDefaultTattooLevel = PlayerPrefs.GetInt(PlayerPrefsKey.DEFAULT_TATTOO_LEVEL, 1);
-
-        PlayerPrefs.SetInt(PlayerPrefsKey.DEFAULT_TATTOO_LEVEL, currentDefaultTattooLevel + 1);
-        
-        if (PlayerPrefs.GetInt(PlayerPrefsKey.DEFAULT_TATTOO_LEVEL, 1) == TextureManager.Instance.tattooGroups[0].defaultTattoos.Count)
+        if (coolnessLevel >= GameManager.Instance.GetTotalTattooGunAmount() * 2)
         {
             _isMaxedOut = true;
             DisableCoolnessUpgradeButton();

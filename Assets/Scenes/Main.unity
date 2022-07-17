@@ -7556,6 +7556,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2049859918}
+  - {fileID: 887147849}
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14140,6 +14141,85 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 0
+--- !u!1001 &887147848
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 709119815}
+    m_Modifications:
+    - target: {fileID: 2736429242361914670, guid: ce7a10bc827817841b8b59be4884007f, type: 3}
+      propertyPath: m_Name
+      value: TattooGunSpawnEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 2736429242362280206, guid: ce7a10bc827817841b8b59be4884007f, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2736429242362280206, guid: ce7a10bc827817841b8b59be4884007f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2736429242362280206, guid: ce7a10bc827817841b8b59be4884007f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2736429242362280206, guid: ce7a10bc827817841b8b59be4884007f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2736429242362280206, guid: ce7a10bc827817841b8b59be4884007f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2736429242362280206, guid: ce7a10bc827817841b8b59be4884007f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2736429242362280206, guid: ce7a10bc827817841b8b59be4884007f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2736429242362280206, guid: ce7a10bc827817841b8b59be4884007f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2736429242362280206, guid: ce7a10bc827817841b8b59be4884007f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2736429242362280206, guid: ce7a10bc827817841b8b59be4884007f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2736429242362280206, guid: ce7a10bc827817841b8b59be4884007f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2736429242362280206, guid: ce7a10bc827817841b8b59be4884007f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2736429242362280206, guid: ce7a10bc827817841b8b59be4884007f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2736429242362280206, guid: ce7a10bc827817841b8b59be4884007f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ce7a10bc827817841b8b59be4884007f, type: 3}
+--- !u!4 &887147849 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2736429242362280206, guid: ce7a10bc827817841b8b59be4884007f, type: 3}
+  m_PrefabInstance: {fileID: 887147848}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &887147850 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2736429242342882382, guid: ce7a10bc827817841b8b59be4884007f, type: 3}
+  m_PrefabInstance: {fileID: 887147848}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &896722547 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7013195941267925537, guid: 855b4e00de35276468e05a8c3ba8d153, type: 3}
@@ -14195,7 +14275,7 @@ MonoBehaviour:
   _groundFog: {fileID: 0}
   _pillar: {fileID: 0}
   defaultUsername: Tattoo Evolution
-  EnableUA: 0
+  EnableUA: 1
 --- !u!4 &898310883
 Transform:
   m_ObjectHideFlags: 0
@@ -21926,7 +22006,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1172234470}
-  m_LocalRotation: {x: 0.25340444, y: 0.66014105, z: -0.25340444, w: 0.66014105}
+  m_LocalRotation: {x: 0.16963327, y: 0.686458, z: -0.16963327, w: 0.686458}
   m_LocalPosition: {x: -3.1446881, y: 0.81747997, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -21934,7 +22014,7 @@ Transform:
   - {fileID: 1851455666}
   m_Father: {fileID: 0}
   m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 42, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 27.761, y: 90, z: 0}
 --- !u!114 &1172234475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23093,7 +23173,22 @@ MonoBehaviour:
   isWrestling: 0
   wrestlingCameraTransform: {fileID: 2040196989}
   specificLevelId: 2
+  tattooGuns:
+  - {fileID: 6389879934336167095, guid: d6e6e6a31ef323a4083ea61c7a9fcc7c, type: 3}
+  - {fileID: 3189026248508687954, guid: 982cfe68c41a91248898096aeb1157e7, type: 3}
+  - {fileID: 3819634556442161101, guid: 05cbc0c2fa19f24478722c3b849eec6d, type: 3}
+  - {fileID: 2650571628823410223, guid: a9aeefbe0e604774bae7ba42bc5e3c70, type: 3}
+  - {fileID: 427567976187497779, guid: 4c7dcc5f201a62148b13db2d706794a8, type: 3}
+  - {fileID: 6654116663856825015, guid: ea76d583be870f14d9b097257f9fed42, type: 3}
+  - {fileID: 1710841940773035729, guid: eec871f1677b8e846995a399f98cc075, type: 3}
+  - {fileID: 3284728963237706391, guid: 7a0d42482a2499244aa42a27dcbaa34a, type: 3}
+  - {fileID: 966248775835135641, guid: d09b1a4959ad8eb4097176e8c2c966d5, type: 3}
+  - {fileID: 6421082943997646780, guid: 060e5075fdb454a49bf58faca0a88a12, type: 3}
+  goldenTattooGunMaterialColor: {r: 1, g: 0.9254902, b: 0, a: 1}
+  golderTattooGunMaterialSmoothness: 0.898
+  golderTattooGunMaterialMetallic: 0.126
   tattooGunSpawnPosition: {fileID: 709119815}
+  tattooGunSpawnEffect: {fileID: 887147850}
   tattooEffect: {fileID: 996338768}
   postProcessHandler: {fileID: 461371768}
   mobileObj: {fileID: 0}

@@ -17,8 +17,13 @@ public class GameManagerEditor : Editor
         EditorGUILayout.PropertyField(serializedObject.FindProperty("wrestlingCameraTransform"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("postProcessHandler"));
         
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("tattooGuns"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("tattooGunSpawnPosition"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("tattooGunSpawnEffect"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("tattooEffect"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("goldenTattooGunMaterialColor"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("golderTattooGunMaterialSmoothness"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("golderTattooGunMaterialMetallic"));
 
         EditorGUILayout.PropertyField(serializedObject.FindProperty("ratingDisplayLevel"));
 

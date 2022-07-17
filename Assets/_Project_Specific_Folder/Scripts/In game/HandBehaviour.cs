@@ -44,9 +44,9 @@ public class HandBehaviour : MonoBehaviour
     private readonly List<int> _animationIndexes = new List<int>();
     private static readonly int Gesture = Animator.StringToHash("Gesture");
     private SkinnedMeshRenderer _skinnedMeshRenderer;
-    // private static readonly int SHPropTexture = Shader.PropertyToID("_MainTex");
-    // private MaterialPropertyBlock _mpb;
-    // private MaterialPropertyBlock Mpb => _mpb ??= new MaterialPropertyBlock();
+    private static readonly int SHPropTexture = Shader.PropertyToID("_MainTex");
+    private MaterialPropertyBlock _mpb;
+    private MaterialPropertyBlock Mpb => _mpb ??= new MaterialPropertyBlock();
     private bool _shouldChangeTattoo;
     private bool _hasGoneThroughGoodGate;
     [SerializeField] private List<CollectedGoodTattoosAttributes> _collectedGoodTattoosAttributes = new List<CollectedGoodTattoosAttributes>();
@@ -481,20 +481,21 @@ public class HandBehaviour : MonoBehaviour
 
     public void DrawDefaultTattoo()
     {
-        _skinnedMeshRenderer.materials[0].mainTexture = _textureManager.tattooGroups[tattooGroupId].defaultTattoos[GetCurrentDefaultTattooId()];
-        _skinnedMeshRenderer.materials[0].DOFade(1, 1.8f);
+        Mpb.SetTexture(SHPropTexture, _textureManager.tattooGroups[tattooGroupId].defaultTattoos[GetCurrentDefaultTattooId()]);
+        _skinnedMeshRenderer.SetPropertyBlock(Mpb);
+        _skinnedMeshRenderer.material.DOFade(1, 1.8f);
     }
 
-    public void UpdateDefaultTattoo()
-    {
-        _shineEffect.Play();
-        
-        _skinnedMeshRenderer.materials[0].mainTexture = _textureManager.tattooGroups[tattooGroupId].defaultTattoos[GetCurrentDefaultTattooId()];
-        _skinnedMeshRenderer.materials[0].DOFade(1, 0.5f).OnComplete(() =>
-        {
-            _skinnedMeshRenderer.materials[0].DOFade(0, 0.5f);
-        });
-    }
+    // public void UpdateDefaultTattoo()
+    // {
+    //     _shineEffect.Play();
+    //     
+    //     _skinnedMeshRenderer.materials[0].mainTexture = _textureManager.tattooGroups[tattooGroupId].defaultTattoos[GetCurrentDefaultTattooId()];
+    //     _skinnedMeshRenderer.materials[0].DOFade(1, 0.5f).OnComplete(() =>
+    //     {
+    //         _skinnedMeshRenderer.materials[0].DOFade(0, 0.5f);
+    //     });
+    // }
 
     private IEnumerator UpdateTattooTexture(Texture2D tattooTexture)
     {
@@ -502,8 +503,9 @@ public class HandBehaviour : MonoBehaviour
 
         _skinnedMeshRenderer.materials[0].DOFade(0, 0.3f).OnComplete(() =>
         {
-            _skinnedMeshRenderer.materials[0].mainTexture = tattooTexture;
-            _skinnedMeshRenderer.materials[0].DOFade(1, 0.5f);
+            Mpb.SetTexture(SHPropTexture, tattooTexture);
+            _skinnedMeshRenderer.SetPropertyBlock(Mpb);
+            _skinnedMeshRenderer.material.DOFade(1, 0.5f);
         });
     }
 
@@ -511,8 +513,9 @@ public class HandBehaviour : MonoBehaviour
     {
         _skinnedMeshRenderer.material.DOFade(0, 0.3f).OnComplete(() =>
         {
-            _skinnedMeshRenderer.materials[0].mainTexture = TextureManager.Instance.handBurntTexture;
-            _skinnedMeshRenderer.materials[0].DOFade(1, 0.5f);
+            Mpb.SetTexture(SHPropTexture, TextureManager.Instance.handBurntTexture);
+            _skinnedMeshRenderer.SetPropertyBlock(Mpb);
+            _skinnedMeshRenderer.material.DOFade(1, 0.5f);
         });
     }
 
