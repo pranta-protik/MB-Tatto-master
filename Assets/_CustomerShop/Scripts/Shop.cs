@@ -33,8 +33,8 @@ public class Shop : MonoBehaviour
     {
 
         IsLocked = true;
-        CurrentCostText.text = PlayerPrefs.GetInt("CurrentCost" + Id).ToString() + "K";
-        TotalCostText.text = "/ " + TotalCost.ToString() + "K";
+        CurrentCostText.text = PlayerPrefs.GetInt("CurrentCost" + Id).ToString() ;
+        TotalCostText.text = "/ " + TotalCost.ToString() ;
         UnlockCheck01();
   
     }
@@ -79,17 +79,17 @@ public class Shop : MonoBehaviour
 
     public void InstantUnlock()
     {
+        if (PlayerPrefs.GetInt("CurrentCost" + Id) >= TotalCost)
+        {
             SeatUnlockCanvas.gameObject.SetActive(true);
-          
             LockedMesh.gameObject.SetActive(false);
-            
+            FindObjectOfType<CharacterMotor>().enabled = false;
             //UnlockedMesh.transform.GetComponent<MySDK.Scaler>().enabled = false;
             UnlockedMesh.transform.DOScale(new Vector3(1, 1, 1), 0);
             canvas.gameObject.SetActive(false);
-            PlayerPrefs.SetInt("CurrentCost" + Id, TotalCost); 
             GetComponent<BoxCollider>().enabled = false;
 
-
+        }
         
 
 
@@ -99,7 +99,7 @@ public class Shop : MonoBehaviour
         CurrentCost = PlayerPrefs.GetInt("CurrentCost" + Id);
         CurrentCost += Ammount;
         PlayerPrefs.SetInt("CurrentCost" + Id, CurrentCost);
-        CurrentCostText.text = CurrentCost.ToString() + "K";
+        CurrentCostText.text = CurrentCost.ToString();
         CheckifUnlocked();
     }
 
@@ -111,7 +111,7 @@ public class Shop : MonoBehaviour
             LockedMesh.gameObject.SetActive(false);
             UnlockedMesh.gameObject.SetActive(true);
             canvas.gameObject.SetActive(false);
-            Invoke("GeneratePanelDelay", 1);
+            
             GetComponent<BoxCollider>().enabled = false;
           
 
@@ -121,6 +121,7 @@ public class Shop : MonoBehaviour
 
     public void UnlockSeat1()
     {
+        FindObjectOfType<CharacterMotor>().enabled = true;
         Instantiate(UnlockFX, Seats[0].transform.position, Quaternion.identity);
         UnlockedMesh.gameObject.SetActive(true);
         SeatUnlockCanvas.gameObject.SetActive(false);
@@ -129,6 +130,7 @@ public class Shop : MonoBehaviour
     }
     public void UnlockSeat2()
     {
+        FindObjectOfType<CharacterMotor>().enabled = true;
         Instantiate(UnlockFX, Seats[01].transform.position, Quaternion.identity);
         UnlockedMesh.gameObject.SetActive(true);
         SeatUnlockCanvas.gameObject.SetActive(false);
@@ -137,6 +139,7 @@ public class Shop : MonoBehaviour
     }
     public void UnlockSeat3()
     {
+        FindObjectOfType<CharacterMotor>().enabled = true;
         Instantiate(UnlockFX, Seats[02].transform.position, Quaternion.identity);
         UnlockedMesh.gameObject.SetActive(true);
         SeatUnlockCanvas.gameObject.SetActive(false);

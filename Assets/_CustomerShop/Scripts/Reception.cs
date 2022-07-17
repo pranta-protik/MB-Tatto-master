@@ -27,9 +27,10 @@ public class Reception : MonoBehaviour
         {
             if (!Played)
             {
-                queueGenerator.Customers[0].transform.DOMove(StandPos.transform.position, 2).OnComplete(() =>
+                queueGenerator.Customers[0].transform.GetChild(0).GetComponent<CharacterUnlock>().anim.SetTrigger("Walk");
+                queueGenerator.Customers[0].transform.DOMove(StandPos.transform.position, 3).SetEase(Ease.Linear).OnComplete(() =>
                 {
-
+                    queueGenerator.Customers[0].transform.GetChild(0).GetComponent<CharacterUnlock>().anim.SetTrigger("idle");
                     CurrentPassenger = queueGenerator.Customers[0].gameObject;
                     queueGenerator.Customers.RemoveAt(0);
 
@@ -37,7 +38,7 @@ public class Reception : MonoBehaviour
                 });
                 for (int i = 0; i < queueGenerator.Customers.Count ; i++)
                 {
-                    queueGenerator.Customers[i].transform.DOMove(queueGenerator.Points[i].transform.position, .1f);
+                    queueGenerator.Customers[i].transform.DOMove(queueGenerator.Points[i].transform.position, .5f).SetEase(Ease.InSine);
                 }
 
 
