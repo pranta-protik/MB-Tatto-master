@@ -108,7 +108,8 @@ public class UiManager : Singleton<UiManager>
         {
             isInstagramGalleryPhotoUpdated = false;
             _isFollowersUpdated = false;
-            Invoke(nameof(EnableInfluenceMeterScreen), 1.5f);
+            
+            Invoke(nameof(ReloadSceneWithNewLevel), 1.5f);
         }
     }
 
@@ -499,19 +500,20 @@ public class UiManager : Singleton<UiManager>
         }
 
         PlayerPrefs.SetInt("current_scene_text", _currentLevelText + 1);
-
-        if ((PlayerPrefs.GetInt("current_scene_text", 0) + 1) % 4 == 1)
-        {
-            PlayerPrefs.SetInt(PlayerPrefsKey.DEFAULT_TATTOO_LEVEL, 1);
-        }
         
-        if ((PlayerPrefs.GetInt("current_scene_text", 0) % shopVisitingFrequency) == 0)
-        {
-            SceneManager.LoadSceneAsync((int) SceneIndexes.UPGRADE_SHOP);
-        }
-        else
-        {
-            SceneManager.LoadSceneAsync((int) SceneIndexes.MAIN);
-        }
+        StorageManager.SetTotalScore(StorageManager.GetTotalScore() + (StorageManager.Instance.currentLevelScore < 0
+            ? 500
+            : StorageManager.Instance.currentLevelScore));
+        
+        SceneManager.LoadSceneAsync((int) SceneIndexes.UPGRADE_SHOP);
+        
+        // if ((PlayerPrefs.GetInt("current_scene_text", 0) % shopVisitingFrequency) == 0)
+        // {
+        //     SceneManager.LoadSceneAsync((int) SceneIndexes.UPGRADE_SHOP);
+        // }
+        // else
+        // {
+        //     SceneManager.LoadSceneAsync((int) SceneIndexes.MAIN);
+        // }
     }
 }

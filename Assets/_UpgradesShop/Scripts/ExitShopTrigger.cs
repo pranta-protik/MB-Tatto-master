@@ -6,10 +6,11 @@ public class ExitShopTrigger : MonoBehaviour
 {
    private const string PlayerTag = "Player";
    private bool _isAdShown = false;
+   private float _startTime;
 
    private void Start()
    {
-      PlayerPrefs.SetFloat(PlayerPrefsKey.META_WORLD_START_TIME, Time.time);
+      _startTime = Time.time;
       // Rewarded Videos
       // Rewarded Suggested Event
       HomaBelly.Instance.TrackDesignEvent("rewarded:" + "suggested" + ":" + PlacementName.UNLOCK_STATION);
@@ -23,7 +24,7 @@ public class ExitShopTrigger : MonoBehaviour
          return;
       }
       
-      if (!_isAdShown && Time.time - PlayerPrefs.GetFloat(PlayerPrefsKey.META_WORLD_START_TIME) > UpgradesManager.Instance.interstitialAdTimer)
+      if (!_isAdShown && Time.time - _startTime > UpgradesManager.Instance.interstitialAdTimer)
       {
          // Check if ad is available
          if (HomaBelly.Instance.IsInterstitialAvailable() && AdManager.Instance.isInterstitialAdEnabled)
@@ -42,7 +43,7 @@ public class ExitShopTrigger : MonoBehaviour
          return;
       }
 
-      if (PlayerPrefs.GetInt("FirstShopEncounter", 1) == 1)
+      if (PlayerPrefs.GetInt("FirstShopEncounter", 1) == 1 && PlayerPrefs.GetInt("current_scene_text", 0) == 3)
       {
          PlayerPrefs.SetInt("FirstShopEncounter", 0);
          
@@ -53,9 +54,9 @@ public class ExitShopTrigger : MonoBehaviour
          }   
       }
 
-      string levelId = (PlayerPrefs.GetInt("current_scene_text", 0) + 1).ToString();
-      
-      float duration = Time.time - PlayerPrefs.GetFloat(PlayerPrefsKey.META_WORLD_START_TIME, 0);
+      string levelId = PlayerPrefs.GetInt("current_scene_text", 0).ToString();
+   
+      float duration = Time.time - _startTime;
       
       // Meta World
       // Meta Session Event
