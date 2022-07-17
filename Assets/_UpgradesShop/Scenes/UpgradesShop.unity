@@ -959,6 +959,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 127376903}
   m_CullTransparentMesh: 1
+--- !u!114 &150936533 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6390645198038134153, guid: a70a75f3f81e545adaae500a3d5c58b0, type: 3}
+  m_PrefabInstance: {fileID: 1487756591}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &160722400
 GameObject:
   m_ObjectHideFlags: 0
@@ -10721,7 +10732,7 @@ MonoBehaviour:
   GiveAmmount: 0
   NextPosCap: 0
   DummyNumber: 0
-  currencyText: {fileID: 0}
+  currencyText: {fileID: 150936533}
   CashUi: {fileID: 1422362974}
 --- !u!65 &1872520442
 BoxCollider:
