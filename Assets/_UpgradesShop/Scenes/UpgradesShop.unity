@@ -12953,6 +12953,10 @@ PrefabInstance:
       propertyPath: field of view
       value: 26.1
       objectReference: {fileID: 0}
+    - target: {fileID: 2400116060383580228, guid: 6501b23ec2c7e48aba7b2548ad474fec, type: 3}
+      propertyPath: far clip plane
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 2400116060383580231, guid: 6501b23ec2c7e48aba7b2548ad474fec, type: 3}
       propertyPath: m_LocalPosition.y
       value: -11.79
@@ -12980,6 +12984,14 @@ PrefabInstance:
     - target: {fileID: 2400116060383580231, guid: 6501b23ec2c7e48aba7b2548ad474fec, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -10.069
+      objectReference: {fileID: 0}
+    - target: {fileID: 2400116061105504171, guid: 6501b23ec2c7e48aba7b2548ad474fec, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2400116061105504171, guid: 6501b23ec2c7e48aba7b2548ad474fec, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 9.95
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6501b23ec2c7e48aba7b2548ad474fec, type: 3}
