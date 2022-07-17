@@ -5,9 +5,7 @@ using UnityEngine;
 public class QueueGenerator : MonoBehaviour
 {
     public List<Transform> Points;
-
     public GameObject CustomerPrefab;
-
     GameObject _customerPrefab;
     public List<GameObject> Customers;
     void Awake()

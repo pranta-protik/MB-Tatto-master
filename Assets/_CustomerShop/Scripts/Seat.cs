@@ -11,13 +11,12 @@ public class Seat : MonoBehaviour
     public GameObject CustomerRef;
 
     public float TargetTime = 0;
-    [SerializeField]GameObject _cloneObj;
 
     public int Timer;
 
     [SerializeField]bool _hasCustomer;
-    GameObject g;
-    bool played;
+    GameObject _customerRef;
+    [SerializeField] GameObject _cloneObj;
     void Start()
     {
 
@@ -27,13 +26,13 @@ public class Seat : MonoBehaviour
 
             if (!GetComponentInParent<Shop>().IsLocked)
             {
-                g = Instantiate(Customer, SittingPos.transform.position, Quaternion.identity);
+                _customerRef = Instantiate(Customer, SittingPos.transform.position, Quaternion.identity);
                 _hasCustomer = true;
             }
         }
         else
         {
-            g = Instantiate(Customer, SittingPos.transform.position, Quaternion.identity);
+            _customerRef = Instantiate(Customer, SittingPos.transform.position, Quaternion.identity);
             _hasCustomer = true;
             CashGenerator.Instance.GenerateStack();
         }
@@ -49,7 +48,7 @@ public class Seat : MonoBehaviour
         {
             if (reception.CurrentPassenger != null)
             {
-                g = reception.CurrentPassenger;
+                _customerRef = reception.CurrentPassenger;
                 reception.CurrentPassenger.transform.DOMove(SittingPos.position, 2).OnComplete(() =>
               {
                
@@ -70,7 +69,7 @@ public class Seat : MonoBehaviour
         {
            
 
-            CustomerRef = g;
+            CustomerRef = _customerRef;
             TargetTime += Time.deltaTime;
 
             if (TargetTime >= Timer)

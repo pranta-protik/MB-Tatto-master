@@ -44,26 +44,15 @@ public class Shop : MonoBehaviour
         if (PlayerPrefs.GetInt("CurrentCost" + Id) >= TotalCost)
         {
             CashGenerator.Instance.GenerateStack();
-            if (PlayerPrefs.GetInt("CurrentSeat" + Id) == 0)
-            {
-                Seats[0].SetActive(true);
-            }
-            else if (PlayerPrefs.GetInt("CurrentSeat" + Id) == 01)
-            {
-                Seats[01].SetActive(true);
-            }
-            else
-            {
-                Seats[02].SetActive(true);
-            }
+            CheckForUnlockedSeat();
 
-                IsLocked = false;
+            IsLocked = false;
             LockedMesh.gameObject.SetActive(false);
             UnlockedMesh.gameObject.SetActive(true);
             //UnlockedMesh.transform.GetComponent<MySDK.Scaler>().enabled = false;
             UnlockedMesh.transform.DOScale(new Vector3(1, 1, 1), 0);
             canvas.gameObject.SetActive(false);
-          
+
             GetComponent<BoxCollider>().enabled = false;
 
 
@@ -71,7 +60,24 @@ public class Shop : MonoBehaviour
 
 
     }
-  public void InstantUnlock()
+
+    private void CheckForUnlockedSeat()
+    {
+        if (PlayerPrefs.GetInt("CurrentSeat" + Id) == 0)
+        {
+            Seats[0].SetActive(true);
+        }
+        else if (PlayerPrefs.GetInt("CurrentSeat" + Id) == 01)
+        {
+            Seats[01].SetActive(true);
+        }
+        else
+        {
+            Seats[02].SetActive(true);
+        }
+    }
+
+    public void InstantUnlock()
     {
             SeatUnlockCanvas.gameObject.SetActive(true);
           
