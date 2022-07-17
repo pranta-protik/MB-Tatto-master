@@ -110,7 +110,7 @@ public class Shop : MonoBehaviour
             SeatUnlockCanvas.gameObject.SetActive(true);
            
             FindObjectOfType<CharacterMotor>().enabled = false;
-            IsLocked = false;
+          
             LockedMesh.gameObject.SetActive(false);
            
             canvas.gameObject.SetActive(false);
