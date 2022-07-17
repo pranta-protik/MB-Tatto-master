@@ -33,8 +33,8 @@ public class UiManager : Singleton<UiManager>
     [SerializeField] private GameObject valueUpgradeIncrementEffect;
     [SerializeField] private GameObject mobileScreen;
     [SerializeField] private GameObject selectionMenuButton;
-    [SerializeField] private GameObject shopButton;
-    [SerializeField] private int shopVisitingFrequency;
+    // [SerializeField] private GameObject shopButton;
+    // [SerializeField] private int shopVisitingFrequency;
     [SerializeField] private int shopOpeningLevel;
     [SerializeField] private GameObject instagramGalleryButton;
     [SerializeField] private TextMeshProUGUI levelNoText;
@@ -74,10 +74,10 @@ public class UiManager : Singleton<UiManager>
 
         levelNoText.SetText((_currentLevelText + 1).ToString());
 
-        if (_currentLevelText < shopOpeningLevel && !UAManager.Instance.EnableUA)
-        {
-            shopButton.SetActive(false);
-        }
+        // if (_currentLevelText < shopOpeningLevel && !UAManager.Instance.EnableUA)
+        // {
+        //     shopButton.SetActive(false);
+        // }
 
         UpdateTotalScoreText(StorageManager.GetTotalScore());
         
@@ -181,7 +181,7 @@ public class UiManager : Singleton<UiManager>
 
         priceTag.SetActive(false);
         selectionMenuButton.SetActive(false);
-        shopButton.SetActive(false);
+        // shopButton.SetActive(false);
         instagramGalleryButton.SetActive(false);
 
         selectionMenu.SetActive(true);
@@ -201,10 +201,10 @@ public class UiManager : Singleton<UiManager>
         priceTag.SetActive(true);
         selectionMenuButton.SetActive(true);
         
-        if (_currentLevelText >= shopOpeningLevel || UAManager.Instance.EnableUA)
-        {
-            shopButton.SetActive(true);
-        }
+        // if (_currentLevelText >= shopOpeningLevel || UAManager.Instance.EnableUA)
+        // {
+        //     shopButton.SetActive(true);
+        // }
         
         instagramGalleryButton.SetActive(true);
     }
@@ -218,7 +218,7 @@ public class UiManager : Singleton<UiManager>
         levelNoText.transform.parent.gameObject.SetActive(false);
         selectionMenuButton.SetActive(false);
         instagramGalleryButton.SetActive(false);
-        shopButton.SetActive(false);
+        // shopButton.SetActive(false);
         startUI.SetActive(false);
         priceTag.transform.GetChild(2).gameObject.SetActive(false);
     }
