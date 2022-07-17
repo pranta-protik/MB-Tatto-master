@@ -107,9 +107,12 @@ public class Shop : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("CurrentCost" + Id) >= TotalCost)
         {
+            SeatUnlockCanvas.gameObject.SetActive(true);
+           
+            FindObjectOfType<CharacterMotor>().enabled = false;
             IsLocked = false;
             LockedMesh.gameObject.SetActive(false);
-            UnlockedMesh.gameObject.SetActive(true);
+           
             canvas.gameObject.SetActive(false);
             
             GetComponent<BoxCollider>().enabled = false;
