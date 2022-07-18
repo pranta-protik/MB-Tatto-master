@@ -96,8 +96,9 @@ public class MoneyStacker : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Cash"))
         {
-            int roll = Random.Range(1, 4); 
-
+            int roll = Random.Range(1, 4);
+            other.transform.GetComponent<MeshRenderer>().enabled = false;
+            other.transform.GetChild(0).gameObject.SetActive(true);
             if (roll == 2) CashAmmount = 100;
             if (roll == 3) CashAmmount = 200;
             if (roll == 1) CashAmmount = 500;
@@ -109,7 +110,7 @@ public class MoneyStacker : MonoBehaviour
 
 
                 });
-                Destroy(other.gameObject);
+            Destroy(other.gameObject , 1);
 
         }
         if (other.gameObject.CompareTag("Jarr"))

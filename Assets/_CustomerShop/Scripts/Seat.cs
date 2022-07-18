@@ -27,7 +27,9 @@ public class Seat : MonoBehaviour
             if (!GetComponentInParent<Shop>().IsLocked)
             {
                 _customerRef = Instantiate(Customer, SittingPos.transform.position, Quaternion.identity);
-                
+                _customerRef.GetComponentInChildren<CharacterUnlock>().transform.DOLocalRotate(new Vector3(0, -180, 0), 0f);
+                _customerRef.transform.DOLocalMoveX(_customerRef.transform.localPosition.x - .8f, 0);
+                _customerRef.GetComponentInChildren<CharacterUnlock>().anim.Play("Sitting");
 
                 _hasCustomer = true;
             }
@@ -35,14 +37,14 @@ public class Seat : MonoBehaviour
         else
         {
             _customerRef = Instantiate(Customer, SittingPos.transform.position, Quaternion.identity);
-         
-          
+            _customerRef.GetComponentInChildren<CharacterUnlock>().transform.DOLocalRotate(new Vector3(0, -180, 0), 0f);
+            _customerRef.transform.DOLocalMoveX(_customerRef.transform.localPosition.x - .8f, 0);
+            _customerRef.GetComponentInChildren<CharacterUnlock>().anim.Play("Sitting");
+
             _hasCustomer = true;
             CashGenerator.Instance.GenerateStack();
         }
-        _customerRef.GetComponentInChildren<CharacterUnlock>().anim.Play("Sitting");
-        _customerRef.GetComponentInChildren<CharacterUnlock>().transform.DOLocalRotate(new Vector3(0, -180, 0), 0f);
-
+       
 
     }
 
@@ -60,8 +62,9 @@ public class Seat : MonoBehaviour
                  
                   _hasCustomer = true;
                   RandomNumberGenerator();
+                  _customerRef.transform.DOLocalMoveX(_customerRef.transform.localPosition.x - .8f, 0);
 
-
+                  _customerRef.transform.GetChild(0).DOLocalRotate(new Vector3(0, 180, 0), 0);
               }); 
                 reception.CurrentPassenger = null; reception.Played = false;
             }
@@ -97,7 +100,7 @@ public class Seat : MonoBehaviour
                 CustomerRef.transform.GetChild(0).GetComponent<CharacterUnlock>().anim.SetTrigger("Walk");
                 CustomerRef.transform.DOMove(Exit.position, 2).SetEase(Ease.InSine).OnComplete(() =>
                 {
-                 
+                    CustomerRef.transform.GetChild(0).DOLocalRotate(new Vector3(0, -90, 0), 0);
                     CustomerRef.transform.DOMoveX(CustomerRef.transform.position.x - 10,3).OnComplete(() =>
                     {
 
