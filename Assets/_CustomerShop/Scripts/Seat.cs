@@ -130,7 +130,7 @@ public class Seat : MonoBehaviour
                 CustomerRef.transform.GetChild(0).LookAt(Exit);
                 transform.GetComponentInChildren<CharacterUnlock>().anim.SetBool("CanWrite",false);
                 CustomerRef.transform.GetChild(0).GetComponent<CharacterUnlock>().anim.SetTrigger("Walk");
-                CustomerRef.transform.DOMove(Exit.position, 2).SetEase(Ease.InSine).OnComplete(() =>
+                CustomerRef.transform.DOMove(Exit.position, 2).SetEase(Ease.Linear).OnComplete(() =>
                 {
                     CustomerRef.transform.GetChild(0).DOLocalRotate(new Vector3(0, -90, 0), 0);
                     CustomerRef.transform.DOMoveX(CustomerRef.transform.position.x - 10,3).OnComplete(() =>
