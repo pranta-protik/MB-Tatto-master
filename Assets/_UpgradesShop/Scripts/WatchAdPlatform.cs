@@ -6,6 +6,8 @@ public class WatchAdPlatform : MonoBehaviour
 {
     [SerializeField] private Image progressBar;
     [SerializeField] private float second;
+    [SerializeField] private bool isUsernameUpdatePlatform;
+    
     private float _time;
     private bool isProgressBarFilling;
     
@@ -88,9 +90,13 @@ public class WatchAdPlatform : MonoBehaviour
     // Collect Ad Rewards
     private void OnRewardedVideoAdRewardedEvent(VideoAdReward obj)
     {
-        transform.parent.GetComponent<AdUpgradeStation>().UnlockStation();
-        this.gameObject.SetActive(false);
-        
+        transform.parent.GetComponent<IAdUpgrade>().UnlockStation();
+
+        if (!isUsernameUpdatePlatform)
+        {
+            this.gameObject.SetActive(false);    
+        }
+
         // Rewarded Videos
         // Rewarded Claimed Event
         HomaBelly.Instance.TrackDesignEvent("rewarded:" + "taken" + ":" + PlacementName.UNLOCK_STATION);

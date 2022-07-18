@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
-public class AdUpgradeStation : MonoBehaviour
+public class AdUpgradeStation : MonoBehaviour, IAdUpgrade
 {
     [SerializeField] protected int serialNo;
     [SerializeField] private string upgradeName;
