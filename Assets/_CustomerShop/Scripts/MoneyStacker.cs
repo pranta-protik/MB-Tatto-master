@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using TMPro;
+using UnityEngine.UI;
 public class MoneyStacker : MonoBehaviour
 {
     public float InitialCoin;
@@ -26,9 +27,19 @@ public class MoneyStacker : MonoBehaviour
     bool HasMoney;
     public GameObject CashUi;
     int CashAmmount;
+
+    private float _time;
+    private bool isProgressBarFilling;
+
+    [SerializeField] private float second;
+    private float elapsedTime;
+    private int currencyAmount;
+    private bool isPaymentOngoing = false;
+    [SerializeField] private float timeToPay = 0.4f;
+
     void Start()
     {
-
+        StorageManager.SetTotalScore(StorageManager.GetTotalScore() + 88852);
 
 
         //  PlayerPrefs.SetInt("ArcadeCoin", InitialCoin);
@@ -51,15 +62,21 @@ public class MoneyStacker : MonoBehaviour
         
  
     }
-    public void RemoveCoins(int ammount)
+    public void RemoveCoins(int ammount , Shop s)
     {
-        if (StorageManager.GetTotalScore() >= 0)
-        {
-            int a = StorageManager.GetTotalScore();
-            int k = a - ammount;
-            currencyText.text = k.ToString();
-            StorageManager.SetTotalScore(k);
-        }
+       
+        if (s.BillboardCost > 0)
+            s.BillboardCost -= ammount;
+        s.BillBoardText.text = s.BillboardCost.ToString();
+        if (StorageManager.GetTotalScore() <= 0)
+            StorageManager.SetTotalScore(0);
+
+        StorageManager.SetTotalScore(StorageManager.GetTotalScore() - ammount);
+        currencyText.text = StorageManager.GetTotalScore().ToString();
+  
+        
+
+
     }
 
 
@@ -69,10 +86,55 @@ public class MoneyStacker : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Shop"))
         {
+            if (isProgressBarFilling)
+            {
+                if (_time < second)
+                {
+                    _time += Time.deltaTime;
+                   other.GetComponent<Shop>().progressBar.fillAmount = _time / second;
+                }
+                else
+                {
+                    isPaymentOngoing = true;
+                    isProgressBarFilling = false;
+                }
+            }
+
+            if (!isProgressBarFilling && isPaymentOngoing)
+            {
+                elapsedTime += Time.deltaTime;
+
+                if (elapsedTime >= timeToPay)
+                {
+                    elapsedTime -= timeToPay;
+                    m_GiveMoney = true;
+                }
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             if (StorageManager.GetTotalScore() >= 0)
             {
-                m_GiveMoney = true;
-                StartCoroutine(DecreaseStack(other.gameObject));
+       
+
+
+
+                if (!m_GiveMoney)
+                    StopCoroutine(DecreaseStack(other.gameObject));
+                else
+                    StartCoroutine(DecreaseStack(other.gameObject));
             }
 
         }
@@ -84,6 +146,10 @@ public class MoneyStacker : MonoBehaviour
         if (other.gameObject.CompareTag("Shop"))
         {
             m_GiveMoney = false;
+            isProgressBarFilling = false;
+            other.GetComponent<Shop>().progressBar.fillAmount = 0;
+
+            isPaymentOngoing = false;
 
         }
     }
@@ -91,8 +157,11 @@ public class MoneyStacker : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Shop"))
         {
-
-          //  other.GetComponent<Shop>().InstantUnlock();
+            isProgressBarFilling = true;
+            isPaymentOngoing = false;
+            elapsedTime = 0f;
+            _time = 0;
+            //  other.GetComponent<Shop>().InstantUnlock();
         }
         if (other.gameObject.CompareTag("Cash"))
         {
@@ -115,32 +184,17 @@ public class MoneyStacker : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Jarr"))
         {
-            other.GetComponent<Collider>().enabled = false;
-            other.GetComponent<CashJar>().Full.GetComponent<MeshRenderer>().enabled = false;
-            other.GetComponent<CashJar>().Empty.gameObject.SetActive(true);
-            int roll = Random.Range(1, 4);
-
-            if (roll == 2) CashAmmount = 15000;
-            if (roll == 3) CashAmmount = 30000;
-            if (roll == 1) CashAmmount = 50000;
-            CashUi.transform.DOScale(CashUi.transform.localScale * 1.1f, .1f).OnComplete(() =>
-            {
-
-                CashUi.transform.DOScale(new Vector3(2f, 2.17f, 1.5f), .1f);
-
-
-            });
-            StorageManager.SetTotalScore(StorageManager.GetTotalScore() + CashAmmount);
+           
         }
 
     }
 
     public IEnumerator DecreaseStack(GameObject g)
     {
-           yield return new WaitForSeconds(1f);
+       
             yield return new WaitForSeconds(.3f);
           
-            RemoveCoins(1);
+            RemoveCoins(1 , g.GetComponent<Shop>());
     
             g.GetComponent<Shop>().AddMoney(1);
 

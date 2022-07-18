@@ -29,9 +29,13 @@ public class Shop : MonoBehaviour
 
     public bool Instant;
 
+    public Image progressBar;
+    public int BillboardCost;
+    public TMP_Text BillBoardText;
     private void Start()
     {
-
+        BillboardCost = TotalCost;
+        BillBoardText.text = BillboardCost.ToString();
         IsLocked = true;
         CurrentCostText.text = PlayerPrefs.GetInt("CurrentCost" + Id).ToString() ;
         TotalCostText.text = "/ " + TotalCost.ToString() ;
@@ -84,6 +88,7 @@ public class Shop : MonoBehaviour
             SeatUnlockCanvas.gameObject.SetActive(true);
             LockedMesh.gameObject.SetActive(false);
             FindObjectOfType<CharacterMotor>().enabled = false;
+            FindObjectOfType<CharacterMotor>().transform.GetChild(0).GetComponent<Animator>().enabled = false;
             //UnlockedMesh.transform.GetComponent<MySDK.Scaler>().enabled = false;
             UnlockedMesh.transform.DOScale(new Vector3(1, 1, 1), 0);
             canvas.gameObject.SetActive(false);
@@ -96,11 +101,14 @@ public class Shop : MonoBehaviour
     }
     public void AddMoney(int Ammount)
     {
-        CurrentCost = PlayerPrefs.GetInt("CurrentCost" + Id);
-        CurrentCost += Ammount;
-        PlayerPrefs.SetInt("CurrentCost" + Id, CurrentCost);
-        CurrentCostText.text = CurrentCost.ToString();
-        CheckifUnlocked();
+        if (PlayerPrefs.GetInt("CurrentCost" + Id) <= TotalCost)
+        {
+            CurrentCost = PlayerPrefs.GetInt("CurrentCost" + Id);
+            CurrentCost += Ammount;
+            PlayerPrefs.SetInt("CurrentCost" + Id, CurrentCost);
+            CurrentCostText.text = CurrentCost.ToString();
+            CheckifUnlocked();
+        }
     }
 
     private void CheckifUnlocked()
@@ -110,7 +118,7 @@ public class Shop : MonoBehaviour
             SeatUnlockCanvas.gameObject.SetActive(true);
            
             FindObjectOfType<CharacterMotor>().enabled = false;
-          
+            FindObjectOfType<CharacterMotor>().transform.GetChild(0).GetComponent<Animator>().enabled = false;
             LockedMesh.gameObject.SetActive(false);
            
             canvas.gameObject.SetActive(false);
@@ -124,7 +132,7 @@ public class Shop : MonoBehaviour
 
     public void UnlockSeat1()
     {
-        FindObjectOfType<CharacterMotor>().enabled = true;
+        FindObjectOfType<CharacterMotor>().enabled = true; FindObjectOfType<CharacterMotor>().transform.GetChild(0).GetComponent<Animator>().enabled = true;
         Instantiate(UnlockFX, Seats[0].transform.position, Quaternion.identity);
         UnlockedMesh.gameObject.SetActive(true);
         SeatUnlockCanvas.gameObject.SetActive(false);
@@ -133,7 +141,7 @@ public class Shop : MonoBehaviour
     }
     public void UnlockSeat2()
     {
-        FindObjectOfType<CharacterMotor>().enabled = true;
+        FindObjectOfType<CharacterMotor>().enabled = true; FindObjectOfType<CharacterMotor>().transform.GetChild(0).GetComponent<Animator>().enabled = true;
         Instantiate(UnlockFX, Seats[01].transform.position, Quaternion.identity);
         UnlockedMesh.gameObject.SetActive(true);
         SeatUnlockCanvas.gameObject.SetActive(false);
@@ -142,7 +150,7 @@ public class Shop : MonoBehaviour
     }
     public void UnlockSeat3()
     {
-        FindObjectOfType<CharacterMotor>().enabled = true;
+        FindObjectOfType<CharacterMotor>().enabled = true; FindObjectOfType<CharacterMotor>().transform.GetChild(0).GetComponent<Animator>().enabled = true;
         Instantiate(UnlockFX, Seats[02].transform.position, Quaternion.identity);
         UnlockedMesh.gameObject.SetActive(true);
         SeatUnlockCanvas.gameObject.SetActive(false);

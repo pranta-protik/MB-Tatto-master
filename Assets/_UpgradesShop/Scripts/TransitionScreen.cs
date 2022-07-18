@@ -6,18 +6,24 @@ public class TransitionScreen : MonoBehaviour
 {
     private Image transitionImage;
     public GameObject HandTut;
+
+    public bool StantPanel;
     private void Start()
     {
-        transitionImage = GetComponent<Image>();
-
-        transitionImage.DOFade(0, 1f).OnComplete(() =>
+        if (!StantPanel)
         {
-            transitionImage.gameObject.SetActive(false);
-            Invoke("HideHandTut", 2);
-        });
+            transitionImage = GetComponent<Image>();
+
+            transitionImage.DOFade(0, 1f).OnComplete(() =>
+            {
+                transitionImage.gameObject.SetActive(false);
+
+            });
+        }
     }
-    void HideHandTut()
+    public void HideHandTut()
     {
         HandTut.SetActive(false);
+        gameObject.SetActive(false);
     }
 }
