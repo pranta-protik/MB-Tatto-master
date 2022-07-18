@@ -27,10 +27,10 @@ public class Reception : MonoBehaviour
         {
             if (!Played)
             {
-                queueGenerator.Customers[0].transform.GetChild(0).GetComponent<CharacterUnlock>().anim.SetTrigger("Walk");
+                queueGenerator.Customers[0].transform.GetChild(0).GetComponent<CharacterUnlock>().anim.Play("Walking");
                 queueGenerator.Customers[0].transform.DOMove(StandPos.transform.position, 3).SetEase(Ease.Linear).OnComplete(() =>
                 {
-                    queueGenerator.Customers[0].transform.GetChild(0).GetComponent<CharacterUnlock>().anim.SetTrigger("idle");
+                    queueGenerator.Customers[0].transform.GetChild(0).GetComponent<CharacterUnlock>().anim.Play("idle 0");
                     CurrentPassenger = queueGenerator.Customers[0].gameObject;
                     queueGenerator.Customers.RemoveAt(0);
 

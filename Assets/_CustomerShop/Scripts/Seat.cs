@@ -57,15 +57,47 @@ public class Seat : MonoBehaviour
                 _customerRef = reception.CurrentPassenger;
                 reception.CurrentPassenger.transform.GetChild(0).GetComponent<CharacterUnlock>().anim.SetTrigger("Walk");
                 reception.CurrentPassenger.transform.GetChild(0).LookAt(transform.position);
-                reception.CurrentPassenger.transform.DOMove(SittingPos.position, 2).OnComplete(() =>
-              {
-                 
-                  _hasCustomer = true;
-                  RandomNumberGenerator();
-                  _customerRef.transform.DOLocalMoveX(_customerRef.transform.localPosition.x - .8f, 0);
+                if ((GetComponentInParent<Shop>() == null))
+                {
+                    reception.CurrentPassenger.transform.DOMove(SittingPos.position, 2).OnComplete(() =>
+                    {
 
-                  _customerRef.transform.GetChild(0).DOLocalRotate(new Vector3(0, 180, 0), 0);
-              }); 
+                        _hasCustomer = true;
+                        RandomNumberGenerator();
+                        _customerRef.transform.DOLocalMoveX(_customerRef.transform.localPosition.x - .8f, 0);
+
+                        _customerRef.transform.GetChild(0).DOLocalRotate(new Vector3(0, 180, 0), 0);
+                    });
+                }
+
+
+                else
+                {
+                    if (GetComponentInParent<Shop>().Id == "1")
+                    {
+                        reception.CurrentPassenger.transform.DOMove(SittingPos.position, 2).OnComplete(() =>
+                      {
+
+                          _hasCustomer = true;
+                          RandomNumberGenerator();
+                          _customerRef.transform.DOLocalMoveX(_customerRef.transform.localPosition.x - .8f, 0);
+
+                          _customerRef.transform.GetChild(0).DOLocalRotate(new Vector3(0, 180, 0), 0);
+                      });
+                    }
+                    else
+                    {
+                        reception.CurrentPassenger.transform.DOMove(SittingPos.position, 3).OnComplete(() =>
+                        {
+
+                            _hasCustomer = true;
+                            RandomNumberGenerator();
+                            _customerRef.transform.DOLocalMoveX(_customerRef.transform.localPosition.x - .8f, 0);
+
+                            _customerRef.transform.GetChild(0).DOLocalRotate(new Vector3(0, 180, 0), 0);
+                        });
+                    }
+                }
                 reception.CurrentPassenger = null; reception.Played = false;
             }
 
