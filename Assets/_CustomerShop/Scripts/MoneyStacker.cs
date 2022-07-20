@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using MoreMountains.NiceVibrations;
 using TMPro;
-using UnityEngine.UI;
+
 public class MoneyStacker : MonoBehaviour
 {
     public float InitialCoin;
@@ -24,7 +25,7 @@ public class MoneyStacker : MonoBehaviour
     public float NextPosCap;
     public int DummyNumber;
     public TextMeshProUGUI currencyText;
-    bool HasMoney;
+    private bool HasMoney;
     public GameObject CashUi;
     int CashAmmount;
 
@@ -33,7 +34,6 @@ public class MoneyStacker : MonoBehaviour
 
     [SerializeField] private float second;
     private float elapsedTime;
-    private int currencyAmount;
     private bool isPaymentOngoing = false;
     [SerializeField] private float timeToPay = 0.4f;
 
@@ -41,46 +41,35 @@ public class MoneyStacker : MonoBehaviour
     {
         StorageManager.SetTotalScore(StorageManager.GetTotalScore() + 88852);
 
-
         //  PlayerPrefs.SetInt("ArcadeCoin", InitialCoin);
 
         HasMoney = true;
 
         currencyText.text = StorageManager.GetTotalScore().ToString();
-        
-
     }
 
-
-
-    public void AddCoins(float ammount)
+    public void AddCoins(float amount)
     {
-        MainCoin += ammount;
-
+        MainCoin += amount;
         PlayerPrefs.SetFloat("ArcadeCoin", MainCoin);
-        
-        
- 
     }
-    public void RemoveCoins(int ammount , Shop s)
+
+    public void RemoveCoins(int amount, Shop shop)
     {
-       
-        if (s.BillboardCost > 0)
-            s.BillboardCost -= ammount;
-        s.BillBoardText.text = s.BillboardCost.ToString();
-        if (StorageManager.GetTotalScore() <= 0)
-            StorageManager.SetTotalScore(0);
-
-        StorageManager.SetTotalScore(StorageManager.GetTotalScore() - ammount);
-        currencyText.text = StorageManager.GetTotalScore().ToString();
-  
+        if (shop.BillboardCost > 0)
+        {
+            shop.BillboardCost -= amount;
+        }
+         
+        shop.BillBoardText.text = $"${shop.BillboardCost}";
         
-
-
+        if (StorageManager.GetTotalScore() <= 0)
+        {
+            StorageManager.SetTotalScore(0);
+        }
+        StorageManager.SetTotalScore(StorageManager.GetTotalScore() - amount);
+        currencyText.text = StorageManager.GetTotalScore().ToString();
     }
-
-
-
 
     private void OnTriggerStay(Collider other)
     {
@@ -91,7 +80,7 @@ public class MoneyStacker : MonoBehaviour
                 if (_time < second)
                 {
                     _time += Time.deltaTime;
-                   other.GetComponent<Shop>().progressBar.fillAmount = _time / second;
+                    other.GetComponent<Shop>().progressBar.fillAmount = _time / second;
                 }
                 else
                 {
@@ -111,34 +100,14 @@ public class MoneyStacker : MonoBehaviour
                 }
             }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             if (StorageManager.GetTotalScore() >= 0)
             {
-       
-
-
-
                 if (!m_GiveMoney)
                     StopCoroutine(DecreaseStack(other.gameObject));
                 else
                     StartCoroutine(DecreaseStack(other.gameObject));
             }
-
         }
-
     }
 
     private void OnTriggerExit(Collider other)
@@ -150,9 +119,9 @@ public class MoneyStacker : MonoBehaviour
             other.GetComponent<Shop>().progressBar.fillAmount = 0;
 
             isPaymentOngoing = false;
-
         }
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Shop"))
@@ -165,6 +134,8 @@ public class MoneyStacker : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Cash"))
         {
+            MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+            
             int roll = Random.Range(1, 4);
             other.transform.GetComponent<MeshRenderer>().enabled = false;
             other.transform.GetChild(0).gameObject.SetActive(true);
@@ -174,34 +145,26 @@ public class MoneyStacker : MonoBehaviour
             StorageManager.SetTotalScore(StorageManager.GetTotalScore() + CashAmmount);
             CashUi.transform.DOScale(CashUi.transform.localScale * 1.1f, .1f).OnComplete(() =>
             {
-
                 CashUi.transform.DOScale(new Vector3(2f, 2.17f, 1.5f), .1f);
-
-
-                });
-            Destroy(other.gameObject , 1);
-
+            });
+            Destroy(other.gameObject, 1);
         }
-        if (other.gameObject.CompareTag("Jarr"))
-        {
-           
-        }
-
+        // if (other.gameObject.CompareTag("Jarr"))
+        // {
+        //
+        // }
     }
-
+    
     public IEnumerator DecreaseStack(GameObject g)
     {
-       
-            yield return new WaitForSeconds(.3f);
-          
-            RemoveCoins(1 , g.GetComponent<Shop>());
-    
-            g.GetComponent<Shop>().AddMoney(1);
 
+        yield return new WaitForSeconds(.3f);
 
+        RemoveCoins(1, g.GetComponent<Shop>());
 
+        g.GetComponent<Shop>().AddMoney(1);
     }
-
+    
     public void DelayCll()
     {
         if (MoneyStack != null)
@@ -215,5 +178,3 @@ public class MoneyStacker : MonoBehaviour
         }
     }
 }
-
-

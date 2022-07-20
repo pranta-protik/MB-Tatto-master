@@ -35,7 +35,7 @@ public class Shop : MonoBehaviour
     private void Start()
     {
         BillboardCost = TotalCost;
-        BillBoardText.text = BillboardCost.ToString();
+        BillBoardText.text = $"${BillboardCost}";
         IsLocked = true;
         CurrentCostText.text = PlayerPrefs.GetInt("CurrentCost" + Id).ToString() ;
         TotalCostText.text = "/ " + TotalCost.ToString() ;
