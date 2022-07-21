@@ -53,11 +53,16 @@ public class UpgradesModel : MonoBehaviour
             return;
         }
         
+        ActivateSelectedStations();
+    }
+
+    public void ActivateSelectedStations()
+    {
         machineUpgrade.Activate();
         selectedTattooUpgrade.Activate();
         selectedJewelryUpgrade.Activate();
     }
-
+    
     private void OnDestroy()
     {
         for (int i = 0, count = tattooUpgrades.Count; i < count; i++)

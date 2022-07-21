@@ -56,6 +56,11 @@ public class UpgradesManager : Singleton<UpgradesManager>
         upgradesModel.ClearTattooStation(serialNo - 1);
     }
 
+    public void ActivateSelectedStations()
+    {
+        upgradesModel.ActivateSelectedStations();
+    }
+
     public GameObject GetTattooGun()
     {
         if(!MachineUpgradeSo.IsAvailable || !MachineUpgradeSo.IsUnlocked)

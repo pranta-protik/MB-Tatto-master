@@ -47,7 +47,10 @@ public abstract class UpgradeStation : MonoBehaviour
         }
         else
         {
-            SetUnlockState(!upgradeData.IsUnlocked);
+            if (PlayerPrefs.GetInt(PlayerPrefsKey.TUTORIAL_UPGRADE_MODEL_ACTIVATION_STATUS, 0) == 1)
+            {
+                SetUnlockState(!upgradeData.IsUnlocked);   
+            }
         }
 
         if (upgradeData.IsUnlocked)

@@ -36,7 +36,7 @@ public class TattooSeat : MonoBehaviour
     {
         _currencyDeposited = PlayerPrefs.GetInt(PlayerPrefsKey.TATTOO_SEAT_CURRENCY_DEPOSITED + tattooSeatId, 0);
         _isUnlocked = PlayerPrefs.GetInt(PlayerPrefsKey.TATTOO_SEAT_UNLOCK_STATUS + tattooSeatId, 0) == 1;
-        
+
         if (!_isUnlocked)
         {
             return;
@@ -53,6 +53,11 @@ public class TattooSeat : MonoBehaviour
     private void Start()
     {
         tattooSeatUnlockPlatform.Init(this);
+        
+        if (PlayerPrefs.GetInt(PlayerPrefsKey.TUTORIAL_STEP_ONE_STATUS, 0 ) == 0 && tattooSeatId != 1)
+        {
+            tattooSeatUnlockPlatform.gameObject.SetActive(false);
+        }
     }
 
     public bool CanDeposit(int amount, int amountInTransit)
@@ -95,7 +100,12 @@ public class TattooSeat : MonoBehaviour
         
         decorativeObject.SetActive(true);
         tattooArtist.SetActive(true);
-        // pointer.DestroyPointer();
+        
+        if (PlayerPrefs.GetInt(PlayerPrefsKey.TUTORIAL_STEP_ONE_STATUS, 0) == 0)
+        {
+            PointersManager.Instance.EnableNextPointer();    
+        }
+        
         _isUnlocked = true;
         PlayerPrefs.SetInt(PlayerPrefsKey.TATTOO_SEAT_UNLOCK_STATUS + tattooSeatId, 1);
     }

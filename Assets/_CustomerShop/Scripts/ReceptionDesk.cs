@@ -8,7 +8,6 @@ public class ReceptionDesk : MonoBehaviour
     [SerializeField] private List<Renderer> renderersToBlack = new List<Renderer>();
     [SerializeField] private ReceptionUnlockPlatform receptionUnlockPlatform;
     [SerializeField] private GameObject receptionist;
-    [SerializeField] private Pointer pointer;
     [SerializeField] private ParticleSystem receptionUnlockEffect;
     
     public Action PaymentSuccessfulAction;
@@ -44,7 +43,6 @@ public class ReceptionDesk : MonoBehaviour
         }
         
         receptionist.SetActive(true);
-        pointer.DestroyPointer();
         SetUnlockStatus(false);
     }
 
@@ -128,7 +126,12 @@ public class ReceptionDesk : MonoBehaviour
         SetUnlockStatus(false);
         receptionUnlockEffect.Play();
         receptionist.SetActive(true);
-        pointer.DestroyPointer();
+
+        if (PlayerPrefs.GetInt(PlayerPrefsKey.TUTORIAL_STEP_ONE_STATUS, 0) == 0)
+        {
+            PointersManager.Instance.EnableNextPointer();    
+        }
+        
         _isUnlocked = true;
         PlayerPrefs.SetInt(PlayerPrefsKey.RECEPTION_DESK_UNLOCK_STATUS, 1);
     }

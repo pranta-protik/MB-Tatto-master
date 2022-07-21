@@ -37,7 +37,7 @@ public class TattooSeatUnlockPlatform : MonoBehaviour
     public void Init(TattooSeat tattooSeat)
     {
         _tattooSeat = tattooSeat;
-        
+
         SetCashText();
     
         if (_tattooSeat.IsUnlocked)

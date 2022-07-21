@@ -481,9 +481,8 @@ public class HandBehaviour : MonoBehaviour
 
     public void DrawDefaultTattoo()
     {
-        Mpb.SetTexture(SHPropTexture, _textureManager.tattooGroups[tattooGroupId].defaultTattoos[GetCurrentDefaultTattooId()]);
-        _skinnedMeshRenderer.SetPropertyBlock(Mpb);
-        _skinnedMeshRenderer.material.DOFade(1, 1.8f);
+        _skinnedMeshRenderer.materials[0].mainTexture = _textureManager.tattooGroups[tattooGroupId].defaultTattoos[GetCurrentDefaultTattooId()];
+        _skinnedMeshRenderer.materials[0].DOFade(1, 1.8f);
     }
 
     // public void UpdateDefaultTattoo()
@@ -503,9 +502,8 @@ public class HandBehaviour : MonoBehaviour
 
         _skinnedMeshRenderer.materials[0].DOFade(0, 0.3f).OnComplete(() =>
         {
-            Mpb.SetTexture(SHPropTexture, tattooTexture);
-            _skinnedMeshRenderer.SetPropertyBlock(Mpb);
-            _skinnedMeshRenderer.material.DOFade(1, 0.5f);
+            _skinnedMeshRenderer.materials[0].mainTexture = tattooTexture;
+            _skinnedMeshRenderer.materials[0].DOFade(1, 0.5f);
         });
     }
 
@@ -513,9 +511,8 @@ public class HandBehaviour : MonoBehaviour
     {
         _skinnedMeshRenderer.material.DOFade(0, 0.3f).OnComplete(() =>
         {
-            Mpb.SetTexture(SHPropTexture, TextureManager.Instance.handBurntTexture);
-            _skinnedMeshRenderer.SetPropertyBlock(Mpb);
-            _skinnedMeshRenderer.material.DOFade(1, 0.5f);
+            _skinnedMeshRenderer.materials[0].mainTexture = TextureManager.Instance.handBurntTexture;
+            _skinnedMeshRenderer.materials[0].DOFade(1, 0.5f);
         });
     }
 
