@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-public class Reception : MonoBehaviour
+public class Reception_Old : MonoBehaviour
 {
     public QueueGenerator queueGenerator;
     public Transform StandPos;

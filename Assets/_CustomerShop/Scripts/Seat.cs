@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.Serialization;
+
 public class Seat : MonoBehaviour
 {
-    public Reception reception;
+    [FormerlySerializedAs("reception")] public Reception_Old receptionOld;
     public Transform Exit;
     public Transform SittingPos;
     public GameObject Customer;
@@ -52,14 +54,14 @@ public class Seat : MonoBehaviour
     {
         if (!_hasCustomer)
         {
-            if (reception.CurrentPassenger != null)
+            if (receptionOld.CurrentPassenger != null)
             {
-                _customerRef = reception.CurrentPassenger;
-                reception.CurrentPassenger.transform.GetChild(0).GetComponent<CharacterUnlock>().anim.SetTrigger("Walk");
-                reception.CurrentPassenger.transform.GetChild(0).LookAt(transform.position);
+                _customerRef = receptionOld.CurrentPassenger;
+                receptionOld.CurrentPassenger.transform.GetChild(0).GetComponent<CharacterUnlock>().anim.SetTrigger("Walk");
+                receptionOld.CurrentPassenger.transform.GetChild(0).LookAt(transform.position);
                 if ((GetComponentInParent<Shop>() == null))
                 {
-                    reception.CurrentPassenger.transform.DOMove(SittingPos.position, 2).OnComplete(() =>
+                    receptionOld.CurrentPassenger.transform.DOMove(SittingPos.position, 2).OnComplete(() =>
                     {
 
                         _hasCustomer = true;
@@ -75,7 +77,7 @@ public class Seat : MonoBehaviour
                 {
                     if (GetComponentInParent<Shop>().Id == "1")
                     {
-                        reception.CurrentPassenger.transform.DOMove(SittingPos.position, 2).OnComplete(() =>
+                        receptionOld.CurrentPassenger.transform.DOMove(SittingPos.position, 2).OnComplete(() =>
                       {
 
                           _hasCustomer = true;
@@ -87,7 +89,7 @@ public class Seat : MonoBehaviour
                     }
                     else
                     {
-                        reception.CurrentPassenger.transform.DOMove(SittingPos.position, 3).OnComplete(() =>
+                        receptionOld.CurrentPassenger.transform.DOMove(SittingPos.position, 3).OnComplete(() =>
                         {
 
                             _hasCustomer = true;
@@ -98,7 +100,7 @@ public class Seat : MonoBehaviour
                         });
                     }
                 }
-                reception.CurrentPassenger = null; reception.Played = false;
+                receptionOld.CurrentPassenger = null; receptionOld.Played = false;
             }
 
         }
