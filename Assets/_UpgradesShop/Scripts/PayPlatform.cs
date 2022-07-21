@@ -46,7 +46,8 @@ public class PayPlatform : MonoBehaviour
         
         if (!upgradeData.IsAvailable)
         {
-            GetComponent<BoxCollider>().enabled = false;
+            gameObject.SetActive(false);
+            // GetComponent<BoxCollider>().enabled = false;
             return;
         }
 
@@ -57,7 +58,7 @@ public class PayPlatform : MonoBehaviour
         }
         
         gameObject.SetActive(true);
-        GetComponent<BoxCollider>().enabled = true;
+        // GetComponent<BoxCollider>().enabled = true;
 
         upgradeData.UpgradesMaxedAction += OnUpgradesMaxed;
         upgradeData.PaymentSuccessfulAction += OnPaymentSuccessful;

@@ -11,4 +11,6 @@
     public const string EQUIPPED_TATTOO_AMOUNT = "EquippedTattooAmount";
     public const string FIRST_TIME_EQUIP = "FirstTimeEquip";
     public const string FIRST_TIME_UNEQUIP = "FirstTimeUnequip";
+
+    public const string TUTORIAL_STEP_ONE_STATUS = "TutorialStepOneStatus";
 }

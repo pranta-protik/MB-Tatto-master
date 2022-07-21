@@ -15,11 +15,18 @@ public class WatchAdPlatform : MonoBehaviour
 
     public void Init(bool isLocked)
     {
+        if (PlayerPrefs.GetInt(PlayerPrefsKey.TUTORIAL_STEP_ONE_STATUS, 0 ) == 0)
+        {
+            GetComponent<BoxCollider>().enabled = false;
+            return;
+        }
+        
         if (isLocked)
         {
             return;
         }
         
+        GetComponent<BoxCollider>().enabled = true;
         this.gameObject.SetActive(false);
     }
     

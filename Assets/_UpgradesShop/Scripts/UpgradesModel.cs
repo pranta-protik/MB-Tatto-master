@@ -48,6 +48,11 @@ public class UpgradesModel : MonoBehaviour
 
     private void Start()
     {
+        if (PlayerPrefs.GetInt(PlayerPrefsKey.TUTORIAL_STEP_ONE_STATUS, 0) == 0)
+        {
+            return;
+        }
+        
         machineUpgrade.Activate();
         selectedTattooUpgrade.Activate();
         selectedJewelryUpgrade.Activate();
