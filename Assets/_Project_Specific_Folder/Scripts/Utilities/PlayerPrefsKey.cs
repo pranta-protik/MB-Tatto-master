@@ -15,4 +15,8 @@
     public const string TUTORIAL_STEP_ONE_STATUS = "TutorialStepOneStatus";
     public const string RECEPTION_DESK_CURRENCY_DEPOSITED = "ReceptionDeskCurrencyDeposited";
     public const string RECEPTION_DESK_UNLOCK_STATUS = "ReceptionDeskUnlockStatus";
+    public const string TIP_JAR_UNLOCK_STATUS = "TipJarUnlockStatus";
+    public const string TATTOO_SEAT_CURRENCY_DEPOSITED = "TattooSeatCurrencyDeposited";
+    public const string TATTOO_SEAT_UNLOCK_STATUS = "TattooSeatUnlockStatus";
+    public const string TATTOO_SELECTED_SEAT_ID = "TattooSelectedSeatId";
 }

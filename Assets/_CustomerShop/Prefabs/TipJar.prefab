@@ -60,7 +60,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 3fff5953138a7594a8050c0229754d05, type: 2}
-  - {fileID: 2100000, guid: 54ed62810bd0bad4bb995422355c6448, type: 2}
+  - {fileID: 2100000, guid: 31775feb38df2e547923ed95c79fb03d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -394,6 +394,7 @@ MonoBehaviour:
   emptyCashJar: {fileID: 115489332157049595}
   cashJarText: {fileID: 962403894976239769}
   randomCashAmounts: 983a00003075000050c30000
+  tipJarWatchAdPlatform: {fileID: 7650689073294539153}
 --- !u!1 &962403894976239775
 GameObject:
   m_ObjectHideFlags: 0
