@@ -1,15 +1,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public class QueueGenerator : MonoBehaviour
 {
 
     [SerializeField] private Receptionist receptionist;
     [FormerlySerializedAs("Points")] public List<Transform> queuePositions;
-    [FormerlySerializedAs("CustomerPrefab")] public GameObject customerPrefab;
+    [FormerlySerializedAs("CustomerPrefab")] public GameObject[] customerPrefabs;
     public List<GameObject> customersList;
     
     private GameObject _customer;
@@ -19,10 +21,12 @@ public class QueueGenerator : MonoBehaviour
     void Awake()
     {
         receptionist.SendCustomerAction += OnCustomerRequested;
-        
-        for (int i = 0; i < queuePositions.Count; i++) {
-          _customer =  Instantiate(customerPrefab, queuePositions[i].transform.position, Quaternion.identity);
-          customersList.Add(_customer);
+
+        foreach (Transform queuePosition in queuePositions)
+        {
+            int index = Random.Range(0, customerPrefabs.Length);
+            _customer =  Instantiate(customerPrefabs[index], queuePosition.transform.position, queuePosition.transform.rotation);
+            customersList.Add(_customer);
         }
     }
 
@@ -30,6 +34,16 @@ public class QueueGenerator : MonoBehaviour
     {
         CustomerAssignedAction?.Invoke(customersList[0]);
         customersList.RemoveAt(0);
+        
+        for (int i = 0; i < customersList.Count ; i++)
+        {
+            customersList[i].transform.DOMove(queuePositions[i].transform.position, .5f).SetEase(Ease.InSine);
+        }
+
+        if (customersList.Count<5)
+        {
+            Generate(5);
+        }
     }
 
     private void OnDestroy()
@@ -37,11 +51,12 @@ public class QueueGenerator : MonoBehaviour
         receptionist.SendCustomerAction -= OnCustomerRequested;
     }
 
-    public void Generate(int a)
+    private void Generate(int generateFrom)
     {
-        for (int i = a; i < queuePositions.Count; i++)
+        for (int i = generateFrom; i < queuePositions.Count; i++)
         {
-            _customer = Instantiate(customerPrefab, queuePositions[i].transform.position, Quaternion.identity);
+            int index = Random.Range(0, customerPrefabs.Length);
+            _customer =  Instantiate(customerPrefabs[index], queuePositions[i].transform.position, queuePositions[i].transform.rotation);
             customersList.Add(_customer);
         }
     }

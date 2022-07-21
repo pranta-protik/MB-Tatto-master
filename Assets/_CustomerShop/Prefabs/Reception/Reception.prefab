@@ -789,7 +789,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3395471930208473922}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 3.422923, y: 0.06559253, z: 1.7087393}
+  m_LocalPosition: {x: 3.422923, y: -0.24, z: 1.7087393}
   m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
   m_Children:
   - {fileID: 8474233217454882958}
@@ -811,6 +811,7 @@ MonoBehaviour:
   receptionDesk: {fileID: 96587801895918876}
   waitingPosition: {fileID: 3395471930730363760}
   queueGenerator: {fileID: 0}
+  customerRequestQueue: []
 --- !u!1 &3395471930219839696
 GameObject:
   m_ObjectHideFlags: 0
@@ -947,13 +948,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3395471930730363763}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -0.83345795, y: 0.6798849, z: 1.7883215}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0.83345795, y: -0.3, z: 1.7883215}
   m_LocalScale: {x: 0.26674908, y: 0.34729317, z: 0.44422}
   m_Children: []
   m_Father: {fileID: 3395471931205184500}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &3395471930890174813
 GameObject:
   m_ObjectHideFlags: 0

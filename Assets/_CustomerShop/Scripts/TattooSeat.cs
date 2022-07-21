@@ -16,6 +16,10 @@ public class TattooSeat : MonoBehaviour
     [SerializeField] private Receptionist receptionist;
     [SerializeField] private Transform sittingPosition;
     [SerializeField] private GameObject tattooCustomer;
+    [SerializeField] private float minDrawTime;
+    [SerializeField] private float maxDrawTime;
+    [SerializeField] private Transform[] customerExitPoints;
+    [SerializeField] private CashGenerator cashGenerator;
     
     public Action PaymentSuccessfulAction;
 
@@ -27,8 +31,6 @@ public class TattooSeat : MonoBehaviour
     public int UnlockPrice => unlockPrice;
     public bool IsUnlocked => _isUnlocked;
 
-    public bool IsEmpty { get; private set; }
-    
     public int CurrencyDeposited
     {
         get => _currencyDeposited;
@@ -39,9 +41,13 @@ public class TattooSeat : MonoBehaviour
         }
     }
 
+    private TattooArtist _tattooArtist;
     private bool _isUnlocked;
     private int _currencyDeposited;
-    
+    private static readonly int IsWalking = Animator.StringToHash("IsWalking");
+    private static readonly int Sit = Animator.StringToHash("Sit");
+    private static readonly int GetUp = Animator.StringToHash("GetUp");
+
     private void Awake()
     {
         _currencyDeposited = PlayerPrefs.GetInt(PlayerPrefsKey.TATTOO_SEAT_CURRENCY_DEPOSITED + tattooSeatId, 0);
@@ -56,10 +62,8 @@ public class TattooSeat : MonoBehaviour
         Instantiate(TattooSeatsManager.Instance.GetTattooSeat(id), tattooSeatParent);
         
         decorativeObject.SetActive(true);
-        Instantiate(TattooSeatsManager.Instance.GetRandomTattooArtist(), tattooArtistParent);
+        _tattooArtist = Instantiate(TattooSeatsManager.Instance.GetRandomTattooArtist(), tattooArtistParent).GetComponent<TattooArtist>();
 
-        IsEmpty = true;
-        
         receptionist.AddRequestToQueue(this);
     }
 
@@ -126,9 +130,8 @@ public class TattooSeat : MonoBehaviour
     {
         PlayerPrefs.SetInt(PlayerPrefsKey.TATTOO_SELECTED_SEAT_ID + tattooSeatId, id);
         Instantiate(TattooSeatsManager.Instance.GetTattooSeat(id), tattooSeatParent);
-        Instantiate(TattooSeatsManager.Instance.GetRandomTattooArtist(), tattooArtistParent);
-
-        IsEmpty = true;
+        _tattooArtist = Instantiate(TattooSeatsManager.Instance.GetRandomTattooArtist(), tattooArtistParent).GetComponent<TattooArtist>();
+        
         receptionist.AddRequestToQueue(this);
         
         tattooSeatSelectionPanel.TattooSeatUnlockAction -= OnTattooSeatUnlocked;
@@ -138,14 +141,49 @@ public class TattooSeat : MonoBehaviour
     {
         if (TattooCustomer != null)
         {
-            TattooCustomer.transform.GetChild(0).LookAt(sittingPosition);
+            TattooCustomer.transform.LookAt(sittingPosition);
             
-            TattooCustomer.transform.GetChild(0).GetComponent<CharacterUnlock>().anim.Play("Walking");
+            TattooCustomer.transform.GetChild(0).GetComponent<Animator>().SetBool(IsWalking, true);
             TattooCustomer.transform.DOMove(sittingPosition.position, 3).SetEase(Ease.Linear).OnComplete(() =>
             {
-                TattooCustomer.transform.GetChild(0).GetComponent<CharacterUnlock>().anim.Play("idle 0");
+                TattooCustomer.transform.GetChild(0).GetComponent<Animator>().SetBool(IsWalking, false);
+                TattooCustomer.transform.DORotate(new Vector3(0f, 180f, 0f), 0).OnComplete(() =>
+                {
+                    TattooCustomer.transform.GetChild(0).GetComponent<Animator>().SetTrigger(Sit);
+                    Invoke(nameof(LayCustomer), 1f);
+                });
             });
         }
+    }
+
+    private void LayCustomer()
+    {
+        TattooCustomer.transform.GetChild(0).DOLocalMove(new Vector3(0.35f, 0f, -0.5f), 0f);
+        TattooCustomer.transform.GetChild(0).DOLocalRotate(Vector3.zero, 0f);
         
+        DrawTattoo();
+    }
+
+    private void DrawTattoo()
+    {
+        _tattooArtist.StartDrawingTattoo();
+        float drawTime = Random.Range(minDrawTime, maxDrawTime);
+        Invoke(nameof(RemoveCustomer), drawTime);
+    }
+
+    private void RemoveCustomer()
+    {
+        _tattooArtist.StopDrawingTattoo();
+        TattooCustomer.transform.GetChild(0).GetComponent<Animator>().SetTrigger(GetUp);
+        Invoke(nameof(MoveCustomerToExit), 0.8f);
+        cashGenerator.GenerateStack();
+    }
+
+    private void MoveCustomerToExit()
+    {
+        TattooCustomer.GetComponent<Customer>().Move(customerExitPoints);
+        TattooCustomer = null;
+        
+        receptionist.AddRequestToQueue(this);
     }
 }

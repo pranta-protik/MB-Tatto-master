@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1200745547215675732}
   - component: {fileID: 533802000258612686}
   - component: {fileID: 5629736448025435994}
+  - component: {fileID: -5923598096490840010}
   m_Layer: 0
   m_Name: Cash
   m_TagString: Cash
@@ -112,6 +113,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.249177, y: 1.9287039, z: 0.42672545}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-5923598096490840010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840233345546944641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fbdc89b49fc54847b93be7fdf0834ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1118604846768721170
 PrefabInstance:
   m_ObjectHideFlags: 0

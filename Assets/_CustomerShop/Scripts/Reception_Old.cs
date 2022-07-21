@@ -42,7 +42,7 @@ public class Reception_Old : MonoBehaviour
 
                 if(queueGenerator.customersList.Count < 5)
                 {
-                    queueGenerator.Generate(5);
+                    // queueGenerator.Generate(5);
                 }
 
 

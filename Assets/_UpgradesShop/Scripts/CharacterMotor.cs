@@ -13,8 +13,7 @@ public class CharacterMotor : MonoBehaviour
     private Vector3 dirVector;
     private Vector3 cameraModelDif;
     private bool isMoving = false;
-
-    private const string IS_MOVING = "IsMoving";
+    private static readonly int IsMoving = Animator.StringToHash("IsMoving");
     
     private void Awake()
     {
@@ -35,7 +34,7 @@ public class CharacterMotor : MonoBehaviour
         {
             if(!isMoving)
             {
-                characterAnimator.SetBool(IS_MOVING, true);
+                characterAnimator.SetBool(IsMoving, true);
                 isMoving = true;
             }
 
@@ -47,7 +46,7 @@ public class CharacterMotor : MonoBehaviour
         else if(isMoving)
         {
             characterAnimator.speed = 1f;
-            characterAnimator.SetBool(IS_MOVING, false);
+            characterAnimator.SetBool(IsMoving, false);
             isMoving = false;
         }
         

@@ -12,6 +12,7 @@ public class Receptionist : MonoBehaviour
     public GameObject WaitingCustomer { get; private set; }
     public bool IsCustomerReady { get; set; }
     public Action SendCustomerAction;
+    private static readonly int IsWalking = Animator.StringToHash("IsWalking");
 
     private void Start()
     {
@@ -32,10 +33,10 @@ public class Receptionist : MonoBehaviour
     {
         WaitingCustomer = customerObj;
 
-        WaitingCustomer.transform.GetChild(0).GetComponent<CharacterUnlock>().anim.Play("Walking");
+        WaitingCustomer.transform.GetChild(0).GetComponent<Animator>().SetBool(IsWalking, true);
         WaitingCustomer.transform.DOMove(waitingPosition.position, 3).SetEase(Ease.Linear).OnComplete(() =>
         {
-            WaitingCustomer.transform.GetChild(0).GetComponent<CharacterUnlock>().anim.Play("idle 0");
+            WaitingCustomer.transform.GetChild(0).GetComponent<Animator>().SetBool(IsWalking, false);
             IsCustomerReady = true;
         });
     }
