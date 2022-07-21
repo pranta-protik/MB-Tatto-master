@@ -9,7 +9,7 @@ public class ReceptionDesk : MonoBehaviour
     [SerializeField] private ReceptionUnlockPlatform receptionUnlockPlatform;
     [SerializeField] private GameObject receptionist;
     [SerializeField] private ParticleSystem receptionUnlockEffect;
-    
+
     public Action PaymentSuccessfulAction;
     public int UnlockPrice => unlockPrice;
     public bool IsUnlocked => _isUnlocked;

@@ -21,11 +21,10 @@ public class Seat : MonoBehaviour
     [SerializeField] GameObject _cloneObj;
     void Start()
     {
-
         RandomNumberGenerator();
+        
         if (GetComponentInParent<Shop>() != null)
         {
-
             if (!GetComponentInParent<Shop>().IsLocked)
             {
                 _customerRef = Instantiate(Customer, SittingPos.transform.position, Quaternion.identity);

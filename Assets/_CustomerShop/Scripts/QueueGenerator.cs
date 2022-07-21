@@ -1,38 +1,48 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class QueueGenerator : MonoBehaviour
 {
-    public List<Transform> Points;
-    public GameObject CustomerPrefab;
-    GameObject _customerPrefab;
-    public List<GameObject> Customers;
+
+    [SerializeField] private Receptionist receptionist;
+    [FormerlySerializedAs("Points")] public List<Transform> queuePositions;
+    [FormerlySerializedAs("CustomerPrefab")] public GameObject customerPrefab;
+    public List<GameObject> customersList;
+    
+    private GameObject _customer;
+    
+    public Action<GameObject> CustomerAssignedAction;
+    
     void Awake()
     {
-        for (int i = 0; i < Points.Count; i++) {
-          _customerPrefab =  Instantiate(CustomerPrefab, Points[i].transform.position, Quaternion.identity);
-          Customers.Add(_customerPrefab);
-
-
+        receptionist.SendCustomerAction += OnCustomerRequested;
+        
+        for (int i = 0; i < queuePositions.Count; i++) {
+          _customer =  Instantiate(customerPrefab, queuePositions[i].transform.position, Quaternion.identity);
+          customersList.Add(_customer);
         }
-        //int j = Random.Range(0, 3);
-
-        //if (j == 0) _customerPrefab.GetComponentInChildren<CharacterUnlock>().anim.Play("idle 0");
-        //if (j == 1) _customerPrefab.GetComponentInChildren<CharacterUnlock>().anim.Play("idle 1");
-        //if (j == 2) _customerPrefab.GetComponentInChildren<CharacterUnlock>().anim.Play("idle");
     }
+
+    private void OnCustomerRequested()
+    {
+        CustomerAssignedAction?.Invoke(customersList[0]);
+        customersList.RemoveAt(0);
+    }
+
+    private void OnDestroy()
+    {
+        receptionist.SendCustomerAction -= OnCustomerRequested;
+    }
+
     public void Generate(int a)
     {
-        for (int i = a; i < Points.Count; i++)
+        for (int i = a; i < queuePositions.Count; i++)
         {
-            _customerPrefab = Instantiate(CustomerPrefab, Points[i].transform.position, Quaternion.identity);
-            Customers.Add(_customerPrefab);
+            _customer = Instantiate(customerPrefab, queuePositions[i].transform.position, Quaternion.identity);
+            customersList.Add(_customer);
         }
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
