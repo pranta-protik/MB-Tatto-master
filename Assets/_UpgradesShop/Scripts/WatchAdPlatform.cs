@@ -97,7 +97,7 @@ public class WatchAdPlatform : MonoBehaviour
     // Collect Ad Rewards
     private void OnRewardedVideoAdRewardedEvent(VideoAdReward obj)
     {
-        transform.parent.GetComponent<IAdUpgrade>().UnlockStation();
+        GetComponentInParent<IAdUpgrade>().UnlockStation();
 
         if (!isUsernameUpdatePlatform)
         {

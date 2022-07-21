@@ -12,6 +12,11 @@ public class StorageManager : Singleton<StorageManager>
         CurrentScoreChangedAction?.Invoke(score);
     }
 
+    public static void AddToTotalScore(int amount)
+    {
+        PlayerPrefs.SetInt("LifeTimeScore", PlayerPrefs.GetInt("LifeTimeScore", 0) + amount);
+    }
+
     [HideInInspector] public int currentLevelScore;
 
     public static Action<int> CurrentScoreChangedAction;

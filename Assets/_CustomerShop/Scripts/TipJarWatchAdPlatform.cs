@@ -2,11 +2,10 @@ using HomaGames.HomaBelly;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class JarAd : MonoBehaviour
+public class TipJarWatchAdPlatform : MonoBehaviour
 {
     [SerializeField] private Image progressBar;
     [SerializeField] private float second;
-    [SerializeField] private bool isUsernameUpdatePlatform;
 
     private float _time;
     private bool isProgressBarFilling;
@@ -90,12 +89,7 @@ public class JarAd : MonoBehaviour
     // Collect Ad Rewards
     private void OnRewardedVideoAdRewardedEvent(VideoAdReward obj)
     {
-        GetComponentInParent<CashJar>().Jar();
-
-        if (!isUsernameUpdatePlatform)
-        {
-            this.gameObject.SetActive(false);
-        }
+        GetComponentInParent<TipJar>().CollectCashFromJar();
 
         // Rewarded Videos
         // Rewarded Claimed Event
