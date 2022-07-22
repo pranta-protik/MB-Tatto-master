@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using System;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 
@@ -8,8 +9,20 @@ public class Customer : MonoBehaviour
     [SerializeField] private TMP_Text dollarText;
     [SerializeField] private float popUpFinalYPosition;
     [SerializeField] private float popUpMoveDuration;
+    [SerializeField] private AnimatorOverrideController animatorOverrideController;
     
     private static readonly int IsWalking = Animator.StringToHash("IsWalking");
+
+    public void SetIdleAnimation(AnimationClip animationClip)
+    {
+        animatorOverrideController = new AnimatorOverrideController
+        {
+            runtimeAnimatorController = _animator.runtimeAnimatorController,
+            ["Breathing Idle"] = animationClip
+        };
+
+        _animator.runtimeAnimatorController = animatorOverrideController;
+    }
 
     public void Move(Transform[] exitPositions)
     {
