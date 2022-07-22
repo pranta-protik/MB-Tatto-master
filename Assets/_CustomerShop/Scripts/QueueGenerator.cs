@@ -21,8 +21,6 @@ public class QueueGenerator : MonoBehaviour
     
     void Awake()
     {
-        receptionist.SendCustomerAction += OnCustomerRequested;
-
         foreach (Transform queuePosition in queuePositions)
         {
             int index = Random.Range(0, customerPrefabs.Length);
@@ -30,11 +28,14 @@ public class QueueGenerator : MonoBehaviour
             
             int clipIndex = Random.Range(0, customerAnimationClips.Count);
             _customer.GetComponent<Customer>().SetIdleAnimation(customerAnimationClips[clipIndex]);
+            _customer.GetComponent<Customer>().SetupEmojis();
             
             customersList.Add(_customer);
         }
         
         customersParent.gameObject.SetActive(false);
+        
+        receptionist.SendCustomerAction += OnCustomerRequested;
     }
 
     private void OnCustomerRequested()
@@ -43,6 +44,8 @@ public class QueueGenerator : MonoBehaviour
         {
             customersParent.gameObject.SetActive(true);
         }
+        
+        customersList[0].GetComponent<Customer>().HideEmojis();
         
         CustomerAssignedAction?.Invoke(customersList[0]);
         customersList.RemoveAt(0);
@@ -72,6 +75,7 @@ public class QueueGenerator : MonoBehaviour
             
             int clipIndex = Random.Range(0, customerAnimationClips.Count);
             _customer.GetComponent<Customer>().SetIdleAnimation(customerAnimationClips[clipIndex]);
+            _customer.GetComponent<Customer>().SetupEmojis();
             
             customersList.Add(_customer);
         }
