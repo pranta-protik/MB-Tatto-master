@@ -21,6 +21,8 @@ public class QueueGenerator : MonoBehaviour
     
     void Awake()
     {
+        receptionist.SendCustomerAction += OnCustomerRequested;
+        
         foreach (Transform queuePosition in queuePositions)
         {
             int index = Random.Range(0, customerPrefabs.Length);
@@ -34,8 +36,6 @@ public class QueueGenerator : MonoBehaviour
         }
         
         customersParent.gameObject.SetActive(false);
-        
-        receptionist.SendCustomerAction += OnCustomerRequested;
     }
 
     private void OnCustomerRequested()

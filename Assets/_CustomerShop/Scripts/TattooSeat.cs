@@ -142,6 +142,7 @@ public class TattooSeat : MonoBehaviour
         if (TattooCustomer != null)
         {
             TattooCustomer.transform.LookAt(sittingPosition);
+            TattooCustomer.transform.GetChild(0).LookAt(sittingPosition);
             
             TattooCustomer.transform.GetChild(0).GetComponent<Animator>().SetBool(IsWalking, true);
             TattooCustomer.transform.DOMove(sittingPosition.position, 3).SetEase(Ease.Linear).OnComplete(() =>

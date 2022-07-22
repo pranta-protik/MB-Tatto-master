@@ -33,6 +33,9 @@ public class Receptionist : MonoBehaviour
     {
         WaitingCustomer = customerObj;
 
+        WaitingCustomer.transform.LookAt(waitingPosition);
+        WaitingCustomer.transform.GetChild(0).LookAt(waitingPosition);
+        
         WaitingCustomer.transform.GetChild(0).GetComponent<Animator>().SetBool(IsWalking, true);
         WaitingCustomer.transform.DOMove(waitingPosition.position, 3).SetEase(Ease.Linear).OnComplete(() =>
         {
@@ -64,21 +67,5 @@ public class Receptionist : MonoBehaviour
         WaitingCustomer = null;
         IsCustomerReady = false;
         SendCustomerAction?.Invoke();
-        
-        // if (IsCustomerReady && customerRequestQueue.Count > 0)
-        // {
-        //     Vector3 seatPosition = customerRequestQueue[0].SittingPosition.position;
-        //     customerRequestQueue.RemoveAt(0);
-        //
-        //     WaitingCustomer.transform.GetChild(0).GetComponent<CharacterUnlock>().anim.Play("Walking");
-        //     WaitingCustomer.transform.DOMove(seatPosition, 3).SetEase(Ease.Linear).OnComplete(() =>
-        //     {
-        //         WaitingCustomer.transform.GetChild(0).GetComponent<CharacterUnlock>().anim.Play("idle 0");
-        //
-        //         WaitingCustomer = null;
-        //         IsCustomerReady = false;
-        //         SendCustomerAction?.Invoke();
-        //     });
-        // }
     }
 }
