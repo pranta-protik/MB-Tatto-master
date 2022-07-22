@@ -19,6 +19,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: 24 - Default
     second: {fileID: 2100000, guid: 5f74faac4f7e6c14aa0cb87acac15940, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: frame_mat01
+    second: {fileID: 2800000, guid: 61b3a2e0b6b9e7043924a258a4db56a7, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

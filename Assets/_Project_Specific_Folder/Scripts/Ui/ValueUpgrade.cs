@@ -10,7 +10,8 @@ public class ValueUpgrade : MonoBehaviour
     [SerializeField] private Sprite watchAdValueUpgradeIcon;
     [SerializeField] private int baseUpgradeAmount;
     [SerializeField] [Range(1, 5)] private int upgradeMultiplier;
-    [SerializeField] private int requiredScoreForValueUpgrade;
+    [SerializeField] private int baseScoreForValueUpgrade;
+    [SerializeField] private int requiredScoreIncrementAmount;
     [SerializeField] private int startingLevelForUpgradeValueWatchingAd;
     
     private Image _valueUpgradeButtonImage;
@@ -21,6 +22,7 @@ public class ValueUpgrade : MonoBehaviour
     private bool _isAdEnabled;
     private int _currentUpgradeAmount;
     private int _currentPriceTagScore;
+    private int _requiredScoreForValueUpgrade;
     private int _priceTagTotalScore;
     private bool _isScaleEffectEnabled;
 
@@ -33,7 +35,8 @@ public class ValueUpgrade : MonoBehaviour
         _levelText = transform.GetChild(0).GetComponent<TMP_Text>();
         
         _levelText.SetText("$" + PlayerPrefs.GetInt(PlayerPrefsKey.VALUE_UPGRADE_AMOUNT, baseUpgradeAmount));
-        
+
+        _requiredScoreForValueUpgrade = PlayerPrefs.GetInt(PlayerPrefsKey.VALUE_UPGRADE_REQUIREMENT, baseScoreForValueUpgrade);
         PlayerPrefs.SetInt(PlayerPrefsKey.VALUE_UPGRADE_LEVEL, 1);
         
         CheckValueUpgradeButtonTypeStatus();
@@ -47,19 +50,20 @@ public class ValueUpgrade : MonoBehaviour
 
     private void CheckValueUpgradeButtonTypeStatus()
     {
-        if (PlayerPrefs.GetInt(PlayerPrefsKey.VALUE_UPGRADE_LEVEL, 1) >= startingLevelForUpgradeValueWatchingAd)
+        if (PlayerPrefs.GetInt(PlayerPrefsKey.VALUE_UPGRADE_LEVEL, 1) >= startingLevelForUpgradeValueWatchingAd ||
+            StorageManager.GetTotalScore() < _requiredScoreForValueUpgrade)
         {
             _isAdEnabled = true;
             _valueUpgradeButtonImage.sprite = watchAdValueUpgradeIcon;
             _costText.gameObject.SetActive(false);
-            
+
             if (!_isScaleEffectEnabled)
             {
                 _isScaleEffectEnabled = true;
                 _shineEffectObj.SetActive(true);
                 transform.DOScale(new Vector3(1.45f, 1.45f, 1.45f), 0.5f).SetLoops(-1, LoopType.Yoyo);
             }
-            
+
             // Rewarded Videos
             // Rewarded Suggested Event
             HomaBelly.Instance.TrackDesignEvent("rewarded:" + "suggested" + ":" + PlacementName.UPGRADE_VALUE);
@@ -69,15 +73,15 @@ public class ValueUpgrade : MonoBehaviour
             _isAdEnabled = false;
             _valueUpgradeButtonImage.sprite = normalValueUpgradeIcon;
             _costText.gameObject.SetActive(true);
-            _costText.SetText("$" + requiredScoreForValueUpgrade);
+            _costText.SetText("$" + _requiredScoreForValueUpgrade);
         }
     }
-    
+
     public void CheckValueUpgradeButtonAvailability()
     {
         if (!_isAdEnabled)
         {
-            if (StorageManager.GetTotalScore() >= requiredScoreForValueUpgrade)
+            if (StorageManager.GetTotalScore() >= _requiredScoreForValueUpgrade)
             {
                 _button.interactable = true;
                 _button.image.DOFade(1f, 0.1f);
@@ -102,10 +106,10 @@ public class ValueUpgrade : MonoBehaviour
 
         if (!_isAdEnabled)
         {
-            if (StorageManager.GetTotalScore() >= requiredScoreForValueUpgrade)
+            if (StorageManager.GetTotalScore() >= _requiredScoreForValueUpgrade)
             {
                 StorageManager.Instance.SetCurrentScore(_priceTagTotalScore);
-                StorageManager.SetTotalScore(StorageManager.GetTotalScore() - requiredScoreForValueUpgrade);
+                StorageManager.SetTotalScore(StorageManager.GetTotalScore() - _requiredScoreForValueUpgrade);
                 
                 UiManager.Instance.UpdatePriceTag(_priceTagTotalScore);
                 UiManager.Instance.ValueUpgradeEffect(_currentUpgradeAmount);
@@ -158,6 +162,9 @@ public class ValueUpgrade : MonoBehaviour
     
     private void ValueUpgradeButtonEffects(int totalScore)
     {
+        _requiredScoreForValueUpgrade += requiredScoreIncrementAmount;
+        PlayerPrefs.SetInt(PlayerPrefsKey.VALUE_UPGRADE_REQUIREMENT, _requiredScoreForValueUpgrade);
+        
         PlayerPrefs.SetInt("PriceTagBaseScore", totalScore);
         
         int lastUpgradeAmount = PlayerPrefs.GetInt(PlayerPrefsKey.VALUE_UPGRADE_AMOUNT, baseUpgradeAmount);

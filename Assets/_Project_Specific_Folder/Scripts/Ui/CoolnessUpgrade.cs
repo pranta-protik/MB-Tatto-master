@@ -9,7 +9,8 @@ public class CoolnessUpgrade : MonoBehaviour
     [SerializeField] private Sprite normalCoolnessUpgradeIcon;
     [SerializeField] private Sprite watchAdCoolnessUpgradeIcon;
     [SerializeField] private Sprite maxedOutCoolnessUpgradeIcon;
-    [SerializeField] private int requiredScoreForCoolnessUpgrade;
+    [SerializeField] private int baseScoreForCoolnessUpgrade;
+    [SerializeField] private int requiredScoreIncrementAmount;
     [SerializeField] private int startingLevelForUpgradeCoolnessWatchingAd;
 
     private Image _coolnessUpgradeButtonImage;
@@ -21,6 +22,7 @@ public class CoolnessUpgrade : MonoBehaviour
     private bool _isMaxedOut;
     private int _currentCoolnessLevel;
     private int _currentStageCoolnessLevel;
+    private int _requiredScoreForCoolnessUpgrade;
     private bool _isScaleEffectEnabled;
 
     private void Start()
@@ -40,6 +42,7 @@ public class CoolnessUpgrade : MonoBehaviour
             return;
         }
 
+        _requiredScoreForCoolnessUpgrade = PlayerPrefs.GetInt(PlayerPrefsKey.COOLNESS_UPGRADE_REQUIREMENT, baseScoreForCoolnessUpgrade);
         PlayerPrefs.SetInt(PlayerPrefsKey.CURRENT_STAGE_COOLNESS_LEVEL, 1);
 
         CheckCoolnessUpgradeButtonTypeStatus();
@@ -55,7 +58,8 @@ public class CoolnessUpgrade : MonoBehaviour
     {
         if (_isMaxedOut) return;
 
-        if (PlayerPrefs.GetInt(PlayerPrefsKey.CURRENT_STAGE_COOLNESS_LEVEL, 1) >= startingLevelForUpgradeCoolnessWatchingAd)
+        if (PlayerPrefs.GetInt(PlayerPrefsKey.CURRENT_STAGE_COOLNESS_LEVEL, 1) >= startingLevelForUpgradeCoolnessWatchingAd ||
+            StorageManager.GetTotalScore() < _requiredScoreForCoolnessUpgrade)
         {
             _isAdEnabled = true;
             _coolnessUpgradeButtonImage.sprite = watchAdCoolnessUpgradeIcon;
@@ -77,7 +81,7 @@ public class CoolnessUpgrade : MonoBehaviour
             _isAdEnabled = false;
             _coolnessUpgradeButtonImage.sprite = normalCoolnessUpgradeIcon;
             _costText.gameObject.SetActive(true);
-            _costText.SetText("$" + requiredScoreForCoolnessUpgrade);
+            _costText.SetText("$" + _requiredScoreForCoolnessUpgrade);
         }
     }
 
@@ -87,7 +91,7 @@ public class CoolnessUpgrade : MonoBehaviour
         
         if (_isAdEnabled) return;
 
-        if (StorageManager.GetTotalScore() >= requiredScoreForCoolnessUpgrade)
+        if (StorageManager.GetTotalScore() >= _requiredScoreForCoolnessUpgrade)
         {
             _button.interactable = true;
             _button.image.DOFade(1f, 0.1f);
@@ -128,9 +132,9 @@ public class CoolnessUpgrade : MonoBehaviour
 
             if (!_isAdEnabled)
             {
-                if (StorageManager.GetTotalScore() >= requiredScoreForCoolnessUpgrade)
+                if (StorageManager.GetTotalScore() >= _requiredScoreForCoolnessUpgrade)
                 {
-                    StorageManager.SetTotalScore(StorageManager.GetTotalScore() - requiredScoreForCoolnessUpgrade);
+                    StorageManager.SetTotalScore(StorageManager.GetTotalScore() - _requiredScoreForCoolnessUpgrade);
 
                     UiManager.Instance.UpdateTotalScoreText(StorageManager.GetTotalScore());
 
@@ -191,6 +195,9 @@ public class CoolnessUpgrade : MonoBehaviour
 
         GameManager.Instance.UpgradeTattooGun();
 
+        _requiredScoreForCoolnessUpgrade += requiredScoreIncrementAmount;
+        PlayerPrefs.SetInt(PlayerPrefsKey.COOLNESS_UPGRADE_REQUIREMENT, _requiredScoreForCoolnessUpgrade);
+        
         PlayerPrefs.SetInt(PlayerPrefsKey.COOLNESS_UPGRADE_LEVEL, coolnessLevel);
 
         PlayerPrefs.SetInt(PlayerPrefsKey.CURRENT_STAGE_COOLNESS_LEVEL, _currentStageCoolnessLevel);
