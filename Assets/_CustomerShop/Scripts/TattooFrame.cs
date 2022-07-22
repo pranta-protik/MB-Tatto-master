@@ -5,6 +5,7 @@ public class TattooFrame : MonoBehaviour
 {
     [SerializeField] private int frameId;
     [SerializeField] private MeshRenderer meshRenderer;
+    [SerializeField] private GameObject foreGround;
 
     private void Start()
     {
@@ -13,6 +14,7 @@ public class TattooFrame : MonoBehaviour
             return;
         }
 
+        foreGround.SetActive(false);
         meshRenderer.materials[0].mainTexture =
             TextureManager.Instance.allTattoos.SingleOrDefault(obj => obj.name == PlayerPrefs.GetString(PlayerPrefsKey.TATTOO_FRAME + frameId));
     }
