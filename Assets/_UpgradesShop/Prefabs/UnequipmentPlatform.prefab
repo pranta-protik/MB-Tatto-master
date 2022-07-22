@@ -58,6 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 842ed9a4fb06fe44983b1f791f964b18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upgradeType: 0
   progressBar: {fileID: 629191537215719747}
   second: 1
 --- !u!1 &2292515077717397120
@@ -125,7 +126,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2404a3e6a56557440bff5bca310da8b4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1c3a082fd9b6d164fb97537951cf9836, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
