@@ -1,13 +1,22 @@
 ﻿using DG.Tweening;
+using TMPro;
 using UnityEngine;
 
 public class Customer : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
+    [SerializeField] private TMP_Text dollarText;
+    [SerializeField] private float popUpFinalYPosition;
+    [SerializeField] private float popUpMoveDuration;
+    
     private static readonly int IsWalking = Animator.StringToHash("IsWalking");
 
     public void Move(Transform[] exitPositions)
     {
+        dollarText.enabled = true;
+        dollarText.transform.DOLocalMoveY(popUpFinalYPosition, popUpMoveDuration);
+        dollarText.DOFade(0, popUpMoveDuration);
+        
         transform.LookAt(exitPositions[0]);
         transform.GetChild(0).LookAt(exitPositions[0]);
         

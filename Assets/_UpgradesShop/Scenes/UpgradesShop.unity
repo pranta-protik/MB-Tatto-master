@@ -5364,7 +5364,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 950470348}
         m_TargetAssemblyTypeName: TattooSeatSelectionPanel, Assembly-CSharp
-        m_MethodName: OnTattooSeatSelectionButtonClick
+        m_MethodName: OnTattooSeatSelectionAdButtonClick
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15749,7 +15749,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 950470348}
         m_TargetAssemblyTypeName: TattooSeatSelectionPanel, Assembly-CSharp
-        m_MethodName: OnTattooSeatSelectionButtonClick
+        m_MethodName: OnTattooSeatSelectionAdButtonClick
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
