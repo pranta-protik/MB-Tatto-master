@@ -160,6 +160,6 @@ public class ReceptionUnlockPlatform : MonoBehaviour
     
     private void SetCashText()
     {
-        cashText.SetText(CurrencySystem.GetConvertedCurrencyString(_receptionDesk.UnlockPrice - _receptionDesk.CurrencyDeposited));
+        cashText.SetText($"${CurrencySystem.GetConvertedCurrencyString(_receptionDesk.UnlockPrice - _receptionDesk.CurrencyDeposited)}");
     }
 }

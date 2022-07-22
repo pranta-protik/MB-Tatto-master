@@ -159,6 +159,6 @@ public class TattooSeatUnlockPlatform : MonoBehaviour
     
     private void SetCashText()
     {
-        cashText.SetText(CurrencySystem.GetConvertedCurrencyString(_tattooSeat.UnlockPrice - _tattooSeat.CurrencyDeposited));
+        cashText.SetText($"${CurrencySystem.GetConvertedCurrencyString(_tattooSeat.UnlockPrice - _tattooSeat.CurrencyDeposited)}");
     }
 }

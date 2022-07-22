@@ -1092,8 +1092,10 @@ MonoBehaviour:
   receptionist: {fileID: 0}
   sittingPosition: {fileID: 5203719307516843117}
   tattooCustomer: {fileID: 0}
-  minDrawTime: 3
-  maxDrawTime: 6
+  minDrawTime: 6
+  maxDrawTime: 15
+  customerExitPoints: []
+  cashGenerator: {fileID: 0}
 --- !u!1 &5203719308102484161
 GameObject:
   m_ObjectHideFlags: 0
