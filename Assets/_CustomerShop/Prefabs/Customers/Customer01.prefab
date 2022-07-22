@@ -2227,6 +2227,7 @@ GameObject:
   - component: {fileID: 2620489901518937906}
   - component: {fileID: 5798219425802641230}
   - component: {fileID: 4532442970101924223}
+  - component: {fileID: 3553812915654305068}
   m_Layer: 5
   m_Name: DollarText
   m_TagString: Untagged
@@ -2350,6 +2351,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &3553812915654305068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8686223468845403083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2ef4ff6cdab4e2fb128789cf3cc3464, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: -180
 --- !u!1 &8690215186848912776
 GameObject:
   m_ObjectHideFlags: 0
