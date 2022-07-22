@@ -148,6 +148,8 @@ public class TattooSeat : MonoBehaviour
             TattooCustomer.transform.DOMove(sittingPosition.position, 3).SetEase(Ease.Linear).OnComplete(() =>
             {
                 TattooCustomer.transform.GetChild(0).GetComponent<Animator>().SetBool(IsWalking, false);
+               
+                TattooCustomer.transform.GetChild(0).DOLocalRotate(Vector3.zero, 0f);
                 TattooCustomer.transform.DORotate(new Vector3(0f, 180f, 0f), 0).OnComplete(() =>
                 {
                     TattooCustomer.transform.GetChild(0).GetComponent<Animator>().SetTrigger(Sit);

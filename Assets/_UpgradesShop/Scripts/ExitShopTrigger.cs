@@ -48,6 +48,11 @@ public class ExitShopTrigger : MonoBehaviour
          return;
       }
       
+      if (PlayerPrefs.GetInt(PlayerPrefsKey.TUTORIAL_STEP_TWO_STATUS, 0) == 0 && PlayerPrefs.GetInt("current_scene_text", 0) == 2)
+      {
+         return;
+      }
+
       if (PlayerPrefs.GetInt("FirstShopEncounter", 1) == 1 && PlayerPrefs.GetInt("current_scene_text", 0) == 3)
       {
          PlayerPrefs.SetInt("FirstShopEncounter", 0);

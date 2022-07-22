@@ -180,7 +180,7 @@ public class PayPlatform : MonoBehaviour
 
     private void SetCashText()
     {
-        cashText.SetText(CurrencySystem.GetConvertedCurrencyString(upgradeData.GetNextPurchasePrice() - upgradeData.CurrencyDeposited));
+        cashText.SetText($"${CurrencySystem.GetConvertedCurrencyString(upgradeData.GetNextPurchasePrice() - upgradeData.CurrencyDeposited)}");
     }
     #endregion
 }
