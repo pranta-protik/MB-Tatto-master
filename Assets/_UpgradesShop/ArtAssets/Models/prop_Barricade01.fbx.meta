@@ -3,7 +3,17 @@ guid: c257a95ec8946334fb473bf21377180f
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 07 - Default
+    second: {fileID: 2100000, guid: 1d01f7de470d9d94dbf0db7bf039d8ea, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: prop_Barricade01_mat01
+    second: {fileID: 2800000, guid: 4b9523affe25923428b3f417a6fd1818, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

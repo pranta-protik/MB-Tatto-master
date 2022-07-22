@@ -12,6 +12,7 @@ public class TattooSeat : MonoBehaviour
     [SerializeField] private Transform tattooArtistParent;
     [SerializeField] private TattooSeatSelectionPanel tattooSeatSelectionPanel;
     [SerializeField] private int unlockPrice;
+    [SerializeField] private ParticleSystem tattooSeatUnlockEffect;
     [SerializeField] private TattooSeatUnlockPlatform tattooSeatUnlockPlatform;
     [SerializeField] private Receptionist receptionist;
     [SerializeField] private Transform sittingPosition;
@@ -131,6 +132,7 @@ public class TattooSeat : MonoBehaviour
         PlayerPrefs.SetInt(PlayerPrefsKey.TATTOO_SELECTED_SEAT_ID + tattooSeatId, id);
         Instantiate(TattooSeatsManager.Instance.GetTattooSeat(id), tattooSeatParent);
         _tattooArtist = Instantiate(TattooSeatsManager.Instance.GetRandomTattooArtist(), tattooArtistParent).GetComponent<TattooArtist>();
+        tattooSeatUnlockEffect.Play();
         
         receptionist.AddRequestToQueue(this);
         

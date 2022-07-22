@@ -5,6 +5,8 @@ using UnityEngine.Serialization;
 
 public class PointersManager : Singleton<PointersManager>
 {
+    [SerializeField] private GameObject exitBarrier;
+    [SerializeField] private GameObject sideBarrier;
     [FormerlySerializedAs("pointers")] [SerializeField] private List<GameObject> firstTutorialPointers;
     [SerializeField] private GameObject secondTutorialPointer;
     [SerializeField] private GameObject tattooSeat;
@@ -14,6 +16,9 @@ public class PointersManager : Singleton<PointersManager>
     public override void Start()
     {
         base.Start();
+        
+        exitBarrier.SetActive(false);
+        sideBarrier.SetActive(false);
         
         foreach (GameObject pointer in firstTutorialPointers)
         {
@@ -35,10 +40,14 @@ public class PointersManager : Singleton<PointersManager>
                 return;
             }
 
+            exitBarrier.SetActive(true);
             secondTutorialPointer.SetActive(true);
             
             return;
         }
+        
+        sideBarrier.SetActive(true);
+        exitBarrier.SetActive(true);
         
         _currentPointerIndex = PlayerPrefs.GetInt(PlayerPrefsKey.CURRENT_POINTER_INDEX, 0);
         firstTutorialPointers[_currentPointerIndex].SetActive(true);
@@ -57,6 +66,7 @@ public class PointersManager : Singleton<PointersManager>
         {
             PlayerPrefs.SetInt(PlayerPrefsKey.TUTORIAL_STEP_ONE_STATUS, 1);
             PlayerPrefs.SetInt(PlayerPrefsKey.TIP_JAR_UNLOCK_STATUS, 1);
+            exitBarrier.SetActive(false);
             return;
         }
         
@@ -74,5 +84,6 @@ public class PointersManager : Singleton<PointersManager>
     {
         secondTutorialPointer.GetComponent<Pointer>().DestroyPointer();
         PlayerPrefs.SetInt(PlayerPrefsKey.TUTORIAL_STEP_TWO_STATUS, 1);
+        exitBarrier.SetActive(false);
     }
 }
