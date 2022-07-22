@@ -8,12 +8,28 @@ public class CashGenerator : Singleton<CashGenerator>
     public GameObject CashPrefab;
     public BoxCollider boxCollider;
 
-    public void GenerateStack()
+    public override void Start()
+    {
+        base.Start();
+
+        if (PlayerPrefs.GetInt(PlayerPrefsKey.TUTORIAL_STEP_ONE_STATUS, 0) == 0)
+        {
+            return;
+        }
+        
+        GenerateStack();
+    }
+
+    private void GenerateStack()
     {
         for (int i = 0; i < CashTransform.Count; i++)
         {
             Instantiate(CashPrefab, RandomPointInBounds(boxCollider.bounds), Quaternion.Euler(new Vector3(-90, 0, 0)));
         }
+    }
+    public void GenerateSingleStack()
+    {
+        Instantiate(CashPrefab, RandomPointInBounds(boxCollider.bounds), Quaternion.Euler(new Vector3(-90, 0, 0)));
     }
 
     private Vector3 RandomPointInBounds(Bounds bounds)

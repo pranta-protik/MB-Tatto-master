@@ -881,6 +881,10 @@ MonoBehaviour:
   m_IsSingletonLogsEnabled: 0
   CashTransform:
   - {fileID: 543450651846019008}
+  - {fileID: 543450652876584843}
+  - {fileID: 543450651991033617}
+  - {fileID: 543450652872954892}
+  - {fileID: 543450652340869517}
   CashPrefab: {fileID: 840233345546944641, guid: 0f358e6b1b6457143a94364e9e5eb8a0, type: 3}
   boxCollider: {fileID: 448457687}
 --- !u!23 &448457689
@@ -5748,7 +5752,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &919132147653860730
 GameObject:
   m_ObjectHideFlags: 0
@@ -5780,7 +5784,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &919132148938173745
 GameObject:
   m_ObjectHideFlags: 0
@@ -5796,7 +5800,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &919132148949192374
 GameObject:
   m_ObjectHideFlags: 0
@@ -5812,7 +5816,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1001 &946701729664117501
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6070,6 +6074,10 @@ PrefabInstance:
       propertyPath: queueGenerator
       value: 
       objectReference: {fileID: 430861902}
+    - target: {fileID: 3395471930219839701, guid: 047e6ed8b95f6d040aa6a2c92844bc9a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.41
+      objectReference: {fileID: 0}
     - target: {fileID: 3395471930219839703, guid: 047e6ed8b95f6d040aa6a2c92844bc9a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

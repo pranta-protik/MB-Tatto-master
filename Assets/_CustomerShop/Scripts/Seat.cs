@@ -43,7 +43,7 @@ public class Seat : MonoBehaviour
             _customerRef.GetComponentInChildren<CharacterUnlock>().anim.Play("Sitting");
 
             _hasCustomer = true;
-            CashGenerator.Instance.GenerateStack();
+            CashGenerator.Instance.GenerateSingleStack();
         }
        
 

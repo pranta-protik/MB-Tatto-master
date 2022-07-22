@@ -47,7 +47,7 @@ public class Shop : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("CurrentCost" + Id) >= TotalCost)
         {
-            CashGenerator.Instance.GenerateStack();
+            CashGenerator.Instance.GenerateSingleStack();
             CheckForUnlockedSeat();
 
             IsLocked = false;

@@ -179,7 +179,7 @@ public class TattooSeat : MonoBehaviour
         _tattooArtist.StopDrawingTattoo();
         TattooCustomer.transform.GetChild(0).GetComponent<Animator>().SetTrigger(GetUp);
         Invoke(nameof(MoveCustomerToExit), 0.8f);
-        cashGenerator.GenerateStack();
+        cashGenerator.GenerateSingleStack();
     }
 
     private void MoveCustomerToExit()
