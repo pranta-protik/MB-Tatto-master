@@ -4,7 +4,8 @@ using Singleton;
 
 public class CashGenerator : Singleton<CashGenerator>
 {
-    public List<Transform> CashTransform = new List<Transform>();
+    // public List<Transform> CashTransform = new List<Transform>();
+    [SerializeField] private int multiplier;
     public GameObject CashPrefab;
     public BoxCollider boxCollider;
 
@@ -22,7 +23,7 @@ public class CashGenerator : Singleton<CashGenerator>
 
     private void GenerateStack()
     {
-        for (int i = 0; i < CashTransform.Count; i++)
+        for (int i = 0; i < PlayerPrefs.GetInt(PlayerPrefsKey.UNLOCKED_TATTOO_SEATS, 0) * multiplier; i++)
         {
             Instantiate(CashPrefab, RandomPointInBounds(boxCollider.bounds), Quaternion.Euler(new Vector3(-90, 0, 0)));
         }

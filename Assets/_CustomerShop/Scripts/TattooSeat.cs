@@ -125,6 +125,9 @@ public class TattooSeat : MonoBehaviour
         
         _isUnlocked = true;
         PlayerPrefs.SetInt(PlayerPrefsKey.TATTOO_SEAT_UNLOCK_STATUS + tattooSeatId, 1);
+
+        int unlockedSeats = PlayerPrefs.GetInt(PlayerPrefsKey.UNLOCKED_TATTOO_SEATS, 0);
+        PlayerPrefs.SetInt(PlayerPrefsKey.UNLOCKED_TATTOO_SEATS, unlockedSeats + 1);
     }
 
     private void OnTattooSeatUnlocked(int id)
