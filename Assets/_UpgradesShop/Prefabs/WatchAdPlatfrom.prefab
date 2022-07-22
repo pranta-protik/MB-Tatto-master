@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 634119257014064835}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.0000029504295}
   m_LocalPosition: {x: -0.029, y: -0, z: -1.551}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 7290348488747652487}
   m_Father: {fileID: 0}
@@ -60,6 +60,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   progressBar: {fileID: 629191537215719747}
   second: 1
+  isUsernameUpdatePlatform: 0
 --- !u!1 &1378960639605518603
 GameObject:
   m_ObjectHideFlags: 0
@@ -125,7 +126,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c5fae1cc0f5733f43b151da1c5c726a8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 886028bbe725ed54aa87df3291a32b6b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
