@@ -26,7 +26,7 @@ public class Customer : MonoBehaviour
 
     public void SetupEmojis()
     {
-        _startTimer = Random.Range(2f, 5f);
+        _startTimer = Random.Range(3f, 5f);
         _timer = _startTimer;
         
         int index = Random.Range(0, emojis.Count);
@@ -34,8 +34,6 @@ public class Customer : MonoBehaviour
         
         _isPopUpActive = true;
         _isPopUpEnabled = true;
-        
-        emojiPopUp.transform.DOScale(new Vector3(0.7f, 0.7f, 0.7f), 1f).SetLoops(-1, LoopType.Yoyo).SetDelay(Random.Range(0f, 1f));
     }
     
     private void Update()
@@ -53,7 +51,25 @@ public class Customer : MonoBehaviour
             
             int index = Random.Range(0, emojis.Count);
             emojiPopUp.sprite = emojis[index];
-            emojiPopUp.gameObject.SetActive(_isPopUpEnabled);
+
+            if (_isPopUpEnabled)
+            {
+                emojiPopUp.gameObject.SetActive(_isPopUpEnabled);
+
+                emojiPopUp.transform.DOScale(new Vector3(0.7f, 0.7f, 0.7f), 0.5f).OnComplete(() =>
+                {
+                    emojiPopUp.transform.DOScale(new Vector3(0.9f, 0.9f, 0.9f), 0.7f).SetLoops(-1, LoopType.Yoyo).SetDelay(Random.Range(0f, 1f));
+                });    
+            }
+            else
+            {
+                emojiPopUp.transform.DOKill();
+                emojiPopUp.transform.DOScale(Vector3.zero, 0.5f).OnComplete(() =>
+                {
+                    emojiPopUp.gameObject.SetActive(false); 
+                });
+            }
+            
         }
     }
 
@@ -61,7 +77,10 @@ public class Customer : MonoBehaviour
     {
         _isPopUpActive = false;
         emojiPopUp.transform.DOKill();
-        emojiPopUp.gameObject.SetActive(false);
+        emojiPopUp.transform.DOScale(Vector3.zero, 0.5f).OnComplete(() =>
+        {
+            emojiPopUp.gameObject.SetActive(false); 
+        });
     }
 
     public void SetIdleAnimation(AnimationClip animationClip)

@@ -24,4 +24,5 @@
     public const string TATTOO_SELECTED_SEAT_ID = "TattooSelectedSeatId";
     public const string CURRENT_POINTER_INDEX = "CurrentPointerIndex";
     public const string TUTORIAL_UPGRADE_MODEL_ACTIVATION_STATUS = "TutorialUpgradeModelActivationStatus";
+    public const string TATTOO_FRAME = "TattooFrame";
 }

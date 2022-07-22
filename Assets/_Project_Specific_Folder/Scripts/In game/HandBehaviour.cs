@@ -364,6 +364,12 @@ public class HandBehaviour : MonoBehaviour
             _mainHandController.enabled = false;
             _tattooHandController.enabled = false;
 
+            if (levelId <= 24)
+            {
+                PlayerPrefs.SetString(PlayerPrefsKey.TATTOO_FRAME + levelId,
+                    tattooHand.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().materials[0].mainTexture.name);
+            }
+
             GameManager.Instance.mobileObj = other.transform.GetChild(2).gameObject;
 
             if (levelId == GameManager.Instance.ratingDisplayLevel)

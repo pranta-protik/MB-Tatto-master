@@ -24,4 +24,6 @@ public class TextureManager : Singleton<TextureManager>
 
     [Space] [Header("Tattoo Section")] 
     public List<TattooGroup> tattooGroups;
+
+    public List<Texture2D> allTattoos;
 }
