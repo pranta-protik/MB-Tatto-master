@@ -94,6 +94,11 @@ public class JewelryStation : UpgradeStation
     {
         base.OnUnlocked(upgrade);
         
+        if (PlayerPrefs.GetInt(PlayerPrefsKey.TUTORIAL_STEP_TWO_STATUS, 0) == 0)
+        {
+            PointersManager.Instance.DisableSecondTutorialPointer();    
+        }
+        
         UpgradesManager.Instance.ClearAllJewelryStations();
         
         if (equipmentPlatform != null && unequipmentPlatform!= null)

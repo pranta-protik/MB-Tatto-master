@@ -13,6 +13,7 @@
     public const string FIRST_TIME_UNEQUIP = "FirstTimeUnequip";
 
     public const string TUTORIAL_STEP_ONE_STATUS = "TutorialStepOneStatus";
+    public const string TUTORIAL_STEP_TWO_STATUS = "TutorialStepTwoStatus";
     public const string RECEPTION_DESK_CURRENCY_DEPOSITED = "ReceptionDeskCurrencyDeposited";
     public const string RECEPTION_DESK_UNLOCK_STATUS = "ReceptionDeskUnlockStatus";
     public const string TIP_JAR_UNLOCK_STATUS = "TipJarUnlockStatus";

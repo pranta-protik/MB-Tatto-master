@@ -14,7 +14,7 @@ public class StorageManager : Singleton<StorageManager>
 
     public static void AddToTotalScore(int amount)
     {
-        PlayerPrefs.SetInt("LifeTimeScore", PlayerPrefs.GetInt("LifeTimeScore", 0) + amount);
+        SetTotalScore(PlayerPrefs.GetInt("LifeTimeScore", 0) + amount);
     }
 
     [HideInInspector] public int currentLevelScore;
