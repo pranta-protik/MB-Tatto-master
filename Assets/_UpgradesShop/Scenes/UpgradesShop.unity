@@ -2201,7 +2201,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7274658267433759688, guid: 8ac56d96fb4dc384b84c60f41253240d, type: 3}
       propertyPath: unlockPrice
-      value: 3000
+      value: 200000
       objectReference: {fileID: 0}
     - target: {fileID: 7274658267433759688, guid: 8ac56d96fb4dc384b84c60f41253240d, type: 3}
       propertyPath: receptionist
@@ -4324,7 +4324,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7274658267433759688, guid: 8ac56d96fb4dc384b84c60f41253240d, type: 3}
       propertyPath: unlockPrice
-      value: 3000
+      value: 100000
       objectReference: {fileID: 0}
     - target: {fileID: 7274658267433759688, guid: 8ac56d96fb4dc384b84c60f41253240d, type: 3}
       propertyPath: receptionist
@@ -5937,6 +5937,10 @@ PrefabInstance:
     - target: {fileID: 5203719308017449369, guid: 8ac56d96fb4dc384b84c60f41253240d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7274658267433759688, guid: 8ac56d96fb4dc384b84c60f41253240d, type: 3}
+      propertyPath: unlockPrice
+      value: 300000
       objectReference: {fileID: 0}
     - target: {fileID: 7274658267433759688, guid: 8ac56d96fb4dc384b84c60f41253240d, type: 3}
       propertyPath: receptionist
@@ -7852,6 +7856,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3394086053857209269, guid: c79fd9c89339b48b480ca133d19efc37, type: 3}
+      propertyPath: paymentsAmount
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 3505655640763515041, guid: c79fd9c89339b48b480ca133d19efc37, type: 3}
       propertyPath: m_LocalPosition.x
       value: 18.1
@@ -8511,6 +8519,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 962403894945326105, guid: 590d4ad4bab41a6488318cfb605ec31f, type: 3}
+      propertyPath: randomCashAmounts.Array.data[0]
+      value: 15000
+      objectReference: {fileID: 0}
+    - target: {fileID: 962403894945326105, guid: 590d4ad4bab41a6488318cfb605ec31f, type: 3}
+      propertyPath: randomCashAmounts.Array.data[1]
+      value: 30000
+      objectReference: {fileID: 0}
+    - target: {fileID: 962403894945326105, guid: 590d4ad4bab41a6488318cfb605ec31f, type: 3}
+      propertyPath: randomCashAmounts.Array.data[2]
+      value: 50000
+      objectReference: {fileID: 0}
     - target: {fileID: 962403894945326111, guid: 590d4ad4bab41a6488318cfb605ec31f, type: 3}
       propertyPath: m_Name
       value: TipJar
@@ -8710,7 +8730,7 @@ PrefabInstance:
       objectReference: {fileID: 430861902}
     - target: {fileID: 96587801895918876, guid: 047e6ed8b95f6d040aa6a2c92844bc9a, type: 3}
       propertyPath: unlockPrice
-      value: 10
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 3395471930208473923, guid: 047e6ed8b95f6d040aa6a2c92844bc9a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8840,6 +8860,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6589256535098048612, guid: 047e6ed8b95f6d040aa6a2c92844bc9a, type: 3}
+      propertyPath: paymentsAmount
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 047e6ed8b95f6d040aa6a2c92844bc9a, type: 3}
 --- !u!65 &4313018980945692662
@@ -8916,7 +8940,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7274658267433759688, guid: 8ac56d96fb4dc384b84c60f41253240d, type: 3}
       propertyPath: unlockPrice
-      value: 10
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 7274658267433759688, guid: 8ac56d96fb4dc384b84c60f41253240d, type: 3}
       propertyPath: receptionist
@@ -8946,6 +8970,10 @@ PrefabInstance:
       propertyPath: customerExitPoints.Array.data[1]
       value: 
       objectReference: {fileID: 1149547526}
+    - target: {fileID: 8547307486924531973, guid: 8ac56d96fb4dc384b84c60f41253240d, type: 3}
+      propertyPath: paymentsAmount
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ac56d96fb4dc384b84c60f41253240d, type: 3}
 --- !u!33 &5533429626852837624
