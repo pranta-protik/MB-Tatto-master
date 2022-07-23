@@ -2201,7 +2201,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7274658267433759688, guid: 8ac56d96fb4dc384b84c60f41253240d, type: 3}
       propertyPath: unlockPrice
-      value: 200000
+      value: 50000
       objectReference: {fileID: 0}
     - target: {fileID: 7274658267433759688, guid: 8ac56d96fb4dc384b84c60f41253240d, type: 3}
       propertyPath: receptionist
@@ -4324,7 +4324,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7274658267433759688, guid: 8ac56d96fb4dc384b84c60f41253240d, type: 3}
       propertyPath: unlockPrice
-      value: 100000
+      value: 20000
       objectReference: {fileID: 0}
     - target: {fileID: 7274658267433759688, guid: 8ac56d96fb4dc384b84c60f41253240d, type: 3}
       propertyPath: receptionist
@@ -5940,7 +5940,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7274658267433759688, guid: 8ac56d96fb4dc384b84c60f41253240d, type: 3}
       propertyPath: unlockPrice
-      value: 300000
+      value: 100000
       objectReference: {fileID: 0}
     - target: {fileID: 7274658267433759688, guid: 8ac56d96fb4dc384b84c60f41253240d, type: 3}
       propertyPath: receptionist
@@ -8521,15 +8521,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 962403894945326105, guid: 590d4ad4bab41a6488318cfb605ec31f, type: 3}
       propertyPath: randomCashAmounts.Array.data[0]
-      value: 15000
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 962403894945326105, guid: 590d4ad4bab41a6488318cfb605ec31f, type: 3}
       propertyPath: randomCashAmounts.Array.data[1]
-      value: 30000
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 962403894945326105, guid: 590d4ad4bab41a6488318cfb605ec31f, type: 3}
       propertyPath: randomCashAmounts.Array.data[2]
-      value: 50000
+      value: 30000
       objectReference: {fileID: 0}
     - target: {fileID: 962403894945326111, guid: 590d4ad4bab41a6488318cfb605ec31f, type: 3}
       propertyPath: m_Name
