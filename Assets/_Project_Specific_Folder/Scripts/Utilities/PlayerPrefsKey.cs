@@ -26,4 +26,6 @@
     public const string TUTORIAL_UPGRADE_MODEL_ACTIVATION_STATUS = "TutorialUpgradeModelActivationStatus";
     public const string TATTOO_FRAME = "TattooFrame";
     public const string UNLOCKED_TATTOO_SEATS = "UnlockedTattooSeats";
+
+    public const string FOUNTAIN_UNLOCK_STATUS = "FountainUnlockStatus";
 }
