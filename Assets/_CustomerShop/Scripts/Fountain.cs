@@ -8,6 +8,7 @@ public class Fountain : MonoBehaviour, IAdUpgrade
     [SerializeField] private List<GameObject> waterEffects;
     [SerializeField] private GameObject water;
     [SerializeField] private WatchAdPlatform watchAdPlatform;
+    [SerializeField] private float rotationDuration = 20f;
 
     private List<Texture2D> _originalTextures;
     private List<Color> _originalColors;
@@ -20,8 +21,20 @@ public class Fountain : MonoBehaviour, IAdUpgrade
         
         watchAdPlatform.Init(!_isUnlocked);
         SetUnlockStatus(_isUnlocked);
+
+        if (_isUnlocked)
+        {
+         StartRotation();   
+        }
     }
 
+    private void StartRotation()
+    {
+        transform.GetChild(0).DOBlendableRotateBy(new Vector3(0f, 360f, 0f), rotationDuration, RotateMode.FastBeyond360)
+            .SetLoops(-1, LoopType.Incremental)
+            .SetEase(Ease.Linear);
+    }
+    
     private void SetUnlockStatus(bool isUnlocked)
     {
         if (!isUnlocked)
@@ -70,5 +83,6 @@ public class Fountain : MonoBehaviour, IAdUpgrade
     {
         PlayerPrefs.SetInt(PlayerPrefsKey.FOUNTAIN_UNLOCK_STATUS, 1);
         SetUnlockStatus(true);
+        StartRotation();
     }
 }
