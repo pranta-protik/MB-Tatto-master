@@ -1,11 +1,10 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using HomaGames.HomaBelly;
 using TMPro;
-using MoreMountains.NiceVibrations;
+using UnityEngine.iOS;
 using Random = UnityEngine.Random;
 
 public class HandBehaviour : MonoBehaviour
@@ -144,7 +143,10 @@ public class HandBehaviour : MonoBehaviour
         if (other.gameObject.CompareTag("GoodGate"))
         {
             _hasGoneThroughGoodGate = true;
-            MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+            if (HapticsManager.Instance.IsHapticsAllowed)
+            {
+                Handheld.Vibrate();   
+            }
             other.GetComponent<BoxCollider>().enabled = false;
             
             Gates gate = other.GetComponentInParent<Gates>();
@@ -171,7 +173,10 @@ public class HandBehaviour : MonoBehaviour
 
         if (other.gameObject.CompareTag("BadGate"))
         {
-            MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+            if (HapticsManager.Instance.IsHapticsAllowed)
+            {
+                Handheld.Vibrate();   
+            }
             other.GetComponent<BoxCollider>().enabled = false;
             
             Gates gate = other.GetComponentInParent<Gates>();
@@ -224,7 +229,10 @@ public class HandBehaviour : MonoBehaviour
 
         if (other.gameObject.CompareTag("Blue"))
         {
-            MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+            if (HapticsManager.Instance.IsHapticsAllowed)
+            {
+                Handheld.Vibrate();   
+            }
             other.GetComponent<BoxCollider>().enabled = false;
             
             _shineEffect.Play();
@@ -251,7 +259,10 @@ public class HandBehaviour : MonoBehaviour
 
         if (other.gameObject.CompareTag("Yellow"))
         {
-            MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+            if (HapticsManager.Instance.IsHapticsAllowed)
+            {
+                Handheld.Vibrate();   
+            }
             other.GetComponent<BoxCollider>().enabled = false;
             
             _shineEffect.Play();
@@ -374,7 +385,9 @@ public class HandBehaviour : MonoBehaviour
 
             if (levelId == GameManager.Instance.ratingDisplayLevel)
             {
-                UiManager.Instance.ratingScreen.SetActive(true);
+                GameManager.Instance.MobileScreenTransition();
+                Device.RequestStoreReview();
+                // UiManager.Instance.ratingScreen.SetActive(true);
             }
             else
             {
@@ -408,8 +421,10 @@ public class HandBehaviour : MonoBehaviour
 
     private void CommonObstacleHitEffects()
     {
-        MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
-        
+        if (HapticsManager.Instance.IsHapticsAllowed)
+        {
+            Handheld.Vibrate();   
+        }
         StartCoroutine(SpeedSlowDownRoutine());
         StartCoroutine(UiManager.Instance.HurtScreenRoutine());
         mainHandAnimator.Play("Hurt");

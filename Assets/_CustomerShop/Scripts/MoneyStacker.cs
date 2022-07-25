@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-using MoreMountains.NiceVibrations;
 using TMPro;
 
 public class MoneyStacker : MonoBehaviour
@@ -134,8 +133,11 @@ public class MoneyStacker : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Cash"))
         {
-            MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
-            
+            if (HapticsManager.Instance.IsHapticsAllowed)
+            {
+                Handheld.Vibrate();   
+            }
+
             int roll = Random.Range(1, 4);
             other.transform.GetComponent<MeshRenderer>().enabled = false;
             other.transform.GetChild(0).gameObject.SetActive(true);

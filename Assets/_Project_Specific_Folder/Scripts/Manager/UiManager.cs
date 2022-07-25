@@ -1,10 +1,8 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using Singleton;
 using TMPro;
 using UnityEngine.UI;
-using MoreMountains.NiceVibrations;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
@@ -47,6 +45,7 @@ public class UiManager : Singleton<UiManager>
     [SerializeField] private int _currentLevel;
     [SerializeField] private int _currentLevelText;
     private bool _isHapticsAllowed;
+
     private string _followerValueLetter = "K";
 
     private bool _shouldUpdateLikeText;
@@ -90,6 +89,8 @@ public class UiManager : Singleton<UiManager>
             
             totalScoreText.transform.parent.gameObject.SetActive(false);
         }
+        
+        OnEnableHapticsButtonClick();
     }
 
     private void Update()
@@ -143,7 +144,7 @@ public class UiManager : Singleton<UiManager>
         hapticsIcon.transform.GetChild(0).gameObject.SetActive(false);
         hapticsIcon.transform.GetChild(1).gameObject.SetActive(true);
         _isHapticsAllowed = true;
-        MMVibrationManager.SetHapticsActive(_isHapticsAllowed);
+        HapticsManager.Instance.IsHapticsAllowed = true;
     }
 
     public void OnDisableHapticsButtonClick()
@@ -151,7 +152,7 @@ public class UiManager : Singleton<UiManager>
         hapticsIcon.transform.GetChild(0).gameObject.SetActive(true);
         hapticsIcon.transform.GetChild(1).gameObject.SetActive(false);
         _isHapticsAllowed = false;
-        MMVibrationManager.SetHapticsActive(_isHapticsAllowed);
+        HapticsManager.Instance.IsHapticsAllowed = false;
     }
 
     #endregion

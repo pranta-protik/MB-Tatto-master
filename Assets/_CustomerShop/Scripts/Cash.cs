@@ -1,4 +1,3 @@
-using MoreMountains.NiceVibrations;
 using UnityEngine;
 
 public class Cash : MonoBehaviour
@@ -11,9 +10,12 @@ public class Cash : MonoBehaviour
         {
             return;
         }
-        
-        MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
-        
+
+        if (HapticsManager.Instance.IsHapticsAllowed)
+        {
+            Handheld.Vibrate();   
+        }
+
         transform.GetComponent<MeshRenderer>().enabled = false;
         transform.GetChild(0).gameObject.SetActive(true);
         
