@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine.UI;
 using MoreMountains.NiceVibrations;
 using DG.Tweening;
+using GameAnalyticsSDK;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 using HomaGames.HomaBelly;
@@ -90,6 +91,9 @@ public class UiManager : Singleton<UiManager>
             
             totalScoreText.transform.parent.gameObject.SetActive(false);
         }
+
+        _isHapticsAllowed = PlayerPrefs.GetInt(PlayerPrefsKey.HAPTICS_STATUS, 1) == 1;
+        MMVibrationManager.SetHapticsActive(_isHapticsAllowed);
     }
 
     private void Update()
@@ -109,7 +113,7 @@ public class UiManager : Singleton<UiManager>
             isInstagramGalleryPhotoUpdated = false;
             _isFollowersUpdated = false;
             
-            Invoke(nameof(ReloadSceneWithNewLevel), 1.5f);
+            Invoke(nameof(EnableUnlockScreen), 1.5f);
         }
     }
 
@@ -142,6 +146,7 @@ public class UiManager : Singleton<UiManager>
     {
         hapticsIcon.transform.GetChild(0).gameObject.SetActive(false);
         hapticsIcon.transform.GetChild(1).gameObject.SetActive(true);
+        PlayerPrefs.SetInt(PlayerPrefsKey.HAPTICS_STATUS, 1);
         _isHapticsAllowed = true;
         MMVibrationManager.SetHapticsActive(_isHapticsAllowed);
     }
@@ -150,6 +155,7 @@ public class UiManager : Singleton<UiManager>
     {
         hapticsIcon.transform.GetChild(0).gameObject.SetActive(true);
         hapticsIcon.transform.GetChild(1).gameObject.SetActive(false);
+        PlayerPrefs.SetInt(PlayerPrefsKey.HAPTICS_STATUS, 0);
         _isHapticsAllowed = false;
         MMVibrationManager.SetHapticsActive(_isHapticsAllowed);
     }
@@ -481,6 +487,12 @@ public class UiManager : Singleton<UiManager>
 
     #endregion
 
+    public void EnableUnlockScreen()
+    {
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Completed");
+        unlockPanel.SetActive(true);
+    }
+    
     public void ReloadSceneWithNewLevel()
     {
         DOTween.KillAll();
