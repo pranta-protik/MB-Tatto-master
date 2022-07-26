@@ -48,7 +48,7 @@ public class ValueUpgrade : MonoBehaviour
         }
     }
 
-    private void CheckValueUpgradeButtonTypeStatus()
+    public void CheckValueUpgradeButtonTypeStatus()
     {
         if (PlayerPrefs.GetInt(PlayerPrefsKey.VALUE_UPGRADE_LEVEL, 1) >= startingLevelForUpgradeValueWatchingAd ||
             StorageManager.GetTotalScore() < _requiredScoreForValueUpgrade)
@@ -117,6 +117,7 @@ public class ValueUpgrade : MonoBehaviour
                 
                 ValueUpgradeButtonEffects(_priceTagTotalScore);
                 CheckValueUpgradeButtonTypeStatus();
+                UiManager.Instance.coolnessUpgradeButton.GetComponent<CoolnessUpgrade>().CheckCoolnessUpgradeButtonTypeStatus();
             }
             CheckValueUpgradeButtonAvailability();
             UiManager.Instance.coolnessUpgradeButton.GetComponent<CoolnessUpgrade>().CheckCoolnessUpgradeButtonAvailability();

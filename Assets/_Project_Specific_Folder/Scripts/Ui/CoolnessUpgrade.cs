@@ -54,7 +54,7 @@ public class CoolnessUpgrade : MonoBehaviour
         }
     }
 
-    private void CheckCoolnessUpgradeButtonTypeStatus()
+    public void CheckCoolnessUpgradeButtonTypeStatus()
     {
         if (_isMaxedOut) return;
 
@@ -140,6 +140,7 @@ public class CoolnessUpgrade : MonoBehaviour
 
                     CoolnessUpgradeButtonEffects(_currentCoolnessLevel);
                     CheckCoolnessUpgradeButtonTypeStatus();
+                    UiManager.Instance.valueUpgradeButton.GetComponent<ValueUpgrade>().CheckValueUpgradeButtonTypeStatus();
                 }
 
                 CheckCoolnessUpgradeButtonAvailability();

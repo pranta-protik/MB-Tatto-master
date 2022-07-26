@@ -93,7 +93,15 @@ public class UiManager : Singleton<UiManager>
         }
 
         _isHapticsAllowed = PlayerPrefs.GetInt(PlayerPrefsKey.HAPTICS_STATUS, 1) == 1;
-        MMVibrationManager.SetHapticsActive(_isHapticsAllowed);
+        
+        if (_isHapticsAllowed)
+        {
+            OnEnableHapticsButtonClick();
+        }
+        else
+        {
+            OnDisableHapticsButtonClick();
+        }
     }
 
     private void Update()
