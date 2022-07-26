@@ -28,4 +28,5 @@
     public const string UNLOCKED_TATTOO_SEATS = "UnlockedTattooSeats";
 
     public const string FOUNTAIN_UNLOCK_STATUS = "FountainUnlockStatus";
+    public const string HAPTICS_STATUS = "HapticsStatus";
 }
