@@ -120,7 +120,7 @@ public class UiManager : Singleton<UiManager>
             isInstagramGalleryPhotoUpdated = false;
             _isFollowersUpdated = false;
             
-            Invoke(nameof(EnableUnlockScreen), 1.5f);
+            Invoke(nameof(ReloadSceneWithNewLevel), 1.5f);
         }
     }
 
