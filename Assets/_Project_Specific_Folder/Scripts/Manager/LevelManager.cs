@@ -66,7 +66,7 @@ public class LevelManager : MonoBehaviour
     
     private IEnumerator LoadNextScene()
     {
-#if  UNITY_IOS
+#if  UNITY_IOS && !UNITY_EDITOR
         var status = ATTrackingStatusBinding.GetAuthorizationTrackingStatus();
             
         while (status == ATTrackingStatusBinding.AuthorizationTrackingStatus.NOT_DETERMINED)
