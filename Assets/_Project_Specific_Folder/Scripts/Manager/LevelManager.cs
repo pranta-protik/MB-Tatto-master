@@ -1,5 +1,4 @@
-﻿using System.Runtime.InteropServices;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using GameAnalyticsSDK;
 using HomaGames.HomaBelly;
@@ -9,11 +8,6 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private string defaultUsername;
     // Start is called before the first frame update
     private int _gameOpenCount;
-
-#if UNITY_IOS
-    [DllImport("__Internal")]
-    private static extern void _requestIDFA();
-#endif
     
     private void Awake()
     { 
@@ -25,9 +19,6 @@ public class LevelManager : MonoBehaviour
             PlayerPrefs.SetInt("SavedTattooNo", 0);
             _gameOpenCount = 0;
 
-#if UNITY_IOS
-            _requestIDFA();
-#endif
             SceneManager.LoadSceneAsync((int) SceneIndexes.SPLASH);
             
             PlayerPrefs.SetInt("Played", 1);
