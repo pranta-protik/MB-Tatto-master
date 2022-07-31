@@ -1,7 +1,11 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using GameAnalyticsSDK;
 using HomaGames.HomaBelly;
+#if UNITY_IOS
+using Unity.Advertisement.IosSupport;
+#endif
 
 public class LevelManager : MonoBehaviour
 {
@@ -19,14 +23,14 @@ public class LevelManager : MonoBehaviour
             PlayerPrefs.SetInt("SavedTattooNo", 0);
             _gameOpenCount = 0;
 
-            SceneManager.LoadSceneAsync((int) SceneIndexes.SPLASH);
-            
             PlayerPrefs.SetInt("Played", 1);
             PlayerPrefs.SetString("Username", defaultUsername);
             
             // Session
             // Game Launched Event
             HomaBelly.Instance.TrackDesignEvent("GameLaunched");
+
+            StartCoroutine(LoadNextScene());
         }
         else
         {
@@ -47,6 +51,23 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    private IEnumerator LoadNextScene()
+    {
+#if UNITY_IOS
+        var status = ATTrackingStatusBinding.GetAuthorizationTrackingStatus(); 
+        
+        while (status == ATTrackingStatusBinding.AuthorizationTrackingStatus.NOT_DETERMINED)
+        {
+            ATTrackingStatusBinding.RequestAuthorizationTracking();
+            
+            status = ATTrackingStatusBinding.GetAuthorizationTrackingStatus();
+            yield return null;
+        }
+#endif
+        SceneManager.LoadSceneAsync((int) SceneIndexes.SPLASH);
+        yield return null;
+    }
+    
     private static void LoadLastScene()
     {
         SceneManager.LoadSceneAsync((int) SceneIndexes.MAIN);
