@@ -3,7 +3,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using GameAnalyticsSDK;
 using HomaGames.HomaBelly;
-#if UNITY_IOS
+
+#if UNITY_EDITOR && UNITY_IOS
 using Unity.Advertisement.IosSupport;
 #endif
 
@@ -53,7 +54,7 @@ public class LevelManager : MonoBehaviour
 
     private IEnumerator LoadNextScene()
     {
-#if UNITY_IOS
+#if UNITY_EDITOR && UNITY_IOS
         var status = ATTrackingStatusBinding.GetAuthorizationTrackingStatus(); 
         
         while (status == ATTrackingStatusBinding.AuthorizationTrackingStatus.NOT_DETERMINED)
