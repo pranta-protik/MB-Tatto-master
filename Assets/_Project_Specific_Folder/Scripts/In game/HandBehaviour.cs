@@ -357,7 +357,7 @@ public class HandBehaviour : MonoBehaviour
             _mainHandController.enabled = false;
             _tattooHandController.enabled = false;
 
-            GameManager.Instance.WrestlingSetup(2);
+            GameManager.Instance.WrestlingSetup(4);
             GameManager.Instance.isWrestling = true;
             
             // GameObject mobileObj = other.transform.GetChild(2).gameObject;
