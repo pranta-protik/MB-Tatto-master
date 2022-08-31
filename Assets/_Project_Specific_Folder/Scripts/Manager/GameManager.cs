@@ -291,7 +291,7 @@ public class GameManager : Singleton<GameManager>
     {
         UiManager.Instance.tapFastPanel.SetActive(false);
         mainCamera.DOKill();
-        mainCamera.transform.DOShakePosition(1f, .1f);
+        mainCamera.transform.DOShakePosition(1f, 0.1f);
         mainCamera.DOFieldOfView(70f, 1f);
         isGameOver = true;
         _wrestlingPivot.transform.GetChild(1).parent = null;
@@ -300,7 +300,14 @@ public class GameManager : Singleton<GameManager>
         _wrestlingPivot.transform.DOLocalRotate(new Vector3(-40f, -20f, 20f), 0.3f);
         _mainHandBehaviour.mainHandAnimator.Play("gesture04");
         _mainHandBehaviour.tattooHandAnimator.Play("gesture04");
-        StartCoroutine(UiManager.Instance.CrossOpponentOnInfluenceMeter());
+        Invoke(nameof(EnableUnlockScreen), 1f);
+        // StartCoroutine(UiManager.Instance.CrossOpponentOnInfluenceMeter());
+    }
+    
+    private void EnableUnlockScreen()
+    {
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Completed");
+        UiManager.Instance.unlockPanel.SetActive(true);
     }
     
     public void PlaySpecificLevel(int levelId)
@@ -373,6 +380,7 @@ public class GameManager : Singleton<GameManager>
     }
 
     public GameObject customTattooObj;
+    
     public void SetCustomTattooOnTattooHand(Texture customTattoo)
     {
         customTattooObj = _mainHandBehaviour.tattooHand.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(5).gameObject;
@@ -388,17 +396,18 @@ public class GameManager : Singleton<GameManager>
     {
         tattooEffect.SetActive(true);
         tattooGuns[currentTattooGunLevel].GetComponent<Animator>().enabled = true;
-        Invoke(nameof(EnableCustomTattooDrawingScreen), 1f);
+        StartCoroutine(DelayPlayerControlRoutine());
+        // Invoke(nameof(EnableCustomTattooDrawingScreen), 1f);
     }
 
     IEnumerator DelayPlayerControlRoutine()
     {
         // Normal Gameplay
-        // tattooEffect.SetActive(true);
-        // _mainHandBehaviour.DrawDefaultTattoo();
+        tattooEffect.SetActive(true);
+        _mainHandBehaviour.DrawDefaultTattoo();
 
         // Playable Ad Gameplay
-        customTattooObj.GetComponent<MeshRenderer>().material.DOFade(1, 1.8f);
+        // customTattooObj.GetComponent<MeshRenderer>().material.DOFade(1, 1.8f);
         
         yield return new WaitForSeconds(.5f);
         
@@ -465,7 +474,7 @@ public class GameManager : Singleton<GameManager>
         _currentBoss.transform.parent = _wrestlingPivot.transform;
         mainCameraTransform.parent = endTransform;
 
-        playerTransform.DOLocalMove(new Vector3(.35f, -.28f, .03f), 0.5f).OnComplete(() =>
+        playerTransform.DOLocalMove(new Vector3(.35f, -.28f, .03f), 0.7f).OnComplete(() =>
         {
             playerTransform.localPosition = new Vector3(1.547f, -.304f, 0.037f);
             mainHandTransform.localPosition = new Vector3(0.48f, 5.74f, 3.12f);

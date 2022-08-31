@@ -91,7 +91,7 @@ public class UAManager : Singleton<UAManager>
             RenderSettings.skybox.SetColor(SkyColor3, BottomColor);
             GameObject hand = GameManager.Instance.handGroups[handId].mainHand.GetComponentInChildren<SkinnedMeshRenderer>().gameObject;
             hand.GetComponent<Renderer>().material.SetColor(MainColor, handColor);
-            GameObject.Find("Env").gameObject.transform.GetChild(0).GetComponent<Renderer>().material.SetColor(FogColor, HeightFogColor);
+            // GameObject.Find("Env").gameObject.transform.GetChild(0).GetComponent<Renderer>().material.SetColor(FogColor, HeightFogColor);
 
             GameManager.Instance.UASpawnHand(handId);
             UASwitchTattoo();
