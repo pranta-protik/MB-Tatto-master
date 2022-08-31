@@ -357,24 +357,27 @@ public class HandBehaviour : MonoBehaviour
             _mainHandController.enabled = false;
             _tattooHandController.enabled = false;
 
-            GameObject mobileObj = other.transform.GetChild(2).gameObject;
-
-            mobileObj.transform.DOLocalMoveY(0.88f, 0.5f);
-            mobileObj.transform.DORotate(new Vector3(-50f, 270f, 90f), 0.5f).OnComplete(() =>
-            {
-                mobileObj.transform.DOLocalMove(new Vector3(-.66f, 0.88f, 0.113f), 1f).OnComplete(() =>
-                {
-                    UiManager.Instance.transitionScreen.SetActive(true);
-                    UiManager.Instance.transitionScreen.GetComponent<Image>().DOFade(1f, 0.5f).OnComplete(() =>
-                    {
-                        _camera.transform.DORotate(new Vector3(46f, 90f, 0f), 0.01f).OnComplete(() =>
-                        {
-                            mobileObj.SetActive(false);
-                            UiManager.Instance.EnableMobileScreenUI();
-                        });
-                    });
-                });
-            });
+            GameManager.Instance.WrestlingSetup(2);
+            GameManager.Instance.isWrestling = true;
+            
+            // GameObject mobileObj = other.transform.GetChild(2).gameObject;
+            //
+            // mobileObj.transform.DOLocalMoveY(0.88f, 0.5f);
+            // mobileObj.transform.DORotate(new Vector3(-50f, 270f, 90f), 0.5f).OnComplete(() =>
+            // {
+            //     mobileObj.transform.DOLocalMove(new Vector3(-.66f, 0.88f, 0.113f), 1f).OnComplete(() =>
+            //     {
+            //         UiManager.Instance.transitionScreen.SetActive(true);
+            //         UiManager.Instance.transitionScreen.GetComponent<Image>().DOFade(1f, 0.5f).OnComplete(() =>
+            //         {
+            //             _camera.transform.DORotate(new Vector3(46f, 90f, 0f), 0.01f).OnComplete(() =>
+            //             {
+            //                 mobileObj.SetActive(false);
+            //                 UiManager.Instance.EnableMobileScreenUI();
+            //             });
+            //         });
+            //     });
+            // });
         }
 
         #endregion

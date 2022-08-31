@@ -464,30 +464,59 @@ public class GameManager : Singleton<GameManager>
         playerTransform.parent = _wrestlingPivot.transform;
         _currentBoss.transform.parent = _wrestlingPivot.transform;
         mainCameraTransform.parent = endTransform;
+
+        playerTransform.DOLocalMove(new Vector3(.35f, -.28f, .03f), 0.5f).OnComplete(() =>
+        {
+            playerTransform.localPosition = new Vector3(1.547f, -.304f, 0.037f);
+            mainHandTransform.localPosition = new Vector3(0.48f, 5.74f, 3.12f);
+            tattooHandTransform.localPosition = new Vector3(0.48f, 5.74f, 3.12f);
+            
+            _cameraController.enabled = false;
+            // mainCameraTransform.position = wrestlingCameraTransform.position;
+            // mainCameraTransform.eulerAngles = wrestlingCameraTransform.eulerAngles;
+            // mainCamera.fieldOfView = 75f;
+            mainCameraTransform.DOMove(wrestlingCameraTransform.position, .1f);
+            mainCameraTransform.DORotate(wrestlingCameraTransform.eulerAngles, .11f);
+            mainCamera.DOFieldOfView(75f, 0.1f);
+            
+            mainHandTransform.localEulerAngles = new Vector3(0f, -90f, 9f);
+            tattooHandTransform.localEulerAngles = new Vector3(0f, -90f, 9f);
         
-        playerTransform.localPosition = new Vector3(1.6f, -0.28f, 0.03f);
-        mainHandTransform.localPosition = new Vector3(0.48f, 5.74f, 3.12f);
-        tattooHandTransform.localPosition = new Vector3(0.48f, 5.74f, 3.12f);
+            _mainHandBehaviour.mainHandAnimator.Play("Wrestle");
+            _mainHandBehaviour.tattooHandAnimator.Play("Wrestle");
+            _fightingRing.SetActive(true);
+            _currentBoss.SetActive(true);
+            _currentBoss.transform.GetComponent<Animator>().enabled = true;
 
-        _cameraController.enabled = false;
-        mainCameraTransform.position = wrestlingCameraTransform.position;
-        mainCameraTransform.eulerAngles = wrestlingCameraTransform.eulerAngles;
-        mainCamera.fieldOfView = 75f;
+            endTransform.GetChild(4).GetComponent<EndDetector>().endEffect = _currentBoss.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetChild(0)
+                .GetChild(1).GetComponent<ParticleSystem>();
+            endTransform.GetChild(4).GetComponent<EndDetector>().endEffect.Play();
+            _wrestlingPivot.GetComponent<Rotator>().enabled = true;
+            UiManager.Instance.tapFastPanel.SetActive(true);
+        });
+        // playerTransform.localPosition = new Vector3(1.736f, -0.145f, 0.072f);
+        // mainHandTransform.localPosition = new Vector3(0.48f, 5.74f, 3.12f);
+        // tattooHandTransform.localPosition = new Vector3(0.48f, 5.74f, 3.12f);
 
-        mainHandTransform.localEulerAngles = new Vector3(0f, -90f, 9f);
-        tattooHandTransform.localEulerAngles = new Vector3(0f, -90f, 9f);
-        
-        _mainHandBehaviour.mainHandAnimator.Play("Wrestle");
-        _mainHandBehaviour.tattooHandAnimator.Play("Wrestle");
-        _fightingRing.SetActive(true);
-        _currentBoss.SetActive(true);
-        _currentBoss.transform.GetComponent<Animator>().enabled = true;
+        // _cameraController.enabled = false;
+        // mainCameraTransform.position = wrestlingCameraTransform.position;
+        // mainCameraTransform.eulerAngles = wrestlingCameraTransform.eulerAngles;
+        // mainCamera.fieldOfView = 75f;
 
-        endTransform.GetChild(4).GetComponent<EndDetector>().endEffect = _currentBoss.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetChild(0)
-            .GetChild(1).GetComponent<ParticleSystem>();
-        endTransform.GetChild(4).GetComponent<EndDetector>().endEffect.Play();
-        _wrestlingPivot.GetComponent<Rotator>().enabled = true;
-        UiManager.Instance.tapFastPanel.SetActive(true);
+        // mainHandTransform.localEulerAngles = new Vector3(0f, -90f, 9f);
+        // tattooHandTransform.localEulerAngles = new Vector3(0f, -90f, 9f);
+        //
+        // _mainHandBehaviour.mainHandAnimator.Play("Wrestle");
+        // _mainHandBehaviour.tattooHandAnimator.Play("Wrestle");
+        // _fightingRing.SetActive(true);
+        // _currentBoss.SetActive(true);
+        // _currentBoss.transform.GetComponent<Animator>().enabled = true;
+        //
+        // endTransform.GetChild(4).GetComponent<EndDetector>().endEffect = _currentBoss.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetChild(0)
+        //     .GetChild(1).GetComponent<ParticleSystem>();
+        // endTransform.GetChild(4).GetComponent<EndDetector>().endEffect.Play();
+        // _wrestlingPivot.GetComponent<Rotator>().enabled = true;
+        // UiManager.Instance.tapFastPanel.SetActive(true);
     }
 
     private void OnApplicationPause(bool pauseStatus)
